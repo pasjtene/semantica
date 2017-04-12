@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+    <meta charset="UTF-8" />
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="viewport" content="width=device-width, user-scalable=yes" />
+    <meta name = "author" content = "Danick takam (Sdanicktakam@yahoo.fr | Jouani (jouanirenatot@yahoo.com " />
+    <meta name = "viewport" content = "width = device-width" />
+    <meta name="copyright" content="© semanticatechnologies.com (tous  droits reservés)" />
+    {% block meta %}
+
+    {% endblock %}
+    <link rel="alternate" href="https://www.semanticatechnologies.com/fr/" hreflang="fr"/>
+    <link rel="alternate" href="https://www.semanticatechnologies.com/en/" hreflang="en"/>
+    <title>
+        {% block title %}
+
+        {% endblock %}
+    </title>
+    {% block stylesheets %}
+        <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <link rel="stylesheet" href="{{ asset('components/cssbase/jquery.dataTables.css') }}">
+        <link rel="stylesheet" href="{{ asset('components/cssbase/dataTables.material.css') }}">
+        <link rel="stylesheet" href="{{ asset('data/css/master.css') }}">
+        {% block mycss %}
+
+        {% endblock %}
+    {% endblock %}
+    <link rel="icon" type="image/x-icon" href="{{ asset('logofin.ico') }}" />
+</head>
+<body>
+{% block header %}{% endblock %}
+
+{% block flash %}
+
+    {% for flashMessage in app.session.flashbag.get('notice') %}
+        <div>
+            {{ flashMessage }}
+        </div>
+    {% endfor %}
+
+    {% for flashMessage in app.session.flashbag.get('error') %}
+        <div>
+            {{ flashMessage }}
+        </div>
+    {% endfor %}
+
+{% endblock %}
+
+{% block content %}
+
+{% endblock %}
+
+{% block footer %}
+
+{% endblock footer %}
+
+{% block javascripts %}
+    <script type="application/javascript" src="{{ asset('components/jsbase/jquery.min.js') }}"></script>
+    <script type="application/javascript" src="{{ asset('components/jsbase/materialize.js') }}"></script>
+    <script type="application/javascript" src="{{ asset('components/jsbase/select2.js') }}"></script>
+    <script type="application/javascript" src="{{ asset('components/jsbase/jquery.dataTables.js') }}"></script>
+    <script type="application/javascript" src="{{ asset('components/jsbase/dataTables.material.js') }}"></script>
+    <script type="application/javascript" src="{{ asset('data/js/master.js') }}"></script>
+
+    <script>
+        $(function(){
+            $(".button-collapse").sideNav();
+        })
+    </script>
+    {% block myjs %}
+
+    {% endblock %}
+{% endblock %}
+</body>
+</html>

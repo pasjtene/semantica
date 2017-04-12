@@ -1,0 +1,23 @@
+app:
+    resource: "@AppBundle/Controller/"
+    type:     annotation
+    prefix:   /
+
+main:
+    resource: "@MainBundle/Controller/"
+    type:     annotation
+    prefix:   /{_locale}
+    requirements:
+            _locale: en|fr
+
+admin:
+    resource: "@AdminBundle/Controller/"
+    type:     annotation
+    prefix:   /{_locale}/admin
+    requirements:
+            _locale: en|fr
+
+entity:
+    resource: "@EntityBundle/Controller/"
+    type:     annotation
+    prefix:   /entity
