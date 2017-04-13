@@ -1,0 +1,8 @@
+<div class="carousel carousel-slider" id="slide">
+
+    {% if app.request.locale=='en' %}
+        <a class="carousel-item" href="!"><img src="{{ asset('data/img/slide/first-en.png') }}"></a>
+    {% else %}
+        <a class="carousel-item" href="!"><img src="{{ asset('data/img/slide/first-fr.png') }}"></a>
+    {% endif %}
+</div>

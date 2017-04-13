@@ -1,0 +1,97 @@
+{% extends 'mainBundle::layout.html.twig' %}
+
+{% block title %} Mail SCI-AIC{% endblock %}
+
+{% block mycss %}
+    <style>
+        #page
+        {
+            margin-top: 6%;
+            min-height: 1000px;
+            padding: 6%;
+        }
+        #work{
+            min-height:900px;
+            -webkit-box-shadow:  0 0 0 2px red, 0 0 0 4px white, 0 0 0 6px blue;
+            -moz-box-shadow:  0 0 0 2px red, 0 0 0 4px white, 0 0 0 6px blue;
+             box-shadow:  0 0 0 2px red, 0 0 0 4px white, 0 0 0 6px blue;
+        }
+
+        h4{
+            text-align: center;
+
+        }
+
+        img{
+            max-width: 100%;
+        }
+
+        #info{
+            padding: 1%;
+            
+        }
+
+    </style>
+{% endblock %}
+
+{% block mainblock %}
+    <div class="container">
+        <div class="row">
+            <div class="col s12 grey" id="page">
+                <div class="col s12 m1">
+
+                </div>
+                <div class="col s12 m10 white" id="work">
+                    <h4 class="blue white-text"><strong> AGENCE IMMOBILIER DU CAMROUN</strong></h4>
+                    <p><strong>SCI-AIC</strong></p>
+                    <p>BP : 420 Douala</p>
+                    <p>Douala-Logpom-Hopital des soeurs</p>
+                    <p>Tel: 696818261 / 670193644</p>
+                    <p>Smail: <a href="alaintuh@yahoo.co.uk"> Info </a> / <a href="Sdanicktakam@yahoo.fr ">SCI-AIC</a></p>
+                    <p>Site: <a href="www.aicamer.com"> www.aicamer.com</a> </p>
+                    <div class="row">
+                       <div class="col s12 m5">
+                           <img src="{{ asset('logo1.jpg') }}" alt="">
+                       </div>
+                        <div class="col m6 s12 " id="info">
+                            <h6><strong>SCI-AIC : Connexion sur notre serveur </strong></h6>
+                            <br>
+                            <span class="grey-text">vous vous êtes connecté le {{ date|date('d-m-Y à h:i:s') }}</span>
+                            <br>
+                           Vous  venez de vous connecté sur le site aicamer.com avec la marchine identifier : <strong> {{ identifiant }}</strong>
+                            <br> SCI-AIC vous propose les services : <br>
+                            - Immatriculation et lotissement terrain <br/>
+                            - Service d'arcitecture <br/>
+                            - Construction et réfection des logements <br/>
+                            - Etude et  confection des plans <br/>
+                            - Location et vente des terrains et maisons <br/>
+                            - Formation Conseil <br/>
+                            - Reservation hotel <br/>
+                            - Location et vente des voitures et motos <br/>
+                            - Permis de batir <br/>
+                            - Certificat d'urbanisme et de propriété <br/>
+                            - Etablissement  dossiers technique et titre foncier <br/>
+                            - expertise immobilière <br/>
+                            - Négoce <br/>
+                            - Sécrétaria (Formation en word, excel, power point et <br/>
+                            - Formation en Language de programmation, Base de donnéé et Analyse des systèmes
+                            <a href="www.camer.com" class="blue-text">cliquez ici</a>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col s12 right-align">
+                           <strong>  Copyrigth by Info@aicamer.com, tout droit réservé. </strong>
+                        </div>
+                    </div>
+                </div>
+                <div class="col s12 m1">
+
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block myjs %}
+
+{% endblock %}

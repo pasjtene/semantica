@@ -1,7 +1,7 @@
 {% extends 'MainBundle::layout.html.twig' %}
 {% block meta %}
-    <meta name = "description" content = "Autosavetime (Gagner automatiquement en temps) est  une application conçue par les soins de SCI-AIC (Donc son promoteur ALAIN TAKAM) à pour objectif  final d'optimiser les heures de maintance automobile à plusieurs de ses partenaires (Garage, particulier, socièté)." >
-    <meta name = "keywords" content = "garage, gestion du  temps, gestion des heures de maintenance, optimisation du  temps de travail, gagner en temps, gerer le mecanicien, bien gerer, apprendre à prévoir" >
+    <meta name = "{% trans from 'refer' %} home.title {% endtrans %}" >
+    <meta name = "keywords" content = "{% trans from 'refer' %} home.description {% endtrans %}" >
 {% endblock %}
 {% block title %}
     Semantica Technologies Corporation - STC
@@ -12,22 +12,137 @@
 
     </style>
 {% endblock %}
-
+{% block header %}
+    {{ parent() }}
+    {% include 'MainBundle:Inc:slide.html.twig' %}
+{% endblock %}
 {% block  main %}
     <div class="row" id="main_index">
-            je suis la page ede test
+        <div class="col s12">
+
+            <div class="row">
+                <hr>
+                <div class="section">
+                    <h5> {% trans from 'home' %} main.about {% endtrans %} </h5>
+                    <p>
+                        <img src="{{ asset('data/img/two.png') }}" alt="">
+                    </p>
+                </div>
+            </div>
+
+            <div class="row">
+                <div clas="section">
+                    <h5>{% trans from 'home' %} main.experience {% endtrans %} </h5>
+                    <p>
+                        {% trans from 'home' %} main.experience_content {% endtrans %}
+                    </p>
+                    <div class="col s12">
+                        <div class="col s12 m5 ">
+                            <img src="{{ asset('data/img/three.png') }}" alt="">
+                        </div>
+                        <div class="col s12 offset-m2 m5">
+                            <img src="{{ asset('data/img/four.png') }}" alt="">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="section">
+                    <div class="col s12 m6">
+                        <h5> {% trans from 'home' %} main.client {% endtrans %} </h5>
+                        <p>
+                            {% trans from 'home' %} main.client_content {% endtrans %}
+                        </p>
+                    </div>
+                    <div class="col s12 m6">
+                        <h5> {% trans from 'home' %} main.employee {% endtrans %} </h5>
+                        <p>
+                            {% trans from 'home' %} main.employee_content {% endtrans %}
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="section" id="sendmail">
+                       <p>
+                       <form action=""  method="post" id="f">
+                           <div class="col s12 m4">
+                               <h5> {% trans from 'home' %} main.subscribe {% endtrans %}</h5>
+                           </div>
+                           <div class="input-field col s12 m6">
+                               <input id="email" name="email" type="email">
+                               <label for="email">{% trans from 'home' %} main.email {% endtrans %}</label>
+                           </div>
+                           <div class="col s12 m2">
+                               <button class="waves-effect waves-light btn" type="submit" id="signup">{% trans from 'home' %} main.signup {% endtrans %}</button>
+                           </div>
+                       </form>
+                       </p>
+                   </div>
+            </div>
+
+            <div class="row">
+                <div class="section" id="contact">
+                    <h5>{% trans from 'home' %} main.contact {% endtrans %}</h5>
+                    <br><br>
+                    <div class="col offset-m3 m6 s12 card" style="height: 390px; padding-top: 2%;">
+                        <h6>{% trans from 'home' %} main.drop {% endtrans %}</h6>
+                        <form action="" id="form" method="post">
+                            <div class="input-field col s12">
+                                <input id="c_email" name="c_email" type="email" class="validate">
+                                <label for="c_email">{% trans from 'home' %} main.email {% endtrans %}</label>
+                            </div>
+                            <div class="input-field col s12">
+                                <input id="name" name="name" type="text" class="validate">
+                                <label for="name">{% trans from 'home' %} main.name {% endtrans %}</label>
+                            </div>
+                            <div class="input-field col s12">
+                                <textarea id="message" name="message" class="materialize-textarea"></textarea>
+                                <label for="icon_prefix2">{% trans from 'home' %} main.message {% endtrans %}</label>
+                            </div>
+                            <div class="col s12">
+                                <button class="waves-effect waves-light btn" type="submit" id="send">{% trans from 'home' %} main.send {% endtrans %}</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="section" id="last">
+                    <h5> {% trans from 'home' %} main.better {% endtrans %} </h5>
+                    <p>
+                        {% trans from 'home' %} main.better_content {% endtrans %}
+                    </p>
+                    <div class="col s12 m6">
+                        <h6> {% trans from 'home' %} main.block1 {% endtrans %} </h6>
+                        <p>
+                            {% trans from 'home' %} main.block1_content {% endtrans %}
+                        </p>
+                    </div>
+                    <div class="col s12 m6">
+                        <h6> {% trans from 'home' %} main.block2 {% endtrans %} </h6>
+                        <p>
+                            {% trans from 'home' %} main.block2_content {% endtrans %}
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
     </div>
 {% endblock %}
 
 {% block myjs %}
     <script>
 
-        $(function(){
             $(function(){
 
                 //  var options = [ {selector: '#menutop', offset: 50, callback: function(el) { Materialize.toast("This is our ScrollFire Demo!", 1500 ); } }, {selector: '#menutop', offset: 205, callback: function(el) { Materialize.toast("Please continue scrolling!", 1500 ); } }, {selector: '#menutop', offset: 400, callback: function(el) { Materialize.showStaggeredList($(el)); } }, {selector: '#menutop', offset: 500, callback: function(el) { Materialize.fadeInImage($(el)); } } ];
                 //  Materialize.scrollFire(options);
-                var menu = $("#head_index nav");
+                var menu = $("#nav");
 
                 var top = menu.offset().top;
                 var windowHeight = $(window).height();
@@ -39,29 +154,112 @@
                     console.log( " -------------------------------------\n\t" +"h ="+windowHeight + " s =" + scrollTop + " top =" +top+ "\n -------------------------------------");
 
                     if( scrollTop >= top ){
-                        // menu.addClass('fixed');
+                         //menu.addClass('fixed');
                     }
                     else
                     {
                         //console.log("scroll = " +scrollTop);
-                        // menu.removeClass('fixed');
+                         //menu.removeClass('fixed');
                     }
 
                 });
             });
 
-
+        $(function(){
             $('.carousel.carousel-slider').carousel({
                 full_width: true,
                 indicators: true
             });
-            autoplay();
-            function autoplay() {
-                $('.carousel').carousel('next');
-                setTimeout(autoplay, 4500);
+
+            /* autoplay();
+             function autoplay() {
+             $('.carousel').carousel('next');
+             setTimeout(autoplay, 450000000000);
+             }*/
+
+
+            function verifMail(champ)
+
+            {
+
+                var regex = /^[a-zA-Z0-9._-]+@[a-z0-9._-]{2,}\.[a-z]{2,4}$/;
+
+                if(!regex.test(champ))
+                {
+                    return false;
+                }
+
+                else
+                {
+                    return true;
+                }
             }
 
-        });
+            var elt = {
+                c_email : $('#c_email'),
+                name : $('#name'),
+                message : $('#message'),
+                send: $("#send"),
+                email: $("#email"),
+                signup: $("#signup"),
+                f: $("#f"),
+                form : $('#form')
+            }
 
+            var locale ='{{ app.request.locale }}';
+            var error = {
+                email_empty :locale=="en"? "Email address can't be empty":"L'adresse e-mail ne peut  être vide",
+                email_format:locale=="en"? "Email adress format is not  correct" : "le format de l'email non respecté",
+                name:locale=="en" ? "Name can't be empty" : "Le nom ne peut  pas être vide",
+                message: locale=="en" ? "Message can't be empty" : "Le message ne peut  pas être vide"
+            }
+            elt.signup.click(function(e){
+                if(elt.email.val().trim()=="")
+                {
+                    alert(error.email_empty);
+                    e.preventDefault();
+                }
+                if(!verifMail(elt.email.val()))
+                {
+                    alert(error.email_format);
+                    e.preventDefault();
+                }
+
+            });
+
+
+            elt.send.click(function(e){
+                var message=null;
+                if(elt.c_email.val().trim()=="")
+                {
+                    message+= "\n ->" +error.email_empty;
+
+                }
+                if(!verifMail(elt.email.val()))
+                {
+                    message+= "\n ->" +error.email_format;
+
+                }
+                if(elt.name.val().trim()=="")
+                {
+                    message+= "\n ->" +error.name;
+
+                }
+                if(elt.message.val().trim()=="")
+                {
+                    message+= "\n ->" +error.message;
+
+                }
+
+                if(message!=null)
+                {
+                    e.preventDefault();
+                    alert(message);
+                }
+
+            });
+
+
+        });
     </script>
 {% endblock %}
