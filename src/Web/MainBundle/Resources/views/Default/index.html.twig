@@ -89,7 +89,7 @@
                     <br><br>
                     <div class="col offset-m3 m6 s12 card" style="height: 390px; padding-top: 2%;">
                         <h6>{% trans from 'home' %} main.drop {% endtrans %}</h6>
-                        <form action="" id="form" method="post">
+                        <form action="{{ path('main_contact') }}" id="form" method="post">
                             <div class="input-field col s12">
                                 <input id="c_email" name="c_email" type="email" class="validate">
                                 <label for="c_email">{% trans from 'home' %} main.email {% endtrans %}</label>
@@ -140,8 +140,6 @@
 
             $(function(){
 
-                //  var options = [ {selector: '#menutop', offset: 50, callback: function(el) { Materialize.toast("This is our ScrollFire Demo!", 1500 ); } }, {selector: '#menutop', offset: 205, callback: function(el) { Materialize.toast("Please continue scrolling!", 1500 ); } }, {selector: '#menutop', offset: 400, callback: function(el) { Materialize.showStaggeredList($(el)); } }, {selector: '#menutop', offset: 500, callback: function(el) { Materialize.fadeInImage($(el)); } } ];
-                //  Materialize.scrollFire(options);
                 var menu = $("#nav");
 
                 var top = menu.offset().top;
