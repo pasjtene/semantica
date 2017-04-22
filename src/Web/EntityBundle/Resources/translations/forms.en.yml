@@ -1,0 +1,27 @@
+form:
+  project:
+    name: Full Name
+    placeholder_name: Pascal Tene
+    phone: Phone number
+    placeholder_phones: 00447515975500
+    email: Email adress
+    placeholder_email: pasjtene@yahoo.co.uk
+    country: Country
+    placeholder_country: United Kingdom
+    city: City
+    placeholder_city: England
+    adress: Mailbox
+    placeholder_adress: 420 England
+    type: Projet Type
+    placeholder_type: Android application
+    file: File
+    placeholder_file: Upload your load cache
+    objet: Projet objet
+    placeholder_objet: Chat application
+    description: Detail
+    placeholder_description: Give smal detail
+    coordonne: Personal Coordinated
+    project: Projet description
+    submit: Submit your peojet
+    save: Save as successfull
+

@@ -1,0 +1,27 @@
+form:
+  project:
+    name: Nom complet
+    placeholder_name: Pascal Tene
+    phone: Numéro de téléphone
+    placeholder_phones: 00447515975500
+    email: Email
+    placeholder_email: pasjtene@yahoo.co.uk
+    country: Pays
+    placeholder_country: United Kingdom
+    city: Ville
+    placeholder_city: England
+    adress: B.P.
+    placeholder_adress: 420 England
+    type: Type de projet
+    placeholder_type: Application android
+    file: Fichier
+    placeholder_file: Téléchager votre cahier de charge
+    objet: L'objet du  projet
+    placeholder_objet: Application de discution instantannée
+    description: Detail
+    placeholder_description: Donner une petite description
+    coordonne: Coordonnées personnel
+    project: Description du  projet
+    submit: Sommetre son projet
+    save: Enregistrement effectué avec succès
+

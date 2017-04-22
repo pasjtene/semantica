@@ -1,0 +1,22 @@
+project:
+  name:
+    NotBlank: Le nom est requis
+  email:
+    NotBlank: L'email est  requis
+  phone:
+    NotBlank: Le numero de téléphone est requis
+  country:
+    NotBlank: Le pays est  requis
+  city:
+    NotBlank: La ville est  requise
+  objet:
+    NotBlank: L'objet du  projet est  requis
+  adress:
+    NotBlank: La boite postal est  requise
+  description:
+    NotBlank: Le detail est requis
+  type:
+    NotBlank: Le type est requis
+  files:
+    NotBlank: Le cahier de charge est  requis
+    maxSizeMessage: La taille maximal du fichier est 3000ko

@@ -1,0 +1,18 @@
+nav:
+  home: Accueil
+  logout: Déonnexion
+  contact: Contact
+  projet: Projet
+  customer: Client
+login:
+  title: SEMANTICA TECHNOLOGIES CORPORATION
+  title_br: STC
+  content: |
+   Votre partenaire  constructruit des solutions logicielles sécurisées et fiables, adaptées aux besoins spécifiques de votre entreprise
+  email: Email  ou Téléphone
+  password: Mot de passe
+  connection: Connexion
+  login: AUTHENTIFICATION
+  identity: Identifiant
+  password_pl: Votre mot de passe
+  error: Identifiant ou mot de passe incorrect

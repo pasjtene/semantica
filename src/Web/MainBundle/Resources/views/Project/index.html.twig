@@ -1,0 +1,276 @@
+{% extends 'MainBundle::layout.html.twig' %}
+{% block meta %}
+    <meta name = "{% trans from 'refer' %} project.title {% endtrans %}" >
+    <meta name = "keywords" content = "{% trans from 'refer' %} project.description {% endtrans %}" >
+{% endblock %}
+{% block title %}
+    Semantica Technologies Corporation - STC
+{% endblock %}
+
+{% block mycss %}
+    <style>
+        body{
+            overflow: hidden;
+        }
+        .error{
+            color:red;
+        }
+    </style>
+{% endblock %}
+{% block header %}
+    {{ parent() }}
+    {% include 'MainBundle:Inc:slide.html.twig' %}
+{% endblock %}
+{% block  main %}
+    <div class="row" id="main_project">
+       <div class="col s12">
+           <form method="post" action="" enctype="multipart/form-data">
+               <div class="row">
+                   {% if message is defined %}
+                       <div id="notification" class="green white-text" style="display:none; position: absolute; top: 10%; left: 45%; z-index: 99999999999;  padding: 2%; font-weight: bold;">
+                           {% trans from 'forms' %} form.project.save  {% endtrans %}
+                       </div>
+                   {% endif %}
+                   <div class="col s12 m6">
+                       <fieldset class=" ">
+                           <legend>{% trans from 'forms' %} form.project.coordonne {% endtrans %}</legend>
+                           <div class="input-field col s12 ">
+                               {{ form_widget(form.name,{'attr':{'class':''}}) }}
+                               {{ form_label(form.name) }}
+                               <div class="error"  >{{ form_errors(form.name) }}</div>
+                           </div>
+                           <div class="input-field col s12 ">
+                               {{ form_widget(form.email,{'attr':{'class':''}}) }}
+                               {{ form_label(form.email) }}
+                               <div class="error"  >{{ form_errors(form.email) }}</div>
+                           </div>
+                           <div class="input-field col s12 ">
+                               {{ form_widget(form.phone,{'attr':{'class':''}}) }}
+                               {{ form_label(form.phone) }}
+                               <div class="error"  >{{ form_errors(form.phone) }}</div>
+                           </div>
+                           <div class="input-field col s12 ">
+                               {{ form_widget(form.city,{'attr':{'class':''}}) }}
+                               {{ form_label(form.city) }}
+                               <div class="error"  >{{ form_errors(form.city) }}</div>
+                           </div>
+                           <div class="input-field col s12 ">
+                               {{ form_widget(form.country,{'attr':{'class':''}}) }}
+                               {{ form_label(form.country) }}
+                               <div class="error"  >{{ form_errors(form.country) }}</div>
+                           </div>
+                           <div class="input-field col s12 ">
+                               {{ form_widget(form.adress,{'attr':{'class':''}}) }}
+                               {{ form_label(form.adress) }}
+                               <div class="error"  >{{ form_errors(form.adress) }}</div>
+                           </div>
+                       </fieldset>
+                   </div>
+                   <div class="col s12 m6">
+                       <fieldset class="">
+                           <legend>{% trans from 'forms' %} form.project.project {% endtrans %}</legend>
+                           <div class="input-field col s12 ">
+                               {{ form_widget(form.objet,{'attr':{'class':''}}) }}
+                               {{ form_label(form.objet) }}
+                               <div class="error"  >{{ form_errors(form.objet) }}</div>
+                           </div>
+                           <div class="input-field col s12 ">
+                               {{ form_widget(form.type,{'attr':{'class':''}}) }}
+                               {{ form_label(form.type) }}
+                               <div class="error"  >{{ form_errors(form.type) }}</div>
+                           </div>
+                           <div class="file-field input-field col s12 ">
+                               <div class="btn">
+                                   <span>{% trans from 'forms' %} form.project.file {% endtrans %}</span>
+                                   {{ form_widget(form.file,{'attr':{'class':''}}) }}
+                               </div>
+                               <div class="file-path-wrapper">
+                                   <input class="file-path validate" type="text" accept=".pdf" placeholder="{% trans from 'forms' %} form.project.placeholder_file {% endtrans %}">
+                               </div>
+                               <div class="error"  >{{ form_errors(form.file) }}</div>
+                           </div>
+                       </fieldset>
+                   </div>
+                   <div class="input-field col s12 ">
+                       <br>
+                       {{ form_label(form.description) }}
+                       {{ form_widget(form.description,{'attr':{'class':''}}) }}
+
+                       <div class="error"  >{{ form_errors(form.description) }}</div>
+                   </div>
+               </div>
+               <div class="col s12 right right-align">
+                   <button class="waves-effect waves-light btn" type="submit">{% trans from 'forms' %} form.project.submit {% endtrans %} </button>
+               </div>
+           </form>
+       </div>
+    </div>
+{% endblock %}
+
+{% block myjs %}
+    <script>
+
+            $(function(){
+
+                {% if message is defined  %}
+                $('#notification').slideDown(100);
+                t = setInterval(function(){
+                    $('#notification').slideUp();
+                    clearInterval(t);
+                },4000);
+                {% endif %}
+
+                var menu = $("#nav");
+
+                var top = menu.offset().top;
+                var windowHeight = $(window).height();
+
+                $(window).scroll(function(event){
+                    // alert();
+                    var scrollTop = $(window).scrollTop();
+
+                    //console.log( " -------------------------------------\n\t" +"h ="+windowHeight + " s =" + scrollTop + " top =" +top+ "\n -------------------------------------");
+
+                    if( scrollTop >= top ){
+                         //menu.addClass('fixed');
+                    }
+                    else
+                    {
+                        //console.log("scroll = " +scrollTop);
+                         //menu.removeClass('fixed');
+                    }
+
+                });
+            });
+
+        $(function(){
+            $('.carousel.carousel-slider').carousel({
+                full_width: true,
+                indicators: true
+            });
+
+            /* autoplay();
+             function autoplay() {
+             $('.carousel').carousel('next');
+             setTimeout(autoplay, 450000000000);
+             }*/
+
+
+            function verifMail(champ)
+
+            {
+
+                var regex = /^[a-zA-Z0-9._-]+@[a-z0-9._-]{2,}\.[a-z]{2,4}$/;
+
+                if(!regex.test(champ))
+                {
+                    return false;
+                }
+
+                else
+                {
+                    return true;
+                }
+            }
+
+            var elt = {
+                c_email : $('#c_email'),
+                name : $('#name'),
+                message : $('#message'),
+                send: $("#send"),
+                email: $("#email"),
+                signup: $("#signup"),
+                f: $("#f"),
+                form : $('#form')
+            }
+
+            var locale ='{{ app.request.locale }}';
+            var error = {
+                email_empty :locale=="en"? "Email address can't be empty":"L'adresse e-mail ne peut  être vide",
+                email_format:locale=="en"? "Email adress format is not  correct" : "le format de l'email non respecté",
+                name:locale=="en" ? "Name can't be empty" : "Le nom ne peut  pas être vide",
+                message: locale=="en" ? "Message can't be empty" : "Le message ne peut  pas être vide"
+            }
+            elt.signup.click(function(e){
+                if(elt.email.val().trim()=="")
+                {
+                    alert(error.email_empty);
+                    e.preventDefault();
+                }
+                if(!verifMail(elt.email.val()))
+                {
+                    alert(error.email_format);
+                    e.preventDefault();
+                }
+
+            });
+
+
+            elt.send.click(function(e){
+                var message=null;
+                if(elt.c_email.val().trim()=="")
+                {
+                    message+= "\n ->" +error.email_empty;
+
+                }
+                if(!verifMail(elt.email.val()))
+                {
+                    message+= "\n ->" +error.email_format;
+
+                }
+                if(elt.name.val().trim()=="")
+                {
+                    message+= "\n ->" +error.name;
+
+                }
+                if(elt.message.val().trim()=="")
+                {
+                    message+= "\n ->" +error.message;
+
+                }
+
+                if(message!=null)
+                {
+                    e.preventDefault();
+                    alert(message);
+                }
+
+            });
+
+
+
+
+        });
+    </script>
+
+    <script src="https://cloud.tinymce.com/stable/tinymce.min.js"></script>
+    <script>
+        tinymce.init({
+            selector: 'textarea',
+            height: 300,
+            menubar: false,
+            theme: 'modern',
+            plugins: [
+                'advlist autolink lists  charmap print preview hr anchor pagebreak',
+                'searchreplace wordcount visualblocks visualchars code fullscreen',
+                'insertdatetime  nonbreaking save table contextmenu directionality',
+                'emoticons template paste textcolor colorpicker textpattern imagetools codesample toc'
+            ],
+            toolbar1: 'undo redo | insert | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent ',
+            toolbar2: 'print preview media | forecolor backcolor emoticons | codesample',
+            image_advtab: true,
+            templates: [
+                { title: 'Test template 1', content: 'Test 1' },
+                { title: 'Test template 2', content: 'Test 2' }
+            ],
+            content_css: [
+                '//fonts.googleapis.com/css?family=Lato:300,300i,400,400i',
+                '//www.tinymce.com/css/codepen.min.css'
+            ]
+        });
+
+    </script>
+    <script src="https://cloud.tinymce.com/stable/tinymce.min.js?apiKey=4fcmcglus7w1s8esa5k42gfv78h0gl8ihztqd36tupbqvlev"></script>
+
+
+{% endblock %}
