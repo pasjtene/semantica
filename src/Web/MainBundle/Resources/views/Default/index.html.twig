@@ -18,6 +18,22 @@
 {% endblock %}
 {% block  main %}
     <div class="row" id="main_index">
+        {% if message is defined %}
+            <div id="notification" class="green white-text" style="display:none; position: absolute; top: 10%; left: 45%; z-index: 99999999999;  padding: 2%; font-weight: bold;">
+                {% trans from 'home' %} sendmail.message  {% endtrans %} {{ message }}
+            </div>
+        {% endif %}
+
+        {% if confirm is defined %}
+            <div id="notification_confirm" class="green white-text" style="display:none; position: absolute; top: 10%; left: 45%; z-index: 99999999999;  padding: 2%; font-weight: bold;">
+                {% trans from 'home' %} sendmail.confirm  {% endtrans %}
+            </div>
+        {% endif %}
+        {% if error is defined %}
+            <div id="notification_error" class="red white-text" style="display:none; position: absolute; top: 10%; left: 45%; z-index: 99999999999;  padding: 2%; font-weight: bold;">
+                {% trans with {'%placeholder%': error } from 'home'  %} sendmail.error {% endtrans %}
+            </div>
+        {% endif %}
         <div class="col s12">
 
             <div class="row">
@@ -67,13 +83,16 @@
             <div class="row">
                 <div class="section" id="sendmail">
                        <p>
-                       <form action=""  method="post" id="f">
+                       <form action="{{ path('main_signup') }}"  method="post" id="f">
                            <div class="col s12 m4">
                                <h5> {% trans from 'home' %} main.subscribe {% endtrans %}</h5>
                            </div>
                            <div class="input-field col s12 m6">
                                <input id="email" name="email" type="email">
                                <label for="email">{% trans from 'home' %} main.email {% endtrans %}</label>
+                               <div class="error red-text" id="email_error" style="display: none;">
+                                   {% trans from 'error' %} email_format {% endtrans %}
+                               </div>
                            </div>
                            <div class="col s12 m2">
                                <button class="waves-effect waves-light btn" type="submit" id="signup">{% trans from 'home' %} main.signup {% endtrans %}</button>
@@ -93,18 +112,30 @@
                             <div class="input-field col s12">
                                 <input id="c_email" name="c_email" type="email" class="validate">
                                 <label for="c_email">{% trans from 'home' %} main.email {% endtrans %}</label>
+                                <div class="error red-text" id="c_email_error" style="display: none;">
+                                    {% trans from 'error' %} email_format {% endtrans %}
+                                </div>
                             </div>
                             <div class="input-field col s12">
                                 <input id="name" name="name" type="text" class="validate">
                                 <label for="name">{% trans from 'home' %} main.name {% endtrans %}</label>
+                                <div class="error red-text" id="name_error" style="display: none;">
+                                    {% trans from 'error' %} name {% endtrans %}
+                                </div>
                             </div>
                             <div class="input-field col s12">
                                 <textarea id="message" name="message" class="materialize-textarea"></textarea>
                                 <label for="icon_prefix2">{% trans from 'home' %} main.message {% endtrans %}</label>
+                                <div class="error red-text" id="message_error" style="display: none;">
+                                    {% trans from 'error' %} message {% endtrans %}
+                                </div>
                             </div>
+                            <br>
                             <div class="col s12">
                                 <button class="waves-effect waves-light btn" type="submit" id="send">{% trans from 'home' %} main.send {% endtrans %}</button>
+                                <br/>
                             </div>
+
                         </form>
                     </div>
                 </div>
@@ -138,8 +169,34 @@
 {% block myjs %}
     <script>
 
-            $(function(){
+            $(function() {
 
+                {% if message is defined  %}
+                    $('#notification').slideDown(100);
+                    t = setInterval(function(){
+                        $('#notification').slideUp();
+                        window.location.href = '{{ path('main_homepage') }}'
+                        clearInterval(t);
+                    },4000);
+                {% endif %}
+
+                {% if confirm is defined  %}
+                    $('#notification_confirm').slideDown(100);
+                    t = setInterval(function(){
+                        $('#notification_confirm').slideUp();
+                        clearInterval(t);
+                    },4000);
+
+                {% endif %}
+
+                {% if error is defined  %}
+                    $('#notification_error').slideDown(100);
+                    t = setInterval(function(){
+                        $('#notification_error').slideUp();
+                        window.location.href = '{{ path('main_homepage') }}'
+                        clearInterval(t);
+                    },4000);
+                {% endif %}
                 var menu = $("#nav");
 
                 var top = menu.offset().top;
@@ -180,7 +237,7 @@
 
             {
 
-                var regex = /^[a-zA-Z0-9._-]+@[a-z0-9._-]{2,}\.[a-z]{2,4}$/;
+                var regex = new RegExp('^[a-z0-9]+([_|\.|-]{1}[a-z0-9]+)*@[a-z0-9]+([_|\.|-]{1}[a-z0-9]+)*[\.]{1}[a-z]{2,6}$', 'i');
 
                 if(!regex.test(champ))
                 {
@@ -196,12 +253,16 @@
             var elt = {
                 c_email : $('#c_email'),
                 name : $('#name'),
+                name_error : $('#name_error'),
                 message : $('#message'),
+                message_error : $('#message_error'),
                 send: $("#send"),
                 email: $("#email"),
                 signup: $("#signup"),
                 f: $("#f"),
-                form : $('#form')
+                form : $('#form'),
+                email_error:$("#email_error"),
+                c_email_error:$("#c_email_error")
             }
 
             var locale ='{{ app.request.locale }}';
@@ -212,47 +273,54 @@
                 message: locale=="en" ? "Message can't be empty" : "Le message ne peut  pas être vide"
             }
             elt.signup.click(function(e){
-                if(elt.email.val().trim()=="")
+
+                var test = verifMail(elt.email.val());
+
+                e.preventDefault();
+                if(!test)
                 {
-                    alert(error.email_empty);
-                    e.preventDefault();
+                    elt.email_error.slideDown();
+
                 }
-                if(!verifMail(elt.email.val()))
+                else
                 {
-                    alert(error.email_format);
-                    e.preventDefault();
+                    elt.f.submit();
                 }
 
+            });
+
+            elt.email.keyup(function(){
+                var test = verifMail($(this).val());
+                if(test)
+                {
+                    elt.email_error.slideUp();
+                }
             });
 
 
             elt.send.click(function(e){
                 var message=null;
-                if(elt.c_email.val().trim()=="")
-                {
-                    message+= "\n ->" +error.email_empty;
-
-                }
-                if(!verifMail(elt.email.val()))
+                e.preventDefault();
+                if(!verifMail(elt.c_email.val()))
                 {
                     message+= "\n ->" +error.email_format;
-
+                    elt.c_email_error.slideDown();
                 }
                 if(elt.name.val().trim()=="")
                 {
                     message+= "\n ->" +error.name;
-
+                    elt.name_error.slideDown();
                 }
                 if(elt.message.val().trim()=="")
                 {
                     message+= "\n ->" +error.message;
-
+                    elt.message_error.slideDown();
                 }
 
-                if(message!=null)
+                if(message==null)
                 {
-                    e.preventDefault();
-                    alert(message);
+                    elt.form.submit();
+                    //alert(message);
                 }
 
             });

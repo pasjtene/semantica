@@ -27,3 +27,8 @@ main:
   block2: Hours
   block2_content:  |
    Monday - Friday: 9am - 5pm <br/><br/> Saturday: By appointment <br/><br/> Sunday: Closed
+sendmail:
+  content: Click on this link to confirm your registration
+  message: We sent an email to this address :
+  error: %placeholder% is already exist
+  confirm: Successful registration

@@ -48,6 +48,8 @@
 
   #contact{
     background-color: $default !important;
+    padding-top: 2% !important;
+    padding-bottom: 4% !important;
     button{
       background-color: $secondary_text !important;
       color: $default;
@@ -71,6 +73,13 @@
 
 
 
+}
+
+#main_confirm{
+  .card{
+    padding: 4% !important;
+    text-align: center;
+  }
 }
 
 

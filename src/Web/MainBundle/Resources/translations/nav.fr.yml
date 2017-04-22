@@ -4,6 +4,12 @@ nav:
   signup: S'inscrire
   contact: Contact
   language: Anglais
+  newprojet: Sommetre son projet
 footer:
   copyright: Copyright © 2017 Semantica Technologies Corporation - STC - Tous  droits  réservés.
   by: Propulsé par   PASCAL TENE
+slide:
+  title: |
+   BIENVENUE À  SEMANTICA TECHNOLOGIES CORPORATION -STC
+  content: |
+    Votre partenaire  constructruit des solutions logicielles sécurisées et fiables, adaptées aux besoins spécifiques de votre entreprise

@@ -27,3 +27,8 @@ main:
   block2: Hours
   block2_content:  |
    Du lundi au vendredi: de 9h à 17h <br/><br/> Samedi: sur rendez-vous <br/><br/> Dimanche: fermé
+sendmail:
+  content: Cliquer sur  ce lien pour confirmer votre enregistrement
+  message:  Nous avons envoyé un mail a l'adresse :
+  error: %placeholder% existe déjà
+  confirm: Enregistrement  effectué avec succès

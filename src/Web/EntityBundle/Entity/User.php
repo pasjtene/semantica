@@ -158,4 +158,3 @@ class User
         return $this->sex;
     }
 }
-
