@@ -117,7 +117,7 @@ class DefaultController extends Controller
             $routeview ="AdminBundle:Inc:email.html.twig";
             $param =['message'=>$message, 'objet'=>$objet];
             $code = $this->sentMail($to, $from, $routeview, $param,$subjet);
-            return $this->testcustomerAction($param);
+           // return $this->testcustomerAction($param);
         }
 
         return $this->redirect($this->generateUrl('admin_customer',["message"=>"test"]));
