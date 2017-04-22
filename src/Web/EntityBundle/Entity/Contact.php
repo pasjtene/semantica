@@ -36,6 +36,13 @@ class Contact
     private $email;
 
     /**
+     * @var boolean
+     *
+     * @ORM\Column(name="important", type="boolean")
+     */
+    private $important;
+
+    /**
      * @var string
      *
      * @ORM\Column(name="message", type="text")
@@ -49,6 +56,22 @@ class Contact
      */
     private $date;
 
+
+
+    public function truncate($string, $length){
+        $value =null;
+        $tab = str_split($string);
+        for($i=0;$i<strlen($string);$i++)
+        {
+            $value .=$tab[$i];
+            if($i==($length-1))
+            {
+                $value .="[...]";
+                return $value;
+            }
+        }
+        return $value;
+    }
 
     /**
      * Get id
@@ -157,5 +180,29 @@ class Contact
     public function getDate()
     {
         return $this->date;
+    }
+
+    /**
+     * Set important
+     *
+     * @param boolean $important
+     *
+     * @return Contact
+     */
+    public function setImportant($important)
+    {
+        $this->important = $important;
+
+        return $this;
+    }
+
+    /**
+     * Get important
+     *
+     * @return boolean
+     */
+    public function getImportant()
+    {
+        return $this->important;
     }
 }

@@ -18,7 +18,10 @@ main:
   drop: Drop us a line!
   name: Name
   message: Message
+  mailbox: MAILBOX
+  objet: Email objet
   send: SEND
+  to: TO
   better: Better yet, see us in person!
   better_content: We love our customers, so feel free to visit during normal business hours.
   block1: Semantica Technologies Corporation - STC
@@ -32,3 +35,7 @@ sendmail:
   message: We sent an email to this address :
   error: %placeholder% is already exist
   confirm: Successful registration
+customer:
+  list: CUSTOMER LIST
+contact:
+  list: CONTACT LIST

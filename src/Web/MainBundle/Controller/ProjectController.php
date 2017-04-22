@@ -57,7 +57,7 @@ class ProjectController extends Controller
             }
             else{
                 $array['error'] = $error;
-                var_dump($error);
+                //var_dump($error);
             }
 
         }

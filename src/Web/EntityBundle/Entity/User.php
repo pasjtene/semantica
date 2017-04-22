@@ -3,7 +3,7 @@
 namespace Web\EntityBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-
+use FOS\UserBundle\Entity\User as BaseUser;
 
 
 /**
@@ -12,8 +12,13 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="fos_user")
  * @ORM\Entity(repositoryClass="Web\EntityBundle\Repository\UserRepository")
  */
-class User
+class User extends BaseUser
 {
+
+    const ROLE_SUPER_ADMIN = 'ROLE_SUPER_ADMIN';
+    const ROLE_ADMIN = 'ROLE_ADMIN';
+    const ROLE_USER = 'ROLE_USER';
+
     /**
      * @var int
      *
@@ -21,7 +26,7 @@ class User
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
      */
-    private $id;
+    protected $id;
 
     /**
      * @var string

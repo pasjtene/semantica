@@ -16,6 +16,9 @@ main:
   signup: S'inscrire
   contact: CONTACTEZ-NOUS
   drop: Écrivez-nous!
+  to: A
+  objet: Objet du  mail
+  mailbox: ENVOI DU MAIL
   name: Nom
   message: Message
   send: ENVOYER
@@ -32,3 +35,7 @@ sendmail:
   message:  Nous avons envoyé un mail a l'adresse :
   error: %placeholder% existe déjà
   confirm: Enregistrement  effectué avec succès
+customer:
+  list: lISTE DES CLIENTS
+contact:
+  list: LISTE DES CONTACTS

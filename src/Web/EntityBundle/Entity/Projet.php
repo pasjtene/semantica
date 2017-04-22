@@ -114,6 +114,20 @@ class Projet
      */
     private $time;
 
+    public function truncate($string, $length){
+        $value =null;
+        $tab = str_split($string);
+        for($i=0;$i<strlen($string);$i++)
+        {
+            $value .=$tab[$i];
+            if($i==($length-1))
+            {
+                $value .="[...]";
+                return $value;
+            }
+        }
+        return $value;
+    }
 
     /**
      * Get id
@@ -411,7 +425,7 @@ class Projet
     }
     public function path(){
         $file = new Files();
-        return $this->files==null? null: $file->initialpath."projet/".$this->files;
+        return $this->hashfiles==null? null: $file->initialpath."projet/".$this->hashfiles;
     }
 
     /**

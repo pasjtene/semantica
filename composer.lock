@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "d4fa72d60d056b05ce1e5df436fcd113",
+    "content-hash": "74558a96b11f76dd3743c1edb230ab47",
     "packages": [
         {
             "name": "composer/ca-bundle",
@@ -893,16 +893,16 @@
         },
         {
             "name": "friendsofsymfony/user-bundle",
-            "version": "v2.0.0",
+            "version": "dev-master",
             "source": {
                 "type": "git",
                 "url": "https://github.com/FriendsOfSymfony/FOSUserBundle.git",
-                "reference": "2e0243e9e8a3ca0dab753fc5f2e79b4b3093ac9a"
+                "reference": "730a8a5f6633ae913a838d26b1c7156faa6ed697"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/FriendsOfSymfony/FOSUserBundle/zipball/2e0243e9e8a3ca0dab753fc5f2e79b4b3093ac9a",
-                "reference": "2e0243e9e8a3ca0dab753fc5f2e79b4b3093ac9a",
+                "url": "https://api.github.com/repos/FriendsOfSymfony/FOSUserBundle/zipball/730a8a5f6633ae913a838d26b1c7156faa6ed697",
+                "reference": "730a8a5f6633ae913a838d26b1c7156faa6ed697",
                 "shasum": ""
             },
             "require": {
@@ -966,7 +966,7 @@
             "keywords": [
                 "User management"
             ],
-            "time": "2017-03-29T13:21:34+00:00"
+            "time": "2017-04-21 12:31:59"
         },
         {
             "name": "incenteev/composer-parameter-handler",
@@ -2921,7 +2921,9 @@
     ],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": [],
+    "stability-flags": {
+        "friendsofsymfony/user-bundle": 20
+    },
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {

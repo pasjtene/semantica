@@ -113,11 +113,11 @@
             $(function(){
 
                 {% if message is defined  %}
-                $('#notification').slideDown(100);
-                t = setInterval(function(){
-                    $('#notification').slideUp();
-                    clearInterval(t);
-                },4000);
+                    $('#notification').slideDown(100);
+                    t = setInterval(function(){
+                        $('#notification').slideUp();
+                        clearInterval(t);
+                    },4000);
                 {% endif %}
 
                 var menu = $("#nav");

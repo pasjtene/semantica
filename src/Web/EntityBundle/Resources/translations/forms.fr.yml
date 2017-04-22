@@ -24,4 +24,8 @@ form:
     project: Description du  projet
     submit: Sommetre son projet
     save: Enregistrement effectué avec succès
+    close: Fermer
+    date: Date
+    list: LISTE DES PROJETS
+
 

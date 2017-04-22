@@ -4,12 +4,16 @@
     <meta name = "keywords" content = "{% trans from 'refer' %} home.description {% endtrans %}" >
 {% endblock %}
 {% block title %}
-    Semantica Technologies Corporation - STC - Admin
+    Semantica Technologies Corporation - STC - Admin  - Contact
 {% endblock %}
 
 {% block mycss %}
+    <link rel="stylesheet" href="{{ asset('components/cssbase/datatablehelp.css') }}">
+    <link rel="stylesheet" href="{{ asset('components/cssbase/datatablehelp2.css') }}">
     <style>
-
+        #navadmin{
+            padding-top: 1.5%;
+        }
     </style>
 {% endblock %}
 {% block header %}
@@ -17,12 +21,121 @@
 
 {% endblock %}
 {% block  main %}
-    <div class="row" id="main_index">
+    <div class="row" id="admin_index">
+
+        {% if app.request.query.get("message") is defined and  app.request.query.get("message")!=null  %}
+            <div id="notification" class="green white-text" style="display:none; position: absolute; top: 10%; left: 45%; z-index: 99999999999;  padding: 2%; font-weight: bold;">
+                {% trans from 'forms' %} form.project.save  {% endtrans %}
+            </div>
+        {% endif %}
+        <div class="col s12 card">
+            <center>
+                <h3>{% trans from 'home' %} contact.list {% endtrans %}</h3>
+            </center>
+            <table id="example" class="mdl-data-table responsive-table" cellspacing="0" width="100%">
+                <thead>
+                <tr>
+                    <th>{% trans from 'home' %} main.name {% endtrans %}</th>
+                    <th>{% trans from 'home' %} main.email {% endtrans %}</th>
+                    <th>{% trans from 'home' %} main.message {% endtrans %}</th>
+                    <th>{% trans from 'forms' %} form.projet.date {% endtrans %}</th>
+                    <th>#</th>
+                </tr>
+                </thead>
+
+                <tbody>
+                {% for contact in list  %}
+                    {% set href= "#contact"~contact.id %}
+                    {% set idhref = "contact"~contact.id %}
+                    <tr>
+                        <td>{{ contact.name }}</td>
+                        <td>{{ contact.email }}</td>
+                        <td>{{ contact.truncate(contact.message,30) }}</td>
+                        <td>{{ contact.date|date('d-m-Y') }}</td>
+                        <td><a href="{{ href }}"><i class="material-icons">call_made</i></a></td>
+                    </tr>
+                    <div id="{{ idhref }}" class="modal modal-fixed-footer">
+                        <form method="post" action="{{ path('admin_sendcontact',{id:contact.id}) }}" enctype="multipart/form-data">
+                            <div class="modal-content">
+                                <center><h3>{% trans from 'home' %} main.mailbox {% endtrans %}</h3></center>
+                                <div class="input-field col s12">
+                                    <input id="objet" name="objet" type="text" value="{{ contact.email }}" class="validate" disabled>
+                                    <label for="objet">{% trans from 'home' %} main.to {% endtrans %}</label>
+                                </div>
+                                <div class="input-field col s12">
+                                    <input id="objet" name="objet" type="text" class="validate" required>
+                                    <label for="objet">{% trans from 'home' %} main.objet {% endtrans %}</label>
+                                </div>
+                                <div class="input-field col s12">
+                                    <textarea id="textarea1" class="materialize-textarea tinymce" ></textarea>
+                                    <label for="textarea1">{% trans from 'home' %} main.message {% endtrans %}</label>
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button  id="close" type="submit" class=" waves-effect waves-green btn-flat blue white-text">{% trans from 'home' %} main.send {% endtrans %}</button>
+                            </div>
+                        </form>
+                    </div>
+
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
     </div>
 {% endblock %}
 
 {% block myjs %}
     <script>
+        $(document).ready(function() {
+
+            {% if app.request.query.get("message") is defined and  app.request.query.get("message")!=null  %}
+                $('#notification').slideDown(100);
+                t = setInterval(function(){
+                    $('#notification').slideUp();
+                    window.location.href ='{{ path("admin_contact") }}';
+                    clearInterval(t);
+                },4000);
+            {% endif %}
+
+            $('.modal').modal();
+            $('#example').DataTable( {
+                responsive: true,
+                columnDefs: [
+                    {
+                        targets: [ 0, 1, 2 ],
+                        className: 'mdl-data-table__cell--non-numeric'
+                    }
+                ]
+            } );
+        } );
+    </script>
+    <script src="https://cloud.tinymce.com/stable/tinymce.min.js"></script>
+    <script>
+        tinymce.init({
+            selector: 'textarea',
+            height: 300,
+            menubar: false,
+            theme: 'modern',
+            plugins: [
+                'advlist autolink lists  charmap print preview hr anchor pagebreak',
+                'searchreplace wordcount visualblocks visualchars code fullscreen',
+                'insertdatetime  nonbreaking save table contextmenu directionality',
+                'emoticons template paste textcolor colorpicker textpattern imagetools codesample toc'
+            ],
+            toolbar1: 'undo redo | insert | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent ',
+            toolbar2: 'print preview media | forecolor backcolor emoticons | codesample',
+            image_advtab: true,
+            templates: [
+                { title: 'Test template 1', content: 'Test 1' },
+                { title: 'Test template 2', content: 'Test 2' }
+            ],
+            content_css: [
+                '//fonts.googleapis.com/css?family=Lato:300,300i,400,400i',
+                '//www.tinymce.com/css/codepen.min.css'
+            ]
+        });
 
     </script>
+    <script src="https://cloud.tinymce.com/stable/tinymce.min.js?apiKey=4fcmcglus7w1s8esa5k42gfv78h0gl8ihztqd36tupbqvlev"></script>
+
 {% endblock %}

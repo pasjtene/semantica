@@ -14,6 +14,9 @@ class ProjectController extends Controller
      */
     public function indexAction()
     {
-        return $this->render('AdminBundle:Projet:index.html.twig');
+        $em = $this->getDoctrine()->getManager();
+        $list = $em->getRepository("EntityBundle:Projet")->findBy([],['id'=>'DESC']);
+        $array['list'] = $list;
+        return $this->render('AdminBundle:Project:index.html.twig',$array);
     }
 }
