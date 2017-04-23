@@ -46,13 +46,28 @@ class ConfigController extends Controller
 
         $user3 = new User();
         $password = $this->encodePassword(new User(), "sadmin", $user3->getSalt());
-        $user3->setEmail('jouani@yahoo.fr')->setUsername('00675914612')->setCountry('Cameroon')->setFirstname('Jonathan')->setLastname('Jouani')->setPassword($password)->setRoles(['ROLE_SUPER_ADMIN'])->setEnabled(true)->setSex("Male");
+        $user3->setEmail('jouanirenatot@yahoo.com')->setUsername('00675914612')->setCountry('Cameroon')->setFirstname('Jonathan')->setLastname('Jouani')->setPassword($password)->setRoles(['ROLE_SUPER_ADMIN'])->setEnabled(true)->setSex("Male");
 
         $em = $this->getDoctrine()->getManager();
 
-        $em->persist($user);
-        $em->persist($user2);
-        $em->persist($user3);
+        $exist = $em->getRepository('EntityBundle:User')->findOneByemail($user->getEmail());
+        if($exist==null)
+        {
+            $em->persist($user);
+        }
+
+        $exist = $em->getRepository('EntityBundle:User')->findOneByemail($user2->getEmail());
+        if($exist==null)
+        {
+            $em->persist($user2);
+        }
+
+        $exist = $em->getRepository('EntityBundle:User')->findOneByemail($user3->getEmail());
+        if($exist==null)
+        {
+            $em->persist($user3);
+        }
+
         $em->flush();
 
         return $this->redirect($this->generateUrl('main_homepage'));
