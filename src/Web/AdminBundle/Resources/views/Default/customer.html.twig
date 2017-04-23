@@ -48,6 +48,8 @@
                         <td>{{ customer.date|date('d-m-Y') }}</td>
                         <td><a href="{{ href }}"><i class="material-icons">call_made</i></a></td>
                     </tr>
+
+
                     <div id="{{ idhref }}" class="modal modal-fixed-footer">
                          <form method="post" action="{{ path('admin_sendcustomer',{id:customer.id}) }}" enctype="multipart/form-data">
                             <div class="modal-content">

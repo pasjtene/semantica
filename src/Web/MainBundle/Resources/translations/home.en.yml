@@ -21,6 +21,7 @@ main:
   mailbox: MAILBOX
   objet: Email objet
   send: SEND
+  detail: DETAIL
   to: TO
   better: Better yet, see us in person!
   better_content: We love our customers, so feel free to visit during normal business hours.
@@ -39,3 +40,4 @@ customer:
   list: CUSTOMER LIST
 contact:
   list: CONTACT LIST
+  message: We have received your message. A member of our customer service will contact you shortly. Thank you for your interest in SEMANTICA.

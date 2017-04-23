@@ -1,0 +1,331 @@
+{% extends 'MainBundle::layout.html.twig' %}
+{% block meta %}
+    <meta name = "{% trans from 'refer' %} home.title {% endtrans %}" >
+    <meta name = "keywords" content = "{% trans from 'refer' %} home.description {% endtrans %}" >
+{% endblock %}
+{% block title %}
+    Semantica Technologies Corporation - STC
+{% endblock %}
+
+{% block mycss %}
+    <style>
+
+    </style>
+{% endblock %}
+{% block header %}
+    {{ parent() }}
+    {% include 'MainBundle:Inc:slide.html.twig' %}
+{% endblock %}
+{% block  main %}
+    <div class="row" id="main_index">
+        {% if message is defined %}
+            <div id="notification" class="green white-text" style="display:none; position: absolute; top: 10%; left: 45%; z-index: 99999999999;  padding: 2%; font-weight: bold;">
+                {% trans from 'home' %} sendmail.message  {% endtrans %} {{ message }}
+            </div>
+        {% endif %}
+
+        {% if confirm is defined %}
+            <div id="notification_confirm" class="green white-text" style="display:none; position: absolute; top: 10%; left: 45%; z-index: 99999999999;  padding: 2%; font-weight: bold;">
+                {% trans from 'home' %} sendmail.confirm  {% endtrans %}
+            </div>
+        {% endif %}
+        {% if error is defined %}
+            <div id="notification_error" class="red white-text" style="display:none; position: absolute; top: 10%; left: 45%; z-index: 99999999999;  padding: 2%; font-weight: bold;">
+                {% trans with {'%placeholder%': error } from 'home'  %} sendmail.error {% endtrans %}
+            </div>
+        {% endif %}
+        <div class="col s12">
+
+            <div class="row">
+                <hr>
+                <div class="section">
+                    <h5> {% trans from 'home' %} main.about {% endtrans %} </h5>
+                    <p>
+                        <img src="{{ asset('data/img/two.png') }}" alt="">
+                    </p>
+                </div>
+            </div>
+
+            <div class="row">
+                <div clas="section">
+                    <h5>{% trans from 'home' %} main.experience {% endtrans %} </h5>
+                    <p>
+                        {% trans from 'home' %} main.experience_content {% endtrans %}
+                    </p>
+                    <div class="col s12">
+                        <div class="col s12 m5 ">
+                            <img src="{{ asset('data/img/three.png') }}" alt="">
+                        </div>
+                        <div class="col s12 offset-m2 m5">
+                            <img src="{{ asset('data/img/four.png') }}" alt="">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="section">
+                    <div class="col s12 m6">
+                        <h5> {% trans from 'home' %} main.client {% endtrans %} </h5>
+                        <p>
+                            {% trans from 'home' %} main.client_content {% endtrans %}
+                        </p>
+                    </div>
+                    <div class="col s12 m6">
+                        <h5> {% trans from 'home' %} main.employee {% endtrans %} </h5>
+                        <p>
+                            {% trans from 'home' %} main.employee_content {% endtrans %}
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="section" id="sendmail">
+                       <p>
+                       <form action="{{ path('main_signup') }}"  method="post" id="f">
+                           <div class="col s12 m4">
+                               <h5> {% trans from 'home' %} main.subscribe {% endtrans %}</h5>
+                           </div>
+                           <div class="input-field col s12 m6">
+                               <input id="email" name="email" type="email">
+                               <label for="email">{% trans from 'home' %} main.email {% endtrans %}</label>
+                               <div class="error red-text" id="email_error" style="display: none;">
+                                   {% trans from 'error' %} email_format {% endtrans %}
+                               </div>
+                           </div>
+                           <div class="col s12 m2">
+                               <button class="waves-effect waves-light btn" type="submit" id="signup">{% trans from 'home' %} main.signup {% endtrans %}</button>
+                           </div>
+                       </form>
+                       </p>
+                   </div>
+            </div>
+
+            <div class="row">
+                <div class="section" id="contact">
+                    <h5>{% trans from 'home' %} main.contact {% endtrans %}</h5>
+                    <br><br>
+                    <div class="col offset-m3 m6 s12 card" style="height: 390px; padding-top: 2%;">
+                        <h6>{% trans from 'home' %} main.drop {% endtrans %}</h6>
+                        <form action="{{ path('main_contact') }}" id="form" method="post">
+                            <div class="input-field col s12">
+                                <input id="c_email" name="c_email" type="email" class="validate">
+                                <label for="c_email">{% trans from 'home' %} main.email {% endtrans %}</label>
+                                <div class="error red-text" id="c_email_error" style="display: none;">
+                                    {% trans from 'error' %} email_format {% endtrans %}
+                                </div>
+                            </div>
+                            <div class="input-field col s12">
+                                <input id="name" name="name" type="text" class="validate">
+                                <label for="name">{% trans from 'home' %} main.name {% endtrans %}</label>
+                                <div class="error red-text" id="name_error" style="display: none;">
+                                    {% trans from 'error' %} name {% endtrans %}
+                                </div>
+                            </div>
+                            <div class="input-field col s12">
+                                <textarea id="message" name="message" class="materialize-textarea"></textarea>
+                                <label for="icon_prefix2">{% trans from 'home' %} main.message {% endtrans %}</label>
+                                <div class="error red-text" id="message_error" style="display: none;">
+                                    {% trans from 'error' %} message {% endtrans %}
+                                </div>
+                            </div>
+                            <br>
+                            <div class="col s12">
+                                <button class="waves-effect waves-light btn" type="submit" id="send">{% trans from 'home' %} main.send {% endtrans %}</button>
+                                <br/>
+                            </div>
+
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="section" id="last">
+                    <h5> {% trans from 'home' %} main.better {% endtrans %} </h5>
+                    <p>
+                        {% trans from 'home' %} main.better_content {% endtrans %}
+                    </p>
+                    <div class="col s12 m6">
+                        <h6> {% trans from 'home' %} main.block1 {% endtrans %} </h6>
+                        <p>
+                            {% trans from 'home' %} main.block1_content {% endtrans %}
+                        </p>
+                    </div>
+                    <div class="col s12 m6">
+                        <h6> {% trans from 'home' %} main.block2 {% endtrans %} </h6>
+                        <p>
+                            {% trans from 'home' %} main.block2_content {% endtrans %}
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+{% endblock %}
+
+{% block myjs %}
+    <script>
+
+            $(function() {
+
+                {% if message is defined  %}
+                    $('#notification').slideDown(100);
+                    t = setInterval(function(){
+                        $('#notification').slideUp();
+                        window.location.href = '{{ path('main_homepage') }}'
+                        clearInterval(t);
+                    },4000);
+                {% endif %}
+
+                {% if confirm is defined  %}
+                    $('#notification_confirm').slideDown(100);
+                    t = setInterval(function(){
+                        $('#notification_confirm').slideUp();
+                        clearInterval(t);
+                    },4000);
+
+                {% endif %}
+
+                {% if error is defined  %}
+                    $('#notification_error').slideDown(100);
+                    t = setInterval(function(){
+                        $('#notification_error').slideUp();
+                        window.location.href = '{{ path('main_homepage') }}'
+                        clearInterval(t);
+                    },4000);
+                {% endif %}
+                var menu = $("#nav");
+
+                var top = menu.offset().top;
+                var windowHeight = $(window).height();
+
+                $(window).scroll(function(event){
+                    // alert();
+                    var scrollTop = $(window).scrollTop();
+
+                    console.log( " -------------------------------------\n\t" +"h ="+windowHeight + " s =" + scrollTop + " top =" +top+ "\n -------------------------------------");
+
+                    if( scrollTop >= top ){
+                         //menu.addClass('fixed');
+                    }
+                    else
+                    {
+                        //console.log("scroll = " +scrollTop);
+                         //menu.removeClass('fixed');
+                    }
+
+                });
+            });
+
+        $(function(){
+            $('.carousel.carousel-slider').carousel({
+                full_width: true,
+                indicators: true
+            });
+
+            /* autoplay();
+             function autoplay() {
+             $('.carousel').carousel('next');
+             setTimeout(autoplay, 450000000000);
+             }*/
+
+
+            function verifMail(champ)
+
+            {
+
+                var regex = new RegExp('^[a-z0-9]+([_|\.|-]{1}[a-z0-9]+)*@[a-z0-9]+([_|\.|-]{1}[a-z0-9]+)*[\.]{1}[a-z]{2,6}$', 'i');
+
+                if(!regex.test(champ))
+                {
+                    return false;
+                }
+
+                else
+                {
+                    return true;
+                }
+            }
+
+            var elt = {
+                c_email : $('#c_email'),
+                name : $('#name'),
+                name_error : $('#name_error'),
+                message : $('#message'),
+                message_error : $('#message_error'),
+                send: $("#send"),
+                email: $("#email"),
+                signup: $("#signup"),
+                f: $("#f"),
+                form : $('#form'),
+                email_error:$("#email_error"),
+                c_email_error:$("#c_email_error")
+            }
+
+            var locale ='{{ app.request.locale }}';
+            var error = {
+                email_empty :locale=="en"? "Email address can't be empty":"L'adresse e-mail ne peut  être vide",
+                email_format:locale=="en"? "Email adress format is not  correct" : "le format de l'email non respecté",
+                name:locale=="en" ? "Name can't be empty" : "Le nom ne peut  pas être vide",
+                message: locale=="en" ? "Message can't be empty" : "Le message ne peut  pas être vide"
+            }
+            elt.signup.click(function(e){
+
+                var test = verifMail(elt.email.val());
+
+                e.preventDefault();
+                if(!test)
+                {
+                    elt.email_error.slideDown();
+
+                }
+                else
+                {
+                    elt.f.submit();
+                }
+
+            });
+
+            elt.email.keyup(function(){
+                var test = verifMail($(this).val());
+                if(test)
+                {
+                    elt.email_error.slideUp();
+                }
+            });
+
+
+            elt.send.click(function(e){
+                var message=null;
+                e.preventDefault();
+                if(!verifMail(elt.c_email.val()))
+                {
+                    message+= "\n ->" +error.email_format;
+                    elt.c_email_error.slideDown();
+                }
+                if(elt.name.val().trim()=="")
+                {
+                    message+= "\n ->" +error.name;
+                    elt.name_error.slideDown();
+                }
+                if(elt.message.val().trim()=="")
+                {
+                    message+= "\n ->" +error.message;
+                    elt.message_error.slideDown();
+                }
+
+                if(message==null)
+                {
+                    elt.form.submit();
+                    //alert(message);
+                }
+
+            });
+
+
+        });
+    </script>
+{% endblock %}

@@ -14,6 +14,9 @@
         #navadmin{
             padding-top: 1.5%;
         }
+        strong{
+            font-weight: bold;
+        }
     </style>
 {% endblock %}
 {% block header %}
@@ -47,13 +50,63 @@
                 {% for contact in list  %}
                     {% set href= "#contact"~contact.id %}
                     {% set idhref = "contact"~contact.id %}
+                    {% set href2= "#contact2"~contact.id %}
+                    {% set idhref2 = "contact2"~contact.id %}
                     <tr>
                         <td>{{ contact.name }}</td>
                         <td>{{ contact.email }}</td>
                         <td>{{ contact.truncate(contact.message,30) }}</td>
                         <td>{{ contact.date|date('d-m-Y') }}</td>
                         <td><a href="{{ href }}"><i class="material-icons">call_made</i></a></td>
+                        <td><a href="{{ href2 }}"><i class="material-icons">view_headline</i></a></td>
                     </tr>
+
+                    <div id="{{ idhref2 }}" class="modal modal-fixed-footer">
+                        <div class="modal-content">
+                            <center>
+                                <h4> {% trans from 'home' %} main.detail {% endtrans %}</h4>
+                            </center>
+                            <p>
+                                <strong>
+                                    {% trans from 'home' %} main.name {% endtrans %}
+                                </strong>
+                                <br>
+                                <span>
+                                    {{ contact.name }}
+                                </span>
+                            </p>
+                            <p>
+                                <strong>
+                                    {% trans from 'home' %} main.email {% endtrans %}
+                                </strong>
+                                <br>
+                                <span>
+                                    {{ contact.email }}
+                                </span>
+                            </p>
+                            <p>
+                                <strong>
+                                    {% trans from 'forms' %} form.project.date {% endtrans %}
+                                </strong>
+                                <br>
+                                <span>
+                                    {{ contact.date|date('d-m-Y') }}
+                                </span>
+                            </p>
+                            <p>
+                                <strong>
+                                    {% trans from 'home' %} main.message {% endtrans %}
+                                </strong>
+                                <br>
+                                <span>
+                                    {{ contact.message|raw }}
+                                </span>
+                            </p>
+                        </div>
+                        <div class="modal-footer">
+                            <button    class=" modal-action modal-close waves-effect waves-green btn-flat blue white-text">{% trans from 'forms' %} form.project.close {% endtrans %}</button>
+                        </div>
+                    </div>
                     <div id="{{ idhref }}" class="modal modal-fixed-footer">
                         <form method="post" action="{{ path('admin_sendcontact',{id:contact.id}) }}" enctype="multipart/form-data">
                             <div class="modal-content">

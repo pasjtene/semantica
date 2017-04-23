@@ -87,10 +87,13 @@ class DefaultController extends Controller
 
             $em = $this->getDoctrine()->getManager();
             $contact = new Contact();
-            $contact->setDate(new \DateTime())->setEmail($email)->setMessage($message)->setName($name);
+            $contact->setDate(new \DateTime())->setEmail($email)->setMessage($message)->setName($name)->setImportant(false);
             $em->persist($contact);
             $em->flush();
-            $code = $this->sendMail($email, $this->getParameter('mailer_user'), $message, "Contact : " . $name);
+            $translator = $this->get('translator');
+            $locale = $this->get('session')->get('_locale');
+            $message =  $name.', '.$translator->trans('contact.message',[] ,'home', $locale);
+            $code = $this->sendMail($email, $this->getParameter('mailer_user'), $message, "Contact STC(SEMANTICA TECHNOLOGIES CORPORATION)");
             $array['confirm'] ="";
         }
 
@@ -127,4 +130,13 @@ class DefaultController extends Controller
         return $this->get('mailer')->send($message);
 
     }
+
+    /**
+     * @Route("/login", name="main_login")
+     */
+    public function loginAction()
+    {
+        return $this->render('AdminBundle:Security:login.html.twig');
+    }
+
 }

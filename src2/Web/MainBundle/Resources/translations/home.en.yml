@@ -1,0 +1,41 @@
+main:
+  about: ABOUT US
+  experience: Experience the commitment
+  experience_content: |
+   Our 20 years of continuous profitable growth is a testament to the confidence our clients place in us, to the commitment of our Employee, and to the sound business model and sustaining principles on which we strive.
+  client: Seeking the best outcome for our stakeholders
+  client_content: |
+   For our clients… <br/>
+   STC strives to be recognized by our clients as their partner and expert of choice. Our track record of outstanding delivery, combined with our industry expertise, end-to-end services and Software-based solutions, help deliver significant value to clients’ mission-critical and transformative work.
+  employee: We are committed to be a partner, employer and investment of choice.
+  employee_content: |
+   For our employees… <br/>
+   STC strives to be recognized by our professionals, whom we call collaborators, as an exciting environment in which to build a career and company we can be proud of. Our employees derive their greatest satisfaction from helping our clients succeed, and are passionate about supporting the well-being of the communities in which we live and work.
+  subscribe: SUBSCRIBE
+  email : Email Address
+  signup: SIGN UP
+  contact: CONTACT US
+  drop: Drop us a line!
+  name: Name
+  message: Message
+  mailbox: MAILBOX
+  objet: Email objet
+  send: SEND
+  to: TO
+  better: Better yet, see us in person!
+  better_content: We love our customers, so feel free to visit during normal business hours.
+  block1: Semantica Technologies Corporation - STC
+  block1_content:  |
+   1, kingsgate, 21-23 Kingsway, GU216JE, Woking, Surrey, UK <br/><br/> 01483 764182
+  block2: Hours
+  block2_content:  |
+   Monday - Friday: 9am - 5pm <br/><br/> Saturday: By appointment <br/><br/> Sunday: Closed
+sendmail:
+  content: Click on this link to confirm your registration
+  message: We sent an email to this address :
+  error: %placeholder% is already exist
+  confirm: Successful registration
+customer:
+  list: CUSTOMER LIST
+contact:
+  list: CONTACT LIST

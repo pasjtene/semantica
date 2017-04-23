@@ -33,6 +33,22 @@ security:
                 path: fos_user_security_logout
                 target: main_homepage
             anonymous:    true
+         # defaut login area for standard users
+        main:
+            context: primary_auth
+            pattern:            ^/
+            form_login:
+               provider:       fos_userbundle
+               login_path:     fos_user_security_login
+               use_forward:    true
+               use_referer:    true
+               check_path:     fos_user_security_check
+               #failure_path:   null
+               default_target_path: admin_homepage
+            logout:
+               path: fos_user_security_logout
+               target: main_homepage
+            anonymous:    true
 
     access_control:
             # back-office

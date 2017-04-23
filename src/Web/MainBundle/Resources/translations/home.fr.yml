@@ -20,6 +20,7 @@ main:
   objet: Objet du  mail
   mailbox: ENVOI DU MAIL
   name: Nom
+  detail: DETAIL
   message: Message
   send: ENVOYER
   better: Mieux encore, nous voir en personne!
@@ -39,3 +40,4 @@ customer:
   list: lISTE DES CLIENTS
 contact:
   list: LISTE DES CONTACTS
+  message:  Nous avons bien recu votre message. Un membre de notre service client vas vous contacter dans les brefs delais. Merci pour l'interet que vous portez a SEMANTICA.

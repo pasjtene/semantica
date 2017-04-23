@@ -37,9 +37,10 @@ class ProjectController extends Controller
             $file = new Files();
             if ($objet->getFile() != null) {
                 $file->file = $objet->getFile();
+                $tab = explode('.',$objet->getFile()->getClientOriginalName());
                 $objet->setFiles($objet->getFile()->getClientOriginalName());
-                $objet->setExtfiles(".pdf");
-                $objet->setHashfiles(uniqid().$objet->getFile()->getClientOriginalName());
+                $objet->setExtfiles($tab[count($tab)-1]);
+                $objet->setHashfiles(uniqid().'.'.$objet->getExtfiles());
                 $file->add($file->initialpath."projet",  $objet->getHashfiles());
             }
 
