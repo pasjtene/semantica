@@ -16,6 +16,9 @@ class DefaultController extends Controller
      */
     public function indexAction()
     {
+        //$link  =$this->generateUrl('main_confirm',[md5('email') =>'test@gmail.com'], UrlGeneratorInterface::ABSOLUTE_URL);
+        //$html = '<a href="'.$link.'">'.$link.'</a>';
+        //var_dump($html);
         return $this->render('MainBundle:Default:index.html.twig');
     }
 
@@ -44,7 +47,10 @@ class DefaultController extends Controller
             $message =  $translator->trans('sendmail.content',[] ,'home', $locale);
             $array['body'] = $message;
             $array['link'] = $link;
-            $code =$this->sentMail($email,$this->getParameter('mailer_user'),'MainBundle:Inc:confirm.html.twig',$array,"Confirmation");
+            $link  =$this->generateUrl('main_confirm',[md5('email') =>'test@gmail.com'], UrlGeneratorInterface::ABSOLUTE_URL);
+            $html = $message.' <a href="'.$link.'">'.$link.'</a>';
+            $code = $this->sendMail($email, $this->getParameter('mailer_user'), $html, "SIGN UP TO STC(SEMANTICA TECHNOLOGIES CORPORATION)");
+            //$code =$this->sentMail($email,$this->getParameter('mailer_user'),'MainBundle:Inc:confirm.html.twig',$array,"Confirmation");
             $tab = explode('@',$email);
             $array["message"] = "...@".$tab[count($tab)-1];
             return $this->render('MainBundle:Default:index.html.twig',$array);

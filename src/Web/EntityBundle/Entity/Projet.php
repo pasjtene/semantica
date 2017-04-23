@@ -39,15 +39,14 @@ class Projet
 
     /**
      * @var string
-     * @Assert\NotBlank(message="project.phone.NotBlank")
-     * @ORM\Column(name="phone", type="string", length=255)
+     * @ORM\Column(name="phone", type="string", length=255, nullable=true)
      */
     private $phone;
 
     /**
      * @var string
      * @Assert\NotBlank(message="project.objet.NotBlank")
-     * @ORM\Column(name="objet", type="string", length=255)
+     * @ORM\Column(name="objet", type="string", length=255, nullable=true)
      */
     private $objet;
 
@@ -60,57 +59,52 @@ class Projet
 
     /**
      * @var string
-     * @Assert\NotBlank(message="project.files.NotBlank")
-     * @ORM\Column(name="files", type="text")
+     * @ORM\Column(name="files", type="text", nullable=true)
      */
     private $files;
 
     /**
      * @var string
-     * @Assert\NotBlank(message="project.hashfiles.NotBlank")
-     * @ORM\Column(name="hashfiles", type="text")
+     * @ORM\Column(name="hashfiles", type="text", nullable=true)
      */
     private $hashfiles;
 
     /**
      * @var string
-     * @Assert\NotBlank(message="project.extfiles.NotBlank")
-     * @ORM\Column(name="extfiles", type="text")
+     * @ORM\Column(name="extfiles", type="text", nullable=true)
      */
     private $extfiles;
 
     /**
      * @var string
-     * @Assert\NotBlank(message="project.adress.NotBlank")
-     * @ORM\Column(name="adress", type="string", length=255)
+     * @ORM\Column(name="adress", type="string", length=255, nullable=true)
      */
     private $adress;
 
     /**
      * @var string
-     * @Assert\NotBlank(message="project.country.NotBlank")
-     * @ORM\Column(name="country", type="string", length=255)
+     * @ORM\Column(name="country", type="string", length=255, nullable=true)
      */
     private $country;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="city", type="string", length=255)
+     * @ORM\Column(name="city", type="string", length=255, nullable=true)
      */
     private $city;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="type", type="string", length=255)
+     * @ORM\Column(name="type", type="string", length=255, nullable=true)
      */
     private $type;
 
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="time", type="datetime")
+     * @ORM\Column(name="time", type="datetime", nullable=true)
      */
     private $time;
 
