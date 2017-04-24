@@ -51,6 +51,7 @@ class ProjectController extends Controller
             {
                 $em->persist($objet);
                 $em->flush();
+                $em->detach($objet);
                 $objet = new Projet();
                 /** @var Form $form */
                 $form = $this->get("form.factory")->create(ProjetType::class,$objet);
