@@ -44,6 +44,7 @@
                             <th>{% trans from 'forms' %} form.project.date {% endtrans %}</th>
                             <th>#</th>
                             <th>#</th>
+                            <th>#</th>
                         </tr>
                         </thead>
 
@@ -71,6 +72,13 @@
                                 </td>
                                 <td>
                                     <a href="{{ href2 }}"><i class="material-icons">view_headline</i></a>
+                                </td>
+                                <td>
+                                    {% set key = 'data'~loop.index %}
+                                    <span id="{{ key }}" style="display: none;">
+                                        {% trans from 'admin' %} project.delete {% endtrans %} '{{ projet.objet }}'
+                                    </span>
+                                    <a data-id="{{ key }}" href="{{ path('admin_projet_delete',{id:projet.id}) }}" class="delete_projet"><i class="material-icons">delete</i></a>
                                 </td>
                             </tr>
                             <div id="{{ idhref2 }}" class="modal modal-fixed-footer">
@@ -210,6 +218,13 @@
             $('#table').dataTable();
             $('select').material_select();
             $('.modal').modal();
+
+            $('.delete_projet').click(function(e){
+                if(!confirm($('#'+$(this).data('id')).text().trim()))
+                {
+                    e.preventDefault();
+                }
+            });
         } );
     </script>
 {% endblock %}
