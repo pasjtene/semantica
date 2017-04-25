@@ -1,29 +1,29 @@
 form:
   project:
-    name: Full Name
-    placeholder_name: Pascal Tene
+    name: Name
+    placeholder_name: Your name
     phone: Phone number
-    placeholder_phones: 00447515975500
+    placeholder_phones: Your phone number
     email: Email adress
-    placeholder_email: pasjtene@yahoo.co.uk
+    placeholder_email: yourname@example.com
     country: Country
-    placeholder_country: United Kingdom
+    placeholder_country: Your country
     city: City
-    placeholder_city: England
-    adress: Mailbox
-    placeholder_adress: 420 England
-    type: Projet Type
-    placeholder_type: Android application
+    placeholder_city: Your city
+    adress: Address
+    placeholder_adress: Your contact address
+    type: Project Type
+    placeholder_type: project type
     file: File
-    placeholder_file: Upload your load cache
-    objet: Projet objet
-    placeholder_objet: Chat application
-    description: Detail
-    placeholder_description: Give smal detail
+    placeholder_file: Upload a PDF or Microsoft Word file describing your project
+    objet: Company
+    placeholder_objet: Your Company name
+    description: Project description
+    placeholder_description: Tell us more about your project
     coordonne: Personal Coordinated
-    project: Projet description
+    project: Project description
     submit: Submit your peojet
-    save: Save as successfull
+    save: Project submitted successfully
     close: Close
     date: Date
     list: PROJECTS LIST

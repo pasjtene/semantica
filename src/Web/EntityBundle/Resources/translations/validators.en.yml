@@ -2,7 +2,7 @@ project:
   name:
     NotBlank: The name is required
   email:
-    NotBlank: The email adresse is required
+    NotBlank: The email adress is required
   phone:
     NotBlank: The phone number is required
   country:
@@ -14,7 +14,7 @@ project:
   adress:
     NotBlank: The Mailbox is required
   description:
-    NotBlank: The detail is required
+    NotBlank: The project description is required
   type:
     NotBlank: The type is required
   files:
