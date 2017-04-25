@@ -26,16 +26,16 @@
 {% endblock %}
 {% block  main %}
     <div class="row" id="main_project">
+        {% if message is defined %}
+            <div id="notification" class="green white-text" style=" position: absolute; top: 10%; left: 45%; z-index: 99999999999;  padding: 2%; font-weight: bold;">
+                {% trans from 'forms' %} form.project.save  {% endtrans %}
+            </div>
+        {% endif %}
        <div class="col s12">
            <br>
           <div class="card">
               <form method="post" action="" enctype="multipart/form-data">
                   <div class="row">
-                      {% if message is defined %}
-                          <div id="notification" class="green white-text" style="display:none; position: absolute; top: 10%; left: 45%; z-index: 99999999999;  padding: 2%; font-weight: bold;">
-                              {% trans from 'forms' %} form.project.save  {% endtrans %}
-                          </div>
-                      {% endif %}
                       <div class="row">
                           <div class="col s12">
                               <div class="input-field col s12 m6 ">
@@ -79,12 +79,13 @@
                       <div class="row">
                          <div class="col s12">
                              <div class="file-field input-field col s12 ">
-                                 <div class="btn">
+                                 <div class="btn grey">
                                      <span>{% trans from 'forms' %} form.project.file {% endtrans %}</span>
                                      {{ form_widget(form.file,{'attr':{'class':''}}) }}
                                  </div>
                                  <div class="file-path-wrapper">
-                                     <input class="file-path validate" type="text" accept=".pdf" placeholder="{% trans from 'forms' %} form.project.placeholder_file {% endtrans %}">
+                                     {# accept=".xlsx,.xls,image/*,.doc,.docx,.ppt,.pptx,.txt,.pdf,.zip,.7z,.rar" #}
+                                     <input class="file-path validate" type="text"  placeholder="{% trans from 'forms' %} form.project.placeholder_file {% endtrans %}">
                                  </div>
                                  <div class="error"  >{{ form_errors(form.file) }}</div>
                              </div>
@@ -133,7 +134,7 @@
                   </div>
                   <div class="row">
                       <div class="col s12 center center-align">
-                          <button class="waves-effect waves-light btn" type="submit">{% trans from 'forms' %} form.project.submit {% endtrans %} </button>
+                          <button class="waves-effect waves-light btn grey" type="submit">{% trans from 'forms' %} form.project.submit {% endtrans %} </button>
                       </div>
                   </div>
               </form>

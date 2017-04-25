@@ -19,7 +19,7 @@ form:
     objet: Projet objet
     placeholder_objet: Chat application
     description: Detail
-    placeholder_description: Give smal detail
+    placeholder_description: Give small detail
     coordonne: Personal Coordinated
     project: Projet description
     submit: Submit your peojet

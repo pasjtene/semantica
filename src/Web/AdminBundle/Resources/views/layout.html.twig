@@ -3,6 +3,12 @@
 {% block header %}
     {% include 'AdminBundle:Inc:nav.html.twig' %}
 {% endblock %}
+{% block stylesheets %}
+    {{ parent() }}
+    <style>
+
+    </style>
+{% endblock %}
 
 {% block content %}
     <div class="container">

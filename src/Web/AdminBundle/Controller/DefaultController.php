@@ -19,7 +19,7 @@ class DefaultController extends Controller
     public function indexAction()
     {
         $em = $this->getDoctrine()->getManager();
-        $list = $em->getRepository("EntityBundle:Projet")->findBy([],['id'=>'DESC']);
+        $list = $em->getRepository("EntityBundle:Projet")->findBy([],['id'=>'DESC','time'=>'DESC']);
         $array['list'] = $list;
         return $this->render('AdminBundle:Default:index.html.twig',$array);
     }
