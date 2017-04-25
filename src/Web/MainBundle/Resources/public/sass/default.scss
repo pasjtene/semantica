@@ -17,6 +17,10 @@ $secondary : #111111;
     color: $default-text !important;
     font-size: 2.1em !important;
     padding-left: 4% !important;
+    @media screen and (max-width: 1200px) {
+      padding: 1% !important;
+      font-size: 1.2em !important;
+    }
     @media screen and (max-width: 650px) {
       padding: 1% !important;
       font-size: 0.9em !important;
@@ -65,13 +69,65 @@ footer{
     }
   }
 
+
+  @media screen and (max-width: 1200px) {
+
+    #slide_content{
+      h1{
+        font-size: 2.5em !important;
+      }
+    }
+  }
+  @media screen and (max-width: 1000px) {
+
+    #slide_content{
+      h1{
+        font-size: 2em !important;
+      }
+    }
+  }
+
+  @media screen and (max-width: 600px) {
+
+    #slide_content{
+      h1{
+        font-size: 1em !important;
+      }
+      span{
+        font-size: 0.7em !important;
+      }
+    }
+  }
+
+  @media screen and (max-width: 400px) {
+
+    #slide_content{
+      h1{
+        font-size: 0.9em !important;
+      }
+      span{
+        font-size: 0.65em !important;
+      }
+    }
+  }
+
   @media screen and (max-width: 322px) {
     min-height: 214px !important;
     height: 214px !important;
       img{
         height: calc(100% - 200px) !important;
       }
+    #slide_content{
+      h1{
+        font-size: 0.8em !important;
+      }
+      span{
+        font-size: 0.6em !important;
+      }
+    }
   }
+
+
 }
 
 .fixed

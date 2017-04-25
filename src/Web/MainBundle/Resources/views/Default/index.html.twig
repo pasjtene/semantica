@@ -84,18 +84,22 @@
                 <div class="section" id="sendmail">
                        <p>
                        <form action="{{ path('main_signup') }}"  method="post" id="f">
-                           <div class="col s12 m4">
-                               <h5> {% trans from 'home' %} main.subscribe {% endtrans %}</h5>
-                           </div>
-                           <div class="input-field col s12 m6">
-                               <input id="email" name="email" type="email">
-                               <label for="email">{% trans from 'home' %} main.email {% endtrans %}</label>
-                               <div class="error red-text" id="email_error" style="display: none;">
-                                   {% trans from 'error' %} email_format {% endtrans %}
+                           <div class="row">
+                               <div class="col s12">
+                                   <div class="col s12 m4 l4">
+                                       <h5> {% trans from 'home' %} main.subscribe {% endtrans %}</h5>
+                                   </div>
+                                   <div class="input-field col s12 m5 l6">
+                                       <input id="email" name="email" type="email">
+                                       <label for="email">{% trans from 'home' %} main.email {% endtrans %}</label>
+                                       <div class="error red-text" id="email_error" style="display: none;">
+                                           {% trans from 'error' %} email_format {% endtrans %}
+                                       </div>
+                                   </div>
+                                   <div class="col s12 m3 l2">
+                                       <button class="waves-effect waves-light btn" type="submit" id="signup">{% trans from 'home' %} main.signup {% endtrans %}</button>
+                                   </div>
                                </div>
-                           </div>
-                           <div class="col s12 m2">
-                               <button class="waves-effect waves-light btn" type="submit" id="signup">{% trans from 'home' %} main.signup {% endtrans %}</button>
                            </div>
                        </form>
                        </p>
@@ -106,34 +110,42 @@
                 <div class="section" id="contact">
                     <h5>{% trans from 'home' %} main.contact {% endtrans %}</h5>
                     <br><br>
-                    <div class="col offset-m3 m6 s12 card" style="height: 390px; padding-top: 2%;">
+                    <div class="col offset-m3 m6 s12 card" style="padding-top: 2%;">
                         <h6>{% trans from 'home' %} main.drop {% endtrans %}</h6>
                         <form action="{{ path('main_contact') }}" id="form" method="post">
-                            <div class="input-field col s12">
-                                <input id="c_email" name="c_email" type="email" class="validate">
-                                <label for="c_email">{% trans from 'home' %} main.email {% endtrans %}</label>
-                                <div class="error red-text" id="c_email_error" style="display: none;">
-                                    {% trans from 'error' %} email_format {% endtrans %}
+                            <div class="row">
+                                <div class="input-field col s12">
+                                    <input id="c_email" name="c_email" type="email" class="validate">
+                                    <label for="c_email">{% trans from 'home' %} main.email {% endtrans %}</label>
+                                    <div class="error red-text" id="c_email_error" style="display: none;">
+                                        {% trans from 'error' %} email_format {% endtrans %}
+                                    </div>
                                 </div>
                             </div>
-                            <div class="input-field col s12">
-                                <input id="name" name="name" type="text" class="validate">
-                                <label for="name">{% trans from 'home' %} main.name {% endtrans %}</label>
-                                <div class="error red-text" id="name_error" style="display: none;">
-                                    {% trans from 'error' %} name {% endtrans %}
+                            <div class="row">
+                                <div class="input-field col s12">
+                                    <input id="name" name="name" type="text" class="validate">
+                                    <label for="name">{% trans from 'home' %} main.name {% endtrans %}</label>
+                                    <div class="error red-text" id="name_error" style="display: none;">
+                                        {% trans from 'error' %} name {% endtrans %}
+                                    </div>
                                 </div>
                             </div>
-                            <div class="input-field col s12">
-                                <textarea id="message" name="message" class="materialize-textarea"></textarea>
-                                <label for="icon_prefix2">{% trans from 'home' %} main.message {% endtrans %}</label>
-                                <div class="error red-text" id="message_error" style="display: none;">
-                                    {% trans from 'error' %} message {% endtrans %}
+                            <div class="row">
+                                <div class="input-field col s12">
+                                    <textarea id="message" name="message" class="materialize-textarea"></textarea>
+                                    <label for="icon_prefix2">{% trans from 'home' %} main.message {% endtrans %}</label>
+                                    <div class="error red-text" id="message_error" style="display: none;">
+                                        {% trans from 'error' %} message {% endtrans %}
+                                    </div>
                                 </div>
                             </div>
-                            <br>
-                            <div class="col s12">
-                                <button class="waves-effect waves-light btn" type="submit" id="send">{% trans from 'home' %} main.send {% endtrans %}</button>
-                                <br/>
+
+                            <div class="row">
+                                <div class="col s12">
+                                    <button class="waves-effect waves-light btn" type="submit" id="send">{% trans from 'home' %} main.send {% endtrans %}</button>
+                                    <br/>
+                                </div>
                             </div>
 
                         </form>
