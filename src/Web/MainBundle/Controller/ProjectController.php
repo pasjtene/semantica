@@ -51,7 +51,15 @@ class ProjectController extends Controller
             {
                 $em->persist($objet);
                 $em->flush();
+
                 $em->detach($objet);
+
+
+                $translator = $this->get('translator');
+                $locale = $this->get('session')->get('_locale');
+                $message = $translator->trans('form.project.notification',[] ,'forms', $locale);
+                $code = $this->sendMail($objet->getEmail(), $this->getParameter('mailer_user'), $message, "SOMMIT PROJET STC(SEMANTICA TECHNOLOGIES CORPORATION)");
+
                 $objet = new Projet();
                 /** @var Form $form */
                 $form = $this->get("form.factory")->create(ProjetType::class,$objet);
@@ -66,6 +74,22 @@ class ProjectController extends Controller
         $array['form'] = $form->createView();
         $array['objet'] = $objet;
         return $this->render('MainBundle:Project:index.html.twig',$array);
+    }
+
+
+    public  function sendMail($to, $from, $body,$subjet)
+    {
+        // ->setReplyTo('xxx@xxx.xxx')
+
+        $message = \Swift_Message::newInstance()
+            ->setSubject($subjet)
+            ->setFrom($from) // 'info@achgroupe.com' => 'Achgroupe : Course en ligne '
+            ->setTo($to)
+            ->setBody($body)
+            //'MyBundle:Default:mail.html.twig'
+            ->setContentType('text/html');
+        return $this->get('mailer')->send($message);
+
     }
 
 }

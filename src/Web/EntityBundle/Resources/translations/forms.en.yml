@@ -27,4 +27,9 @@ form:
     close: Close
     date: Date
     list: PROJECTS LIST
+    notification: |
+      Thank you for contacting us
+      Semantica for the realization of your project. A member of our team will contact you
+      Soon for more details and a possible telephone or in-person appointment with our
+      Analysts / programmers
 

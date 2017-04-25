@@ -27,5 +27,10 @@ form:
     close: Fermer
     date: Date
     list: LISTE DES PROJETS
+    notification: |
+      Merci d’avoir contacté
+      Semantica pour la réalisation de votre projet. Un membre de notre équipe va vous contacter
+      bientôt pour plus de détails et un possible rendez-vous téléphonique ou en personne avec nos
+      Analystes / programmeurs
 
 
