@@ -38,6 +38,8 @@ sendmail:
   confirm: Enregistrement  effectué avec succès
 customer:
   list: lISTE DES CLIENTS
+projet:
+  optional : Entrer plus de details (optionel)
 contact:
   list: LISTE DES CONTACTS
   message:  Nous avons bien recu votre message. Un membre de notre service client vas vous contacter dans les brefs delais. Merci pour l'interet que vous portez a SEMANTICA.

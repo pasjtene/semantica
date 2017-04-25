@@ -38,6 +38,8 @@ sendmail:
   confirm: Successful registration
 customer:
   list: CUSTOMER LIST
+projet:
+  optional : Enter more details (optional)
 contact:
   list: CONTACT LIST
   message: We have received your message. A member of our customer service will contact you shortly. Thank you for your interest in SEMANTICA.

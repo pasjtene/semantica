@@ -44,7 +44,7 @@ class ProjetType extends AbstractType
             ))
             ->add('description',TextareaType::class, array(
                 'label' => 'form.project.description',
-                'attr' => ['class' => 'materialize-textarea, tinymce', 'placeholder'=>'form.project.placeholder_description'],
+                'attr' => ['class' => 'materialize-textarea', 'placeholder'=>'form.project.placeholder_description'],
                 'translation_domain' => 'forms',
                 'required'    => false
             ))

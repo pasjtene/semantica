@@ -23,6 +23,16 @@ class DefaultController extends Controller
         $array['list'] = $list;
         return $this->render('AdminBundle:Default:index.html.twig',$array);
     }
+
+
+    /**
+     * @Route("/test", name="admin_test")
+     */
+    public function testAction()
+    {
+        return $this->render('AdminBundle:Default:test.html.twig');
+    }
+
     /**
      * @Route("/contact", name="admin_contact")
      */
@@ -87,14 +97,6 @@ class DefaultController extends Controller
     }
 
 
-    /**
-     * @Route("/test", name="admin_test")
-     */
-    public function testcustomerAction($array)
-    {
-
-        return $this->render('AdminBundle:Inc:email.html.twig',$array);
-    }
 
 
     /**

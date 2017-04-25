@@ -398,9 +398,7 @@ class Projet
     }
 
 
-    /**
-     * @Assert\NotBlank(message="project.files.NotBlank")
-     */
+
     protected $file;
 
     public function setFile(UploadedFile $file)
