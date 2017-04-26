@@ -20,3 +20,6 @@ project:
   files:
     NotBlank: The load cache is required
     maxSizeMessage: The file max size is 3000ko
+user:
+  username:
+

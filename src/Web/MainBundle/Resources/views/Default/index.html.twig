@@ -80,31 +80,39 @@
                 </div>
             </div>
 
-            <div class="row">
-                <div class="section" id="sendmail">
-                       <p>
-                       <form action="{{ path('main_signup') }}"  method="post" id="f">
-                           <div class="row">
-                               <div class="col s12">
-                                   <div class="col s12 m4 l4">
-                                       <h5> {% trans from 'home' %} main.subscribe {% endtrans %}</h5>
-                                   </div>
-                                   <div class="input-field col s12 m5 l6">
-                                       <input id="email" name="email" type="email">
-                                       <label for="email">{% trans from 'home' %} main.email {% endtrans %}</label>
-                                       <div class="error red-text" id="email_error" style="display: none;">
-                                           {% trans from 'error' %} email_format {% endtrans %}
-                                       </div>
-                                   </div>
-                                   <div class="col s12 m3 l2">
-                                       <button class="waves-effect waves-light btn" type="submit" id="signup">{% trans from 'home' %} main.signup {% endtrans %}</button>
-                                   </div>
-                               </div>
-                           </div>
-                       </form>
-                       </p>
-                   </div>
-            </div>
+            {% if app.user==null %}
+                <div class="row">
+                    <div class="section" id="sendmail">
+                        <p>
+                        <form action="{{ path('main_signup') }}"  method="post" id="f">
+                            <div class="row">
+                                <div class="col s12">
+                                    <div class="col s12 m4 l4">
+                                        <h5> {% trans from 'home' %} main.subscribe {% endtrans %}</h5>
+                                    </div>
+                                    <div class="input-field col s12 m5 l6">
+                                        <input id="email" name="email" type="email">
+                                        <label for="email">{% trans from 'home' %} main.email {% endtrans %}</label>
+                                        <div class="error red-text" id="email_error" style="display: none;">
+                                            {% trans from 'error' %} email_format {% endtrans %}
+                                        </div>
+                                    </div>
+                                    <div class="col s12 m3 l2">
+                                        <button class="waves-effect waves-light btn" type="submit" id="signup">{% trans from 'home' %} main.signup {% endtrans %}</button>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col s12 center center-align">
+                                        <br>
+                                        <a href="" > {% trans from 'home' %} sendmail.member {% endtrans %}</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                        </p>
+                    </div>
+                </div>
+            {% endif %}
 
             <div class="row">
                 <div class="section" id="contact">
@@ -147,7 +155,6 @@
                                     <br/>
                                 </div>
                             </div>
-
                         </form>
                     </div>
                 </div>

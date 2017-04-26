@@ -33,3 +33,21 @@ form:
       Soon for more details and a possible telephone or in-person appointment with our
       Analysts / programmers
 
+  user:
+    email: Email adress
+    placeholder_email:  pasjtene@yahoo.co.uk
+    username: Phone number
+    placeholder_username: 00447515975500
+    password: Password
+    placeholder_password: password
+    country: Country
+    placeholder_country: United Kingdom
+    city: City
+    placeholder_city: England
+    sex: Sex
+    placeholder_sex: Male
+    firstname: First name
+    placeholder_firstname:   Tene
+    lastname: Last name
+    placeholder_lastname: Pascal
+    save: Save

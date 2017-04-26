@@ -36,6 +36,7 @@ sendmail:
   message: We sent an email to this address :
   error: %placeholder% is already exist
   confirm: Successful registration
+  member: You are already member (login-us)
 customer:
   list: CUSTOMER LIST
 projet:

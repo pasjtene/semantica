@@ -32,5 +32,22 @@ form:
       Semantica pour la réalisation de votre projet. Un membre de notre équipe va vous contacter
       bientôt pour plus de détails et un possible rendez-vous téléphonique ou en personne avec nos
       Analystes / programmeurs
-
+  user:
+    email: Adresse email
+    placeholder_email:  pasjtene@yahoo.co.uk
+    username: Numéro de téléphone
+    placeholder_username: 00447515975500
+    password: Mot de passe
+    placeholder_password: monmotdepasse
+    country: Country
+    placeholder_country: United Kingdom
+    city: City
+    placeholder_city: England
+    sex: Sex
+    placeholder_sex: Male
+    firstname: First name
+    placeholder_firstname:   Tene
+    lastname: Last name
+    placeholder_lastname: Pascal
+    save: Enregistré
 

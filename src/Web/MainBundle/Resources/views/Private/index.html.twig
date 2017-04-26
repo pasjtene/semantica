@@ -1,14 +1,15 @@
 {% extends 'MainBundle::layout.html.twig' %}
+{% block meta %}
+    <meta name = "{% trans from 'refer' %} home.title {% endtrans %}" >
+    <meta name = "keywords" content = "{% trans from 'refer' %} home.description {% endtrans %}" >
+{% endblock %}
 {% block title %}
-    Semantica Technologies Corporation - STC-Confirm
+    Semantica Technologies Corporation - STC
 {% endblock %}
 
 {% block mycss %}
     <style>
-        .card{
-            padding: 4% !important;
-            text-align: center;
-        }
+
     </style>
 {% endblock %}
 {% block header %}
@@ -16,49 +17,24 @@
     {% include 'MainBundle:Inc:slide.html.twig' %}
 {% endblock %}
 {% block  main %}
-    <div class="row" id="main_confirm">
+    <div class="row" id="main_private">
 
-        <div class="col s12 offset-m3 m6 ">
-            <div class="card">
-                <form action="{{ path('main_confirm') }}" id="form" method="post">
-                   <div class="row">
-                       <div class="input-field col s12 m12 ">
-                           {{ form_widget(form.firstname,{'attr':{'class':''}}) }}
-                           {{ form_label(form.firstname) }}
-                           <div class="error"  >{{ form_errors(form.firstname) }}</div>
-                       </div>
-                   </div>
-                    <div class="row">
-                        <div class="input-field col s12 m12 ">
-                            {{ form_widget(form.username,{'attr':{'class':''}}) }}
-                            {{ form_label(form.username) }}
-                            <div class="error"  >{{ form_errors(form.username) }}</div>
-                        </div>
-                    </div>
-                    <input type="hidden" name="email" value="{{ email }}">
-                    <div class="row">
-                        <div class="input-field col s12 m12 ">
-                            {{ form_widget(form.password,{'attr':{'class':''}}) }}
-                            {{ form_label(form.password) }}
-                            <div class="error"  >{{ form_errors(form.password) }}</div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col s12">
-                            <button class="waves-effect waves-light btn" type="submit" id="send">{% trans from 'forms' %} form.user.save {% endtrans %}</button>
-                            <br/>
-                        </div>
-                    </div>
-                </form>
-            </div>
-        </div>
     </div>
 {% endblock %}
 
 {% block myjs %}
     <script>
 
-            $(function(){
+        $(function() {
+
+                {% if message is defined  %}
+                    $('#notification').slideDown(100);
+                    t = setInterval(function(){
+                        $('#notification').slideUp();
+                        window.location.href = '{{ path('main_homepage') }}'
+                        clearInterval(t);
+                    },4000);
+                {% endif %}
 
                 var menu = $("#nav");
 
@@ -100,7 +76,7 @@
 
             {
 
-                var regex = /^[a-zA-Z0-9._-]+@[a-z0-9._-]{2,}\.[a-z]{2,4}$/;
+                var regex = new RegExp('^[a-z0-9]+([_|\.|-]{1}[a-z0-9]+)*@[a-z0-9]+([_|\.|-]{1}[a-z0-9]+)*[\.]{1}[a-z]{2,6}$', 'i');
 
                 if(!regex.test(champ))
                 {
@@ -116,12 +92,16 @@
             var elt = {
                 c_email : $('#c_email'),
                 name : $('#name'),
+                name_error : $('#name_error'),
                 message : $('#message'),
+                message_error : $('#message_error'),
                 send: $("#send"),
                 email: $("#email"),
                 signup: $("#signup"),
                 f: $("#f"),
-                form : $('#form')
+                form : $('#form'),
+                email_error:$("#email_error"),
+                c_email_error:$("#c_email_error")
             }
 
             var locale ='{{ app.request.locale }}';
@@ -132,47 +112,54 @@
                 message: locale=="en" ? "Message can't be empty" : "Le message ne peut  pas être vide"
             }
             elt.signup.click(function(e){
-                if(elt.email.val().trim()=="")
+
+                var test = verifMail(elt.email.val());
+
+                e.preventDefault();
+                if(!test)
                 {
-                    alert(error.email_empty);
-                    e.preventDefault();
+                    elt.email_error.slideDown();
+
                 }
-                if(!verifMail(elt.email.val()))
+                else
                 {
-                    alert(error.email_format);
-                    e.preventDefault();
+                    elt.f.submit();
                 }
 
+            });
+
+            elt.email.keyup(function(){
+                var test = verifMail($(this).val());
+                if(test)
+                {
+                    elt.email_error.slideUp();
+                }
             });
 
 
             elt.send.click(function(e){
                 var message=null;
-                if(elt.c_email.val().trim()=="")
-                {
-                    message+= "\n ->" +error.email_empty;
-
-                }
-                if(!verifMail(elt.email.val()))
+                e.preventDefault();
+                if(!verifMail(elt.c_email.val()))
                 {
                     message+= "\n ->" +error.email_format;
-
+                    elt.c_email_error.slideDown();
                 }
                 if(elt.name.val().trim()=="")
                 {
                     message+= "\n ->" +error.name;
-
+                    elt.name_error.slideDown();
                 }
                 if(elt.message.val().trim()=="")
                 {
                     message+= "\n ->" +error.message;
-
+                    elt.message_error.slideDown();
                 }
 
-                if(message!=null)
+                if(message==null)
                 {
-                    e.preventDefault();
-                    alert(message);
+                    elt.form.submit();
+                    //alert(message);
                 }
 
             });

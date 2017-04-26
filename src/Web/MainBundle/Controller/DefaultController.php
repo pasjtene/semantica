@@ -2,12 +2,18 @@
 
 namespace Web\MainBundle\Controller;
 
+use FOS\UserBundle\Model\UserInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Symfony\Component\Form\Form;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
+use Symfony\Component\Security\Core\Authentication\Token\UsernamePasswordToken;
+use Symfony\Component\Security\Core\Exception\AccountStatusException;
 use Web\EntityBundle\Entity\Contact;
 use Web\EntityBundle\Entity\Customer;
+use Web\EntityBundle\Entity\User;
+use Web\EntityBundle\Form\UserType;
 
 class DefaultController extends Controller
 {
@@ -47,7 +53,7 @@ class DefaultController extends Controller
             $message =  $translator->trans('sendmail.content',[] ,'home', $locale);
             $array['body'] = $message;
             $array['link'] = $link;
-            $link  =$this->generateUrl('main_confirm',[md5('email') =>'test@gmail.com'], UrlGeneratorInterface::ABSOLUTE_URL);
+            $link  =$this->generateUrl('main_confirm',[md5('email') =>$email], UrlGeneratorInterface::ABSOLUTE_URL);
             $html = $message.' <a href="'.$link.'">'.$link.'</a>';
             $code = $this->sendMail($email, $this->getParameter('mailer_user'), $html, "SIGN UP TO STC(SEMANTICA TECHNOLOGIES CORPORATION)");
             //$code =$this->sentMail($email,$this->getParameter('mailer_user'),'MainBundle:Inc:confirm.html.twig',$array,"Confirmation");
@@ -65,18 +71,59 @@ class DefaultController extends Controller
     public function confirlAction(Request $request)
     {
         $val = $request->query;
-
         $email = $val->get(md5('email'));
-        if($email!=null )
+        $objet = new User();
+
+        /** @var Form $form */
+        $form = $this->get("form.factory")->create(UserType::class,$objet);
+
+        if($request->isMethod("POST"))
         {
-            //$email = str_replace("%40","@",$email)==null?$email:str_replace("%40","@",$email);
+
+            $form->handleRequest($request);
+            $email = $request->request->get("email");
             $em = $this->getDoctrine()->getManager();
-            $costomer = new Customer();
-            $costomer->setDate(new \DateTime())->setEmailadress($email);
-            $em->persist($costomer);
-            $em->flush();
+            $objet->setEnabled(true);
+            $objet->setEmail($email);
+            $objet->setRoles(['ROLE_USER']);
+
+            /** @var Validator $validator */
+            $validator = $this->get('validator');
+            $error = $validator->validate($objet);
+            if(count($error) == 0)
+            {
+                $password = $this->encodePassword(new User(), $objet->getPassword(), $objet->getSalt());
+
+                $objet->setPassword($password);
+
+                $em->persist($objet);
+                $em->flush();
+                $em->detach($objet);
+                $this->authenticateUser($objet);
+
+                $costomer = new Customer();
+                $costomer->setDate(new \DateTime())->setEmailadress($email);
+                $em->persist($costomer);
+                $em->flush();
+                $em->detach($costomer);
+
+                return $this->redirect($this->generateUrl('main_private'));
+            }
+            else{
+                $array['error'] = $error;
+                //var_dump($error);
+            }
+
+
         }
-        return $this->render('MainBundle:Default:confirm.html.twig');
+        if($email==null )
+        {
+            return $this->redirect($this->generateUrl("error_page"));
+        }
+        $array['form'] = $form->createView();
+        $array['objet'] = $objet;
+        $array['email'] = $email;
+        return $this->render('MainBundle:Default:confirm.html.twig',$array);
     }
 
     /**
@@ -143,6 +190,31 @@ class DefaultController extends Controller
     public function loginAction()
     {
         return $this->render('AdminBundle:Security:login.html.twig');
+    }
+
+
+
+    public function encodePassword($object, $password, $salt)
+    {
+        $factory = $this->get('security.encoder_factory');
+        $encoder = $factory->getEncoder($object);
+        $password = $encoder->encodePassword($password, $salt);
+
+        return $password;
+    }
+
+
+    public function authenticateUser(UserInterface $user)
+    {
+        try {
+
+            $tocken = new UsernamePasswordToken($user, null, 'main', $user->getRoles());
+            $this->get('security.token_storage')->setToken($tocken);
+            $this->get('session')->set('_security_main',serialize($tocken));
+
+        } catch (AccountStatusException $ex) {
+            //var_dump($ex->getMessage());
+        }
     }
 
 }
