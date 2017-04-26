@@ -1,0 +1,5 @@
+error404:
+  title: Erreur 404
+  content: |
+    La page que vous avez demandée n'est plus disponible ou peut avoir été déplacée.
+    Veuillez choisir l'une des options suivantes:

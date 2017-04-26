@@ -1,0 +1,5 @@
+error404:
+  title: 404 Error
+  content: |
+    The page you requested is no longer available or may have been moved.
+    Please select one of the following options:
