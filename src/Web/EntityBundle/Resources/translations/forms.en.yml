@@ -1,21 +1,21 @@
 form:
   project:
-    name: Full Name
-    placeholder_name: Pascal Tene
+    name: Name
+    placeholder_name: Your name
     phone: Phone number
-    placeholder_phones: 00447515975500
+    placeholder_phones: Your phone number
     email: Email adress
-    placeholder_email: pasjtene@yahoo.co.uk
+    placeholder_email: Your email address
     country: Country
-    placeholder_country: United Kingdom
+    placeholder_country: Your country
     city: City
-    placeholder_city: England
-    adress: Mailbox
-    placeholder_adress: 420 England
-    type: Projet Type
-    placeholder_type: Android application
+    placeholder_city: Your city
+    adress: Address
+    placeholder_adress: Your full address
+    type: Company
+    placeholder_type: Name of your company
     file: File
-    placeholder_file: Upload your load cache
+    placeholder_file: Upload a PDF or docx file, up to 5MB
     objet: Projet objet
     placeholder_objet: Chat application
     description: Detail
@@ -28,8 +28,7 @@ form:
     date: Date
     list: PROJECTS LIST
     notification: |
-      Thank you for contacting us
+      Thank you for contacting
       Semantica for the realization of your project. A member of our team will contact you
       Soon for more details and a possible telephone or in-person appointment with our
       Analysts / programmers
-
