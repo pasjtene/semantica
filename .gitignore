@@ -13,12 +13,9 @@
 !var/sessions/.gitkeep
 !var/SymfonyRequirements.php
 /vendor/
-/web/bundles/
 /app/bootstrap.php.cache
 /app/config/parameters.yml
 /composer.phar
 /.idea/
-/web/components/
-/web/data/
 /node_modules/
 /src/WebApp/EntityBundle/Entity/*.php~
