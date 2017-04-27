@@ -83,8 +83,13 @@
                             </div>
 
                             <div class="col s12">
-                                <div class="col m6 s12">
+                                <div class="col m12 s12">
                                     <button type="submit" class="waves-effect btn  waves-light "> {% trans from 'nav' %} login.connection {% endtrans %}</button>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col m12 s12">
+                                    <a href="{{ path('main_resetpassword') }}">{% trans from 'nav' %} login.forgot {% endtrans %}</a>
                                 </div>
                             </div>
                             <div class="row error" >

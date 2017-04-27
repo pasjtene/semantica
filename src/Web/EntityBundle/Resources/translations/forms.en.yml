@@ -32,13 +32,11 @@ form:
       Semantica for the realization of your project. A member of our team will contact you
       Soon for more details and a possible telephone or in-person appointment with our
       Analysts / programmers
-<<<<<<< HEAD
-
   user:
     email: Email adress
-    placeholder_email:  pasjtene@yahoo.co.uk
+    placeholder_email:  Your email address
     username: Phone number
-    placeholder_username: 00447515975500
+    placeholder_username: Your phone number
     password: Password
     placeholder_password: password
     country: Country
@@ -52,5 +50,3 @@ form:
     lastname: Last name
     placeholder_lastname: Pascal
     save: Save
-=======
->>>>>>> 756dbfe3a30e3d8ef6501e3c06f53ac9a21c952a

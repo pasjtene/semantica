@@ -219,4 +219,87 @@ class DefaultController extends Controller
         return $this->render('MainBundle:Security:login.html.twig');
     }
 
+
+
+
+    /**
+     * @Route("/editpassword", name="main_editpassword")
+     */
+    public function editpasswordAction(Request $request)
+    {
+        if($request->isMethod('POST'))
+        {
+
+            $email = $request->query->get('email');
+            $em = $this->getDoctrine()->getManager();
+            /** @var User $user */
+            $user = $em->getRepository("EntityBundle:User")->findOneByemail($email);
+            if($user!=null)
+            {
+                $translator = $this->get('translator');
+
+                $em = $this->getDoctrine()->getManager();
+
+                $password = $request->request->get('password');
+                $password = $this->encodePassword(new User(), $password, $user->getSalt());
+
+                $user->setPassword($password);
+
+                $em->persist($user);
+                $em->flush();
+                $em->detach($user);
+                $this->authenticateUser($user);
+
+                return $this->redirect($this->generateUrl('main_private'));
+
+            }
+
+        }
+        return $this->render('MainBundle:Default:editpassword.html.twig');
+    }
+
+
+    /**
+     * @Route("/resetpassword", name="main_resetpassword")
+     */
+    public function resetpasswordAction(Request $request)
+    {
+
+
+        $array=[];
+        if($request->isMethod('POST'))
+        {
+
+
+
+            $email = $request->request->get('email');
+            $em = $this->getDoctrine()->getManager();
+            /** @var User $user */
+            $user = $em->getRepository("EntityBundle:User")->findOneByemail($email);
+            if($user!=null)
+            {
+                $translator = $this->get('translator');
+
+                $em = $this->getDoctrine()->getManager();
+
+                $locale = $this->get('session')->get('_locale');
+                $message = $translator->trans('login.reset',[] ,'nav', $locale);
+                $link  =$this->generateUrl('main_editpassword',[md5('email') =>$user->getEmail()], UrlGeneratorInterface::ABSOLUTE_URL);
+                $html = $message.' <a href="'.$link.'">'.$link.'</a>';
+                $code = $this->sendMail($user->getEmail(), $this->getParameter('mailer_user'), $html, "SIGN UP TO STC(SEMANTICA TECHNOLOGIES CORPORATION)");
+                //$code =$this->sentMail($email,$this->getParameter('mailer_user'),'MainBundle:Inc:confirm.html.twig',$array,"Confirmation");
+                $tab = explode('@',$user->getEmail());
+                $array["message"] = "...@".$tab[count($tab)-1];
+                return $this->render('MainBundle:Default:index.html.twig',$array);
+            }
+            $array['error'] = "I am";
+        }
+
+
+        return $this->render('MainBundle:Default:resetpassword.html.twig',$array);
+    }
+
+
+
+
 }
