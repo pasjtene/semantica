@@ -184,13 +184,6 @@ class DefaultController extends Controller
 
     }
 
-    /**
-     * @Route("/login", name="main_login")
-     */
-    public function loginAction()
-    {
-        return $this->render('AdminBundle:Security:login.html.twig');
-    }
 
 
 
@@ -215,6 +208,15 @@ class DefaultController extends Controller
         } catch (AccountStatusException $ex) {
             //var_dump($ex->getMessage());
         }
+    }
+
+
+    /**
+     * @Route("/login", name="main_login")
+     */
+    public function loginAction()
+    {
+        return $this->render('MainBundle:Security:login.html.twig');
     }
 
 }

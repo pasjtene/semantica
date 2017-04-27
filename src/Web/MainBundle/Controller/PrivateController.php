@@ -31,7 +31,12 @@ class PrivateController extends Controller
         /** @var User $user */
         $user = $this->container->get('security.token_storage')->getToken()->getUser();
 
-        return $this->render('MainBundle:Private:index.html.twig');
+
+        $em = $this->getDoctrine()->getManager();
+        $list = $em->getRepository("EntityBundle:Projet")->findBy(['email'=>$user->getEmail()],['id'=>'DESC','time'=>'DESC']);
+        $array['list'] = $list;
+
+        return $this->render('MainBundle:Private:index.html.twig',$array);
     }
 
 
