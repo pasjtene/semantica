@@ -11,7 +11,7 @@ $secondary : #111111;
   #mobile{
     color: $default_text !important;
   }
- border-bottom: $default_text 1px solid !important;
+  border-bottom: $default_text 1px solid !important;
   #logo{
     color: $default-text !important;
     font-size: 2.1em !important;
@@ -79,14 +79,14 @@ footer{
 
   }
 
-/*CSS general pour les larges ecran*/
+  /*CSS general pour les larges ecran */
   #slide_content{
     h1{
       font-size: 4.1em !important;
-        }
-      span{
-        font-size: 1.5em !important;
-      }
+    }
+    span{
+      font-size: 1.5em !important;
+    }
   }
 
 
@@ -95,14 +95,14 @@ footer{
     #slide_content{
       h1{
         font-size: 2.5em !important;
-        }
-        span{
-          font-size: 1.5em !important;
-        }
+      }
+      span{
+        font-size: 1.5em !important;
+      }
     }
   }
 
-/*CSS pour ipad */
+  /*CSS pour ipad */
   @media screen and (max-width: 736px) {
 
     #slide_content{
@@ -156,9 +156,9 @@ footer{
   @media screen and (max-width: 322px) {
     min-height: 214px !important;
     height: 214px !important;
-      img{
-        height: calc(100% - 200px) !important;
-      }
+    img{
+      height: calc(100% - 200px) !important;
+    }
     #slide_content{
       h1{
         font-size: 1.5em !important;
