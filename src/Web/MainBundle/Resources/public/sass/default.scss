@@ -4,7 +4,6 @@ $default : white;
 $secondary : #111111;
 
 #nav{
-
   padding-top: 1%;
   padding-bottom: 6% !important;
   box-shadow: none !important;
@@ -42,6 +41,7 @@ html, body{
   margin-top: 0px !important;
   overflow-x: hidden;
 }
+
 footer{
   background-color: $default_text !important;
   margin-bottom: 0px !important;
@@ -60,13 +60,33 @@ footer{
   .color{
     background-color: $default_text !important;
   }
+
   #zone_img
   {
     padding: 0px !important;
     height: 100% !important;
+    width: 50% !important;
+    float: left;
     img{
       height: 100% !important;
     }
+
+    /*cacher l'image pour les telephone mobile*/
+    @media screen and (max-width: 600px) {
+      display: none;
+    }
+
+
+  }
+
+/*CSS general pour les larges ecran*/
+  #slide_content{
+    h1{
+      font-size: 4.1em !important;
+        }
+      span{
+        font-size: 1.5em !important;
+      }
   }
 
 
@@ -75,12 +95,32 @@ footer{
     #slide_content{
       h1{
         font-size: 2.5em !important;
+        }
+        span{
+          font-size: 1.5em !important;
+        }
+    }
+  }
+
+/*CSS pour ipad */
+  @media screen and (max-width: 736px) {
+
+    #slide_content{
+      h1{
+        font-size: 1.5em !important;
+      }
+      span{
+        font-size: 1em !important;
       }
     }
   }
+
+
   @media screen and (max-width: 1000px) {
 
     #slide_content{
+      width: 50% !important;
+      float: right;
       h1{
         font-size: 2em !important;
       }
@@ -88,13 +128,15 @@ footer{
   }
 
   @media screen and (max-width: 600px) {
+    height: 150px !important;
 
     #slide_content{
+      width: 100% !important;
       h1{
-        font-size: 1em !important;
+        font-size: 1.5em !important;
       }
       span{
-        font-size: 0.7em !important;
+        font-size: 1em !important;
       }
     }
   }
@@ -103,10 +145,10 @@ footer{
 
     #slide_content{
       h1{
-        font-size: 0.9em !important;
+        font-size: 1.5em !important;
       }
       span{
-        font-size: 0.65em !important;
+        font-size: 1em !important;
       }
     }
   }
@@ -119,15 +161,13 @@ footer{
       }
     #slide_content{
       h1{
-        font-size: 0.8em !important;
+        font-size: 1.5em !important;
       }
       span{
-        font-size: 0.6em !important;
+        font-size: 1em !important;
       }
     }
   }
-
-
 }
 
 .fixed
@@ -155,4 +195,3 @@ footer{
   }
 
 }
-
