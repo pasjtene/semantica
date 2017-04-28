@@ -44,6 +44,8 @@ form:
     city: City
     placeholder_city: England
     sex: Sex
+    male: Male
+    female: Female
     placeholder_sex: Male
     firstname: First name
     placeholder_firstname:   Tene

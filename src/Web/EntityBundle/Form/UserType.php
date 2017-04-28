@@ -6,6 +6,7 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -34,9 +35,12 @@ class UserType extends AbstractType
                 'translation_domain' => 'forms',
                 'required'    => false
             ))
-            ->add('sex',TextType::class,array(
+            ->add('sex',ChoiceType::class,array(
                 'label' => 'form.user.sex',
-                'attr'=>['placeholder'=>'form.user.placeholder_sex'],
+                'choices'=>array('form.user.male'=>'form.user.male','form.user.female'=>'form.user.female'),
+                'multiple'=>false,
+                'empty_value'=>'form.user.placeholder_sex',
+                'empty_data'=>null,
                 'translation_domain' => 'forms',
                 'required'    => false
             ))
