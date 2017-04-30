@@ -1,5 +1,6 @@
 /app/config/parameters.yml
 /build/
+/web/data/media/
 /phpunit.xml
 /var/*
 !/var/cache
@@ -13,6 +14,7 @@
 !var/sessions/.gitkeep
 !var/SymfonyRequirements.php
 /vendor/
+/web/data/media/
 /app/bootstrap.php.cache
 /app/config/parameters.yml
 /composer.phar
