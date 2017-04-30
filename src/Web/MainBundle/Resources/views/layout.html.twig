@@ -1,5 +1,16 @@
 {% extends '::base.html.twig' %}
 
+{% block stylesheets %}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prefixfree/1.0.7/prefixfree.min.js"></script>
+    <link href='http://fonts.googleapis.com/css?family=Sintony:400,700&subset=latin-ext' rel='stylesheet' type='text/css'>
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+    {{ parent() }}
+    <style>
+        #slide, #slide .carousel{
+            z-index: 9999 !important;
+        }
+    </style>
+{% endblock %}
 {% block header %}
     {% include 'MainBundle:Inc:nav.html.twig' %}
 {% endblock %}
@@ -20,6 +31,8 @@
 
 {% block javascripts %}
     {{ parent() }}
+
+    <script src="{{ asset('components/jsbase/nav.js') }}"></script>
     <!--Start of Tawk.to Script-->
     <script type="text/javascript">
         var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
@@ -33,6 +46,18 @@
         })();
     </script>
     <!--End of Tawk.to Script-->
+    <script>
+        $(function(){
+            //alert($(window).width());
+           $('.menu > ul li a, .xs-menu > ul li a').click(function(){
+               if($(this).val()!="#")
+               {
+                   window.location.href = $(this).attr('href');
+               }
+           });
+
+        });
+    </script>
 {% endblock %}
 {% block myjs %}
 

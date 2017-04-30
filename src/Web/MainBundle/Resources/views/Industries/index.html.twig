@@ -12,6 +12,10 @@
 
     </style>
 {% endblock %}
+{% block header %}
+    {{ parent() }}
+    {% include 'MainBundle:Inc:slide.html.twig' %}
+{% endblock %}
 
 {% block  main %}
     <div class="row" id="main_industries">
@@ -93,11 +97,12 @@
             });
 
 
-            $('.carousel.carousel-slider').carousel({
+            /*$('.carousel.carousel-slider').carousel({
                 full_width: true,
                 indicators: true
             });
             autoplay();
+            */
             function autoplay() {
                 $('.carousel').carousel('next');
                 setTimeout(autoplay, 4500);

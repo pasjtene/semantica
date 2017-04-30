@@ -216,7 +216,7 @@
                         clearInterval(t);
                     },4000);
                 {% endif %}
-                var menu = $("#nav");
+                var menu = $("#menu");
 
                 var top = menu.offset().top;
                 var windowHeight = $(window).height();
@@ -225,7 +225,7 @@
                     // alert();
                     var scrollTop = $(window).scrollTop();
 
-                    console.log( " -------------------------------------\n\t" +"h ="+windowHeight + " s =" + scrollTop + " top =" +top+ "\n -------------------------------------");
+                   //console.log( " -------------------------------------\n\t" +"h ="+windowHeight + " s =" + scrollTop + " top =" +top+ "\n -------------------------------------");
 
                     if( scrollTop >= top ){
                          //menu.addClass('fixed');
@@ -240,10 +240,11 @@
             });
 
         $(function(){
-            $('.carousel.carousel-slider').carousel({
+          /* $('.carousel.carousel-slider').carousel({
                 full_width: true,
                 indicators: true
             });
+            */
 
             /* autoplay();
              function autoplay() {

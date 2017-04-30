@@ -53,28 +53,44 @@ footer{
 
 #slide{
   min-height: 175px !important;
+  margin: 0% !important;
+  padding: 0% !important;
   @media screen and (min-width: 600px) {
     min-height: 175px !important;
     height: 400px !important;
   }
-  .color{
+  div:first-child{
+    padding: 0px !important;
     background-color: $default_text !important;
+    div{
+      padding: 0% !important;
+      margin: 0% !important;
+    }
   }
+
   #zone_img
   {
     padding: 0px !important;
     height: 100% !important;
     img{
       height: 100% !important;
+      max-width: 100% !important;
+      max-height: 400px !important;
+    }
+    @media screen and (max-width: 414px) {
+      display: none;
     }
   }
 
-
+  #slide_content{
+    padding-left: 1% !important;
+    padding-right: 1% !important;
+  }
   @media screen and (max-width: 1200px) {
 
     #slide_content{
       h1{
-        font-size: 2.5em !important;
+        font-size: 3em !important;
       }
     }
   }
@@ -82,51 +98,23 @@ footer{
 
     #slide_content{
       h1{
-        font-size: 2em !important;
+        font-size: 2.6em !important;
       }
     }
   }
 
-  @media screen and (max-width: 600px) {
+  @media screen and (max-width: 414px) {
 
     #slide_content{
+      padding: 2% !important;
       h1{
+        font-size:2em !important;
+      }
+      span{
         font-size: 1em !important;
       }
-      span{
-        font-size: 0.7em !important;
-      }
     }
   }
-
-  @media screen and (max-width: 400px) {
-
-    #slide_content{
-      h1{
-        font-size: 0.9em !important;
-      }
-      span{
-        font-size: 0.65em !important;
-      }
-    }
-  }
-
-  @media screen and (max-width: 322px) {
-    min-height: 214px !important;
-    height: 214px !important;
-      img{
-        height: calc(100% - 200px) !important;
-      }
-    #slide_content{
-      h1{
-        font-size: 0.8em !important;
-      }
-      span{
-        font-size: 0.6em !important;
-      }
-    }
-  }
-
 
 }
 
@@ -146,13 +134,11 @@ footer{
     color: $default !important;
   }
 
-  #mobile{
-    color: $default
-    !important;
+  .mobile{
+    color: $default !important;
   }
   #logo{
     color: $default !important;
   }
 
 }
-
