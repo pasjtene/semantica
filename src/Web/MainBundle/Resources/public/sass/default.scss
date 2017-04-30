@@ -55,9 +55,15 @@ footer{
   min-height: 175px !important;
   margin: 0% !important;
   padding: 0% !important;
-  @media screen and (min-width: 600px) {
-    min-height: 175px !important;
+  @media screen and (min-width: 736px) {
     height: 400px !important;
+  }
+  @media screen and (max-width: 736px) {
+    height: 250px !important;
+  }
+
+  @media screen and (max-width: 736px) {
+    height: 200px !important;
   }
   div:first-child{
     padding: 0px !important;
@@ -72,34 +78,43 @@ footer{
   {
     padding: 0px !important;
     height: 100% !important;
-    width: 50% !important;
-    float: left;
     img{
       height: 100% !important;
       max-width: 100% !important;
       max-height: 400px !important;
     }
-    @media screen and (max-width: 414px) {
+
+    @media screen and (max-width: 677px) {
+      height: 200px !important;
+    }
+
+    @media screen and (max-width: 736px) {
+      height: 250px !important;
+    }
+
+    @media screen and (max-width: 568px) {
+      width: 0% !important;
       display: none;
     }
 
+
     /*cacher l'image pour les telephone mobile*/
     @media screen and (max-width: 600px) {
-      display: none;
+      //display: none;
     }
 
 
   }
 
   /*CSS general pour les larges ecran */
-  #slide_content{
+  /*#slide_content{
     h1{
       font-size: 4.1em !important;
     }
     span{
       font-size: 1.5em !important;
     }
-  }
+  }*/
 
   #slide_content{
     padding-left: 1% !important;
@@ -117,8 +132,9 @@ footer{
     }
   }
 
+
   /*CSS pour ipad */
-  @media screen and (max-width: 736px) {
+  /*@media screen and (max-width: 736px) {
 
     #slide_content{
       h1{
@@ -129,26 +145,22 @@ footer{
       }
     }
   }
+  */
 
 
   @media screen and (max-width: 1000px) {
 
     #slide_content{
-      width: 50% !important;
-      float: right;
       h1{
         font-size: 2.6em !important;
       }
     }
   }
 
-  @media screen and (max-width: 600px) {
-    height: 150px !important;
-
+  @media screen and (max-width: 736px) {
     #slide_content{
-      width: 100% !important;
       h1{
-        font-size: 1.5em !important;
+        font-size: 2.5em !important;
       }
       span{
         font-size: 1em !important;
@@ -156,12 +168,26 @@ footer{
     }
   }
 
-  @media screen and (max-width: 414px) {
+  @media screen and (max-width: 667px) {
+    #slide_content{
+      h1{
+        font-size: 1.9em !important;
+      }
+      span{
+        font-size: 0.8em !important;
+      }
+    }
+  }
+
+
+
+  @media screen and (max-width: 568px) {
 
     #slide_content{
       padding: 2% !important;
+      width: 100% !important;
       h1{
-        font-size:2em !important;
+        font-size:2.4em !important;
       }
       span{
         font-size: 1em !important;
@@ -170,7 +196,7 @@ footer{
   }
 
 
-  @media screen and (max-width: 322px) {
+ /* @media screen and (max-width: 322px) {
     min-height: 214px !important;
     height: 214px !important;
     img{
@@ -185,6 +211,7 @@ footer{
       }
     }
   }
+  */
 
 }
 
