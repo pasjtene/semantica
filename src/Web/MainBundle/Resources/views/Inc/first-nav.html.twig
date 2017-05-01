@@ -1,0 +1,16 @@
+<div class="first-row">
+    <div class="first-row-menu">
+        <ul>
+            <li><a href="{{ path('main_homepage') }}">{% trans from 'nav' %} nav.home {% endtrans %}</a></li>
+            <li><a href="{{ path('main_industries') }}">{% trans from 'nav' %} nav.industries {% endtrans %}</a></li>
+            <li><a href="{{ path('main_homepage') }}#contact">{% trans from 'nav' %} nav.contact {% endtrans %}</a></li>
+            {% if app.user!=null %}
+                <li><a href="{{ path('main_private') }}">{% trans from 'nav' %} nav.account {% endtrans %}</a></li>
+            {% else %}
+                <li><a href="{{ path('main_homepage') }}#sendmail">{% trans from 'nav' %} nav.signup {% endtrans %}</a></li>
+            {% endif %}
+            <li><a href="{{ path('main_newproject') }}">{% trans from 'nav' %} nav.newprojet {% endtrans %}</a></li>
+            <li><a href="">{% trans from 'nav' %} nav.services {% endtrans %}</a></li>
+        </ul>
+    </div>
+</div>
