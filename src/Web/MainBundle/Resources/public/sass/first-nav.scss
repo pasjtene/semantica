@@ -14,7 +14,17 @@
 
 .first-row-menu ul li {
   display: inline;
-  padding-right: 15px;
+  padding-right: 5px;
+}
+
+.first-row-menu ul li.midline-menu:after {
+  color:black;
+  content: "   |";
+}
+
+.first-row-menu ul li a:hover {
+  color:blue;
+  text-decoration: underline;
 }
 
 .first-row-menu {
