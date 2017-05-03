@@ -36,3 +36,12 @@
   display: inline-block;
   margin-top: 6px;
 }
+
+@media screen and (max-width: 600px) {
+  .first-row {
+    height: 36px;
+    background-color: #4D4F53;
+    color: black;
+    padding-right: 10px;
+  }
+}
