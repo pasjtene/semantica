@@ -1,7 +1,7 @@
 <div class="first-row">
     <div class="first-row-menu">
         <ul>
-            <li><a href="{{ path('main_homepage') }}">{% trans from 'nav' %} nav.login {% endtrans %}</a></li>
+            <li><a href="{{ path('main_homepage') }}">{% trans from 'firstnav' %} nav.login {% endtrans %}</a></li>
             {% if app.user!=null %}
                 <li><a href="{{ path('main_private') }}">{% trans from 'nav' %} nav.signup {% endtrans %}</a></li>
             {% else %}
