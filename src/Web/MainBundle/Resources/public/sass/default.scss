@@ -13,7 +13,7 @@ $secondary : #111111;
   #mobile{
     color: $default_text !important;
   }
- border-bottom: $default_text 1px solid !important;
+  border-bottom: $default_text 1px solid !important;
   #logo{
     color: $default-text !important;
     font-size: 2.1em !important;
@@ -65,14 +65,14 @@ footer{
   }
   @media screen and (min-width: 600px) {
     img{
-        height: 400px !important;
-      }
+      height: 400px !important;
+    }
   }
   @media screen and (max-width:600px)  {
 
-      img{
-        max-height: 400px !important;
-      }
+    img{
+      max-height: 400px !important;
+    }
   }
 }
 

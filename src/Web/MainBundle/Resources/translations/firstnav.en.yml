@@ -1,0 +1,14 @@
+nav:
+  login: Login
+  signup: Register
+  contact: Contact
+  language: Anglais
+  careers: Careers
+footer:
+  copyright: Copyright © 2017 Semantica Technologies Corporation - STC - Tous  droits  réservés.
+  by: Propulsé par   PASCAL JT
+slide:
+  title: |
+   BIENVENUE À  SEMANTICA TECHNOLOGIES CORPORATION -STC
+  content: |
+    Votre partenaire  constructruit des solutions logicielles sécurisées et fiables, adaptées aux besoins spécifiques de votre entreprise
