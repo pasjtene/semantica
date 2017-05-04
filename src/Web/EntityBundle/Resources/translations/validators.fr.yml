@@ -48,7 +48,7 @@ project:
     NotBlank: Le cahier de charge est  requis
     maxSizeMessage: La taille maximal du fichier est 5MB
 task:
-  libele:
+  libelle:
     NotBlank: The libele is required
   identity:
     NotBlank: The identity is required

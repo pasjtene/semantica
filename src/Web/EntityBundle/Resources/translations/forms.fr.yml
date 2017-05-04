@@ -3,6 +3,20 @@ form:
     description: Description
     placeholder_description : Votre description
     date: Date
+    participator: Participant
+    empty_participator: Choisir un participant
+    commit: Commit
+    empty_commit: Choisir un commit
+    comment: Commentaire
+    empty_comment: Choisir un commentaire
+    person: Personne
+    empty_person: Choisir une personne
+    user: Utilisateur
+    empty_user: Choisir un utilisateur
+    visitor: Visiteur
+    empty_visitor: Choisir un visiteur
+    projecy: Projet
+    empty_project: Choisir un projet
   cancelling:
     addcode: Code de base
     adddate: Date d'enregistement
@@ -23,6 +37,11 @@ form:
     city: Ville
     country: Pays
     email: Adresse email
+    doctor: Dr
+    profesor: Pr
+    mister: M.
+    missis: Mss
+    placeholder_pleasantries: Choisir une civilité
   planning:
     startdate: Date de début
     enddate: Date de fin
@@ -53,6 +72,9 @@ form:
       Analystes / programmeurs
   Suggestion:
     status: Status
+  Task:
+    libelle: Intitulé
+    identity: Identifiant
   user:
     email: Adresse email
     placeholder_email:  pasjtene@yahoo.co.uk

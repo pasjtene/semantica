@@ -18,27 +18,16 @@ class ProjetType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('name',TextType::class,array(
-            'label' => 'form.project.name',
-            'attr'=>['placeholder'=>'form.project.placeholder_name'],
+        $builder->add('title',TextType::class,array(
+            'label' => 'form.project.title',
+            'attr'=>['placeholder'=>'form.project.placeholder_title'],
             'translation_domain' => 'forms',
             'required'    => false
-        ))
-            ->add('email',EmailType::class,array(
-                'label' => 'form.project.email',
-                'attr'=>['placeholder'=>'form.project.placeholder_email'],
-                'translation_domain' => 'forms',
-                'required'    => false
-            ))
-            ->add('phone',TextType::class,array(
-                'label' => 'form.project.phone',
-                'attr'=>['placeholder'=>'form.project.placeholder_phones'],
-                'translation_domain' => 'forms',
-                'required'    => false
-            ))
-            ->add('objet',TextType::class,array(
-                'label' => 'form.project.objet',
-                'attr'=>['placeholder'=>'form.project.placeholder_objet'],
+          ))
+
+            ->add('company',TextType::class,array(
+                'label' => 'form.project.company',
+                'attr'=>['placeholder'=>'form.project.placeholder_company'],
                 'translation_domain' => 'forms',
                 'required'    => false
             ))
@@ -48,36 +37,14 @@ class ProjetType extends AbstractType
                 'translation_domain' => 'forms',
                 'required'    => false
             ))
-            ->add('adress',TextType::class,array(
-                'label' => 'form.project.adress',
-                'attr'=>['placeholder'=>'form.project.placeholder_adress'],
-                'translation_domain' => 'forms',
-                'required'    => false
-            ))
-            ->add('country',TextType::class,array(
-                'label' => 'form.project.country',
-                'attr'=>['placeholder'=>'form.project.placeholder_country'],
-                'translation_domain' => 'forms',
-                'required'    => false
-            ))
-            ->add('city',TextType::class,array(
-                'label' => 'form.project.city',
-                'attr'=>['placeholder'=>'form.project.placeholder_city'],
-                'translation_domain' => 'forms',
-                'required'    => false
-            ))
-            ->add('type',TextType::class,array(
-                'label' => 'form.project.type',
-                'attr'=>['placeholder'=>'form.project.placeholder_type'],
-                'translation_domain' => 'forms',
-                'required'    => false
-            ))
             ->add('file',FileType::class,array(
                 'label' => 'form.project.file',
                 'attr'=>['placeholder'=>'form.project.placeholder_file','accept'=>".pdf"],
                 'translation_domain' => 'forms',
                 'required'    => false
-            ));
+            ))
+            ->add('visitor',VisitorType::class
+            );
     }
 
     /**

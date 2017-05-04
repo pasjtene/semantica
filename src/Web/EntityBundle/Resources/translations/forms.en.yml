@@ -3,6 +3,20 @@ form:
     description: Description
     placeholder_description : Your description
     date: Date
+    participator: Participator
+    empty_participator: Chose a participator
+    commit: Commit
+    empty_commit: Choose a commit
+    comment: Comment
+    empty_comment: Choose a Comment
+    person: Person
+    empty_person: Choose a Person
+    user: User
+    empty_user: Choose a User
+    visitor: Visitor
+    empty_visitor: Choose a visitor
+    projecy: Project
+    empty_project: Choose a project
   cancelling:
     addcode: Base code
     adddate: Register Date
@@ -23,6 +37,11 @@ form:
     city: City
     country: Country
     email: Email address
+    doctor: Dr
+    profesor: Pr
+    mister: M.
+    missis: Mss
+    placeholder_pleasantries: Choose a pleasantries
   planning:
     startdate: Start date
     enddate: End date
@@ -52,6 +71,9 @@ form:
       Analysts / programmers
   Suggestion:
     status: Status
+  Task:
+    libelle: Libelle
+    identity: Identity
   user:
     email: Email adress
     placeholder_email:  Your email address
@@ -63,10 +85,11 @@ form:
     placeholder_country: United Kingdom
     city: City
     placeholder_city: England
-    sex: Sex
-    male: Male
-    female: Female
-    placeholder_sex: Male
+    doctor: Dr
+    profesor: Pr
+    mister: M.
+    missis: Mss
+    placeholder_pleasantries: Choose a pleasantries
     firstname: First name
     placeholder_firstname:   Tene
     lastname: Last name

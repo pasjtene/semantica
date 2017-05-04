@@ -29,6 +29,13 @@ class Reply extends BaseInterface
      */
     private $comment;
 
+    /**
+     * @Assert\Valid()
+     * @ORM\ManyToOne(targetEntity="Web\EntityBundle\Entity\Participator",cascade={"persist"})
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $participator;
+
 
     /**
      * Set comment

@@ -23,6 +23,14 @@ class Projet extends BaseInterface
      */
     protected $id;
 
+    /**
+     * @Assert\Valid()
+     * @ORM\ManyToOne(targetEntity="Web\EntityBundle\Entity\Person",cascade={"persist"})
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $person;
+
+
 
     /**
      * @var string
