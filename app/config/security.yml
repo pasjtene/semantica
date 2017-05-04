@@ -6,7 +6,8 @@ security:
 
     role_hierarchy:
         ROLE_USER:        [ROLE_USER]
-        ROLE_ADMIN:       [ROLE_ADMIN]
+        ROLE_STAFF:       [ROLE_USER,ROLE_STAFF]
+        ROLE_ADMIN:       [ROLE_STAFF,ROLE_ADMIN]
         ROLE_SUPER_ADMIN: [ROLE_ADMIN, ROLE_ALLOWED_TO_SWITCH]
 
     providers:
@@ -53,6 +54,7 @@ security:
     access_control:
             # back-office
             - { path: ^/[^/]+/admin/login, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+            - { path: ^/[^/]+/staff, roles: ROLE_STAFF }
             - { path: ^/[^/]+/admin, roles: ROLE_ADMIN }
             - { path: ^/[^/]+/sadmin, roles: ROLE_SUPER_ADMIN }
             - { path: ^/[^/]+/private, roles: ROLE_USER }
