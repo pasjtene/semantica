@@ -1,22 +1,14 @@
 <div id="nav_menu">
     <header >
-        <h2>
-            <a href="{{ path('main_homepage') }}" class="brand-logo " id="logo" >Semantica Technologies Corporation - STC</a>
-        </h2>
+        {% include 'MainBundle:Inc:nav-mobile.html.twig' %}
     </header>
 
     <div class="xs-menu-cont">
-        <a id="menutoggle"><i class="fa fa-align-justify"></i> </a>
+        <a id="menutoggle"><img src="{{ asset('data/img/menu.svg') }}" alt=""></a>
         <nav class="xs-menu displaynone">
             <ul>
                 <li><a href="{{ path('main_homepage') }}">{% trans from 'nav' %} nav.home {% endtrans %}</a></li>
                 <li><a href="{{ path('main_industries') }}">{% trans from 'nav' %} nav.industries {% endtrans %}</a></li>
-                <li><a href="{{ path('main_homepage') }}#contact">{% trans from 'nav' %} nav.contact {% endtrans %}</a></li>
-                {% if app.user!=null %}
-                    <li><a href="{{ path('main_private') }}">{% trans from 'nav' %} nav.account {% endtrans %}</a></li>
-                {% else %}
-                    <li><a href="{{ path('main_homepage') }}#sendmail">{% trans from 'nav' %} nav.signup {% endtrans %}</a></li>
-                {% endif %}
                 <li><a href="{{ path('main_newproject') }}">{% trans from 'nav' %} nav.newprojet {% endtrans %}</a></li>
                 <li><a href="">{% trans from 'nav' %} nav.services {% endtrans %}</a></li>
                 <li><a href="">{% trans from 'nav' %} nav.about {% endtrans %}</a></li>
@@ -24,132 +16,96 @@
             </ul>
         </nav>
     </div>
-    <nav class="menu" id="menu">
+    <nav class="menu" id="menu_big">
         <ul>
             <li><a href="{{ path('main_homepage') }}">{% trans from 'nav' %} nav.home {% endtrans %}</a></li>
             <li><a href="{{ path('main_industries') }}">{% trans from 'nav' %} nav.industries {% endtrans %}</a></li>
-            <li><a href="{{ path('main_homepage') }}#contact">{% trans from 'nav' %} nav.contact {% endtrans %}</a></li>
             <li><a href="{{ path('main_newproject') }}">{% trans from 'nav' %} nav.newprojet {% endtrans %}</a></li>
             <li class="drop-down">
-                <a href="#">{% trans from 'nav' %} nav.services {% endtrans %} </a>
+                <a href="#service">{% trans from 'nav' %} nav.services {% endtrans %} </a>
 
                 <div class="mega-menu fadeIn animated">
-                    <div class="mm-6column">
-								<span class="left-images">
-								<img  src="http://4.bp.blogspot.com/-faF-AemPFUM/U4ryP7pQRsI/AAAAAAAAEvA/fZ-hskCSln4/s1600/Magento%2Bthemes.jpg">
-								<p>Most Popular Styles </p>
-				</span>
-								<span class="categories-list">
-							<ul>
-                                <span>Computer</span>
-                                <li>Desktops</li>
-                                <li>Laptops</li>
-                                <li>Tablets</li>
-                                <li>Monitors</li>
-                                <li>Networking Printers</li>
-                                <li>Scanners</li>
-                                <li>Jumpers & Cardigans</li>
-                                <li><a class="mm-view-more" href="#">View more ?</a></li>
-                            </ul>
-						</span>
+                   <div class="row">
+                       <div class="col offset-m1 m2">
+                           <h4><trong>Title 1</trong> </h4>
+                           <p>Text</p>
+                       </div>
+                       <div class="col m2">
+                           <h4><strong>Title 2</strong> </h4>
+                           <p>Text</p>
+                       </div>
+                       <div class="col m2">
+                           <h4><strong>Title 3</strong> </h4>
+                           <p>Text</p>
+                       </div>
+                       <div class="col m2">
+                           <h4><strong>Title4</strong> </h4>
+                           <p>Text</p>
+                       </div>
+                       <div class="col m3">
+                           <div class="card">
+                               <div class="card-image">
+                                   <img src="{{ asset('data/img/about.jpg') }}">
+                                   <span class="card-title">Card Title</span>
+                               </div>
+                               <div class="card-content">
+                                   <p>
+                                      le texte ici
+                                   </p>
+                               </div>
 
-                    </div>
-                    <div class="mm-3column">
-						<span class="categories-list">
-						<ul>
-                            <span>TV & Video</span>
-                            <li>LED TVs
-                            <li>Plasma TVs
-                            <li>3D TVs
-                            <li>DVD & Blu-ray Players
-                            <li>Home Theater Systems
-                            <li>Cell Phones
-                            <li>Apple iPhone
-                            <li><a class="mm-view-more" href="#">View more ?</a></li>
-                        </ul>
-						</span>
-                    </div>
-                    <div class="mm-3column">
-								<span class="categories-list">
-						<ul>
-                            <span>Car Electronics</span>
-                            <li>GPS & Navigation</li>
-                            <li>In-Dash Stereos</li>
-                            <li>Speakers</li>
-                            <li>Subwoofers</li>
-                            <li>Amplifiers</li>
-                            <li>MP3 Players</li>
-                            <li>iPods</li>
-                            <li><a class="mm-view-more" href="#">View more ?</a></li>
-                        </ul>
-					</span>
-                    </div>
+                           </div>
+                       </div>
+                   </div>
                 </div>
 
             </li>
             <li class="drop-down">
-                <a href="#">{% trans from 'nav' %} nav.about {% endtrans %} </a>
+                <a href="#about">{% trans from 'nav' %} nav.about {% endtrans %} </a>
 
                 <div class="mega-menu fadeIn animated">
-                    <div class="mm-6column">
-								<span class="left-images">
-								<img  src="http://4.bp.blogspot.com/-faF-AemPFUM/U4ryP7pQRsI/AAAAAAAAEvA/fZ-hskCSln4/s1600/Magento%2Bthemes.jpg">
-								<p>Most Popular Styles </p>
-				</span>
-								<span class="categories-list">
-							<ul>
-                                <span>Computer</span>
-                                <li>Desktops</li>
-                                <li>Laptops</li>
-                                <li>Tablets</li>
-                                <li>Monitors</li>
-                                <li>Networking Printers</li>
-                                <li>Scanners</li>
-                                <li>Jumpers & Cardigans</li>
-                                <li><a class="mm-view-more" href="#">View more ?</a></li>
-                            </ul>
-						</span>
-
-                    </div>
-                    <div class="mm-3column">
-						<span class="categories-list">
-						<ul>
-                            <span>TV & Video</span>
-                            <li>LED TVs
-                            <li>Plasma TVs
-                            <li>3D TVs
-                            <li>DVD & Blu-ray Players
-                            <li>Home Theater Systems
-                            <li>Cell Phones
-                            <li>Apple iPhone
-                            <li><a class="mm-view-more" href="#">View more ?</a></li>
-                        </ul>
-						</span>
-                    </div>
-                    <div class="mm-3column">
-								<span class="categories-list">
-						<ul>
-                            <span>Car Electronics</span>
-                            <li>GPS & Navigation</li>
-                            <li>In-Dash Stereos</li>
-                            <li>Speakers</li>
-                            <li>Subwoofers</li>
-                            <li>Amplifiers</li>
-                            <li>MP3 Players</li>
-                            <li>iPods</li>
-                            <li><a class="mm-view-more" href="#">View more ?</a></li>
-                        </ul>
-					</span>
+                    <div class="row">
+                        <div class="col offset-m1 m2">
+                            <h4><strong>ABOUT US</strong> </h4>
+                            <p>Inventory</p>
+                            <p>Leadership</p>
+                            <p>Breifing center</p>
+                            <p>Policies</p>
+                            <p><strong>Learn more abour SCT</strong></p>
+                        </div>
+                        <div class="col m2">
+                            <h4><strong>NEW</strong> </h4>
+                            <p>Get the latest information about our company. </p>
+                            <p><strong>Go to the Newsroom </strong></p>
+                        </div>
+                        <div class="col m2">
+                            <h4><strong>EVENTS</strong> </h4>
+                            <p>Global conferences, online webinars, and everything in between. </p>
+                            <p><strong>Browse Events</strong></p>
+                        </div>
+                        <div class="col  m2">
+                            <h4><strong>CAREERS</strong> </h4>
+                            <p>Learn why F5 is a great place to work, browse job openings, and apply to join our team. </p>
+                            <p><strong>Explore Careers </strong></p>
+                        </div>
+                        <div class="col m3">
+                            <div class="card">
+                                <div class="card-image">
+                                    <img src="{{ asset('data/img/about.jpg') }}">
+                                </div>
+                                <div class="card-content">
+                                    <p>
+                                        Product Development Careers at SCT: Make A Contribution
+                                        to Products Companies Depend On Every Day.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
 
             </li>
-            {% if app.user!=null %}
-                <li style="float:right;"><a href="{{ path('main_private') }}">{% trans from 'private' %} private.account {% endtrans %}</a></li>
-            {% else %}
-                <li style="float:right;"><a href="{{ path('main_homepage') }}#sendmail">{% trans from 'nav' %} nav.signup {% endtrans %}</a></li>
-            {% endif %}
-            <li><a href="{{ path('app_locale') }}">{% trans from 'nav' %} nav.language {% endtrans %}</a></li>
+            <li style="float:right;"><a href="{{ path('app_locale') }}">{% trans from 'nav' %} nav.language {% endtrans %}</a></li>
         </ul>
     </nav>
 </div>

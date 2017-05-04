@@ -1,5 +1,6 @@
 $default_text : #725B54;
 $secondary_text : #5e5e5e;
+$auther : #E7E7E7;
 $default : white;
 $secondary : #111111;
 
@@ -51,72 +52,30 @@ footer{
   }
 }
 
+
 #slide{
-  min-height: 175px !important;
   margin: 0% !important;
   padding: 0% !important;
+  div{
+    margin: 0% !important;
+    padding: 0% !important;
+  }
+  img{
+    max-width: 100% !important;
+  }
   @media screen and (min-width: 600px) {
-    min-height: 175px !important;
-    height: 400px !important;
-  }
-  div:first-child{
-    padding: 0px !important;
-    background-color: $default_text !important;
-    div{
-      padding: 0% !important;
-      margin: 0% !important;
-    }
-  }
-
-  #zone_img
-  {
-    padding: 0px !important;
-    height: 100% !important;
     img{
-      height: 100% !important;
-      max-width: 100% !important;
-      max-height: 400px !important;
-    }
-    @media screen and (max-width: 414px) {
-      display: none;
-    }
-  }
-
-  #slide_content{
-    padding-left: 1% !important;
-    padding-right: 1% !important;
-  }
-  @media screen and (max-width: 1200px) {
-
-    #slide_content{
-      h1{
-        font-size: 3em !important;
+        height: 400px !important;
       }
-    }
   }
-  @media screen and (max-width: 1000px) {
+  @media screen and (max-width:600px)  {
 
-    #slide_content{
-      h1{
-        font-size: 2.6em !important;
+      img{
+        max-height: 400px !important;
       }
-    }
   }
-
-  @media screen and (max-width: 414px) {
-
-    #slide_content{
-      padding: 2% !important;
-      h1{
-        font-size:2em !important;
-      }
-      span{
-        font-size: 1em !important;
-      }
-    }
-  }
-
 }
+
 
 .fixed
 {
@@ -141,4 +100,15 @@ footer{
     color: $default !important;
   }
 
+}
+
+
+.fixNavigation{
+  z-index: 9999;
+  position: fixed !important;
+  top: 0px !important;
+  padding-top: 1% !important;
+  /* Mise en forme */
+  width: 100% !important; /* <-- Largeur de votre site */
+  height: 70px !important;
 }
