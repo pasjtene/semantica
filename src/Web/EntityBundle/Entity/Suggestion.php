@@ -24,10 +24,17 @@ class Suggestion extends BaseInterface
 
     /**
      * @Assert\Valid()
-     * @ORM\ManyToOne(targetEntity="Web\EntityBundle\Entity\Person",cascade={"persist"})
-     * @ORM\JoinColumn(nullable=false)
+     * @ORM\ManyToOne(targetEntity="Web\EntityBundle\Entity\visitor",cascade={"persist"})
+     * @ORM\JoinColumn(nullable=true)
      */
-    private $person;
+    private $visitor;
+
+    /**
+     * @Assert\Valid()
+     * @ORM\ManyToOne(targetEntity="Web\EntityBundle\Entity\user",cascade={"persist"})
+     * @ORM\JoinColumn(nullable=true)
+     */
+    private $user;
 
     /**
      * @var bool

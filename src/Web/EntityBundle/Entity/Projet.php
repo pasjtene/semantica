@@ -25,10 +25,17 @@ class Projet extends BaseInterface
 
     /**
      * @Assert\Valid()
-     * @ORM\ManyToOne(targetEntity="Web\EntityBundle\Entity\Person",cascade={"persist"})
-     * @ORM\JoinColumn(nullable=false)
+     * @ORM\ManyToOne(targetEntity="Web\EntityBundle\Entity\visitor",cascade={"persist"})
+     * @ORM\JoinColumn(nullable=true)
      */
-    private $person;
+    private $visitor;
+
+    /**
+     * @Assert\Valid()
+     * @ORM\ManyToOne(targetEntity="Web\EntityBundle\Entity\user",cascade={"persist"})
+     * @ORM\JoinColumn(nullable=true)
+     */
+    private $user;
 
 
 
@@ -293,5 +300,53 @@ class Projet extends BaseInterface
     public function getExtfiles()
     {
         return $this->extfiles;
+    }
+
+    /**
+     * Set company
+     *
+     * @param string $company
+     *
+     * @return Projet
+     */
+    public function setCompany($company)
+    {
+        $this->company = $company;
+
+        return $this;
+    }
+
+    /**
+     * Get company
+     *
+     * @return string
+     */
+    public function getCompany()
+    {
+        return $this->company;
+    }
+
+    /**
+     * Set person
+     *
+     * @param \Web\EntityBundle\Entity\Person $person
+     *
+     * @return Projet
+     */
+    public function setPerson(\Web\EntityBundle\Entity\Person $person)
+    {
+        $this->person = $person;
+
+        return $this;
+    }
+
+    /**
+     * Get person
+     *
+     * @return \Web\EntityBundle\Entity\Person
+     */
+    public function getPerson()
+    {
+        return $this->person;
     }
 }

@@ -60,4 +60,28 @@ class Reply extends BaseInterface
     {
         return $this->comment;
     }
+
+    /**
+     * Set participator
+     *
+     * @param \Web\EntityBundle\Entity\Participator $participator
+     *
+     * @return Reply
+     */
+    public function setParticipator(\Web\EntityBundle\Entity\Participator $participator)
+    {
+        $this->participator = $participator;
+
+        return $this;
+    }
+
+    /**
+     * Get participator
+     *
+     * @return \Web\EntityBundle\Entity\Participator
+     */
+    public function getParticipator()
+    {
+        return $this->participator;
+    }
 }

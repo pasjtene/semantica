@@ -14,25 +14,18 @@ class SuggestionType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-        >add('description',TextareaType::class,array(
-            'label' => 'form.base.description',
-            'translation_domain' => 'forms',
-            'required'    => true
-        ))
+            >add('description',TextareaType::class,array(
+                'label' => 'form.base.description',
+                'translation_domain' => 'forms',
+                'required'    => true
+            ))
             ->add('date',DateTimeType::class,array(
                 'label' => 'form.base.date',
                 'translation_domain' => 'forms',
                 'required'    => true
             ))
-            ->add('person',EntityType::class,array(
-                'class'=>"EntityBundle:Person",
-                'property'=>'firstname',
-                'required'=>true,
-                'multiple'=>false,
-                'empty_value'=>'form.base.empty_participator',
-                'translation_domain' => 'forms',
-                'empty_data'=>null
-            ));
+            ->add('visitor',VisitorType::class
+            );
     }
     
     /**
