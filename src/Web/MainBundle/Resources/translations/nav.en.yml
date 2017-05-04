@@ -1,6 +1,7 @@
 nav:
   home: Home
   industries:  Industries
+  login: Login
   signup: Sign Up
   contact: Contact
   connection: Connection
@@ -12,6 +13,7 @@ nav:
   account: Account
   about: About STC
   services: Services
+  careers: Careers
 footer:
   copyright: Copyright © 2017 Semantica Technologies Corporation - STC - All Rights Reserved.
   by:  Powered PASCAL JT
