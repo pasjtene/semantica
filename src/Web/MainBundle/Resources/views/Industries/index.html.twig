@@ -14,7 +14,7 @@
 {% endblock %}
 {% block header %}
     {{ parent() }}
-    {% include 'MainBundle:Inc:slide.html.twig' %}
+    {% include 'MainBundle:Inc:slide-merge.html.twig' %}
 {% endblock %}
 
 {% block  main %}
@@ -69,32 +69,24 @@
     <script>
 
         $(function(){
-            $(function(){
+            // On recupere la position du bloc par rapport au haut du site
+            var position_top_raccourci = $("#menu_big").offset().top;
 
-                //  var options = [ {selector: '#menutop', offset: 50, callback: function(el) { Materialize.toast("This is our ScrollFire Demo!", 1500 ); } }, {selector: '#menutop', offset: 205, callback: function(el) { Materialize.toast("Please continue scrolling!", 1500 ); } }, {selector: '#menutop', offset: 400, callback: function(el) { Materialize.showStaggeredList($(el)); } }, {selector: '#menutop', offset: 500, callback: function(el) { Materialize.fadeInImage($(el)); } } ];
-                //  Materialize.scrollFire(options);
-                var menu = $("#head_index nav");
+            //Au scroll dans la fenetre on déclenche la fonction
+            $(window).scroll(function () {
 
-                var top = menu.offset().top;
-                var windowHeight = $(window).height();
+                //si on a defile de plus de 150px du haut vers le bas
+                if ($(this).scrollTop() > position_top_raccourci) {
 
-                $(window).scroll(function(event){
-                    // alert();
-                    var scrollTop = $(window).scrollTop();
+                    //on ajoute la classe "fixNavigation" a <div id="navigation">
+                    $('#menu_big').addClass("fixNavigation");
+                } else {
 
-                    //console.log( " -------------------------------------\n\t" +"h ="+windowHeight + " s =" + scrollTop + " top =" +top+ "\n -------------------------------------");
-
-                    if( scrollTop >= top ){
-                        // menu.addClass('fixed');
-                    }
-                    else
-                    {
-                        //console.log("scroll = " +scrollTop);
-                        // menu.removeClass('fixed');
-                    }
-
-                });
+                    //sinon on retire la classe "fixNavigation" a <div id="navigation">
+                    $('#menu_big').removeClass("fixNavigation");
+                }
             });
+
 
 
             /*$('.carousel.carousel-slider').carousel({
