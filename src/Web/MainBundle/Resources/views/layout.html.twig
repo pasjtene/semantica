@@ -1,10 +1,12 @@
 {% extends '::base.html.twig' %}
 
 {% block stylesheets %}
+
+    {{ parent() }}
     <script src="https://cdnjs.cloudflare.com/ajax/libs/prefixfree/1.0.7/prefixfree.min.js"></script>
     <link href='http://fonts.googleapis.com/css?family=Sintony:400,700&subset=latin-ext' rel='stylesheet' type='text/css'>
     <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
-    {{ parent() }}
+
     <style>
         #slide, #slide .carousel{
             z-index: 9999 !important;
@@ -57,7 +59,25 @@
                    window.location.href = $(this).attr('href');
                }
            });
+            // On recupere la position du bloc par rapport au haut du site
+            var position_top_raccourci = $("#menu_big").offset().top;
 
+            //Au scroll dans la fenetre on déclenche la fonction
+            $(window).scroll(function () {
+
+                //si on a defile de plus de 150px du haut vers le bas
+                if ($(this).scrollTop() > position_top_raccourci) {
+
+                    //on ajoute la classe "fixNavigation" a <div id="navigation">
+                    $('#menu_big').addClass("fixNavigation");
+                } else {
+
+                    //sinon on retire la classe "fixNavigation" a <div id="navigation">
+                    $('#menu_big').removeClass("fixNavigation");
+                }
+            });
+
+            $(".button-collapse").sideNav();
         });
     </script>
 {% endblock %}

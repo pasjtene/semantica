@@ -4,6 +4,10 @@ nav:
   login: Login
   signup: Sign Up
   contact: Contact
+  connection: Connection
+  careers: Careers
+  register: Register
+  logout: Logout
   language: French
   newprojet: Submit your projet
   account: Account
