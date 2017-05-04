@@ -31,6 +31,14 @@ class Projet extends BaseInterface
      */
     private $status;
 
+
+    /**
+     * @var string
+     * @Assert\NotBlank(message="project.company.NotBlank")
+     * @ORM\Column(name="company", type="string", length=255)
+     */
+    private $company;
+
     /**
      * @var string
      * @Assert\NotBlank(message="project.code.NotBlank")

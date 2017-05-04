@@ -1,25 +1,44 @@
 form:
-  project:
-    name: Nom complet
-    placeholder_name: Pascal Tene
-    phone: Numéro de téléphone
-    placeholder_phones: 00447515975500
-    email: Email
-    placeholder_email: pasjtene@yahoo.co.uk
-    country: Pays
-    placeholder_country: United Kingdom
+  base:
+    description: Description
+    placeholder_description : Votre description
+    date: Date
+  cancelling:
+    addcode: Code de base
+    adddate: Date d'enregistement
+    adddescription: Description du  changement
+  commit:
+    code: Code
+  historic:
+    strartdate: Date de début
+    endate: Date de fin
+    roles: Roles
+  participator:
+    code: Code
+  person:
+    firstname: Nom
+    lastname: Prénom
+    phone: Téléphone
+    pleasantries:  Civilité
     city: Ville
-    placeholder_city: England
-    adress: B.P.
-    placeholder_adress: 420 England
-    type: Type de projet
-    placeholder_type: Application android
+    country: Pays
+    email: Adresse email
+  planning:
+    startdate: Date de début
+    enddate: Date de fin
+  project:
+    title: Titre
+    placeholder_title: Donner le titre de votre projet
+    company: Entreprise
+    placeholder_company: Nom de votre entreprise
     file: Fichier
-    placeholder_file: Téléchager votre cahier de charge
-    objet: L'objet du  projet
-    placeholder_objet: Application de discution instantannée
-    description: Detail
-    placeholder_description: Donner une petite description
+    placeholder_file: Télécharger les fichier pdf ou word, max 5MB
+    code : Code
+    placeholder_objet: Votre code
+    status : Etat
+    placeholder_state: Donner l'état du  projet
+    state : statut
+    placeholder_state: Valider le projet
     coordonne: Coordonnées personnel
     project: Description du  projet
     submit: Sommetre son projet
@@ -32,6 +51,8 @@ form:
       Semantica pour la réalisation de votre projet. Un membre de notre équipe va vous contacter
       bientôt pour plus de détails et un possible rendez-vous téléphonique ou en personne avec nos
       Analystes / programmeurs
+  Suggestion:
+    status: Status
   user:
     email: Adresse email
     placeholder_email:  pasjtene@yahoo.co.uk

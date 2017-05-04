@@ -1,22 +1,60 @@
-project:
-  name:
-    NotBlank: Le nom est requis
-  email:
-    NotBlank: L'email est  requis
+base:
+  description:
+    NotBlank: La description est requise
+  date:
+    NotBlank: La date est  requise
+cancelling:
+  addcode:
+    NotBlank: Le code d'ajout est  requis
+    UniqueEntity: Ce code d'ajout existe déjà
+  adddescription:
+    NotBlank: La description d'ajout est requis
+  adddate:
+    NotBlank: La date d'ajout est requis
+commit:
+  code:
+    NotBlank: Le code est  requis
+    UniqueEntity: Ce code  existe déjà
+historic:
+  startdate:
+    NotBlank: La date de début est requise
+  roles:
+    NotBlank: Le role est requis
+participator:
+  code:
+    NotBlank: Le code est  requis
+    UniqueEntity: Ce code  existe déjà
+person:
+  firstname:
+    NotBlank: Le nom  est  requis
   phone:
-    NotBlank: Le numero de téléphone est requis
-  country:
-    NotBlank: Le pays est  requis
-  city:
-    NotBlank: La ville est  requise
-  objet:
-    NotBlank: L'objet du  projet est  requis
-  adress:
-    NotBlank: La boite postal est  requise
+    UniqueEntity: Ce numéro de téléphone est déjà utilisé
+  email:
+    NotBlank: L'adresse email est requis
+    UniqueEntity: Cette adresse email  est  déjà utilisé
+  pleasantries:
+    NotBlank: La civilité est  requise
+planning:
+  startdate:
+    NotBlank: La date de début est  requise
+  enddate:
+    NotBlank: La date de fin est requise
+project:
+  title:
+    NotBlank: Le titre est requis
   description:
     NotBlank: Le detail est requis
-  type:
-    NotBlank: Le type est requis
   files:
     NotBlank: Le cahier de charge est  requis
-    maxSizeMessage: La taille maximal du fichier est 3000ko
+    maxSizeMessage: La taille maximal du fichier est 5MB
+task:
+  libele:
+    NotBlank: The libele is required
+  identity:
+    NotBlank: The identity is required
+    UniqueEntity: This identity is already exist
+user:
+  phone:
+    NotBlank: Le numero de téléphone est  requis
+  password:
+    NotBlank: Le mot de passe est  requis

@@ -31,14 +31,14 @@ class Planning
 
     /**
      * @var \DateTime
-     *
+     * @Assert\NotBlank(message="historic.startdate.NotBlank")
      * @ORM\Column(name="startdate", type="datetime")
      */
     private $startdate;
 
     /**
      * @var string
-     *
+     * @Assert\NotBlank(message="historic.endate.NotBlank")
      * @ORM\Column(name="enddate", type="string", length=255)
      */
     private $enddate;

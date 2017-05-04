@@ -7,7 +7,7 @@ use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 /**
  * Visitor
- * @UniqueEntity(fields="identity", message="visitor.email.UniqueEntity")
+ * @UniqueEntity(fields="identity", message="person.email.UniqueEntity")
  * @ORM\Table(name="visitor")
  * @ORM\Entity(repositoryClass="Web\EntityBundle\Repository\VisitorRepository")
  */
@@ -31,7 +31,7 @@ use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
     /**
      * @var string
-     * @Assert\NotBlank(message="visitor.email.NotBlank")
+     * @Assert\NotBlank(message="person.email.NotBlank")
      * @ORM\Column(name="email", type="string", length=255, unique=true)
      */
     private $email;

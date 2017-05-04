@@ -38,21 +38,20 @@ class Historic
 
     /**
      * @var \DateTime
-     *
+     * @Assert\NotBlank(message="historic.startdate.NotBlank")
      * @ORM\Column(name="startdate", type="datetime")
      */
     private $startdate;
 
     /**
      * @var \DateTime
-     *
-     * @ORM\Column(name="enddate", type="datetime")
+     * @ORM\Column(name="enddate", type="datetime", nullable=true)
      */
     private $enddate;
 
     /**
      * @var string
-     *
+     * @Assert\NotBlank(message="historic.roles.NotBlank")
      * @ORM\Column(name="roles", type="text")
      */
     private $roles;

@@ -7,7 +7,7 @@ use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 /**
  * Cancelling
- *
+ * @UniqueEntity(fields="identity", message="cancelling.addcode.UniqueEntity")
  * @ORM\Table(name="cancelling")
  * @ORM\Entity(repositoryClass="Web\EntityBundle\Repository\CancellingRepository")
  */
@@ -24,7 +24,7 @@ class Cancelling
 
     /**
      * @var string
-     *
+     * @Assert\NotBlank(message="cancelling.addcode.NotBlank")
      * @ORM\Column(name="addcode", type="string", length=255,unique=true)
      */
     private $addcode;
@@ -38,7 +38,7 @@ class Cancelling
 
     /**
      * @var string
-     *
+     * @Assert\NotBlank(message="cancelling.adddescription.NotBlank")
      * @ORM\Column(name="adddescription", type="text")
      */
     private $adddescription;
