@@ -175,27 +175,7 @@
   .categories-list li :hover{
     background:inherit !important;
   }
-  .left-images > p {
-    background: none repeat scroll 0 0 #ff7f50;
-    display: block;
-    font-size: 18px;
-    line-height: normal;
-    margin: 0;
-    padding: 5px 14px;
-  }
-  .categories-list span {
-    font-size: 18px;
-    padding-bottom: 5px;
-    text-transform: uppercase;
-  }
-  .mm-view-more{
-    background: none repeat scroll 0 0 #ff7f50;
-    color: #fff;
-    display: inline !important;
-    line-height: normal;
-    padding: 5px 8px !important;
-    margin-top:10px;
-  }
+
   .display-on{
     display:block;
     transition-duration: 0.9s;
@@ -223,40 +203,16 @@
     }
   }
 
-
-  /*Animation--*/
-
-  .animated {
-    -webkit-animation-duration: 1s;
-    animation-duration: 1s;
-    -webkit-animation-fill-mode: both;
-    animation-fill-mode: both;
-  }
-  @-webkit-keyframes fadeIn {
-    0% {
-      opacity: 0;
-    }
-
-    100% {
-      opacity: 1;
+  #m_service{
+    line-height: 1.5em !important;
+    div{
+      line-height: inherit !important;
+      p{
+        line-height: inherit !important;
+      }
     }
   }
 
-  @keyframes fadeIn {
-    0% {
-      opacity: 0;
-    }
-
-    100% {
-      opacity: 1;
-    }
-  }
-
-  .fadeIn {
-    -webkit-animation-name: fadeIn;
-    animation-name: fadeIn;
-    z-index: 9999999999999999999999999 !important;
-  }
 
 }
 

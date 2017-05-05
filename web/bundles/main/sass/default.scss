@@ -56,24 +56,6 @@ footer{
 #slide{
   margin: 0% !important;
   padding: 0% !important;
-  div{
-    margin: 0% !important;
-    padding: 0% !important;
-  }
-  img{
-    max-width: 100% !important;
-  }
-  @media screen and (min-width: 600px) {
-    img{
-      height: 400px !important;
-    }
-  }
-  @media screen and (max-width:600px)  {
-
-    img{
-      max-height: 400px !important;
-    }
-  }
 }
 
 
@@ -111,4 +93,7 @@ footer{
   /* Mise en forme */
   width: 100% !important; /* <-- Largeur de votre site */
   height: 70px !important;
+  @media screen and (max-width: 600px){
+    background-color: white !important;
+  }
 }
