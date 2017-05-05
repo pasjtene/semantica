@@ -3,13 +3,61 @@
 {% block stylesheets %}
 
     {{ parent() }}
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/prefixfree/1.0.7/prefixfree.min.js"></script>
+
     <link href='http://fonts.googleapis.com/css?family=Sintony:400,700&subset=latin-ext' rel='stylesheet' type='text/css'>
     <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
 
     <style>
-        #slide, #slide .carousel{
-            z-index: 9999 !important;
+        #slide{
+            margin: 0% !important;
+            padding: 0% !important;
+            background-size: cover !important;
+            max-height: 100% !important;
+        }
+        @media screen and (min-width: 1024px) {
+            #slide{
+                min-height: 420px !important;
+                {% if app.request.locale=="en" %}
+                    background-image: url({{ asset('data/img/slide/en/slide.jpg') }} ) !important;
+                {% else %}
+                     background-image: url({{ asset('data/img/slide/fr/slide.jpg') }} ) !important;
+                {% endif %}
+            }
+        }
+        @media screen and (max-width: 1024px) {
+            #slide{
+                min-height: 500px !important;
+                {% if app.request.locale=="en" %}
+                    background-image: url({{ asset('data/img/slide/en/slide_mobile.jpg') }} ) !important;
+                {% else %}
+                     background-image: url({{ asset('data/img/slide/fr/slide_mobile.jpg') }} ) !important;
+                {% endif %}
+            }
+        }
+        @media screen and (max-width: 736px) {
+            #slide{
+                min-height: 400px !important;
+            }
+        }
+        @media screen and (max-width: 430px) {
+            #slide{
+                min-height: 300px !important;
+            }
+            #mobile_help{
+                position: fixed !important;
+                top: 1% !important;
+                right: 1% !important;
+                z-index: 99999;
+            }
+            .fixNavigation{
+
+                background-color: white; !important;
+                height: 41px!important;
+            }
+            #menu_small ul,  #menu_small nav{
+                background-color: white !important;
+                height: 149px !important;
+            }
         }
     </style>
 {% endblock %}
@@ -34,7 +82,35 @@
 {% block javascripts %}
     {{ parent() }}
 
-    <script src="{{ asset('components/jsbase/nav.js') }}"></script>
+    <script>
+        $(document).ready(function() {
+            //responsive menu toggle
+            $("#menutoggle").click(function() {
+                $('.xs-menu').toggleClass('displaynone');
+
+            });
+            //add active class on menu
+            $('ul li').click(function(e) {
+                e.preventDefault();
+                $('li').removeClass('active');
+                $(this).addClass('active');
+            });
+            //drop down menu
+            $(".drop-down").hover(function() {
+             $('.mega-menu').addClass('display-on');
+             });
+
+            $("#li_service").hover(function() {
+                $('.mega-menu').removeClass('display-on');
+                $('#m_service').addClass('display-on');
+            });
+            $(".drop-down").mouseleave(function() {
+                $('.mega-menu').removeClass('display-on');
+            });
+
+
+        });
+    </script>
     <!--Start of Tawk.to Script-->
     <script type="text/javascript">
         var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
@@ -76,6 +152,13 @@
             });
 
             $(".button-collapse").sideNav();
+            $("#mobile_help").click(function(e){
+                $('#menu_mobile').trigger('click');
+                  //  alert();
+                e.preventDefaults();
+            });
+
+
         });
     </script>
 {% endblock %}

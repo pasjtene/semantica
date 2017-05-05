@@ -30,7 +30,7 @@ main:
    1, kingsgate, 21-23 Kingsway, GU216JE, Woking, Surrey, UK <br/><br/> 01483 764182
   block2: Hours
   block2_content:  |
-   Monday - Friday: 9am - 5pm <br/><br/> Saturday: By appointment <br/><br/> Sunday: Closed
+   Monday - Friday: 9am - 5pm <br/><br/> Saturday: By appointment  Sunday: Closed
 sendmail:
   content: Click on this link to confirm your registration
   message: We sent an email to this address :
