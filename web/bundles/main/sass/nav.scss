@@ -92,6 +92,12 @@
     -webkit-transition-duration: 0.3s;
     z-index: 9999999999999999999999999;
   }
+
+  .menu-section {
+    min-height: 250px;
+    border-right: 1px solid yellowgreen;
+  }
+
   .active{
     color: #0083c0 !important;
     font-weight: bold;
@@ -226,10 +232,7 @@
       p{
         line-height: inherit !important;
       }
-      .menu-section {
-        min-height: 250px;
-        border-right: 1px solid yellowgreen;
-      }
+
     }
   }
 
