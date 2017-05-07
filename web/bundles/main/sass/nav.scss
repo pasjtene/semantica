@@ -60,6 +60,15 @@
     z-index: 9999999999999999999999999;
   }
 
+  nav.menu:hover {
+    position: relative;
+    min-height: 45px;
+    height: 100%;
+    z-index: 9999999999999999999999999;
+    border-bottom: 4px solid yellowgreen;
+  }
+
+
   .menu > ul > li {
     list-style: none;
     display: inline-block;
@@ -75,7 +84,7 @@
   }
   .menu > ul li a:hover {
     //background:#BC131E !important;
-    background:white !important;
+    background:yellowgreen !important;
     color: #0083c0 !important;
     font-weight: bold;
     transition-duration: 0.3s;
@@ -117,14 +126,18 @@
   .mega-menu {
     background: none repeat scroll 0 0 $auther;
     left: 0;
-    margin-top: 3px;
+    height: 0px;
+    margin-top: 0px;
     position: absolute;
+    overflow: hidden;
     width: 100%;
     padding:15px;
     display:none;
-    transition-duration: 0.9s;
+    //transition-property: width;
+    transition-property: height;
+    transition-duration: 0.3s;
     z-index: 9999999999999999999999999 !important;
-    min-height: 200px !important;
+    min-height: 0px !important;
     color: $secondary !important;
     strong{
       font-weight: bold !important;
@@ -135,7 +148,6 @@
     margin: 0;
     padding: 0;
   }
-
 
   /*--column--*/
   .mm-6column:after, .mm-6column:before, .mm-3column:after, .mm-3column:before{
@@ -178,7 +190,11 @@
 
   .display-on{
     display:block;
-    transition-duration: 0.9s;
+    /*width: 50%;
+   transition-property: width;
+   transition-duration: 2.8s;
+  width: 100%;
+   transition-duration: 0.9s;*/
   }
   .drop-down > a:after{
     content:"\f103";
@@ -210,9 +226,12 @@
       p{
         line-height: inherit !important;
       }
+      .menu-section {
+        min-height: 250px;
+        border-right: 1px solid yellowgreen;
+      }
     }
   }
-
 
 }
 

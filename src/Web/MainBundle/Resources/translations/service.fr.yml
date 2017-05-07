@@ -1,12 +1,7 @@
 service:
   our_service:  Nos services
   our_content:  |
-   <h3>Votre partenaire complet pour votre transformation numérique</h3>
-   STC est l’une des rares entreprises mondiales possédant l’expertise, l’envergure ainsi que la
-   gamme complète de solutions et de services requises pour contribuer au succès de ses clients.</br>
-   Notre modèle de proximité client favorise une compréhension approfondie des activités de nos clients ainsi
-   que l’établissement de solides relations pour mettre en œuvre les solutions numériques novatrices les mieux adaptées,
-   appuyées par notre modèle mondial de prestation de services qui met à profit notre expertise sectorielle et technologique
+   <h3>STC est votre partenaire complet pour votre transformation numérique</h3>
   app_service: Services applicatifs
   app_content:  |
    <h3>Optimisation de la valeur de vos applications</h3>
@@ -34,21 +29,10 @@ service:
   itoutsourcing_service: Services d'infrastructure.
   itoutsourcing_content:  |
    <h3>Notre meilleure offre pour votre infrastructure informatique</h3>
-   STC propose à ses clients des centres de traitement des données écologiques et écoénergétiques,
-   l'informatique en nuage et une gestion déléguée des services de sécurité, le tout appuyé par une
-   gamme unique d'outils de gestion des services d'entreprise. </br> Il ne s'agit là que de quelques-uns des
-   domaines où nous offrons une expertise technologique, industrielle et de domaine ciblée visant à continuellement
-   rehausser les opérations et à stimuler l'innovation. </br> La vaste gamme de solutions, le modèle mondial de prestation de
-   services et les modalités des contrats de CGI procurent aux clients souplesse et choix au sein d'un marché en constante
-   évolution.
+   STC propose à ses clients des centres de traitement des données écologiques et écoénergétiques.
   systintegration_service: Services d'intégration de systèmes
   systintegration_content:  |
    <h3>Interconnecting systems and applications to best run your business</h3>
    Pour améliorer leur performance, des organisations de premier plan comptent sur les services d'intégration de
-   systèmes de STC. Nos professionnels chevronnés aident les clients à concevoir, élaborer et intégrer des systèmes
-   et applications pour optimiser leur fonctionnement. </br> En tant que fournisseur de services complets en technologies de
-   l'information (TI), STC possède une connaissance approfondie de toutes les facettes des activités et des environnements
-   technologiques des clients. </br> Cette expertise nous permet non seulement d'offrir des services-conseils, mais aussi de mettre
-   en œuvre et de gérer des solutions.</br> Nos services sont régis par le modèle mondial de prestation de services de CGI le mieux
-   adapté pour fournir à nos clients la combinaison de valeur et savoir-faire dont ils ont besoin.
+   systèmes de STC.
 

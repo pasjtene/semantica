@@ -98,14 +98,18 @@
             //drop down menu
             $(".drop-down").hover(function() {
              $('.mega-menu').addClass('display-on');
+                $('.mega-menu').height(350);
+
              });
 
             $("#li_service").hover(function() {
                 $('.mega-menu').removeClass('display-on');
                 $('#m_service').addClass('display-on');
+                $('.mega-menu').height(350);
             });
             $(".drop-down").mouseleave(function() {
                 $('.mega-menu').removeClass('display-on');
+                $('.mega-menu').height(0);
             });
 
 
@@ -136,7 +140,7 @@
             // On recupere la position du bloc par rapport au haut du site
             var position_top_raccourci = $("#menu_big").offset().top;
 
-            //Au scroll dans la fenetre on déclenche la fonction
+            //Au scroll dans la fenetre on dï¿½clenche la fonction
             $(window).scroll(function () {
 
                 //si on a defile de plus de 150px du haut vers le bas
