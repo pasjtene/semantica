@@ -1,0 +1,49 @@
+service:
+  our_service:  Our services
+  our_content:  |
+   <h3>Your end-to-end partner in digital transformation</h3>
+   STC is one of the few global firms with the talent, scale and end-to-end services and solutions necessary
+   to help clients succeed holistically. Our client proximity model fosters a deep understanding of clients’
+   businesses and strong relationships to build best-fit innovative digital solutions, supported by our global
+   delivery model that brings forward industry and technology expertise.
+  app_service: Application services
+  app_content:  |
+   <h3>Maximizing the value of your applications</h3>
+   Gaining the most from your IT investments and driving business growth requires effective management of enterprise
+   information systems.</br> Tight IT budgets, increased IT complexity, time-to-market pressures and changing business
+   requirements make it challenging for organizations to ensure their applications are delivering maximum value.
+  business_service: Business consulting
+  business_content:  |
+   <h3>Helping transform your business through a collaborative approach</h3>
+   As a leader, you must continuously cope with ongoing change—whether transforming your business to take advantage
+   of new market opportunities, restructuring to improve operational efficiency, or responding to new regulations and
+   risks.
+  businessproc_service: Business process services
+  businessproc_content:  |
+   <h3>Harnessing business processes and technology to deliver world-class, global services</h3>
+   Today, organizations in all industries are under enormous pressure to do more with less. </br> They require greater
+   efficiency from their business process services (BPS), and seek to maximize revenue, reduce costs and drive growth
+   through innovation.
+  businessproc_service: Infrastructure services
+  infrast_content:  |
+   <h3>Bringing the best to your IT infrastructure</h3>
+   Global competition, changing regulations, shifting customer demands, limited resources, capacity challenges,
+   and budget constraints you've got a lot on your plate. You shouldn't have to worry about your infrastructure.
+   That's our job. With the emergence of cloud computing, virtualization, and mobility, CGI is well aligned with
+   market trends and demands. We offer the technology, processes, and people clients need to transform their IT
+   infrastructure, achieving efficiencies, cost savings and other strategic business outcomes.
+  itoutsourcing_service: IT outsourcing services
+  itoutsourcing_content:  |
+   <h3>Significant savings, predictable IT costs, best practices and customized service quality</h3>
+   STC's IT outsourcing services allow business executives to retain control over IT strategies while
+   benefiting from reduced operating costs and risks without compromising service delivery to end users
+   and their clients.
+  businessproc_service: Systems integration services
+  systintegration_content:  |
+   <h3>Interconnecting systems and applications to best run your business</h3>
+   To enhance performance, leading organizations count on STC's systems integration services. </br> Our talented professionals
+   help clients design, develop and integrate the systems and applications that best run their business.</br> An end-to-end IT
+   services provider, STC has deep expertise in all facets of clients' business and technology environments, enabling us to
+   not only consult but to implement and manage solutions. </br> Our services are complemented by STC's best-fit global delivery
+   approach to provide the combination of value and expertise required.
+
