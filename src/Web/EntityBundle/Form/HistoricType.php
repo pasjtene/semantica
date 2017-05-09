@@ -32,10 +32,9 @@ class HistoricType extends AbstractType
                 'property'=>'firstname',
                 'required'=>true,
                 'multiple'=>false,
-                'empty_value'=>'form.base.empty_project',
                 'translation_domain' => 'forms',
                 'empty_data'=>null
-            ))
+            )) //'empty_value'=>'form.base.empty_project',
             ->add('roles',TextareaType::class,array(
                 'label' => 'form.historic.date',
                 'translation_domain' => 'forms',
@@ -46,10 +45,9 @@ class HistoricType extends AbstractType
                 'property'=>'firstname',
                 'required'=>true,
                 'multiple'=>false,
-                'empty_value'=>'form.base.empty_participator',
                 'translation_domain' => 'forms',
                 'empty_data'=>null
-            ))
+            )) // 'empty_value'=>'form.base.empty_participator',
         ;
     }
     

@@ -40,11 +40,10 @@ class VisitorType extends AbstractType
                    'label' => 'form.person.pleasantries',
                    'choices'=>array('form.person.profesor'=>'form.person.profesor','form.person.doctor'=>'form.person.doctor','form.person.mister'=>'form.person.mister','form.user.missis'=>'form.person.missis'),
                    'multiple'=>false,
-                   'empty_value'=>'form.person.placeholder_pleasantries',
                    'empty_data'=>null,
                    'translation_domain' => 'forms',
                    'required'    => false
-               ))
+               )) // 'empty_value'=>'form.person.placeholder_pleasantries',
                ->add('ip',TextType::class,array(
                    'label' => 'form.visitor.ip',
                    'translation_domain' => 'forms',

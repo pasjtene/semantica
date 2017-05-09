@@ -61,7 +61,7 @@
                     </div>
                 </div>
             </div>
-
+            <div class="" id="register"></div>
             <div class="row">
                 <div class="section">
                     <div class="col s12 m6">
@@ -78,6 +78,7 @@
                     </div>
                 </div>
             </div>
+
 
             {% if app.user==null %}
                 <div class="row">
@@ -98,12 +99,6 @@
                                     </div>
                                     <div class="col s12 m3 l2">
                                         <button class="waves-effect waves-light btn" type="submit" id="signup">{% trans from 'home' %} main.signup {% endtrans %}</button>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col s12 center center-align">
-                                        <br>
-                                        <a href="{{ path('fos_user_security_login') }}" > {% trans from 'home' %} sendmail.member {% endtrans %}</a>
                                     </div>
                                 </div>
                             </div>
@@ -230,46 +225,8 @@
              setTimeout(autoplay, 450000000000);
              }*/
 
-            // On recupere la position du bloc par rapport au haut du site
-            var position_top_raccourci = $("#menu_big").offset().top;
-
-            //Au scroll dans la fenetre on déclenche la fonction
-            $(window).scroll(function () {
-
-                //si on a defile de plus de 150px du haut vers le bas
-                if ($(this).scrollTop() > position_top_raccourci) {
-
-                    //on ajoute la classe "fixNavigation" a <div id="navigation">
-                    $('#menu_big').addClass("fixNavigation");
-                } else {
-
-                    //sinon on retire la classe "fixNavigation" a <div id="navigation">
-                    $('#menu_big').removeClass("fixNavigation");
-                }
-            });
 
 
-
-            //small menu
-            // On recupere la position du bloc par rapport au haut du site
-            var position_top_raccourci = $("#menu_small").offset().top;
-
-            //Au scroll dans la fenetre on déclenche la fonction
-            $(window).scroll(function () {
-
-                //si on a defile de plus de 150px du haut vers le bas
-                if ($(this).scrollTop() > position_top_raccourci) {
-
-                    //on ajoute la classe "fixNavigation" a <div id="navigation">
-                    $('#menu_small').addClass("fixNavigation");
-                    $('#mobile_help').fadeIn();
-                } else {
-
-                    //sinon on retire la classe "fixNavigation" a <div id="navigation">
-                    $('#menu_small').removeClass("fixNavigation");
-                    $('#mobile_help').fadeOut();
-                }
-            });
 
             function verifMail(champ)
 

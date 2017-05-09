@@ -10,11 +10,11 @@ use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 /**
  * User
  * @ORM\Table(name="fos_user")
- * @UniqueEntity(fields="identity", message="user.email.UniqueEntity")
- * @UniqueEntity(fields="identity", message="user.username.UniqueEntity")
+ * @UniqueEntity(fields="email", message="person.email.UniqueEntity")
+ * @UniqueEntity(fields="username", message="person.phone.UniqueEntity")
  * @ORM\Entity(repositoryClass="Web\EntityBundle\Repository\UserRepository")
  */
-  class User extends BaseUser implements Person
+  class User extends BaseUser
 {
 
     const ROLE_SUPER_ADMIN = 'ROLE_SUPER_ADMIN';
@@ -31,7 +31,14 @@ use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
     protected $id;
 
 
-    /**
+      /**
+       * @var string
+       * @ORM\Column(name="status", type="string", length=255)
+       */
+      protected $status;
+
+
+      /**
      * @var string
      * @Assert\NotBlank(message="person.firstname.NotBlank")
      * @ORM\Column(name="firstname", type="string", length=255)
@@ -65,6 +72,13 @@ use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
      * @ORM\Column(name="country", type="string", length=255, nullable=true)
      */
     protected $country;
+
+      /**
+       * @var string
+       *
+       * @ORM\Column(name="picture", type="string", length=255, nullable=true)
+       */
+      protected $picture;
 
     /**
      * Get id
@@ -219,4 +233,52 @@ use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
       {
           return $this->country;
       }
+
+    /**
+     * Set status
+     *
+     * @param string $status
+     *
+     * @return User
+     */
+    public function setStatus($status)
+    {
+        $this->status = $status;
+
+        return $this;
+    }
+
+    /**
+     * Get status
+     *
+     * @return string
+     */
+    public function getStatus()
+    {
+        return $this->status;
+    }
+
+    /**
+     * Set picture
+     *
+     * @param string $picture
+     *
+     * @return User
+     */
+    public function setPicture($picture)
+    {
+        $this->picture = $picture;
+
+        return $this;
+    }
+
+    /**
+     * Get picture
+     *
+     * @return string
+     */
+    public function getPicture()
+    {
+        return $this->picture;
+    }
 }

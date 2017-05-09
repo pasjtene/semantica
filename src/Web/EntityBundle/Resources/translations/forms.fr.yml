@@ -17,6 +17,12 @@ form:
     empty_visitor: Choisir un visiteur
     projecy: Projet
     empty_project: Choisir un projet
+    name: Nom
+    placeholder_name: Votre nom
+    email: Email
+    placeholder_email: Votre adresse email
+    phone: Téléphone
+    placeholder_phone: Votre téléphone
   cancelling:
     addcode: Code de base
     adddate: Date d'enregistement
@@ -48,6 +54,8 @@ form:
   project:
     title: Titre
     placeholder_title: Donner le titre de votre projet
+    description: Description
+    placeholder_desciption: Donner une petite description du  projet
     company: Entreprise
     placeholder_company: Nom de votre entreprise
     file: Fichier
@@ -77,22 +85,24 @@ form:
     identity: Identifiant
   user:
     email: Adresse email
-    placeholder_email:  pasjtene@yahoo.co.uk
+    placeholder_email:  Saisir votre adresse email
     username: Numéro de téléphone
-    placeholder_username: 00447515975500
+    placeholder_username: Saisir votre numéro de téléphone
     password: Mot de passe
-    placeholder_password: monmotdepasse
+    placeholder_password: Saisir votre mot  de passe
     country: Country
     placeholder_country: United Kingdom
     city: City
     placeholder_city: England
-    sex: Sex
-    male: Masculin
-    female: Feminin
-    placeholder_sex: Male
+    doctor: Dr
+    profesor: Pr
+    mister: M.
+    missis: Mme
+    pleasantries: Civilité
+    placeholder_pleasantries: Choisir votre civilité
     firstname: First name
-    placeholder_firstname:   Tene
-    lastname: Last name
-    placeholder_lastname: Pascal
+    placeholder_firstname:   Entrer votre nom
+    lastname: Prénom
+    placeholder_lastname: Entrer votre prénom
     save: Enregistré
 

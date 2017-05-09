@@ -1,8 +1,10 @@
-$default_text : #725B54;
-$secondary_text : #5e5e5e;
+$default_text :#E7E7E7; //#725B54;
+$secondary_text : yellowgreen; //#5e5e5e;
 $auther : #E7E7E7;
 $default : white;
 $secondary : #111111;
+$secondary_color : yellowgreen;
+$blue_color : #0083c0;
 
 #nav{
 
@@ -96,4 +98,12 @@ footer{
   @media screen and (max-width: 600px){
     background-color: white !important;
   }
+}
+
+.btn{
+  background-color: $secondary_text !important;
+}
+.error{
+  color: red !important;
+  background: transparent !important;
 }

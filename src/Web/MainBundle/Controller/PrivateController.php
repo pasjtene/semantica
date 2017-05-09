@@ -33,7 +33,7 @@ class PrivateController extends Controller
 
 
         $em = $this->getDoctrine()->getManager();
-        $list = $em->getRepository("EntityBundle:Projet")->findBy(['email'=>$user->getEmail()],['id'=>'DESC','time'=>'DESC']);
+        $list = $em->getRepository("EntityBundle:Projet")->findBy(['user'=>$user],['id'=>'DESC','date'=>'DESC']);
         $array['list'] = $list;
 
         $objet = $em->getRepository("EntityBundle:User")->find($user->getId());
