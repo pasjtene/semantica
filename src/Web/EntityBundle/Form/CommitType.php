@@ -38,10 +38,9 @@ class CommitType extends AbstractType
                 'property'=>'firstname',
                 'required'=>true,
                 'multiple'=>false,
-                'empty_value'=>'form.base.empty_participator',
                 'translation_domain' => 'forms',
                 'empty_data'=>null
-            ));
+            )); //'empty_value'=>'form.base.empty_participator',
     }
     
     /**

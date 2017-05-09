@@ -32,7 +32,7 @@ main:
   block2_content:  |
    Monday - Friday: 9am - 5pm <br/><br/> Saturday: By appointment  Sunday: Closed
 sendmail:
-  content: Click on this link to confirm your registration
+  content: Click on this link to continious your registration
   message: We sent an email to this address :
   error: %placeholder% is already exist
   confirm: Successful registration

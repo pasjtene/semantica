@@ -102,4 +102,52 @@ class Suggestion extends BaseInterface
     {
         return $this->person;
     }
+
+    /**
+     * Set visitor
+     *
+     * @param \Web\EntityBundle\Entity\visitor $visitor
+     *
+     * @return Suggestion
+     */
+    public function setVisitor(\Web\EntityBundle\Entity\visitor $visitor = null)
+    {
+        $this->visitor = $visitor;
+
+        return $this;
+    }
+
+    /**
+     * Get visitor
+     *
+     * @return \Web\EntityBundle\Entity\visitor
+     */
+    public function getVisitor()
+    {
+        return $this->visitor;
+    }
+
+    /**
+     * Set user
+     *
+     * @param \Web\EntityBundle\Entity\user $user
+     *
+     * @return Suggestion
+     */
+    public function setUser(\Web\EntityBundle\Entity\user $user = null)
+    {
+        $this->user = $user;
+
+        return $this;
+    }
+
+    /**
+     * Get user
+     *
+     * @return \Web\EntityBundle\Entity\user
+     */
+    public function getUser()
+    {
+        return $this->user;
+    }
 }

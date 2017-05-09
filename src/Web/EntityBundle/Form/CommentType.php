@@ -32,28 +32,25 @@ class CommentType extends AbstractType
                 'property'=>'title',
                 'required'=>true,
                 'multiple'=>false,
-                'empty_value'=>'form.base.empty_project',
                 'translation_domain' => 'forms',
                 'empty_data'=>null
-            ))
+            )) //  'empty_value'=>'form.base.empty_project',
             ->add('task',EntityType::class,array(
                 'class'=>"EntityBundle:Task",
                 'property'=>'identity',
                 'required'=>true,
                 'multiple'=>false,
-                'empty_value'=>'form.base.empty_task',
                 'translation_domain' => 'forms',
                 'empty_data'=>null
-            ))
+            )) //   'empty_value'=>'form.base.empty_task',
             ->add('user',EntityType::class,array(
                 'class'=>"EntityBundle:User",
                 'property'=>'firstname',
                 'required'=>true,
                 'multiple'=>false,
-                'empty_value'=>'form.base.empty_user',
                 'translation_domain' => 'forms',
                 'empty_data'=>null
-            ));
+            )); // 'empty_value'=>'form.base.empty_user',
     }
     
     /**
