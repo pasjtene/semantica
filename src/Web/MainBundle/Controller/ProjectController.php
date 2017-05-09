@@ -2,6 +2,7 @@
 
 namespace Web\MainBundle\Controller;
 
+use Symfony\Bridge\Doctrine\Tests\Fixtures\User;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\Config\Tests\Util\Validator;
@@ -69,7 +70,7 @@ class ProjectController extends Controller
                     $vistor->setFirstname($objet->getUser()->getFirstname());
                     $vistor->setIp($ip);
                     $visitorcurrent =$em->getRepository('EntityBundle:Visitor')->findOneByemail($objet->getUser()->getEmail());
-                    if($user !=null)
+                    if($visitorcurrent !=null)
                     {
                         $vistor = $visitorcurrent;
                     }
@@ -97,6 +98,14 @@ class ProjectController extends Controller
             }
 
         }
+        /** @var \Web\EntityBundle\Entity\User $user */
+        $user = $this->container->get('security.token_storage')->getToken()->getUser();
+       /* if($user!=null)
+        {
+            $em = $this->getDoctrine()->getManager();
+            $user =$em->getRepository('EntityBundle:User')->find($user->getId());
+            $objet->setUser($user);
+        }*/
         $array['form'] = $form->createView();
         $array['objet'] = $objet;
         return $this->render('MainBundle:Project:index.html.twig',$array);
