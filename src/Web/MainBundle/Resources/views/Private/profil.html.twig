@@ -1,0 +1,160 @@
+{% extends 'MainBundle::layout.html.twig' %}
+{% block meta %}
+    <meta name = "{% trans from 'refer' %} home.title {% endtrans %}" >
+    <meta name = "keywords" content = "{% trans from 'refer' %} home.description {% endtrans %}" >
+{% endblock %}
+{% block title %}
+    Semantica Technologies Corporation - STC
+{% endblock %}
+
+
+{% block mycss %}
+    <link rel="stylesheet" href="{{ asset('components/cssbase/datatablehelp.css') }}">
+    <link rel="stylesheet" href="{{ asset('components/cssbase/datatablehelp2.css') }}">
+    <style>
+
+        strong{
+            font-weight: bold;
+        }
+    </style>
+{% endblock %}
+{% block header %}
+    {{ parent() }}
+    <div class="row">
+        <div class="col s4">
+            <div class="" id="vertical_nav">
+                <ul>
+                    <li><a class="active" href="#home">Home</a></li>
+                    <li><a href="#news">News</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                    <li><a href="#about">About</a></li>
+                </ul>
+
+            </div>
+        </div>
+        <div class="col s8 ">
+            <table class="bordered responsive-table ">
+                <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Item Name</th>
+                    <th>Item Price</th>
+                </tr>
+                </thead>
+
+                <tbody>
+                <tr>
+                    <td>Alvin</td>
+                    <td>Eclair</td>
+                    <td>$0.87</td>
+                </tr>
+                <tr>
+                    <td>Alan</td>
+                    <td>Jellybean</td>
+                    <td>$3.76</td>
+                </tr>
+                <tr>
+                    <td>Jonathan</td>
+                    <td>Lollipop</td>
+                    <td>$7.00</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+{% endblock %}
+{% block  main %}
+
+    <div class="row" id="main_account">
+        <div class="col l12">
+            <br><br>
+
+            <div id="profile" class="modal modal-fixed-footer">
+                <form action="{{ path('main_private') }}" id="form" method="post">
+                <div class="modal-content">
+                    <h4>{% trans from 'private' %} private.profile {% endtrans %}</h4>
+                    <div class="row">
+                        <div class="row">
+                            <div class="input-field col s12 m6 ">
+                                {{ form_widget(form.firstname,{'attr':{'class':''}}) }}
+                                {{ form_label(form.firstname) }}
+                                <div class="error"  >{{ form_errors(form.firstname) }}</div>
+                            </div>
+                            <div class="input-field col s12 m6 ">
+                                {{ form_widget(form.lastname,{'attr':{'class':''}}) }}
+                                {{ form_label(form.lastname) }}
+                                <div class="error"  >{{ form_errors(form.lastname) }}</div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="input-field col s12 m6 ">
+                                {{ form_widget(form.username,{'attr':{'class':''}}) }}
+                                {{ form_label(form.username) }}
+                                <div class="error"  >{{ form_errors(form.username) }}</div>
+                            </div>
+                            <div class="input-field col s12 m6 ">
+                                {{ form_widget(form.email,{'attr':{'class':''}}) }}
+                                {{ form_label(form.email) }}
+                                <div class="error"  >{{ form_errors(form.email) }}</div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="input-field col s12 m6 ">
+                                {{ form_widget(form.pleasantries,{'attr':{'class':''}}) }}
+                                {{ form_label(form.pleasantries) }}
+                                <div class="error"  >{{ form_errors(form.pleasantries) }}</div>
+                            </div>
+                            <div class="input-field col s12 m6 ">
+                                {{ form_widget(form.country,{'attr':{'class':''}}) }}
+                                {{ form_label(form.country) }}
+                                <div class="error"  >{{ form_errors(form.country) }}</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button class="waves-effect waves-light btn" type="submit" id="send">{% trans from 'forms' %} form.user.save {% endtrans %}</button>
+                </div>
+                </form>
+            </div>
+
+        </div>
+    </div>
+{% endblock %}
+
+{% block myjs %}
+    <script>
+        $(document).ready(function() {
+            $(".button-collapse").sideNav();
+            $('#table').dataTable();
+            $('select').material_select();
+            $('.modal').modal();
+
+            $('.delete_projet').click(function(e){
+                if(!confirm($('#'+$(this).data('id')).text().trim()))
+                {
+                    e.preventDefault();
+                }
+            });
+
+            // On recupere la position du bloc par rapport au haut du site
+            var position_top_raccourci = $("#menu_big").offset().top;
+
+            //Au scroll dans la fenetre on déclenche la fonction
+            $(window).scroll(function () {
+
+                //si on a defile de plus de 150px du haut vers le bas
+                if ($(this).scrollTop() > position_top_raccourci) {
+
+                    //on ajoute la classe "fixNavigation" a <div id="navigation">
+                    $('#menu_big').addClass("fixNavigation");
+                } else {
+
+                    //sinon on retire la classe "fixNavigation" a <div id="navigation">
+                    $('#menu_big').removeClass("fixNavigation");
+                }
+            });
+
+        } );
+    </script>
+{% endblock %}
