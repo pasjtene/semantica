@@ -10,4 +10,4 @@ project:
   auther: Auther
   commit: Commit
   message: Message
-  date: Date
+date: Date

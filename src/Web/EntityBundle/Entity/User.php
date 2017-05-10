@@ -10,8 +10,13 @@ use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 /**
  * User
  * @ORM\Table(name="fos_user")
+<<<<<<< Temporary merge branch 1
  * @UniqueEntity(fields="email", message="person.email.UniqueEntity")
  * @UniqueEntity(fields="username", message="person.phone.UniqueEntity")
+=======
+ * @UniqueEntity(fields="email", message="user.email.UniqueEntity")
+ * @UniqueEntity(fields="username", message="user.username.UniqueEntity")
+>>>>>>> Temporary merge branch 2
  * @ORM\Entity(repositoryClass="Web\EntityBundle\Repository\UserRepository")
  */
   class User extends BaseUser

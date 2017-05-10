@@ -31,152 +31,144 @@
                 {% trans from 'forms' %} form.project.save  {% endtrans %}
             </div>
         {% endif %}
-       <div class="col s12">
-           <br>
-          <div class="card">
-              <form method="post" action="" enctype="multipart/form-data">
-                  <div class="row">
-                      <div class="row">
-                          <div class="col s12">
-                              <div class="input-field col s12 m6 ">
-                                  {{ form_widget(form.user.firstname,{'attr':{'class':''}}) }}
-                                  {{ form_label(form.user.firstname) }}
-                                  <div class="error"  >{{ form_errors(form.user.firstname) }}</div>
-                              </div>
-                              <div class="input-field col s12 m6 ">
-                                  {{ form_widget(form.user.email,{'attr':{'class':''}}) }}
-                                  {{ form_label(form.user.email) }}
-                                  <div class="error"  >{{ form_errors(form.user.email) }}</div>
-                              </div>
-                          </div>
-                      </div>
-                      <div class="row">
-                          <div class="col s12">
-                              <div class="input-field col s12 m6 ">
-                                  {{ form_widget(form.user.username,{'attr':{'class':''}}) }}
-                                  {{ form_label(form.user.username) }}
-                                  <div class="error"  >{{ form_errors(form.user.username) }}</div>
-                              </div>
+        <div class="col s12">
+            <br>
+            <div class="card">
+                <form method="post" action="" enctype="multipart/form-data">
+                    <div class="row">
+                        <div class="row">
+                            <div class="col s12">
+                                <div class="input-field col s12 m6 ">
+                                    {{ form_widget(form.user.firstname,{'attr':{'class':''}}) }}
+                                    {{ form_label(form.user.firstname) }}
+                                    <div class="error"  >{{ form_errors(form.user.firstname) }}</div>
+                                </div>
+                                <div class="input-field col s12 m6 ">
+                                    {{ form_widget(form.user.email,{'attr':{'class':''}}) }}
+                                    {{ form_label(form.user.email) }}
+                                    <div class="error"  >{{ form_errors(form.user.email) }}</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col s12">
+                                <div class="input-field col s12 m6 ">
+                                    {{ form_widget(form.user.username,{'attr':{'class':''}}) }}
+                                    {{ form_label(form.user.username) }}
+                                    <div class="error"  >{{ form_errors(form.user.username) }}</div>
+                                </div>
 
-                              <div class="input-field col s12 m6 ">
-                                  {{ form_widget(form.title,{'attr':{'class':''}}) }}
-                                  {{ form_label(form.title) }}
-                                  <div class="error"  >{{ form_errors(form.title) }}</div>
-                              </div>
-                          </div>
-                      </div>
+                                <div class="input-field col s12 m6 ">
+                                    {{ form_widget(form.title,{'attr':{'class':''}}) }}
+                                    {{ form_label(form.title) }}
+                                    <div class="error"  >{{ form_errors(form.title) }}</div>
+                                </div>
+                            </div>
+                        </div>
 
-                      <div class="row">
-                          <div class="col s12">
-                              <div class="input-field col s12">
-                                  <i class="material-icons prefix">mode_edit</i>
-                                  {{ form_widget(form.description,{'attr':{'class':'materialize-textarea'}}) }}
-                                  {{ form_label(form.description) }}
-                                  <div class="error"  >{{ form_errors(form.description) }}</div>
-                              </div>
-                          </div>
-                      </div>
-                      <div class="row">
-                         <div class="col s12">
-                             <div class="file-field input-field col s12 ">
-                                 <div class="btn">
-                                     <span>{% trans from 'forms' %} form.project.file {% endtrans %}</span>
-                                     {{ form_widget(form.file,{'attr':{'class':''}}) }}
-                                 </div>
-                                 <div class="file-path-wrapper">
-                                     {# accept=".xlsx,.xls,image/*,.doc,.docx,.ppt,.pptx,.txt,.pdf,.zip,.7z,.rar" #}
-                                     <input class="file-path validate" type="text"  placeholder="{% trans from 'forms' %} form.project.placeholder_file {% endtrans %}">
-                                 </div>
-                                 <div class="error"  >{{ form_errors(form.file) }}</div>
-                             </div>
-                         </div>
-                      </div>
+                        <div class="row">
+                            <div class="col s12">
+                                <div class="input-field col s12">
+                                    <i class="material-icons prefix">mode_edit</i>
+                                    {{ form_widget(form.description,{'attr':{'class':'materialize-textarea'}}) }}
+                                    {{ form_label(form.description) }}
+                                    <div class="error"  >{{ form_errors(form.description) }}</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col s12">
+                                <div class="file-field input-field col s12 ">
+                                    <div class="btn">
+                                        <span>{% trans from 'forms' %} form.project.file {% endtrans %}</span>
+                                        {{ form_widget(form.file,{'attr':{'class':''}}) }}
+                                    </div>
+                                    <div class="file-path-wrapper">
+                                        {# accept=".xlsx,.xls,image/*,.doc,.docx,.ppt,.pptx,.txt,.pdf,.zip,.7z,.rar" #}
+                                        <input class="file-path validate" type="text"  placeholder="{% trans from 'forms' %} form.project.placeholder_file {% endtrans %}">
+                                    </div>
+                                    <div class="error"  >{{ form_errors(form.file) }}</div>
+                                </div>
+                            </div>
+                        </div>
 
 
-                      <ul class="collapsible" data-collapsible="accordion">
-                          <li>
-                              <div class="collapsible-header">{% trans from 'home' %} projet.optional {% endtrans %}</div>
-                              <div class="collapsible-body">
-                                  <div class="row ">
-                                      <div class="col s12 m6">
-                                          <div class="input-field col s12   ">
-                                              {{ form_widget(form.user.city,{'attr':{'class':''}}) }}
-                                              {{ form_label(form.user.city) }}
-                                              <div class="error"  >{{ form_errors(form.user.city) }}</div>
-                                          </div>
-                                      </div>
-                                     <div class="col s12 m6">
-                                         <div class="input-field col s12 ">
-                                             {{ form_widget(form.user.country,{'attr':{'class':''}}) }}
-                                             {{ form_label(form.user.country) }}
-                                             <div class="error"  >{{ form_errors(form.user.country) }}</div>
-                                         </div>
-                                     </div>
-                                  </div>
-                                  <div class="row ">
-                                      <div class="col s12 m6">
-                                          <div class="input-field col s12 ">
-                                              {{ form_widget(form.company,{'attr':{'class':''}}) }}
-                                              {{ form_label(form.company) }}
-                                              <div class="error"  >{{ form_errors(form.company) }}</div>
-                                          </div>
-                                      </div>
-                                      <div class="col s12 m6">
-                                          <div class="input-field col s12 ">
-                                              {{ form_widget(form.user.pleasantries,{'attr':{'class':''}}) }}
-                                              {{ form_label(form.user.pleasantries) }}
-                                              <div class="error"  >{{ form_errors(form.user.pleasantries) }}</div>
-                                          </div>
-                                      </div>
-                                  </div>
+                        <ul class="collapsible" data-collapsible="accordion">
+                            <li>
+                                <div class="collapsible-header">{% trans from 'home' %} projet.optional {% endtrans %}</div>
+                                <div class="collapsible-body">
+                                    <div class="row ">
+                                        <div class="col s12 m6">
+                                            <div class="input-field col s12   ">
+                                                {{ form_widget(form.user.city,{'attr':{'class':''}}) }}
+                                                {{ form_label(form.user.city) }}
+                                                <div class="error"  >{{ form_errors(form.user.city) }}</div>
+                                            </div>
+                                        </div>
+                                        <div class="col s12 m6">
+                                            <div class="input-field col s12 ">
+                                                {{ form_widget(form.user.country,{'attr':{'class':''}}) }}
+                                                {{ form_label(form.user.country) }}
+                                                <div class="error"  >{{ form_errors(form.user.country) }}</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row ">
+                                        <div class="col s12 m6">
+                                            <div class="input-field col s12 ">
+                                                {{ form_widget(form.company,{'attr':{'class':''}}) }}
+                                                {{ form_label(form.company) }}
+                                                <div class="error"  >{{ form_errors(form.company) }}</div>
+                                            </div>
+                                        </div>
+                                        <div class="col s12 m6">
+                                            <div class="input-field col s12 ">
+                                                {{ form_widget(form.user.pleasantries,{'attr':{'class':''}}) }}
+                                                {{ form_label(form.user.pleasantries) }}
+                                                <div class="error"  >{{ form_errors(form.user.pleasantries) }}</div>
+                                            </div>
+                                        </div>
+                                    </div>
 
-                              </div>
-                          </li>
-                      </ul>
+                                </div>
+                            </li>
+                        </ul>
 
-                  </div>
-                  <div class="row">
-                      <div class="col s12 center center-align">
-                          <button class="waves-effect waves-light btn" type="submit">{% trans from 'forms' %} form.project.submit {% endtrans %} </button>
-                      </div>
-                  </div>
-              </form>
-          </div>
-       </div>
+                    </div>
+                    <div class="row">
+                        <div class="col s12 center center-align">
+                            <button class="waves-effect waves-light btn" type="submit">{% trans from 'forms' %} form.project.submit {% endtrans %} </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
     </div>
 {% endblock %}
 
 {% block myjs %}
     <script>
-
-            $(function(){
-                $('select').material_select();
-
-                {% if message is defined  %}
-                    $('#notification').slideDown(100);
-                    t = setInterval(function(){
-                        $('#notification').slideUp();
-                        clearInterval(t);
-                    },4000);
-                {% endif %}
-
+        $(function(){
+            $('select').material_select();
+            {% if message is defined  %}
+            $('#notification').slideDown(100);
+            t = setInterval(function(){
+                $('#notification').slideUp();
+                clearInterval(t);
+            },4000);
+            {% endif %}
             function verifMail(champ)
-
             {
-
                 var regex = /^[a-zA-Z0-9._-]+@[a-z0-9._-]{2,}\.[a-z]{2,4}$/;
-
                 if(!regex.test(champ))
                 {
                     return false;
                 }
-
                 else
                 {
                     return true;
                 }
             }
-
         });
     </script>
 
