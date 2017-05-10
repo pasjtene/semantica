@@ -44,7 +44,7 @@ class ProjectController extends Controller
                 $file->add($file->initialpath."projet",  $objet->getHashfiles());
             }
 
-            $objet->setCode(uniqid())->setState(true)->setStatus("En cours")->getUser()->setRoles(['ROLE_USER'])->setEnabled(true)->setPassword("test")->setPleasantries("M.");
+            $objet->setCode(uniqid())->setState(true)->setStatus("0")->getUser()->setRoles(['ROLE_USER'])->setEnabled(true)->setPassword("test")->setPleasantries("M.");
 
 
 

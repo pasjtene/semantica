@@ -124,5 +124,29 @@ inf:
    cost-effective, innovative, and energy-efficient service centers.
    </li>
    </ul>
+our:
+  title:  SERVICES
+  block1: OURS SERVICES
+  block1_content:  |
+   STC is one of the few global firms with the talent, scale and end-to-end services and solutions necessary to help
+   clients succeed holistically. Our client proximity model fosters a deep understanding of clients’ businesses and
+   strong relationships to build best-fit innovative digital solutions, supported by our global delivery model that
+    brings forward industry and technology expertise.
+  block2:  Our services include:
+  block2_content:  |
+
+   <ul>
+   <li>High-end business and IT consulting with a focus on digital;</li>
+   </ul>
+   <ul>
+   <li>Systems integration to connect legacy assets with digital business and operating models;</li>
+   </ul>
+   <ul>
+   <li>Transformational outsourcing to improve both how they run and change their organizations;</li>
+   </ul>
+   <ul>
+   <li>Intellectual property that acts as a digital business accelerator.</li>
+   </ul>
+
 
 
