@@ -79,7 +79,7 @@ class ProjectController extends Controller
                 {
                     $vistor = $visitorcurrent;
                 }
-                else if ($visitorcurrent =$em->getRepository('EntityBundle:Visitor')->findOneBphone($objet->getUser()->getUsername())!=null)
+                else if ($visitorcurrent =$em->getRepository('EntityBundle:Visitor')->findOneByphone($objet->getUser()->getUsername())!=null)
                 {
                     $vistor = $visitorcurrent;
                 }
