@@ -1,0 +1,13 @@
+private:
+  account: Account
+  profile: My profile
+  project: My project
+  comment: Comment
+  commit: Commit
+  find: Find commit
+  choose_project: Choose a project
+project:
+  auther: Auther
+  commit: Commit
+  message: Message
+  date: Date
