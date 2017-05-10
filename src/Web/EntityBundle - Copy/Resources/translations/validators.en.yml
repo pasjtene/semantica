@@ -1,0 +1,62 @@
+base:
+  description:
+    NotBlank: The description is required
+  date:
+    NotBlank: The date is required
+cancelling:
+  addcode:
+    NotBlank: The add code is required
+    UniqueEntity: This add code is already  exist
+  adddescription:
+    NotBlank: The add description is required
+  adddate:
+    NotBlank: The add date is required
+commit:
+  code:
+    NotBlank: The code is required
+    UniqueEntity: This code is already exist
+historic:
+  startdate:
+    NotBlank: The start date is required
+  roles:
+    NotBlank: The roles is required
+participator:
+  code:
+    NotBlank: The code is required
+    UniqueEntity: This code is already exist
+person:
+  firstname:
+    NotBlank: The first name is required
+  phone:
+    UniqueEntity: This phone number is already exist
+  email:
+    NotBlank: Email address is required
+    UniqueEntity: This email address is already exist
+  pleasantries:
+    NotBlank: The pleasantries is required
+planning:
+  startdate:
+    NotBlank: The start  date is required
+  enddate:
+    NotBlank: The end date is required
+project:
+  title:
+    NotBlank: The title is required
+  description:
+    NotBlank: The project description is required
+  files:
+    NotBlank: The load cache is required
+    maxSizeMessage: The file max size is 5MB
+task:
+  libelle:
+    NotBlank: The libele is required
+  identity:
+    NotBlank: The identity is required
+    UniqueEntity: This identity is already exist
+user:
+  phone:
+    NotBlank: The phone number is required
+  password:
+    NotBlank: The password is required
+
+
