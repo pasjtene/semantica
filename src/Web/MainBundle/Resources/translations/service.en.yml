@@ -29,3 +29,100 @@ service:
   systintegration_content:  |
    <h3></BR>Interconnecting systems and applications to best run your business</h3>
    To enhance performance, leading organizations count on STC's systems integration services.
+business:
+  title:  BUSINESS CONSULTING
+  block1: Helping transform your business through a collaborative approach
+  block1_content:  |
+   <P>
+   As a leader, you must continuously cope with ongoing change—whether transforming your business to take
+   advantage of new market opportunities, restructuring to improve operational efficiency, or responding to
+   new regulations and risks. This requires a rapid, proven and agile response, which ensures that the right people,
+    processes and technologies are in place to enable peak performance, no matter the competitive and economic conditions.
+   </P>
+   <P>
+   With STC business consulting, you have the expertise needed to help grow your business, drive revenue,
+   improve efficiency and become more agile. Founded in 2016, STC is among the leading end-to-end IT services
+   and business consultancy companies. We have the capabilities and scale required to combine cross-industry,
+   operational and technology expertise to successfully manage transformation and provide for lasting business
+   performance. We take a unique approach to consulting—listening and co-innovating with our clients to ensure lasting success.
+   </P>
+  block2:   Experience and expertise :
+  block2_content:  |
+   <ul>
+   <li>We helped a global cosmetics leader redefine its internal control policy that reduced risk exposures by almost
+   75% for its subsidiaries within many countries;</li>
+   </ul>
+   <ul>
+   <li>After a merger, we assisted a logistics leader in updating its global supply chain, centralizing its
+   financial organization and rationalizing the management of its cash flow within 8 months.;</li>
+   </ul>
+   <ul>
+   <li>We provided consulting support for a global insurance provider's implementation of a new sales approach and adoption of
+   digital tablets within just 6 months, resulting in greater customer interaction.;</li>
+   </ul>
+application:
+  title:  SERVICES D'INFRASTRUCTURE
+  block1: Maximizing the value of your applications
+  block1_content:  |
+   <P>Gaining the most from your IT investments and driving business growth requires effective management of
+   enterprise information systems. Tight IT budgets, increased IT complexity, time-to-market pressures and changing
+   business requirements make it challenging for organizations to ensure their applications are delivering maximum value.
+   </P>
+   <P>STC’s application services—including application development, management, testing, portfolio management and
+   modernization—enable clients to overcome these challenges and drive business agility, transformation and cost
+   efficiencies. Our end-to-end services provide the technology and industry expertise, solutions, skills, frameworks
+   and processes our clients need to successfully build, run and evolve their enterprise applications.
+   </P>
+  block2:   Experience and expertise :
+  block2_content:  |
+
+   <ul>
+   <li>Empowered local teams backed by global resources with a strong track record of quality delivery and high client satisfaction;</li>
+   </ul>
+   <ul>
+   <li>Flexible, best-fit global delivery model, including onsite, onshore, nearshore and offshore options;</li>
+   </ul>
+   <ul>
+   <li>Standardized productivity tools and processes;</li>
+   </ul>
+   <ul>
+   <li>Integrated, end-to-end service process model focused on business objectives and outcomes.</li>
+   </ul>
+inf:
+  title:  INFRASTRUCTURE SERVICES
+  block1: Bringing the best to your IT infrastructure
+  block1_content:  |
+   <P>
+   Global competition, changing regulations, shifting customer demands, limited resources,
+   capacity challenges, and budget constraints you've got a lot on your plate. You shouldn't have
+   to worry about your infrastructure. That's our job. With the emergence of cloud computing, virtualization,
+   and mobility, CGI is well aligned with market trends and demands. We offer the technology, processes, and people
+   clients need to transform their IT infrastructure, achieving efficiencies, cost savings and other strategic business outcomes.
+   </P>
+   <P>
+   We offer our clients energy-efficient green data centers, cloud computing and managed security services,
+   all supported by a unique enterprise service management toolset. These are just a few of the areas where our
+   technology, industry, and domain experts are driving innovation and operational improvements. In addition, STC
+   global delivery model, wide range of solutions, and contract terms provide clients with flexibility and choice in
+   an ever-changing market.
+   </P>
+  block2:  Experience and expertise :
+  block2_content:  |
+
+   <ul>
+   <li>
+   Quality delivery – STC's outcome-based delivery model and rigorous governance framework achieve the results you expect
+   </li>
+   </ul>
+   <ul>
+   <li>Choice and flexibility – STC offers a wide spectrum of innovative, IP-based solutions that are designed for
+   clients of all sizes and adaptable to their unique needs;</li>
+   </ul>
+   <ul>
+   <li>
+   Transforming creativity into a commodity – STC professionals provide industry leadership through our
+   cost-effective, innovative, and energy-efficient service centers.
+   </li>
+   </ul>
+
+
