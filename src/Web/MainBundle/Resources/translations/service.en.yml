@@ -1,34 +1,29 @@
 service:
   our_service:  Our services
   our_content:  |
-   <h3>STC is your end-to-end partner in digital transformation</h3>
+   <h3>STC is your end-to-end partner in digital transformation.</h3>
   app_service: Application services
   app_content:  |
-   <h3>Maximizing the value of your applications</h3>
-   Gaining the most from your IT investments and driving business growth requires effective management of enterprise
-   information systems.</br> Tight IT budgets, increased IT complexity, time-to-market pressures and changing business
-   requirements make it challenging for organizations to ensure their applications are delivering maximum value.
+   <h3>Maximizing the value of your applications.</h3>
+
   business_service: Business consulting
   business_content:  |
-   <h3>Helping transform your business through a collaborative approach</h3>
-   As a leader, you must continuously cope with ongoing change.
+   <h3>Helping transform your business through a collaborative approach.</h3>
+
+
   businessproc_service: Business process services
   businessproc_content:  |
-   <h3>Harnessing business processes and technology to deliver world-class, global services</h3>
-   Today, organizations in all industries are under enormous pressure to do more with less.
+   <h3>Harnessing business processes and technology to deliver world-class, global services.</h3>
+
   businessproc_service: Infrastructure services
   infrast_content:  |
-   <h3>Bringing the best to your IT infrastructure</h3>
-   Global competition, changing regulations, shifting customer demands, limited resources, capacity challenges,
-   and budget constraints you've got a lot on your plate.
+   <h3>Bringing the best to your IT infrastructure.</h3>
+
   itoutsourcing_service: IT outsourcing services
   itoutsourcing_content:  |
-   <h3>Significant savings, predictable IT costs, best practices and customized service quality</h3>
-   STC's IT outsourcing services allow business executives to retain control over IT strategies while
-   benefiting from reduced operating costs and risks without compromising service delivery to end users
-   and their clients.
+   <h3>Significant savings, predictable IT costs, best practices and customized service quality.</h3>
+
   businessproc_service: Systems integration services
   systintegration_content:  |
-   <h3>Interconnecting systems and applications to best run your business</h3>
-   To enhance performance, leading organizations count on STC's systems integration services.
+   <h3>Interconnecting systems and applications to best run your business.</h3>
 
