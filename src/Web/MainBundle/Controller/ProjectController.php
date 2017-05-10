@@ -2,7 +2,6 @@
 
 namespace Web\MainBundle\Controller;
 
-use Symfony\Bridge\Doctrine\Tests\Fixtures\User;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\Config\Tests\Util\Validator;
@@ -10,7 +9,6 @@ use Symfony\Component\Form\Form;
 use Symfony\Component\HttpFoundation\Request;
 use Web\EntityBundle\Entity\Files;
 use Web\EntityBundle\Entity\Projet;
-use Web\EntityBundle\Entity\Visitor;
 use Web\EntityBundle\Form\ProjetType;
 
 /**
@@ -26,6 +24,7 @@ class ProjectController extends Controller
 
 
         $objet = new Projet();
+
         /** @var Form $form */
         $form = $this->get("form.factory")->create(ProjetType::class,$objet);
 
@@ -34,7 +33,7 @@ class ProjectController extends Controller
             $form->handleRequest($request);
 
             $em = $this->getDoctrine()->getManager();
-            $objet->setDate(new \DateTime());
+            $objet->setTime(new \DateTime());
             $file = new Files();
             if ($objet->getFile() != null) {
                 $file->file = $objet->getFile();
@@ -45,47 +44,21 @@ class ProjectController extends Controller
                 $file->add($file->initialpath."projet",  $objet->getHashfiles());
             }
 
-            $objet->setCode(uniqid())->setState(true)->setStatus("En cours")->getUser()->setRoles(['ROLE_USER'])->setEnabled(true)->setPassword("test")->setPleasantries("M.");
-
             /** @var Validator $validator */
             $validator = $this->get('validator');
             $error = $validator->validate($objet);
             if(count($error) == 0)
             {
-                //$ip = $request->getClientIp();
-                $ip = $_SERVER['REMOTE_ADDR'];
-                $email = $objet->getUser()->getEmail();
-                $user =$em->getRepository('EntityBundle:User')->findOneByemail($objet->getUser()->getEmail());
-               if($user !=null)
-               {
-                   $objet->setUser($user);
-               }
-                else{
-                    $vistor = new Visitor();
-                    $vistor->setPleasantries("M.");
-                    $vistor->setCity($objet->getUser()->getCity());
-                    $vistor->setCountry($objet->getUser()->getCountry());
-                    $vistor->setPhone($objet->getUser()->getUsername());
-                    $vistor->setEmail($objet->getUser()->getEmail());
-                    $vistor->setFirstname($objet->getUser()->getFirstname());
-                    $vistor->setIp($ip);
-                    $visitorcurrent =$em->getRepository('EntityBundle:Visitor')->findOneByemail($objet->getUser()->getEmail());
-                    if($visitorcurrent !=null)
-                    {
-                        $vistor = $visitorcurrent;
-                    }
-                    $objet->setUser(null);
-                    $objet->setVisitor($vistor);
-                }
                 $em->persist($objet);
                 $em->flush();
 
                 $em->detach($objet);
 
+
                 $translator = $this->get('translator');
                 $locale = $this->get('session')->get('_locale');
                 $message = $translator->trans('form.project.notification',[] ,'forms', $locale);
-                $code = $this->sendMail($email, $this->getParameter('mailer_user'), $message, "SOMMIT PROJET STC(SEMANTICA TECHNOLOGIES CORPORATION)");
+                $code = $this->sendMail($objet->getEmail(), $this->getParameter('mailer_user'), $message, "SOMMIT PROJET STC(SEMANTICA TECHNOLOGIES CORPORATION)");
 
                 $objet = new Projet();
                 /** @var Form $form */
@@ -94,18 +67,10 @@ class ProjectController extends Controller
             }
             else{
                 $array['error'] = $error;
-                var_dump($error);
+                //var_dump($error);
             }
 
         }
-        /** @var \Web\EntityBundle\Entity\User $user */
-        $user = $this->container->get('security.token_storage')->getToken()->getUser();
-       /* if($user!=null)
-        {
-            $em = $this->getDoctrine()->getManager();
-            $user =$em->getRepository('EntityBundle:User')->find($user->getId());
-            $objet->setUser($user);
-        }*/
         $array['form'] = $form->createView();
         $array['objet'] = $objet;
         return $this->render('MainBundle:Project:index.html.twig',$array);

@@ -1,12 +1,3 @@
 private:
   account: Account
   profile: My profile
-  project: My project
-  comment: Comment
-  commit: Commit
-  find: Find commit
-project:
-  auther: Auther
-  commit: Commit
-  message: Message
-  date: Date

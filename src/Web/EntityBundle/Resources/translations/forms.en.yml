@@ -90,7 +90,7 @@ form:
     password: Password
     placeholder_password: password
     country: Country
-    placeholder_country: United Kingdom
+    placeholder_country: Enter your country
     city: City
     placeholder_city: England
     doctor: Dr
@@ -102,5 +102,5 @@ form:
     firstname: First name
     placeholder_firstname:  Enter your name
     lastname: Last name
-    placeholder_lastname: Pascal
+    placeholder_lastname: Enter your last name
     save: Save

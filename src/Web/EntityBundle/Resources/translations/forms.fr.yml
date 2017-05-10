@@ -91,7 +91,7 @@ form:
     password: Mot de passe
     placeholder_password: Saisir votre mot  de passe
     country: Country
-    placeholder_country: United Kingdom
+    placeholder_country: Saisir votre pays
     city: City
     placeholder_city: England
     doctor: Dr
