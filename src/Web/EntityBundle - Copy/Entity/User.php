@@ -10,8 +10,8 @@ use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 /**
  * User
  * @ORM\Table(name="fos_user")
- * @UniqueEntity(fields="email", message="user.email.UniqueEntity")
- * @UniqueEntity(fields="username", message="user.username.UniqueEntity")
+ * @UniqueEntity(fields="email", message="person.email.UniqueEntity")
+ * @UniqueEntity(fields="username", message="person.phone.UniqueEntity")
  * @ORM\Entity(repositoryClass="Web\EntityBundle\Repository\UserRepository")
  */
   class User extends BaseUser
@@ -256,5 +256,29 @@ use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
     public function getStatus()
     {
         return $this->status;
+    }
+
+    /**
+     * Set picture
+     *
+     * @param string $picture
+     *
+     * @return User
+     */
+    public function setPicture($picture)
+    {
+        $this->picture = $picture;
+
+        return $this;
+    }
+
+    /**
+     * Get picture
+     *
+     * @return string
+     */
+    public function getPicture()
+    {
+        return $this->picture;
     }
 }
