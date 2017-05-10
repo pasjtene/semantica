@@ -151,6 +151,11 @@
                     window.location.href = $(this).attr('href');
                 }
             });
+
+
+            $('#mobile_register').click(function(){
+                $('#email').focus();
+            });
             // On recupere la position du bloc par rapport au haut du site
             var position_top_raccourci = $("#menu_big").offset().top;
 
