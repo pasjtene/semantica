@@ -17,6 +17,12 @@ form:
     empty_visitor: Choose a visitor
     projecy: Project
     empty_project: Choose a project
+    name: Name
+    placeholder_name: Your name
+    email: Email address
+    placeholder_email: Your email  address
+    phone: Phone number
+    placeholder_phone: Your Phone number
   cancelling:
     addcode: Base code
     adddate: Register Date
@@ -48,6 +54,8 @@ form:
   project:
     title: Title
     placeholder_title: Give the title for your projet
+    description: Description
+    placeholder_description: Give a small description
     company: Company
     placeholder_company: Name of your company
     file: File
@@ -89,9 +97,10 @@ form:
     profesor: Pr
     mister: M.
     missis: Mss
+    pleasantries: Pleasantries
     placeholder_pleasantries: Choose a pleasantries
     firstname: First name
-    placeholder_firstname:   Tene
+    placeholder_firstname:  Enter your name
     lastname: Last name
     placeholder_lastname: Pascal
     save: Save

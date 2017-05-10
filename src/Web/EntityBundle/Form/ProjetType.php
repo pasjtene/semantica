@@ -3,8 +3,6 @@
 namespace Web\EntityBundle\Form;
 
 use Symfony\Component\Form\AbstractType;
-use Symfony\Component\Form\Extension\Core\Type\DateType;
-use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
@@ -23,7 +21,7 @@ class ProjetType extends AbstractType
             'attr'=>['placeholder'=>'form.project.placeholder_title'],
             'translation_domain' => 'forms',
             'required'    => false
-          ))
+        ))
 
             ->add('company',TextType::class,array(
                 'label' => 'form.project.company',
@@ -39,14 +37,14 @@ class ProjetType extends AbstractType
             ))
             ->add('file',FileType::class,array(
                 'label' => 'form.project.file',
-                'attr'=>['placeholder'=>'form.project.placeholder_file','accept'=>".pdf"],
+                'attr'=>['placeholder'=>'form.project.placeholder_file','accept'=>".pdf,.docs,.doc"],
                 'translation_domain' => 'forms',
                 'required'    => false
             ))
-            ->add('visitor',VisitorType::class
+            ->add('user',UserType::class
             );
     }
-
+    
     /**
      * {@inheritdoc}
      */

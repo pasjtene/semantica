@@ -42,7 +42,7 @@ class DefaultController extends Controller
 
             $em = $this->getDoctrine()->getManager();
 
-            $customer = $em->getRepository('EntityBundle:Customer')->findByemailadress($email);
+            $customer = $em->getRepository('EntityBundle:User')->findOneByemail($email);
             if($customer!=null)
             {
                 $array["error"] = $email;
@@ -85,6 +85,7 @@ class DefaultController extends Controller
             $em = $this->getDoctrine()->getManager();
             $objet->setEnabled(true);
             $objet->setEmail($email);
+            $objet->setStatus("Actif");
             $objet->setRoles(['ROLE_USER']);
 
             /** @var Validator $validator */
@@ -101,19 +102,12 @@ class DefaultController extends Controller
                 $em->detach($objet);
                 $this->authenticateUser($objet);
 
-                $costomer = new Customer();
-                $costomer->setDate(new \DateTime())->setEmailadress($email);
-                $em->persist($costomer);
-                $em->flush();
-                $em->detach($costomer);
-
                 return $this->redirect($this->generateUrl('main_private'));
             }
             else{
                 $array['error'] = $error;
                 //var_dump($error);
             }
-
 
         }
         if($email==null )

@@ -1,28 +1,37 @@
 service:
   our_service:  Nos services
   our_content:  |
-   <h3>STC est votre partenaire complet pour votre transformation numérique.</h3></br></br>
-  explore_our_Services: Explorez nos Services
+   <h3>STC est votre partenaire complet pour votre transformation numérique</h3>
   app_service: Services applicatifs
   app_content:  |
-   <h3>Optimisation de la valeur de vos applications.</h3></br></br>
-
+   <h3>Optimisation de la valeur de vos applications</h3>
+   La gestion efficace des systèmes d’information d’une entreprise est indispensable pour tirer pleinement parti des
+   investissements en TI et pour stimuler la croissance de l’entreprise. </br> Les budgets serrés en TI, la complexité accrue
+   de ces technologies, les pressions liées au temps de mise sur le marché et les besoins changeants des clients sont autant
+   de défis pour les organisations qui veulent s’assurer que leurs applications offrent une valeur maximale.
   business_service: Gestion des processus d'affaires
   business_content:  |
-   <h3>Tirer parti des processus d'affaires et des technologies pour offrir des services de classe mondiale.</h3></br></br>
-
+   <h3>Tirer parti des processus d'affaires et des technologies pour offrir des services de classe mondiale</h3>
+   Les organisations de tous les secteurs sont actuellement mises au défi d’améliorer leur performance tout en diminuant
+   leurs ressources. </br> Elles souhaitent accroître l’efficacité de leur gestion des processus d’affaires ainsi que maximiser
+   leurs revenus, réduire leurs coûts et stimuler la croissance grâce à l’innovation.
   business_service: Service conseil d'entreprise
   business_content:  |
-   <h3>Transformer l'entreprise grâce à une approche collaborative.<h3/></br></br>
-
+   <h3>Transformer l'entreprise grâce à une approche collaborative<h3/>
+   En tant que chefs de file, nos clients doivent constamment composer avec des changements, qu'il s'agisse de
+   transformer leurs activités pour profiter de marchés émergents, de restructurer l'entreprise pour en améliorer
+   l'efficacité opérationnelle, de satisfaire aux nouvelles exigences réglementaires ou d'atténuer certains risques
   businessproc_service: Services d'impartition des TI
   businessproc_content:  |
-
+   Les services d'impartition des TI de STC permettent aux dirigeants des TI de se concentrer sur les stratégies
+   informatiques tout en réduisant les coûts d'exploitation et les risques opérationnels, sans compromettre la
+   livraison des services aux utilisateurs et à leurs clients.
   itoutsourcing_service: Services d'infrastructure.
   itoutsourcing_content:  |
-   <h3>Notre meilleure offre pour votre infrastructure informatique.</h3></br></br>
-
+   <h3>Notre meilleure offre pour votre infrastructure informatique</h3>
+   STC propose à ses clients des centres de traitement des données écologiques et écoénergétiques.
   systintegration_service: Services d'intégration de systèmes
   systintegration_content:  |
-   <h3>Interconnecting systems and applications to best run your business.</h3></br></br>
-
+   <h3>Interconnecting systems and applications to best run your business</h3>
+   Pour améliorer leur performance, des organisations de premier plan comptent sur les services d'intégration de
+   systèmes de STC.

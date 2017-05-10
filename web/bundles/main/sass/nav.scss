@@ -20,53 +20,55 @@
   header  {
     padding-top: 0% !important;
     padding-bottom: 1% !important;
-     #nav_top{
-       padding-top: 0.5% !important;
-       padding-bottom: 0.5% !important;
-       height: 40px !important;
-       background-color: $auther !important;
-       ul{
-         padding-right: 9% !important;
-         li{
+    #nav_top{
+      padding-top: 0.5% !important;
+      padding-bottom: 0.5% !important;
+      height: 40px !important;
+      background-color: $auther !important;
+      ul{
+        padding-right: 9% !important;
+        li{
 
-           a{
-             span{
-               border-left: solid 2px gray !important;
-               padding-right: 15px;
-               height: 20px !important;
-             }
+          a{
+            span{
+              border-left: solid 2px gray !important;
+              padding-right: 15px;
+              height: 20px !important;
+            }
 
-             padding-right: 23% !important;
-             color: $secondary !important;
-           }
-           a:hover{
-             color: #0083c0 !important;
-             font-weight: bold;
-             background-color: $auther !important;
+            padding-right: 23% !important;
+            color: $secondary !important;
+          }
+          a:hover{
+            color: $blue_color !important;
+            font-weight: bold;
+            background-color: $auther !important;
 
-           }
+          }
 
-         }
+        }
 
-       }
-     }
+      }
+    }
   }
+
 
 
   nav.menu {
     position: relative;
     min-height: 45px;
     height: 100%;
-    z-index: 9999999999999999999999999;
+    z-index: 9999999999999999999999999 !important;
   }
 
   nav.menu:hover {
     position: relative;
     min-height: 45px;
     height: 100%;
-    z-index: 9999999999999999999999999;
+    z-index: 9999999999999999999999999 !important;
     border-bottom: 4px solid yellowgreen;
   }
+
 
 
   .menu > ul > li {
@@ -84,18 +86,18 @@
   }
   .menu > ul li a:hover {
     //background:#BC131E !important;
-    background:yellowgreen !important;
-    color: #0083c0 !important;
+    background:$secondary-color !important;
+    color: $blue_color !important;
     font-weight: bold;
     transition-duration: 0.3s;
     -moz-transition-duration: 0.3s;
     -webkit-transition-duration: 0.3s;
-    z-index: 9999999999999999999999999;
+    z-index: 9999999999999999999999999 !important;
   }
 
   .menu-section {
     min-height: 250px;
-    border-right: 1px solid yellowgreen;
+    border-right: 1px solid $secondary_color;
   }
 
   .active{
@@ -114,7 +116,7 @@
     display: block;
     -webkit-box-shadow: 0 1px 2px $auther;
     -moz-box-shadow: 0 1px 2px $auther;
-    z-index: 9999999999999999999999999;
+    z-index: 9999999999999999999999999 !important;
   }
   .xs-menu-cont > a:hover{
     cursor: pointer;
@@ -237,4 +239,3 @@
   }
 
 }
-

@@ -49,8 +49,7 @@ class Projet extends BaseInterface
 
     /**
      * @var string
-     * @Assert\NotBlank(message="project.company.NotBlank")
-     * @ORM\Column(name="company", type="string", length=255)
+     * @ORM\Column(name="company", type="string", length=255, nullable=true)
      */
     private $company;
 
@@ -348,5 +347,53 @@ class Projet extends BaseInterface
     public function getPerson()
     {
         return $this->person;
+    }
+
+    /**
+     * Set visitor
+     *
+     * @param \Web\EntityBundle\Entity\visitor $visitor
+     *
+     * @return Projet
+     */
+    public function setVisitor(\Web\EntityBundle\Entity\visitor $visitor = null)
+    {
+        $this->visitor = $visitor;
+
+        return $this;
+    }
+
+    /**
+     * Get visitor
+     *
+     * @return \Web\EntityBundle\Entity\visitor
+     */
+    public function getVisitor()
+    {
+        return $this->visitor;
+    }
+
+    /**
+     * Set user
+     *
+     * @param \Web\EntityBundle\Entity\user $user
+     *
+     * @return Projet
+     */
+    public function setUser(\Web\EntityBundle\Entity\user $user = null)
+    {
+        $this->user = $user;
+
+        return $this;
+    }
+
+    /**
+     * Get user
+     *
+     * @return \Web\EntityBundle\Entity\user
+     */
+    public function getUser()
+    {
+        return $this->user;
     }
 }

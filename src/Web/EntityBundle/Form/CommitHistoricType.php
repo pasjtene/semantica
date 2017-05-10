@@ -20,28 +20,25 @@ class CommitHistoricType extends AbstractType
                 'property'=>'code',
                 'required'=>true,
                 'multiple'=>false,
-                'empty_value'=>'form.base.empty_commit',
                 'translation_domain' => 'forms',
                 'empty_data'=>null
-            ))
+            )) // 'empty_value'=>'form.base.empty_commit',
             ->add('project',EntityType::class,array(
             'class'=>"EntityBundle:Projet",
             'property'=>'firstname',
             'required'=>true,
             'multiple'=>false,
-            'empty_value'=>'form.base.empty_project',
             'translation_domain' => 'forms',
             'empty_data'=>null
-        ))
+        )) // 'empty_value'=>'form.base.empty_project',
             ->add('task',EntityType::class,array(
             'class'=>"EntityBundle:Task",
             'property'=>'identity',
             'required'=>true,
             'multiple'=>false,
-            'empty_value'=>'form.base.empty_task',
             'translation_domain' => 'forms',
             'empty_data'=>null
-        ));
+        )); //  'empty_value'=>'form.base.empty_task',
     }
     
     /**
