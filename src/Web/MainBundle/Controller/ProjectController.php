@@ -93,7 +93,7 @@ class ProjectController extends Controller
             if(count($error) == 0)
             {
 
-                $email = $objet->getUser()->getEmail();
+                $email =$objet->getUser()==null ? $objet->getVisitor()->getEmail(): $objet->getUser()->getEmail();
 
                 $em->persist($objet);
                 $em->flush();
