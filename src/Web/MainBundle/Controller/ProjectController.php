@@ -44,7 +44,7 @@ class ProjectController extends Controller
                 $file->add($file->initialpath."projet",  $objet->getHashfiles());
             }
 
-            $objet->setCode(uniqid())->setState(true)->setStatus("En cours")->getUser()->setRoles(['ROLE_USER'])->setEnabled(true)->setPassword("test")->setPleasantries("M.");
+            $objet->setCode(uniqid())->setState(true)->setStatus("0")->getUser()->setRoles(['ROLE_USER'])->setEnabled(true)->setPassword("test")->setPleasantries("M.");
 
 
 
@@ -79,7 +79,7 @@ class ProjectController extends Controller
                 {
                     $vistor = $visitorcurrent;
                 }
-                else if ($visitorcurrent =$em->getRepository('EntityBundle:Visitor')->findOneBphone($objet->getUser()->getUsername())!=null)
+                else if ($visitorcurrent =$em->getRepository('EntityBundle:Visitor')->findOneByphone($objet->getUser()->getUsername())!=null)
                 {
                     $vistor = $visitorcurrent;
                 }
@@ -93,7 +93,7 @@ class ProjectController extends Controller
             if(count($error) == 0)
             {
 
-                $email = $objet->getUser()->getEmail();
+                $email =$objet->getUser()==null ? $objet->getVisitor()->getEmail(): $objet->getUser()->getEmail();
 
                 $em->persist($objet);
                 $em->flush();

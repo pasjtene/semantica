@@ -25,3 +25,136 @@ service:
   systintegration_service: Services d'intégration de systèmes
   systintegration_content:  |
    <h3>Interconnecting systems and applications to best run your business.</h3></br></br>
+business:
+  title:  SERVICES-CONSEILS D'ENTREPRISE
+  block1: Transformer l'entreprise grâce à une approche collaborative
+  block1_content:  |
+   <P>
+   En tant que chefs de file, nos clients doivent constamment composer avec des changements, qu'il s'agisse
+   de transformer leurs activités pour profiter de marchés émergents, de restructurer l'entreprise pour en améliorer
+   l'efficacité opérationnelle, de satisfaire aux nouvelles exigences réglementaires ou d'atténuer certains risques.
+   Il est alors nécessaire d'apporter une réponse rapide, éprouvée et souple, tout en s'assurant que les personnes adéquates,
+   les processus appropriés et les technologies qui conviennent sont en place pour maximiser la performance, peu importe la
+   concurrence et la conjoncture économique.
+   </P>
+   <P>
+   Les services-conseils d'entreprise de STC proposent à nos clients le savoir-faire dont ils ont besoin pour assurer la
+   croissance de leur entreprise et de leurs revenus, tout en améliorant l'efficacité et l'adaptabilité. Fondée en 2016, STC
+   figure parmi les plus importantes entreprises de services complets en technologies de l'information (TI) et de services-conseils
+   en management. Nous possédons les capacités et la portée requise pour combiner une expertise multisectorielle, opérationnelle et
+   technologique afin d'assurer une transformation réussie et une performance à long terme. Nous adoptons une approche unique
+   en matière de services-conseils : nous écoutons nos clients et innovons avec eux pour assurer leur succès à long terme.
+   </P>
+  block2:   Expérience et savoir-faire :
+  block2_content:  |
+
+   <ul>
+   <li>
+   Nous avons aidé un chef de file mondial des cosmétiques à redéfinir sa politique de contrôle interne, ce qui a permis de
+   réduire l'exposition aux risques de près de 75 % pour ses filiales réparties dans plusieurs pays;</li>
+   </ul>
+   <ul>
+   <li>À la suite d'une fusion, nous avons aidé un chef de file des services logistiques à actualiser sa chaîne d'approvisionnement mondiale, à centraliser
+   son administration financière et à rationaliser la gestion des flux de trésorerie, le tout en huit mois;</li>
+   </ul>
+   <ul>
+   <li>Nous avons conseillé un fournisseur mondial d'assurances pour la mise en œuvre d'une nouvelle approche de vente et l'adoption de tablettes numériques, le tout en six mois,
+   approche qui s'est traduite par une interaction accrue avec les clients.</li>
+   </ul>
+apllication:
+  title:  SERVICES APPLICATIFS
+  block1: Optimisation de la valeur de vos applications
+  block1_content:  |
+   <P>La gestion efficace des systèmes d’information d’une entreprise est indispensable pour tirer
+   pleinement parti des investissements en TI et pour stimuler la croissance de l’entreprise.
+   Les budgets serrés en TI, la complexité accrue de ces technologies, les pressions liées au
+   temps de mise sur le marché et les besoins changeants des clients sont autant de défis pour les
+   organisations qui veulent s’assurer que leurs applications offrent une valeur maximale.</P>
+   <P>Les services applicatifs de STC, qui comprennent le développement, la gestion, la mise à l’essai,
+   la gestion du portefeuille et la modernisation des applications, permettent aux clients de surmonter
+   ces obstacles et de favoriser l’agilité opérationnelle, la transformation et la rentabilité.
+   Nos services complets fournissent l’expertise technologique et sectorielle, les solutions,
+   les compétences, les cadres de gestion et les processus dont nos clients ont besoin pour réussir
+   à concevoir, à exploiter et à faire évoluer leurs applications d’entreprise.
+   </P>
+  block2:   Expérience et savoir-faire :
+  block2_content:  |
+
+   <ul>
+   <li>Équipes locales responsables soutenues par des ressources mondiales affichant un solide bilan en matière de prestation de services de qualité et de satisfaction élevée des clients;</li>
+   </ul>
+   <ul>
+   <li>Modèle mondial de prestation de services souple et adapté comprenant des modes de prestation de services chez le client, au pays, sur le continent et à l’international;</li>
+   </ul>
+   <ul>
+   <li>Processus et outils de productivité normalisés;</li>
+   </ul>
+   <ul>
+   <li>Modèle de processus de services complets et intégrés, axés sur les objectifs et les résultats d’affaires.</li>
+   </ul>
+inf:
+  title:  SERVICES D'INFRASTRUCTURE
+  block1: Notre meilleure offre pour votre infrastructure informatique
+  block1_content:  |
+   <P>
+   La concurrence mondiale, la réglementation en constante évolution, les demandes changeantes des clients,
+   les ressources limitées, les défis en matière de capacités et les contraintes budgétaires – nous savons que
+   ces enjeux font partie de vos préoccupations. Vous ne devriez pas avoir à vous soucier de votre infrastructure.
+   C'est notre travail. Avec l'émergence de l'informatique en nuage, de la virtualisation et de la mobilité, CGI est
+   bien en phase avec les tendances et les demandes du marché. Nous offrons la technologie, les processus et le personnel
+   dont les clients ont besoin pour transformer leur infrastructure informatique, accroître leur efficacité, réaliser des
+   économies de coûts et obtenir d'autres résultats stratégiques.
+   </P>
+   <P>
+   STC propose à ses clients des centres de traitement des données écologiques et écoénergétiques, l'informatique en
+   nuage et une gestion déléguée des services de sécurité, le tout appuyé par une gamme unique d'outils de gestion des
+   services d'entreprise. Il ne s'agit là que de quelques-uns des domaines où nous offrons une expertise technologique,
+   industrielle et de domaine ciblée visant à continuellement rehausser les opérations et à stimuler l'innovation. La
+   vaste gamme de solutions, le modèle mondial de prestation de services et les modalités des contrats de CGI procurent
+   aux clients souplesse et choix au sein d un marché en constante évolution.
+   </P>
+  block2:  Expérience et savoir-faire :
+  block2_content:  |
+
+   <ul>
+   <li>Prestation de services de qualité – Le modèle de prestation de services de CGI axé sur les résultats et son rigoureux cadre de gestion de régie
+   d'entreprise vous permettent d'obtenir les résultats escomptés.;</li>
+   </ul>
+   <ul>
+   <li>Flexibilité, force et expertise à votre service – Nos nombreuses années d'expérience nous permettent
+   de commercialiser notre expertise et d'offrir une gamme complète de solutions de propriété
+   intellectuelle novatrices aux clients de toutes tailles;</li>
+   </ul>
+   <ul>
+   <li>Intégrer la créativité à votre offre – STC offre un leadership sectoriel par l'entremise de son réseau mondial de centres de services
+   d'infrastructure « verts », efficients, novateurs et écoénergétiques.</li>
+   </ul>
+our:
+  title:  SERVICES
+  block1: NOS SERVICES
+  block1_content:  |
+   CGI est l’une des rares entreprises mondiales possédant l’expertise, l’envergure ainsi que
+   la gamme complète de solutions et de services requises pour contribuer au succès de ses clients.
+   Notre modèle de proximité client favorise une compréhension approfondie des activités de nos clients
+   ainsi que l’établissement de solides relations pour mettre en œuvre les solutions numériques novatrices les
+   mieux adaptées, appuyées par notre modèle mondial de prestation de services qui met à profit notre expertise
+   sectorielle et technologique
+  block2:   Nos services comprennent :
+  block2_content:  |
+
+   <ul>
+   <li>des services-conseils stratégiques en management et en technologies de l’information axés sur le numérique;</li>
+   </ul>
+   <ul>
+   <li>des services d’intégration de systèmes afin de relier les systèmes existants à des modèles opérationnels numériques;</li>
+   </ul>
+   <ul>
+   <li>une impartition transformationnelle afin d’améliorer à la fois la manière dont nos clients exploitent et transforment leur organisation;</li>
+   </ul>
+   <ul>
+   <li>des solutions de propriété intellectuelle qui agissent à titre d’accélérateurs numériques.</li>
+   </ul>
+
+
+
+

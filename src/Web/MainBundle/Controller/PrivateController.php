@@ -29,6 +29,7 @@ class PrivateController extends Controller
      */
     public function indexAction(Request $request)
     {
+        $code="";
         /** @var User $user */
         $user = $this->getUser();
         $em = $this->getDoctrine()->getManager();
@@ -49,9 +50,26 @@ class PrivateController extends Controller
            }
         }
 
-        $list = $em->getRepository("EntityBundle:Projet")->findBy(['user'=>$user],['id'=>'DESC','date'=>'DESC']);
+        if($request->isMethod("POST"))
+        {
+            $val = $request->request;
+            $code = $val->get('code');
+            if($code!="")
+            {
+                $list = $em->getRepository("EntityBundle:Projet")->findBy(['user'=>$user,'status'=>$code],['id'=>'DESC','date'=>'DESC']);
+            }
+            else{
+                $list = $em->getRepository("EntityBundle:Projet")->findBy(['user'=>$user],['id'=>'DESC','date'=>'DESC']);
+            }
+        }
+        else
+        {
+            $list = $em->getRepository("EntityBundle:Projet")->findBy(['user'=>$user],['id'=>'DESC','date'=>'DESC']);
+        }
+
         $array['list'] = $list;
         $array['index'] = 1;
+        $array['code'] = $code;
 
         return $this->render('MainBundle:Private:index.html.twig',$array);
     }

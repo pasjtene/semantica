@@ -10,7 +10,7 @@
             {% if app.user!=null %}
                 <li><a href="{{ path('main_private') }}">{% trans from 'nav' %} nav.account {% endtrans %}</a></li>
             {% else %}
-                <li><a href="{{ path('main_homepage') }}#register"><span></span> {% trans from 'nav' %} nav.register {% endtrans %}</a></li>
+                <li><a id="mobile_register" href="{{ path('main_homepage') }}#register"><span></span> {% trans from 'nav' %} nav.register {% endtrans %}</a></li>
             {% endif %}
             <li><a href="{{ path('main_industries') }}"><span></span> {% trans from 'nav' %} nav.contact {% endtrans %}</a></li>
             <li><a href="{{ path('main_homepage') }}#contact"><span></span> {% trans from 'nav' %} nav.careers {% endtrans %}</a></li>
@@ -32,7 +32,7 @@
             {% if app.user!=null %}
                 <li><a href="{{ path('main_private') }}">{% trans from 'nav' %} nav.account {% endtrans %}</a></li>
             {% else %}
-                <li><a href="{{ path('main_homepage') }}#register"><span></span> {% trans from 'nav' %} nav.register {% endtrans %}</a></li>
+                <li><a id="mobile_register" href="{{ path('main_homepage') }}#register"><span></span> {% trans from 'nav' %} nav.register {% endtrans %}</a></li>
             {% endif %}
             <li><a href="{{ path('main_industries') }}"><span></span> {% trans from 'nav' %} nav.contact {% endtrans %}</a></li>
             <li><a href="{{ path('main_homepage') }}#contact"><span></span> {% trans from 'nav' %} nav.careers {% endtrans %}</a></li>
