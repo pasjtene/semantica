@@ -7,7 +7,6 @@ use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 /**
  * Visitor
- * @UniqueEntity(fields="identity", message="person.email.UniqueEntity")
  * @ORM\Table(name="visitor")
  * @UniqueEntity(fields="email", message="person.email.UniqueEntity")
  * @UniqueEntity(fields="username", message="person.phone.UniqueEntity")
