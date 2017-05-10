@@ -39,29 +39,29 @@
                       <div class="row">
                           <div class="col s12">
                               <div class="input-field col s12 m6 ">
-                                  {{ form_widget(form.name,{'attr':{'class':''}}) }}
-                                  {{ form_label(form.name) }}
-                                  <div class="error"  >{{ form_errors(form.name) }}</div>
+                                  {{ form_widget(form.user.firstname,{'attr':{'class':''}}) }}
+                                  {{ form_label(form.user.firstname) }}
+                                  <div class="error"  >{{ form_errors(form.user.firstname) }}</div>
                               </div>
                               <div class="input-field col s12 m6 ">
-                                  {{ form_widget(form.email,{'attr':{'class':''}}) }}
-                                  {{ form_label(form.email) }}
-                                  <div class="error"  >{{ form_errors(form.email) }}</div>
+                                  {{ form_widget(form.user.email,{'attr':{'class':''}}) }}
+                                  {{ form_label(form.user.email) }}
+                                  <div class="error"  >{{ form_errors(form.user.email) }}</div>
                               </div>
                           </div>
                       </div>
                       <div class="row">
                           <div class="col s12">
                               <div class="input-field col s12 m6 ">
-                                  {{ form_widget(form.phone,{'attr':{'class':''}}) }}
-                                  {{ form_label(form.phone) }}
-                                  <div class="error"  >{{ form_errors(form.phone) }}</div>
+                                  {{ form_widget(form.user.username,{'attr':{'class':''}}) }}
+                                  {{ form_label(form.user.username) }}
+                                  <div class="error"  >{{ form_errors(form.user.username) }}</div>
                               </div>
 
                               <div class="input-field col s12 m6 ">
-                                  {{ form_widget(form.objet,{'attr':{'class':''}}) }}
-                                  {{ form_label(form.objet) }}
-                                  <div class="error"  >{{ form_errors(form.objet) }}</div>
+                                  {{ form_widget(form.title,{'attr':{'class':''}}) }}
+                                  {{ form_label(form.title) }}
+                                  <div class="error"  >{{ form_errors(form.title) }}</div>
                               </div>
                           </div>
                       </div>
@@ -79,7 +79,7 @@
                       <div class="row">
                          <div class="col s12">
                              <div class="file-field input-field col s12 ">
-                                 <div class="btn grey">
+                                 <div class="btn">
                                      <span>{% trans from 'forms' %} form.project.file {% endtrans %}</span>
                                      {{ form_widget(form.file,{'attr':{'class':''}}) }}
                                  </div>
@@ -98,43 +98,46 @@
                               <div class="collapsible-header">{% trans from 'home' %} projet.optional {% endtrans %}</div>
                               <div class="collapsible-body">
                                   <div class="row ">
-                                      <div class="col s12">
-                                          <div class="input-field col s12 m6">
-                                              {{ form_widget(form.city,{'attr':{'class':''}}) }}
-                                              {{ form_label(form.city) }}
-                                              <div class="error"  >{{ form_errors(form.city) }}</div>
-                                          </div>
-                                          <div class="input-field col s12 m6">
-                                              {{ form_widget(form.country,{'attr':{'class':''}}) }}
-                                              {{ form_label(form.country) }}
-                                              <div class="error"  >{{ form_errors(form.country) }}</div>
+                                      <div class="col s12 m6">
+                                          <div class="input-field col s12   ">
+                                              {{ form_widget(form.user.city,{'attr':{'class':''}}) }}
+                                              {{ form_label(form.user.city) }}
+                                              <div class="error"  >{{ form_errors(form.user.city) }}</div>
                                           </div>
                                       </div>
+                                     <div class="col s12 m6">
+                                         <div class="input-field col s12 ">
+                                             {{ form_widget(form.user.country,{'attr':{'class':''}}) }}
+                                             {{ form_label(form.user.country) }}
+                                             <div class="error"  >{{ form_errors(form.user.country) }}</div>
+                                         </div>
+                                     </div>
                                   </div>
                                   <div class="row ">
-                                      <div class="col s12">
-                                          <div class="input-field col s12 m6 ">
-                                              {{ form_widget(form.adress,{'attr':{'class':''}}) }}
-                                              {{ form_label(form.adress) }}
-                                              <div class="error"  >{{ form_errors(form.adress) }}</div>
+                                      <div class="col s12 m6">
+                                          <div class="input-field col s12 ">
+                                              {{ form_widget(form.company,{'attr':{'class':''}}) }}
+                                              {{ form_label(form.company) }}
+                                              <div class="error"  >{{ form_errors(form.company) }}</div>
                                           </div>
-                                          <div class="input-field col s12 m6">
-                                              {{ form_widget(form.type,{'attr':{'class':''}}) }}
-                                              {{ form_label(form.type) }}
-                                              <div class="error"  >{{ form_errors(form.type) }}</div>
+                                      </div>
+                                      <div class="col s12 m6">
+                                          <div class="input-field col s12 ">
+                                              {{ form_widget(form.user.pleasantries,{'attr':{'class':''}}) }}
+                                              {{ form_label(form.user.pleasantries) }}
+                                              <div class="error"  >{{ form_errors(form.user.pleasantries) }}</div>
                                           </div>
                                       </div>
                                   </div>
+
                               </div>
                           </li>
                       </ul>
 
-
-
                   </div>
                   <div class="row">
                       <div class="col s12 center center-align">
-                          <button class="waves-effect waves-light btn grey" type="submit">{% trans from 'forms' %} form.project.submit {% endtrans %} </button>
+                          <button class="waves-effect waves-light btn" type="submit">{% trans from 'forms' %} form.project.submit {% endtrans %} </button>
                       </div>
                   </div>
               </form>
@@ -147,6 +150,7 @@
     <script>
 
             $(function(){
+                $('select').material_select();
 
                 {% if message is defined  %}
                     $('#notification').slideDown(100);
@@ -155,46 +159,6 @@
                         clearInterval(t);
                     },4000);
                 {% endif %}
-
-                // On recupere la position du bloc par rapport au haut du site
-                var position_top_raccourci = $("#menu_big").offset().top;
-
-                //Au scroll dans la fenetre on déclenche la fonction
-                $(window).scroll(function () {
-
-                    //si on a defile de plus de 150px du haut vers le bas
-                    if ($(this).scrollTop() > position_top_raccourci) {
-
-                        //on ajoute la classe "fixNavigation" a <div id="navigation">
-                        $('#menu_big').addClass("fixNavigation");
-                    } else {
-
-                        //sinon on retire la classe "fixNavigation" a <div id="navigation">
-                        $('#menu_big').removeClass("fixNavigation");
-                    }
-                });
-
-
-                //small menu
-                // On recupere la position du bloc par rapport au haut du site
-                var position_top_raccourci = $("#menu_small").offset().top;
-
-                //Au scroll dans la fenetre on déclenche la fonction
-                $(window).scroll(function () {
-
-                    //si on a defile de plus de 150px du haut vers le bas
-                    if ($(this).scrollTop() > position_top_raccourci) {
-
-                        //on ajoute la classe "fixNavigation" a <div id="navigation">
-                        $('#menu_small').addClass("fixNavigation");
-                        $('#mobile_help').fadeIn();
-                    } else {
-
-                        //sinon on retire la classe "fixNavigation" a <div id="navigation">
-                        $('#menu_small').removeClass("fixNavigation");
-                        $('#mobile_help').fadeOut();
-                    }
-                });
 
             function verifMail(champ)
 
@@ -212,73 +176,6 @@
                     return true;
                 }
             }
-
-            var elt = {
-                c_email : $('#c_email'),
-                name : $('#name'),
-                message : $('#message'),
-                send: $("#send"),
-                email: $("#email"),
-                signup: $("#signup"),
-                f: $("#f"),
-                form : $('#form')
-            }
-
-            var locale ='{{ app.request.locale }}';
-            var error = {
-                email_empty :locale=="en"? "Email address can't be empty":"L'adresse e-mail ne peut  être vide",
-                email_format:locale=="en"? "Email adress format is not  correct" : "le format de l'email non respecté",
-                name:locale=="en" ? "Name can't be empty" : "Le nom ne peut  pas être vide",
-                message: locale=="en" ? "Message can't be empty" : "Le message ne peut  pas être vide"
-            }
-            elt.signup.click(function(e){
-                if(elt.email.val().trim()=="")
-                {
-                    alert(error.email_empty);
-                    e.preventDefault();
-                }
-                if(!verifMail(elt.email.val()))
-                {
-                    alert(error.email_format);
-                    e.preventDefault();
-                }
-
-            });
-
-
-            elt.send.click(function(e){
-                var message=null;
-                if(elt.c_email.val().trim()=="")
-                {
-                    message+= "\n ->" +error.email_empty;
-
-                }
-                if(!verifMail(elt.email.val()))
-                {
-                    message+= "\n ->" +error.email_format;
-
-                }
-                if(elt.name.val().trim()=="")
-                {
-                    message+= "\n ->" +error.name;
-
-                }
-                if(elt.message.val().trim()=="")
-                {
-                    message+= "\n ->" +error.message;
-
-                }
-
-                if(message!=null)
-                {
-                    e.preventDefault();
-                    alert(message);
-                }
-
-            });
-
-
-
 
         });
     </script>

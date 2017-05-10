@@ -1,3 +1,12 @@
 private:
   account: Compte
   profile: Mon profil
+  project: Mon projet
+  comment: Commentaire
+  commit: Commit
+  find: Trouver le commit
+project:
+  auther: Auteur
+  commit: Commit
+  message: Message
+  date: Date

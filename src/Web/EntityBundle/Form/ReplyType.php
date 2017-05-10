@@ -32,19 +32,18 @@ class ReplyType extends AbstractType
                 'property'=>'decription',
                 'required'=>true,
                 'multiple'=>false,
-                'empty_value'=>'form.base.empty_comment',
+
                 'translation_domain' => 'forms',
                 'empty_data'=>null
-            ))
+            )) //'empty_value'=>'form.base.empty_comment',
             ->add('participator',EntityType::class,array(
                 'class'=>"EntityBundle:Participator",
                 'property'=>'code',
                 'required'=>true,
                 'multiple'=>false,
-                'empty_value'=>'form.base.empty_participator',
                 'translation_domain' => 'forms',
                 'empty_data'=>null
-            ));
+            )); //'empty_value'=>'form.base.empty_participator',
     }
     
     /**

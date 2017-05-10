@@ -1,27 +1,27 @@
 service:
   our_service:  Nos services
   our_content:  |
-   <h3>STC est votre partenaire complet pour votre transformation numérique.</h3>
+   <h3>STC est votre partenaire complet pour votre transformation numérique.</h3></br></br>
+  explore_our_Services: Explorez nos Services
   app_service: Services applicatifs
   app_content:  |
-   <h3>Optimisation de la valeur de vos applications.</h3>
+   <h3>Optimisation de la valeur de vos applications.</h3></br></br>
 
   business_service: Gestion des processus d'affaires
   business_content:  |
-   <h3>Tirer parti des processus d'affaires et des technologies pour offrir des services de classe mondiale.</h3>
+   <h3>Tirer parti des processus d'affaires et des technologies pour offrir des services de classe mondiale.</h3></br></br>
 
   business_service: Service conseil d'entreprise
   business_content:  |
-   <h3>Transformer l'entreprise grâce à une approche collaborative.<h3/>
+   <h3>Transformer l'entreprise grâce à une approche collaborative.<h3/></br></br>
 
   businessproc_service: Services d'impartition des TI
   businessproc_content:  |
 
   itoutsourcing_service: Services d'infrastructure.
   itoutsourcing_content:  |
-   <h3>Notre meilleure offre pour votre infrastructure informatique.</h3>
+   <h3>Notre meilleure offre pour votre infrastructure informatique.</h3></br></br>
 
   systintegration_service: Services d'intégration de systèmes
   systintegration_content:  |
-   <h3>Interconnecting systems and applications to best run your business.</h3>
-
+   <h3>Interconnecting systems and applications to best run your business.</h3></br></br>

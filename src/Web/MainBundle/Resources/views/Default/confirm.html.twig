@@ -13,6 +13,7 @@
 {% endblock %}
 {% block header %}
     {{ parent() }}
+    {% include 'MainBundle:Inc:slide.html.twig' %}
 {% endblock %}
 {% block  main %}
     <div class="row" id="main_confirm">
@@ -37,6 +38,13 @@
                     <input type="hidden" name="email" value="{{ email }}">
                     <div class="row">
                         <div class="input-field col s12 m12 ">
+                            {{ form_widget(form.pleasantries,{'attr':{'class':''}}) }}
+                            {{ form_label(form.pleasantries) }}
+                            <div class="error"  >{{ form_errors(form.pleasantries) }}</div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s12 m12 ">
                             {{ form_widget(form.password,{'attr':{'class':''}}) }}
                             {{ form_label(form.password) }}
                             <div class="error"  >{{ form_errors(form.password) }}</div>
@@ -55,5 +63,9 @@
 {% endblock %}
 
 {% block myjs %}
-
+    <script>
+        $(function(){
+           $('select').material_select();
+        });
+    </script>
 {% endblock %}

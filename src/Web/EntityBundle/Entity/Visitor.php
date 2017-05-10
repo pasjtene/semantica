@@ -11,7 +11,7 @@ use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
  * @ORM\Table(name="visitor")
  * @ORM\Entity(repositoryClass="Web\EntityBundle\Repository\VisitorRepository")
  */
- class Visitor implements Person
+ class Visitor
 {
     /**
      * @var int
@@ -52,6 +52,7 @@ use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
     /**
      * @var string
+     * @Assert\NotBlank(message="person.phone.NotBlank")
      * @ORM\Column(name="phone", type="string", length=255, unique=true,)
      */
     protected $phone;

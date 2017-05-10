@@ -20,36 +20,36 @@
   header  {
     padding-top: 0% !important;
     padding-bottom: 1% !important;
-     #nav_top{
-       padding-top: 0.5% !important;
-       padding-bottom: 0.5% !important;
-       height: 40px !important;
-       background-color: $auther !important;
-       ul{
-         padding-right: 9% !important;
-         li{
+    #nav_top{
+      padding-top: 0.5% !important;
+      padding-bottom: 0.5% !important;
+      height: 40px !important;
+      background-color: $auther !important;
+      ul{
+        padding-right: 9% !important;
+        li{
 
-           a{
-             span{
-               border-left: solid 2px gray !important;
-               padding-right: 15px;
-               height: 20px !important;
-             }
+          a{
+            span{
+              border-left: solid 2px gray !important;
+              padding-right: 15px;
+              height: 20px !important;
+            }
 
-             padding-right: 23% !important;
-             color: $secondary !important;
-           }
-           a:hover{
-             color: #0083c0 !important;
-             font-weight: bold;
-             background-color: $auther !important;
+            padding-right: 23% !important;
+            color: $secondary !important;
+          }
+          a:hover{
+            color: #0083c0 !important;
+            font-weight: bold;
+            background-color: $auther !important;
 
-           }
+          }
 
-         }
+        }
 
-       }
-     }
+      }
+    }
   }
 
 
