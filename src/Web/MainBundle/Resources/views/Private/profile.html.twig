@@ -1,0 +1,147 @@
+{% extends 'MainBundle::layout.html.twig' %}
+{% block meta %}
+    <meta name = "{% trans from 'refer' %} home.title {% endtrans %}" >
+    <meta name = "keywords" content = "{% trans from 'refer' %} home.description {% endtrans %}" >
+{% endblock %}
+{% block title %}
+    Semantica Technologies Corporation - STC
+{% endblock %}
+
+
+{% block mycss %}
+    <link rel="stylesheet" href="{{ asset('components/cssbase/datatablehelp.css') }}">
+    <link rel="stylesheet" href="{{ asset('components/cssbase/datatablehelp2.css') }}">
+    <style>
+
+        strong{
+            font-weight: bold;
+        }
+        #main_account #vertical_nav ul{
+            height: 82% !important;
+        }
+    </style>
+{% endblock %}
+{% block header %}
+    {{ parent() }}
+    <div class="row" id="main_account">
+        <div class="row">
+            <div class="col s12">
+                <div class="col s5 m3">
+                    <div class="" id="vertical_nav">
+                        <ul>
+                            <li><a class=" {% if index is defined and index==1 %}active {% endif %}" href="{{ path('main_private') }}">{% trans from 'private' %} private.project  {% endtrans %}</a></li>
+                            <li><a class=" {% if index is defined and index==2 %}active {% endif %}" href="{{ path('main_private_profile') }}" >{% trans from 'private' %} private.profile  {% endtrans %}</a></li>
+                            <li><a class=" {% if index is defined and index==3 %}active {% endif %}" href="{{ path('main_private_commit') }}">{% trans from 'private' %} private.commit  {% endtrans %}</a></li>
+                            <li><a class=" {% if index is defined and index==4 %}active {% endif %}" href="{{ path('main_private_comment') }}">{% trans from 'private' %} private.comment  {% endtrans %}</a></li>
+                        </ul>
+
+                    </div>
+                </div>
+                <div class="col s7 m9">
+                    <br><br>
+                    <div class="row">
+                        <div class="col s12">
+                            <form action="{{ path('main_private') }}" id="form" method="post">
+                                <div class="modal-content">
+                                    <h4>{% trans from 'private' %} private.profile {% endtrans %}</h4>
+                                    <div class="row">
+                                        <div class="row">
+                                            <div class="input-field col s12 m6 ">
+                                                {{ form_widget(form.firstname,{'attr':{'class':''}}) }}
+                                                {{ form_label(form.firstname) }}
+                                                <div class="error"  >{{ form_errors(form.firstname) }}</div>
+                                            </div>
+                                            <div class="input-field col s12 m6 ">
+                                                {{ form_widget(form.lastname,{'attr':{'class':''}}) }}
+                                                {{ form_label(form.lastname) }}
+                                                <div class="error"  >{{ form_errors(form.lastname) }}</div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="input-field col s12 m6 ">
+                                                {{ form_widget(form.username,{'attr':{'class':''}}) }}
+                                                {{ form_label(form.username) }}
+                                                <div class="error"  >{{ form_errors(form.username) }}</div>
+                                            </div>
+                                            <div class="input-field col s12 m6 ">
+                                                {{ form_widget(form.email,{'attr':{'class':'','disabled':'on' }}) }}
+                                                {{ form_label(form.email) }}
+                                                <div class="error"  >{{ form_errors(form.email) }}</div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="input-field col s12 m6 ">
+                                                {{ form_widget(form.pleasantries,{'attr':{'class':''}}) }}
+                                                {{ form_label(form.pleasantries) }}
+                                                <div class="error"  >{{ form_errors(form.pleasantries) }}</div>
+                                            </div>
+                                            <div class="input-field col s12 m6 ">
+                                                {{ form_widget(form.city,{'attr':{'class':''}}) }}
+                                                {{ form_label(form.city) }}
+                                                <div class="error"  >{{ form_errors(form.city) }}</div>
+                                            </div>
+                                            <input type="hidden"  value="{{ objet.password }}" id="password" name="password">
+                                        </div>
+                                        <div class="row">
+                                            <div class="input-field col s12 m6 ">
+                                                {{ form_widget(form.country,{'attr':{'class':''}}) }}
+                                                {{ form_label(form.country) }}
+                                                <div class="error"  >{{ form_errors(form.country) }}</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col s12 right right-align">
+                                            <button class="waves-effect waves-light btn" type="submit" id="send">{% trans from 'forms' %} form.user.save {% endtrans %}</button>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+{% block  main %}
+
+{% endblock %}
+
+{% block myjs %}
+    <script>
+        $(document).ready(function() {
+            $(".button-collapse").sideNav();
+            $('#table').dataTable();
+            $('select').material_select();
+            $('.modal').modal();
+
+            $('.delete_projet').click(function(e){
+                if(!confirm($('#'+$(this).data('id')).text().trim()))
+                {
+                    e.preventDefault();
+                }
+            });
+
+            // On recupere la position du bloc par rapport au haut du site
+            var position_top_raccourci = $("#menu_big").offset().top;
+
+            //Au scroll dans la fenetre on déclenche la fonction
+            $(window).scroll(function () {
+
+                //si on a defile de plus de 150px du haut vers le bas
+                if ($(this).scrollTop() > position_top_raccourci) {
+
+                    //on ajoute la classe "fixNavigation" a <div id="navigation">
+                    $('#menu_big').addClass("fixNavigation");
+                } else {
+
+                    //sinon on retire la classe "fixNavigation" a <div id="navigation">
+                    $('#menu_big').removeClass("fixNavigation");
+                }
+            });
+
+        } );
+    </script>
+{% endblock %}

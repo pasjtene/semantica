@@ -144,6 +144,13 @@
                     window.location.href = $(this).attr('href');
                 }
             });
+
+            $('#vertical_nav ul li a').click(function(){
+                if($(this).val()!="#")
+                {
+                    window.location.href = $(this).attr('href');
+                }
+            });
             // On recupere la position du bloc par rapport au haut du site
             var position_top_raccourci = $("#menu_big").offset().top;
 
