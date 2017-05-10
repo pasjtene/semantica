@@ -50,6 +50,7 @@
                 z-index: 99999;
             }
             .fixNavigation{
+
                 background-color: white; !important;
                 height: 41px!important;
             }
@@ -57,9 +58,6 @@
                 background-color: white !important;
                 height: 149px !important;
             }
-        }
-        .mega-menu{
-            z-index: 9999999999999999999999999 !important;
         }
     </style>
 {% endblock %}
@@ -89,6 +87,7 @@
             //responsive menu toggle
             $("#menutoggle").click(function() {
                 $('.xs-menu').toggleClass('displaynone');
+
             });
             //add active class on menu
             $('ul li').click(function(e) {
@@ -100,7 +99,9 @@
             $(".drop-down").hover(function() {
                 $('.mega-menu').addClass('display-on');
                 $('.mega-menu').height("auto");
+
             });
+
             $("#li_service").hover(function() {
                 $('.mega-menu').removeClass('display-on');
                 $('#m_service').addClass('display-on');
@@ -110,6 +111,8 @@
                 $('.mega-menu').removeClass('display-on');
                 $('.mega-menu').height(0);
             });
+
+
         });
     </script>
     <!--Start of Tawk.to Script-->
@@ -134,53 +137,70 @@
                     window.location.href = $(this).attr('href');
                 }
             });
+
             $('#nav_top ul li a').click(function(){
                 if($(this).val()!="#")
                 {
                     window.location.href = $(this).attr('href');
                 }
             });
+<<<<<<< Temporary merge branch 1
+
             $('#vertical_nav ul li a').click(function(){
                 if($(this).val()!="#")
                 {
                     window.location.href = $(this).attr('href');
                 }
             });
+=======
+>>>>>>> Temporary merge branch 2
             // On recupere la position du bloc par rapport au haut du site
             var position_top_raccourci = $("#menu_big").offset().top;
+
             //Au scroll dans la fenetre on d�clenche la fonction
             $(window).scroll(function () {
+
                 //si on a defile de plus de 150px du haut vers le bas
                 if ($(this).scrollTop() > position_top_raccourci) {
+
                     //on ajoute la classe "fixNavigation" a <div id="navigation">
                     $('#menu_big').addClass("fixNavigation");
                 } else {
+
                     //sinon on retire la classe "fixNavigation" a <div id="navigation">
                     $('#menu_big').removeClass("fixNavigation");
                 }
             });
+
             //small menu
             // On recupere la position du bloc par rapport au haut du site
             var position_top_raccourci = $("#menu_small").offset().top;
+
             //Au scroll dans la fenetre on déclenche la fonction
             $(window).scroll(function () {
+
                 //si on a defile de plus de 150px du haut vers le bas
                 if ($(this).scrollTop() > position_top_raccourci) {
+
                     //on ajoute la classe "fixNavigation" a <div id="navigation">
                     $('#menu_small').addClass("fixNavigation");
                     $('#mobile_help').fadeIn();
                 } else {
+
                     //sinon on retire la classe "fixNavigation" a <div id="navigation">
                     $('#menu_small').removeClass("fixNavigation");
                     $('#mobile_help').fadeOut();
                 }
             });
+
             $(".button-collapse").sideNav();
             $("#mobile_help").click(function(e){
                 $('#menu_mobile').trigger('click');
                 //  alert();
                 e.preventDefaults();
             });
+
+
         });
     </script>
 {% endblock %}
