@@ -25,14 +25,14 @@ class Projet extends BaseInterface
 
     /**
      * @Assert\Valid()
-     * @ORM\ManyToOne(targetEntity="Web\EntityBundle\Entity\visitor",cascade={"persist"})
+     * @ORM\ManyToOne(targetEntity="Web\EntityBundle\Entity\Visitor",cascade={"persist"})
      * @ORM\JoinColumn(nullable=true)
      */
     private $visitor;
 
     /**
      * @Assert\Valid()
-     * @ORM\ManyToOne(targetEntity="Web\EntityBundle\Entity\user",cascade={"persist"})
+     * @ORM\ManyToOne(targetEntity="Web\EntityBundle\Entity\User",cascade={"persist"})
      * @ORM\JoinColumn(nullable=true)
      */
     private $user;

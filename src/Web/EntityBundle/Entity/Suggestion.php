@@ -24,14 +24,14 @@ class Suggestion extends BaseInterface
 
     /**
      * @Assert\Valid()
-     * @ORM\ManyToOne(targetEntity="Web\EntityBundle\Entity\visitor",cascade={"persist"})
+     * @ORM\ManyToOne(targetEntity="Web\EntityBundle\Entity\Visitor",cascade={"persist"})
      * @ORM\JoinColumn(nullable=true)
      */
     private $visitor;
 
     /**
      * @Assert\Valid()
-     * @ORM\ManyToOne(targetEntity="Web\EntityBundle\Entity\user",cascade={"persist"})
+     * @ORM\ManyToOne(targetEntity="Web\EntityBundle\Entity\User",cascade={"persist"})
      * @ORM\JoinColumn(nullable=true)
      */
     private $user;
@@ -79,29 +79,6 @@ class Suggestion extends BaseInterface
         return $this->status;
     }
 
-    /**
-     * Set person
-     *
-     * @param \Web\EntityBundle\Entity\Person $person
-     *
-     * @return Suggestion
-     */
-    public function setPerson(\Web\EntityBundle\Entity\Person $person)
-    {
-        $this->person = $person;
-
-        return $this;
-    }
-
-    /**
-     * Get person
-     *
-     * @return \Web\EntityBundle\Entity\Person
-     */
-    public function getPerson()
-    {
-        return $this->person;
-    }
 
     /**
      * Set visitor

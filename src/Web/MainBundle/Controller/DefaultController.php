@@ -2,9 +2,11 @@
 
 namespace Web\MainBundle\Controller;
 
+use Doctrine\DBAL\Schema\Visitor\Visitor;
 use FOS\UserBundle\Model\UserInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Symfony\Component\Config\Tests\Util\Validator;
 use Symfony\Component\Form\Form;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
@@ -12,7 +14,9 @@ use Symfony\Component\Security\Core\Authentication\Token\UsernamePasswordToken;
 use Symfony\Component\Security\Core\Exception\AccountStatusException;
 use Web\EntityBundle\Entity\Contact;
 use Web\EntityBundle\Entity\Customer;
+use Web\EntityBundle\Entity\Suggestion;
 use Web\EntityBundle\Entity\User;
+use Web\EntityBundle\Form\SuggestionType;
 use Web\EntityBundle\Form\UserType;
 
 class DefaultController extends Controller
@@ -20,12 +24,19 @@ class DefaultController extends Controller
     /**
      * @Route("/", name="main_homepage")
      */
-    public function indexAction()
+    public function indexAction(Request $request)
     {
         //$link  =$this->generateUrl('main_confirm',[md5('email') =>'test@gmail.com'], UrlGeneratorInterface::ABSOLUTE_URL);
         //$html = '<a href="'.$link.'">'.$link.'</a>';
         //var_dump($html);
-        return $this->render('MainBundle:Default:index.html.twig');
+
+        $suggestion = new Suggestion();
+        /** @var Form $form */
+        $form = $this->get("form.factory")->create(SuggestionType::class,$suggestion);
+
+        $array['form'] = $form->createView();
+        $array["suggestion"] =$suggestion;
+        return $this->render('MainBundle:Default:index.html.twig',$array);
     }
 
     /**
@@ -126,24 +137,58 @@ class DefaultController extends Controller
     public function  contactAction(Request $request)
     {
         $array =[];
-        if($request->isMethod("POST")) {
-            $val = $request->request;
-            $email = $val->get('c_email');
-            $name = $val->get('name');
-            $message = $val->get('message');
 
-            $em = $this->getDoctrine()->getManager();
-            $contact = new Contact();
-            $contact->setDate(new \DateTime())->setEmail($email)->setMessage($message)->setName($name)->setImportant(false);
-            $em->persist($contact);
-            $em->flush();
-            $translator = $this->get('translator');
-            $locale = $this->get('session')->get('_locale');
-            $message =  $name.', '.$translator->trans('contact.message',[] ,'home', $locale);
-            $code = $this->sendMail($email, $this->getParameter('mailer_user'), $message, "Contact STC(SEMANTICA TECHNOLOGIES CORPORATION)");
-            $array['confirm'] ="";
+
+        $suggestion = new Suggestion();
+        /** @var Form $form */
+        $form = $this->get("form.factory")->create(SuggestionType::class,$suggestion);
+
+        if($request->isMethod("POST"))
+        {
+            $form->handleRequest($request);
+            $ip = $_SERVER['REMOTE_ADDR'];
+            $suggestion->setDate(new \DateTime());
+            $suggestion->setStatus(false);
+            $suggestion->getVisitor()->setPhone("//");
+            $suggestion->getVisitor()->setPleasantries("//");
+            $suggestion->getVisitor()->setIp($ip);
+            $em =$this->getDoctrine()->getManager();
+            /** @var Visitor $visitor */
+            $visitor = $em->getRepository('EntityBundle:Visitor')->findOneByemail($suggestion->getVisitor()->getEmail());
+
+            if($visitor!=null)
+            {
+                $suggestion->setVisitor($visitor);
+            }
+
+            /** @var Validator $validator */
+            $validator = $this->get('validator');
+            $error = $validator->validate($suggestion);
+
+            if(count($error)==0)
+            {
+
+                $em->persist($suggestion);
+                $em->flush();
+                $em->detach($suggestion);
+
+                $translator = $this->get('translator');
+                $locale = $this->get('session')->get('_locale');
+                $message =  $suggestion->getVisitor()->getFirstname().', '.$translator->trans('contact.message',[] ,'home', $locale);
+                $code = $this->sendMail($suggestion->getVisitor()->getEmail(), $this->getParameter('mailer_user'), $message, "Contact STC(SEMANTICA TECHNOLOGIES CORPORATION)");
+                $array['confirm'] ="";
+                $suggestion =new Suggestion();
+                /** @var Form $form */
+                $form = $this->get("form.factory")->create(SuggestionType::class,$suggestion);
+            }
+            else
+            {
+                $array['error'] = "";
+                //var_dump($error);
+            }
         }
-
+        $array['form'] = $form->createView();
+        $array["suggestion"] =$suggestion;
         return $this->render('MainBundle:Default:index.html.twig',$array);
     }
 
