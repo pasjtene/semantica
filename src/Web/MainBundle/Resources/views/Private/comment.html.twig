@@ -46,17 +46,17 @@
                    <div class="row" id="search">
                        <form action="" method="post">
                            <div class="col s12">
-                               <div class="input-field col s12 m3">
+                               <div class="input-field col s12 m4">
                                    <select>
                                        <option value=""  >{% trans from 'private' %} private.choose_project {% endtrans %}</option>
-                                       {% for item in list %}
-                                           <option value="{{ item.id }}" {% if code is defined and code==item.id %} selected {% endif %}> {{ item.code }}</option>
+                                       {% for item in items %}
+                                           <option value="{{ item.id }}" {% if code is defined and code==item.id %} selected {% endif %}> {{ item.title }}</option>
                                        {% endfor %}
                                    </select>
                                    <label>{% trans from 'private' %} private.project {% endtrans %}</label>
                                </div>
 
-                               <div class="input-field col offset-m6 s12 m3 right right-align">
+                               <div class="input-field col offset-m5 s12 m3 right right-align">
                                    <i class="material-icons prefix">search</i>
                                    <input type="text" id="titre" name="titre">
                                    <label for="titre" style="text-align: left"> {% trans from 'private' %} private.find  {% endtrans %} </label>
@@ -68,38 +68,78 @@
                    <table class="bordered responsive-table ">
                        <thead>
                        <tr>
-                           <th>{% trans from 'private' %} project.auther  {% endtrans %}</th>
-                           <th>{% trans from 'private' %} project.commit  {% endtrans %}</th>
-                           <th>{% trans from 'private' %} project.message  {% endtrans %}</th>
-                           <th>{% trans from 'private' %} project.date  {% endtrans %}</th>
+                           <th>{% trans from 'private' %} comment.auther  {% endtrans %}</th>
+                           <th>{% trans from 'private' %} comment.project  {% endtrans %}</th>
+                           <th>{% trans from 'private' %} comment.task  {% endtrans %}</th>
+                           <th>{% trans from 'private' %} comment.description  {% endtrans %}</th>
+                           <th>{% trans from 'private' %} comment.date  {% endtrans %}</th>
+                           <th>{% trans from 'private' %} comment.reply  {% endtrans %}</th>
                        </tr>
                        </thead>
 
                        <tbody>
-                       <tr>
-                           <td>Alvin</td>
-                           <td>Eclair</td>
-                           <td>$0.87</td>
-                           <td>$0.87</td>
-                       </tr>
-                       <tr>
-                           <td>Alan</td>
-                           <td>Jellybean</td>
-                           <td>$3.76</td>
-                           <td>$3.76</td>
-                       </tr>
-                       <tr>
-                           <td>Jonathan</td>
-                           <td>Lollipop</td>
-                           <td>$7.00</td>
-                           <td>$7.00</td>
-                       </tr>
-                       <tr>
-                           <td>Jonathan</td>
-                           <td>Lollipop</td>
-                           <td>$7.00</td>
-                           <td>$7.00</td>
-                       </tr>
+
+                           {% if list!=null %}
+                               {% for item in list %}
+                                   {% set href= "#comment"~item.comment.id %}
+                                   {% set idhref = "comment"~item.comment.id %}
+                                   <tr>
+                                       <td>{{ item.comment.user.firstname }}</td>
+                                       <td>{{ item.comment.project.title }}</td>
+                                       <td>{{ item.comment.task.libelle }}</td>
+                                       <td>{{ item.comment.getValue(item.comment.description,30) }}</td>
+                                       <td>{{ item.comment.date|date('d-m-y h:m:s') }}</td>
+                                       <td>
+                                           {% if item.reply!=null %}
+                                               <a href="{{ href }}"><i class="material-icons">view_headline</i></a>
+                                           {% else %}
+                                               0
+                                           {% endif %}
+                                       </td>
+                                   </tr>
+                                   <div id="{{ idhref }}" class="modal modal-fixed-footer">
+                                       <div class="modal-content">
+                                           <center>
+                                               <h4> {% trans from 'home' %} main.detail {% endtrans %}</h4>
+                                           </center>
+                                           <p>
+
+                                               <strong>
+                                                   {% trans from 'private' %} commit.project  {% endtrans %}
+                                               </strong>
+                                               <br>
+                                            <span>
+                                                {{ item.comment.project.description }}
+                                            </span>
+                                           </p>
+                                           <hr>
+                                           <p>
+
+                                               <strong>
+                                                   {% trans from 'private' %} commit.auther  {% endtrans %}
+                                               </strong>
+                                               <br>
+                                            <span>
+                                                {{ item.comment.user.firstname }}
+                                            </span>
+                                           </p>
+
+                                       </div>
+                                       <div class="modal-footer">
+                                           <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat ">{% trans from 'forms' %} form.project.close {% endtrans %}</a>
+                                       </div>
+                                   </div>
+                               {% endfor %}
+                           {% else %}
+                               <tr>
+                                   <td colspan="6">
+                                       <h4>
+                                           {% trans from 'private' %} comment.empty  {% endtrans %}
+                                       </h4>
+                                   </td>
+                               </tr>
+                           {% endif %}
+
                        </tbody>
                    </table>
                </div>

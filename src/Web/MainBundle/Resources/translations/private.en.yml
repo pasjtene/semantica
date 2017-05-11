@@ -35,4 +35,13 @@ project:
   choose: Choose status
   status: Status
   empty: No projects are saved or any projects match your search
+comment:
+  project: Project
+  reply: Reply
+  auther: Auther
+  task: Task
+  date: Date
+  description: Description
+  empty: No Comment are saved or any Comments match your search
+
 

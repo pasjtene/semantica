@@ -204,6 +204,7 @@ class PrivateController extends Controller
      */
     public function commentAction(Request $request)
     {
+        $code="";
         /** @var User $user */
         $user = $this->getUser();
         $em = $this->getDoctrine()->getManager();
@@ -224,9 +225,43 @@ class PrivateController extends Controller
             }
         }
 
-        $list = $em->getRepository("EntityBundle:Projet")->findBy(['user'=>$user],['id'=>'DESC','date'=>'DESC']);
+        $items = $em->getRepository("EntityBundle:Projet")->findBy(['user'=>$user],['id'=>'DESC','date'=>'DESC']);
+
+        if($request->isMethod("POST"))
+        {
+            $val = $request->request;
+            $code = $val->get('code');
+            if($code!="")
+            {
+                /** @var Projet $projet */
+                $projet =  $em->getRepository("EntityBundle:Projet")->findOneBycode($code);
+                $list = $em->getRepository("EntityBundle:Comment")->findBy(['project'=>$projet],['id'=>'DESC','date'=>'DESC']);
+            }
+            else{
+                $list = $em->getRepository("EntityBundle:Comment")->findBy([],['id'=>'DESC','date'=>'DESC']);
+            }
+        }
+        else
+        {
+            $list = $em->getRepository("EntityBundle:Comment")->findBy([],['id'=>'DESC','date'=>'DESC']);
+        }
+
+        $listhelp = $list;
+        $list =null;
+        /** @var Comment $item */
+        foreach($listhelp as $item)
+        {
+            if($item->getProject()->getUser()->getId()==$user->getId())
+            {
+                $reply = $em->getRepository("EntityBundle:Reply")->findBy([],['id'=>'DESC','date'=>'DESC']);
+                $list[] =['comment'=>$item, 'reply'=>$reply];
+
+            }
+        }
         $array['list'] = $list;
+        $array['items'] = $items;
         $array['index'] = 4;
+        $array['code'] = $code;
 
         return $this->render('MainBundle:Private:comment.html.twig',$array);
     }

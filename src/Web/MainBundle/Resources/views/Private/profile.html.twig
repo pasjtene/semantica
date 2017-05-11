@@ -113,6 +113,12 @@
 
 {% block myjs %}
     <script>
+        $(document).ready(function() {
+            var elt= {
+                select: $('select')
+            }
+            elt.select.material_select();
 
+        } );
     </script>
 {% endblock %}
