@@ -39,7 +39,7 @@ class Planning
     /**
      * @var string
      * @Assert\NotBlank(message="historic.endate.NotBlank")
-     * @ORM\Column(name="enddate", type="string", length=255)
+     * @ORM\Column(name="enddate", type="datetime")
      */
     private $enddate;
 

@@ -11,6 +11,12 @@ commit:
   commit: Commit
   message: Message
   date: Date
+  empty: No Commit are saved or any commits match your search
+  comment: Comment
+  project: Project  description
+  send: Send
+  do_comment: MAKE A SUGGESTION
+  notification: Comment sent successfully
 project:
   title: Title
   description: Description

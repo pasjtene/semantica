@@ -19,9 +19,14 @@
         footer{
             bottom: 0;
             width: 100% !important;
+        {% if list==null or list|length < 3 %} position: fixed; {% endif %}
         }
         .mega-menu{
             z-index: 9999999999999999999999999999 !important;
+        }
+        #zone_table{
+            height: 352px;
+            overflow-y: auto;
         }
     </style>
 {% endblock %}
@@ -64,130 +69,132 @@
 
                        </form>
                    </div>
-                   <table class="bordered responsive-table ">
-                       <thead>
-                       <tr>
-                           <th>{% trans from 'private' %} project.code  {% endtrans %}</th>
-                           <th>{% trans from 'private' %} project.title  {% endtrans %}</th>
-                           <th>{% trans from 'private' %} project.date  {% endtrans %}</th>
-                           <th>#</th>
-                           <th>#</th>
-                       </tr>
-                       </thead>
+                  <div id="zone_table">
+                      <table class="bordered responsive-table ">
+                          <thead>
+                          <tr>
+                              <th>{% trans from 'private' %} project.code  {% endtrans %}</th>
+                              <th>{% trans from 'private' %} project.title  {% endtrans %}</th>
+                              <th>{% trans from 'private' %} project.date  {% endtrans %}</th>
+                              <th>#</th>
+                              <th>#</th>
+                          </tr>
+                          </thead>
 
-                       <tbody>
-                       {% if list==null %}
-                           <tr>
-                               <td colspan="5" class="center center-align">
-                                   <h4> {% trans from 'private' %} project.empty  {% endtrans %} </h4>
-                               </td>
-                           </tr>
-                       {% else %}
-                           {% for item in list %}
-                               {% set href= "#project"~item.id %}
-                               {% set idhref = "project"~item.id %}
-                               {% set href2= "#project2"~item.id %}
-                               {% set idhref2 = "project2"~item.id %}
-                               <tr>
-                                   <td><a href="">{{ item.code }}</a> </td>
-                                   <td>{{ item.title }} </td>
-                                   <td>{{ item.date|date('d-m-Y h:i:s') }} </td>
+                          <tbody>
+                          {% if list==null %}
+                              <tr>
+                                  <td colspan="5" class="center center-align">
+                                      <h4> {% trans from 'private' %} project.empty  {% endtrans %} </h4>
+                                  </td>
+                              </tr>
+                          {% else %}
+                              {% for item in list %}
+                                  {% set href= "#project"~item.id %}
+                                  {% set idhref = "project"~item.id %}
+                                  {% set href2= "#project2"~item.id %}
+                                  {% set idhref2 = "project2"~item.id %}
+                                  <tr>
+                                      <td><a href="">{{ item.code }}</a> </td>
+                                      <td>{{ item.title }} </td>
+                                      <td>{{ item.date|date('d-m-Y h:i:s') }} </td>
 
-                                   <td>
-                                       {% if item.hashfiles!=null  %}
-                                           {% if item.hashfiles!=null and  item.extfiles=="gif" or item.extfiles=="png" or item.extfiles=="jpg" or item.extfiles=="jpeg"  or item.extfiles=="PDF" or item.extfiles=="pdf" %}
-                                               <a href="{{ href }}"><i class="material-icons">attach_file</i></a>
-                                           {% else %}
-                                               <a href="{{app.request.getSchemeAndHttpHost()~'/'~item.path()}}"><i class="material-icons">attach_file</i></a>
-                                           {% endif %}
-                                       {% endif %}
-                                   </td>
-                                   <td>
-                                       <a href="{{ href2 }}"><i class="material-icons">view_headline</i></a>
-                                   </td>
-                               </tr>
-                               <div id="{{ idhref2 }}" class="modal modal-fixed-footer">
-                                   <div class="modal-content">
-                                       <center>
-                                           <h4> {% trans from 'home' %} main.detail {% endtrans %}</h4>
-                                       </center>
-                                       <p>
-                                           <strong>
-                                               {% trans from 'private' %} project.title {% endtrans %}
-                                           </strong>
-                                           <br>
+                                      <td>
+                                          {% if item.hashfiles!=null  %}
+                                              {% if item.hashfiles!=null and  item.extfiles=="gif" or item.extfiles=="png" or item.extfiles=="jpg" or item.extfiles=="jpeg"  or item.extfiles=="PDF" or item.extfiles=="pdf" %}
+                                                  <a href="{{ href }}"><i class="material-icons">attach_file</i></a>
+                                              {% else %}
+                                                  <a href="{{app.request.getSchemeAndHttpHost()~'/'~item.path()}}"><i class="material-icons">attach_file</i></a>
+                                              {% endif %}
+                                          {% endif %}
+                                      </td>
+                                      <td>
+                                          <a href="{{ href2 }}"><i class="material-icons">view_headline</i></a>
+                                      </td>
+                                  </tr>
+                                  <div id="{{ idhref2 }}" class="modal modal-fixed-footer">
+                                      <div class="modal-content">
+                                          <center>
+                                              <h4> {% trans from 'home' %} main.detail {% endtrans %}</h4>
+                                          </center>
+                                          <p>
+                                              <strong>
+                                                  {% trans from 'private' %} project.title {% endtrans %}
+                                              </strong>
+                                              <br>
                                         <span>
                                             {{ item.title }}
                                         </span>
-                                       </p>
-                                       <p>
-                                           <strong>
-                                               {% trans from 'private' %} project.code {% endtrans %}
-                                           </strong>
-                                           <br>
+                                          </p>
+                                          <p>
+                                              <strong>
+                                                  {% trans from 'private' %} project.code {% endtrans %}
+                                              </strong>
+                                              <br>
                                         <span>
                                             {{ item.code }}
                                         </span>
-                                       </p>
-                                       <p>
-                                           <strong>
-                                               {% trans from 'private' %} project.date {% endtrans %}
-                                           </strong>
-                                           <br>
+                                          </p>
+                                          <p>
+                                              <strong>
+                                                  {% trans from 'private' %} project.date {% endtrans %}
+                                              </strong>
+                                              <br>
                                         <span>
                                             {{ item.date|date('d-m-Y h:i:s') }}
                                         </span>
-                                       </p>
-                                       <p>
-                                           <strong>
-                                               {% trans from 'private' %} project.status {% endtrans %}
-                                           </strong>
-                                           <br>
+                                          </p>
+                                          <p>
+                                              <strong>
+                                                  {% trans from 'private' %} project.status {% endtrans %}
+                                              </strong>
+                                              <br>
                                         <span>
                                             {{ item.status }}
                                         </span>
-                                       </p>
-                                       <p>
-                                           <strong>
-                                               {% trans from 'private' %} project.description {% endtrans %}
-                                           </strong>
-                                           <br>
+                                          </p>
+                                          <p>
+                                              <strong>
+                                                  {% trans from 'private' %} project.description {% endtrans %}
+                                              </strong>
+                                              <br>
                                         <span>
                                             {{ item.description }}
                                         </span>
-                                       </p>
+                                          </p>
 
-                                   </div>
-                                   <div class="modal-footer">
-                                       <button    class=" modal-action modal-close waves-effect waves-green btn-flat blue white-text">{% trans from 'forms' %} form.project.close {% endtrans %}</button>
-                                   </div>
-                               </div>
-                               {% if item.hashfiles!=null and  item.extfiles=="pdf" or item.extfiles=="PDF"  %}
-                                   <div id="{{ idhref }}" class="modal  modal-fixed-footer">
-                                       <div class="modal-content">
-                                           {# {{ path('admin_download',{id:projet.id}) }} #}
-                                           <iframe src="{{app.request.getSchemeAndHttpHost()~'/'~item.path()}}" class="col s12"  width="100%" height="500" align="middle"></iframe>
-                                       </div>
-                                       <div class="modal-footer">
-                                           <button  id="close" class="modal-action modal-close waves-effect waves-green btn-flat blue white-text">{% trans from 'forms' %} form.project.close {% endtrans %}</button>
-                                       </div>
-                                   </div>
-                               {% endif %}
+                                      </div>
+                                      <div class="modal-footer">
+                                          <button    class=" modal-action modal-close waves-effect waves-green btn-flat blue white-text">{% trans from 'forms' %} form.project.close {% endtrans %}</button>
+                                      </div>
+                                  </div>
+                                  {% if item.hashfiles!=null and  item.extfiles=="pdf" or item.extfiles=="PDF"  %}
+                                      <div id="{{ idhref }}" class="modal  modal-fixed-footer">
+                                          <div class="modal-content">
+                                              {# {{ path('admin_download',{id:projet.id}) }} #}
+                                              <iframe src="{{app.request.getSchemeAndHttpHost()~'/'~item.path()}}" class="col s12"  width="100%" height="500" align="middle"></iframe>
+                                          </div>
+                                          <div class="modal-footer">
+                                              <button  id="close" class="modal-action modal-close waves-effect waves-green btn-flat blue white-text">{% trans from 'forms' %} form.project.close {% endtrans %}</button>
+                                          </div>
+                                      </div>
+                                  {% endif %}
 
-                               {% if item.hashfiles!=null and  item.extfiles=="gif" or item.extfiles=="png" or item.extfiles=="jpg" or item.extfiles=="jpeg"  %}
-                                   <div id="{{ idhref }}" class="modal  modal-fixed-footer">
-                                       <div class="modal-content">
-                                           <img src="{{ asset(item.path()) }}" alt="" class="responsive-image materialboxed" style="max-width: 100%; max-height: inherit;">
-                                       </div>
-                                       <div class="modal-footer">
-                                           <button  id="close" class="modal-action modal-close waves-effect waves-green btn-flat blue white-text">{% trans from 'forms' %} form.project.close {% endtrans %}</button>
-                                       </div>
-                                   </div>
-                               {% endif %}
-                           {% endfor %}
-                       {% endif %}
-                       </tbody>
-                   </table>
+                                  {% if item.hashfiles!=null and  item.extfiles=="gif" or item.extfiles=="png" or item.extfiles=="jpg" or item.extfiles=="jpeg"  %}
+                                      <div id="{{ idhref }}" class="modal  modal-fixed-footer">
+                                          <div class="modal-content">
+                                              <img src="{{ asset(item.path()) }}" alt="" class="responsive-image materialboxed" style="max-width: 100%; max-height: inherit;">
+                                          </div>
+                                          <div class="modal-footer">
+                                              <button  id="close" class="modal-action modal-close waves-effect waves-green btn-flat blue white-text">{% trans from 'forms' %} form.project.close {% endtrans %}</button>
+                                          </div>
+                                      </div>
+                                  {% endif %}
+                              {% endfor %}
+                          {% endif %}
+                          </tbody>
+                      </table>
+                  </div>
                </div>
            </div>
         </div>
