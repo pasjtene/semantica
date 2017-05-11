@@ -10,9 +10,12 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 use Symfony\Component\Security\Core\Authentication\Token\UsernamePasswordToken;
 use Symfony\Component\Security\Core\Exception\AccountStatusException;
-use Web\EntityBundle\Entity\Contact;
-use Web\EntityBundle\Entity\Customer;
+use Symfony\Component\Validator\Constraints\DateTime;
+use Web\EntityBundle\Entity\Comment;
+use Web\EntityBundle\Entity\CommitHistoric;
+use Web\EntityBundle\Entity\Historic;
 use Web\EntityBundle\Entity\Projet;
+use Web\EntityBundle\Entity\Task;
 use Web\EntityBundle\Entity\User;
 use Web\EntityBundle\Form\UserType;
 
@@ -80,6 +83,7 @@ class PrivateController extends Controller
      */
     public function commitAction(Request $request)
     {
+        $code="";
         /** @var User $user */
         $user = $this->getUser();
         $em = $this->getDoctrine()->getManager();
@@ -100,11 +104,98 @@ class PrivateController extends Controller
             }
         }
 
-        $list = $em->getRepository("EntityBundle:Projet")->findBy(['user'=>$user],['id'=>'DESC','date'=>'DESC']);
-        $array['list'] = $list;
-        $array['index'] =3;
+        $items = $em->getRepository("EntityBundle:Projet")->findBy(['user'=>$user],['id'=>'DESC','date'=>'DESC']);
 
+        if($request->isMethod("POST"))
+        {
+            $val = $request->request;
+            $code = $val->get('code');
+            if($code!="")
+            {
+                /** @var Projet $projet */
+                $projet =  $em->getRepository("EntityBundle:Projet")->findOneBycode($code);
+                $list = $em->getRepository("EntityBundle:CommitHistoric")->findBy(['project'=>$projet],['id'=>'DESC']);
+            }
+            else{
+                $list = $em->getRepository("EntityBundle:CommitHistoric")->findBy([],['id'=>'DESC']);
+            }
+        }
+        else
+        {
+            $list = $em->getRepository("EntityBundle:CommitHistoric")->findBy([],['id'=>'DESC']);
+        }
+
+        $listhelp = $list;
+        $list =null;
+        /** @var CommitHistoric $item */
+        foreach($listhelp as $item)
+        {
+            if($item->getProject()->getUser()->getId()==$user->getId())
+            {
+                $list[] =$item;
+            }
+        }
+        $array['list'] = $list;
+        $array['items'] = $items;
+        $array['index'] = 3;
+        $array['code'] = $code;
         return $this->render('MainBundle:Private:commit.html.twig',$array);
+    }
+
+
+    /**
+     * @Route("/commit/send/{id}", name="main_private_commit_send", requirements={"id": "\d+"})
+     */
+    public function send_commitAction(Request $request,$id)
+    {
+        $code="";
+        /** @var User $user */
+        $user = $this->getUser();
+        $em = $this->getDoctrine()->getManager();
+
+        $all= $em->getRepository("EntityBundle:Projet")->findAll();
+
+        if($request->isMethod("POST"))
+        {
+            $val = $request->request;
+            $message =$val->get('message');
+            $taskid =$val->get('task');
+            $commit =$val->get('commit');
+
+            /** @var User $user */
+            $user= $em->getRepository("EntityBundle:User")->find($user->getId());
+
+            /** @var Projet $project */
+            $project= $em->getRepository("EntityBundle:Projet")->find($id);
+
+            /** @var Task $task */
+            $task= $em->getRepository("EntityBundle:Task")->find($taskid);
+
+            $comment = new Comment();
+            $comment->setDate(new \DateTime())->setDescription($message);
+            $comment->setUser($user)->setProject($project)->setTask($task);
+
+            $em->persist($comment);
+            $em->flush();
+            $em->detach($comment);
+
+            $list= $em->getRepository("EntityBundle:Historic")->findAll();
+
+            /** @var Historic $item */
+            foreach($list as $item)
+            {
+                if($item->getProject()->getId()==$id)
+                {
+                    $body =  '<p> Code du projet : '.$project->getCode().
+                        '<br/> Commit : '.$commit.
+                        '<br/> Suggestion : '.$message.'</p>';
+                    $code = $this->sendMail($item->getParticipator()->getUser()->getEmail(), $this->getParameter('mailer_user'), $message, "COMMENT STC(SEMANTICA TECHNOLOGIES CORPORATION)");
+                }
+            }
+
+
+        }
+        return $this->redirect($this->generateUrl('main_private_commit',["message"=>"test"]));
     }
 
 
@@ -215,5 +306,22 @@ class PrivateController extends Controller
             //var_dump($ex->getMessage());
         }
     }
+
+
+    public  function sendMail($to, $from, $body,$subjet)
+    {
+        // ->setReplyTo('xxx@xxx.xxx')
+
+        $message = \Swift_Message::newInstance()
+            ->setSubject($subjet)
+            ->setFrom($from) // 'info@achgroupe.com' => 'Achgroupe : Course en ligne '
+            ->setTo($to)
+            ->setBody($body)
+            //'MyBundle:Default:mail.html.twig'
+            ->setContentType('text/html');
+        return $this->get('mailer')->send($message);
+
+    }
+
 
 }
