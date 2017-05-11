@@ -19,6 +19,10 @@
         footer{
             bottom: 0;
             width: 100% !important;
+            {% if list==null or list|length < 3 %} position: fixed; {% endif %}
+        }
+        .mega-menu{
+            z-index: 9999999999999999999999999999 !important;
         }
     </style>
 {% endblock %}
