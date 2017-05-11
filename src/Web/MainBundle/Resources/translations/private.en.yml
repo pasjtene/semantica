@@ -6,8 +6,26 @@ private:
   commit: Commit
   find: Find commit
   choose_project: Choose a project
-project:
+commit:
   auther: Auther
   commit: Commit
   message: Message
-date: Date
+  date: Date
+project:
+  title: Title
+  description: Description
+  date: Date
+  date: Date
+  code: Code
+  file: Upload file
+  progress: In progress
+  break: on break
+  valid: Valid
+  notvalid: Not valide
+  rejects: Rejects
+  ready: Ready
+  delivered: Delivered
+  close: Close
+  choose: Choose status
+  status: Status
+

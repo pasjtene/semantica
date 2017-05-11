@@ -5,12 +5,25 @@ private:
   comment: Commentaire
   commit: Commit
   find: Trouver le commit
-<<<<<<< Temporary merge branch 1
   choose_project: Choisir un projet
-=======
->>>>>>> Temporary merge branch 2
 project:
   auther: Auteur
   commit: Commit
   message: Message
   date: Date
+project:
+  title: Titre
+  description: Description
+  date: Date
+  code: Code
+  file: Télécharger le fichier
+  progress: En cours
+  break: En pause
+  valid: Valide
+  notvalid: Non valide
+  rejects: Rejetté
+  ready: Prêt
+  delivered: Livré
+  close: Fermé
+  choose: Choisir l'état
+  status: Statut
