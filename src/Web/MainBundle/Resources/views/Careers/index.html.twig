@@ -1,0 +1,33 @@
+{% extends 'MainBundle::layout.html.twig' %}
+{% block meta %}
+    <meta name = "{% trans from 'refer' %} home.title {% endtrans %}" >
+    <meta name = "keywords" content = "{% trans from 'refer' %} home.description {% endtrans %}" >
+{% endblock %}
+{% block title %}
+    Semantica Technologies Corporation - STC
+{% endblock %}
+
+{% block mycss %}
+    <style>
+
+    </style>
+{% endblock %}
+{% block header %}
+    {{ parent() }}
+    {% include 'MainBundle:Inc:slide.html.twig' %}
+{% endblock %}
+{% block  main %}
+    <div class="row" id="main_careers">
+
+    </div>
+
+{% endblock %}
+
+{% block myjs %}
+    <script>
+
+        $(function() {
+
+        });
+    </script>
+{% endblock %}

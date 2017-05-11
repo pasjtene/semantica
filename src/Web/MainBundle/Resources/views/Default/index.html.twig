@@ -197,6 +197,7 @@
                     $('#notification_confirm').slideDown(100);
                     t = setInterval(function(){
                         $('#notification_confirm').slideUp();
+                        window.location.href = '{{ path('main_homepage') }}'
                         clearInterval(t);
                     },4000);
 
