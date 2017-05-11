@@ -70,7 +70,18 @@ class DefaultController extends Controller
             //$code =$this->sentMail($email,$this->getParameter('mailer_user'),'MainBundle:Inc:confirm.html.twig',$array,"Confirmation");
             $tab = explode('@',$email);
             $array["message"] = "...@".$tab[count($tab)-1];
+
+            // index
+
+            $suggestion = new Suggestion();
+            /** @var Form $form */
+            $form = $this->get("form.factory")->create(SuggestionType::class,$suggestion);
+
+            $array['form'] = $form->createView();
+            $array["suggestion"] =$suggestion;
+
             return $this->render('MainBundle:Default:index.html.twig',$array);
+           // return $this->redirect($this->generateUrl('main_homepage',["message"=>"test"]));
         }
     }
 
