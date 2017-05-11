@@ -117,28 +117,28 @@
                         <form action="{{ path('main_contact') }}" id="form" method="post">
                             <div class="row">
                                 <div class="input-field col s12">
-                                    <input id="c_email" name="c_email" type="email" class="validate">
+                                    {{ form_widget(form.visitor.email,{'attr':{'class':'','type':'email'}}) }}
                                     <label for="c_email">{% trans from 'home' %} main.email {% endtrans %}</label>
-                                    <div class="error red-text" id="c_email_error" style="display: none;">
-                                        {% trans from 'error' %} email_format {% endtrans %}
+                                    <div class="error red-text">
+                                        <div class="error"  >{{ form_errors(form.visitor.email) }}</div>
                                     </div>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="input-field col s12">
-                                    <input id="name" name="name" type="text" class="validate">
+                                    {{ form_widget(form.visitor.firstname,{'attr':{'class':''}}) }}
                                     <label for="name">{% trans from 'home' %} main.name {% endtrans %}</label>
-                                    <div class="error red-text" id="name_error" style="display: none;">
-                                        {% trans from 'error' %} name {% endtrans %}
+                                    <div class="error red-text">
+                                        <div class="error"  >{{ form_errors(form.visitor.firstname) }}</div>
                                     </div>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="input-field col s12">
-                                    <textarea id="message" name="message" class="materialize-textarea"></textarea>
+                                    {{ form_widget(form.description,{'attr':{'class':'materialize-textarea'}}) }}
                                     <label for="icon_prefix2">{% trans from 'home' %} main.message {% endtrans %}</label>
-                                    <div class="error red-text" id="message_error" style="display: none;">
-                                        {% trans from 'error' %} message {% endtrans %}
+                                    <div class="error red-text">
+                                        <div class="error"  >{{ form_errors(form.description) }}</div>
                                     </div>
                                 </div>
                             </div>
@@ -293,32 +293,7 @@
             });
 
 
-            elt.send.click(function(e){
-                var message=null;
-                e.preventDefault();
-                if(!verifMail(elt.c_email.val()))
-                {
-                    message+= "\n ->" +error.email_format;
-                    elt.c_email_error.slideDown();
-                }
-                if(elt.name.val().trim()=="")
-                {
-                    message+= "\n ->" +error.name;
-                    elt.name_error.slideDown();
-                }
-                if(elt.message.val().trim()=="")
-                {
-                    message+= "\n ->" +error.message;
-                    elt.message_error.slideDown();
-                }
 
-                if(message==null)
-                {
-                    elt.form.submit();
-                    //alert(message);
-                }
-
-            });
 
 
         });
