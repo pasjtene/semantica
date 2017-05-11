@@ -28,4 +28,5 @@ project:
   close: Close
   choose: Choose status
   status: Status
+  empty: No projects are saved or any projects match your search
 

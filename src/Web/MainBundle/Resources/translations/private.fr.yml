@@ -16,14 +16,15 @@ project:
   description: Description
   date: Date
   code: Code
-  file: Télécharger le fichier
+  file: TÃ©lÃ©charger le fichier
   progress: En cours
   break: En pause
   valid: Valide
   notvalid: Non valide
-  rejects: Rejetté
-  ready: Prêt
-  delivered: Livré
-  close: Fermé
-  choose: Choisir l'état
+  rejects: RejettÃ©
+  ready: PrÃªt
+  delivered: LivrÃ©
+  close: FermÃ©
+  choose: Choisir l'Ã©tat
   status: Statut
+  empty: Aucun projet n'est enrgistrÃ© ou aucun projet ne correspont a votre recherche
