@@ -396,4 +396,61 @@ class Projet extends BaseInterface
     {
         return $this->user;
     }
+
+    public  function CurrentStatus($value,$langage)
+    {
+        $val=null;
+        if($langage=='fr')
+        {
+            switch($value)
+            {
+                case '0':
+                case 'En cours':
+                   $val = "Non validé";
+                    break;
+                case '1':
+                    $val = "Accepté";
+                    break;
+                case '2':
+                    $val = "En cours";
+                    break;
+                case '3':
+                    $val = "Terminé";
+                    break;
+                case '4':
+                    $val = "En pause";
+                    break;
+                case '5':
+                    $val = "Budget épuisé";
+                    break;
+            }
+        }
+        else
+        {
+            switch($value)
+            {
+                case '0':
+                case 'En cours':
+                    $val = "Not valid";
+                    break;
+                case '1':
+                    $val = "Accepted";
+                    break;
+                case '2':
+                    $val = "In progress";
+                    break;
+                case '3':
+                    $val = "Finish";
+                    break;
+                case '4':
+                    $val = "On break";
+                    break;
+                case '5':
+                    $val = "Budget run-down";
+                    break;
+            }
+        }
+        return $val;
+
+    }
 }

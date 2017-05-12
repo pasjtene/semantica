@@ -55,13 +55,11 @@
                                    <select id="code" name="code">
                                        <option value="" {% if code is defined and code=="" %} selected {% endif %} >{% trans from 'private' %} project.choose {% endtrans %}</option>
                                        <option value="0" {% if code is defined and code=="0" %} selected {% endif %}> {% trans from 'private' %} project.notvalid  {% endtrans %}</option>
-                                       <option value="1" {% if code is defined and code=="1" %} selected {% endif %}> {% trans from 'private' %} project.valid  {% endtrans %}</option>
+                                       <option value="1" {% if code is defined and code=="1" %} selected {% endif %}> {% trans from 'private' %} project.accepted  {% endtrans %}</option>
                                        <option value="2" {% if code is defined and code=="2" %} selected {% endif %}> {% trans from 'private' %} project.progress  {% endtrans %}</option>
-                                       <option value="3" {% if code is defined and code=="3" %} selected {% endif %}> {% trans from 'private' %} project.break  {% endtrans %}</option>
-                                       <option value="4" {% if code is defined and code=="4" %} selected {% endif %}> {% trans from 'private' %} project.rejects  {% endtrans %}</option>
-                                       <option value="5" {% if code is defined and code=="5" %} selected {% endif %}> {% trans from 'private' %} project.ready  {% endtrans %}</option>
-                                       <option value="6" {% if code is defined and code=="6" %} selected {% endif %}> {% trans from 'private' %} project.delivered  {% endtrans %}</option>
-                                       <option value="7" {% if code is defined and code=="7" %} selected {% endif %}> {% trans from 'private' %} project.close  {% endtrans %}</option>
+                                       <option value="3" {% if code is defined and code=="3" %} selected {% endif %}> {% trans from 'private' %} project.finish  {% endtrans %}</option>
+                                       <option value="4" {% if code is defined and code=="4" %} selected {% endif %}> {% trans from 'private' %} project.break  {% endtrans %}</option>
+                                       <option value="5" {% if code is defined and code=="5" %} selected {% endif %}> {% trans from 'private' %} project.run  {% endtrans %}</option>
                                    </select>
                                    <label>{% trans from 'private' %} project.status {% endtrans %}</label>
                                </div>
@@ -73,8 +71,9 @@
                       <table class="bordered responsive-table ">
                           <thead>
                           <tr>
-                              <th>{% trans from 'private' %} project.code  {% endtrans %}</th>
+                              <th>N°</th>
                               <th>{% trans from 'private' %} project.title  {% endtrans %}</th>
+                              <th>{% trans from 'private' %} project.status  {% endtrans %}</th>
                               <th>{% trans from 'private' %} project.date  {% endtrans %}</th>
                               <th>#</th>
                               <th>#</th>
@@ -95,9 +94,12 @@
                                   {% set href2= "#project2"~item.id %}
                                   {% set idhref2 = "project2"~item.id %}
                                   <tr>
-                                      <td><a href="">{{ item.code }}</a> </td>
+                                      <td>{{ loop.index }}</td>
                                       <td>{{ item.title }} </td>
+                                      <td>{{ item.CurrentStatus(item.status,app.request.locale) }} </td>
                                       <td>{{ item.date|date('d-m-Y h:i:s') }} </td>
+
+                                      {#
 
                                       <td>
                                           {% if item.hashfiles!=null  %}
@@ -108,9 +110,24 @@
                                               {% endif %}
                                           {% endif %}
                                       </td>
+
+                                      #}
                                       <td>
-                                          <a href="{{ href2 }}"><i class="material-icons">view_headline</i></a>
+                                          <a href="{{ href2 }}" class="blue-text"><i class="material-icons" >view_headline</i></a>
                                       </td>
+                                      <td>
+                                          {% if item.status=="0" or item.status=="En cours"  %}
+                                              {% set key = 'data'~loop.index %}
+                                              <span id="{{ key }}" style="display: none;">
+                                                    {% trans from 'admin' %} project.delete {% endtrans %} '{{ item.title }}'
+                                              </span>
+                                              <a data-id="{{ key }}" href="{{ path('main_projet_delete',{id:item.id}) }}" class="delete_projet"><i class="material-icons" >delete</i></a>
+                                          {% else %}
+                                              <i class="material-icons green-text" >check_circle</i>
+                                          {% endif %}
+                                      </td>
+
+
                                   </tr>
                                   <div id="{{ idhref2 }}" class="modal modal-fixed-footer">
                                       <div class="modal-content">
@@ -150,17 +167,33 @@
                                               </strong>
                                               <br>
                                         <span>
-                                            {{ item.status }}
+                                            {{ item.CurrentStatus(item.status,app.request.locale) }}
                                         </span>
+                                          </p>
+                                          <p>
+                                              <strong>
+                                                  {% trans from 'private' %} project.file {% endtrans %}
+                                              </strong>
+                                              <br>
+                                             {#
+
+                                                 {% if item.hashfiles!=null  %}
+                                                  {% if item.hashfiles!=null and  item.extfiles=="gif" or item.extfiles=="png" or item.extfiles=="jpg" or item.extfiles=="jpeg"  or item.extfiles=="PDF" or item.extfiles=="pdf" %}
+                                                      <a href="{{ href }}"><i class="material-icons">attach_file</i></a>
+                                                  {% else %}
+                                                      <a href="{{app.request.getSchemeAndHttpHost()~'/'~item.path()}}"><i class="material-icons">attach_file</i></a>
+                                                  {% endif %}
+                                              {% endif %}
+                                             #}
                                           </p>
                                           <p>
                                               <strong>
                                                   {% trans from 'private' %} project.description {% endtrans %}
                                               </strong>
                                               <br>
-                                        <span>
-                                            {{ item.description }}
-                                        </span>
+                                              <span>
+                                                  {{ item.description }}
+                                              </span>
                                           </p>
 
                                       </div>
@@ -212,12 +245,20 @@
                 code: $('#code'),
                 select: $('select'),
                 form : $('#form'),
-                modal:$('.modal')
+                modal:$('.modal'),
+                delete: $('.delete_projet')
             }
             elt.modal.modal();
            elt.select.material_select();
             elt.code.change(function(){
                 elt.form.submit();
+            });
+
+            elt.delete.click(function(e){
+                if(!confirm($('#'+$(this).data('id')).text().trim()))
+                {
+                    e.preventDefault();
+                }
             });
         } );
     </script>

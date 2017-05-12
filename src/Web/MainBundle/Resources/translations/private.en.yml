@@ -31,9 +31,13 @@ project:
   rejects: Rejects
   ready: Ready
   delivered: Delivered
+  accepted: Accepté
+  finish: Finish
+  run: Budget run-down
   close: Close
   choose: Choose status
   status: Status
+  delete: Delete
   empty: No projects are saved or any projects match your search
 comment:
   project: Project

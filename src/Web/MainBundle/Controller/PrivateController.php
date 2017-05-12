@@ -13,6 +13,7 @@ use Symfony\Component\Security\Core\Exception\AccountStatusException;
 use Symfony\Component\Validator\Constraints\DateTime;
 use Web\EntityBundle\Entity\Comment;
 use Web\EntityBundle\Entity\CommitHistoric;
+use Web\EntityBundle\Entity\Files;
 use Web\EntityBundle\Entity\Historic;
 use Web\EntityBundle\Entity\Projet;
 use Web\EntityBundle\Entity\Task;
@@ -356,6 +357,27 @@ class PrivateController extends Controller
             ->setContentType('text/html');
         return $this->get('mailer')->send($message);
 
+    }
+
+
+    /**
+     * @Route("/project/delete/{id}", name="main_projet_delete", requirements={"id": "\d+"})
+     */
+    public function deleteAction($id)
+    {
+        $em = $this->getDoctrine()->getManager();
+        /** @var Projet $project */
+        $project = $em->getRepository("EntityBundle:Projet")->find($id);
+        $files = new Files();
+        if($project->getFiles()!=null)
+        {
+            $files->delete('',$project->path());
+        }
+        $em = $this->getDoctrine()->getManager();
+        $em->remove($project);
+        $em->flush();
+
+        return $this->redirect($this->generateUrl('main_private'));
     }
 
 
