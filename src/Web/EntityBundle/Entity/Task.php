@@ -43,6 +43,20 @@ class Task extends BaseInterface
      */
     private $libelle;
 
+    /**
+     * @var string
+     * @Assert\NotBlank(message="task.status.NotBlank")
+     * @ORM\Column(name="status", type="string", length=255)
+     */
+    private $status;
+
+
+    /**
+     * @var string
+     * @Assert\NotBlank(message="task.rate.NotBlank")
+     * @ORM\Column(name="status", type="string", length=255)
+     */
+    private $rate;
 
 
     /**

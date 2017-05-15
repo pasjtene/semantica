@@ -33,6 +33,13 @@ class Commit extends BaseInterface
     private $participator;
 
     /**
+     * @Assert\Valid()
+     * @ORM\ManyToOne(targetEntity="Web\EntityBundle\Entity\Comment",cascade={"persist"})
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $comment;
+
+    /**
      * @var string
      * @Assert\NotBlank(message="commit.code.NotBlank")
      * @ORM\Column(name="code", type="string", length=255, unique=true)

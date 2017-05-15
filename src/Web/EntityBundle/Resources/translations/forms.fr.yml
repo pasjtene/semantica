@@ -83,6 +83,8 @@ form:
   Task:
     libelle: Intitulé
     identity: Identifiant
+    rate: Taux
+    status: Statut
   user:
     email: Adresse email
     placeholder_email:  Saisir votre adresse email

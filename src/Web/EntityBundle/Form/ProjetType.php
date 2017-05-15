@@ -3,6 +3,7 @@
 namespace Web\EntityBundle\Form;
 
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
@@ -35,11 +36,11 @@ class ProjetType extends AbstractType
                 'translation_domain' => 'forms',
                 'required'    => false
             ))
-            ->add('file',FileType::class,array(
-                'label' => 'form.project.file',
-                'attr'=>['placeholder'=>'form.project.placeholder_file','accept'=>".pdf,.docs,.doc"],
-                'translation_domain' => 'forms',
-                'required'    => false
+            ->add('fileProject',CollectionType::class, array(
+                'type' => new FileProjetType(),
+                'allow_add' => true,
+                'allow_delete' => true,
+                'by_reference' => false,
             ))
             ->add('user',UserType::class
             );

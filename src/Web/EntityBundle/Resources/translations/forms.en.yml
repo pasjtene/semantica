@@ -82,6 +82,8 @@ form:
   Task:
     libelle: Libelle
     identity: Identity
+    rate: Rate
+    status: Status
   user:
     email: Email adress
     placeholder_email:  Your email address
