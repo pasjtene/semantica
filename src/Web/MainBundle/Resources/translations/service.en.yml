@@ -143,9 +143,9 @@ our:
 
 exploreservice:
   title:  INFORMATIC SERVICE
-  block1: HELPING TRANSFORM YOUR BUSINESS WITH A COLLABORATIVE APPROACH
+  block1: HELPING TRANSFORM YOUR BUSINESS WITH A COLLABORATIVE APPROACH WITH OURS EXPEERTS
   block1_content:  |
-   <P>Presentation</P>
+   <P><h4>PRESENTATION</h4></P>
    <P>
    The very large and growing needs in the use of information technology have led
    The creation of a Project Management Service, responsible for monitoring clients' projects since the study of the existing,
@@ -155,10 +155,11 @@ exploreservice:
    In order to give priority to your concerns, we have set up a team to intervene in the perimeter
    Encompassing all IT activities of general interest for your business.
    </P>
-  block2:  ours missions :
+  block2:  OURS MISSIONS :
   block2_content:  |
    <ul>
-   <li>maintenir et faire évoluer le système votre d'information;</li>
+   <li>
+     Maintain and evolve your information system;</li>
    </ul>
    <ul>
    <li>Advise and inform users in all matters relating to information technology in the broadest sense;</li>
@@ -172,6 +173,6 @@ exploreservice:
    </ul>
    <ul>
    <li>
-   Develop your applications by following my agile method;</li>
+   Develop your applications by following  agile method.</li>
    </ul>
 
