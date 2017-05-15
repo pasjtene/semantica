@@ -54,7 +54,7 @@ class Task extends BaseInterface
     /**
      * @var string
      * @Assert\NotBlank(message="task.rate.NotBlank")
-     * @ORM\Column(name="status", type="string", length=255)
+     * @ORM\Column(name="rate", type="string", length=255)
      */
     private $rate;
 

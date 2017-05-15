@@ -26,7 +26,7 @@ class FileProjet
 
     /**
      * Symfony\Component\Validator\Constraints\valid()
-     * @ORM\ManyToOne(targetEntity="Project", inversedBy="files")
+     * @ORM\ManyToOne(targetEntity="Projet", inversedBy="files")
      * @ORM\JoinColumn(nullable=false)
      */
     private $project;

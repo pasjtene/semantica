@@ -36,7 +36,7 @@ class ProjetType extends AbstractType
                 'translation_domain' => 'forms',
                 'required'    => false
             ))
-            ->add('fileProject',CollectionType::class, array(
+            ->add('files',CollectionType::class, array(
                 'type' => new FileProjetType(),
                 'allow_add' => true,
                 'allow_delete' => true,
