@@ -138,36 +138,11 @@ use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
           return $this->lastname;
       }
 
-      /**
-       * Set phone
-       *
-       * @param string $phone
-       *
-       * @return Personne
-       */
-      public function setPhone($phone)
-      {
-          $this->phone = $phone;
-
-          return $this;
-      }
-
-      /**
-       * Get phone
-       *
-       * @return string
-       */
-      public function getPhone()
-      {
-          return $this->phone;
-      }
 
       /**
        * Set pleasantries
        *
        * @param string $pleasantries
-       *
-       * @return Personne
        */
       public function setPleasantries($pleasantries)
       {
@@ -191,7 +166,6 @@ use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
        *
        * @param string $city
        *
-       * @return Personne
        */
       public function setCity($city)
       {
@@ -213,9 +187,7 @@ use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
       /**
        * Set country
        *
-       * @param string $country
-       *
-       * @return Personne
+       * @param string
        */
       public function setCountry($country)
       {
