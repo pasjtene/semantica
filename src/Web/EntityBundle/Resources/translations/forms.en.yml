@@ -65,6 +65,7 @@ form:
     state : State
     placeholder_state: Give the state
     status : Status
+    date: Date
     placeholder_status: Give the status
     coordonne: Personal Coordinated
     project: Projet description

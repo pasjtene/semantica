@@ -36,11 +36,11 @@
                     <table id="table" class="centered bordered responsive-table">
                         <thead>
                         <tr>
-                            <th>{% trans from 'forms' %} form.project.name {% endtrans %}</th>
-                            <th>{% trans from 'forms' %} form.project.phone {% endtrans %}</th>
-                            <th>{% trans from 'forms' %} form.project.email {% endtrans %}</th>
-                            <th>{% trans from 'forms' %} form.project.type {% endtrans %}</th>
-                            <th>{% trans from 'forms' %} form.project.objet {% endtrans %}</th>
+                            <th>{% trans from 'forms' %} form.user.firstname {% endtrans %}</th>
+                            <th>{% trans from 'forms' %} form.user.username {% endtrans %}</th>
+                            <th>{% trans from 'forms' %} form.user.email {% endtrans %}</th>
+                            <th>{% trans from 'forms' %} form.project.title {% endtrans %}</th>
+                            <th>{% trans from 'forms' %} form.project.status {% endtrans %}</th>
                             <th>{% trans from 'forms' %} form.project.date {% endtrans %}</th>
                             <th>#</th>
                             <th>#</th>
@@ -50,24 +50,46 @@
 
                         <tbody>
                         {% for projet in list  %}
-                            {% set href= "#project"~projet.id %}
-                            {% set idhref = "project"~projet.id %}
                             {% set href2= "#project2"~projet.id %}
                             {% set idhref2 = "project2"~projet.id %}
                             <tr>
-                                <td>{{ projet.truncate(projet.name,30) }}</td>
-                                <td>{{ projet.truncate(projet.phone,30) }}</td>
-                                <td>{{ projet.truncate(projet.email,30) }}</td>
-                                <td>{{ projet.truncate(projet.type,30) }}</td>
-                                <td>{{ projet.truncate(projet.objet,30) }}</td>
-                                <td>{{ projet.time|date('d-m-Y h:i:s') }}</td>
                                 <td>
-                                    {% if projet.hashfiles!=null  %}
-                                        {% if projet.hashfiles!=null and  projet.extfiles=="gif" or projet.extfiles=="png" or projet.extfiles=="jpg" or projet.extfiles=="jpeg"  or projet.extfiles=="PDF" or projet.extfiles=="pdf" %}
-                                            <a href="{{ href }}"><i class="material-icons">attach_file</i></a>
-                                        {% else %}
-                                            <a href="{{app.request.getSchemeAndHttpHost()~'/'~projet.path()}}"><i class="material-icons">attach_file</i></a>
-                                        {% endif %}
+                                    {% if projet.user!=null %}
+                                        {{ projet.truncate(projet.user.firstname,30) }}
+                                    {% else %}
+                                        {{ projet.truncate(projet.visitor.firstname,30) }}
+                                    {% endif %}
+                                </td>
+                                <td>
+                                    {% if projet.user!=null %}
+                                        {{ projet.truncate(projet.user.username,30) }}
+                                    {% else %}
+                                        {{ projet.truncate(projet.visitor.phone,30) }}
+                                    {% endif %}
+                                </td>
+                                <td>
+                                    {% if projet.user!=null %}
+                                        {{ projet.truncate(projet.user.email,30) }}
+                                    {% else %}
+                                        {{ projet.truncate(projet.visitor.email,30) }}
+                                    {% endif %}
+                                </td>
+                                <td>{{ projet.truncate(projet.title,30) }}</td>
+                                <td>{{ projet.truncate(projet.CurrentStatus(projet.status,app.request.locale),30) }}</td>
+                                <td>{{ projet.date|date('d-m-Y h:i:s') }}</td>
+                                <td>
+                                    {% if projet.files!=null  %}
+                                        <select name="" id="">
+                                            {% for file in projet.files %}
+                                                {% set href= "#project"~file.id %}
+                                                {% set idhref = "project"~file.id %}
+                                                {% if file.hashname!=null and  file.extfile=="gif" or file.extfile=="png" or file.extfile=="jpg" or file.extfile=="jpeg"  or file.extfile=="PDF" or file.extfile=="pdf" %}
+                                                    <option value="{{ href }}">upload</option>
+                                                {% else %}
+                                                    <option value="{{app.request.getSchemeAndHttpHost()~'/'~file.path()}}">upload</option>
+                                                {% endif %}
+                                            {% endfor %}
+                                        </select>
                                     {% endif %}
                                 </td>
                                 <td>
@@ -76,7 +98,7 @@
                                 <td>
                                     {% set key = 'data'~loop.index %}
                                     <span id="{{ key }}" style="display: none;">
-                                        {% trans from 'admin' %} project.delete {% endtrans %} '{{ projet.objet }}'
+                                        {% trans from 'admin' %} project.delete {% endtrans %} '{{ projet.title }}'
                                     </span>
                                     <a data-id="{{ key }}" href="{{ path('admin_projet_delete',{id:projet.id}) }}" class="delete_projet"><i class="material-icons">delete</i></a>
                                 </td>
@@ -92,7 +114,11 @@
                                         </strong>
                                         <br>
                                 <span>
-                                    {{ projet.name }}
+                                    {% if projet.user!=null %}
+                                        {{ projet.user.firstname }}
+                                    {% else %}
+                                        {{ projet.visitor.firstname }}
+                                    {% endif %}
                                 </span>
                                     </p>
                                     <p>
@@ -101,7 +127,11 @@
                                         </strong>
                                         <br>
                                 <span>
-                                    {{ projet.email }}
+                                    {% if projet.user!=null %}
+                                        {{ projet.user.username }}
+                                    {% else %}
+                                        {{ projet.visitor.phone }}
+                                    {% endif %}
                                 </span>
                                     </p>
                                     <p>
@@ -110,61 +140,39 @@
                                         </strong>
                                         <br>
                                 <span>
-                                    {{ projet.phone }}
+                                    {% if projet.user!=null %}
+                                        {{ projet.user.email }}
+                                    {% else %}
+                                        {{ projet.visitor.email }}
+                                    {% endif %}
                                 </span>
                                     </p>
                                     <p>
                                         <strong>
-                                            {% trans from 'forms' %} form.project.type {% endtrans %}
+                                            {% trans from 'forms' %} form.project.title {% endtrans %}
                                         </strong>
                                         <br>
                                 <span>
-                                    {{ projet.type }}
+                                    {{ projet.title }}
                                 </span>
                                     </p>
                                     <p>
                                         <strong>
-                                            {% trans from 'forms' %} form.project.objet {% endtrans %}
+                                            {% trans from 'forms' %} form.project.status {% endtrans %}
                                         </strong>
                                         <br>
                                 <span>
-                                    {{ projet.objet }}
+                                    {{ projet.CurrentStatus(projet.status,app.request.locale) }}
                                 </span>
                                     </p>
-                                    <p>
-                                        <strong>
-                                            {% trans from 'forms' %} form.project.country {% endtrans %}
-                                        </strong>
-                                        <br>
-                                <span>
-                                    {{ projet.country }}
-                                </span>
-                                    </p>
-                                    <p>
-                                        <strong>
-                                            {% trans from 'forms' %} form.project.city {% endtrans %}
-                                        </strong>
-                                        <br>
-                                <span>
-                                    {{ projet.city }}
-                                </span>
-                                    </p>
-                                    <p>
-                                        <strong>
-                                            {% trans from 'forms' %} form.project.adress {% endtrans %}
-                                        </strong>
-                                        <br>
-                                <span>
-                                    {{ projet.adress }}
-                                </span>
-                                    </p>
+
                                     <p>
                                         <strong>
                                             {% trans from 'forms' %} form.project.date {% endtrans %}
                                         </strong>
                                         <br>
                                 <span>
-                                    {{ projet.time|date('d-m-Y h:i:s') }}
+                                    {{ projet.date|date('d-m-Y h:i:s') }}
                                 </span>
                                     </p>
                                     <p>
@@ -181,28 +189,6 @@
                                     <button    class=" modal-action modal-close waves-effect waves-green btn-flat blue white-text">{% trans from 'forms' %} form.project.close {% endtrans %}</button>
                                 </div>
                             </div>
-                            {% if projet.hashfiles!=null and  projet.extfiles=="pdf" or projet.extfiles=="PDF"  %}
-                                <div id="{{ idhref }}" class="modal  modal-fixed-footer">
-                                    <div class="modal-content">
-                                        {# {{ path('admin_download',{id:projet.id}) }} #}
-                                        <iframe src="{{app.request.getSchemeAndHttpHost()~'/'~projet.path()}}" class="col s12"  width="100%" height="500" align="middle"></iframe>
-                                    </div>
-                                    <div class="modal-footer">
-                                        <button  id="close" class="modal-action modal-close waves-effect waves-green btn-flat blue white-text">{% trans from 'forms' %} form.project.close {% endtrans %}</button>
-                                    </div>
-                                </div>
-                            {% endif %}
-
-                            {% if projet.hashfiles!=null and  projet.extfiles=="gif" or projet.extfiles=="png" or projet.extfiles=="jpg" or projet.extfiles=="jpeg"  %}
-                                <div id="{{ idhref }}" class="modal  modal-fixed-footer">
-                                    <div class="modal-content">
-                                        <img src="{{ asset(projet.path()) }}" alt="" class="responsive-image materialboxed" style="max-width: 100%; max-height: inherit;">
-                                    </div>
-                                    <div class="modal-footer">
-                                        <button  id="close" class="modal-action modal-close waves-effect waves-green btn-flat blue white-text">{% trans from 'forms' %} form.project.close {% endtrans %}</button>
-                                    </div>
-                                </div>
-                            {% endif %}
                         {% endfor %}
                         </tbody>
                     </table>

@@ -63,6 +63,7 @@ form:
     code : Code
     placeholder_objet: Votre code
     status : Etat
+    date: Date
     placeholder_state: Donner l'état du  projet
     state : statut
     placeholder_state: Valider le projet
