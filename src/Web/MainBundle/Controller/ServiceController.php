@@ -48,4 +48,12 @@ class ServiceController extends Controller
     {
         return $this->render('MainBundle:Service:exploreservice.html.twig');
     }
+
+    /**
+     * @Route("/exploreapp", name="main_exploreapp")
+     */
+    public function exploreappAction()
+    {
+        return $this->render('MainBundle:Service:exploreapp.html.twig');
+    }
 }

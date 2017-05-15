@@ -160,9 +160,9 @@ our:
      </ul>
 
 
-exploreservice:
+exploresereservice:
   title:  LE SERVICE INFORMATIQUE
-  block1: AIDER À TRANSFORMER VOTRE ENTREPRISE PAR UNE APPROCHE COLLABORATIVE AVEC NOS EXPERTS
+  block1: STC VOTRE PARTENAIRE IDEALE POUR UNE TRANSFORMATION NUMERIQUE REUSSIE
   block1_content:  |
    <P><h4>PRESENTATION</h4></P>
    <P>
@@ -191,3 +191,41 @@ exploreservice:
    <ul>
    <li>developper vos applications en repectant la methode agile.</li>
    </ul>
+
+
+
+exploreapp:
+  title:  LE SERVICE APPLICATIF
+  block1: AIDER À TRANSFORMER VOTRE ENTREPRISE PAR UNE APPROCHE COLLABORATIVE AVEC NOS EXPERTS
+  block1_content:  |
+      <P><h6><strong>Nous accompagnons la transformation de la DSI de nos clients pour leurs Services Applicatifs.</strong></h6></P>
+      <P>
+      Pour répondre au plus près aux attentes de nos clients dans un contexte de profonde mutation, les
+      services applicatifs couvrent l’ensemble des services du cycle de vie logiciel – conseil et cadrage,
+      conception fonctionnelle ou technique, réalisation et recette, mise en production et garantie des logiciels
+      concernés. Objectif : concevoir, développer et maintenir des applications métiers pour les DSI de nos clients.
+      </P>
+      <P>
+      En 2015, le marché de l’Application Services (AS) au Cameroun a représenté environ 2,5 milliards de francs cfa pour les
+      entreprises de service numérique (ESN) dont 50 % réalisés par les 7 premières ESN. Or, la recherche permanente de
+      réduction des coûts liés à la DSI impose de proposer des modèles de prestations variés : soit à engagement de
+      ressources – assistance technique unitaire ou groupée, centre de compétences ou d’expertise –, soit à engagement
+      de résultats – forfaits de build, TMA, TRA, centre de services, outsourcing.
+      </P>
+  block2:  NOS MISSIONS :
+  block2_content:  |
+      <ul>
+      <li>Notre structure industrielle favorise un accompagnement de bout en bout de nos clients sur les programmes de transformation;</li>
+      </ul>
+      <ul>
+      <li>Moderniser les SI;</li>
+      </ul>
+      <ul>
+      <li> Transformer digitalement  vos données;</li>
+      </ul>
+      <ul>
+      <li>Industrialiser;</li>
+      </ul>
+      <ul>
+      <li>Analytics et Big Data.</li>
+      </ul>
