@@ -330,4 +330,45 @@ class Projet extends BaseInterface
         return $val;
 
     }
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->files = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Add file
+     *
+     * @param \Web\EntityBundle\Entity\FileProjet $file
+     *
+     * @return Projet
+     */
+    public function addFile(\Web\EntityBundle\Entity\FileProjet $file)
+    {
+        $this->files[] = $file;
+
+        return $this;
+    }
+
+    /**
+     * Remove file
+     *
+     * @param \Web\EntityBundle\Entity\FileProjet $file
+     */
+    public function removeFile(\Web\EntityBundle\Entity\FileProjet $file)
+    {
+        $this->files->removeElement($file);
+    }
+
+    /**
+     * Get files
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getFiles()
+    {
+        return $this->files;
+    }
 }

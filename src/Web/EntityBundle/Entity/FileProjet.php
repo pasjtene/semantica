@@ -157,5 +157,28 @@ class FileProjet
         return $this->hashname==null? null: $file->initialpath."projet/".$this->hashname;
     }
 
-}
 
+    /**
+     * Set project
+     *
+     * @param \Web\EntityBundle\Entity\Projet $project
+     *
+     * @return FileProjet
+     */
+    public function setProject(\Web\EntityBundle\Entity\Projet $project)
+    {
+        $this->project = $project;
+
+        return $this;
+    }
+
+    /**
+     * Get project
+     *
+     * @return \Web\EntityBundle\Entity\Projet
+     */
+    public function getProject()
+    {
+        return $this->project;
+    }
+}
