@@ -347,9 +347,17 @@ class Projet extends BaseInterface
      */
     public function addFile(\Web\EntityBundle\Entity\FileProjet $file)
     {
+        $file->setProject($this);
         $this->files[] = $file;
-
         return $this;
+    }
+
+    public function setFiles(\Doctrine\Common\Collections\ArrayCollection $files){
+        $this->files = $files;
+        /** @var FileProjet $file */
+        foreach ($files as $file){
+            $file->setProject($this);
+        }
     }
 
     /**

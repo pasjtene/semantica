@@ -18,6 +18,12 @@
         .card{
             padding: 2%;
         }
+        #ajout_fichier{
+            background-color: blue !important;
+        }
+        #ajout_fichier{
+            background-color: blue !important;
+        }
     </style>
 {% endblock %}
 {% block header %}
@@ -78,17 +84,13 @@
                         </div>
                         <div class="row">
                             <div class="col s12">
-                                <div class="file-field input-field col s12 ">
-                                    <div class="btn">
-                                        <span>{% trans from 'forms' %} form.project.file {% endtrans %}</span>
-                                        {{ form_widget(form.file,{'attr':{'class':''}}) }}
+                                <fieldset >
+                                    <legende></legende>
+                                    <div class="file-field input-field col s12 ">
+                                        {{ form_widget(form.files,{'attr':{'class':''}}) }}
+                                        <div class="error"  >{{ form_errors(form.files) }}</div>
                                     </div>
-                                    <div class="file-path-wrapper">
-                                        {# accept=".xlsx,.xls,image/*,.doc,.docx,.ppt,.pptx,.txt,.pdf,.zip,.7z,.rar" #}
-                                        <input class="file-path validate" type="text"  placeholder="{% trans from 'forms' %} form.project.placeholder_file {% endtrans %}">
-                                    </div>
-                                    <div class="error"  >{{ form_errors(form.file) }}</div>
-                                </div>
+                                </fieldset>
                             </div>
                         </div>
 
@@ -122,11 +124,8 @@
                                             </div>
                                         </div>
                                         <div class="col s12 m6">
-                                            <div class="input-field col s12 ">
-                                                {{ form_widget(form.user.pleasantries,{'attr':{'class':''}}) }}
-                                                {{ form_label(form.user.pleasantries) }}
-                                                <div class="error"  >{{ form_errors(form.user.pleasantries) }}</div>
-                                            </div>
+                                            {{ form_widget(form.user.pleasantries,{'attr':{'class':''}}) }}
+                                            {{ form_label(form.user.pleasantries) }}
                                         </div>
                                     </div>
 
@@ -147,6 +146,7 @@
 {% endblock %}
 
 {% block myjs %}
+    <script src="{{ asset('components/jsbase/Imbrication.js') }}"></script>
     <script>
         $(function(){
             $('select').material_select();
