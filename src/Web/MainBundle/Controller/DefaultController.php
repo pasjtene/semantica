@@ -107,7 +107,7 @@ class DefaultController extends Controller
             $em = $this->getDoctrine()->getManager();
             $objet->setEnabled(true);
             $objet->setEmail($email);
-            $objet->setStatus("Actif");
+            //$objet->setStatus("Actif");
             $objet->setRoles(['ROLE_USER']);
 
             /** @var Validator $validator */
