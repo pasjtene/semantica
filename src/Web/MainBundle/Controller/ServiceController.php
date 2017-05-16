@@ -64,4 +64,12 @@ class ServiceController extends Controller
     {
         return $this->render('MainBundle:Service:serviceconseil.html.twig');
     }
+
+    /**
+     * @Route("/infras", name="main_infras")
+     */
+    public function infrasAction()
+    {
+        return $this->render('MainBundle:Service:infras.html.twig');
+    }
 }

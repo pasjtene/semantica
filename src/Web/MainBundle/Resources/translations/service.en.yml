@@ -263,3 +263,46 @@ serviceconseil:
    And effectively plan, build and manage infrastructure to improve efficiency, agility and continuity
    operational. STC will help you deliver on these promises with the experience of our data center experts.</li>
    </ul>
+
+infras:
+  title:  INFRASTRUCTURE SERVICE
+  block1: Simplify your IT infrastructure management.
+  block1_content:  |
+   Our IT infrastructure software is used to ensure that people and systems in a company can
+   To be as efficient as possible in business processes, information sharing and
+   Contacts with customers and partners. These software dynamically detect the relationships between resources, and
+   Facilitate the coordination of activities throughout the enterprise. The IT infrastructure can also be configured
+   To automatically inform users of best practices and discoveries that affect them, depending on their activity
+   In progress and without having to launch a search.
+   </P>
+   <P>
+   For over 1 year, STC has been providing innovative enterprise infrastructure solutions that
+   Complete and reusable architecture, enabling easy integration of new enterprise systems with IT
+   in place. The STC infrastructure provides exceptional value over the long term. Its range of software, very complete,
+   Will meet future integration needs with minimal costs, delays and disruptions to the user experience. Better yet, when you
+   Assemble new solutions with STC, you are not locked by your choices.
+   </P>
+   STC integration solutions combine openness and plug & play design, accelerating project implementation
+   And reduces costs by up to 80%, compared to integration based on special programming. Saving in maintenance
+   Is also notable because applications interact with the standardized STC integration architecture rather than
+   Hard-coded links to back-office systems. STC adapters today represent the best
+   Added value they mask the complexity of the entire IT environment, so that the implementation of new
+   Initiatives builds on the applications in place and is done much faster than you expected.
+   </p>
+  block2:  WE OFFER THE FOLLOWING SERVICES :
+  block2_content:  |
+   <ul>
+   <li>Adapters (Data Adapters, Application Adapters);
+   </ul>
+   <ul>
+   <li>Service Oriented Architecture (SOA, Oriented Architecture Services, SOA and EAI, SOA and Java, SOA Adapters)</li>
+   </ul>
+   <ul>
+   <li> Business Intelligence (Business Intelligence Software, Business Intelligence Solution); </li>
+   </ul>
+   <ul>
+   <li> Enterprise Performance Management (EPM, CPM, Performance Management);</li>
+   </ul>
+   <ul>
+   <li>IT Infrastructure.</li>
+   </ul>

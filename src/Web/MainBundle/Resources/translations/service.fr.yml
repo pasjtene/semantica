@@ -229,50 +229,90 @@ exploreapp:
                  <ul>
                  <li>Analytics et Big Data.</li>
                  </ul>
-
-
 serviceconseil:
-  title:  LE SERVICE CONSEIL D'ENTENREPRISE
-  block1: Nous pratiquons les métiers pour lesquels nous sommes faits.
-  block1_content:  |
-   <P><strong> STC propose, sous son enseigne, des compétences variées
-   et pluridisciplinaires dans différents domaines de conception et de maintenance d'applications d'entreprises.</strong></P>
-   <P>
-   Nous disposonsdes solutions pour répondre de manière précise et rapide aux besoins et attentes de nos clients, par des conseils avisés et
-   un accompagnement personnalisé, ceci étant l’objectif premier qui mobilise les associés et collaborateurs de STC Corporation.
-   </P>
-   <P>
-   Nos connaissances globales du fonctionnement des entreprises au Cameroun et à l’étranger offrent une palette
-   de services aux entrepreneurs qui couvrent tant des prestations financières que des conseils fiscaux,
-   des conseils juridiques et des services spécialisés dans le domaine des TIC.
-   </P>
+     title:  LE SERVICE CONSEIL D'ENTENREPRISE
+     block1: Nous pratiquons les métiers pour lesquels nous sommes faits.
+     block1_content:  |
+      <P><strong> STC propose, sous son enseigne, des compétences variées
+      et pluridisciplinaires dans différents domaines de conception et de maintenance d'applications d'entreprises.</strong></P>
+      <P>
+      Nous disposonsdes solutions pour répondre de manière précise et rapide aux besoins et attentes de nos clients, par des conseils avisés et
+      un accompagnement personnalisé, ceci étant l’objectif premier qui mobilise les associés et collaborateurs de STC Corporation.
+      </P>
+      <P>
+      Nos connaissances globales du fonctionnement des entreprises au Cameroun et à l’étranger offrent une palette
+      de services aux entrepreneurs qui couvrent tant des prestations financières que des conseils fiscaux,
+      des conseils juridiques et des services spécialisés dans le domaine des TIC.
+      </P>
+      Nous avons développé de nombreuses relations avec les agences des promotions économiques pour en faire bénéficier
+      notre clientèle. Les atouts proposés par ces agences dynamique et les prestations offertes par STC lui permettent d'etre parmis les leaders
+      dans la transformation numérique des entreprises. Ainsi
+      STC s’engage au côté de ses clients et qui mieux que ces derniers peuvent témoigner des qualités et des compétences
+      de nos collaborateurs et associés.
+      </p>
+     block2:  NOS MISSIONS :
+     block2_content:  |
+      <ul>
+      <li>promouvoir L'amélioration des compétences ce qui constitue l'une des voies les plus efficaces pour augmenter votre productivité;</li>
+      </ul>
+      <ul>
+      <li>Les conseils en formation STC se concentrent sur la création de stratégies et l'apprentissage des
+      structures de l'organisation comme fondements de l'augmentation constante et systématique de la productivité, l'amélioration des résultats
+      commerciaux et la garantie d'un retour sur investissement en informatique plus élevé ;</li>
+      </ul>
+      <ul>
+      <li> promouvoir L'amélioration constante des compétences par le biais de systèmes d'assistance à la performance ce qui permet
+      de gérer les changements et d'accroître la confiance des employés;</li>
+      </ul>
+      <ul>
+      <li> vous aider à avoir un personnel qualifié qui prend de meilleures décisions, ce qui permet à
+      l'entreprise de gagner en souplesse et d'accroître son avantage concurrentiel;</li>
+      </ul>
+      <ul>
+      <li>Dans l'environnement actuel, vous devez observer l'ensemble de l'infrastructure et des installations et applications informatiques,
+      puis planifier, construire et gérer efficacement l'infrastructure pour améliorer l'efficience, l'agilité et la continuité
+      opérationnelle. STC vous aidera à tenir ces promesses en vous faisant bénéficier de l'expérience de nos experts en centres de données.</li>
+      </ul>
 
-   Nous avons développé de nombreuses relations avec les agences des promotions économiques pour en faire bénéficier
-   notre clientèle. Les atouts proposés par ces agences dynamique et les prestations offertes par STC lui permettent d'etre parmis les leaders
-   dans la transformation numérique des entreprises. Ainsi
-   STC s’engage au côté de ses clients et qui mieux que ces derniers peuvent témoigner des qualités et des compétences
-   de nos collaborateurs et associés.
+infras:
+  title:  LE SERVICE D'INFRASTRUCTURE
+  block1: Simplifier VOTRE gestion d’infrastructure informatique.
+  block1_content:  |
+   Nos logiciels d’infrastructure informatique servent à s’assurer que les personnes et les systèmes d’une entreprise puissent se
+   connecter, afin d’être le plus efficaces possible lors des processus métier, du partage des informations et de la gestion des
+   contacts avec les clients et les partenaires. Ces logiciels détectent dynamiquement les relations entre les ressources, et
+   facilitent la coordination des activités dans toute l’entreprise. L’infrastructure informatique peut également être configurée
+   pour informer automatiquement les utilisateurs des meilleures pratiques et découvertes qui les concernent, selon leur activité
+   en cours et sans qu’il n’ait à lancer de recherche.
+   </P>
+   <P>
+   Depuis plus de 1 an,  STC propose des solutions innovantes d’infrastructure d’entreprise, qui fournissent une
+   architecture complète et réutilisable, permettant d’associer aisément de nouveaux systèmes d’entreprise avec l’informatique
+   en place. L’infrastructure STC assure une exceptionnelle valeur sur le long terme. Sa gamme de logiciels, très complète,
+   répondra aux futurs besoins d’intégration avec un minimum de coûts, de délais et de perturbations sur l'expérience utilisateur. Mieux encore, lorsque vous
+   assemblez de nouvelles solutions avec STC, vous n’êtes pas verrouillés par vos choix.
+   </P>
+   Les solutions d’intégration de STC combinent l’ouverture et une conception plug&play, ce qui accélère la mise en œuvre des projets
+   et en réduit les coûts jusqu’à 80 %, par rapport à une intégration basée sur une programmation spéciale. L’économie en maintenance
+   est également notable, car les applications interagissent avec l’architecture STC d’intégration, standardisée, plutôt qu’avec des
+   liaisons « codées en dur » vers les systèmes de back-office. Les adaptateurs STC représentent aujourd’hui la meilleure
+   valeur ajoutée : ils masquent la complexité de l’ensemble de l’environnement informatique, de sorte que l’implémentation de nouvelles
+   initiatives s’appuie sur les applications en place et se fasse bien plus rapidement que vous ne l’attendiez.
    </p>
-  block2:  NOS MISSIONS :
+  block2: NOUS PROPOSONS LES SERVICES SUIVANTS :
   block2_content:  |
    <ul>
-   <li>promouvoir L'amélioration des compétences ce qui constitue l'une des voies les plus efficaces pour augmenter votre productivité;</li>
+   <li>Adaptateurs (Adaptateurs de données , Adaptateurs d′applications);
    </ul>
    <ul>
-   <li>Les conseils en formation STC se concentrent sur la création de stratégies et l'apprentissage des
-   structures de l'organisation comme fondements de l'augmentation constante et systématique de la productivité, l'amélioration des résultats
-   commerciaux et la garantie d'un retour sur investissement en informatique plus élevé ;</li>
+   <li>Architecture orientée services (SOA, Services Oriented Architecture, SOA et EAI, SOA et Java, Adaptateurs SOA)</li>
    </ul>
    <ul>
-   <li> promouvoir L'amélioration constante des compétences par le biais de systèmes d'assistance à la performance ce qui permet
-   de gérer les changements et d'accroître la confiance des employés;</li>
+   <li> Business Intelligence (Logiciel de Business Intelligence, Solution de Business Intelligence); </li>
    </ul>
    <ul>
-   <li> vous aider à avoir un personnel qualifié qui prend de meilleures décisions, ce qui permet à
-   l'entreprise de gagner en souplesse et d'accroître son avantage concurrentiel;</li>
+   <li> Enterprise Performance Management (Corporate Performance Management, EPM, CPM, Pilotage de la performance);</li>
    </ul>
    <ul>
-   <li>Dans l'environnement actuel, vous devez observer l'ensemble de l'infrastructure et des installations et applications informatiques,
-   puis planifier, construire et gérer efficacement l'infrastructure pour améliorer l'efficience, l'agilité et la continuité
-   opérationnelle. STC vous aidera à tenir ces promesses en vous faisant bénéficier de l'expérience de nos experts en centres de données.</li>
+   <li>IT Infrastructure (logiciels d′infrastructure).</li>
    </ul>
