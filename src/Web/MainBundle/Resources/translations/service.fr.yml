@@ -198,34 +198,81 @@ exploreapp:
   title:  LE SERVICE APPLICATIF
   block1: OPTIMISER LA VALEUR DE VOS APPLICATIONS
   block1_content:  |
-      <P><h6><strong>Nous accompagnons la transformation de la DSI de nos clients pour leurs Services Applicatifs.</strong></h6></P>
-      <P>
-      Pour répondre au plus près aux attentes de nos clients dans un contexte de profonde mutation, les
-      services applicatifs couvrent l’ensemble des services du cycle de vie logiciel – conseil et cadrage,
-      conception fonctionnelle ou technique, réalisation et recette, mise en production et garantie des logiciels
-      concernés. Objectif : concevoir, développer et maintenir des applications métiers pour les DSI de nos clients.
-      </P>
-      <P>
-      En 2015, le marché de l’Application Services (AS) au Cameroun a représenté environ 2,5 milliards de francs cfa pour les
-      entreprises de service numérique (ESN) dont 50 % réalisés par les 7 premières ESN. Or, la recherche permanente de
-      réduction des coûts liés à la DSI impose de proposer des modèles de prestations variés : soit à engagement de
-      ressources – assistance technique unitaire ou groupée, centre de compétences ou d’expertise –, soit à engagement
-      de résultats – forfaits de build, TMA, TRA, centre de services, outsourcing.
-      </P>
+                 <P><h6><strong>Nous accompagnons la transformation de la DSI de nos clients pour leurs Services Applicatifs.</strong></h6></P>
+                 <P>
+                 Pour répondre au plus près aux attentes de nos clients dans un contexte de profonde mutation, les
+                 services applicatifs couvrent l’ensemble des services du cycle de vie logiciel – conseil et cadrage,
+                 conception fonctionnelle ou technique, réalisation et recette, mise en production et garantie des logiciels
+                 concernés. Objectif : concevoir, développer et maintenir des applications métiers pour les DSI de nos clients.
+                 </P>
+                 <P>
+                 En 2015, le marché de l’Application Services (AS) au Cameroun a représenté environ 2,5 milliards de francs cfa pour les
+                 entreprises de service numérique (ESN) dont 50 % réalisés par les 7 premières ESN. Or, la recherche permanente de
+                 réduction des coûts liés à la DSI impose de proposer des modèles de prestations variés : soit à engagement de
+                 ressources – assistance technique unitaire ou groupée, centre de compétences ou d’expertise –, soit à engagement
+                 de résultats – forfaits de build, TMA, TRA, centre de services, outsourcing.
+                 </P>
   block2:  NOS MISSIONS :
   block2_content:  |
-      <ul>
-      <li>Notre structure industrielle favorise un accompagnement de bout en bout de nos clients sur les programmes de transformation;</li>
-      </ul>
-      <ul>
-      <li>Moderniser les SI;</li>
-      </ul>
-      <ul>
-      <li> Transformer digitalement  vos données;</li>
-      </ul>
-      <ul>
-      <li>Industrialiser;</li>
-      </ul>
-      <ul>
-      <li>Analytics et Big Data.</li>
-      </ul>
+                 <ul>
+                 <li>Notre structure industrielle favorise un accompagnement de bout en bout de nos clients sur les programmes de transformation;</li>
+                 </ul>
+                 <ul>
+                 <li>Moderniser les SI;</li>
+                 </ul>
+                 <ul>
+                 <li> Transformer digitalement  vos données;</li>
+                 </ul>
+                 <ul>
+                 <li>Industrialiser;</li>
+                 </ul>
+                 <ul>
+                 <li>Analytics et Big Data.</li>
+                 </ul>
+
+
+serviceconseil:
+  title:  LE SERVICE CONSEIL D'ENTENREPRISE
+  block1: Nous pratiquons les métiers pour lesquels nous sommes faits.
+  block1_content:  |
+   <P><strong> STC propose, sous son enseigne, des compétences variées
+   et pluridisciplinaires dans différents domaines de conception et de maintenance d'applications d'entreprises.</strong></P>
+   <P>
+   Nous disposonsdes solutions pour répondre de manière précise et rapide aux besoins et attentes de nos clients, par des conseils avisés et
+   un accompagnement personnalisé, ceci étant l’objectif premier qui mobilise les associés et collaborateurs de STC Corporation.
+   </P>
+   <P>
+   Nos connaissances globales du fonctionnement des entreprises au Cameroun et à l’étranger offrent une palette
+   de services aux entrepreneurs qui couvrent tant des prestations financières que des conseils fiscaux,
+   des conseils juridiques et des services spécialisés dans le domaine des TIC.
+   </P>
+
+   Nous avons développé de nombreuses relations avec les agences des promotions économiques pour en faire bénéficier
+   notre clientèle. Les atouts proposés par ces agences dynamique et les prestations offertes par STC lui permettent d'etre parmis les leaders
+   dans la transformation numérique des entreprises. Ainsi
+   STC s’engage au côté de ses clients et qui mieux que ces derniers peuvent témoigner des qualités et des compétences
+   de nos collaborateurs et associés.
+   </p>
+  block2:  NOS MISSIONS :
+  block2_content:  |
+   <ul>
+   <li>promouvoir L'amélioration des compétences ce qui constitue l'une des voies les plus efficaces pour augmenter votre productivité;</li>
+   </ul>
+   <ul>
+   <li>Les conseils en formation STC se concentrent sur la création de stratégies et l'apprentissage des
+   structures de l'organisation comme fondements de l'augmentation constante et systématique de la productivité, l'amélioration des résultats
+   commerciaux et la garantie d'un retour sur investissement en informatique plus élevé ;</li>
+   </ul>
+   <ul>
+   <li> promouvoir L'amélioration constante des compétences par le biais de systèmes d'assistance à la performance ce qui permet
+   de gérer les changements et d'accroître la confiance des employés;</li>
+   </ul>
+   <ul>
+   <li> vous aider à avoir un personnel qualifié qui prend de meilleures décisions, ce qui permet à
+   l'entreprise de gagner en souplesse et d'accroître son avantage concurrentiel;</li>
+   </ul>
+   <ul>
+   <li>Dans l'environnement actuel, vous devez observer l'ensemble de l'infrastructure et des installations et applications informatiques,
+   puis planifier, construire et gérer efficacement l'infrastructure pour améliorer l'efficience, l'agilité et la continuité
+   opérationnelle. STC vous aidera à tenir ces promesses en vous faisant bénéficier de l'expérience de nos experts en centres de données.</li>
+   </ul>
