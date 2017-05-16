@@ -32,14 +32,7 @@
         <div class="row">
            <div class="col s12">
                <div class="col s5 m3">
-                   <div class="" id="vertical_nav">
-                       <ul>
-                           <li><a class=" {% if index is defined and index==1 %}active {% endif %}" href="{{ path('main_private') }}">{% trans from 'private' %} private.project  {% endtrans %}</a></li>
-                           <li><a class=" {% if index is defined and index==2 %}active {% endif %}" href="{{ path('main_private_profile') }}" >{% trans from 'private' %} private.profile  {% endtrans %}</a></li>
-                           <li><a class=" {% if index is defined and index==3 %}active {% endif %}" href="{{ path('main_private_commit') }}">{% trans from 'private' %} private.commit  {% endtrans %}</a></li>
-                           <li><a class=" {% if index is defined and index==4 %}active {% endif %}" href="{{ path('main_private_comment') }}">{% trans from 'private' %} private.comment  {% endtrans %}</a></li>
-                       </ul>
-                   </div>
+                   {% include 'MainBundle:Inc:vertical-nav.html.twig' %}
                </div>
                <div class="col s7 m9">
                    <br><br>

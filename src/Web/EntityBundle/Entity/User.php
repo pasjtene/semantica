@@ -31,12 +31,6 @@ use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
     protected $id;
 
 
-      /**
-       * @var string
-       * @ORM\Column(name="status", type="string", length=255)
-       */
-      protected $status;
-
 
       /**
      * @var string
@@ -90,144 +84,125 @@ use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
         return $this->id;
     }
 
-      /**
-       * Set firstname
-       *
-       * @param string $firstname
-       *
-       * @return Personne
-       */
-      public function setFirstname($firstname)
-      {
-          $this->firstname = $firstname;
-
-          return $this;
-      }
-
-      /**
-       * Get firstname
-       *
-       * @return string
-       */
-      public function getFirstname()
-      {
-          return $this->firstname;
-      }
-
-      /**
-       * Set lastname
-       *
-       * @param string $lastname
-       *
-       * @return Personne
-       */
-      public function setLastname($lastname)
-      {
-          $this->lastname = $lastname;
-
-          return $this;
-      }
-
-      /**
-       * Get lastname
-       *
-       * @return string
-       */
-      public function getLastname()
-      {
-          return $this->lastname;
-      }
-
-
-      /**
-       * Set pleasantries
-       *
-       * @param string $pleasantries
-       */
-      public function setPleasantries($pleasantries)
-      {
-          $this->pleasantries = $pleasantries;
-
-          return $this;
-      }
-
-      /**
-       * Get pleasantries
-       *
-       * @return string
-       */
-      public function getPleasantries()
-      {
-          return $this->pleasantries;
-      }
-
-      /**
-       * Set city
-       *
-       * @param string $city
-       *
-       */
-      public function setCity($city)
-      {
-          $this->city = $city;
-
-          return $this;
-      }
-
-      /**
-       * Get city
-       *
-       * @return string
-       */
-      public function getCity()
-      {
-          return $this->city;
-      }
-
-      /**
-       * Set country
-       *
-       * @param string
-       */
-      public function setCountry($country)
-      {
-          $this->country = $country;
-
-          return $this;
-      }
-
-      /**
-       * Get country
-       *
-       * @return string
-       */
-      public function getCountry()
-      {
-          return $this->country;
-      }
 
     /**
-     * Set status
+     * Set firstname
      *
-     * @param string $status
+     * @param string $firstname
      *
      * @return User
      */
-    public function setStatus($status)
+    public function setFirstname($firstname)
     {
-        $this->status = $status;
+        $this->firstname = $firstname;
 
         return $this;
     }
 
     /**
-     * Get status
+     * Get firstname
      *
      * @return string
      */
-    public function getStatus()
+    public function getFirstname()
     {
-        return $this->status;
+        return $this->firstname;
+    }
+
+    /**
+     * Set lastname
+     *
+     * @param string $lastname
+     *
+     * @return User
+     */
+    public function setLastname($lastname)
+    {
+        $this->lastname = $lastname;
+
+        return $this;
+    }
+
+    /**
+     * Get lastname
+     *
+     * @return string
+     */
+    public function getLastname()
+    {
+        return $this->lastname;
+    }
+
+    /**
+     * Set pleasantries
+     *
+     * @param string $pleasantries
+     *
+     * @return User
+     */
+    public function setPleasantries($pleasantries)
+    {
+        $this->pleasantries = $pleasantries;
+
+        return $this;
+    }
+
+    /**
+     * Get pleasantries
+     *
+     * @return string
+     */
+    public function getPleasantries()
+    {
+        return $this->pleasantries;
+    }
+
+    /**
+     * Set city
+     *
+     * @param string $city
+     *
+     * @return User
+     */
+    public function setCity($city)
+    {
+        $this->city = $city;
+
+        return $this;
+    }
+
+    /**
+     * Get city
+     *
+     * @return string
+     */
+    public function getCity()
+    {
+        return $this->city;
+    }
+
+    /**
+     * Set country
+     *
+     * @param string $country
+     *
+     * @return User
+     */
+    public function setCountry($country)
+    {
+        $this->country = $country;
+
+        return $this;
+    }
+
+    /**
+     * Get country
+     *
+     * @return string
+     */
+    public function getCountry()
+    {
+        return $this->country;
     }
 
     /**

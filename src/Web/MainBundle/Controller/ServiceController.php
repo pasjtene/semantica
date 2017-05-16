@@ -48,4 +48,28 @@ class ServiceController extends Controller
     {
         return $this->render('MainBundle:Service:exploreservice.html.twig');
     }
+
+    /**
+     * @Route("/exploreapp", name="main_exploreapp")
+     */
+    public function exploreappAction()
+    {
+        return $this->render('MainBundle:Service:exploreapp.html.twig');
+    }
+
+    /**
+     * @Route("/serviceconseil", name="main_serviceconseil")
+     */
+    public function serviceconseilAction()
+    {
+        return $this->render('MainBundle:Service:serviceconseil.html.twig');
+    }
+
+    /**
+     * @Route("/infras", name="main_infras")
+     */
+    public function infrasAction()
+    {
+        return $this->render('MainBundle:Service:infras.html.twig');
+    }
 }

@@ -38,22 +38,22 @@ class ConfigController extends Controller
 
         $user = new User();
         $password = $this->encodePassword(new User(), "sadmin", $user->getSalt());
-        $user->setEmail('sadmin@semantica.com')->setUsername('000000000')
-        ->setFirstname('Sadmin')->setPassword($password)
-        ->setRoles(['ROLE_SUPER_ADMIN'])
-            ->setEnabled(true)->setStatus('Active')->setCity("Douala")
-            ->setCountry('Cameroun');
+        $user->setEmail('sadmin@semantica.com')->setUsername('000000000')->setCountry('United Kingdom');
+        $user->setFirstname('Super Admin');
+        $user->setPassword($password)->setRoles(['ROLE_SUPER_ADMIN'])->setEnabled(true);
+        $user->setCity('Douala');
+        $user->setCountry('Cameroun');
+        $user->setPleasantries("Pr");
 
 
         $em = $this->getDoctrine()->getManager();
-
-
 
         $exist = $em->getRepository('EntityBundle:User')->findOneByemail($user->getEmail());
         if($exist==null)
         {
             $em->persist($user);
         }
+
 
         $em->flush();
 

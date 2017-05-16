@@ -25,9 +25,6 @@ use Web\EntityBundle\Form\UserType;
  */
 class PrivateController extends Controller
 {
-
-
-
     /**
      * @Route("/", name="main_private")
      */
@@ -143,7 +140,6 @@ class PrivateController extends Controller
         return $this->render('MainBundle:Private:commit.html.twig',$array);
     }
 
-
     /**
      * @Route("/commit/send/{id}", name="main_private_commit_send", requirements={"id": "\d+"})
      */
@@ -198,7 +194,6 @@ class PrivateController extends Controller
         }
         return $this->redirect($this->generateUrl('main_private_commit',["message"=>"test"]));
     }
-
 
     /**
      * @Route("/comment", name="main_private_comment")
@@ -267,7 +262,6 @@ class PrivateController extends Controller
         return $this->render('MainBundle:Private:comment.html.twig',$array);
     }
 
-
     /**
      * @Route("/profile", name="main_private_profile")
      */
@@ -308,8 +302,6 @@ class PrivateController extends Controller
                 $array['error'] = $error;
                 //var_dump($error);
             }
-
-
         }
 
         $array['form'] = $form->createView();
@@ -359,7 +351,6 @@ class PrivateController extends Controller
 
     }
 
-
     /**
      * @Route("/project/delete/{id}", name="main_projet_delete", requirements={"id": "\d+"})
      */
@@ -380,5 +371,20 @@ class PrivateController extends Controller
         return $this->redirect($this->generateUrl('main_private'));
     }
 
+    /**
+     * @Route("/users", name="main_private_users")
+     */
+    public function usersAction(Request $request)
+    {
+        /** @var User $user */
+        $user = $this->getUser();
 
+        $em = $this->getDoctrine()->getManager();
+
+        $items = $em->getRepository("EntityBundle:User")->findAll();
+
+        $array = ['items' => $items, 'index' => 5];
+
+        return $this->render('MainBundle:Private:users.html.twig', $array);
+    }
 }
