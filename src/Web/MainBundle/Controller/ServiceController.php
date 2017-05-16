@@ -48,4 +48,5 @@ class ServiceController extends Controller
     {
         return $this->render('MainBundle:Service:exploreservice.html.twig');
     }
+
 }
