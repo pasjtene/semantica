@@ -371,6 +371,20 @@ class PrivateController extends Controller
         return $this->redirect($this->generateUrl('main_private'));
     }
 
+
+
+    /**
+     * @Route("/project/detail/{id}", name="main_projet_detail", requirements={"id": "\d+"})
+     */
+    public function detailAction($id)
+    {
+        $em = $this->getDoctrine()->getManager();
+        /** @var Projet $project */
+        $project = $em->getRepository("EntityBundle:Projet")->find($id);
+        $array['project'] =$project;
+        return $this->render('MainBundle:Private:detail.html.twig', $array);
+    }
+
     /**
      * @Route("/users", name="main_private_users")
      */

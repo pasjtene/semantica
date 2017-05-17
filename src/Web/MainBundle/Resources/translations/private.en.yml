@@ -20,8 +20,9 @@ commit:
   notification: Comment sent successfully
 project:
   title: Title
+  back: Back
+  file_list: Files List
   description: Description
-  date: Date
   date: Date
   code: Code
   file: Upload file

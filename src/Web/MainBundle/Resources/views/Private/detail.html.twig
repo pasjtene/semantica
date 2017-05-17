@@ -1,0 +1,176 @@
+{% extends 'MainBundle::layout.html.twig' %}
+{% block meta %}
+    <meta name = "{% trans from 'refer' %} home.title {% endtrans %}" >
+    <meta name = "keywords" content = "{% trans from 'refer' %} home.description {% endtrans %}" >
+{% endblock %}
+{% block title %}
+    Semantica Technologies Corporation - STC
+{% endblock %}
+
+
+{% block mycss %}
+    <link rel="stylesheet" href="{{ asset('components/cssbase/datatablehelp.css') }}">
+    <link rel="stylesheet" href="{{ asset('components/cssbase/datatablehelp2.css') }}">
+    <style>
+
+        strong{
+            font-weight: bold;
+        }
+        footer{
+            bottom: 0;
+            width: 100% !important;
+        }
+        .mega-menu{
+            z-index: 9999999999999999999999999999 !important;
+        }
+        #zone_table{
+            height: 352px;
+            overflow-y: auto;
+        }
+    </style>
+{% endblock %}
+
+{% block main %}
+    {{ parent() }}
+    <div class="row" id="main_account">
+        <div class="row">
+            <div class="col s12">
+                <br><br><br>
+               <div class="col s12">
+                   <a class="waves-effect waves-green btn-flat red white-text right-align right" href="{{ path('main_private') }}">{% trans from 'private' %} project.back {% endtrans %}</a>
+               </div>
+                <div class="col s12 m8">
+                    <div class="card">
+                        <div class="card-content">
+                            <p>
+                                <strong>
+                                    {% trans from 'private' %} project.title {% endtrans %} :
+                                </strong>
+                                <br>
+                                <span>
+                                    {{ project.title }}
+                                </span>
+                            </p>
+                            <p>
+                                <hr>
+                                <strong>
+                                    {% trans from 'private' %} project.code {% endtrans %} :
+                                </strong>
+                                 <br>
+                                <span>
+                                    {{ project.code }}
+                                </span>
+                            </p>
+                            <p>
+                                <hr>
+                                <strong>
+                                    {% trans from 'private' %} project.date {% endtrans %} :
+                                </strong>
+                                <br>
+                                <span>
+                                    {{ project.date|date('d-m-Y h:i:s') }}
+                                </span>
+                            </p>
+                            <p>
+                                <hr>
+                                <strong>
+                                    {% trans from 'private' %} project.status {% endtrans %} :
+                                </strong>
+                                <br>
+                                <span>
+                                    {{ project.CurrentStatus(project.status,app.request.locale) }}
+                                </span>
+                            </p>
+                            <p>
+                                <hr>
+                                <strong>
+                                    {% trans from 'private' %} project.description {% endtrans %} :
+                                </strong>
+                                <br>
+                                <span>
+                                    {{ project.description }}
+                                </span>
+                            </p>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="col s12 m4">
+                    {% if project.files!=null  %}
+                        <ul class="collection with-header">
+                            <li class="collection-header"><h4>{% trans from 'private' %} project.file_list {% endtrans %}</h4></li>
+                            {% for file in project.files  %}
+                                {% if file.hashname!=null and  file.extfile=="gif" or file.extfile=="png" or file.extfile=="jpg" or file.extfile=="jpeg"  %}
+                                    {% set href= "#project1A"~file.hashname %}
+                                    {% set idhref = "project1A"~file.hashname %}
+                                    <li class="collection-item ">
+                                        <li class="collection-item"><div>{{ project.truncate(file.name,15) }}<a href="{{ href }}" class="secondary-content"><i class="material-icons">attach_file</i></a></div></li>
+                                    </li>
+                                    <div id="{{ idhref }}" class="modal  modal-fixed-footer">
+                                        <div class="modal-content">
+                                            <img src="{{ asset(file.path()) }}" alt="" class="responsive-image materialboxed" style="max-width: 100%; max-height: inherit;">
+                                        </div>
+                                        <div class="modal-footer">
+                                            <a class="modal-action modal-close waves-effect waves-green btn-flat green white-text left-align left" href="{{app.request.getSchemeAndHttpHost()~'/'~file.path()}}">Telecharger</a>
+                                            <button  id="close" class="modal-action modal-close waves-effect waves-green btn-flat blue white-text">{% trans from 'forms' %} form.project.close {% endtrans %}</button>
+                                        </div>
+                                    </div>
+                                {% elseif file.hashname!=null and file.extfile=="PDF" or file.extfile=="pdf" %}
+                                    {% set href= "#project2B"~file.hashname %}
+                                    {% set idhref = "project2B"~file.hashname %}
+                                    <li class="collection-item ">
+                                       <li class="collection-item"><div>{{ project.truncate(file.name,15) }}<a href="{{ href }}" class="secondary-content"><i class="material-icons">attach_file</i></a></div></li>
+                                    </li>
+                                    <div id="{{ idhref }}" class="modal  modal-fixed-footer">
+                                        <div class="modal-content">
+                                            <iframe src="{{app.request.getSchemeAndHttpHost()~'/'~file.path()}}" class="col s12"  width="100%" height="500" align="middle"></iframe>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <a class="modal-action modal-close waves-effect waves-green btn-flat green white-text left-align left" href="{{app.request.getSchemeAndHttpHost()~'/'~file.path()}}">Telecharger</a>
+                                            <button  id="close" class="modal-action modal-close waves-effect waves-green btn-flat blue white-text">{% trans from 'forms' %} form.project.close {% endtrans %}</button>
+                                        </div>
+                                    </div>
+                                {% else %}
+                                    <li class="collection-item ">
+                                        <li class="collection-item"><div>{{ project.truncate(file.name,15) }}<a href="{{app.request.getSchemeAndHttpHost()~'/'~file.path()}}" class="secondary-content upload_file"><i class="material-icons">attach_file</i></a></div></li>
+                                    </li>
+                                {% endif %}
+                            {% endfor %}
+                        </ul>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
+
+{% block myjs %}
+    <script>
+        $(document).ready(function() {
+            var elt= {
+                code: $('#code'),
+                select: $('select'),
+                form : $('#form'),
+                modal:$('.modal'),
+                delete: $('.delete_projet'),
+                link: $('.upload_file')
+            }
+            elt.link.click(function(){
+                if($(this).val()!="#")
+                {
+                    window.location.href = $(this).attr('href');
+                }
+            });
+            elt.modal.modal();
+
+            elt.delete.click(function(e){
+                if(!confirm($('#'+$(this).data('id')).text().trim()))
+                {
+                    e.preventDefault();
+                }
+            });
+        } );
+    </script>
+{% endblock %}
