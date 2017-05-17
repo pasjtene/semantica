@@ -1,0 +1,110 @@
+{% extends 'MainBundle::layout.html.twig' %}
+{% block title %}
+    Semantica Technologies Corporation - STC-Confirm
+{% endblock %}
+
+{% block mycss %}
+    <style>
+        .card{
+            padding: 1% !important;
+            text-align: center;
+            background-color: #f3f3f3 !important;
+            border-radius: 3%;
+            border: 6px solid #f3f3f3;
+            margin: 0%;
+            position: relative !important;
+            left: 20% !important;
+        }
+
+        .btn{
+            background-color: #f3f3f3 !important;
+            border-radius: 6px;
+        }
+        body{
+            height: 100%;
+            width: 100%;
+            overflow: hidden;
+        }
+        .container{
+            height: 100%;
+        }
+        a{
+            color: blue !important;
+        }
+        #error_exeception{
+            margin-top: 5%;
+            text-align: center;
+            height: 100%;
+        }
+        @media screen and (max-width: 1000px)  {
+            .card{
+                width: 32%;
+                left: 14% !important;
+            }
+        }
+
+        @media screen and (max-width: 800px)  {
+            .card{
+                left:10% !important;
+            }
+        }
+
+        @media screen and (max-width: 500px)  {
+            .card{
+                left:3% !important;
+            }
+        }
+
+
+        @media screen and (max-width: 370px)  {
+            .card{
+                width: 32%;
+                left: -1% !important;
+            }
+        }
+    </style>
+{% endblock %}
+{% block header %}
+    <div class="row valign-wrapper center-align" id="error_exeception">
+        <div class="col s12 m12">
+            <div class="row">
+                <div class="col m6 valign-wrapper center-align card">
+
+                    <table>
+                        <tr>
+                            <td>
+                                <img src="{{ asset('data/img/error/404error.png') }}" alt="">
+                            </td>
+                            <td colspan="3">
+                                <h1 class="red-text">{% trans from 'errors' %} error404.title {% endtrans %}</h1>
+                                <p>
+                                    {% trans from 'errors' %} error404.content {% endtrans %}
+                                </p>
+                                <br>
+                                <a class="waves-effect waves-light bleu-text col s6 " href="{{ path('main_homepage') }}" >Home</a>
+                                <a class="waves-effect waves-light bleu-text col s6" href="{{ path('main_homepage') }}#contact">Contact</a>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+{% block  main %}
+
+{% endblock %}
+
+{% block myjs %}
+    <script>
+        $(function(){
+            $('.header').empty();
+        })
+    </script>
+{% endblock %}
+
+
+
+{% block footer %}
+
+{% endblock %}

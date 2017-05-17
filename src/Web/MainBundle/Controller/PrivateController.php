@@ -10,9 +10,13 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 use Symfony\Component\Security\Core\Authentication\Token\UsernamePasswordToken;
 use Symfony\Component\Security\Core\Exception\AccountStatusException;
-use Web\EntityBundle\Entity\Contact;
-use Web\EntityBundle\Entity\Customer;
+use Symfony\Component\Validator\Constraints\DateTime;
+use Web\EntityBundle\Entity\Comment;
+use Web\EntityBundle\Entity\CommitHistoric;
+use Web\EntityBundle\Entity\Files;
+use Web\EntityBundle\Entity\Historic;
 use Web\EntityBundle\Entity\Projet;
+use Web\EntityBundle\Entity\Task;
 use Web\EntityBundle\Entity\User;
 use Web\EntityBundle\Form\UserType;
 
@@ -21,9 +25,6 @@ use Web\EntityBundle\Form\UserType;
  */
 class PrivateController extends Controller
 {
-
-
-
     /**
      * @Route("/", name="main_private")
      */
@@ -80,6 +81,7 @@ class PrivateController extends Controller
      */
     public function commitAction(Request $request)
     {
+        $code="";
         /** @var User $user */
         $user = $this->getUser();
         $em = $this->getDoctrine()->getManager();
@@ -100,19 +102,105 @@ class PrivateController extends Controller
             }
         }
 
-        $list = $em->getRepository("EntityBundle:Projet")->findBy(['user'=>$user],['id'=>'DESC','date'=>'DESC']);
-        $array['list'] = $list;
-        $array['index'] =3;
+        $items = $em->getRepository("EntityBundle:Projet")->findBy(['user'=>$user],['id'=>'DESC','date'=>'DESC']);
 
+        if($request->isMethod("POST"))
+        {
+            $val = $request->request;
+            $code = $val->get('code');
+            if($code!="")
+            {
+                /** @var Projet $projet */
+                $projet =  $em->getRepository("EntityBundle:Projet")->findOneBycode($code);
+                $list = $em->getRepository("EntityBundle:CommitHistoric")->findBy(['project'=>$projet],['id'=>'DESC']);
+            }
+            else{
+                $list = $em->getRepository("EntityBundle:CommitHistoric")->findBy([],['id'=>'DESC']);
+            }
+        }
+        else
+        {
+            $list = $em->getRepository("EntityBundle:CommitHistoric")->findBy([],['id'=>'DESC']);
+        }
+
+        $listhelp = $list;
+        $list =null;
+        /** @var CommitHistoric $item */
+        foreach($listhelp as $item)
+        {
+            if($item->getProject()->getUser()->getId()==$user->getId())
+            {
+                $list[] =$item;
+            }
+        }
+        $array['list'] = $list;
+        $array['items'] = $items;
+        $array['index'] = 3;
+        $array['code'] = $code;
         return $this->render('MainBundle:Private:commit.html.twig',$array);
     }
 
+    /**
+     * @Route("/commit/send/{id}", name="main_private_commit_send", requirements={"id": "\d+"})
+     */
+    public function send_commitAction(Request $request,$id)
+    {
+        $code="";
+        /** @var User $user */
+        $user = $this->getUser();
+        $em = $this->getDoctrine()->getManager();
+
+        $all= $em->getRepository("EntityBundle:Projet")->findAll();
+
+        if($request->isMethod("POST"))
+        {
+            $val = $request->request;
+            $message =$val->get('message');
+            $taskid =$val->get('task');
+            $commit =$val->get('commit');
+
+            /** @var User $user */
+            $user= $em->getRepository("EntityBundle:User")->find($user->getId());
+
+            /** @var Projet $project */
+            $project= $em->getRepository("EntityBundle:Projet")->find($id);
+
+            /** @var Task $task */
+            $task= $em->getRepository("EntityBundle:Task")->find($taskid);
+
+            $comment = new Comment();
+            $comment->setDate(new \DateTime())->setDescription($message);
+            $comment->setUser($user)->setProject($project)->setTask($task);
+
+            $em->persist($comment);
+            $em->flush();
+            $em->detach($comment);
+
+            $list= $em->getRepository("EntityBundle:Historic")->findAll();
+
+            /** @var Historic $item */
+            foreach($list as $item)
+            {
+                if($item->getProject()->getId()==$id)
+                {
+                    $body =  '<p> Code du projet : '.$project->getCode().
+                        '<br/> Commit : '.$commit.
+                        '<br/> Suggestion : '.$message.'</p>';
+                    $code = $this->sendMail($item->getParticipator()->getUser()->getEmail(), $this->getParameter('mailer_user'), $message, "COMMENT STC(SEMANTICA TECHNOLOGIES CORPORATION)");
+                }
+            }
+
+
+        }
+        return $this->redirect($this->generateUrl('main_private_commit',["message"=>"test"]));
+    }
 
     /**
      * @Route("/comment", name="main_private_comment")
      */
     public function commentAction(Request $request)
     {
+        $code="";
         /** @var User $user */
         $user = $this->getUser();
         $em = $this->getDoctrine()->getManager();
@@ -133,13 +221,46 @@ class PrivateController extends Controller
             }
         }
 
-        $list = $em->getRepository("EntityBundle:Projet")->findBy(['user'=>$user],['id'=>'DESC','date'=>'DESC']);
+        $items = $em->getRepository("EntityBundle:Projet")->findBy(['user'=>$user],['id'=>'DESC','date'=>'DESC']);
+
+        if($request->isMethod("POST"))
+        {
+            $val = $request->request;
+            $code = $val->get('code');
+            if($code!="")
+            {
+                /** @var Projet $projet */
+                $projet =  $em->getRepository("EntityBundle:Projet")->findOneBycode($code);
+                $list = $em->getRepository("EntityBundle:Comment")->findBy(['project'=>$projet],['id'=>'DESC','date'=>'DESC']);
+            }
+            else{
+                $list = $em->getRepository("EntityBundle:Comment")->findBy([],['id'=>'DESC','date'=>'DESC']);
+            }
+        }
+        else
+        {
+            $list = $em->getRepository("EntityBundle:Comment")->findBy([],['id'=>'DESC','date'=>'DESC']);
+        }
+
+        $listhelp = $list;
+        $list =null;
+        /** @var Comment $item */
+        foreach($listhelp as $item)
+        {
+            if($item->getProject()->getUser()->getId()==$user->getId())
+            {
+                $reply = $em->getRepository("EntityBundle:Reply")->findBy([],['id'=>'DESC','date'=>'DESC']);
+                $list[] =['comment'=>$item, 'reply'=>$reply];
+
+            }
+        }
         $array['list'] = $list;
+        $array['items'] = $items;
         $array['index'] = 4;
+        $array['code'] = $code;
 
         return $this->render('MainBundle:Private:comment.html.twig',$array);
     }
-
 
     /**
      * @Route("/profile", name="main_private_profile")
@@ -181,8 +302,6 @@ class PrivateController extends Controller
                 $array['error'] = $error;
                 //var_dump($error);
             }
-
-
         }
 
         $array['form'] = $form->createView();
@@ -216,4 +335,56 @@ class PrivateController extends Controller
         }
     }
 
+
+    public  function sendMail($to, $from, $body,$subjet)
+    {
+        // ->setReplyTo('xxx@xxx.xxx')
+
+        $message = \Swift_Message::newInstance()
+            ->setSubject($subjet)
+            ->setFrom($from) // 'info@achgroupe.com' => 'Achgroupe : Course en ligne '
+            ->setTo($to)
+            ->setBody($body)
+            //'MyBundle:Default:mail.html.twig'
+            ->setContentType('text/html');
+        return $this->get('mailer')->send($message);
+
+    }
+
+    /**
+     * @Route("/project/delete/{id}", name="main_projet_delete", requirements={"id": "\d+"})
+     */
+    public function deleteAction($id)
+    {
+        $em = $this->getDoctrine()->getManager();
+        /** @var Projet $project */
+        $project = $em->getRepository("EntityBundle:Projet")->find($id);
+        $files = new Files();
+        if($project->getFiles()!=null)
+        {
+            $files->delete('',$project->path());
+        }
+        $em = $this->getDoctrine()->getManager();
+        $em->remove($project);
+        $em->flush();
+
+        return $this->redirect($this->generateUrl('main_private'));
+    }
+
+    /**
+     * @Route("/users", name="main_private_users")
+     */
+    public function usersAction(Request $request)
+    {
+        /** @var User $user */
+        $user = $this->getUser();
+
+        $em = $this->getDoctrine()->getManager();
+
+        $items = $em->getRepository("EntityBundle:User")->findAll();
+
+        $array = ['items' => $items, 'index' => 5];
+
+        return $this->render('MainBundle:Private:users.html.twig', $array);
+    }
 }

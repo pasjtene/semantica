@@ -3,6 +3,7 @@ private:
   profile: My profile
   project: My project
   comment: Comment
+  users: Users
   commit: Commit
   find: Find commit
   choose_project: Choose a project
@@ -11,6 +12,12 @@ commit:
   commit: Commit
   message: Message
   date: Date
+  empty: No Commit are saved or any commits match your search
+  comment: Comment
+  project: Project  description
+  send: Send
+  do_comment: MAKE A SUGGESTION
+  notification: Comment sent successfully
 project:
   title: Title
   description: Description
@@ -25,8 +32,30 @@ project:
   rejects: Rejects
   ready: Ready
   delivered: Delivered
+  accepted: Accepté
+  finish: Finish
+  run: Budget run-down
   close: Close
   choose: Choose status
   status: Status
+  delete: Delete
   empty: No projects are saved or any projects match your search
+comment:
+  project: Project
+  reply: Reply
+  auther: Auther
+  task: Task
+  date: Date
+  description: Description
+  empty: No Comment are saved or any Comments match your search
+user:
+  firstname: Firstname
+  lastname: Lastname
+  gender: Gender
+  status: Status
+  roles: Roles
+  empty: No user registered in our database
+  delete: Delete
+  enabled: enabled
+  locked: locked
 

@@ -3,14 +3,21 @@ private:
   profile: Mon profil
   project: Mon projet
   comment: Commentaire
+  users: Utilisateurs
   commit: Commit
   find: Trouver le commit
   choose_project: Choisir un projet
-project:
+commit:
   auther: Auteur
   commit: Commit
   message: Message
   date: Date
+  empty: Aucun commit n'est enrgistré ou aucun commit ne correspont a votre recherche
+  comment: Commenter
+  project: Description du  projet
+  notification: Commentaire envoyé avec succès
+  send: Envoyer
+  do_comment: FAIRE UNE SUGGESTION
 project:
   title: Titre
   description: Description
@@ -24,7 +31,29 @@ project:
   rejects: Rejetté
   ready: Prêt
   delivered: Livré
+  accepted: Accepted
+  finish: Terminé
+  run: Budget épuisé
   close: Fermé
   choose: Choisir l'état
   status: Statut
+  delete: Supprimer
   empty: Aucun projet n'est enrgistré ou aucun projet ne correspont a votre recherche
+comment:
+  project: Projet
+  reply: Réponse
+  auther: Auteur
+  task: Tâche
+  date: Date
+  description: Description
+  empty: Aucun commentaire n'est enrgistré ou aucun commentaire ne correspont a votre recherche
+user:
+  firstname: Prénom
+  lastname: Nom
+  gender: Civilité
+  status: Statut
+  roles: Roles
+  empty: Aucun utilisateur enregistré dans notre base de données
+  delete: Supprimer
+  enabled: activé
+  locked: désactivé

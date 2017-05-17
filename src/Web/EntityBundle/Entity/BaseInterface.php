@@ -31,6 +31,21 @@ abstract class BaseInterface
      */
     protected $description;
 
+    public function getValue($string, $length){
+        $value =null;
+        $tab = str_split($string);
+        for($i=0;$i<strlen($string);$i++)
+        {
+            $value .=$tab[$i];
+            if($i==$length-1)
+            {
+                $value .="[...]";
+                return $value;
+            }
+        }
+        return $value;
+    }
+
     /**
      * @var \DateTime
      *

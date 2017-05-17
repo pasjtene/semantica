@@ -1,0 +1,117 @@
+{% extends 'MainBundle::layout.html.twig' %}
+{% block meta %}
+    <meta name = "{% trans from 'refer' %} home.title {% endtrans %}" >
+    <meta name = "keywords" content = "{% trans from 'refer' %} home.description {% endtrans %}" >
+{% endblock %}
+{% block title %}
+    Semantica Technologies Corporation - STC
+{% endblock %}
+
+
+{% block mycss %}
+    <link rel="stylesheet" href="{{ asset('components/cssbase/datatablehelp.css') }}">
+    <link rel="stylesheet" href="{{ asset('components/cssbase/datatablehelp2.css') }}">
+    <style>
+
+        strong{
+            font-weight: bold;
+        }
+        footer{
+            bottom: 0;
+            width: 100% !important;
+        {% if items==null or items|length < 3 %} position: fixed; {% endif %}
+        }
+        .mega-menu{
+            z-index: 9999999999999999999999999999 !important;
+        }
+        #zone_table{
+            height: 352px;
+            overflow-y: auto;
+        }
+    </style>
+{% endblock %}
+{% block header %}
+    {{ parent() }}
+    <div class="row" id="main_account">
+        <div class="row">
+           <div class="col s12">
+               <div class="col s5 m3">
+                   {% include 'MainBundle:Inc:vertical-nav.html.twig' %}
+               </div>
+               <div class="col s7 m9">
+                   <br><br>
+                   <div class="row" id="search">
+                       <form action="" method="post" id="form">
+                           <div class="col s12">
+                               <div class="input-field col s12 offset-m9 m3">
+                                   <select id="code" name="code">
+
+                                   </select>
+                                   <!--<label>project.status </label>-->
+                               </div>
+                           </div>
+
+                       </form>
+                   </div>
+                  <div id="zone_table">
+                      <table class="bordered responsive-table ">
+                          <thead>
+                          <tr>
+                              <th>N°</th>
+                              <th>{% trans from 'private' %} user.firstname  {% endtrans %}</th>
+                              <th>{% trans from 'private' %} user.lastname  {% endtrans %}</th>
+                              <th>{% trans from 'private' %} user.gender  {% endtrans %}</th>
+                              <th>{% trans from 'private' %} user.status  {% endtrans %}</th>
+                              <th>{% trans from 'private' %} user.roles  {% endtrans %}</th>
+                              <th>{% trans from 'private' %} Action {% endtrans %}</th>
+                          </tr>
+                          </thead>
+
+                          <tbody>
+                          {% if items|length == 0 %}
+                              <tr>
+                                  <td colspan="7" class="center center-align">
+                                      <h4> {% trans from 'private' %} user.empty  {% endtrans %} </h4>
+                                  </td>
+                              </tr>
+                          {% else %}
+                              {% for item in items %}
+                                  <tr>
+                                      <td>{{ loop.index }}</td>
+                                      <td>{{ item.firstname }} </td>
+                                      <td>{{ item.lastname }} </td>
+                                      <td>{{ item.pleasantries }} </td>
+                                      <td>{% if item.enabled == 1 %}{% trans from 'private' %} user.enabled {% endtrans %}{% else %}{% trans from 'private' %} user.locked  {% endtrans %}{% endif %} </td>
+                                      <td>
+                                        {% for role in item.roles %}
+                                            {{ role }},
+                                        {% endfor %}
+                                      </td>
+                                      <td>
+                                          <a data-id="{{ item.id }}" href="{{ path('main_projet_delete',{id:item.id}) }}" class="delete_projet">
+                                              <i class="material-icons">delete</i>
+                                          </a>
+                                      </td>
+                                  </tr>
+                              {% endfor %}
+                          {% endif %}
+                          </tbody>
+                      </table>
+                  </div>
+               </div>
+           </div>
+        </div>
+    </div>
+
+{% endblock %}
+{% block  main %}
+
+{% endblock %}
+
+{% block myjs %}
+    <script>
+       $(function(){
+
+       });
+    </script>
+{% endblock %}
