@@ -14,9 +14,8 @@ use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
  * @UniqueEntity(fields="username", message="user.username.UniqueEntity")
  * @ORM\Entity(repositoryClass="Web\EntityBundle\Repository\UserRepository")
  */
-  class User extends BaseUser
+class User extends BaseUser
 {
-
     const ROLE_SUPER_ADMIN = 'ROLE_SUPER_ADMIN';
     const ROLE_ADMIN = 'ROLE_ADMIN';
     const ROLE_USER = 'ROLE_USER';
@@ -30,15 +29,7 @@ use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
      */
     protected $id;
 
-
-      /**
-       * @var string
-       * @ORM\Column(name="status", type="string", length=255)
-       */
-      protected $status;
-
-
-      /**
+    /**
      * @var string
      * @Assert\NotBlank(message="person.firstname.NotBlank")
      * @ORM\Column(name="firstname", type="string", length=255)
@@ -73,12 +64,12 @@ use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
      */
     protected $country;
 
-      /**
-       * @var string
-       *
-       * @ORM\Column(name="picture", type="string", length=255, nullable=true)
-       */
-      protected $picture;
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="picture", type="string", length=255, nullable=true)
+    */
+    protected $picture;
 
     /**
      * Get id
@@ -95,7 +86,7 @@ use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
        *
        * @param string $firstname
        *
-       * @return Personne
+       * @return User
        */
       public function setFirstname($firstname)
       {
@@ -119,7 +110,7 @@ use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
        *
        * @param string $lastname
        *
-       * @return Personne
+       * @return User
        */
       public function setLastname($lastname)
       {
@@ -139,35 +130,11 @@ use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
       }
 
       /**
-       * Set phone
-       *
-       * @param string $phone
-       *
-       * @return Personne
-       */
-      public function setPhone($phone)
-      {
-          $this->phone = $phone;
-
-          return $this;
-      }
-
-      /**
-       * Get phone
-       *
-       * @return string
-       */
-      public function getPhone()
-      {
-          return $this->phone;
-      }
-
-      /**
        * Set pleasantries
        *
        * @param string $pleasantries
        *
-       * @return Personne
+       * @return User
        */
       public function setPleasantries($pleasantries)
       {
@@ -191,7 +158,7 @@ use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
        *
        * @param string $city
        *
-       * @return Personne
+       * @return User
        */
       public function setCity($city)
       {
@@ -215,7 +182,7 @@ use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
        *
        * @param string $country
        *
-       * @return Personne
+       * @return User
        */
       public function setCountry($country)
       {
@@ -233,30 +200,6 @@ use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
       {
           return $this->country;
       }
-
-    /**
-     * Set status
-     *
-     * @param string $status
-     *
-     * @return User
-     */
-    public function setStatus($status)
-    {
-        $this->status = $status;
-
-        return $this;
-    }
-
-    /**
-     * Get status
-     *
-     * @return string
-     */
-    public function getStatus()
-    {
-        return $this->status;
-    }
 
     /**
      * Set picture

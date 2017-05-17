@@ -3,6 +3,7 @@ private:
   profile: My profile
   project: My project
   comment: Comment
+  users: Users
   commit: Commit
   find: Find commit
   choose_project: Choose a project
@@ -47,5 +48,14 @@ comment:
   date: Date
   description: Description
   empty: No Comment are saved or any Comments match your search
-
+user:
+  firstname: Firstname
+  lastname: Lastname
+  gender: Gender
+  status: Status
+  roles: Roles
+  empty: No user registered in our database
+  delete: Delete
+  enabled: enabled
+  locked: locked
 
