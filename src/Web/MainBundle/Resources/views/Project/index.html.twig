@@ -182,6 +182,15 @@
                     return true;
                 }
             }
+           setInterval(function(){
+               {% if app.request.locale=="fr" %}
+                   $('#ajout_fichier').text('Nouveau fichier');
+                   $('.delete').text('Supprimer');
+               {% else %}
+                   $('#ajout_fichier').text('New File');
+                   $('.delete').text('Delete');
+               {% endif %}
+           },100);
         });
     </script>
 
