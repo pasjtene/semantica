@@ -1,0 +1,318 @@
+service:
+  explore_our_service: Explorez nos services
+  our_service:  NOS SERVICES
+  our_content:  |
+   <h3></BR>STC est votre partenaire complet pour votre transformation numérique.
+   Nous offrons des services et des solutions nécessaires pour aider les clients à réussir de façon holistique.</h3></br>
+  explore_our_app: Explorez nos domaines d'application
+  app_service:  SERVICES APPLICATIFS
+  app_content:  |
+   <h3></BR>Optimiser le travail de vos employés grâce à nos applications.</h3>
+   Gagner le maximum de vos investissements en TI et générer une croissance de lentreprise
+   nécessite une gestion informatique efficace.</br></br>
+  explore_our_business: Explorez nos  conseils en TI
+  business_service: SERVICES-CONSEILS D'ENTREPRISE
+  business_content:  |
+   <h3></BR>Transformer l'entreprise grâce à une approche collaborative.</h3>
+   En tant que leader, vous devez toujours faire face aux changements en cours.</br></br>
+  explore_our_infrast: Explorez nos Infrastructures
+  infrast_service:  SERVICES D'INFRASTRUCTURE
+  infrast_content:  |
+   <h3></BR>Notre meilleure offre pour votre infrastructure informatique.</h3>
+   La concurrence mondiale, lévolution de la réglementation, le déplacement des demandes des clients,
+   des ressources limitées, des défis de capacité,
+   et les contraintes budgétaires que vous faite face.</br></br>
+business:
+  title:  SERVICES-CONSEILS D'ENTREPRISE
+  block1: AIDER À TRANSFORMER VOTRE ENTREPRISE PAR UNE APPROCHE COLLABORATIVE
+  block1_content:  |
+   <P>
+   En tant que chefs de file, nos clients doivent constamment composer avec des changements, qu'il s'agisse de
+   transformer leurs activités pour profiter de marchés émergents, de restructurer l'entreprise pour en améliorer
+   l'efficacité opérationnelle, de satisfaire aux nouvelles exigences réglementaires ou d'atténuer certains risques.
+   Il est alors nécessaire d'apporter une réponse rapide, éprouvée et souple, tout en s'assurant que les personnes adéquates,
+   les processus appropriés et les technologies qui conviennent sont en place pour maximiser la performance, peu importe
+   la concurrence et la conjoncture économique.
+   </P>
+   <P>
+   Les services-conseils d'entreprise de STC proposent à nos clients le savoir-faire dont ils ont besoin pour
+   assurer la croissance de leur entreprise et de leurs revenus, tout en améliorant l'efficacité et l'adaptabilité.
+   Fondée en 2016, STC figure parmi les plus importantes entreprises de services complets en technologies de l'information
+   (TI) et de services-conseils en management. Nous possédons les capacités et la portée requise pour combiner une expertise
+   multisectorielle, opérationnelle et technologique afin d'assurer une transformation réussie et une performance à long
+   terme. Nous adoptons une approche unique en matière de services-conseils : nous écoutons nos clients et innovons avec
+   eux pour assurer leur succès à long terme.
+   </P>
+  block2:  Expérience et savoir-faire :
+  block2_content:  |
+   <ul>
+   <li>Nous avons aidé un chef de file mondial des cosmétiques à redéfinir sa politique de contrôle interne,
+     ce qui a permis de réduire l'exposition aux risques de près de 75 % pour ses filiales réparties dans plusieurs pays</li>
+     </ul>
+     <ul>
+     <li>À la suite d'une fusion, nous avons aidé un chef de file des services logistiques à actualiser sa chaîne
+     d'approvisionnement mondiale, à centraliser son administration financière et à rationaliser la gestion des flux
+     de trésorerie, le tout en huit mois.</li>
+     </ul>
+     <ul>
+     <li>Nous avons conseillé un fournisseur mondial d'assurances pour la mise en œuvre d'une nouvelle approche
+     de vente et l'adoption de tablettes numériques, le tout en six mois, approche qui s'est traduite par une
+     interaction accrue avec les clients.</li>
+     </ul>
+application:
+  title:   SERVICES APPLICATIFS
+  block1: OPTIMISATION DE LA VALEUR DE VOS APPLICATIONS
+  block1_content:  |
+     <P>
+     La gestion efficace des systèmes d’information d’une entreprise est indispensable pour tirer pleinement parti des
+     investissements en TI et pour stimuler la croissance de l’entreprise. Les budgets serrés en TI, la complexité accrue
+     de ces technologies, les pressions liées au temps de mise sur le marché et les besoins changeants des clients sont
+     autant de défis pour les organisations qui veulent s’assurer que leurs applications offrent une valeur maximale.
+     </P>
+     <P>
+     Les services applicatifs de STC, qui comprennent le développement, la gestion, la mise à l’essai, la gestion du
+     portefeuille et la modernisation des applications, permettent aux clients de surmonter ces obstacles et de favoriser
+     l’agilité opérationnelle, la transformation et la rentabilité. Nos services complets fournissent l’expertise technologique
+     et sectorielle, les solutions, les compétences, les cadres de gestion et les processus dont nos clients ont besoin pour
+     réussir à concevoir, à exploiter et à faire évoluer leurs applications d’entreprise.
+     </P>
+  block2:   Expérience et savoir-faire :
+  block2_content:  |
+
+     <ul>
+     <li>Équipes locales responsables soutenues par des ressources mondiales affichant un solide bilan en matière de prestation
+     de services de qualité et de satisfaction élevée des clients;</li>
+     </ul>
+     <ul>
+     <li>Modèle mondial de prestation de services souple et adapté comprenant des modes de
+     prestation de services chez le client, au pays, sur le continent et à l’international;</li>
+     </ul>
+     <ul>
+     <li>Processus et outils de productivité normalisés;</li>
+     </ul>
+     <ul>
+     <li>Modèle de processus de services complets et intégrés, axés sur les objectifs et les résultats d’affaires.</li>
+     </ul>
+inf:
+  title: SERVICES INFRASTRUCTURE
+  block1: TROUVER LE MEILLEUR DE VOTRE INFRASTRUCTURE TI
+  block1_content:  |
+     <P>
+     La concurrence mondiale, la réglementation en constante évolution, les demandes changeantes des clients,
+     les ressources limitées, les défis en matière de capacités et les contraintes budgétaires – nous savons
+     que ces enjeux font partie de vos préoccupations. Vous ne devriez pas avoir à vous soucier de votre infrastructure.
+     C'est notre travail. Avec l'émergence de l'informatique en nuage, de la virtualisation et de la mobilité, STC est
+     bien en phase avec les tendances et les demandes du marché. Nous offrons la technologie, les processus et le
+     personnel dont les clients ont besoin pour transformer leur infrastructure informatique, accroître leur efficacité,
+     réaliser des économies de coûts et obtenir d'autres résultats stratégiques.
+     </P>
+     <P>
+     STC propose à ses clients des centres de traitement des données écologiques et écoénergétiques,
+     l'informatique en nuage et une gestion déléguée des services de sécurité, le tout appuyé par une
+     gamme unique d'outils de gestion des services d'entreprise. Il ne s'agit là que de quelques-uns des
+     domaines où nous offrons une expertise technologique, industrielle et de domaine ciblée visant à continuellement
+     rehausser les opérations et à stimuler l'innovation. La vaste gamme de solutions, le modèle mondial de prestation de
+     services et les modalités des contrats de CGI procurent aux clients souplesse et choix au sein d'un marché en constante
+     évolution.
+     </P>
+  block2:  Expérience et savoir-faire :
+  block2_content:  |
+     <ul>
+     <li>
+     Prestation de services de qualité – Le modèle de prestation de services de CGI axé sur les résultats et son rigoureux cadre de gestion de régie d entreprise vous permettent d obtenir
+     les résultats escomptés.
+     </li>
+     </ul>
+     <ul>
+     <li>Flexibilité, force et expertise à votre service – Nos nombreuses années
+     d expérience nous permettent de commercialiser notre expertise et
+     d offrir une gamme complète de solutions de propriété intellectuelle novatrices aux clients de toutes tailles;</li>
+     </ul>
+     <ul>
+     <li>
+     Intégrer la créativité à votre offre – STC offre un leadership sectoriel par l entremise de son réseau mondial de centres de services d
+     infrastructure « verts », efficients, novateurs et écoénergétiques..
+     </li>
+     </ul>
+our:
+  title:  SERVICES
+  block1: NOS SERVICES
+  block1_content:  |
+     STC est l’une des rares entreprises mondiales possédant l’expertise, l’envergure ainsi que la gamme
+     complète de solutions et de services requises pour contribuer au succès de ses clients. Notre modèle
+     de proximité client favorise une compréhension approfondie des activités de nos clients ainsi que l’établissement
+     de solides relations pour mettre en œuvre les solutions numériques novatrices les mieux adaptées, appuyées par notre
+     modèle mondial de prestation de services qui met à profit notre expertise sectorielle et technologique
+  block2:  Nos services comprennent :
+  block2_content:  |
+     <ul>
+     <li>des services-conseils stratégiques en management et en technologies de l’information axés sur le numérique;</li>
+     </ul>
+     <ul>
+     <li>des services d’intégration de systèmes afin de relier les systèmes existants à des modèles opérationnels numériques;</li>
+     </ul>
+     <ul>
+     <li>une impartition transformationnelle afin d’améliorer à la fois la manière dont nos clients exploitent
+     et transforment leur organisation;</li>
+     </ul>
+     <ul>
+     <li>des solutions de propriété intellectuelle qui agissent à titre d’accélérateurs numériques.</li>
+     </ul>
+
+
+exploresereservice:
+  title:  LE SERVICE INFORMATIQUE
+  block1: STC VOTRE PARTENAIRE IDEALE POUR UNE TRANSFORMATION NUMERIQUE REUSSIE
+  block1_content:  |
+   <P><h4>PRESENTATION</h4></P>
+   <P>
+   Les besoins très importants et de plus en plus croissants dans l'usage de l'informatique ont conduit à
+   la création d'un Service de gestion des projets, chargé de suivre les projets des clients depuis l'etude de l'existant,
+   la conception, la realisation et le deploiement en production .
+   </P>
+   <P>
+   Afin de répondre prioritairement à vos préoccupations, nous avons mis en place une équipe chargée d’intervenir dans le périmètre
+   englobant toutes les activités informatiques d'intérêt général pour votre entreprise.
+   </P>
+  block2:  NOS MISSIONS :
+  block2_content:  |
+   <ul>
+   <li>maintenir et faire évoluer  votre système d'information;</li>
+   </ul>
+   <ul>
+   <li>conseiller et informer les utilisateurs dans tout ce qui touche à l'informatique au sens large;</li>
+   </ul>
+   <ul>
+   <li>administrer et exploiter les serveurs administratifs et communs;</li>
+   </ul>
+   <ul>
+   <li>établir l'inventaire du parc informatique et des logiciels en service dans votre entreprise;</li>
+   </ul>
+   <ul>
+   <li>developper vos applications en repectant la methode agile.</li>
+   </ul>
+
+
+
+exploreapp:
+  title:  LE SERVICE APPLICATIF
+  block1: OPTIMISER LA VALEUR DE VOS APPLICATIONS
+  block1_content:  |
+                 <P><h6><strong>Nous accompagnons la transformation de la DSI de nos clients pour leurs Services Applicatifs.</strong></h6></P>
+                 <P>
+                 Pour répondre au plus près aux attentes de nos clients dans un contexte de profonde mutation, les
+                 services applicatifs couvrent l’ensemble des services du cycle de vie logiciel – conseil et cadrage,
+                 conception fonctionnelle ou technique, réalisation et recette, mise en production et garantie des logiciels
+                 concernés. Objectif : concevoir, développer et maintenir des applications métiers pour les DSI de nos clients.
+                 </P>
+                 <P>
+                 En 2015, le marché de l’Application Services (AS) au Cameroun a représenté environ 2,5 milliards de francs cfa pour les
+                 entreprises de service numérique (ESN) dont 50 % réalisés par les 7 premières ESN. Or, la recherche permanente de
+                 réduction des coûts liés à la DSI impose de proposer des modèles de prestations variés : soit à engagement de
+                 ressources – assistance technique unitaire ou groupée, centre de compétences ou d’expertise –, soit à engagement
+                 de résultats – forfaits de build, TMA, TRA, centre de services, outsourcing.
+                 </P>
+  block2:  NOS MISSIONS :
+  block2_content:  |
+                 <ul>
+                 <li>Notre structure industrielle favorise un accompagnement de bout en bout de nos clients sur les programmes de transformation;</li>
+                 </ul>
+                 <ul>
+                 <li>Moderniser les SI;</li>
+                 </ul>
+                 <ul>
+                 <li> Transformer digitalement  vos données;</li>
+                 </ul>
+                 <ul>
+                 <li>Industrialiser;</li>
+                 </ul>
+                 <ul>
+                 <li>Analytics et Big Data.</li>
+                 </ul>
+serviceconseil:
+     title:  LE SERVICE CONSEIL D'ENTENREPRISE
+     block1: Nous pratiquons les métiers pour lesquels nous sommes faits.
+     block1_content:  |
+      <P><strong> STC propose, sous son enseigne, des compétences variées
+      et pluridisciplinaires dans différents domaines de conception et de maintenance d'applications d'entreprises.</strong></P>
+      <P>
+      Nous disposonsdes solutions pour répondre de manière précise et rapide aux besoins et attentes de nos clients, par des conseils avisés et
+      un accompagnement personnalisé, ceci étant l’objectif premier qui mobilise les associés et collaborateurs de STC Corporation.
+      </P>
+      <P>
+      Nos connaissances globales du fonctionnement des entreprises au Cameroun et à l’étranger offrent une palette
+      de services aux entrepreneurs qui couvrent tant des prestations financières que des conseils fiscaux,
+      des conseils juridiques et des services spécialisés dans le domaine des TIC.
+      </P>
+      Nous avons développé de nombreuses relations avec les agences des promotions économiques pour en faire bénéficier
+      notre clientèle. Les atouts proposés par ces agences dynamique et les prestations offertes par STC lui permettent d'etre parmis les leaders
+      dans la transformation numérique des entreprises. Ainsi
+      STC s’engage au côté de ses clients et qui mieux que ces derniers peuvent témoigner des qualités et des compétences
+      de nos collaborateurs et associés.
+      </p>
+     block2:  NOS MISSIONS :
+     block2_content:  |
+      <ul>
+      <li>promouvoir L'amélioration des compétences ce qui constitue l'une des voies les plus efficaces pour augmenter votre productivité;</li>
+      </ul>
+      <ul>
+      <li>Les conseils en formation STC se concentrent sur la création de stratégies et l'apprentissage des
+      structures de l'organisation comme fondements de l'augmentation constante et systématique de la productivité, l'amélioration des résultats
+      commerciaux et la garantie d'un retour sur investissement en informatique plus élevé ;</li>
+      </ul>
+      <ul>
+      <li> promouvoir L'amélioration constante des compétences par le biais de systèmes d'assistance à la performance ce qui permet
+      de gérer les changements et d'accroître la confiance des employés;</li>
+      </ul>
+      <ul>
+      <li> vous aider à avoir un personnel qualifié qui prend de meilleures décisions, ce qui permet à
+      l'entreprise de gagner en souplesse et d'accroître son avantage concurrentiel;</li>
+      </ul>
+      <ul>
+      <li>Dans l'environnement actuel, vous devez observer l'ensemble de l'infrastructure et des installations et applications informatiques,
+      puis planifier, construire et gérer efficacement l'infrastructure pour améliorer l'efficience, l'agilité et la continuité
+      opérationnelle. STC vous aidera à tenir ces promesses en vous faisant bénéficier de l'expérience de nos experts en centres de données.</li>
+      </ul>
+
+infras:
+  title:  LE SERVICE D'INFRASTRUCTURE
+  block1: Simplifier VOTRE gestion d’infrastructure informatique.
+  block1_content:  |
+   Nos logiciels d’infrastructure informatique servent à s’assurer que les personnes et les systèmes d’une entreprise puissent se
+   connecter, afin d’être le plus efficaces possible lors des processus métier, du partage des informations et de la gestion des
+   contacts avec les clients et les partenaires. Ces logiciels détectent dynamiquement les relations entre les ressources, et
+   facilitent la coordination des activités dans toute l’entreprise. L’infrastructure informatique peut également être configurée
+   pour informer automatiquement les utilisateurs des meilleures pratiques et découvertes qui les concernent, selon leur activité
+   en cours et sans qu’il n’ait à lancer de recherche.
+   </P>
+   <P>
+   Depuis plus de 1 an,  STC propose des solutions innovantes d’infrastructure d’entreprise, qui fournissent une
+   architecture complète et réutilisable, permettant d’associer aisément de nouveaux systèmes d’entreprise avec l’informatique
+   en place. L’infrastructure STC assure une exceptionnelle valeur sur le long terme. Sa gamme de logiciels, très complète,
+   répondra aux futurs besoins d’intégration avec un minimum de coûts, de délais et de perturbations sur l'expérience utilisateur. Mieux encore, lorsque vous
+   assemblez de nouvelles solutions avec STC, vous n’êtes pas verrouillés par vos choix.
+   </P>
+   Les solutions d’intégration de STC combinent l’ouverture et une conception plug&play, ce qui accélère la mise en œuvre des projets
+   et en réduit les coûts jusqu’à 80 %, par rapport à une intégration basée sur une programmation spéciale. L’économie en maintenance
+   est également notable, car les applications interagissent avec l’architecture STC d’intégration, standardisée, plutôt qu’avec des
+   liaisons « codées en dur » vers les systèmes de back-office. Les adaptateurs STC représentent aujourd’hui la meilleure
+   valeur ajoutée : ils masquent la complexité de l’ensemble de l’environnement informatique, de sorte que l’implémentation de nouvelles
+   initiatives s’appuie sur les applications en place et se fasse bien plus rapidement que vous ne l’attendiez.
+   </p>
+  block2: NOUS PROPOSONS LES SERVICES SUIVANTS :
+  block2_content:  |
+   <ul>
+   <li>Adaptateurs (Adaptateurs de données , Adaptateurs d′applications);
+   </ul>
+   <ul>
+   <li>Architecture orientée services (SOA, Services Oriented Architecture, SOA et EAI, SOA et Java, Adaptateurs SOA)</li>
+   </ul>
+   <ul>
+   <li> Business Intelligence (Logiciel de Business Intelligence, Solution de Business Intelligence); </li>
+   </ul>
+   <ul>
+   <li> Enterprise Performance Management (Corporate Performance Management, EPM, CPM, Pilotage de la performance);</li>
+   </ul>
+   <ul>
+   <li>IT Infrastructure (logiciels d′infrastructure).</li>
+   </ul>
