@@ -45,10 +45,10 @@
 
                     <form action="{{ path('admin_users_change_role', {id:user.id}) }}" method="post" style="padding-top: 15px;">
                         <div class="input-field col s12">
-                            <select multiple name="cb-role">
-                                <option value="1" selected>Option 1</option>
-                                <option value="2">Option 2</option>
-                                <option value="3">Option 3</option>
+                            <select name="cb-role">
+                                {% for role in roles %}
+                                    <option value="{{ loop.index }}" >{{ role }}</option>
+                                {% endfor %}
                             </select>
                             <label>{% trans from 'admin' %} role.select_role {% endtrans %}</label>
                         </div>

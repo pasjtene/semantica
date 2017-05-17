@@ -218,6 +218,7 @@ class DefaultController extends Controller
 
         /** @var User $user */
         $user = $em->getRepository("EntityBundle:User")->find($id);
+        $allRoles = User::getAppRole();
 
         if(!is_object($user)){
             throw new NotFoundHttpException();
@@ -225,10 +226,14 @@ class DefaultController extends Controller
 
         if($request->isMethod("POST"))
         {
-            var_dump($request->request->get('cb-role'));
-            die();
+            $roleIndex = intval($request->request->get('cb-role'));
+
+            $user->setRoles([$allRoles[$roleIndex-1]]);
+            $em->flush();
+
+            return $this->redirect($this->generateUrl('admin_users'));
         }
 
-        return $this->render('AdminBundle:Default:change-role.html.twig', ['user' => $user]);
+        return $this->render('AdminBundle:Default:change-role.html.twig', ['user' => $user, 'roles' => $allRoles]);
     }
 }
