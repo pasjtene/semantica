@@ -33,7 +33,7 @@ project:
   rejects: Rejects
   ready: Ready
   delivered: Delivered
-  accepted: Accepté
+  accepted: Accepted
   finish: Finish
   run: Budget run-down
   close: Close
