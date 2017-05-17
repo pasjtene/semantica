@@ -48,14 +48,3 @@ comment:
   date: Date
   description: Description
   empty: No Comment are saved or any Comments match your search
-user:
-  firstname: Firstname
-  lastname: Lastname
-  gender: Gender
-  status: Status
-  roles: Roles
-  empty: No user registered in our database
-  delete: Delete
-  enabled: enabled
-  locked: locked
-

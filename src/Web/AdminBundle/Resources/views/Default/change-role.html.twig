@@ -1,0 +1,71 @@
+{% extends 'AdminBundle::layout.html.twig' %}
+{% block meta %}
+    <meta name = "{% trans from 'refer' %} home.title {% endtrans %}" >
+    <meta name = "keywords" content = "{% trans from 'refer' %} home.description {% endtrans %}" >
+{% endblock %}
+{% block title %}
+    Semantica Technologies Corporation - STC
+{% endblock %}
+
+{% block mycss %}
+    <style>
+
+        strong{
+            font-weight: bold;
+        }
+        footer{
+            bottom: 0;
+            width: 100% !important;
+        }
+        .mega-menu{
+            z-index: 9999999999999999999999999999 !important;
+        }
+        #zone_table{
+            height: 352px;
+            overflow-y: auto;
+        }
+    </style>
+{% endblock %}
+
+{% block header %}
+    {{ parent() }}
+{% endblock %}
+{% block  main %}
+    <div class="row" id="change-role-content" >
+        <div class="col l12">
+            <div class="card z-depth-1">
+                <div class="card-content">
+                    <center>
+                        <strong class="card-title">{% trans from 'admin' %} role.title {% endtrans %}</strong>
+                    </center>
+                    <div id="user-info">
+                        <p><b>{% trans from 'admin' %} role.username {% endtrans %}</b> {{ user.firstname }} {{ user.lastname }}</p>
+                        <p><b>{% trans from 'admin' %} role.current_role {% endtrans %}</b> {% for role in user.roles %} {{ role }}, {% endfor %}</p>
+                    </div>
+
+                    <form action="{{ path('admin_users_change_role', {id:user.id}) }}" method="post" style="padding-top: 15px;">
+                        <div class="input-field col s12">
+                            <select multiple name="cb-role">
+                                <option value="1" selected>Option 1</option>
+                                <option value="2">Option 2</option>
+                                <option value="3">Option 3</option>
+                            </select>
+                            <label>{% trans from 'admin' %} role.select_role {% endtrans %}</label>
+                        </div>
+
+                        <input type="submit" value="{% trans from 'admin' %} role.save {% endtrans %}" style="margin-top: 15px;" class="waves-effect waves-light btn"/>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block myjs %}
+    <script>
+        $(function()
+        {
+            $('select').material_select();
+        });
+    </script>
+{% endblock %}

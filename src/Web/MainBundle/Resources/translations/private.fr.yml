@@ -47,13 +47,3 @@ comment:
   date: Date
   description: Description
   empty: Aucun commentaire n'est enrgistré ou aucun commentaire ne correspont a votre recherche
-user:
-  firstname: Prénom
-  lastname: Nom
-  gender: Civilité
-  status: Statut
-  roles: Roles
-  empty: Aucun utilisateur enregistré dans notre base de données
-  delete: Supprimer
-  enabled: activé
-  locked: désactivé

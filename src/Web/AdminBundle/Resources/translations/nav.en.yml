@@ -3,7 +3,7 @@ nav:
   logout: Logout
   contact: Contact
   projet: Project
-  customer: Customer
+  users: Users
 login:
   title: SEMANTICA TECHNOLOGIES CORPORATION
   title_br: STC

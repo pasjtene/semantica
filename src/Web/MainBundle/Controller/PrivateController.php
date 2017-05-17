@@ -370,21 +370,4 @@ class PrivateController extends Controller
 
         return $this->redirect($this->generateUrl('main_private'));
     }
-
-    /**
-     * @Route("/users", name="main_private_users")
-     */
-    public function usersAction(Request $request)
-    {
-        /** @var User $user */
-        $user = $this->getUser();
-
-        $em = $this->getDoctrine()->getManager();
-
-        $items = $em->getRepository("EntityBundle:User")->findAll();
-
-        $array = ['items' => $items, 'index' => 5];
-
-        return $this->render('MainBundle:Private:users.html.twig', $array);
-    }
 }
