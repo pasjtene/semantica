@@ -22,6 +22,8 @@ project:
   title: Titre
   description: Description
   date: Date
+  back: Retour
+  file_list: Liste des fichiers
   code: Code
   file: Télécharger le fichier
   progress: En cours

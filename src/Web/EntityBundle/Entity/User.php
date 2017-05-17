@@ -32,7 +32,6 @@ use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
     protected $id;
 
 
-
       /**
      * @var string
      * @Assert\NotBlank(message="person.firstname.NotBlank")

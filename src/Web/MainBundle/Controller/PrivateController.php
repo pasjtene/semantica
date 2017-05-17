@@ -13,6 +13,7 @@ use Symfony\Component\Security\Core\Exception\AccountStatusException;
 use Symfony\Component\Validator\Constraints\DateTime;
 use Web\EntityBundle\Entity\Comment;
 use Web\EntityBundle\Entity\CommitHistoric;
+use Web\EntityBundle\Entity\FileProjet;
 use Web\EntityBundle\Entity\Files;
 use Web\EntityBundle\Entity\Historic;
 use Web\EntityBundle\Entity\Projet;
@@ -362,12 +363,51 @@ class PrivateController extends Controller
         $files = new Files();
         if($project->getFiles()!=null)
         {
-            $files->delete('',$project->path());
+            /** @var FileProjet $file */
+            foreach($project->getFiles()  as $file)
+            {
+                $files->delete('',$file->path());
+                $em->remove($file);
+                $em->flush();
+                $em->detach($file);
+            }
+
         }
         $em = $this->getDoctrine()->getManager();
         $em->remove($project);
         $em->flush();
 
         return $this->redirect($this->generateUrl('main_private'));
+    }
+
+
+
+    /**
+     * @Route("/project/detail/{id}", name="main_projet_detail", requirements={"id": "\d+"})
+     */
+    public function detailAction($id)
+    {
+        $em = $this->getDoctrine()->getManager();
+        /** @var Projet $project */
+        $project = $em->getRepository("EntityBundle:Projet")->find($id);
+        $array['project'] =$project;
+        return $this->render('MainBundle:Private:detail.html.twig', $array);
+    }
+
+    /**
+     * @Route("/users", name="main_private_users")
+     */
+    public function usersAction(Request $request)
+    {
+        /** @var User $user */
+        $user = $this->getUser();
+
+        $em = $this->getDoctrine()->getManager();
+
+        $items = $em->getRepository("EntityBundle:User")->findAll();
+
+        $array = ['items' => $items, 'index' => 5];
+
+        return $this->render('MainBundle:Private:users.html.twig', $array);
     }
 }

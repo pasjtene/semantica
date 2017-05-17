@@ -20,8 +20,9 @@ commit:
   notification: Comment sent successfully
 project:
   title: Title
+  back: Back
+  file_list: Files List
   description: Description
-  date: Date
   date: Date
   code: Code
   file: Upload file
@@ -32,7 +33,7 @@ project:
   rejects: Rejects
   ready: Ready
   delivered: Delivered
-  accepted: Accepté
+  accepted: Accepted
   finish: Finish
   run: Budget run-down
   close: Close
