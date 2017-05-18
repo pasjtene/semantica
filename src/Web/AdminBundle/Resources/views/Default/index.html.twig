@@ -37,12 +37,9 @@
                         <thead>
                         <tr>
                             <th>{% trans from 'forms' %} form.user.firstname {% endtrans %}</th>
-                            <th>{% trans from 'forms' %} form.user.username {% endtrans %}</th>
-                            <th>{% trans from 'forms' %} form.user.email {% endtrans %}</th>
                             <th>{% trans from 'forms' %} form.project.title {% endtrans %}</th>
                             <th>{% trans from 'forms' %} form.project.status {% endtrans %}</th>
                             <th>{% trans from 'forms' %} form.project.date {% endtrans %}</th>
-                            <th>#</th>
                             <th>#</th>
                             <th>#</th>
                         </tr>
@@ -60,40 +57,11 @@
                                         {{ projet.truncate(projet.visitor.firstname,30) }}
                                     {% endif %}
                                 </td>
-                                <td>
-                                    {% if projet.user!=null %}
-                                        {{ projet.truncate(projet.user.username,30) }}
-                                    {% else %}
-                                        {{ projet.truncate(projet.visitor.phone,30) }}
-                                    {% endif %}
-                                </td>
-                                <td>
-                                    {% if projet.user!=null %}
-                                        {{ projet.truncate(projet.user.email,30) }}
-                                    {% else %}
-                                        {{ projet.truncate(projet.visitor.email,30) }}
-                                    {% endif %}
-                                </td>
                                 <td>{{ projet.truncate(projet.title,30) }}</td>
                                 <td>{{ projet.truncate(projet.CurrentStatus(projet.status,app.request.locale),30) }}</td>
                                 <td>{{ projet.date|date('d-m-Y h:i:s') }}</td>
                                 <td>
-                                    {% if projet.files!=null  %}
-                                        <select name="" id="">
-                                            {% for file in projet.files %}
-                                                {% set href= "#project"~file.id %}
-                                                {% set idhref = "project"~file.id %}
-                                                {% if file.hashname!=null and  file.extfile=="gif" or file.extfile=="png" or file.extfile=="jpg" or file.extfile=="jpeg"  or file.extfile=="PDF" or file.extfile=="pdf" %}
-                                                    <option value="{{ href }}">upload</option>
-                                                {% else %}
-                                                    <option value="{{app.request.getSchemeAndHttpHost()~'/'~file.path()}}">upload</option>
-                                                {% endif %}
-                                            {% endfor %}
-                                        </select>
-                                    {% endif %}
-                                </td>
-                                <td>
-                                    <a href="{{ href2 }}"><i class="material-icons">view_headline</i></a>
+                                    <a href="{{ path('admin_projet_detail',{id:projet.id}) }}"><i class="material-icons">view_headline</i></a>
                                 </td>
                                 <td>
                                     {% set key = 'data'~loop.index %}
@@ -103,92 +71,6 @@
                                     <a data-id="{{ key }}" href="{{ path('admin_projet_delete',{id:projet.id}) }}" class="delete_projet"><i class="material-icons">delete</i></a>
                                 </td>
                             </tr>
-                            <div id="{{ idhref2 }}" class="modal modal-fixed-footer">
-                                <div class="modal-content">
-                                    <center>
-                                        <h4> {% trans from 'home' %} main.detail {% endtrans %}</h4>
-                                    </center>
-                                    <p>
-                                        <strong>
-                                            {% trans from 'forms' %} form.project.name {% endtrans %}
-                                        </strong>
-                                        <br>
-                                <span>
-                                    {% if projet.user!=null %}
-                                        {{ projet.user.firstname }}
-                                    {% else %}
-                                        {{ projet.visitor.firstname }}
-                                    {% endif %}
-                                </span>
-                                    </p>
-                                    <p>
-                                        <strong>
-                                            {% trans from 'forms' %} form.project.phone {% endtrans %}
-                                        </strong>
-                                        <br>
-                                <span>
-                                    {% if projet.user!=null %}
-                                        {{ projet.user.username }}
-                                    {% else %}
-                                        {{ projet.visitor.phone }}
-                                    {% endif %}
-                                </span>
-                                    </p>
-                                    <p>
-                                        <strong>
-                                            {% trans from 'forms' %} form.project.email {% endtrans %}
-                                        </strong>
-                                        <br>
-                                <span>
-                                    {% if projet.user!=null %}
-                                        {{ projet.user.email }}
-                                    {% else %}
-                                        {{ projet.visitor.email }}
-                                    {% endif %}
-                                </span>
-                                    </p>
-                                    <p>
-                                        <strong>
-                                            {% trans from 'forms' %} form.project.title {% endtrans %}
-                                        </strong>
-                                        <br>
-                                <span>
-                                    {{ projet.title }}
-                                </span>
-                                    </p>
-                                    <p>
-                                        <strong>
-                                            {% trans from 'forms' %} form.project.status {% endtrans %}
-                                        </strong>
-                                        <br>
-                                <span>
-                                    {{ projet.CurrentStatus(projet.status,app.request.locale) }}
-                                </span>
-                                    </p>
-
-                                    <p>
-                                        <strong>
-                                            {% trans from 'forms' %} form.project.date {% endtrans %}
-                                        </strong>
-                                        <br>
-                                <span>
-                                    {{ projet.date|date('d-m-Y h:i:s') }}
-                                </span>
-                                    </p>
-                                    <p>
-                                        <strong>
-                                            {% trans from 'forms' %} form.project.description {% endtrans %}
-                                        </strong>
-                                        <br>
-                                <span>
-                                    {{ projet.description|raw }}
-                                </span>
-                                    </p>
-                                </div>
-                                <div class="modal-footer">
-                                    <button    class=" modal-action modal-close waves-effect waves-green btn-flat blue white-text">{% trans from 'forms' %} form.project.close {% endtrans %}</button>
-                                </div>
-                            </div>
                         {% endfor %}
                         </tbody>
                     </table>
@@ -202,7 +84,7 @@
     <script>
         $(document).ready(function() {
             $('#table').dataTable();
-            $('select').material_select();
+
             $('.modal').modal();
 
             $('.delete_projet').click(function(e){

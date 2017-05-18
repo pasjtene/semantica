@@ -42,4 +42,17 @@ class ProjectController extends Controller
 
         return $this->redirect($this->generateUrl('admin_homepage'));
     }
+
+    /**
+     * @Route("/detail/{id}", name="admin_projet_detail", requirements={"id": "\d+"})
+     */
+    public function detailAction($id)
+    {
+        $em = $this->getDoctrine()->getManager();
+        /** @var Projet $project */
+        $project = $em->getRepository("EntityBundle:Projet")->find($id);
+        $array['project'] =$project;
+        return $this->render('AdminBundle:Default:detail.html.twig', $array);
+    }
+
 }

@@ -36,6 +36,7 @@ class DefaultController extends Controller
 
         $array['form'] = $form->createView();
         $array["suggestion"] =$suggestion;
+        $array["index"] =1;
         return $this->render('MainBundle:Default:index.html.twig',$array);
     }
 
