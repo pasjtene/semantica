@@ -54,6 +54,11 @@ class Projet extends BaseInterface
      */
     private $status;
 
+    /**
+     * @var string
+     * @ORM\Column(name="comment", type="text",  nullable=true)
+     */
+    private $comment;
 
     /**
      * @var string
@@ -378,5 +383,30 @@ class Projet extends BaseInterface
     public function getFiles()
     {
         return $this->files;
+    }
+
+
+    /**
+     * Set comment
+     *
+     * @param string $comment
+     *
+     * @return Projet
+     */
+    public function setComment($comment)
+    {
+        $this->comment = $comment;
+
+        return $this;
+    }
+
+    /**
+     * Get comment
+     *
+     * @return string
+     */
+    public function getComment()
+    {
+        return $this->comment;
     }
 }

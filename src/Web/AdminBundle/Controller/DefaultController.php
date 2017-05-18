@@ -40,7 +40,7 @@ class DefaultController extends Controller
     public function contactAction(Request $request)
     {
         $em = $this->getDoctrine()->getManager();
-        $list = $em->getRepository("EntityBundle:Contact")->findBy([],['id'=>'DESC']);
+        $list = $em->getRepository("EntityBundle:Suggestion")->findBy([],['id'=>'DESC']);
         if($request->isMethod("POST"))
         {
             $val = $request->request;

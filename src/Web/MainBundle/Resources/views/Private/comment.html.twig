@@ -23,6 +23,9 @@
         .mega-menu{
             z-index: 9999999999999999999999999999 !important;
         }
+        #vertical_nav ul{
+            position: absolute !important;
+        }
     </style>
 {% endblock %}
 {% block header %}
@@ -45,7 +48,6 @@
                                            <option value="{{ item.id }}" {% if code is defined and code==item.id %} selected {% endif %}> {{ item.title }}</option>
                                        {% endfor %}
                                    </select>
-                                   <label>{% trans from 'private' %} private.project {% endtrans %}</label>
                                </div>
 
                                <div class="input-field col offset-m5 s12 m3 right right-align">
@@ -147,7 +149,7 @@
 {% block myjs %}
     <script>
         $(document).ready(function() {
-            $('select').material_select();
+           //$('select').material_select();
         } );
     </script>
 {% endblock %}

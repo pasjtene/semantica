@@ -41,6 +41,14 @@ project:
   status: Status
   delete: Delete
   empty: No projects are saved or any projects match your search
+  comment: Satus comment
+  company: Company
+  base_information: Base Informations
+  client_information: Client  Informations
+  tab1: Informations
+  tab2: Participator
+  tab3: Commit
+  tab4: Planning
 comment:
   project: Project
   reply: Reply
