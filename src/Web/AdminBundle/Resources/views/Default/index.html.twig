@@ -42,6 +42,7 @@
                             <th>{% trans from 'forms' %} form.project.date {% endtrans %}</th>
                             <th>#</th>
                             <th>#</th>
+                            <th>#</th>
                         </tr>
                         </thead>
 
@@ -62,6 +63,9 @@
                                 <td>{{ projet.date|date('d-m-Y h:i:s') }}</td>
                                 <td>
                                     <a href="{{ path('admin_projet_detail',{id:projet.id}) }}"><i class="material-icons">view_headline</i></a>
+                                </td>
+                                <td>
+                                    <a href="{{ path('admin_projet_update',{id:projet.id}) }}"><i class="material-icons">edit</i></a>
                                 </td>
                                 <td>
                                     {% set key = 'data'~loop.index %}
