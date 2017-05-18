@@ -135,6 +135,7 @@ class ProjectController extends Controller
             $user =$em->getRepository('EntityBundle:User')->find($user->getId());
             $objet->setUser($user);
         }
+        $array["index"] =3;
         $array['form'] = $form->createView();
         $array['objet'] = $objet;
         return $this->render('MainBundle:Project:index.html.twig',$array);
