@@ -19,3 +19,11 @@ role:
   current_role: Actuals roles :
   select_role: Select user's role
   save: Save changes
+participant:
+  username: Fullname
+  roles: Roles
+  startdate: Start date
+  enddate: End date
+  empty: No participant for this project
+  edit: Edit
+  new: Add participant

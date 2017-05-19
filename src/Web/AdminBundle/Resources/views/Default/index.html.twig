@@ -93,7 +93,7 @@
                                     {% endif %}
                                 </td>
                                 <td>
-                                    <a href="{{ href2 }}"><i class="material-icons">view_headline</i></a>
+                                    <a href="{{ path('admin_projet_view', {id: projet.id}) }}"><i class="material-icons">view_headline</i> view</a>
                                 </td>
                                 <td>
                                     {% set key = 'data'~loop.index %}
@@ -103,7 +103,7 @@
                                     <a data-id="{{ key }}" href="{{ path('admin_projet_delete',{id:projet.id}) }}" class="delete_projet"><i class="material-icons">delete</i></a>
                                 </td>
                             </tr>
-                            <div id="{{ idhref2 }}" class="modal modal-fixed-footer">
+                            {#<div id="{{ idhref2 }}" class="modal modal-fixed-footer">
                                 <div class="modal-content">
                                     <center>
                                         <h4> {% trans from 'home' %} main.detail {% endtrans %}</h4>
@@ -188,7 +188,7 @@
                                 <div class="modal-footer">
                                     <button    class=" modal-action modal-close waves-effect waves-green btn-flat blue white-text">{% trans from 'forms' %} form.project.close {% endtrans %}</button>
                                 </div>
-                            </div>
+                            </div>#}
                         {% endfor %}
                         </tbody>
                     </table>

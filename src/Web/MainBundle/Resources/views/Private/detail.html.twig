@@ -12,7 +12,6 @@
     <link rel="stylesheet" href="{{ asset('components/cssbase/datatablehelp.css') }}">
     <link rel="stylesheet" href="{{ asset('components/cssbase/datatablehelp2.css') }}">
     <style>
-
         strong{
             font-weight: bold;
         }
@@ -93,7 +92,6 @@
                             </p>
                         </div>
                     </div>
-
                 </div>
 
                 <div class="col s12 m4">
@@ -105,7 +103,7 @@
                                     {% set href= "#project1A"~file.hashname %}
                                     {% set idhref = "project1A"~file.hashname %}
                                     <li class="collection-item ">
-                                        <li class="collection-item"><div>{{ project.truncate(file.name,15) }}<a href="{{ href }}" class="secondary-content"><i class="material-icons">attach_file</i></a></div></li>
+                                        <li class="collection-item"><div>{{ project.truncate(file.name,50) }}<a href="{{ href }}" class="secondary-content"><i class="material-icons">attach_file</i></a></div></li>
                                     </li>
                                     <div id="{{ idhref }}" class="modal  modal-fixed-footer">
                                         <div class="modal-content">
@@ -120,7 +118,7 @@
                                     {% set href= "#project2B"~file.hashname %}
                                     {% set idhref = "project2B"~file.hashname %}
                                     <li class="collection-item ">
-                                       <li class="collection-item"><div>{{ project.truncate(file.name,15) }}<a href="{{ href }}" class="secondary-content"><i class="material-icons">attach_file</i></a></div></li>
+                                       <li class="collection-item"><div>{{ project.truncate(file.name,50) }}<a href="{{ href }}" class="secondary-content"><i class="material-icons">attach_file</i></a></div></li>
                                     </li>
                                     <div id="{{ idhref }}" class="modal  modal-fixed-footer">
                                         <div class="modal-content">
@@ -133,7 +131,7 @@
                                     </div>
                                 {% else %}
                                     <li class="collection-item ">
-                                        <li class="collection-item"><div>{{ project.truncate(file.name,15) }}<a href="{{app.request.getSchemeAndHttpHost()~'/'~file.path()}}" class="secondary-content upload_file"><i class="material-icons">attach_file</i></a></div></li>
+                                        <li class="collection-item"><div>{{ project.truncate(file.name,50) }}<a href="{{app.request.getSchemeAndHttpHost()~'/'~file.path()}}" class="secondary-content upload_file"><i class="material-icons">attach_file</i></a></div></li>
                                     </li>
                                 {% endif %}
                             {% endfor %}
