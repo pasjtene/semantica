@@ -1,4 +1,4 @@
-service:
+aboutstc:
   explore_our_service: Explore our services
   our_service:  ABOUT US
   our_content:  |
@@ -20,6 +20,22 @@ service:
      <h3></BR>Bringing the best to your IT infrastructure.</h3>
      Global competition, changing regulations, shifting customer demands, limited resources, capacity challenges,
      and budget constraints you've got a lot on your plate.</br></br>
+leadership:
+  title:  <strong> LEADERSHIP </strong>
+  our_content: <p>Get advice on building and improving your IT leadership skills with our expertise.</p>
+  block11: Learn more about STC
+newsroom:
+  title:  <strong> NEWSROOM </strong>
+  block1: <p>Explore company announcements, thought leadership, media appearances, and more.</p>
+  block11: Go to the Newsroom
+events:
+  title:  <strong> EVENTS </strong>
+  block1: <p>Join us for upcoming events,global conferences, online imagine cup,or discover what you may have missed at a recent one. </p>
+  block11: Browse Events
+careers:
+  title:  <strong> CAREERS </strong>
+  block1: <p>Learn why STC is a great place to work, browse job openings, and apply to join our team. </p>
+  block11: Explore Careers
 business:
   title:  BUSINESS CONSULTING
   block1: HELPING TRANSFORM YOUR BUSINESS THROUGH A COLLABORATIVE APPROACH
@@ -118,7 +134,7 @@ inf:
      </li>
      </ul>
 our:
-  title:  SERVICES
+  title:  ABOUT US
   block1: OURS SERVICES
   block1_content:  |
      STC is one of the few global firms with the talent, scale and end-to-end services and solutions necessary to help
