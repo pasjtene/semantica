@@ -1,7 +1,7 @@
 {
-  "name": "lycowin",
+  "name": "SCT",
   "version": "1.0.0",
-  "description": "School management system project",
+  "description": "Semantica Technologie Corporation",
   "main": "gulpfile.js",
   "dependencies": {
     "gulp": "^3.9.1",
@@ -9,6 +9,7 @@
     "gulp-sass": "^2.3.2"
   },
   "devDependencies": {
+    "gulp": "^3.9.1",
     "gulp-cssnano": "^2.1.2",
     "gulp-livereload": "^3.8.1",
     "gulp-minifier": "^0.1.4",

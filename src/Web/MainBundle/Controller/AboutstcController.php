@@ -15,7 +15,8 @@ class AboutstcController extends Controller
      */
     public function indexAction()
     {
-        return $this->render('MainBundle:aboutstc:index.html.twig');
+        $array['index']=5;
+        return $this->render('MainBundle:aboutstc:index.html.twig',$array);
     }
 
     /**
@@ -23,7 +24,8 @@ class AboutstcController extends Controller
      */
     public function businessAction()
     {
-        return $this->render('MainBundle:Service:business.html.twig');
+        $array['index']=5;
+        return $this->render('MainBundle:Service:business.html.twig',$array);
     }
 
     /**
@@ -31,7 +33,8 @@ class AboutstcController extends Controller
      */
     public function applicationAction()
     {
-        return $this->render('MainBundle:Service:application.html.twig');
+        $array['index']=5;
+        return $this->render('MainBundle:Service:application.html.twig',$array);
     }
 
     /**
@@ -39,14 +42,16 @@ class AboutstcController extends Controller
      */
     public function infAction()
     {
-        return $this->render('MainBundle:Service:inf.html.twig');
+        $array['index']=5;
+        return $this->render('MainBundle:Service:inf.html.twig',$array);
     }
     /**
      * @Route("/exploreservice", name="main_exploreservice")
      */
     public function exploreserviceAction()
     {
-        return $this->render('MainBundle:Service:exploreservice.html.twig');
+        $array['index']=5;
+        return $this->render('MainBundle:Service:exploreservice.html.twig',$array);
     }
 
 }

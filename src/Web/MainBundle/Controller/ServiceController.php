@@ -15,7 +15,8 @@ class ServiceController extends Controller
      */
     public function indexAction()
     {
-        return $this->render('MainBundle:Service:index.html.twig');
+        $array['index']=4;
+        return $this->render('MainBundle:Service:index.html.twig',$array);
     }
 
     /**
@@ -23,7 +24,8 @@ class ServiceController extends Controller
      */
     public function businessAction()
     {
-        return $this->render('MainBundle:Service:business.html.twig');
+        $array['index']=4;
+        return $this->render('MainBundle:Service:business.html.twig',$array);
     }
 
     /**
@@ -31,7 +33,8 @@ class ServiceController extends Controller
      */
     public function applicationAction()
     {
-        return $this->render('MainBundle:Service:application.html.twig');
+        $array['index']=4;
+        return $this->render('MainBundle:Service:application.html.twig',$array);
     }
 
     /**
@@ -39,14 +42,16 @@ class ServiceController extends Controller
      */
     public function infAction()
     {
-        return $this->render('MainBundle:Service:inf.html.twig');
+        $array['index']=4;
+        return $this->render('MainBundle:Service:inf.html.twig',$array);
     }
     /**
      * @Route("/exploreservice", name="main_exploreservice")
      */
     public function exploreserviceAction()
     {
-        return $this->render('MainBundle:Service:exploreservice.html.twig');
+        $array['index']=4;
+        return $this->render('MainBundle:Service:exploreservice.html.twig',$array);
     }
 
     /**
@@ -54,7 +59,8 @@ class ServiceController extends Controller
      */
     public function exploreappAction()
     {
-        return $this->render('MainBundle:Service:exploreapp.html.twig');
+        $array['index']=4;
+        return $this->render('MainBundle:Service:exploreapp.html.twig',$array);
     }
 
     /**
@@ -62,7 +68,8 @@ class ServiceController extends Controller
      */
     public function serviceconseilAction()
     {
-        return $this->render('MainBundle:Service:serviceconseil.html.twig');
+        $array['index']=4;
+        return $this->render('MainBundle:Service:serviceconseil.html.twig',$array);
     }
 
     /**
@@ -70,6 +77,7 @@ class ServiceController extends Controller
      */
     public function infrasAction()
     {
-        return $this->render('MainBundle:Service:infras.html.twig');
+        $array['index']=4;
+        return $this->render('MainBundle:Service:infras.html.twig',$array);
     }
 }

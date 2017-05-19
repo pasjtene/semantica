@@ -23,18 +23,24 @@ form:
     placeholder_email: Your email  address
     phone: Phone number
     placeholder_phone: Your Phone number
+    roles: Roles
   cancelling:
     addcode: Base code
     adddate: Register Date
     adddescription: Change Description
   commit:
     code: Code
+    new: New Commit
+    empty: No commit  register
+    auther: Auther
   historic:
     startdate: Start  date
     enddate: End date
     roles: Roles
   participator:
     code: Code
+    empty: No participator register
+    new: New participator
   person:
     firstname: First name
     lastname: Last name
@@ -51,6 +57,8 @@ form:
   planning:
     startdate: Start date
     enddate: End date
+    new: New planning
+    empty: No planning  register
   project:
     title: Title
     placeholder_title: Give the title for your projet
@@ -63,6 +71,8 @@ form:
     code : Code
     placeholder_objet: Your code
     state : State
+    comment: Comment
+    placeholder_comment: Give a small the Comment  of status
     placeholder_state: Give the state
     status : Status
     date: Date
