@@ -48,6 +48,10 @@ project:
     NotBlank: The load cache is required
     maxSizeMessage: The file max size is 5MB
 task:
+  rate:
+    NotBlank: The rate is required
+  status:
+    NotBlank: The status is required
   libelle:
     NotBlank: The libele is required
   identity:

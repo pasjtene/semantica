@@ -20,8 +20,9 @@ commit:
   notification: Comment sent successfully
 project:
   title: Title
+  back: Back
+  file_list: Files List
   description: Description
-  date: Date
   date: Date
   code: Code
   file: Upload file
@@ -32,7 +33,7 @@ project:
   rejects: Rejects
   ready: Ready
   delivered: Delivered
-  accepted: Accepté
+  accepted: Accepted
   finish: Finish
   run: Budget run-down
   close: Close
@@ -48,14 +49,3 @@ comment:
   date: Date
   description: Description
   empty: No Comment are saved or any Comments match your search
-user:
-  firstname: Firstname
-  lastname: Lastname
-  gender: Gender
-  status: Status
-  roles: Roles
-  empty: No user registered in our database
-  delete: Delete
-  enabled: enabled
-  locked: locked
-

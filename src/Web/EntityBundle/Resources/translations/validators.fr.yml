@@ -49,10 +49,14 @@ project:
     maxSizeMessage: La taille maximal du fichier est 5MB
 task:
   libelle:
-    NotBlank: The libele is required
+    NotBlank: L'intitulé est requis
+  rate:
+    NotBlank: Le taux est requis
+  status:
+    NotBlank: Le statut est requis
   identity:
-    NotBlank: The identity is required
-    UniqueEntity: This identity is already exist
+    NotBlank: L'identifiant  est  requis
+    UniqueEntity: L'identifiant existe déja
 user:
   phone:
     NotBlank: Le numero de téléphone est  requis

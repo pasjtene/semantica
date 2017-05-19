@@ -1,0 +1,118 @@
+{% extends 'AdminBundle::layout.html.twig' %}
+{% block meta %}
+    <meta name = "{% trans from 'refer' %} home.title {% endtrans %}" >
+    <meta name = "keywords" content = "{% trans from 'refer' %} home.description {% endtrans %}" >
+{% endblock %}
+{% block title %}
+    Semantica Technologies Corporation - STC
+{% endblock %}
+
+
+{% block mycss %}
+    <link rel="stylesheet" href="{{ asset('components/cssbase/datatablehelp.css') }}">
+    <link rel="stylesheet" href="{{ asset('components/cssbase/datatablehelp2.css') }}">
+    <style>
+
+        strong{
+            font-weight: bold;
+        }
+        footer{
+            bottom: 0;
+            width: 100% !important;
+        {% if items==null or items|length < 3 %} position: fixed; {% endif %}
+        }
+        .mega-menu{
+            z-index: 9999999999999999999999999999 !important;
+        }
+        #zone_table{
+            height: 352px;
+            overflow-y: auto;
+        }
+    </style>
+{% endblock %}
+{% block header %}
+    {{ parent() }}
+{% endblock %}
+{% block  main %}
+    <div class="row">
+        <div class="col l12">
+            <div class="card z-depth-1">
+                <div class="card-content">
+                    <center>
+                        <strong class="card-title">{% trans from 'admin' %} user.title {% endtrans %}</strong>
+                    </center>
+                    <br/><br/>
+                    <table id="table-users" class="centered bordered responsive-table">
+                        <thead>
+                        <tr>
+                            <th>N°</th>
+                            <th>{% trans from 'admin' %} user.firstname  {% endtrans %}</th>
+                            <th>{% trans from 'admin' %} user.lastname  {% endtrans %}</th>
+                            <th>{% trans from 'admin' %} user.gender  {% endtrans %}</th>
+                            <th>{% trans from 'admin' %} user.status  {% endtrans %}</th>
+                            <th>{% trans from 'admin' %} user.roles  {% endtrans %}</th>
+                            <th>{% trans from 'admin' %} Action {% endtrans %}</th>
+                        </tr>
+                        </thead>
+
+                        <tbody>
+                        {% for item in items %}
+                            <tr>
+                                <td>{{ loop.index }}</td>
+                                <td>{{ item.firstname }} </td>
+                                <td>{{ item.lastname }} </td>
+                                <td>{{ item.pleasantries }} </td>
+                                <td>{% if item.enabled == 1 %}{% trans from 'admin' %} user.enabled {% endtrans %}{% else %}{% trans from 'admin' %} user.locked  {% endtrans %}{% endif %} </td>
+                                <td>
+                                    <a href="{{ path('admin_users_change_role', {id:item.id}) }}">
+                                        {% for role in item.roles %}
+                                            {{ role }},
+                                        {% endfor %}
+                                    </a>
+                                </td>
+                                <td>
+                                    <a data-id="{{ item.id }}" data-state="{{ item.enabled }}" href="#" class="lock_user">
+                                        <i class="material-icons">{% if item.enabled == 1 %}lock{% else %}lock_open{% endif %}</i>
+                                    </a>
+
+                                    <a data-id="{{ item.id }}" href="#" class="delete_user">
+                                        <i class="material-icons">delete</i>
+                                    </a>
+                                </td>
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block myjs %}
+    <script>
+        $(function() {
+            $('#table-users').dataTable();
+            $('select').material_select();
+
+            $('.lock_user').click(function(e)
+            {
+                var id = parseInt($(this).data('id'));
+                var status = parseInt($(this).data('state')) === 0 ? 1 : 0;
+                if(!isNaN)
+                {
+                    $.post(Routing.generate('admin_change_status_users', {_locale: locale, id: id, status: status}), function(response){
+
+                    });
+                }
+                e.preventDefault();
+            });
+
+            $('.delete_user').click(function(e)
+            {
+
+                e.preventDefault();
+            });
+        } );
+    </script>
+{% endblock %}

@@ -22,6 +22,8 @@ project:
   title: Titre
   description: Description
   date: Date
+  back: Retour
+  file_list: Liste des fichiers
   code: Code
   file: Télécharger le fichier
   progress: En cours
@@ -47,13 +49,3 @@ comment:
   date: Date
   description: Description
   empty: Aucun commentaire n'est enrgistré ou aucun commentaire ne correspont a votre recherche
-user:
-  firstname: Prénom
-  lastname: Nom
-  gender: Civilité
-  status: Statut
-  roles: Roles
-  empty: Aucun utilisateur enregistré dans notre base de données
-  delete: Supprimer
-  enabled: activé
-  locked: désactivé

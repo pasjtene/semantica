@@ -9,7 +9,7 @@ use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
  * BaseInterface
  * @ORM\InheritanceType("JOINED")
  * @ORM\DiscriminatorColumn(name="discriminator", type="string")
- * @ORM\DiscriminatorMap({"Projet" = "Projet", "Commit" = "Commit", "Reply" = "Reply", "Comment" = "Comment" , "Suggestion" = "Suggestion", "Task" = "Task"})
+ * @ORM\DiscriminatorMap({"Projet" = "Projet", "Commit" = "Commit","Comment" = "Comment" , "Suggestion" = "Suggestion", "Task" = "Task"})
  * @ORM\Table(name="base_interface")
  * @ORM\Entity(repositoryClass="Web\EntityBundle\Repository\BaseInterfaceRepository")
  */

@@ -6,6 +6,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\Config\Tests\Util\Validator;
 use Symfony\Component\Form\Form;
 use Symfony\Component\HttpFoundation\Request;
+use Web\EntityBundle\Entity\FileProjet;
 use Web\EntityBundle\Entity\Files;
 use Web\EntityBundle\Entity\Projet;
 use Web\EntityBundle\Entity\User;
@@ -35,13 +36,21 @@ class ProjectController extends Controller
             $em = $this->getDoctrine()->getManager();
             $objet->setDate(new \DateTime());
             $file = new Files();
-            if ($objet->getFile() != null) {
-                $file->file = $objet->getFile();
-                $tab = explode('.',$objet->getFile()->getClientOriginalName());
-                $objet->setFiles($objet->getFile()->getClientOriginalName());
-                $objet->setExtfiles($tab[count($tab)-1]);
-                $objet->setHashfiles(uniqid().'.'.$objet->getExtfiles());
-                $file->add($file->initialpath."projet",  $objet->getHashfiles());
+            if ($objet->getFiles() != null) {
+
+                /** @var FileProjet $item */
+                foreach ($objet->getFiles() as $item){
+                    $file->file = $item->getFile();
+
+                    $tab = explode('.',$item->getFile()->getClientOriginalName());
+                    $item->setName($item->getFile()->getClientOriginalName());
+                    $item->setExtfile($tab[count($tab)-1]);
+                    $item->setHashname(uniqid().'.'.$item->getExtfile());
+                    $item->setProject($objet);
+                    $file->add($file->initialpath."projet",  $item->getHashname());
+                }
+
+
             }
 
             $objet->setCode(uniqid())->setState(true)->setStatus("0")->getUser()->setRoles(['ROLE_USER'])->setEnabled(true)->setPassword("test")->setPleasantries("M.");

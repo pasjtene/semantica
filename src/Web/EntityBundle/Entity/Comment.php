@@ -44,6 +44,13 @@ class Comment extends BaseInterface
     private $user;
 
     /**
+     * @Assert\Valid()
+     * @ORM\ManyToOne(targetEntity="Web\EntityBundle\Entity\Participator",cascade={"persist"})
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $participator;
+
+    /**
      * Get id
      *
      * @return int
@@ -123,5 +130,29 @@ class Comment extends BaseInterface
     public function getUser()
     {
         return $this->user;
+    }
+
+    /**
+     * Set participator
+     *
+     * @param \Web\EntityBundle\Entity\Participator $participator
+     *
+     * @return Comment
+     */
+    public function setParticipator(\Web\EntityBundle\Entity\Participator $participator)
+    {
+        $this->participator = $participator;
+
+        return $this;
+    }
+
+    /**
+     * Get participator
+     *
+     * @return \Web\EntityBundle\Entity\Participator
+     */
+    public function getParticipator()
+    {
+        return $this->participator;
     }
 }

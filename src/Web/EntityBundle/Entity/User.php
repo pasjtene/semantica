@@ -14,10 +14,12 @@ use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
  * @UniqueEntity(fields="username", message="user.username.UniqueEntity")
  * @ORM\Entity(repositoryClass="Web\EntityBundle\Repository\UserRepository")
  */
-class User extends BaseUser
+  class User extends BaseUser
 {
+
     const ROLE_SUPER_ADMIN = 'ROLE_SUPER_ADMIN';
     const ROLE_ADMIN = 'ROLE_ADMIN';
+    const ROLE_STAFF = 'ROLE_STAFF';
     const ROLE_USER = 'ROLE_USER';
 
     /**
@@ -29,7 +31,8 @@ class User extends BaseUser
      */
     protected $id;
 
-    /**
+
+      /**
      * @var string
      * @Assert\NotBlank(message="person.firstname.NotBlank")
      * @ORM\Column(name="firstname", type="string", length=255)
@@ -64,12 +67,12 @@ class User extends BaseUser
      */
     protected $country;
 
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="picture", type="string", length=255, nullable=true)
-    */
-    protected $picture;
+      /**
+       * @var string
+       *
+       * @ORM\Column(name="picture", type="string", length=255, nullable=true)
+       */
+      protected $picture;
 
     /**
      * Get id
@@ -81,125 +84,126 @@ class User extends BaseUser
         return $this->id;
     }
 
-      /**
-       * Set firstname
-       *
-       * @param string $firstname
-       *
-       * @return User
-       */
-      public function setFirstname($firstname)
-      {
-          $this->firstname = $firstname;
 
-          return $this;
-      }
+    /**
+     * Set firstname
+     *
+     * @param string $firstname
+     *
+     * @return User
+     */
+    public function setFirstname($firstname)
+    {
+        $this->firstname = $firstname;
 
-      /**
-       * Get firstname
-       *
-       * @return string
-       */
-      public function getFirstname()
-      {
-          return $this->firstname;
-      }
+        return $this;
+    }
 
-      /**
-       * Set lastname
-       *
-       * @param string $lastname
-       *
-       * @return User
-       */
-      public function setLastname($lastname)
-      {
-          $this->lastname = $lastname;
+    /**
+     * Get firstname
+     *
+     * @return string
+     */
+    public function getFirstname()
+    {
+        return $this->firstname;
+    }
 
-          return $this;
-      }
+    /**
+     * Set lastname
+     *
+     * @param string $lastname
+     *
+     * @return User
+     */
+    public function setLastname($lastname)
+    {
+        $this->lastname = $lastname;
 
-      /**
-       * Get lastname
-       *
-       * @return string
-       */
-      public function getLastname()
-      {
-          return $this->lastname;
-      }
+        return $this;
+    }
 
-      /**
-       * Set pleasantries
-       *
-       * @param string $pleasantries
-       *
-       * @return User
-       */
-      public function setPleasantries($pleasantries)
-      {
-          $this->pleasantries = $pleasantries;
+    /**
+     * Get lastname
+     *
+     * @return string
+     */
+    public function getLastname()
+    {
+        return $this->lastname;
+    }
 
-          return $this;
-      }
+    /**
+     * Set pleasantries
+     *
+     * @param string $pleasantries
+     *
+     * @return User
+     */
+    public function setPleasantries($pleasantries)
+    {
+        $this->pleasantries = $pleasantries;
 
-      /**
-       * Get pleasantries
-       *
-       * @return string
-       */
-      public function getPleasantries()
-      {
-          return $this->pleasantries;
-      }
+        return $this;
+    }
 
-      /**
-       * Set city
-       *
-       * @param string $city
-       *
-       * @return User
-       */
-      public function setCity($city)
-      {
-          $this->city = $city;
+    /**
+     * Get pleasantries
+     *
+     * @return string
+     */
+    public function getPleasantries()
+    {
+        return $this->pleasantries;
+    }
 
-          return $this;
-      }
+    /**
+     * Set city
+     *
+     * @param string $city
+     *
+     * @return User
+     */
+    public function setCity($city)
+    {
+        $this->city = $city;
 
-      /**
-       * Get city
-       *
-       * @return string
-       */
-      public function getCity()
-      {
-          return $this->city;
-      }
+        return $this;
+    }
 
-      /**
-       * Set country
-       *
-       * @param string $country
-       *
-       * @return User
-       */
-      public function setCountry($country)
-      {
-          $this->country = $country;
+    /**
+     * Get city
+     *
+     * @return string
+     */
+    public function getCity()
+    {
+        return $this->city;
+    }
 
-          return $this;
-      }
+    /**
+     * Set country
+     *
+     * @param string $country
+     *
+     * @return User
+     */
+    public function setCountry($country)
+    {
+        $this->country = $country;
 
-      /**
-       * Get country
-       *
-       * @return string
-       */
-      public function getCountry()
-      {
-          return $this->country;
-      }
+        return $this;
+    }
+
+    /**
+     * Get country
+     *
+     * @return string
+     */
+    public function getCountry()
+    {
+        return $this->country;
+    }
 
     /**
      * Set picture
@@ -223,5 +227,17 @@ class User extends BaseUser
     public function getPicture()
     {
         return $this->picture;
+    }
+
+      /**
+       * Get all roles of application
+       *
+       * @return array
+       */
+    public static function getAppRole()
+    {
+        $array = [self::ROLE_USER, self::ROLE_STAFF, self::ROLE_ADMIN, self::ROLE_SUPER_ADMIN];
+
+        return $array;
     }
 }
