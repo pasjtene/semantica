@@ -22,6 +22,27 @@ aboutstc:
    La concurrence mondiale, lévolution de la réglementation, le déplacement des demandes des clients,
    des ressources limitées, des défis de capacité,
    et les contraintes budgétaires que vous faite face.</br></br>
+leadership:
+  title:  <strong> LEADERSHIP </strong>
+  our_content: |
+    Obtenez des conseils sur l'établissement et l'amélioration de vos
+    compétences en leadership informatique grace à notre expertise.
+  block11: En savoir plus sur STC
+newsroom:
+  title:  <strong> REDACTION </strong>
+  block1: <P> Explorez les annonces de l'entreprise, pensez le leadership, les apparences des médias, et plus encore.</P>
+  block11: Aller à la salle de presse
+
+events:
+  title:  <strong> EVENEMENTS </strong>
+  block1: <p>Rejoignez-nous pour les événements à venir, les conférences mondiales, la coupe en ligne,
+           ou découvrez ce que vous avez manqué lors d un récent. </p>
+  block11: Parcourir les événements
+careers:
+  title:  <strong> CARRIERES </strong>
+  block1: <p>Découvrez pourquoi STC est un excellent endroit pour travailler, parcourir les offres d'emploi et postuler pour rejoindre notre équipe. </p>
+  block11: Explorer les carrières
+
 business:
   title:  SERVICES-CONSEILS D'ENTREPRISE
   block1: AIDER À TRANSFORMER VOTRE ENTREPRISE PAR UNE APPROCHE COLLABORATIVE
@@ -78,7 +99,6 @@ application:
      </P>
   block2:   Expérience et savoir-faire :
   block2_content:  |
-
      <ul>
      <li>Équipes locales responsables soutenues par des ressources mondiales affichant un solide bilan en matière de prestation
      de services de qualité et de satisfaction élevée des clients;</li>
