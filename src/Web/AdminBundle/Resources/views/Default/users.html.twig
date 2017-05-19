@@ -13,13 +13,16 @@
     <link rel="stylesheet" href="{{ asset('components/cssbase/datatablehelp2.css') }}">
     <style>
 
+        #navadmin{
+            padding-top: 1.5%;
+        }
         strong{
             font-weight: bold;
         }
         footer{
             bottom: 0;
             width: 100% !important;
-        {% if items==null or items|length < 3 %} position: fixed; {% endif %}
+        {% if items==null or items|length < 2 %} position: fixed; {% endif %}
         }
         .mega-menu{
             z-index: 9999999999999999999999999999 !important;
