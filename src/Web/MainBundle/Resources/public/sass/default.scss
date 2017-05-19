@@ -47,10 +47,25 @@ html, body{
 }
 footer{
   background-color: $default_text !important;
+  color: $secondary !important;
   margin-bottom: 0px !important;
+  .row{
+    padding-left: 4% !important;
+    padding-right: 4% !important;
+  }
   .page-footer, .footer-copyright
   {
     height: 5px;
+  }
+  .footer-copyright{
+    margin: 0% !important;
+  }
+
+  a{
+    color: inherit !important;
+  }
+  h6{
+    font-weight: bold !important;
   }
 }
 
