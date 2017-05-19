@@ -18,54 +18,31 @@
 {% endblock %}
 
 {% block  main %}
-<div class="mega-menu fadeIn animated" id="m_service">
-    <div class="row">
-    <div style="width:33%" class="col offset-m1 m2 menu-section">
-        <div align="center" class="col s12 m6">
-            <img style="width:73%"  src="{{ asset('data/img/world2.jpg') }}" alt="">
-        </div>
-        <h4 align="center"><strong><a href="{{ path('main_aboutstc') }}">{% trans from 'aboutstc' %}leadership.title {% endtrans %}</a></strong> </h4>
-          {% trans  from 'aboutstc' %}leadership.block1 {% endtrans %}
-    </div>
-    <div  div style="width:33%" class="col offset-m1 m2 menu-section">
-        <div align="center" class="col s12 m6">
-            <img style="width:73%" src="{{ asset('data/img/world2.jpg') }}" alt="">
-        </div>
-        <h4 align="center"><strong><a href="{{ path('main_aboutstc') }}">{% trans from 'aboutstc' %}newsroom.title {% endtrans %}</a></strong> </h4>
-        <p>{% trans from 'aboutstc' %}newsroom.block1 {% endtrans %}</p>
-    </div>
-    <div div style="width:33%" class="col offset-m1 m2 menu-section">
-        <div align="center" class="col s12 m6">
-            <img style="width:73%" src="{{ asset('data/img/world2.jpg') }}" alt="">
-        </div>
-        <h4 align="center"><strong><a href="{{ path('main_aboutstc') }}">{% trans from 'aboutstc' %}events.title {% endtrans %}</a></strong> </h4>
-        <p>{% trans from 'aboutstc' %}events.block1 {% endtrans %}</p>
-    </div>
-    </div>
-</div>
-    <div class="col s12 m6">
-        <img src="{{ asset('data/img/cariere.jpg') }}" alt="">
-    </div>
     <div class="row" id="main_industries">
 
         <div class="row">
 
 
             <div class="section">
-                <h5 class="center-align"> {% trans from 'aboutstc' %} our.title {% endtrans %} </h5>
+                <h5 class="center-align"> {% trans from 'aboutstc' %} leadership.title {% endtrans %} </h5>
                 <br> <br>
                 <div class="col s12 m6">
-                    <img src="{{ asset('data/img/about22.jpg') }}" alt="">
+                    <img width="45" src="{{ asset('data/img/leadership.jpg') }}" alt="">
                 </div>
                 <div class="col s12 m6">
-                    <h6> {% trans from 'aboutstc' %} our.block1 {% endtrans %} </h6>
+                    <h6> {% trans from 'aboutstc' %} leadership.title1 {% endtrans %} </h6>
                     <p>
-                        {% trans from 'aboutstc' %} our.block1_content {% endtrans %}
+                        {% trans from 'aboutstc' %} leadership.our_content1 {% endtrans %}
                     </p>
                     <br>
-                    <h6> {% trans from 'aboutstc' %} our.block2 {% endtrans %} </h6>
+                    <h6> {% trans from 'aboutstc' %} leadership.title2 {% endtrans %} </h6>
                     <p>
-                        {% trans from 'aboutstc' %} our.block2_content {% endtrans %}
+                        {% trans from 'aboutstc' %} leadership.our_content2 {% endtrans %}
+                    </p>
+                    <br>
+                    <h6> {% trans from 'aboutstc' %} leadership.title3 {% endtrans %} </h6>
+                    <p>
+                        {% trans from 'aboutstc' %} leadership.our_content3 {% endtrans %}
                     </p>
 
                 </div>
@@ -76,11 +53,6 @@
 
 {% block myjs %}
     <script>
-
-        $(function(){
-
-
-        });
 
     </script>
 {% endblock %}
