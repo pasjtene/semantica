@@ -15,6 +15,7 @@ class IndustriesController extends Controller
      */
     public function indexAction()
     {
-        return $this->render('MainBundle:Industries:index.html.twig');
+        $array["index"] =2;
+        return $this->render('MainBundle:Industries:index.html.twig',$array);
     }
 }

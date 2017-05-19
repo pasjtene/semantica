@@ -18,11 +18,11 @@
     </div>
     <nav class="menu" id="menu_big">
         <ul>
-            <li><a href="{{ path('main_homepage') }}">{% trans from 'nav' %} nav.home {% endtrans %}</a></li>
-            <li><a href="{{ path('main_industries') }}">{% trans from 'nav' %} nav.industries {% endtrans %}</a></li>
-            <li><a href="{{ path('main_newproject') }}">{% trans from 'nav' %} nav.newprojet {% endtrans %}</a></li>
+            <li><a class="{% if index is defined and index==1 %} active_menu {% endif %}" href="{{ path('main_homepage') }}">{% trans from 'nav' %} nav.home {% endtrans %}</a></li>
+            <li><a class="{% if index is defined and index==2 %} active_menu {% endif %}" href="{{ path('main_industries') }}">{% trans from 'nav' %} nav.industries {% endtrans %}</a></li>
+            <li><a class="{% if index is defined and index==3 %} active_menu {% endif %}" href="{{ path('main_newproject') }}">{% trans from 'nav' %} nav.newprojet {% endtrans %}</a></li>
             <li class="drop-down" id="li_service">
-                <a href="#service">{% trans from 'nav' %} nav.services {% endtrans %} </a>
+                <a class="{% if index is defined and index==4 %} active_menu {% endif %}" href="#service" >{% trans from 'nav' %} nav.services {% endtrans %} </a>
 
                 <div class="mega-menu fadeIn animated" id="m_service">
                    <div class="row">
@@ -65,7 +65,7 @@
 
             </li>
             <li class="drop-down" id="li_about">
-                <a href="#about">{% trans from 'nav' %} nav.about {% endtrans %} </a>
+                <a class="{% if index is defined and index==5 %} active_menu {% endif %}" href="#about">{% trans from 'nav' %} nav.about {% endtrans %} </a>
                 <div class="mega-menu fadeIn animated" id="m_about">
                     <div class="row">
                         <div class="col offset-m1 m2 menu-section">
