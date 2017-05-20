@@ -106,7 +106,7 @@
                                         <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Agree</a>
                                     </div>
                                 </div>
-                                <a href="{{ path('main_projet_task',{id:id, id2:item.id}) }}" class="secondary-content">
+                                <a href="{{ path('main_projet_task',{id:id, id2:item.id}) }}" class="secondary-content link_a">
                                     <i class="material-icons">remove_red_eye</i>
                                 </a>
                             </div>
@@ -114,49 +114,16 @@
                     {% endfor %}
 
                 </ul>
-
-
             </div>
             <div class="col s12 m8 " id="corp_task">
-                <br>
-                <div class="card grey lighten-3">
-                    <strong>Initialisation (10%)</strong>
-                    <p>je suis le test 1
-                        <br>
-                        <span class="right right-align">20-05-2017</span>
-                        <br>
-                    </p>
-
-                </div>
-                <div class="col s12">
-                    <h4>COMMIT  LIST</h4>
-                </div>
-                <div class="col s12 grey lighten-3">
-                    {% for i in 1..10 %}
-                        <div class="card">
-                           <table width="100%">
-                               <tr>
-                                   <td colspan="4">
-                                       <strong>Titre </strong>
-                                        <p>Je suis une description  pour ce commit. je presente le changement  qui  c'est passé</p>
-                                   </td>
-                                   <td colspan="2">
-                                       <a href="{{ '#modal_commit'~i }}" class="secondary-content tooltipped"    data-position="top" data-delay="50"  data-tooltip="Comment">  <i class="material-icons">comment</i> </a>
-                                       <div id="{{ 'modal_commit'~i }}" class="modal modal-fixed-footer">
-                                           <div class="modal-content">
-                                               <h4>Modal Header</h4>
-                                               <p>A bunch of text</p>
-                                           </div>
-                                           <div class="modal-footer">
-                                               <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Agree</a>
-                                           </div>
-                                       </div>
-                                   </td>
-                               </tr>
-                           </table>
-                        </div>
-                    {% endfor %}
-                </div>
+                {% if id2 is defined and id2>0 %}
+                    {{  render(controller('MainBundle:Inc:commit',{task_id:id2})) }}
+                {% else %}
+                    <br> <br> <br>
+                    <center>
+                        <h4> {% trans from 'private' %} commit.empty {% endtrans %} </h4>
+                    </center>
+                {% endif %}
             </div>
         </div>
     </div>
@@ -167,8 +134,12 @@
     <script>
         $(document).ready(function() {
             var elt ={
-                modal: $('.modal')
+                modal: $('.modal'),
+                link: $('.link_a')
             };
+            elt.link.click(function(){
+                window.location.href = $(this).attr('href');
+            });
             elt.modal.modal();
         } );
     </script>

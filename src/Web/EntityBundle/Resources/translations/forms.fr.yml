@@ -35,6 +35,7 @@ form:
     new: Nouveau commit
     empty: Aucun commit enregistré
     auther: Auteur
+    list: Liste  des commits
   historic:
     strartdate: Date de début
     endate: Date de fin

@@ -25,10 +25,17 @@ class ProjetRepository extends \Doctrine\ORM\EntityRepository
 
         if($data!=null)
         {
-            $query->Where('a.title LIKE :title OR a.title IS NULL')->setParameter('title','%'.$data['title'].'%');
-            $query->Where('a.status LIKE :status OR a.status IS NULL')->setParameter('status','%'.$data['status'].'%');
-            $query->andWhere('u.id =:user_id OR  u.id IS NULL')->setParameter('user_id',$data['user_id']);
+            $parameters['title']='%'.$data['title'].'%';
+            $parameters['status']='%'.$data['status'].'%';
+            $parameters['user_id']=$data['user_id'];
+
+            $query->Where('a.title LIKE :title OR a.title IS NULL');
+            $query->Where('a.status LIKE :status OR a.status IS NULL');
+            $query->andWhere('u.id =:user_id OR  u.id IS NULL');
             $query->addOrderBy('a.id','desc');
+            $query->setParameters($parameters);
+
+
             if($limit)
             {
                 $page=$page<1?1:$page;

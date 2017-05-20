@@ -20,17 +20,27 @@ class CommitHistoricRepository extends \Doctrine\ORM\EntityRepository
         }
 
         $query->select(['a','t','pr','u'])
-            ->leftJoin('a.projet','pr')
+            ->leftJoin('a.project','pr')
             ->leftJoin('a.task','t')
             ->leftJoin('pr.user','u');
 
 
         if($data!=null)
         {
-            $query->Where('pr.title LIKE :title OR pr.title IS NULL')->setParameter('title','%'.$data['title'].'%');
-            $query->Where('pr.status LIKE :status OR pr.status IS NULL')->setParameter('status','%'.$data['status'].'%');
-            $query->andWhere('pr.id =:projet_id OR  pl.id IS NULL')->setParameter('projet_id',$data['projet_id']);
-            $query->andWhere('u.id =:user_id OR  u.id IS NULL')->setParameter('user_id',$data['user_id']);
+            /*$parameters['title']='%'.$data['title'].'%';
+            $parameters['status']='%'.$data['status'].'%';
+            */
+            $parameters['project_id']=$data['project_id'];
+            $parameters['user_id']=$data['user_id'];
+            $parameters['task_id']=$data['task_id'];
+
+            /*$query->Where('pr.title LIKE :title OR pr.title IS NULL');
+            $query->Where('pr.status LIKE :status OR pr.status IS NULL');
+            */
+            $query->andWhere('pr.id =:project_id OR  pr.id IS NULL');
+            $query->andWhere('u.id =:user_id OR  u.id IS NULL');
+            $query->andWhere('t.id =:task_id OR  t.id IS NULL');
+            $query->setParameters($parameters);
             $query->addOrderBy('a.id','desc');
             if($limit)
             {

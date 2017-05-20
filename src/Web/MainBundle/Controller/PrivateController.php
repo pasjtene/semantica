@@ -487,6 +487,7 @@ class PrivateController extends Controller
         $items = $query->getByparam($data);
         $array['items'] =$items;
         $array['id'] =$id;
+        $array['id2'] =$id2;
         return $this->render('MainBundle:Private:task.html.twig', $array);
     }
 
