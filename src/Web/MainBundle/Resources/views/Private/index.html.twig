@@ -27,6 +27,9 @@
             height: 352px;
             overflow-y: auto;
         }
+        #vertical_nav ul{
+            position: absolute !important;
+        }
     </style>
 {% endblock %}
 {% block header %}
@@ -52,7 +55,6 @@
                                        <option value="4" {% if code is defined and code=="4" %} selected {% endif %}> {% trans from 'private' %} project.break  {% endtrans %}</option>
                                        <option value="5" {% if code is defined and code=="5" %} selected {% endif %}> {% trans from 'private' %} project.run  {% endtrans %}</option>
                                    </select>
-                                   <label>{% trans from 'private' %} project.status {% endtrans %}</label>
                                </div>
                            </div>
 
@@ -129,7 +131,7 @@
             }
 
             elt.modal.modal();
-           elt.select.material_select();
+           //elt.select.material_select();
             elt.code.change(function(){
                 elt.form.submit();
             });

@@ -30,6 +30,9 @@
         .mega-menu{
             z-index: 9999999999999999999999999999 !important;
         }
+        #vertical_nav ul{
+            position: absolute !important;
+        }
     </style>
 {% endblock %}
 {% block header %}
@@ -57,7 +60,6 @@
                                             <option value="{{ item.id }}" {% if code is defined and code==item.id %} selected {% endif %}> {{ item.title }}</option>
                                         {% endfor %}
                                     </select>
-                                    <label>{% trans from 'private' %} private.project {% endtrans %}</label>
                                 </div>
                             </div>
 
@@ -203,7 +205,7 @@
                 notification: $("#notification")
             }
             elt.modal.modal();
-            elt.select.material_select();
+            //elt.select.material_select();
             elt.code.change(function(){
                 elt.form.submit();
             });

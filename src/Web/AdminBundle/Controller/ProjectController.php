@@ -9,8 +9,11 @@ use Symfony\Component\HttpFoundation\Request;
 use Web\EntityBundle\Entity\FileProjet;
 use Web\EntityBundle\Entity\Files;
 use Web\EntityBundle\Entity\Projet;
+use Web\EntityBundle\Entity\User;
+use Web\EntityBundle\Entity\Visitor;
 use Web\EntityBundle\Form\FileProjetType;
 use Web\EntityBundle\Form\ProjetType;
+use Web\EntityBundle\Form\ProjetUpdateType;
 
 /**
  * @Route("/projet")
@@ -53,12 +56,66 @@ class ProjectController extends Controller
      */
     public function detailAction($id)
     {
-        $em = $this->getDoctrine()->getManager();
-        /** @var Projet $project */
-        $project = $em->getRepository("EntityBundle:Projet")->find($id);
-        $array['project'] =$project;
-        return $this->render('AdminBundle:Default:detail.html.twig', $array);
+
+        $array['id'] =$id;
+        return $this->render('AdminBundle:Project:detail.html.twig',$array);
     }
+
+
+    /**
+     * @Route("/information/{id}", name="admin_projet_information", requirements={"id": "\d+"})
+     */
+    public function informationAction($id)
+    {
+        $em = $this->getDoctrine()->getManager();
+        /** @var Projet $items */
+        $items = $em->getRepository("EntityBundle:Projet")->find($id);
+        $array['items'] =$items;
+        $array['id'] =$id;
+        return $this->render('AdminBundle:Project:information.html.twig', $array);
+    }
+
+
+    /**
+     * @Route("/participator/{id}", name="admin_projet_participator", requirements={"id": "\d+"})
+     */
+    public function participatorAction($id)
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        $items = $em->getRepository("EntityBundle:Historic")->findByproject($id);
+        $array['items'] =$items;
+        $array['id'] =$id;
+        return $this->render('AdminBundle:Project:participator.html.twig', $array);
+    }
+
+
+    /**
+     * @Route("/planning/{id}", name="admin_projet_planning", requirements={"id": "\d+"})
+     */
+    public function planningAction($id)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $items = $em->getRepository("EntityBundle:Planning")->findByproject($id);
+        $array['items'] =$items;
+        $array['id'] =$id;
+        return $this->render('AdminBundle:Project:planning.html.twig', $array);
+    }
+
+
+    /**
+     * @Route("/commit/{id}", name="admin_projet_commit", requirements={"id": "\d+"})
+     */
+    public function commitAction($id)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $items = $em->getRepository("EntityBundle:CommitHistoric")->findByproject($id);
+        $array['items'] =$items;
+        $array['id'] =$id;
+        return $this->render('AdminBundle:Project:commit.html.twig', $array);
+    }
+
+
 
 
     /**
@@ -71,29 +128,40 @@ class ProjectController extends Controller
 
         /** @var Projet $objet */
         $objet = $em->getRepository('EntityBundle:Projet')->find($id);
+
+        $this->get('session')->set('user_session',$objet->getUser());
+        $this->get('session')->set('visitor_session',$objet->getVisitor());
+
         /** @var Form $form */
-        $form = $this->get("form.factory")->create(FileProjetType::class,$objet);
+        $form = $this->get("form.factory")->create(ProjetUpdateType::class,$objet);
 
         if($request->isMethod('POST'))
         {
             $form->handleRequest($request);
             $objet->setDate(new \DateTime());
             $file = new Files();
-            if ($objet->getFiles() != null) {
-
-                /** @var FileProjet $item */
-                foreach ($objet->getFiles() as $item){
-                    $file->file = $item->getFile();
-
-                    $tab = explode('.',$item->getFile()->getClientOriginalName());
-                    $item->setName($item->getFile()->getClientOriginalName());
-                    $item->setExtfile($tab[count($tab)-1]);
-                    $item->setHashname(uniqid().'.'.$item->getExtfile());
-                    $item->setProject($objet);
-                    $file->add($file->initialpath."projet",  $item->getHashname());
-                }
 
 
+            if($objet->getUser()!=null)
+            {
+                /** @var User $user */
+                $user =$em->getRepository('EntityBundle:User')->find($objet->getUser()->getId());
+                $objet->setUser($user);
+                var_dump($user);
+                $email =$objet->getUser()->getEmail();
+            }
+            if($objet->getVisitor()!=null)
+            {
+                /** @var Visitor $visitor */
+                $visitor =$em->getRepository('EntityBundle:Visitor')->find($objet->getVisitor()->getId());
+                $objet->setVisitor($visitor);
+                $email =$objet->getVisitor()->getEmail();
+            }
+
+            $objet->setStatus($request->request->get('code'));
+            if($objet->getStatus()!="0")
+            {
+                //$objet->setState(true);
             }
 
 
@@ -103,8 +171,6 @@ class ProjectController extends Controller
             if(count($error) == 0)
             {
 
-                $email =$objet->getUser()==null ? $objet->getVisitor()->getEmail(): $objet->getUser()->getEmail();
-
                 $em->persist($objet);
                 $em->flush();
 
@@ -113,16 +179,12 @@ class ProjectController extends Controller
                 $translator = $this->get('translator');
                 $locale = $this->get('session')->get('_locale');
                 $message = $translator->trans('form.project.notification',[] ,'forms', $locale);
-                $code = $this->sendMail($email, $this->getParameter('mailer_user'), $message, "SOMMIT PROJET STC(SEMANTICA TECHNOLOGIES CORPORATION)");
-
-                $objet = new Projet();
-                /** @var Form $form */
-                $form = $this->get("form.factory")->create(ProjetType::class,$objet);
-                $array['message'] ="";
+                $code = $this->sendMail($email, $this->getParameter('mailer_user'), $message, "UPDATE PROJET STC(SEMANTICA TECHNOLOGIES CORPORATION)");
+                return $this->redirect($this->generateUrl('admin_homepage'));
             }
             else{
                 $array['error'] = $error;
-                // var_dump($error);
+                 var_dump($error);
             }
 
         }
@@ -130,7 +192,7 @@ class ProjectController extends Controller
         $array["index"] =3;
         $array['form'] = $form->createView();
         $array['objet'] = $objet;
-        return $this->render('MainBundle:Projet:index.html.twig',$array);
+        return $this->render('AdminBundle:Project:index.html.twig',$array);
     }
 
 

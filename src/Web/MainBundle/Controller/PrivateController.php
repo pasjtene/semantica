@@ -70,7 +70,7 @@ class PrivateController extends Controller
         }
 
         $array['list'] = $list;
-        $array['index'] = 1;
+        $array['tabsindex'] = 1;
         $array['code'] = $code;
 
         return $this->render('MainBundle:Private:index.html.twig',$array);
@@ -136,7 +136,7 @@ class PrivateController extends Controller
         }
         $array['list'] = $list;
         $array['items'] = $items;
-        $array['index'] = 3;
+        $array['tabsindex'] = 3;
         $array['code'] = $code;
         return $this->render('MainBundle:Private:commit.html.twig',$array);
     }
@@ -257,7 +257,7 @@ class PrivateController extends Controller
         }
         $array['list'] = $list;
         $array['items'] = $items;
-        $array['index'] = 4;
+        $array['tabsindex'] = 4;
         $array['code'] = $code;
 
         return $this->render('MainBundle:Private:comment.html.twig',$array);
@@ -307,7 +307,7 @@ class PrivateController extends Controller
 
         $array['form'] = $form->createView();
         $array['objet'] = $objet;
-        $array['index'] = 2;
+        $array['tabsindex'] = 2;
 
         return $this->render('MainBundle:Private:profile.html.twig',$array);
     }
@@ -406,7 +406,7 @@ class PrivateController extends Controller
 
         $items = $em->getRepository("EntityBundle:User")->findAll();
 
-        $array = ['items' => $items, 'index' => 5];
+        $array = ['items' => $items, 'tabsindex' => 5];
 
         return $this->render('MainBundle:Private:users.html.twig', $array);
     }

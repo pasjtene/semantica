@@ -161,10 +161,11 @@ class DefaultController extends Controller
             $ip = $_SERVER['REMOTE_ADDR'];
             $suggestion->setDate(new \DateTime());
             $suggestion->setStatus(false);
-            $suggestion->getVisitor()->setPhone("//");
+            $suggestion->getVisitor()->setPhone(uniqid());
             $suggestion->getVisitor()->setPleasantries("//");
             $suggestion->getVisitor()->setIp($ip);
             $em =$this->getDoctrine()->getManager();
+
             /** @var Visitor $visitor */
             $visitor = $em->getRepository('EntityBundle:Visitor')->findOneByemail($suggestion->getVisitor()->getEmail());
 
@@ -172,6 +173,7 @@ class DefaultController extends Controller
             {
                 $suggestion->setVisitor($visitor);
             }
+           // var_dump($suggestion->getVisitor()->getEmail());
 
             /** @var Validator $validator */
             $validator = $this->get('validator');
