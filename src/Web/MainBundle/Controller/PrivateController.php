@@ -380,19 +380,7 @@ class PrivateController extends Controller
         return $this->redirect($this->generateUrl('main_private'));
     }
 
-
-
-    /**
-     * @Route("/project/detail/{id}", name="main_projet_detail", requirements={"id": "\d+"})
-     */
-    public function detailAction($id)
-    {
-        $em = $this->getDoctrine()->getManager();
-        /** @var Projet $project */
-        $project = $em->getRepository("EntityBundle:Projet")->find($id);
-        $array['project'] =$project;
-        return $this->render('MainBundle:Private:detail.html.twig', $array);
-    }
+    
 
     /**
      * @Route("/users", name="main_private_users")
@@ -410,4 +398,81 @@ class PrivateController extends Controller
 
         return $this->render('MainBundle:Private:users.html.twig', $array);
     }
+
+    /**
+     * @Route("/project/detail/{id}", name="main_projet_detail", requirements={"id": "\d+"})
+     */
+    public function detailAction($id)
+    {
+
+        $array['id'] =$id;
+        return $this->render('MainBundle:Private:detail.html.twig',$array);
+    }
+
+
+    /**
+     * @Route("/project/information/{id}", name="main_projet_information", requirements={"id": "\d+"})
+     */
+    public function project_informationAction($id)
+    {
+        $em = $this->getDoctrine()->getManager();
+        /** @var Projet $items */
+        $items = $em->getRepository("EntityBundle:Projet")->find($id);
+        $array['items'] =$items;
+        $array['id'] =$id;
+        return $this->render('MainBundle:Tabs:information.html.twig', $array);
+    }
+
+
+    /**
+     * @Route("/project/participator/{id}", name="main_projet_participator", requirements={"id": "\d+"})
+     */
+    public function participatorAction($id)
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        $items = $em->getRepository("EntityBundle:Historic")->findByproject($id);
+        $array['items'] =$items;
+        $array['id'] =$id;
+        return $this->render('MainBundle:Tabs:participator.html.twig', $array);
+    }
+
+
+    /**
+     * @Route("/project/planning/{id}", name="main_projet_planning", requirements={"id": "\d+"})
+     */
+    public function project_planningAction($id)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $items = $em->getRepository("EntityBundle:Planning")->findByproject($id);
+        $array['items'] =$items;
+        $array['id'] =$id;
+        return $this->render('MainBundle:Tabs:planning.html.twig', $array);
+    }
+
+
+    /**
+     * @Route("/project/commit/{id}", name="main_projet_commit", requirements={"id": "\d+"})
+     */
+    public function project_commitAction($id)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $items = $em->getRepository("EntityBundle:CommitHistoric")->findByproject($id);
+        $array['items'] =$items;
+        $array['id'] =$id;
+        return $this->render('MainBundle:Tabs:commit.html.twig', $array);
+    }
+
+    /**
+     * @Route("/project/task/{id}", name="main_projet_task", requirements={"id": "\d+"})
+     */
+    public function project_taskAction($id)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $items = $em->getRepository("EntityBundle:Task")->findByplanning($id);
+        $array['items'] =$items;
+        $array['id'] =$id;
+        return $this->render('MainBundle:Private:task.html.twig', $array);
+    }
+
 }

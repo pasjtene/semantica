@@ -32,9 +32,9 @@ $blue_color : #0083c0;
     }
   }
   li{
-    color: black;
+    color: $secondary;
     a{
-      color: black;
+      color: $secondary;
     }
   }
 
@@ -107,6 +107,18 @@ footer{
   position: fixed !important;
   top: 0px !important;
   padding-top: 1% !important;
+  background-color: $default_text !important;
+  color: $secondary !important;
+  .same{
+    color: $secondary !important;
+  }
+  li{
+    @extend .same;
+    a{
+      @extend .same;
+    }
+  }
+
   /* Mise en forme */
   width: 100% !important; /* <-- Largeur de votre site */
   height: 70px !important;

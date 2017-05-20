@@ -10,4 +10,36 @@ namespace Web\EntityBundle\Repository;
  */
 class CommitHistoricRepository extends \Doctrine\ORM\EntityRepository
 {
+    public function  getByparam($data, $limit=20, $page=1, $count=false )
+    {
+        $query = $this->createQueryBuilder('a');
+        if($count)
+        {
+            $query->select('count(a.id)');
+            return $query->getQuery()->getSingleScalarResult();
+        }
+
+        $query->select(['a','t','pr','u'])
+            ->leftJoin('a.projet','pr')
+            ->leftJoin('a.task','t')
+            ->leftJoin('pr.user','u');
+
+
+        if($data!=null)
+        {
+            $query->Where('pr.title LIKE :title OR pr.title IS NULL')->setParameter('title','%'.$data['title'].'%');
+            $query->Where('pr.status LIKE :status OR pr.status IS NULL')->setParameter('status','%'.$data['status'].'%');
+            $query->andWhere('pr.id =:projet_id OR  pl.id IS NULL')->setParameter('projet_id',$data['projet_id']);
+            $query->andWhere('u.id =:user_id OR  u.id IS NULL')->setParameter('user_id',$data['user_id']);
+            $query->addOrderBy('a.id','desc');
+            if($limit)
+            {
+                $page=$page<1?1:$page;
+                $query->setFirstResult(($page-1)*$limit)->setMaxResults($limit);
+            }
+        }
+
+        return $query->getQuery()->getResult();
+
+    }
 }

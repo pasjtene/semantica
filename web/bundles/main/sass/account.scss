@@ -42,4 +42,11 @@
     overflow-y: auto;
   }
 
+  .tabs{
+    background-color: $default_text !important;
+  }
+  .tabs a{
+    color: $secondary !important;
+  }
+
 }

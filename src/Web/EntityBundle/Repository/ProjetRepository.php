@@ -10,4 +10,34 @@ namespace Web\EntityBundle\Repository;
  */
 class ProjetRepository extends \Doctrine\ORM\EntityRepository
 {
+    public function  getByparam($data, $limit=20, $page=1, $count=false )
+    {
+        $query = $this->createQueryBuilder('a');
+        if($count)
+        {
+            $query->select('count(a.id)');
+            return $query->getQuery()->getSingleScalarResult();
+        }
+
+        $query->select(['a','u'])
+            ->leftJoin('a.user','u');
+
+
+        if($data!=null)
+        {
+            $query->Where('a.title LIKE :title OR a.title IS NULL')->setParameter('title','%'.$data['title'].'%');
+            $query->Where('a.status LIKE :status OR a.status IS NULL')->setParameter('status','%'.$data['status'].'%');
+            $query->andWhere('u.id =:user_id OR  u.id IS NULL')->setParameter('user_id',$data['user_id']);
+            $query->addOrderBy('a.id','desc');
+            if($limit)
+            {
+                $page=$page<1?1:$page;
+                $query->setFirstResult(($page-1)*$limit)->setMaxResults($limit);
+            }
+        }
+
+        return $query->getQuery()->getResult();
+
+    }
+
 }
