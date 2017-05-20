@@ -72,7 +72,9 @@
                 form : $('#form'),
                 modal:$('.modal'),
                 delete: $('.delete_projet'),
-                link: $('.upload_file')
+                link: $('.upload_file'),
+                detail_planning: $('.detail_planning'),
+                help_planning: $('#help_planning')
             }
             elt.link.click(function(){
                 if($(this).val()!="#")
@@ -88,6 +90,7 @@
                     e.preventDefault();
                 }
             });
+            elt.detail_planning.attr('data-tooltip',elt.help_planning.text());
         } );
     </script>
 {% endblock %}

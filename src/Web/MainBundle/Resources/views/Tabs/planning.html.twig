@@ -1,11 +1,12 @@
 <br>
+<span id="help_planning" style="display: none;">{% trans from 'forms' %} form.planning.detail {% endtrans %}</span>
 <table class="bordered highlight centered responsive-table">
     <thead>
     <tr>
         <th>{% trans from 'forms' %} form.planning.startdate {% endtrans %}</th>
         <th>{% trans from 'forms' %} form.planning.startdate {% endtrans %}</th>
-        <th>#</th>
-        <th>#</th>
+        <th>{% trans from 'forms' %} form.planning.tasknb {% endtrans %}</th>
+        <th>{% trans from 'forms' %} form.planning.task {% endtrans %}</th>
     </tr>
     </thead>
 
@@ -13,10 +14,10 @@
     {% if items!=null %}
         {% for item in items %}
            <tr>
-               <td>{{ item.startdate|date('d-m-y') }}</td>
-               <td>{{ item.enddate|date('d-m-y') }}</td>
-               <td><a href=""><i class="material-icons">remove</i></a></td>
-               <td><a href=""><i class="material-icons">edit</i></a></td>
+               <td>{{ item.planning.startdate|date('d-m-y') }}</td>
+               <td>{{ item.planning.enddate|date('d-m-y') }}</td>
+               <td>{{ item.tasks|length }}</td>
+               <td><a href="{{ path('main_projet_task',{id:item.planning.id}) }}" class="tooltipped detail_planning" data-position="top" data-delay="50"  data-tooltip="more detail" ><i class="material-icons">view_headline</i></a></td>
            </tr>
         {% endfor %}
     {% else %}

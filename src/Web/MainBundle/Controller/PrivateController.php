@@ -16,8 +16,9 @@ use Web\EntityBundle\Entity\CommitHistoric;
 use Web\EntityBundle\Entity\FileProjet;
 use Web\EntityBundle\Entity\Files;
 use Web\EntityBundle\Entity\Historic;
-use Web\EntityBundle\Entity\Projet;
 use Web\EntityBundle\Entity\Task;
+use Web\EntityBundle\Entity\Planning;
+use Web\EntityBundle\Entity\Projet;
 use Web\EntityBundle\Entity\User;
 use Web\EntityBundle\Form\UserType;
 
@@ -444,7 +445,17 @@ class PrivateController extends Controller
     public function project_planningAction($id)
     {
         $em = $this->getDoctrine()->getManager();
-        $items = $em->getRepository("EntityBundle:Planning")->findByproject($id);
+        $collections = $em->getRepository("EntityBundle:Planning")->findByproject($id);
+        $items=null;
+        if($collections!=null)
+        {
+            /** @var Planning $item */
+            foreach($collections as $item)
+            {
+                $tasks = $em->getRepository("EntityBundle:Task")->findByplanning($item->getId());
+                $items[] =["planning"=>$item, "tasks"=>$tasks];
+            }
+        }
         $array['items'] =$items;
         $array['id'] =$id;
         return $this->render('MainBundle:Tabs:planning.html.twig', $array);
@@ -464,12 +475,16 @@ class PrivateController extends Controller
     }
 
     /**
-     * @Route("/project/task/{id}", name="main_projet_task", requirements={"id": "\d+"})
+     * @Route("/{id2}/project/task/{id}", name="main_projet_task", requirements={"id": "\d+","id2": "\d+"},defaults={"id2":0})
      */
-    public function project_taskAction($id)
+    public function taskAction(Request $request,$id,$id2)
     {
+        /** @var User $user */
+        $user = $this->getUser();
         $em = $this->getDoctrine()->getManager();
-        $items = $em->getRepository("EntityBundle:Task")->findByplanning($id);
+        $query =$em->getRepository("EntityBundle:Task");
+        $data = ['title'=>'', "status"=>"" , "libelle"=>"", "planning_id"=>$id, "user_id"=>$user->getId()];
+        $items = $query->getByparam($data);
         $array['items'] =$items;
         $array['id'] =$id;
         return $this->render('MainBundle:Private:task.html.twig', $array);

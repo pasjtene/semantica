@@ -61,6 +61,9 @@ form:
     enddate: Date de fin
     new: Nouveau planning
     empty: Aucun  planning enregistré
+    task: Tâche
+    tasknb: Tâche
+    detail: plus de détail
   project:
     title: Titre
     placeholder_title: Donner le titre de votre projet
@@ -96,6 +99,10 @@ form:
     identity: Identifiant
     rate: Taux
     status: Statut
+    title: Liste des tâches
+    more: Plus de détail
+    finish: Achevé
+    nofinish: Non achevé
   user:
     email: Adresse email
     placeholder_email:  Saisir votre adresse email
