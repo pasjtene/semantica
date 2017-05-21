@@ -80,4 +80,13 @@ class AboutstcController extends Controller
         return $this->render('MainBundle:aboutstc:careers.html.twig',$array);
     }
 
+    /**
+     * @Route("/explorecareers", name="main_explorecareers")
+     */
+    public function explorecareersAction()
+    {
+        $array['index']=5;
+        return $this->render('MainBundle:aboutstc:explorecareers.html.twig',$array);
+    }
+
 }

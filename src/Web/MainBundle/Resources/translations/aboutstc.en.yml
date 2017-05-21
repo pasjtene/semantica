@@ -210,3 +210,20 @@ careers:
    -  Ability to supervise beginners and juniors,
    -  Your passion for IT and your sense of service are as Of assets that will
     enable you to carry out your missions and to evolve in our company.
+
+explorecareers:
+  title: EXPLORE OUR CAREERS
+  description: Careers
+  description_content: |
+   At STC, we are a team of builders. Each of our members (or employees) concurs
+   To build its own business. A firm that brings together 68,000 professionals in 2 countries.
+   Founded in 2016, STC is a leader in IT services and business process management
+   Which contributes to the success of its clients. Both our customers and our members can count on
+   Our global resources, our know-how, our stability and our professionals
+   To achieve the desired results
+  liste: LIST OF CAREERS AT STC:
+  car1:  Analyst programmer;
+  car2:  Networks and systems administration;
+  car3:  Community manager;
+  car4:  Projet management;
+  car5:  Informations systems building.
