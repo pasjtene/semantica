@@ -38,12 +38,20 @@ class AboutstcController extends Controller
     }
 
     /**
-     * @Route("/inf", name="main_inf")
+     * @Route("/newsroom", name="main_newsroom")
      */
-    public function infAction()
+    public function newsroomAction()
     {
         $array['index']=5;
-        return $this->render('MainBundle:Service:inf.html.twig',$array);
+        return $this->render('MainBundle:aboutstc:newsroom.html.twig',$array);
+    }
+    /**
+     * @Route("/newssroom", name="main_newssroom")
+     */
+    public function newssroomAction()
+    {
+        $array['index']=5;
+        return $this->render('MainBundle:aboutstc:newssroom.html.twig',$array);
     }
     /**
      * @Route("/exploreservice", name="main_exploreservice")
