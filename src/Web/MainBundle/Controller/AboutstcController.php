@@ -63,12 +63,21 @@ class AboutstcController extends Controller
         return $this->render('MainBundle:aboutstc:newssroom.html.twig',$array);
     }
     /**
-     * @Route("/exploreservice", name="main_exploreservice")
-     */
+ * @Route("/exploreservice", name="main_exploreservice")
+ */
     public function exploreserviceAction()
     {
         $array['index']=5;
         return $this->render('MainBundle:Service:exploreservice.html.twig',$array);
+    }
+
+    /**
+     * @Route("/careers", name="main_careers")
+     */
+    public function careersAction()
+    {
+        $array['index']=5;
+        return $this->render('MainBundle:aboutstc:careers.html.twig',$array);
     }
 
 }
