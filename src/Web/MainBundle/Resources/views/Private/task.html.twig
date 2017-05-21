@@ -59,13 +59,18 @@
                                             </span>
                                         </p>
                                         <p>
+                                            <strong>
+                                                {% trans from 'forms' %} form.Task.status {% endtrans %} :
+                                            </strong>
+                                            <br>
+                                            <span>
+                                                {{ item.status }}
+                                            </span>
+                                        </p>
+                                        <p>
                                             <hr>
                                             <strong>
-                                                {% if item.status==0 %}
-                                                    {% trans from 'forms' %} form.Task.nofinish {% endtrans %} :
-                                                {% else %}
-                                                    {% trans from 'forms' %} form.Task.finish {% endtrans %} :
-                                                {% endif %}
+                                                {% trans from 'forms' %} form.Task.rate {% endtrans %} :
                                             </strong>
                                             <br>
                                             <span>
