@@ -20,12 +20,12 @@ class AboutstcController extends Controller
     }
 
     /**
-     * @Route("/business", name="main_business")
+     * @Route("/events", name="main_events")
      */
-    public function businessAction()
+    public function eventsAction()
     {
         $array['index']=5;
-        return $this->render('MainBundle:Service:business.html.twig',$array);
+        return $this->render('MainBundle:aboutstc:events.html.twig',$array);
     }
 
     /**
