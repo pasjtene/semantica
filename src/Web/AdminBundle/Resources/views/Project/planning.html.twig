@@ -1,10 +1,12 @@
 <br>
-<a href="" class="waves-effect waves-light btn">{% trans from 'forms' %} form.planning.new {% endtrans %}</a>
+<a href="#md-new-planning" class="waves-effect waves-light btn" id="btn-new-planning">{% trans from 'forms' %} form.planning.new {% endtrans %}</a>
 <table class="bordered highlight centered responsive-table">
     <thead>
     <tr>
         <th>{% trans from 'forms' %} form.planning.startdate {% endtrans %}</th>
         <th>{% trans from 'forms' %} form.planning.startdate {% endtrans %}</th>
+        <th>{% trans from 'forms' %} form.Task.tasks {% endtrans %}</th>
+        <th>#</th>
         <th>#</th>
         <th>#</th>
     </tr>
@@ -16,8 +18,14 @@
            <tr>
                <td>{{ item.startdate|date('d-m-y') }}</td>
                <td>{{ item.enddate|date('d-m-y') }}</td>
-               <td><a href=""><i class="material-icons">remove</i></a></td>
-               <td><a href=""><i class="material-icons">edit</i></a></td>
+               <td><a href="#">{{ item.tasks|length }}</a></td>
+               <td>
+                   <a href="#" data-pid="{{ item.id }}" class="btn btn-flat blue white-text btn-new-task">
+                       {% trans from 'forms' %} form.Task.new {% endtrans %}
+                   </a>
+               </td>
+               <td><a href="#"><i class="material-icons">remove</i></a></td>
+               <td><a href="#"><i class="material-icons">edit</i></a></td>
            </tr>
         {% endfor %}
     {% else %}
@@ -29,5 +37,65 @@
     {% endif %}
     </tbody>
 </table>
+
+<div id="md-new-planning" class="modal modal-fixed-footer">
+    <form action="{{ path('admin_projet_new_planning', {id:id}) }}" method="post">
+        <div class="modal-content">
+            <div class="planning">
+                <div class="input-field col s12">
+                    <input type="date" id="start-date" name="start-date" class="datepicker" required/>
+                    <label for="start-date">{% trans from 'forms' %} form.planning.startdate {% endtrans %}:</label>
+                </div>
+
+                <div class="input-field col s12">
+                    <input type="date" id="end-date" name="end-date" class="datepicker" required/>
+                    <label for="end-date">{% trans from 'forms' %} form.planning.enddate {% endtrans %}:</label>
+                </div>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button class="waves-effect waves-green btn-flat" type="submit" name="action">Submit<i class="material-icons right">send</i></button>
+        </div>
+    </form>
+</div>
+
+<div id="md-new-task" class="modal modal-fixed-footer" style="height: 500px;">
+    <form action="{{ path('admin_projet_new_planning_task', {id:id}) }}" method="post">
+        <div class="modal-content">
+            <div class="planning">
+                <div class="input-field col s12">
+                    <input type="text" id="pl-label" name="label" required/>
+                    <label for="pl-label">{% trans from 'forms' %} form.Task.label {% endtrans %}</label>
+                </div>
+
+                <div class="input-field col s12">
+                    <textarea id="pl-description" name="description" class="materialize-textarea" placeholder=""></textarea>
+                    <label for="pl-description">{% trans from 'forms' %} form.Task.description {% endtrans %}</label>
+                </div>
+
+                <div class="input-field col s12">
+                    <select name="task-status" id="pl-status" required>
+                        <option value="Pending">{% trans from 'forms' %} form.Task.pending {% endtrans %}</option>
+                        <option value="In progress">{% trans from 'forms' %} form.Task.progress {% endtrans %}</option>
+                        <option value="Done">{% trans from 'forms' %} form.Task.done {% endtrans %}</option>
+                    </select>
+                    <label for="pl-status">{% trans from 'forms' %} form.Task.tstatus {% endtrans %}</label>
+                </div>
+
+                <div class="input-field col s12">
+                    <p>{% trans from 'forms' %} form.Task.evolution {% endtrans %}</p>
+                    <p class="range-field">
+                        <input type="range" id="pl-rate" name="rate" value="10" min="0" max="100" />
+                    </p>
+                </div>
+
+                <input type="hidden" name="planning-id" id="planning-id" value=""/>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button class="waves-effect waves-green btn-flat" type="submit" name="action">Submit<i class="material-icons right">send</i></button>
+        </div>
+    </form>
+</div>
 
 

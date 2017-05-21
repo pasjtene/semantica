@@ -24,7 +24,7 @@ class Task extends BaseInterface
 
     /**
      * @Assert\Valid()
-     * @ORM\ManyToOne(targetEntity="Web\EntityBundle\Entity\Planning",cascade={"persist"})
+     * @ORM\ManyToOne(targetEntity="Web\EntityBundle\Entity\Planning", inversedBy="tasks",  cascade={"persist"})
      * @ORM\JoinColumn(nullable=false)
      */
     private $planning;
@@ -49,7 +49,6 @@ class Task extends BaseInterface
      * @ORM\Column(name="status", type="boolean")
      */
     private $status;
-
 
     /**
      * @var string

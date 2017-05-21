@@ -33,7 +33,6 @@ form:
     new: New Commit
     empty: No commit  register
     auther: Auther
-    list: Commits  list
   historic:
     startdate: Start  date
     enddate: End date
@@ -60,9 +59,6 @@ form:
     enddate: End date
     new: New planning
     empty: No planning  register
-    task: Task
-    tasknb: Task numbers
-    detail: more detail
   project:
     title: Title
     placeholder_title: Give the title for your projet
@@ -99,11 +95,6 @@ form:
     identity: Identity
     rate: Rate
     status: Status
-    title: Task List
-    more: More detail
-    finish: Complete
-    nofinish: Incomplete
-
   user:
     email: Email adress
     placeholder_email:  Your email address

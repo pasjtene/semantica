@@ -84,29 +84,60 @@
 
 {% block myjs %}
     <script>
-        $(document).ready(function() {
-            var elt= {
-                code: $('#code'),
-                select: $('select'),
-                form : $('#form'),
-                modal:$('.modal'),
-                delete: $('.delete_projet'),
-                link: $('.upload_file')
-            }
-            elt.link.click(function(){
-                if($(this).val()!="#")
-                {
-                    window.location.href = $(this).attr('href');
-                }
-            });
-            elt.modal.modal();
+        var id = {{ id }};
 
-            elt.delete.click(function(e){
+        $(document).ready(function()
+        {
+            var hid = 0;
+
+            var elt= {
+                select: $('select'),
+                modal: '.modal',
+                delete: $('.delete_projet'),
+                btnNewTask : '.btn-new-task',
+                planningId: $('#planning-id'),
+                modalTask: $('#md-new-task'),
+                editParticipator: '.edit-participator',
+                btnNewParticipator: $("#btn-new-participator"),
+                datepicker: '.datepicker'
+            };
+
+            elt.select.material_select();
+
+            $(elt.modal).modal();
+
+            elt.delete.click(function(e)
+            {
                 if(!confirm($('#'+$(this).data('id')).text().trim()))
                 {
                     e.preventDefault();
                 }
             });
-        } );
+
+            $(elt.datepicker).pickadate();
+
+            elt.btnNewParticipator.click(function(){
+                $("#input-action").val("0");
+            });
+
+            $(elt.editParticipator).click(function(e)
+            {
+                var url = $(this).data('id');
+                $('select[selected=selected]').removeAttr('selected');
+                $.get(url, function(response){
+                    console.log(response);
+                });
+
+                e.preventDefault();
+            });
+
+            $(elt.btnNewTask).click(function(e)
+            {
+                var pid = parseInt($(this).data('pid'));
+                elt.planningId.val(pid);
+                elt.modalTask.modal('open');
+                e.preventDefault();
+            })
+        });
     </script>
 {% endblock %}

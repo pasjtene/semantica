@@ -94,4 +94,14 @@ class Participator
     {
         return $this->user;
     }
+
+    /**
+     * Generate random code for user
+     *
+     * @return Participator
+     */
+    public function generateCode()
+    {
+        return $this->setCode(md5(uniqid()));
+    }
 }
