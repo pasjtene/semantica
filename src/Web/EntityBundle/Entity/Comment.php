@@ -51,6 +51,13 @@ class Comment extends BaseInterface
     private $participator;
 
     /**
+     * @Assert\Valid()
+     * @ORM\ManyToOne(targetEntity="Web\EntityBundle\Entity\Commit",cascade={"persist"})
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $commit;
+
+    /**
      * Get id
      *
      * @return int
@@ -154,5 +161,29 @@ class Comment extends BaseInterface
     public function getParticipator()
     {
         return $this->participator;
+    }
+
+    /**
+     * Set commit
+     *
+     * @param \Web\EntityBundle\Entity\Commit $commit
+     *
+     * @return Comment
+     */
+    public function setCommit(\Web\EntityBundle\Entity\Commit $commit)
+    {
+        $this->commit = $commit;
+
+        return $this;
+    }
+
+    /**
+     * Get commit
+     *
+     * @return \Web\EntityBundle\Entity\Commit
+     */
+    public function getCommit()
+    {
+        return $this->commit;
     }
 }
