@@ -1,2 +1,0 @@
-client_id : AW3D7qVM5s5Wq3lwRimfHDLR5svxD5ByH2RAB_O3zmAnXWbmtrGP2TES9BYXOKvLcaaqsrk3KaCnhtEe
-secret :    EOM_waB8hig6_skc6mU-Buyk7W_XDkxyq-EnYKLULKfpnQ-OR4yu107W51o4Yw7HXfyTtL5GL_1sc9Nj

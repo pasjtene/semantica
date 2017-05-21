@@ -18,23 +18,32 @@ form:
     projecy: Projet
     empty_project: Choisir un projet
     name: Nom
+    comment: Commentaire
+    placeholder_comment: Donner un minimun description du statut
     placeholder_name: Votre nom
     email: Email
     placeholder_email: Votre adresse email
     phone: Téléphone
     placeholder_phone: Votre téléphone
+    roles: Roles
   cancelling:
     addcode: Code de base
     adddate: Date d'enregistement
     adddescription: Description du  changement
   commit:
     code: Code
+    new: Nouveau commit
+    empty: Aucun commit enregistré
+    auther: Auteur
+    list: Liste  des commits
   historic:
     strartdate: Date de début
     endate: Date de fin
     roles: Roles
   participator:
     code: Code
+    empty: Aucun participateur enregistré
+    new: Nouveau participateur
   person:
     firstname: Nom
     lastname: Prénom
@@ -51,6 +60,11 @@ form:
   planning:
     startdate: Date de début
     enddate: Date de fin
+    new: Nouveau planning
+    empty: Aucun  planning enregistré
+    task: Tâche
+    tasknb: Tâche
+    detail: plus de détail
   project:
     title: Titre
     placeholder_title: Donner le titre de votre projet
@@ -86,6 +100,10 @@ form:
     identity: Identifiant
     rate: Taux
     status: Statut
+    title: Liste des tâches
+    more: Plus de détail
+    finish: Achevé
+    nofinish: Non achevé
   user:
     email: Adresse email
     placeholder_email:  Saisir votre adresse email

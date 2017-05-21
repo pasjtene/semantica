@@ -1,2 +1,21 @@
 project:
   delete: Do you really want to delete
+user:
+  title: User's list
+  firstname: Firstname
+  lastname: Lastname
+  gender: Gender
+  status: Status
+  roles: Roles
+  empty: No user registered in our database
+  delete: Delete
+  enabled: enabled
+  locked: locked
+  lock_label: Disable user
+  unlock_label: Activate user
+role:
+  title: Change user's role
+  username: Username :
+  current_role: Actuals roles :
+  select_role: Select user's role
+  save: Save changes

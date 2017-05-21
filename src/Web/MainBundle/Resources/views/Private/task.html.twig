@@ -1,0 +1,146 @@
+{% extends 'MainBundle::layout.html.twig' %}
+{% block meta %}
+    <meta name = "{% trans from 'refer' %} home.title {% endtrans %}" >
+    <meta name = "keywords" content = "{% trans from 'refer' %} home.description {% endtrans %}" >
+{% endblock %}
+{% block title %}
+    Semantica Technologies Corporation - STC
+{% endblock %}
+
+
+{% block mycss %}
+    <link rel="stylesheet" href="{{ asset('components/cssbase/datatablehelp.css') }}">
+    <link rel="stylesheet" href="{{ asset('components/cssbase/datatablehelp2.css') }}">
+    <style>
+
+        strong{
+            font-weight: bold;
+        }
+        footer{
+            bottom: 0;
+            width: 100% !important;
+        }
+        .mega-menu{
+            z-index: 9999999999999999999999999999 !important;
+        }
+        #zone_table{
+            height: 352px;
+            overflow-y: auto;
+        }
+
+    </style>
+{% endblock %}
+
+{% block main %}
+    {{ parent() }}
+    <div class="row" id="main_task">
+        <div class="col s12">
+            <div class="col s12 m4">
+                <br>
+                <ul class="collection with-header">
+                    <li class="collection-header"><h4>{% trans from 'forms' %} form.Task.title {% endtrans %}</h4></li>
+                    {% for item in items %}
+                        <li class="collection-item">
+
+                            <div>
+                                <a href="{{ '#modal_task'~item.id }}" class="black-text">
+                                    {{ item.libelle }}  &nbsp; &nbsp; <strong class="green-text"> {{ item.rate~'%' }}</strong>
+                                </a>
+                                <div id="{{ 'modal_task'~item.id }}" class="modal modal-fixed-footer">
+                                    <div class="modal-content black-text">
+                                        <h4>{% trans from 'forms' %} form.Task.more {% endtrans %}</h4>
+                                        <p>
+                                            <strong>
+                                                {% trans from 'forms' %} form.Task.libelle {% endtrans %} :
+                                            </strong>
+                                            <br>
+                                            <span>
+                                                {{ item.libelle }}
+                                            </span>
+                                        </p>
+                                        <p>
+                                            <hr>
+                                            <strong>
+                                                {% if item.status==0 %}
+                                                    {% trans from 'forms' %} form.Task.nofinish {% endtrans %} :
+                                                {% else %}
+                                                    {% trans from 'forms' %} form.Task.finish {% endtrans %} :
+                                                {% endif %}
+                                            </strong>
+                                            <br>
+                                            <span>
+                                                {% if item.status==0 %}
+                                                    <div class="progress">
+                                                        <div class="determinate" style="width: 1%">1%</div>
+                                                    </div>
+                                                {% else %}
+                                                    <div class="progress">
+                                                        <div class="determinate" style="width: {{ item.rate~'%' }}"> {{ item.rate~'%' }}</div>
+
+                                                    </div>
+                                                {% endif %}
+                                            </span>
+                                        </p>
+                                        <p>
+                                            <hr>
+                                            <strong>
+                                                {% trans from 'forms' %} form.base.date {% endtrans %} :
+                                            </strong>
+                                            <br>
+                                            <span>
+                                                {{ item.date|date('d-m-y') }}
+                                            </span>
+                                        </p>
+                                        <p>
+                                            <hr>
+                                            <strong>
+                                                {% trans from 'forms' %} form.base.description {% endtrans %} :
+                                            </strong>
+                                            <br>
+                                            <span>
+                                                {{ item.description|raw }}
+                                            </span>
+                                        </p>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Agree</a>
+                                    </div>
+                                </div>
+                                <a href="{{ path('main_projet_task',{id:id, id2:item.id}) }}" class="secondary-content link_a">
+                                    <i class="material-icons">remove_red_eye</i>
+                                </a>
+                            </div>
+                        </li>
+                    {% endfor %}
+
+                </ul>
+            </div>
+            <div class="col s12 m8 " id="corp_task">
+                {% if id2 is defined and id2>0 %}
+                    {{  render(controller('MainBundle:Inc:commit',{task_id:id2})) }}
+                {% else %}
+                    <br> <br> <br>
+                    <center>
+                        <h4> {% trans from 'private' %} commit.empty {% endtrans %} </h4>
+                    </center>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
+
+{% block myjs %}
+    <script>
+        $(document).ready(function() {
+            var elt ={
+                modal: $('.modal'),
+                link: $('.link_a')
+            };
+            elt.link.click(function(){
+                window.location.href = $(this).attr('href');
+            });
+            elt.modal.modal();
+        } );
+    </script>
+{% endblock %}

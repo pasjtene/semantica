@@ -56,7 +56,6 @@ footer{
 #slide{
   margin: 0% !important;
   padding: 0% !important;
-<<<<<<< HEAD
   @media screen and (min-width: 736px) {
     height: 400px !important;
   }
@@ -74,18 +73,15 @@ footer{
       padding: 0% !important;
       margin: 0% !important;
     }
-=======
   div{
     margin: 0% !important;
     padding: 0% !important;
   }
   img{
     max-width: 100% !important;
->>>>>>> danickBranch
   }
   @media screen and (min-width: 600px) {
     img{
-<<<<<<< HEAD
       height: 100% !important;
       max-width: 100% !important;
       max-height: 400px !important;
@@ -156,17 +152,13 @@ footer{
 
 
   @media screen and (max-width: 1000px) {
-=======
         height: 400px !important;
       }
   }
   @media screen and (max-width:600px)  {
->>>>>>> danickBranch
-
       img{
         max-height: 400px !important;
       }
-<<<<<<< HEAD
     }
   }
 
@@ -226,12 +218,6 @@ footer{
   }
   */
 
-=======
-
->>>>>>> danickBranch
-
-
-
 .fixed
 {
   position:fixed;
@@ -257,9 +243,6 @@ footer{
 
 }
 
-<<<<<<< HEAD
-=======
-
 .fixNavigation{
   z-index: 9999;
   position: fixed !important;
@@ -269,4 +252,4 @@ footer{
   width: 100% !important; /* <-- Largeur de votre site */
   height: 70px !important;
 }
->>>>>>> danickBranch
+

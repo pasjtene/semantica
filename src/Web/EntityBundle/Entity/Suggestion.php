@@ -127,4 +127,19 @@ class Suggestion extends BaseInterface
     {
         return $this->user;
     }
+
+    public function truncate($string, $length){
+        $value =null;
+        $tab = str_split($string);
+        for($i=0;$i<strlen($string);$i++)
+        {
+            $value .=$tab[$i];
+            if($i==($length-1))
+            {
+                $value .="[...]";
+                return $value;
+            }
+        }
+        return $value;
+    }
 }

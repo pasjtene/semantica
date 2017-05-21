@@ -1,0 +1,48 @@
+about:
+  title: ABOUT STC
+  corporate: Corporate Information
+  news: Newsroom
+  investor: Investor Relation
+  carreers: Careers
+  contact: Contact Information
+
+
+education:
+  title: EDUCATION
+  training: Trainning
+  certification: Certifications
+  universite: STC University
+  freeonline: Free Online Trainning
+
+
+
+site:
+  title: STC SITES
+  url: semanticatechnologies.com
+  dev: DevCentral
+  support: Support Portal
+  partner: Partner Central
+  lab: Labs
+
+
+preference:
+  title: PREFERENCES
+  corporate: Corporate Information
+  login: Login
+  email: Email Preference
+
+
+
+connect:
+  title: CONNECT WITH US
+  twitter: Twitter
+  link: Lindln
+  facebook: Facebook
+  youtube: Youtube
+  devcentral: DevCentral
+corporigh:
+  title: C 2017 STC Development. Inc. All rights reserved.
+  link: policies
+  other: Trademark
+
+

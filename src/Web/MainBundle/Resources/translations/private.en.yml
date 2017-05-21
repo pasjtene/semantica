@@ -20,8 +20,9 @@ commit:
   notification: Comment sent successfully
 project:
   title: Title
+  back: Back
+  file_list: Files List
   description: Description
-  date: Date
   date: Date
   code: Code
   file: Upload file
@@ -32,7 +33,7 @@ project:
   rejects: Rejects
   ready: Ready
   delivered: Delivered
-  accepted: Accepté
+  accepted: Accepted
   finish: Finish
   run: Budget run-down
   close: Close
@@ -40,6 +41,14 @@ project:
   status: Status
   delete: Delete
   empty: No projects are saved or any projects match your search
+  comment: Satus comment
+  company: Company
+  base_information: Base Informations
+  client_information: Client  Informations
+  tab1: Informations
+  tab2: Participator
+  tab3: Commit
+  tab4: Planning
 comment:
   project: Project
   reply: Reply
@@ -48,14 +57,3 @@ comment:
   date: Date
   description: Description
   empty: No Comment are saved or any Comments match your search
-user:
-  firstname: Firstname
-  lastname: Lastname
-  gender: Gender
-  status: Status
-  roles: Roles
-  empty: No user registered in our database
-  delete: Delete
-  enabled: enabled
-  locked: locked
-
