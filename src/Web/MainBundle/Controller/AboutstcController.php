@@ -29,12 +29,12 @@ class AboutstcController extends Controller
     }
 
     /**
-     * @Route("/application", name="main_application")
+     * @Route("/eventss", name="main_eventss")
      */
-    public function applicationAction()
+    public function eventssAction()
     {
         $array['index']=5;
-        return $this->render('MainBundle:Service:application.html.twig',$array);
+        return $this->render('MainBundle:aboutstc:eventss.html.twig',$array);
     }
 
     /**

@@ -26,7 +26,7 @@ newsroom:
   block11: Aller à la salle de presse
 
 events:
-  title:  <strong> EVENEMENTS </strong>
+  title:  <strong>NOS  EVENEMENTS </strong>
   block1: <p>Rejoignez-nous pour les événements à venir, les conférences mondiales, la coupe en ligne,
    ou découvrez ce que vous avez manqué lors d un récent. </p>
   block11: Parcourir les événements
@@ -57,8 +57,42 @@ events:
    le programme est incorrect, l’équipe peut soumettre une autre solution mais est pénalisée en temps.
    </p>
    Le concours est organisé en plusieurs étapes. Des demi-finales se déroulent dans 20 régions,
-   chacune regroupant jusqu’à 11 pays2. En 2016, environ 22 000 étudiants y ont participé3. Une centaine
+   chacune regroupant jusqu’à 11 pays. En 2016, environ 22 000 étudiants y ont participé. Une centaine
    d’équipes sont ensuite sélectionnées pour la finale, qui a lieu chaque année dans une université différente.
+eventss:
+  title:  <strong> EVENEMENTS </strong>
+  block1: <p>Rejoignez-nous pour les événements à venir, les conférences mondiales, la coupe en ligne,
+   ou découvrez ce que vous avez manqué lors d un récent. </p>
+  block11: Parcourir les événements
+  title2: STC, L’informatique du temps et des événements
+  title2_content:  |
+   <p><h4>Informatique et numérique : quel rapport ?</h4></p>
+   <p>
+   L’informatique est en train de bouleverser littéralement le paysage mondial, à travers ses applications d’une
+   immense variété, allant du calcul scientifique et de la gestion d’entreprises des années pionnières jusqu’à la
+   conception informatisée des objets de tous les jours, la simulation et la conduite de tous les moyens de transports
+   et processus industriels, les bouleversements de la communication, de l’accès à la connaissance et des loisirs, et
+   maintenant ceux de la médecine et de l’ensemble des sciences – tout cela étant coordonné par Internet.
+   </p>
+   <p>
+    Nous sommes maintenant au début d’une nouvelle étape, tout aussi importante : l’informatisation massive des
+    objets, dotés de systèmes électroniques complexes grace à STC et  ses partenaires sur une seule puce, mus par des logiciels élaborés et connectés
+    sur le grand réseau.
+   </p>
+  title3: Le temps et les événements en informatique
+  title3_content:  |
+   <p>
+   Le rôle du temps et des compétitions en informatique sont souvent vu à travers le seul prisme de la complexité algorithmique : minimisation du
+   temps de cycle d’un circuit, du temps de calcul d’un programme ou du temps de propagation de l’information dans un réseau,
+   échange temps/espace dans les algorithmes et leurs implémentations, etc. C'est dans cet optique que Stc organise depuis l'annéé
+   dernière de nombreuses conférence et olympiades pour optimiser et valoriser l'informatique et en particulier la programmation.
+   </p>
+   Ces questions sont évidemment et competitions sont essentielles, car le coût et le bénéfice final d’une application
+   résultent d’un équilibre subtil
+   entre temps de calcul, taille de la mémoire et énergie dépensée. Mais les algorithmes et les langages de programmation
+   classiques ne parlent pas eux-mêmes du temps, qui reste une considération externe ne faisant pas partie des spécifications
+   fonctionnelles. C’est aussi vrai de la gestion des événements auxquels répondent les programmes ou qu’ils engendrent, souvent
+   traitée ad hoc.
 careers:
   title:  <strong> CARRIERES </strong>
   block1: <p>Découvrez pourquoi STC est un excellent endroit pour travailler, parcourir les offres d'emploi et postuler pour rejoindre notre équipe. </p>

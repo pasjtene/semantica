@@ -22,7 +22,7 @@ newsroom:
   block1: <p>Explore company announcements, thought leadership, media appearances, and more.</p>
   block11: Go to the Newsroom
 events:
-  title:  <strong> EVENTS </strong>
+  title:  <strong> OURS EVENTS </strong>
   block1: <p>Join us for upcoming events, global conferences, online imagine cup,or discover what you may have missed at a recent one. </p>
   block11: Browse Events
   title2: STC Computer Olympics
@@ -61,9 +61,43 @@ events:
    The program is incorrect, the team can submit another solution but is penalized in time.
    </p>
    The competition is organized in several stages. Semi-finals take place in 20 regions,
-   Each with up to 11 countries2. In 2016, some 22,000 students participated3. One hundred
+   Each with up to 11 countries. In 2016, some 22,000 students participated. One hundred
    Teams are then selected for the final, which takes place each
    Year in a different university.
+eventss:
+  title:  <strong> EVENTS </strong>
+  block1: <p>Rejoignez-nous pour les événements à venir, les conférences mondiales, la coupe en ligne,
+   ou découvrez ce que vous avez manqué lors d un récent. </p>
+  block11: Parcourir les événements
+  title2: STC, Computing time and events
+  title2_content:  |
+   <p>Computer science and digital technology: what is the relationship?</p>
+   <p>
+   Information technology is literally shaking up the world landscape through its
+   Immense variety, ranging from scientific computation and management of enterprises from the pioneering years to the
+   Computerized design of everyday objects, simulation and driving of all means of transport
+   And industrial processes, the upheaval of communication, access to knowledge and recreation, and
+   Now those of medicine and the whole of science - all this being coordinated on the Internet
+   </p>
+   <p>
+    We are now at the beginning of a new and equally important step: the massive computerization of
+    Objects, equipped with complex electronic systems thanks to STC and its partners on a single chip, driven by elaborate and connected software
+    On the large network.
+   </p>
+  title3: Computer time and events
+  title3_content:  |
+   <p>
+   The role of computer time and competitions is often seen through the prism of algorithmic complexity: minimization of
+   Cycle time of a circuit, the time of calculation of a program or the time of propagation of the information in a network,
+   Time / space exchange in algorithms and their implementations, etc. It is in this perspective that Stc organizes since the year
+   Last of many conferences and olympiads to optimize and to value the computer science and in particular the programming.
+   </p>
+   These issues are obviously and competitions are essential because the cost and the final benefit of an application
+   Result of a subtle balance
+   Between calculation time, memory size and energy expended. But algorithms and programming languages
+   Do not themselves speak of time, which remains an external consideration that is not part of the specifications
+   functional. This is also true of the management of the events to which the programs respond or which they generate, often
+   Ad hoc treatment.
 careers:
   title:  <strong> CAREERS </strong>
   block1: <p>Learn why STC is a great place to work, browse job openings, and apply to join our team. </p>
