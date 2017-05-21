@@ -19,7 +19,6 @@
         footer{
             bottom: 0;
             width: 100% !important;
-        {% if list==null or list|length < 3 %} position: fixed; {% endif %}
         }
         .mega-menu{
             z-index: 9999999999999999999999999999 !important;
@@ -27,6 +26,9 @@
         #zone_table{
             height: 352px;
             overflow-y: auto;
+        }
+        #vertical_nav ul{
+            position: absolute !important;
         }
     </style>
 {% endblock %}
@@ -53,7 +55,6 @@
                                        <option value="4" {% if code is defined and code=="4" %} selected {% endif %}> {% trans from 'private' %} project.break  {% endtrans %}</option>
                                        <option value="5" {% if code is defined and code=="5" %} selected {% endif %}> {% trans from 'private' %} project.run  {% endtrans %}</option>
                                    </select>
-                                   <label>{% trans from 'private' %} project.status {% endtrans %}</label>
                                </div>
                            </div>
 
@@ -130,7 +131,7 @@
             }
 
             elt.modal.modal();
-           elt.select.material_select();
+           //elt.select.material_select();
             elt.code.change(function(){
                 elt.form.submit();
             });

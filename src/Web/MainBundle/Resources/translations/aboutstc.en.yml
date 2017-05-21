@@ -1,25 +1,3 @@
-aboutstc:
-  explore_our_service: Explore our services
-  our_service:  ABOUT US
-  our_content:  |
-   <h3></BR>STC is your end-to-end partner in digital transformation.
-   We offer services and solutions necessary to help clients succeed holistically.</h3></br>
-  explore_our_app: Explore our applications
-  app_service: APPLICATION SERVICES
-  app_content:  |
-     <h3></BR>Maximizing the value of your applications.</h3>
-     Gaining the most from your IT investments and driving business growth requires effective IT management.</br></br>
-  explore_our_business: Explore our business
-  business_service: BUSINESS CONSULTING
-  business_content:  |
-     <h3></BR>Helping transform your business through a collaborative approach.</h3>
-     As a leader, you must continuously cope with ongoing change. </br></br>
-  explore_our_infrast: Explore our Infrastructure
-  infrast_service: INFRASTRUCTURE SERVICES
-  infrast_content:  |
-     <h3></BR>Bringing the best to your IT infrastructure.</h3>
-     Global competition, changing regulations, shifting customer demands, limited resources, capacity challenges,
-     and budget constraints you've got a lot on your plate.</br></br>
 leadership:
   title:  <strong> ABOUT STC </strong>
   our_content: <p>Get advice on building and improving your IT leadership skills with our expertise.</p>
@@ -39,138 +17,169 @@ leadership:
   our_content3:  |
     Our managed outsourcing services help organizations maintain focus on their core operations while
     we manage their offshore software outsourcing, application management, application outsourcing and testing outsourcing needs.
+aboutstcc:
+  title:  <strong> LEARN MORE ABOUT STC </strong>
+  block11: En savoir plus sur STC
+  title1: The Founder and CEO
+  our_content1:  |
+   Semantica Technologies Corporation (STC) is a multinational company operating in the field of information technology
+   And communication (ICT), which was launched in 2016 under the patronage of its promoter Pascal JONDZO TENE. Its objective is to
+   To provide jobs for young developers and to support Cameroon in its process of emergence
+   The 2035 horizon via the digital economy.
+  title2: Area of ​​expertise
+  our_content2:  |
+   Since its creation, STC has been a specialist in the global IT department
+   Companies. We offer innovative solutions in various fields such as shops,
+   Schools, pharmacies, construction, insurance, microfinance and much more ...
+  title3: Relations with our Customers
+  our_content3:  |
+   In a working environment where new technologies, especially computer
+   A predominant position, we have put in place contracts specific to your needs. Standard or specific software,
+   Telephone support, Maintenance of your IT structure, Web design, we have the answer to your needs.
+   <p>
+   We establish a true partnership relationship with our customers, implying proximity and mutual trust.
+   We position ourselves as a single point of contact and can answer all your expectations concerning your system
+   Information, from private solutions to cloud solutions.
+   </p>
 newsroom:
-  title:  <strong> NEWSROOM </strong>
+  title:  <strong> Writing </strong>
+  titlee:  <strong> NEWSROOM </strong>
   block1: <p>Explore company announcements, thought leadership, media appearances, and more.</p>
   block11: Go to the Newsroom
+  title2: Young adults very fond of online entertainment services in Cameroon
+  title2_content:  |
+   <p>
+   Cameroon, 4 May 2017 - This new section of the STCtendances survey reveals that young Cameroonian adults between the ages of 18 and
+   24-year-olds are significantly more likely than the older ones to entertain themselves online. Young adults are 84% watching
+   70% of the web, more than one in two to listen to music continuously (53%) or to deposit
+   Photos (52%) or videos on the Internet (24%). They are also more likely to pay for online content (47%
+   Or download paid movies or series and 39% download paid music) than all other age groups
+   Interviewed in this survey.
+   </p>
+   <p>
+   The survey also revealed that 18-24 users download more applications developed by STC
+   (37% compared to 20% for all Cameroonian adults), whether on a smart phone or
+   A digital tablet
+   </p>
+  title3: Online Government, Cameroonians increasingly comfortable with online services
+  title3_content:  |
+   <p><strong>The young Afique unveils a new section of the survey STCtendances 2017 on the government online</strong></p>
+   <p>
+   Cameroon, January 25, 2017 - This new STCtendances survey brochure presents the habits and expectations of
+   ameroonians when it comes to interacting over the Internet with the government according to their needs and according to their requests.
+   Over the past year, 4 out of 10 Cameroonian adults (40%) say they have had the reflex to consult the Internet to obtain
+   Information on the services provided by the government, in relation to other available channels of delivery.
+   </p>
+   In the same proportion, 45% of Cameroonian Internet users have already completed a service request
+   Or an Internet-based approach. Finally, two-thirds of Internet users are of the opinion that it is easy to find information
+   Which they search on the websites of the ministries and agencies of the Government of Cameroon.
+newssroom:
+  title:  <strong> REDACTION </strong>
+  titlee:  <strong> Company Profile </strong>
+  block1: <P> Explorez les annonces de l'entreprise, pensez le leadership, les apparences des médias, et plus encore.</P>
+  block11: Aller à la salle de presse
+  title2:  The strength of commitment
+  title2_content:  |
+   <p>
+   Our two years of continued profitable growth are proof of our customers' trust,
+   The commitment of our members and the strength of our business model and the underlying principles that inspired
+   Our foundation.
+   </p>
+  title3: Maintaining the right balance between our three stakeholders
+  title3_content:  |
+   <p><strong>For our customers ...</strong></p>
+   <p>
+   We aim to be recognized by our customers as their partner and expert of choice. Through our service delivery
+   High quality, sector expertise, comprehensive services and intellectual property solutions,
+   We add value to core business and customer transformation projects.
+   </p>
+   <p><strong>For our members ..</strong></p>
+   We aim to be recognized by our professionals, whom we call "members", as a stimulating environment for
+   Build a career and a company that we are proud of. Our members find their greatest satisfaction in
+   Contribute to the success of our clients and support the well-being of the communities where we live and work.
+   <p><strong>For our shareholders ...</strong></p>
+   We aim to be recognized by our shareholders as a well-managed, financially sound,
+   superior. In fact, since our initial public offering in 2016, our share has been growing at an annual rate of 19%
+   on average. Learn more about our performance in the Investors section.
+
 events:
-  title:  <strong> EVENTS </strong>
-  block1: <p>Join us for upcoming events,global conferences, online imagine cup,or discover what you may have missed at a recent one. </p>
+  title:  <strong> OURS EVENTS </strong>
+  block1: <p>Join us for upcoming events, global conferences, online imagine cup,or discover what you may have missed at a recent one. </p>
   block11: Browse Events
+  title2: STC Computer Olympics
+  title2_content:  |
+   <p>
+   STC Olympiad in Informatics (STC Olympiad in Informatics) is a
+   Competition in computer science (algorithmic), bringing together high school
+   whole world.
+   </p>
+   <p>
+   Each country can send up to four candidates. Since the last year, their number is included
+   Between 299 and 308. The latter take part in two five-hour events which each have three
+   Problems of an algorithmic nature. The candidates  programs are then subjected to a battery of tests
+   To determine the score of each.
+   </p>
+  title3: STC International Collegiate Programming Contest
+  title3_content:  |
+   <p>
+   STC Web is an annual two-day conference event and one day of web development workshops.
+   The event is usually held in late September or early October in Yaoundé or its suburbs since 2016 and
+   Organized by our company and its partners.
+   </p>
+   <p>
+   The event brings together every year many speakers and specialists in their field:
+   Web standards, accessibility, ergonomics or design methods, but also on topical aspects
+   Such as network neutrality, data protection, web design, e-commerce.
+   </p>
+   <p><strong>PRINCIPLE:</strong></p>
+   <p>
+   LSTC-ICPC Is a team competition. Each team is made up of three people, but can only use one computer.
+   </p>
+   <p>
+   During the competition, the teams receive about ten problems of an algorithmic nature and have
+   Five hours to solve as much as possible. Concretely, the solution of a problem is to write
+   A program in C, C ++ or Java which is then automatically checked on a test dataset. When
+   The program is incorrect, the team can submit another solution but is penalized in time.
+   </p>
+   The competition is organized in several stages. Semi-finals take place in 20 regions,
+   Each with up to 11 countries. In 2016, some 22,000 students participated. One hundred
+   Teams are then selected for the final, which takes place each
+   Year in a different university.
+eventss:
+  title:  <strong> EVENTS </strong>
+  block1: <p>Rejoignez-nous pour les événements à venir, les conférences mondiales, la coupe en ligne,
+   ou découvrez ce que vous avez manqué lors d un récent. </p>
+  block11: Parcourir les événements
+  title2: STC, Computing time and events
+  title2_content:  |
+   <p>Computer science and digital technology: what is the relationship?</p>
+   <p>
+   Information technology is literally shaking up the world landscape through its
+   Immense variety, ranging from scientific computation and management of enterprises from the pioneering years to the
+   Computerized design of everyday objects, simulation and driving of all means of transport
+   And industrial processes, the upheaval of communication, access to knowledge and recreation, and
+   Now those of medicine and the whole of science - all this being coordinated on the Internet
+   </p>
+   <p>
+    We are now at the beginning of a new and equally important step: the massive computerization of
+    Objects, equipped with complex electronic systems thanks to STC and its partners on a single chip, driven by elaborate and connected software
+    On the large network.
+   </p>
+  title3: Computer time and events
+  title3_content:  |
+   <p>
+   The role of computer time and competitions is often seen through the prism of algorithmic complexity: minimization of
+   Cycle time of a circuit, the time of calculation of a program or the time of propagation of the information in a network,
+   Time / space exchange in algorithms and their implementations, etc. It is in this perspective that Stc organizes since the year
+   Last of many conferences and olympiads to optimize and to value the computer science and in particular the programming.
+   </p>
+   These issues are obviously and competitions are essential because the cost and the final benefit of an application
+   Result of a subtle balance
+   Between calculation time, memory size and energy expended. But algorithms and programming languages
+   Do not themselves speak of time, which remains an external consideration that is not part of the specifications
+   functional. This is also true of the management of the events to which the programs respond or which they generate, often
+   Ad hoc treatment.
 careers:
   title:  <strong> CAREERS </strong>
   block1: <p>Learn why STC is a great place to work, browse job openings, and apply to join our team. </p>
   block11: Explore Careers
-business:
-  title:  BUSINESS CONSULTING
-  block1: HELPING TRANSFORM YOUR BUSINESS THROUGH A COLLABORATIVE APPROACH
-  block1_content:  |
-     <P>
-     As a leader, you must continuously cope with ongoing change—whether transforming your business to take
-     advantage of new market opportunities, restructuring to improve operational efficiency, or responding to
-     new regulations and risks. This requires a rapid, proven and agile response, which ensures that the right people,
-      processes and technologies are in place to enable peak performance, no matter the competitive and economic conditions.
-     </P>
-     <P>
-     With STC business consulting, you have the expertise needed to help grow your business, drive revenue,
-     improve efficiency and become more agile. Founded in 2016, STC is among the leading end-to-end IT services
-     and business consultancy companies. We have the capabilities and scale required to combine cross-industry,
-     operational and technology expertise to successfully manage transformation and provide for lasting business
-     performance. We take a unique approach to consulting—listening and co-innovating with our clients to ensure lasting success.
-     </P>
-  block2:   Experience and expertise :
-  block2_content:  |
-     <ul>
-     <li>We helped a global cosmetics leader redefine its internal control policy that reduced risk exposures by almost
-     75% for its subsidiaries within many countries;</li>
-     </ul>
-     <ul>
-     <li>After a merger, we assisted a logistics leader in updating its global supply chain, centralizing its
-     financial organization and rationalizing the management of its cash flow within 8 months.;</li>
-     </ul>
-     <ul>
-     <li>We provided consulting support for a global insurance provider's implementation of a new sales approach and adoption of
-     digital tablets within just 6 months, resulting in greater customer interaction.</li>
-     </ul>
-application:
-  title:   APPLICATION SERVICES
-  block1: MAXIMIZING VALUE OF YOUR APPLICATIONS
-  block1_content:  |
-     <P>
-     Gaining the most from your IT investments and driving business growth requires effective management of enterprise
-     information systems. Tight IT budgets, increased IT complexity, time-to-market pressures and changing business
-     requirements make it challenging for organizations to ensure their applications are delivering maximum value.
-     </P>
-     <P>
-     STC’s application services—including application development, management, testing, portfolio management and
-     modernization—enable clients to overcome these challenges and drive business agility, transformation and cost
-     efficiencies. Our end-to-end services provide the technology and industry expertise, solutions, skills, frameworks
-     and processes our clients need to successfully build, run and evolve their enterprise applications.
-     </P>
-  block2:   Experience and expertise :
-  block2_content:  |
-
-     <ul>
-     <li>Empowered local teams backed by global resources with a strong track record of quality delivery and high client satisfaction;</li>
-     </ul>
-     <ul>
-     <li>Flexible, best-fit global delivery model, including onsite, onshore, nearshore and offshore options;</li>
-     </ul>
-     <ul>
-     <li>Standardized productivity tools and processes;</li>
-     </ul>
-     <ul>
-     <li>Integrated, end-to-end service process model focused on business objectives and outcomes.</li>
-     </ul>
-inf:
-  title:  INFRASTRUCTURE SERVICES
-  block1: BRINGING THE BEST OF YOUR IT INFRASTRUCTURE
-  block1_content:  |
-     <P>
-     Global competition, changing regulations, shifting customer demands, limited resources,
-     capacity challenges, and budget constraints you've got a lot on your plate. You shouldn't have
-     to worry about your infrastructure. That's our job. With the emergence of cloud computing, virtualization,
-     and mobility, STC is well aligned with market trends and demands. We offer the technology, processes, and people
-     clients need to transform their IT infrastructure, achieving efficiencies, cost savings and other strategic business outcomes.
-     </P>
-     <P>
-     We offer our clients energy-efficient green data centers, cloud computing and managed security services,
-     all supported by a unique enterprise service management toolset. These are just a few of the areas where our
-     technology, industry, and domain experts are driving innovation and operational improvements. In addition, STC
-     global delivery model, wide range of solutions, and contract terms provide clients with flexibility and choice in
-     an ever-changing market.
-     </P>
-  block2:  Experience and expertise :
-  block2_content:  |
-
-     <ul>
-     <li>
-     Quality delivery – STCs outcome-based delivery model and rigorous governance framework achieve the results you expect
-     </li>
-     </ul>
-     <ul>
-     <li>Choice and flexibility – STC offers a wide spectrum of innovative, IP-based solutions that are designed for
-     clients of all sizes and adaptable to their unique needs;</li>
-     </ul>
-     <ul>
-     <li>
-     Transforming creativity into a commodity – STC professionals provide industry leadership through our
-     cost-effective, innovative, and energy-efficient service centers.
-     </li>
-     </ul>
-our:
-  title:  ABOUT US
-  block1: OURS SERVICES
-  block1_content:  |
-     STC is one of the few global firms with the talent, scale and end-to-end services and solutions necessary to help
-     clients succeed holistically. Our client proximity model fosters a deep understanding of clients’ businesses and
-     strong relationships to build best-fit innovative digital solutions, supported by our global delivery model that
-      brings forward industry and technology expertise.
-  block2:  Our services include:
-  block2_content:  |
-
-     <ul>
-     <li>High-end business and IT consulting with a focus on digital;</li>
-     </ul>
-     <ul>
-     <li>Systems integration to connect legacy assets with digital business and operating models;</li>
-     </ul>
-     <ul>
-     <li>Transformational outsourcing to improve both how they run and change their organizations;</li>
-     </ul>
-     <ul>
-     <li>Intellectual property that acts as a digital business accelerator.</li>
-     </ul>
-
-
-
