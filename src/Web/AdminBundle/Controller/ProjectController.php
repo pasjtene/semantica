@@ -36,17 +36,27 @@ class ProjectController extends Controller
      */
     public function deleteAction($id)
     {
-        $em = $this->getDoctrine()->getManager();
+       
+		$em = $this->getDoctrine()->getManager();
         /** @var Projet $project */
         $project = $em->getRepository("EntityBundle:Projet")->find($id);
         $files = new Files();
         if($project->getFiles()!=null)
         {
-            $files->delete('',$project->path());
+            /** @var FileProjet $file */
+            foreach($project->getFiles()  as $file)
+            {
+                $files->delete('',$file->path());
+                $em->remove($file);
+                $em->flush();
+                $em->detach($file);
+            }
+
         }
         $em = $this->getDoctrine()->getManager();
         $em->remove($project);
         $em->flush();
+		
 
         return $this->redirect($this->generateUrl('admin_homepage'));
     }
