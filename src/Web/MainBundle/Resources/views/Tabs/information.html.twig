@@ -189,7 +189,7 @@
                         {% set href= "#project1A"~file.hashname %}
                         {% set idhref = "project1A"~file.hashname %}
                         <li class="collection-item ">
-                            <li class="collection-item"><div>{{ project.truncate(file.name,15) }}<a href="{{ href }}" class="secondary-content"><i class="material-icons">attach_file</i></a></div></li>
+                            <li class="collection-item"><div>{{ items.truncate(file.name,15) }}<a href="{{ href }}" class="secondary-content"><i class="material-icons">attach_file</i></a></div></li>
                         </li>
                         <div id="{{ idhref }}" class="modal  modal-fixed-footer">
                             <div class="modal-content">
