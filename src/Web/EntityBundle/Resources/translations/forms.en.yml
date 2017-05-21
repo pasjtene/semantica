@@ -95,6 +95,15 @@ form:
     identity: Identity
     rate: Rate
     status: Status
+    new: New task
+    tasks: Tasks
+    label: Label:
+    description: Description:
+    tstatus: Task status:
+    evolution: Task evolution
+    pending: Pending
+    progress: In progress
+    done: Done
   user:
     email: Email adress
     placeholder_email:  Your email address
