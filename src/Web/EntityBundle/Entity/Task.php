@@ -46,7 +46,7 @@ class Task extends BaseInterface
     /**
      * @var string
      * @Assert\NotBlank(message="task.status.NotBlank")
-     * @ORM\Column(name="status", type="boolean")
+     * @ORM\Column(name="status", type="string", length=255)
      */
     private $status;
 
@@ -189,10 +189,11 @@ class Task extends BaseInterface
         return $this->rate;
     }
 
+
     /**
      * Set status
      *
-     * @param boolean $status
+     * @param string $status
      *
      * @return Task
      */
@@ -206,7 +207,7 @@ class Task extends BaseInterface
     /**
      * Get status
      *
-     * @return boolean
+     * @return string
      */
     public function getStatus()
     {

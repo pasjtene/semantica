@@ -42,15 +42,18 @@
     <form action="{{ path('admin_projet_edit', {id:id}) }}" method="post">
         <div class="modal-content">
                 <div class="input-field col s12">
+                    <label for="user-choice">Select a user</label>
+                    <br><br>
                     <select name="user-choice" id="user-choice" required>
                         {% for user in users %}
                             <option value="{{ user.id }}">{{ user.firstname }} {{ user.lastname }}</option>
                         {% endfor %}
                     </select>
-                    <label for="user-choice">Select a user</label>
+                    <br>
                 </div>
 
                 <div class="input-field col s12">
+
                     <textarea id="roles" name="roles" class="materialize-textarea" required placeholder="Software architect, Web designer, Project manager, etc."></textarea>
                     <label for="roles">Roles for this project :</label>
                 </div>
@@ -69,8 +72,8 @@
                 <input type="hidden" name="historicid" id="historic-id" value="0"/>
         </div>
         <div class="modal-footer">
-            <button class="btn waves-effect waves-light btn-flat green white-text" type="submit" name="action">Submit<i class="material-icons right">send</i></button>
-            <button class=" modal-action modal-close waves-effect waves-green btn-flat blue white-text">{% trans from 'forms' %} form.project.close {% endtrans %}</button>
+            <button class="waves-effect waves-green btn-flat" type="submit" name="action">Submit<i class="material-icons right">send</i></button>
+            <button class=" modal-action modal-close waves-effect waves-green btn-flat">{% trans from 'forms' %} form.project.close {% endtrans %}</button>
         </div>
     </form>
 </div>

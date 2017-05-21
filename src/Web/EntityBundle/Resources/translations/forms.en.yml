@@ -59,6 +59,9 @@ form:
     enddate: End date
     new: New planning
     empty: No planning  register
+    task: Task
+    tasknb: Task numbers
+    detail: more detail
   project:
     title: Title
     placeholder_title: Give the title for your projet
@@ -95,6 +98,19 @@ form:
     identity: Identity
     rate: Rate
     status: Status
+    title: Task List
+    more: More detail
+    finish: Complete
+    nofinish: Incomplete
+    new: New task
+    tasks: Tasks
+    label: Label:
+    description: Description:
+    tstatus: Task status:
+    evolution: Task evolution
+    pending: Pending
+    progress: In progress
+    done: Done
   user:
     email: Email adress
     placeholder_email:  Your email address
