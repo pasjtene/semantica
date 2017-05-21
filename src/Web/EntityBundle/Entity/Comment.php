@@ -22,31 +22,19 @@ class Comment extends BaseInterface
      */
     protected $id;
 
-    /**
-     * @Assert\Valid()
-     * @ORM\ManyToOne(targetEntity="Web\EntityBundle\Entity\Projet",cascade={"persist"})
-     * @ORM\JoinColumn(nullable=false)
-     */
-    private $project;
 
-    /**
-     * @Assert\Valid()
-     * @ORM\ManyToOne(targetEntity="Web\EntityBundle\Entity\Task",cascade={"persist"})
-     * @ORM\JoinColumn(nullable=false)
-     */
-    private $task;
 
     /**
      * @Assert\Valid()
      * @ORM\ManyToOne(targetEntity="Web\EntityBundle\Entity\User",cascade={"persist"})
-     * @ORM\JoinColumn(nullable=false)
+     * @ORM\JoinColumn(nullable=true)
      */
     private $user;
 
     /**
      * @Assert\Valid()
      * @ORM\ManyToOne(targetEntity="Web\EntityBundle\Entity\Participator",cascade={"persist"})
-     * @ORM\JoinColumn(nullable=false)
+     * @ORM\JoinColumn(nullable=true)
      */
     private $participator;
 
@@ -67,53 +55,7 @@ class Comment extends BaseInterface
         return $this->id;
     }
 
-    /**
-     * Set project
-     *
-     * @param \Web\EntityBundle\Entity\Projet $project
-     *
-     * @return Comment
-     */
-    public function setProject(\Web\EntityBundle\Entity\Projet $project)
-    {
-        $this->project = $project;
 
-        return $this;
-    }
-
-    /**
-     * Get project
-     *
-     * @return \Web\EntityBundle\Entity\Projet
-     */
-    public function getProject()
-    {
-        return $this->project;
-    }
-
-    /**
-     * Set task
-     *
-     * @param \Web\EntityBundle\Entity\Task $task
-     *
-     * @return Comment
-     */
-    public function setTask(\Web\EntityBundle\Entity\Task $task)
-    {
-        $this->task = $task;
-
-        return $this;
-    }
-
-    /**
-     * Get task
-     *
-     * @return \Web\EntityBundle\Entity\Task
-     */
-    public function getTask()
-    {
-        return $this->task;
-    }
 
     /**
      * Set user

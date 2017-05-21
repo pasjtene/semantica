@@ -12,6 +12,7 @@ use Symfony\Component\Security\Core\Authentication\Token\UsernamePasswordToken;
 use Symfony\Component\Security\Core\Exception\AccountStatusException;
 use Symfony\Component\Validator\Constraints\DateTime;
 use Web\EntityBundle\Entity\Comment;
+use Web\EntityBundle\Entity\Commit;
 use Web\EntityBundle\Entity\CommitHistoric;
 use Web\EntityBundle\Entity\FileProjet;
 use Web\EntityBundle\Entity\Files;
@@ -113,28 +114,40 @@ class PrivateController extends Controller
             if($code!="")
             {
                 /** @var Projet $projet */
-                $projet =  $em->getRepository("EntityBundle:Projet")->findOneBycode($code);
-                $list = $em->getRepository("EntityBundle:CommitHistoric")->findBy(['project'=>$projet],['id'=>'DESC']);
+                $projet =  $em->getRepository("EntityBundle:Projet")->find($code);
+
+                /** @var User $user */
+                $user = $this->getUser();
+                $em = $this->getDoctrine()->getManager();
+                $query =$em->getRepository("EntityBundle:CommitHistoric");
+                $data = ['title'=>'', "status"=>"" , "libelle"=>"", "project_id"=>$projet->getId(), "user_id"=>$user->getId(), "task_id"=>null];
+                $list = $query->getByparamUserAndProject($data);
+
+
+                //$list = $em->getRepository("EntityBundle:CommitHistoric")->findBy(['project'=>$projet],['id'=>'DESC']);
             }
             else{
-                $list = $em->getRepository("EntityBundle:CommitHistoric")->findBy([],['id'=>'DESC']);
+                /** @var User $user */
+                $user = $this->getUser();
+                $em = $this->getDoctrine()->getManager();
+                $query =$em->getRepository("EntityBundle:CommitHistoric");
+                $data = ['title'=>'', "status"=>"" , "libelle"=>"", "project_id"=>null, "user_id"=>$user->getId(), "task_id"=>null];
+                $list = $query->getByparamUser($data);
+                //$list = $em->getRepository("EntityBundle:CommitHistoric")->findBy([],['id'=>'DESC']);
             }
         }
         else
         {
-            $list = $em->getRepository("EntityBundle:CommitHistoric")->findBy([],['id'=>'DESC']);
+            /** @var User $user */
+            $user = $this->getUser();
+            $em = $this->getDoctrine()->getManager();
+            $query =$em->getRepository("EntityBundle:CommitHistoric");
+            $data = ['title'=>'', "status"=>"" , "libelle"=>"", "project_id"=>null, "user_id"=>$user->getId(), "task_id"=>null];
+            $list = $query->getByparamUser($data);
+
+            //$list = $em->getRepository("EntityBundle:CommitHistoric")->findBy([],['id'=>'DESC']);
         }
 
-        $listhelp = $list;
-        $list =null;
-        /** @var CommitHistoric $item */
-        foreach($listhelp as $item)
-        {
-            if($item->getProject()->getUser()->getId()==$user->getId())
-            {
-                $list[] =$item;
-            }
-        }
         $array['list'] = $list;
         $array['items'] = $items;
         $array['tabsindex'] = 3;
@@ -158,21 +171,24 @@ class PrivateController extends Controller
         {
             $val = $request->request;
             $message =$val->get('message');
-            $taskid =$val->get('task');
             $commit =$val->get('commit');
 
             /** @var User $user */
             $user= $em->getRepository("EntityBundle:User")->find($user->getId());
 
-            /** @var Projet $project */
-            $project= $em->getRepository("EntityBundle:Projet")->find($id);
+            /** @var Commit $commits */
+            $commits= $em->getRepository("EntityBundle:Commit")->find($id);
 
-            /** @var Task $task */
-            $task= $em->getRepository("EntityBundle:Task")->find($taskid);
+            /** @var CommitHistoric $commitHis */
+            $commitHis= $em->getRepository("EntityBundle:CommitHistoric")->findOneByCommit($id);
+
+
+            /** @var Projet $projet */
+            $projet= $commitHis->getTask()->getPlanning()->getProject();
 
             $comment = new Comment();
             $comment->setDate(new \DateTime())->setDescription($message);
-            $comment->setUser($user)->setProject($project)->setTask($task);
+            $comment->setUser($user)->setCommit($commits);
 
             $em->persist($comment);
             $em->flush();
@@ -185,7 +201,7 @@ class PrivateController extends Controller
             {
                 if($item->getProject()->getId()==$id)
                 {
-                    $body =  '<p> Code du projet : '.$project->getCode().
+                    $body =  '<p> Code du projet : '.$projet->getCode().
                         '<br/> Commit : '.$commit.
                         '<br/> Suggestion : '.$message.'</p>';
                     $code = $this->sendMail($item->getParticipator()->getUser()->getEmail(), $this->getParameter('mailer_user'), $message, "COMMENT STC(SEMANTICA TECHNOLOGIES CORPORATION)");

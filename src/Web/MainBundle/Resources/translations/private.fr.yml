@@ -18,6 +18,7 @@ commit:
   notification: Commentaire envoyé avec succès
   send: Envoyer
   do_comment: FAIRE UNE SUGGESTION
+  task: Tâche
 project:
   title: Titre
   description: Description

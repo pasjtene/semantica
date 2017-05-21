@@ -91,7 +91,7 @@
                                         <td>{{ item.commit.getValue(item.commit.description,30) }}</td>
                                         <td>{{ item.commit.date|date('d-m-Y h:m:s') }}</td>
                                         <td><a class="modal-trigger " href="{{ href }}"><i class="material-icons">view_headline</i></a></td>
-                                        <td><a class="modal-trigger waves-effect waves-light " href="{{ href2 }}">{% trans from 'private' %} commit.comment  {% endtrans %}</a></td>
+                                        <td><a class="modal-trigger waves-effect waves-light " href="{{ href2 }}"> <i class="material-icons">comment</i>   </a></td>
                                     </tr>
                                     <div id="{{ idhref }}" class="modal modal-fixed-footer">
                                         <div class="modal-content">
@@ -104,9 +104,19 @@
                                                     {% trans from 'private' %} commit.project  {% endtrans %}
                                                 </strong>
                                                 <br>
-                                            <span>
-                                                {{ item.project.description }}
-                                            </span>
+                                                <span>
+                                                    {{ item.task.planning.project.description }}
+                                                </span>
+                                            </p>
+                                            <p>
+
+                                                <strong>
+                                                    {% trans from 'private' %} commit.task  {% endtrans %} &nbsp;&nbsp; (<strong >{{ item.task.status }}</strong>) &nbsp;&nbsp; <strong class="green-text">{{ item.task.rate }} % </strong>
+                                                </strong>
+                                                <br>
+                                                <span>
+                                                    {{ item.task.description }}
+                                                </span>
                                             </p>
                                             <hr>
                                             <p>
@@ -152,11 +162,11 @@
                                         </div>
                                     </div>
                                     <div id="{{ idhref2 }}" class="modal modal-fixed-footer">
-                                         <form method="post" action="{{ path('main_private_commit_send',{id:item.project.id}) }}" enctype="multipart/form-data">
+                                         <form method="post" action="{{ path('main_private_commit_send',{id:item.commit.id}) }}" enctype="multipart/form-data">
                                             <div class="modal-content">
                                                 <center><h3>{% trans from 'private' %} commit.do_comment {% endtrans %}</h3></center>
                                                 <div class="modal-content">
-                                                    <input type="hidden" id="task" name="task" value="{{ item.task.id }}">
+                                                    <input type="hidden" id="task" name="task" value="{{ item.commit.id }}">
                                                     <div class="input-field col s12">
                                                         <i class="material-icons prefix">textsms</i>
                                                         <textarea id="message" name="message" class="materialize-textarea tinymce" ></textarea>
