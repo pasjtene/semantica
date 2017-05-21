@@ -20,6 +20,15 @@ class AboutstcController extends Controller
     }
 
     /**
+     * @Route("/aboutstcc", name="main_aboutstcc")
+     */
+    public function aboutstccAction()
+    {
+        $array['index']=5;
+        return $this->render('MainBundle:aboutstc:aboutstcc.html.twig',$array);
+    }
+
+    /**
      * @Route("/events", name="main_events")
      */
     public function eventsAction()
