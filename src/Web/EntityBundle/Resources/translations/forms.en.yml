@@ -33,6 +33,8 @@ form:
     new: New Commit
     empty: No commit  register
     auther: Auther
+    list: Commits  list
+    by: By
   historic:
     startdate: Start  date
     enddate: End date
