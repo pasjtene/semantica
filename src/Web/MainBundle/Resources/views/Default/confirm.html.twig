@@ -38,8 +38,9 @@
                     <input type="hidden" name="email" value="{{ email }}">
                     <div class="row">
                         <div class="input-field col s12 m12 ">
-                            {{ form_widget(form.pleasantries,{'attr':{'class':''}}) }}
                             {{ form_label(form.pleasantries) }}
+                            <br><br>
+                            {{ form_widget(form.pleasantries,{'attr':{'class':''}}) }}
                             <div class="error"  >{{ form_errors(form.pleasantries) }}</div>
                         </div>
                     </div>
@@ -65,7 +66,7 @@
 {% block myjs %}
     <script>
         $(function(){
-           $('select').material_select();
+          // $('select').material_select();
         });
     </script>
 {% endblock %}
