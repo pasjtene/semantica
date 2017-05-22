@@ -484,7 +484,13 @@ class PrivateController extends Controller
     public function project_commitAction($id)
     {
         $em = $this->getDoctrine()->getManager();
-        $items = $em->getRepository("EntityBundle:CommitHistoric")->findByproject($id);
+        /** @var User $user */
+        $user = $this->getUser();
+        $em = $this->getDoctrine()->getManager();
+        $query =$em->getRepository("EntityBundle:CommitHistoric");
+        $data = ['title'=>'', "status"=>"" , "libelle"=>"", "project_id"=>$id, "user_id"=>$user->getId(), "task_id"=>null];
+        $items = $query->getByparamUserAndProject($data);
+
         $array['items'] =$items;
         $array['id'] =$id;
         return $this->render('MainBundle:Tabs:commit.html.twig', $array);
