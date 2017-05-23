@@ -16,17 +16,18 @@
     {% if items!=null %}
         {% for item in items  %}
             <div class="card">
-                <table width="100%">
+                <strong>{{ item.commit.code }} </strong>
+                <p>
+                    {{ item.commit.description }}
+                    <br>
+                    <span class="right right-align grey-text">{% trans from 'forms' %} form.commit.auther {% endtrans %} : {{ item.commit.participator.user.firstname }} &nbsp;&nbsp; {{ item.commit.date|date('d-m-y') }}</span>
+                </p>
+                <table style="display: none;" width="100%">
                     <tr>
                         <td colspan="4">
-                            <strong>{{ item.commit.code }} </strong>
-                            <p>
-                                {{ item.commit.description }}
-                                <br>
-                                <span class="right right-align grey-text">{% trans from 'forms' %} form.commit.auther {% endtrans %} : {{ item.commit.participator.user.firstname }} &nbsp;&nbsp; {{ item.commit.date|date('d-m-y') }}</span>
-                            </p>
+
                         </td>
-                        <td colspan="2">
+                        {#<td colspan="2">
                             <a href="{{ '#modal_commit'~item.id }}" class="secondary-content tooltipped"    data-position="top" data-delay="50"  data-tooltip="Comment">  <i class="material-icons">comment</i> </a>
                             <div id="{{ 'modal_commit'~item.id }}" class="modal modal-fixed-footer">
                                 <form method="post" action="{{ path('main_private_commit_send',{id:item.commit.id}) }}" enctype="multipart/form-data">
@@ -52,7 +53,7 @@
                                     </div>
                                 </form>
                             </div>
-                        </td>
+                        </td>#}
                     </tr>
                 </table>
             </div>

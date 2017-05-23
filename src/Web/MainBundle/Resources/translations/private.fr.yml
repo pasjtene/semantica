@@ -50,6 +50,7 @@ project:
   tab2: Participateur
   tab3: Commit
   tab4: Planning
+  tab5: Comment
 comment:
   project: Projet
   reply: Réponse
@@ -57,4 +58,6 @@ comment:
   task: Tâche
   date: Date
   description: Description
-  empty: Aucun commentaire n'est enrgistré ou aucun commentaire ne correspont a votre recherche
+  empty: Aucun commentaire n'est enrgistré
+  empty_project: Aucun Projet n'est enrgistré
+  new: Nouveau commentaire
