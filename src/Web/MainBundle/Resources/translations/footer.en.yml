@@ -4,7 +4,7 @@ about:
   news: Newsroom
   investor: Investor Relation
   carreers: Careers
-  contact: Contact Information
+  explorecareers: Explore careers
 
 
 education:
@@ -13,7 +13,7 @@ education:
   certification: Certifications
   universite: STC University
   freeonline: Free Online Trainning
-
+  certifications: Certifications
 
 
 site:
@@ -30,6 +30,7 @@ preference:
   corporate: Corporate Information
   login: Login
   email: Email Preference
+  contact: Contact informations
 
 
 
@@ -41,8 +42,33 @@ connect:
   youtube: Youtube
   devcentral: DevCentral
 corporigh:
-  title: C 2017 STC Development. Inc. All rights reserved.
+  title: © 2017 STC Development. Inc. All rights reserved.
   link: policies
   other: Trademark
 
 
+contact:
+  title: CONTACT US !
+  cameroun: Cameroon
+  ville1: Douala-
+  ville1_content: Bonandjo, Meridien hotel
+  cameroun_phone: |
+   (+237)695223547
+   (+237)777823547
+   233453022
+
+  ville2: Yaounde-
+  ville2_content: Central Office, SNI building
+
+  etranger: Europe
+
+  london: London-
+  london_content: 250 london street
+  london_phone: (+44) 01920 635
+
+  paris: Paris-
+  paris_content: 45 rue saint jean
+  paris_phone: (+33) 1 452213
+
+  ville: Town
+  numero: Phone
