@@ -1,0 +1,91 @@
+{% extends 'MainBundle::layout.html.twig' %}
+{% block meta %}
+    <meta name = "{% trans from 'refer' %} home.title {% endtrans %}" >
+    <meta name = "keywords" content = "{% trans from 'refer' %} home.description {% endtrans %}" >
+{% endblock %}
+{% block title %}
+    Semantica Technologies Corporation - STC / Contact
+{% endblock %}
+
+{% block mycss %}
+    <style>
+
+    </style>
+{% endblock %}
+{% block header %}
+    {{ parent() }}
+    {% include 'MainBundle:Inc:slide.html.twig' %}
+{% endblock %}
+
+{% block  main %}
+    <div class="row" id="main_contact">
+
+        <div class="row">
+
+
+            <div class="section">
+                <h5 class="center-align"> {% trans from 'footer' %} contact.title {% endtrans %} </h5>
+                <br> <br>
+                <div class="col s12 m6" >
+                    <img width="1024"  src="{{ asset('data/img/contact.jpg') }}" alt="">
+                    <table>
+                        <tr>
+                             <th> {% trans from 'footer' %} contact.cameroun {% endtrans %} </th>
+                            <tr>
+                                <td width="400">
+
+                                     <h6><b>{% trans from 'footer' %} contact.ville {% endtrans %} </b></h6>
+                                     <p><b>{% trans from 'footer' %} contact.ville1 {% endtrans %}</b><i>{% trans from 'footer' %} contact.ville1_content {% endtrans %}</i></p>
+                                    <p><b>{% trans from 'footer' %} contact.ville2 {% endtrans %}</b><i>{% trans from 'footer' %} contact.ville2_content {% endtrans %}</i></p>
+                                    <br>
+
+
+                                </td>
+                                <td>
+                                    <h6><b>{% trans from 'footer' %} contact.numero {% endtrans %}</b></h6>
+                                    <p>{% trans from 'footer' %} contact.cameroun_phone {% endtrans %} </p>
+                                    <a href="http://camerounstc@yahoo.fr"><u>Email</u></a>
+
+
+                            </td>
+
+                            </tr>
+
+                        </tr>
+                        <tr>
+                            <th> {% trans from 'footer' %} contact.etranger {% endtrans %} </th>
+                        <tr>
+                            <td>
+
+                                <h6><b>{% trans from 'footer' %} contact.ville {% endtrans %} </b></h6>
+                                <p></p>
+                                <p><b>{% trans from 'footer' %} contact.london {% endtrans %}</b> <i>{% trans from 'footer' %} contact.london_content {% endtrans %}</i></p>
+                                <p><b>{% trans from 'footer' %} contact.paris {% endtrans %}</b> <i>{% trans from 'footer' %} contact.paris_content {% endtrans %}</i></p>
+                                <br>
+
+                            </td>
+                            <td>
+                                <h6><b>{% trans from 'footer' %} contact.numero {% endtrans %}</b></h6>
+                                <p>{% trans from 'footer' %} contact.london_phone {% endtrans %} </p>
+                                <p>{% trans from 'footer' %} contact.paris_phone {% endtrans %} </p>
+                                <a href="http://camerounstc@yahoo.fr"><u>Email</u></a>
+
+
+                            </td>
+
+                        </tr>
+                        </tr>
+
+                    </table>
+                </div>
+
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block myjs %}
+    <script>
+
+    </script>
+{% endblock %}
