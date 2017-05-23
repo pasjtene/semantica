@@ -12,6 +12,8 @@
                 <li><a href="{{ path('main_newproject') }}">{% trans from 'nav' %} nav.newprojet {% endtrans %}</a></li>
                 <li><a href="">{% trans from 'nav' %} nav.services {% endtrans %}</a></li>
                 <li><a href="">{% trans from 'nav' %} nav.about {% endtrans %}</a></li>
+                <li><a href="{{ path('app_locale') }}">{% trans from 'nav' %} nav.language2 {% endtrans %}</a></li>
+                <li><a href="{{ path('app_locale') }}">{% trans from 'nav' %} nav.language3 {% endtrans %}</a></li>
                 <li><a href="{{ path('app_locale') }}">{% trans from 'nav' %} nav.language {% endtrans %}</a></li>
             </ul>
         </nav>
@@ -103,8 +105,6 @@
                     </div>
                 </div>
             </li>
-            <li style="display: none;"><a  href="{{ path('app_locale') }}">{% trans from 'nav' %} nav.language {% endtrans %}</a></li>
-            <li style="float:right;"><a href="{{ path('app_locale') }}">{% trans from 'nav' %} nav.language {% endtrans %}</a></li>
         </ul>
     </nav>
 </div>
