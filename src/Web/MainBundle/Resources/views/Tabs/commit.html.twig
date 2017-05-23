@@ -2,12 +2,11 @@
 <table class="bordered highlight centered responsive-table">
     <thead>
     <tr>
+        <th>N°</th>
         <th>{% trans from 'forms' %} form.commit.code {% endtrans %}</th>
         <th>{% trans from 'forms' %} form.commit.auther {% endtrans %}</th>
         <th>{% trans from 'forms' %} form.base.description {% endtrans %}</th>
         <th>{% trans from 'forms' %} form.base.date {% endtrans %}</th>
-        <th>#</th>
-        <th>#</th>
     </tr>
     </thead>
 
@@ -15,12 +14,11 @@
     {% if items!=null %}
         {% for item in items %}
            <tr>
+               <td>{{ loop.index }}</td>
                <td>{{ item.commit.code }}</td>
-               <td>{{ item.participator.user.firstname }}</td>
+               <td>{{ item.commit.participator.user.firstname }}</td>
                <td>{{ item.commit.description }}</td>
                <td>{{ item.commit.date|date('d-m-y') }}</td>
-               <td><a href=""><i class="material-icons">remove</i></a></td>
-               <td><a href=""><i class="material-icons">edit</i></a></td>
            </tr>
         {% endfor %}
     {% else %}
