@@ -32,7 +32,7 @@ class LocaleController extends Controller
 
         // recuperer la locale courante de l'utilisateur
         $lastlanguage =$session->get('_locale')==null? $request->getLocale():$this->get('session')->get('_locale');
-        //definir recuperer l'adresse courant de l'utilisateur
+        // recuperer l'adresse courant de l'utilisateur
         $url = $request->headers->get('referer');
         //recuperer la lcale sans les espaces
         $language = trim($lastlanguage)=='fr'? 'en': 'fr';

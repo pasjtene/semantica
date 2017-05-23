@@ -18,6 +18,7 @@ commit:
   send: Send
   do_comment: MAKE A SUGGESTION
   notification: Comment sent successfully
+  task: Task
 project:
   title: Title
   back: Back

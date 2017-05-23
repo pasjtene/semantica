@@ -176,4 +176,46 @@ careers:
   title:  <strong> CARRIERES </strong>
   block1: <p>Découvrez pourquoi STC est un excellent endroit pour travailler, parcourir les offres d'emploi et postuler pour rejoindre notre équipe. </p>
   block11: Explorer les carrières
-
+  titles: CARRIERE A STC
+  descriptions: Description de carrière
+  descriptions_content: |
+   Au sein de STC, présent dans 2 pays dans le monde avec 68 000 collaborateurs, vous intégrez notre site du cameroun.
+   Les collaborateurs de notre site à yaoundé sont amenés à intervenir auprès des clients aussi bien dans le cadre de
+   mission de conseil et d’assistance que dans le cadre de projets à engagements réalisés au sein du site. Dans le
+   cadre de notre développement, nous recrutons des Ingénieur Etudes et Développement Confirmé PHP
+   Vous souhaitez intégrer une structure dynamique à taille humaine, tout en travaillant sur des projets ambitieux
+   et innovants.
+  responsability: Vos devoirs et responsabilités futures
+  responsability_content: |
+   Etude de besoin, rédaction de spécification fonctionnelle et technique ;
+   Développements en environnement PHP Symfony 2.xx ;
+   Définir et réaliser les phases et procédures de tests techniques et fonctionnels ;
+   Maintenance, corrections et évolutions.
+  quality: Qualités requises
+  quality_content: |
+   De formation Bac+3 ou équivalent, vous justifiez d'une expérience professionnelle d'au moins 2 ans dans un poste similaire
+   sur les technologies suivantes: PHP5/MYSQL, POO, WEBSERVICES, XSL, Connaissance en MySQL etc.
+    • Autonome, organisé et rigoureux, vous êtes force de proposition et aimez travailler en équipe,
+    • Capacité à monter en compétence rapidement sur le fonctionnel,
+    • Bon esprit d'analyse et d’équipe,
+    • Capacité d'encadrer des débutants et des juniors,
+    • Votre passion pour les métiers de l'informatique et votre sens du service sont autant d’atouts qui vous permettront
+   de mener à bien vos missions et d'évoluer au sein de notre société.
+explorecareers:
+  title: EXPLORER NOS CARRIERES
+  description: Carrières
+  description_content: |
+   Chez STC, nous sommes une équipe de bâtisseurs. Chacun de nos membres (ou employés) concourt
+   à bâtir sa propre entreprise.Une firme qui regroupe 68,000 professionnels présents dans 2 pays.
+   Fondée en 2016, STC est un chef de file des services en TI et en gestion des processus d’affaires
+   qui contribue au succès de ses clients. Nos clients  tout comme nos membres  peuvent compter sur
+   nos ressources mondiales, sur notre savoir-faire, sur notre stabilité et sur nos professionnels
+   chevronnés pour obtenir les résultats escomptés.
+  liste: Liste de carrières à STC:
+  car1:  Analyste programmeur;
+  car2:  Administrateur systèmes et réseaux;
+  car3:  Community manager;
+  car4:  Management de projet;
+  car5:  conception des systèmes d'informations.
+language:
+  langue: LANGUE

@@ -1,5 +1,9 @@
+{% set href2= "#project2"~id %}
+{% set idhref2 = "project2"~id %}
+
 <br>
-<a href="" class="waves-effect waves-light btn">{% trans from 'forms' %} form.participator.new {% endtrans %}</a>
+<a href="{{ href2 }}" class="waves-effect waves-light btn" id="btn-new-participator">{% trans from 'forms' %} form.participator.new {% endtrans %}</a>
+
 <table class="bordered highlight centered responsive-table">
     <thead>
     <tr>
@@ -19,9 +23,9 @@
                <td>{{ item.participator.code }}</td>
                <td>{{ item.participator.user.firstname }}</td>
                <td>{{ item.participator.user.email }}</td>
-               <td>{{ item.participator.user.roles }}</td>
-               <td><a href=""><i class="material-icons">remove</i></a></td>
-               <td><a href=""><i class="material-icons">edit</i></a></td>
+               <td>{{ item.participator.user.RoleString }}</td>
+               <td><a href="#" class="edit-participator" data-id="{{ item.id }}" data-url="{{ path('admin_projet_participator', {id:item.id}) }}"><i class="material-icons">edit</i></a></td>
+               <td><a href="#" class="delete-participator" data-id="{{ item.id }}"><i class="material-icons">delete</i></a></td>
            </tr>
         {% endfor %}
     {% else %}
@@ -34,4 +38,42 @@
     </tbody>
 </table>
 
+<div id="{{ idhref2 }}" class="modal modal-fixed-footer">
+    <form action="{{ path('admin_projet_edit', {id:id}) }}" method="post">
+        <div class="modal-content">
+                <div class="input-field col s12">
+                    <label for="user-choice">Select a user</label>
+                    <br><br>
+                    <select name="user-choice" id="user-choice" required>
+                        {% for user in users %}
+                            <option value="{{ user.id }}">{{ user.firstname }} {{ user.lastname }}</option>
+                        {% endfor %}
+                    </select>
+                    <br>
+                </div>
 
+                <div class="input-field col s12">
+
+                    <textarea id="roles" name="roles" class="materialize-textarea" required placeholder="Software architect, Web designer, Project manager, etc."></textarea>
+                    <label for="roles">Roles for this project :</label>
+                </div>
+
+                <div class="input-field col s12">
+                    <input type="date" id="start-date" name="start-date" class="datepicker" required/>
+                    <label for="start-date">Start date :</label>
+                </div>
+
+                <div class="input-field col s12">
+                    <input type="date" id="end-date" name="end-date" class="datepicker"/>
+                    <label for="end-date">End date :</label>
+                </div>
+
+                <input type="hidden" name="input-action" id="input-action" value="0"/>
+                <input type="hidden" name="historicid" id="historic-id" value="0"/>
+        </div>
+        <div class="modal-footer">
+            <button class="waves-effect waves-green btn-flat" type="submit" name="action">Submit<i class="material-icons right">send</i></button>
+            <button class=" modal-action modal-close waves-effect waves-green btn-flat">{% trans from 'forms' %} form.project.close {% endtrans %}</button>
+        </div>
+    </form>
+</div>

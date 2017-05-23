@@ -14,24 +14,43 @@
 
 <div class="col s12 grey lighten-3">
     {% if items!=null %}
-        {% for i in 1..10 %}
+        {% for item in items  %}
             <div class="card">
                 <table width="100%">
                     <tr>
                         <td colspan="4">
-                            <strong>Titre </strong>
-                            <p>Je suis une description  pour ce commit. je presente le changement  qui  c'est passé</p>
+                            <strong>{{ item.commit.code }} </strong>
+                            <p>
+                                {{ item.commit.description }}
+                                <br>
+                                <span class="right right-align grey-text">{% trans from 'forms' %} form.commit.auther {% endtrans %} : {{ item.commit.participator.user.firstname }} &nbsp;&nbsp; {{ item.commit.date|date('d-m-y') }}</span>
+                            </p>
                         </td>
                         <td colspan="2">
-                            <a href="{{ '#modal_commit'~i }}" class="secondary-content tooltipped"    data-position="top" data-delay="50"  data-tooltip="Comment">  <i class="material-icons">comment</i> </a>
-                            <div id="{{ 'modal_commit'~i }}" class="modal modal-fixed-footer">
-                                <div class="modal-content">
-                                    <h4>Modal Header</h4>
-                                    <p>A bunch of text</p>
-                                </div>
-                                <div class="modal-footer">
-                                    <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Agree</a>
-                                </div>
+                            <a href="{{ '#modal_commit'~item.id }}" class="secondary-content tooltipped"    data-position="top" data-delay="50"  data-tooltip="Comment">  <i class="material-icons">comment</i> </a>
+                            <div id="{{ 'modal_commit'~item.id }}" class="modal modal-fixed-footer">
+                                <form method="post" action="{{ path('main_private_commit_send',{id:item.commit.id}) }}" enctype="multipart/form-data">
+                                    <div class="modal-content">
+                                        <h4>{% trans from 'private' %} commit.do_comment {% endtrans %}</h4>
+
+                                            <div class="modal-content">
+                                                <div class="modal-content">
+                                                    <input type="hidden" id="task" name="task" value="{{ item.commit.id }}">
+                                                    <div class="input-field col s12">
+                                                        <i class="material-icons prefix">textsms</i>
+                                                        <textarea id="message" name="message" class="materialize-textarea tinymce" ></textarea>
+                                                        <label for="message">{% trans from 'home' %} main.message {% endtrans %}</label>
+                                                    </div>
+                                                    <br> <br>
+                                                </div>
+                                            </div>
+
+
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button  id="close" type="submit" class=" waves-effect waves-green btn-flat">{% trans from 'home' %} main.send {% endtrans %}</button>
+                                    </div>
+                                </form>
                             </div>
                         </td>
                     </tr>

@@ -29,3 +29,6 @@ fos_user_security:
     prefix:   /{_locale}
     requirements:
         _locale: en|fr
+
+fos_js_routing:
+    resource: "@FOSJsRoutingBundle/Resources/config/routing/routing.xml"

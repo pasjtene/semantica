@@ -35,7 +35,8 @@ form:
     new: Nouveau commit
     empty: Aucun commit enregistré
     auther: Auteur
-    list: Liste  des commits
+    list: Liste des commits
+    by: par
   historic:
     strartdate: Date de début
     endate: Date de fin
@@ -100,10 +101,15 @@ form:
     identity: Identifiant
     rate: Taux
     status: Statut
-    title: Liste des tâches
-    more: Plus de détail
-    finish: Achevé
-    nofinish: Non achevé
+    new: Nouvelle tâche
+    tasks: tâches
+    label: Intitulé:
+    description: Description:
+    tstatus: Statut:
+    evolution: Evolution
+    pending: En attente
+    progress: En cours
+    done: Terminé
   user:
     email: Adresse email
     placeholder_email:  Saisir votre adresse email

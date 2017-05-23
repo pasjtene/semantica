@@ -19,9 +19,10 @@ class CommitHistoricRepository extends \Doctrine\ORM\EntityRepository
             return $query->getQuery()->getSingleScalarResult();
         }
 
-        $query->select(['a','t','pr','u'])
-            ->leftJoin('a.project','pr')
+        $query->select(['a','t','pl','pr','u'])
             ->leftJoin('a.task','t')
+            ->leftJoin('t.planning','pl')
+            ->leftJoin('pl.project','pr')
             ->leftJoin('pr.user','u');
 
 
@@ -40,6 +41,115 @@ class CommitHistoricRepository extends \Doctrine\ORM\EntityRepository
             $query->andWhere('pr.id =:project_id OR  pr.id IS NULL');
             $query->andWhere('u.id =:user_id OR  u.id IS NULL');
             $query->andWhere('t.id =:task_id OR  t.id IS NULL');
+            $query->setParameters($parameters);
+            $query->addOrderBy('a.id','desc');
+            if($limit)
+            {
+                $page=$page<1?1:$page;
+                $query->setFirstResult(($page-1)*$limit)->setMaxResults($limit);
+            }
+        }
+
+        return $query->getQuery()->getResult();
+
+    }
+
+    public function  getByparamUserAndProject($data, $limit=20, $page=1, $count=false )
+    {
+        $query = $this->createQueryBuilder('a');
+        if($count)
+        {
+            $query->select('count(a.id)');
+            return $query->getQuery()->getSingleScalarResult();
+        }
+
+        $query->select(['a','t','pl','pr','u'])
+            ->leftJoin('a.task','t')
+            ->leftJoin('t.planning','pl')
+            ->leftJoin('pl.project','pr')
+            ->leftJoin('pr.user','u');
+
+
+        if($data!=null)
+        {
+
+            $parameters['project_id']=$data['project_id'];
+            $parameters['user_id']=$data['user_id'];
+
+            /*$query->Where('pr.title LIKE :title OR pr.title IS NULL');
+            $query->Where('pr.status LIKE :status OR pr.status IS NULL');
+            */
+            $query->andWhere('pr.id =:project_id OR  pr.id IS NULL');
+            $query->andWhere('u.id =:user_id OR  u.id IS NULL');
+            $query->setParameters($parameters);
+            $query->addOrderBy('a.id','desc');
+            if($limit)
+            {
+                $page=$page<1?1:$page;
+                $query->setFirstResult(($page-1)*$limit)->setMaxResults($limit);
+            }
+        }
+
+        return $query->getQuery()->getResult();
+
+    }
+    public function  getByparamProject($data, $limit=20, $page=1, $count=false )
+    {
+        $query = $this->createQueryBuilder('a');
+        if($count)
+        {
+            $query->select('count(a.id)');
+            return $query->getQuery()->getSingleScalarResult();
+        }
+
+        $query->select(['a','t','pl','pr','u'])
+            ->leftJoin('a.task','t')
+            ->leftJoin('t.planning','pl')
+            ->leftJoin('pl.project','pr')
+            ->leftJoin('pr.user','u');
+
+
+        if($data!=null)
+        {
+
+            $parameters['project_id']=$data['project_id'];
+
+
+            $query->andWhere('pr.id =:project_id OR  pr.id IS NULL');
+            $query->setParameters($parameters);
+            $query->addOrderBy('a.id','desc');
+            if($limit)
+            {
+                $page=$page<1?1:$page;
+                $query->setFirstResult(($page-1)*$limit)->setMaxResults($limit);
+            }
+        }
+
+        return $query->getQuery()->getResult();
+
+    }
+    public function  getByparamUser($data, $limit=20, $page=1, $count=false )
+    {
+        $query = $this->createQueryBuilder('a');
+        if($count)
+        {
+            $query->select('count(a.id)');
+            return $query->getQuery()->getSingleScalarResult();
+        }
+
+        $query->select(['a','t','pl','pr','u'])
+            ->leftJoin('a.task','t')
+            ->leftJoin('t.planning','pl')
+            ->leftJoin('pl.project','pr')
+            ->leftJoin('pr.user','u');
+
+
+        if($data!=null)
+        {
+
+            $parameters['user_id']=$data['user_id'];
+
+            $query->andWhere('u.id =:user_id OR  u.id IS NULL');
             $query->setParameters($parameters);
             $query->addOrderBy('a.id','desc');
             if($limit)

@@ -183,3 +183,49 @@ careers:
   title:  <strong> CAREERS </strong>
   block1: <p>Learn why STC is a great place to work, browse job openings, and apply to join our team. </p>
   block11: Explore Careers
+  titles: CAREERS AT STC
+  descriptions: Careers Description
+  descriptions_content: |
+   At STC, present in 2 countries around the world with 68,000 employees,
+   You integrate our site of cameroon. The collaborators of our site in yaounde are
+   To intervene with customers both within the framework of the
+   Advice and assistance in the context of projects with commitments made
+   Within the site. As part of our development, we recruit more Engineer
+   Studies and Development Confirmed PHP;
+   You want to integrate a dynamic structure on a human scale,
+   While working on ambitious and innovative projects.
+  responsability: Your future duties and responsibilities
+  responsability_content: |
+   Needs study, writing of functional and technical specification;
+   Developments in Symfony 2 PHP environment;
+   Define and carry out the technical and functional testing phases and procedures;
+   Maintenance, corrections and evolutions
+  quality: Quality Requises
+  quality_content: |
+   Bac + 5 or equivalent, you have professional experience
+   Of at least 2 years in a similar position, on the following technologies:
+   PHP5 / MYSQL, POO, WEBSERVICES, XSL, Knowledge in MySQL.
+   - Autonomous, organized and rigorous, you are force of proposal and like working as a team,
+   -  Ability to skill quickly on the functional,Good analytical and team spirit,
+   -  Ability to supervise beginners and juniors,
+   -  Your passion for IT and your sense of service are as Of assets that will
+    enable you to carry out your missions and to evolve in our company.
+
+explorecareers:
+  title: EXPLORE OUR CAREERS
+  description: Careers
+  description_content: |
+   At STC, we are a team of builders. Each of our members (or employees) concurs
+   To build its own business. A firm that brings together 68,000 professionals in 2 countries.
+   Founded in 2016, STC is a leader in IT services and business process management
+   Which contributes to the success of its clients. Both our customers and our members can count on
+   Our global resources, our know-how, our stability and our professionals
+   To achieve the desired results
+  liste: LIST OF CAREERS AT STC:
+  car1:  Analyst programmer;
+  car2:  Networks and systems administration;
+  car3:  Community manager;
+  car4:  Projet management;
+  car5:  Informations systems building.
+language:
+  langue: LANGUAGE

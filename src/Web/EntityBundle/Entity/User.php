@@ -235,10 +235,20 @@ use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
        *
        * @return array
        */
-    public static function getAppRole()
-    {
-        $array = [self::ROLE_USER, self::ROLE_STAFF, self::ROLE_ADMIN, self::ROLE_SUPER_ADMIN];
+      public static function getAppRole()
+      {
+          $array = [self::ROLE_USER, self::ROLE_STAFF, self::ROLE_ADMIN, self::ROLE_SUPER_ADMIN];
 
-        return $array;
-    }
+          return $array;
+      }
+
+      /**
+       * Get user's role as string
+       *
+       * @return string
+       */
+      public function getRoleString()
+      {
+          return implode(", ", $this->roles);
+      }
 }

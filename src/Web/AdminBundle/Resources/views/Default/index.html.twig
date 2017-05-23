@@ -88,9 +88,7 @@
     <script>
         $(document).ready(function() {
             $('#table').dataTable();
-
             $('.modal').modal();
-
             $('.delete_projet').click(function(e){
                 if(!confirm($('#'+$(this).data('id')).text().trim()))
                 {

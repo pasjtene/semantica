@@ -63,8 +63,8 @@
     <script type="application/javascript" src="{{ asset('components/jsbase/jquery.dataTables.js') }}"></script>
     <script type="application/javascript" src="{{ asset('components/jsbase/dataTables.material.js') }}"></script>
     <script type="application/javascript" src="{{ asset('data/js/master.js') }}"></script>
-
     <script>
+        var locale = "{{ app.request.locale }}";
         $(function(){
             //$(".button-collapse").sideNav();
         })
