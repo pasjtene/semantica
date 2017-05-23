@@ -217,7 +217,7 @@ class ProjectController extends Controller
     public function commitAction($id)
     {
         $em = $this->getDoctrine()->getManager();
-        $items = $em->getRepository("EntityBundle:CommitHistoric")->findByproject($id);
+        $items = $em->getRepository("EntityBundle:Historic")->findByproject($id);
         $array['items'] =$items;
         $array['id'] =$id;
         return $this->render('AdminBundle:Project:commit.html.twig', $array);
