@@ -50,6 +50,7 @@ project:
   tab2: Participator
   tab3: Commit
   tab4: Planning
+  tab5: Comment
 comment:
   project: Project
   reply: Reply
@@ -57,4 +58,6 @@ comment:
   task: Task
   date: Date
   description: Description
-  empty: No Comment are saved or any Comments match your search
+  empty: No Comment are saved
+  empty_project: No Project are saved
+  new: New Comment

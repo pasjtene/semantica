@@ -13,7 +13,7 @@
       padding: 0;
       width: 20% !important;
       background-color: #f1f1f1;
-      height: calc(100% - 250px) !important; /* Full height */
+      height: calc(100% - 400px) !important; /* Full height */
       position: absolute; /* Make it stick, even on scroll */
       overflow: auto; /* Enable scrolling if the sidenav has too much content */
       li {
@@ -52,6 +52,30 @@
 
 }
 
+#comment_save{
+  position: absolute;
+  top: 0;
+  right: 0;
+  height: 100%;
+  width: 30%;
+  z-index: 99999999999999999999;
+  border-left: $auther 3px solid;
+  @media screen and (max-width:712px) {
+    width: 50%;
+  }
+  @media screen and (max-width:500px) {
+    width: 80%;
+  }
+  .content
+  {
+    margin: 1%;
+    margin-top: 10% !important ;
+  }
+
+}
+#close_comment{
+  background-color: #f44336  !important;
+}
 #main_task{
 
   #corp_task{

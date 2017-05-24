@@ -249,28 +249,37 @@ class PrivateController extends Controller
             {
                 /** @var Projet $projet */
                 $projet =  $em->getRepository("EntityBundle:Projet")->findOneBycode($code);
-                $list = $em->getRepository("EntityBundle:Comment")->findBy(['project'=>$projet],['id'=>'DESC','date'=>'DESC']);
+                $list = $em->getRepository("EntityBundle:Comment")->findBy(['projet'=>$projet],['id'=>'ASC','date'=>'DESC']);
             }
             else{
-                $list = $em->getRepository("EntityBundle:Comment")->findBy([],['id'=>'DESC','date'=>'DESC']);
+                $list = $em->getRepository("EntityBundle:Comment")->findBy([],['id'=>'ASC','date'=>'DESC']);
             }
         }
         else
         {
-            $list = $em->getRepository("EntityBundle:Comment")->findBy([],['id'=>'DESC','date'=>'DESC']);
+            $list = $em->getRepository("EntityBundle:Comment")->findBy([],['id'=>'ASC','date'=>'DESC']);
         }
 
         $listhelp = $list;
         $list =null;
-        /** @var Comment $item */
-        foreach($listhelp as $item)
+        /** @var Projet $projet */
+        foreach ($items as $projet)
         {
-            if($item->getProject()->getUser()->getId()==$user->getId())
+            if($projet->getUser()->getId()==$user->getId())
             {
-                $reply = $em->getRepository("EntityBundle:Reply")->findBy([],['id'=>'DESC','date'=>'DESC']);
-                $list[] =['comment'=>$item, 'reply'=>$reply];
+                $collections = null;
+                /** @var Comment $item */
+                foreach($listhelp as $item)
+                {
+                    if($item->getProjet()->getId()==$projet->getId())
+                    {
+                        $collections[] =$item;
 
+                    }
+                }
+                $list[] =['comments'=>$collections, 'project'=>$projet];
             }
+
         }
         $array['list'] = $list;
         $array['items'] = $items;
@@ -438,6 +447,20 @@ class PrivateController extends Controller
         $array['items'] =$items;
         $array['id'] =$id;
         return $this->render('MainBundle:Tabs:information.html.twig', $array);
+    }
+
+
+    /**
+     * @Route("/project/comment/{id}", name="main_projet_comment", requirements={"id": "\d+"})
+     */
+    public function project_commentAction($id)
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        $items = $em->getRepository("EntityBundle:Comment")->findByprojet($id);
+        $array['items'] =$items;
+        $array['id'] =$id;
+        return $this->render('MainBundle:Tabs:comment.html.twig', $array);
     }
 
 
