@@ -54,6 +54,15 @@ class DefaultController extends Controller
 
             $em = $this->getDoctrine()->getManager();
 
+
+            $suggestion = new Suggestion();
+            /** @var Form $form */
+            $form = $this->get("form.factory")->create(SuggestionType::class,$suggestion);
+
+            $array['form'] = $form->createView();
+            $array["suggestion"] =$suggestion;
+
+
             $customer = $em->getRepository('EntityBundle:User')->findOneByemail($email);
             if($customer!=null)
             {
@@ -73,13 +82,6 @@ class DefaultController extends Controller
             $array["message"] = "...@".$tab[count($tab)-1];
 
             // index
-
-            $suggestion = new Suggestion();
-            /** @var Form $form */
-            $form = $this->get("form.factory")->create(SuggestionType::class,$suggestion);
-
-            $array['form'] = $form->createView();
-            $array["suggestion"] =$suggestion;
 
             return $this->render('MainBundle:Default:index.html.twig',$array);
            // return $this->redirect($this->generateUrl('main_homepage',["message"=>"test"]));

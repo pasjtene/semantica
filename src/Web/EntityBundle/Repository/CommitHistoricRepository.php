@@ -93,6 +93,41 @@ class CommitHistoricRepository extends \Doctrine\ORM\EntityRepository
         return $query->getQuery()->getResult();
 
     }
+    public function  getByparamProject($data, $limit=20, $page=1, $count=false )
+    {
+        $query = $this->createQueryBuilder('a');
+        if($count)
+        {
+            $query->select('count(a.id)');
+            return $query->getQuery()->getSingleScalarResult();
+        }
+
+        $query->select(['a','t','pl','pr','u'])
+            ->leftJoin('a.task','t')
+            ->leftJoin('t.planning','pl')
+            ->leftJoin('pl.project','pr')
+            ->leftJoin('pr.user','u');
+
+
+        if($data!=null)
+        {
+
+            $parameters['project_id']=$data['project_id'];
+
+
+            $query->andWhere('pr.id =:project_id OR  pr.id IS NULL');
+            $query->setParameters($parameters);
+            $query->addOrderBy('a.id','desc');
+            if($limit)
+            {
+                $page=$page<1?1:$page;
+                $query->setFirstResult(($page-1)*$limit)->setMaxResults($limit);
+            }
+        }
+
+        return $query->getQuery()->getResult();
+
+    }
     public function  getByparamUser($data, $limit=20, $page=1, $count=false )
     {
         $query = $this->createQueryBuilder('a');
