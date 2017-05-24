@@ -194,6 +194,8 @@ class ProjectController extends Controller
         /** @var Projet $items */
         $items = $em->getRepository("EntityBundle:Projet")->find($id);
         $array['items'] =$items;
+        $data['project_id']=$id;
+        $array['participants'] =$em->getRepository("EntityBundle:Historic")->getByParticipant($data);
         $array['id'] =$id;
         return $this->render('AdminBundle:Project:information.html.twig', $array);
     }

@@ -10,4 +10,5 @@ namespace Web\EntityBundle\Repository;
  */
 class ParticipatorRepository extends \Doctrine\ORM\EntityRepository
 {
+
 }
