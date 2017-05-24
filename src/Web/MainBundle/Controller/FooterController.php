@@ -15,7 +15,7 @@ class FooterController extends Controller
      */
     public function contactAction()
     {
-        return $this->render('MainBundle:footer:contact.html.twig');
+        return $this->render('MainBundle:Footer:contact.html.twig');
     }
 
 
