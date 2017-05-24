@@ -192,7 +192,7 @@ class ProjectController extends Controller
         $items = $em->getRepository("EntityBundle:Historic")->findByproject($id);
 
         $users = $em->getRepository('EntityBundle:User')->findStaff();
-        //$users = $this->exludeUser($users, $items);
+        $users = $this->exludeUser($users, $items);
 
         $array['items'] =$items;
         $array['users'] =$users;
