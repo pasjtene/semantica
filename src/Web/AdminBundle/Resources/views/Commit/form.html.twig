@@ -1,0 +1,45 @@
+{% extends 'AdminBundle::layout.html.twig' %}
+{% block meta %}
+    <meta name = "{% trans from 'refer' %} home.title {% endtrans %}" >
+    <meta name = "keywords" content = "{% trans from 'refer' %} home.description {% endtrans %}" >
+{% endblock %}
+{% block title %}
+    Semantica Technologies Corporation - STC - Admin  - Contact
+{% endblock %}
+
+{% block mycss %}
+    <link rel="stylesheet" href="{{ asset('components/cssbase/datatablehelp.css') }}">
+    <link rel="stylesheet" href="{{ asset('components/cssbase/datatablehelp2.css') }}">
+    <style>
+        #navadmin{
+            padding-top: 1.5%;
+        }
+        strong{
+            font-weight: bold;
+        }
+    </style>
+{% endblock %}
+{% block header %}
+    {{ parent() }}
+
+{% endblock %}
+{% block  main %}
+    {% if app.request.query.get("message") is defined and  app.request.query.get("message")!=null  %}
+        <div id="notification" class="green white-text" style="display:none; position: absolute; top: 10%; left: 45%; z-index: 99999999999;  padding: 2%; font-weight: bold;">
+            {% trans from 'forms' %} form.project.save  {% endtrans %}
+        </div>
+    {% endif %}
+    <div class="row">
+        <div class="col l12">
+
+        </div>
+    </div>
+{% endblock %}
+
+{% block myjs %}
+    <script>
+        $(document).ready(function() {
+
+        } );
+    </script>
+{% endblock %}
