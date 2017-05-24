@@ -77,7 +77,15 @@
                                                                    <div class="card-panel grey lighten-4">
                                                                        {{ comment.description }}
                                                                        <br>
-                                                                       <span class="right right-align black-text">{{ comment.date|date('d-m-y h:i:s') }}</span>
+                                                                       <span class="right right-align black-text">
+                                                                           {{ comment.date|date('d-m-y h:i:s') }}
+                                                                           {% trans from 'private' %} comment.by {% endtrans %} :
+                                                                           {% if comment.user!=null %}
+                                                                              {{ comment.user.firstname }}</td>
+                                                                           {% else %}
+                                                                              {{ comment.participator.user.firstname }}</td>
+                                                                           {% endif %}
+                                                                       </span>
                                                                    </div>
                                                                </div>
                                                        {% else %}
@@ -85,7 +93,15 @@
                                                                <div class="card-panel">
                                                                    {{ comment.description }}
                                                                    <br>
-                                                                   <span class="right right-align grey-text">{{ comment.date|date('d-m-y h:i:s') }}</span>
+                                                                   <span class="right right-align grey-text">
+                                                                       {{ comment.date|date('d-m-y h:i:s') }}
+                                                                       {% trans from 'private' %} comment.by {% endtrans %} :
+                                                                       {% if comment.user!=null %}
+                                                                          {{ comment.user.firstname }}</td>
+                                                                       {% else %}
+                                                                          {{ comment.participator.user.firstname }}</td>
+                                                                       {% endif %}
+                                                                   </span>
                                                                </div>
                                                            </div>
                                                        {% endif %}
