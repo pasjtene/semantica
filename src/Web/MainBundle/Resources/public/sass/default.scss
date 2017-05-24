@@ -107,7 +107,8 @@ footer{
   position: fixed !important;
   top: 0px !important;
   padding-top: 1% !important;
-  background-color: $default_text !important;
+  //background-color: $default_text !important;
+  border-bottom: $default_text 4px solid !important;
   color: $secondary !important;
   .same{
     color: $secondary !important;
