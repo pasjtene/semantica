@@ -19,6 +19,8 @@ commit:
   send: Envoyer
   do_comment: FAIRE UNE SUGGESTION
   task: Tâche
+  add: Ajouter un commit
+  choice_task: Choisir une tâche
 project:
   title: Titre
   description: Description

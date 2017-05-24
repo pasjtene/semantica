@@ -167,6 +167,21 @@ class ProjectController extends Controller
     public function detailAction($id)
     {
         $array['id'] =$id;
+        $em = $this->getDoctrine()->getManager();
+
+       $items = $em->getRepository("EntityBundle:Task")->findAll();
+
+        $tasks = null;
+        /** @var Task $item */
+        foreach($items as $item )
+        {
+            if($item->getPlanning()->getProject()->getId()==$id)
+            {
+                $tasks[]=$item;
+            }
+        }
+
+            $array['tasks'] = $tasks;
         return $this->render('AdminBundle:Project:detail.html.twig',$array);
     }
 

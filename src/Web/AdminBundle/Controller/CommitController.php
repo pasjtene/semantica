@@ -11,6 +11,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Web\EntityBundle\Entity\Commit;
+use Web\EntityBundle\Entity\CommitHistoric;
 use Web\EntityBundle\Entity\Files;
 use Web\EntityBundle\Entity\Historic;
 use Web\EntityBundle\Entity\Participator;
@@ -128,6 +129,53 @@ class CommitController extends Controller
         $array['objet'] = $objet;
         return $this->render('AdminBundle:Commit:form.html.twig',$array);
     }
+
+
+
+
+    /**
+     * @Route("/{projectid}/add/", name="admin_commit_add", requirements={"projectid": "\d+"})
+     */
+    public function addAction(Request $request,$projectid)
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        /** @var User $user */
+        $user = $this->getUser();
+
+        /** @var Projet $projet */
+        $projet = $em->getRepository('EntityBundle:Projet')->find($projectid);
+
+
+        if($request->isMethod('POST'))
+        {
+
+            $commit  =new Commit();
+            /** @var Participator $participant */
+            $participant = $em->getRepository('EntityBundle:Participator')->findOneByuser($user->getId());
+            $message = $request->request->get('description');
+            $task_id = $request->request->get('task_id');
+
+            /** @var Task $task */
+            $task = $em->getRepository('EntityBundle:Task')->find($task_id);
+
+            $commit->setParticipator($participant);
+            $commit->setCode(uniqid());
+
+            $commit->setDescription($message);
+            $commit->setDate(new \DateTime());
+            $historic = new CommitHistoric();
+            $historic->setCommit($commit);
+            $historic->setTask($task);
+
+            $em->persist($historic);
+            $em->flush();
+            $em->detach($historic);
+        }
+
+        return $this->redirect($this->generateUrl('admin_projet_detail',['id'=>$projectid]));
+    }
+
 
     public  function sendMail($to, $from, $body,$subjet)
     {
