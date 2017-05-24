@@ -19,6 +19,7 @@ use Web\EntityBundle\Entity\Projet;
 use Web\EntityBundle\Entity\Task;
 use Web\EntityBundle\Entity\User;
 use Web\EntityBundle\Entity\Visitor;
+use Web\EntityBundle\Form\CommitType;
 use Web\EntityBundle\Form\ProjetUpdateType;
 use Web\EntityBundle\Repository\UserRepository;
 
@@ -83,7 +84,7 @@ class CommitController extends Controller
         $objet = $id==0? new Commit() : $em->getRepository('EntityBundle:Commit')->find($id);
 
         /** @var Form $form */
-        $form = $this->get("form.factory")->create(ProjetUpdateType::class,$objet);
+        $form = $this->get("form.factory")->create(CommitType::class,$objet);
         if($request->isMethod('POST'))
         {
             $form->handleRequest($request);
@@ -107,7 +108,7 @@ class CommitController extends Controller
                     $objet =new Commit();
                     $array['message'] = "";
                     /** @var Form $form */
-                    $form = $this->get("form.factory")->create(ProjetUpdateType::class,$objet);
+                    $form = $this->get("form.factory")->create(CommitType::class,$objet);
                 }
                 else
                 {
