@@ -198,7 +198,20 @@ class ProjectController extends Controller
         $data['project_id']=$id;
         $array['participants'] =$em->getRepository("EntityBundle:Historic")->getByParticipant($data);
         $array['id'] =$id;
+        $array['tabs'] = 1;
         return $this->render('AdminBundle:Project:information.html.twig', $array);
+    }
+
+    public function commentAction($id)
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        $items = $em->getRepository("EntityBundle:Comment")->findByprojet($id);
+        $array['items'] =$items;
+        $array['id'] =$id;
+        $array['tabs'] = 5;
+
+        return $this->render('AdminBundle:Project:comment.html.twig', $array);
     }
 
     /**
@@ -215,6 +228,7 @@ class ProjectController extends Controller
         $array['items'] =$items;
         $array['users'] =$users;
         $array['id'] =$id;
+        $array['tabs'] = 2;
         return $this->render('AdminBundle:Project:participator.html.twig', $array);
     }
 
@@ -245,6 +259,7 @@ class ProjectController extends Controller
         $items = $em->getRepository("EntityBundle:Planning")->findByproject($id);
         $array['items'] =$items;
         $array['id'] =$id;
+        $array['tabs'] = 4;
         return $this->render('AdminBundle:Project:planning.html.twig', $array);
     }
 
@@ -262,6 +277,7 @@ class ProjectController extends Controller
         //var_dump($items);
         $array['items'] =$items;
         $array['id'] =$id;
+        $array['tabs'] = 3;
         $array['historics'] =$em->getRepository("EntityBundle:Historic")->findAll();
         return $this->render('AdminBundle:Project:commit.html.twig', $array);
     }

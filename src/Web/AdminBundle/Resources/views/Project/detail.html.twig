@@ -89,10 +89,12 @@
                     <div class="col s12">
                         <br>
                         <ul class="tabs">
-                            <li class="tab col s3"><a href="#detail" class="active">{% trans from 'private' %} project.tab1 {% endtrans %}</a></li>
-                            <li class="tab col s3"><a  href="#participator" class="">{% trans from 'private' %} project.tab2 {% endtrans %}</a></li>
-                            <li class="tab col s3"><a href="#commit" class="">{% trans from 'private' %} project.tab3 {% endtrans %}</a></li>
-                            <li class="tab col s3"><a href="#planning" class="">{% trans from 'private' %} project.tab4 {% endtrans %}</a></li>
+                            <li class="tab col s2"><a href="#detail" class="{% if tabs is defined and tabs==1 %} active {% endif %}">{% trans from 'private' %} project.tab1 {% endtrans %}</a></li>
+                            <li class="tab col s2"><a  href="#participator" class="{% if tabs is defined and tabs==2 %} active {% endif %}">{% trans from 'private' %} project.tab2 {% endtrans %}</a></li>
+                            <li class="tab col s2"><a href="#commit" class="{% if tabs is defined and tabs==3 %} active {% endif %}">{% trans from 'private' %} project.tab3 {% endtrans %}</a></li>
+                            <li class="tab col s2"><a href="#planning" class="{% if tabs is defined and tabs==4 %} active {% endif %}">{% trans from 'private' %} project.tab4 {% endtrans %}</a></li>
+                            <li class="tab col s2"><a href="#comment" class="{% if tabs is defined and tabs==5 %} active {% endif %}">{% trans from 'private' %} project.tab5 {% endtrans %}</a></li>
+
                         </ul>
                     </div>
                     <div id="detail" class="col s12">
@@ -106,6 +108,9 @@
                     </div>
                     <div id="planning" class="col s12">
                         {{ render(controller('AdminBundle:Project:planning',{'id':id})) }}
+                    </div>
+                    <div id="comment" class="col s12">
+                        {{ render(controller('AdminBundle:Project:comment',{'id':id})) }}
                     </div>
                 </div>
 
@@ -151,6 +156,30 @@
         </div>
     </div>
 
+    <div id="md-new-comment" class="modal">
+        <div class="modal-content">
+
+        </div>
+        <div class="modal-footer">
+            <form class="col s12" method="post" action="{{ path('main_private_project_send',{id:id}) }}">
+                <div class="row">
+                    <input type="hidden" name="hidden" id="hidden" value="{{ id }}">
+                    <div class="input-field col s12">
+                        <i class="material-icons prefix">textsms</i>
+                        <textarea id="description" name="description" class="materialize-textarea" data-length="300"></textarea>
+                        <label for="description">{% trans from 'forms' %} form.base.description {% endtrans %}</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col s12">
+                        <center>
+                            <button class="waves-effect waves-green btn-flat btn  white-text center-align center" type="submit">{% trans from 'private' %} comment.add {% endtrans %}</button>
+                        </center>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
 {% endblock %}
 
 {% block myjs %}
