@@ -18,14 +18,14 @@
            <tr>
                <td>{{ item.startdate|date('d-m-y') }}</td>
                <td>{{ item.enddate|date('d-m-y') }}</td>
-               <td><a href="#">{{ item.tasks|length }}</a></td>
+               <td><a href="#" class="task-count" data-url="{{ path('admin_projet_get_planning', {projectid: id, id: item.id}) }}">{{ item.tasks|length }}</a></td>
                <td>
                    <a href="#" data-pid="{{ item.id }}" class="btn btn-flat blue white-text btn-new-task">
                        {% trans from 'forms' %} form.Task.new {% endtrans %}
                    </a>
                </td>
-               <td><a href="#"><i class="material-icons">delete</i></a></td>
-               <td><a href="#"><i class="material-icons">edit</i></a></td>
+               <td><a data-url="{{ path('admin_projet_delete_planning', {projectid: id, id:item.id}) }}" class="delete-planning" href="#"><i class="material-icons">delete</i></a></td>
+               <td><a href="#" data-id="{{ item.id }}" data-sd="{{ item.startdate|date('d M, Y') }}" data-ed="{{ item.enddate|date('d M, Y') }}" class="edit-planning"><i class="material-icons">edit</i></a></td>
            </tr>
         {% endfor %}
     {% else %}
@@ -43,14 +43,16 @@
         <div class="modal-content">
             <div class="planning">
                 <div class="input-field col s12">
-                    <input type="date" id="start-date" name="start-date" class="datepicker" required/>
+                    <input type="date" id="pl-start-date" name="start-date" class="datepicker" required/>
                     <label for="start-date">{% trans from 'forms' %} form.planning.startdate {% endtrans %}:</label>
                 </div>
 
                 <div class="input-field col s12">
-                    <input type="date" id="end-date" name="end-date" class="datepicker" required/>
+                    <input type="date" id="pl-end-date" name="end-date" class="datepicker" required/>
                     <label for="end-date">{% trans from 'forms' %} form.planning.enddate {% endtrans %}:</label>
                 </div>
+
+                <input type="hidden" name="planning-id" id="pid" value="0"/>
             </div>
         </div>
         <div class="modal-footer">
@@ -97,6 +99,29 @@
             <button class="waves-effect waves-green btn-flat" type="submit" name="action">Submit<i class="material-icons right">send</i></button>
         </div>
     </form>
+</div>
+
+<div id="md-task-list" class="modal">
+    <div class="modal-content">
+        <table id="table-task">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Identity</th>
+                    <th>Label</th>
+                    <th>Status</th>
+                    <th>Percent Evo</th>
+                    <th>#</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td>1.</td><td>ae23cd6fe470</td><td>Création du projet</td><td>Done</td><td>75%</td><td><a href="#"><i class="material-icons">delete</i></a></td></tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="modal-footer">
+
+    </div>
 </div>
 
 
