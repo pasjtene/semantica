@@ -26,6 +26,14 @@ class FooterController extends Controller
         return $this->render('MainBundle:Footer:privacyPolicy.html.twig');
     }
 
+    /**
+     * @Route("/formation", name="main_formation")
+     */
+    public function formationAction()
+    {
+        return $this->render('MainBundle:Footer:formation.html.twig');
+    }
+
 
 }
 
