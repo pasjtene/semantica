@@ -7,6 +7,7 @@ private:
   commit: Commit
   find: Find commit
   choose_project: Choose a project
+  participant: Participants List
 commit:
   auther: Auther
   commit: Commit
@@ -19,6 +20,8 @@ commit:
   do_comment: MAKE A SUGGESTION
   notification: Comment sent successfully
   task: Task
+  add: Add commit
+  choice_task: Choice task
 project:
   title: Title
   back: Back
@@ -50,6 +53,7 @@ project:
   tab2: Participator
   tab3: Commit
   tab4: Planning
+  tab5: Comment
 comment:
   project: Project
   reply: Reply
@@ -57,4 +61,8 @@ comment:
   task: Task
   date: Date
   description: Description
-  empty: No Comment are saved or any Comments match your search
+  empty: No Comment are saved
+  empty_project: No Project are saved
+  new: New Comment
+  by: By
+  add: Add comment

@@ -1,5 +1,7 @@
 <br>
-<a href="" class="waves-effect waves-light btn">{% trans from 'forms' %} form.commit.new {% endtrans %}</a>
+{% if app.user.hisParticipant(historics,id) %}
+    <a href="#" id="new_commit" class="waves-effect waves-light btn">{% trans from 'forms' %} form.commit.new {% endtrans %}</a>
+{% endif %}
 <table class="bordered highlight centered responsive-table">
     <thead>
     <tr>
@@ -7,7 +9,6 @@
         <th>{% trans from 'forms' %} form.commit.auther {% endtrans %}</th>
         <th>{% trans from 'forms' %} form.base.description {% endtrans %}</th>
         <th>{% trans from 'forms' %} form.base.date {% endtrans %}</th>
-        <th>#</th>
         <th>#</th>
     </tr>
     </thead>
@@ -20,8 +21,7 @@
                <td>{{ item.commit.participator.user.firstname }}</td>
                <td>{{ item.commit.description }}</td>
                <td>{{ item.commit.date|date('d-m-y') }}</td>
-               <td><a href=""><i class="material-icons">delete</i></a></td>
-               <td><a href=""><i class="material-icons">edit</i></a></td>
+               <td><a href="{{ path('admin_comit_delete',{id:item.commit.id, projectid:id}) }}"><i class="material-icons">delete</i></a></td>
            </tr>
         {% endfor %}
     {% else %}

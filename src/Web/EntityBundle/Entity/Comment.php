@@ -40,10 +40,10 @@ class Comment extends BaseInterface
 
     /**
      * @Assert\Valid()
-     * @ORM\ManyToOne(targetEntity="Web\EntityBundle\Entity\Commit",cascade={"persist"})
+     * @ORM\ManyToOne(targetEntity="Web\EntityBundle\Entity\Projet",cascade={"persist"})
      * @ORM\JoinColumn(nullable=false)
      */
-    private $commit;
+    private $projet;
 
     /**
      * Get id
@@ -105,27 +105,28 @@ class Comment extends BaseInterface
         return $this->participator;
     }
 
+
     /**
-     * Set commit
+     * Set projet
      *
-     * @param \Web\EntityBundle\Entity\Commit $commit
+     * @param \Web\EntityBundle\Entity\Projet $projet
      *
      * @return Comment
      */
-    public function setCommit(\Web\EntityBundle\Entity\Commit $commit)
+    public function setProjet(\Web\EntityBundle\Entity\Projet $projet)
     {
-        $this->commit = $commit;
+        $this->projet = $projet;
 
         return $this;
     }
 
     /**
-     * Get commit
+     * Get projet
      *
-     * @return \Web\EntityBundle\Entity\Commit
+     * @return \Web\EntityBundle\Entity\Projet
      */
-    public function getCommit()
+    public function getProjet()
     {
-        return $this->commit;
+        return $this->projet;
     }
 }

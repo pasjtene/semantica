@@ -32,15 +32,24 @@ class CommitType extends AbstractType
                 'label' => 'form.person.date',
                 'translation_domain' => 'forms',
                 'required'    => true
-            ))
-            ->add('participator',EntityType::class,array(
-                'class'=>"EntityBundle:Participator",
+            ));
+         /*   ->add('user',EntityType::class,array(
+                'class'=>"EntityBundle:User",
                 'property'=>'firstname',
                 'required'=>true,
                 'multiple'=>false,
                 'translation_domain' => 'forms',
                 'empty_data'=>null
+            ))
+            ->add('participator',EntityType::class,array(
+                'class'=>"EntityBundle:Participator",
+                'property'=>'code',
+                'required'=>true,
+                'multiple'=>false,
+                'translation_domain' => 'forms',
+                'empty_data'=>null
             )); //'empty_value'=>'form.base.empty_participator',
+        */
     }
     
     /**

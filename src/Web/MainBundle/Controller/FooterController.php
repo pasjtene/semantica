@@ -15,7 +15,23 @@ class FooterController extends Controller
      */
     public function contactAction()
     {
-        return $this->render('MainBundle:footer:contact.html.twig');
+        return $this->render('MainBundle:Footer:contact.html.twig');
+    }
+
+    /**
+     * @Route("/privacyPolicy", name="main_privacyPolicy")
+     */
+    public function privacyPolicyAction()
+    {
+        return $this->render('MainBundle:Footer:privacyPolicy.html.twig');
+    }
+
+    /**
+     * @Route("/formation", name="main_formation")
+     */
+    public function formationAction()
+    {
+        return $this->render('MainBundle:Footer:formation.html.twig');
     }
 
 
