@@ -202,11 +202,17 @@ class ProjectController extends Controller
         return $this->render('AdminBundle:Project:information.html.twig', $array);
     }
 
+    /**
+     * @Route("/comment/{id}", name="admin_projet_comment", requirements={"id": "\d+"})
+     */
     public function commentAction($id)
     {
         $em = $this->getDoctrine()->getManager();
 
         $items = $em->getRepository("EntityBundle:Comment")->findByprojet($id);
+
+        $data['project_id']=$id;
+        $array['participants'] =$em->getRepository("EntityBundle:Historic")->findAll();
         $array['items'] =$items;
         $array['id'] =$id;
         $array['tabs'] = 5;

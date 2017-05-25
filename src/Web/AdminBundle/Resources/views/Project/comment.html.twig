@@ -1,7 +1,7 @@
 <br>
 <div class="row" >
     <div class="col s12 right-align">
-        <a id="new_comment" href="#md-new-comment" class=" btn waves-effect waves-green btn-flat white-text">{% trans from 'private' %} comment.new {% endtrans %}</a>
+        <a id="new_comment" href="#md-new-comment" class="btn waves-effect waves-green btn-flat white-text {% if app.user.hisParticipant(participants, id) == 0%}disabled{% endif %}">{% trans from 'private' %} comment.new {% endtrans %}</a>
     </div>
 </div>
 <table class="bordered highlight centered responsive-table">
