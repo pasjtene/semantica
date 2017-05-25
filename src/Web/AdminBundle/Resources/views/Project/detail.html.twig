@@ -122,7 +122,7 @@
                 <form class="col s12" method="post" action="{{ path('admin_commit_add',{projectid:id}) }}">
                     <div class="row">
                         <div class="input-field col s12">
-                            <label for="description">{% trans from 'private' %} commit.choice {% endtrans %}</label>
+                            <label for="description">{% trans from 'private' %} commit.choice_task {% endtrans %}</label>
                             <br><br>
                             <select name="task_id" id="task_id">
                                 {% for task in tasks %}
