@@ -13,7 +13,7 @@
                     <a href=""> {% trans from 'footer' %} about.news {% endtrans %} </a>
                 </p>
                 <p>
-                    <a href=""> {% trans from 'footer' %} about.policy {% endtrans %} </a>
+                    <a href="{{ path ('main_privacyPolicy') }}"> {% trans from 'footer' %} about.policy {% endtrans %} </a>
                 </p>
                 <p>
                     <a href=" {{ path ('main_careers') }}"> {% trans from 'footer' %} about.carreers {% endtrans %} </a>
@@ -73,7 +73,7 @@
                 </p>
                 <p>
                 <p>
-                    <a href="mailto:pascal4400@gmail.com"> {% trans from 'footer' %}  preference.email {% endtrans %} </a>
+                    <a href="mailto:pasjtene@yahoo.co.uk"> {% trans from 'footer' %}  preference.email {% endtrans %} </a>
                 </p>
                 <p>
                     <a href="{{ path('main_contact') }}"> {% trans from 'footer' %} preference.contact {% endtrans %} </a>
@@ -120,7 +120,7 @@
         <div class="container black-text center center-align">
 
                 {% trans from 'footer' %} corporigh.title {% endtrans %}|
-                <a href="" class="blue-text"> {% trans from 'footer' %} corporigh.link {% endtrans %} </a>|
+                <a href="{{ path ('main_privacyPolicy') }}" class="blue-text"> {% trans from 'footer' %} corporigh.link {% endtrans %} </a>|
                  {% trans from 'footer' %} corporigh.other {% endtrans %}
         </div>
     </div>
