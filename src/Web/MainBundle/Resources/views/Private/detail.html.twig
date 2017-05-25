@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="{{ asset('components/cssbase/datatablehelp.css') }}">
     <link rel="stylesheet" href="{{ asset('components/cssbase/datatablehelp2.css') }}">
     <style>
+
         strong{
             font-weight: bold;
         }
@@ -34,114 +35,62 @@
     <div class="row" id="main_account">
         <div class="row">
             <div class="col s12">
-                <br><br><br>
-               <div class="col s12">
-                   <a class="waves-effect waves-green btn-flat red white-text right-align right" href="{{ path('main_private') }}">{% trans from 'private' %} project.back {% endtrans %}</a>
-               </div>
-                <div class="col s12 m8">
-                    <div class="card">
-                        <div class="card-content">
-                            <p>
-                                <strong>
-                                    {% trans from 'private' %} project.title {% endtrans %} :
-                                </strong>
-                                <br>
-                                <span>
-                                    {{ project.title }}
-                                </span>
-                            </p>
-                            <p>
-                                <hr>
-                                <strong>
-                                    {% trans from 'private' %} project.code {% endtrans %} :
-                                </strong>
-                                 <br>
-                                <span>
-                                    {{ project.code }}
-                                </span>
-                            </p>
-                            <p>
-                                <hr>
-                                <strong>
-                                    {% trans from 'private' %} project.date {% endtrans %} :
-                                </strong>
-                                <br>
-                                <span>
-                                    {{ project.date|date('d-m-Y h:i:s') }}
-                                </span>
-                            </p>
-                            <p>
-                                <hr>
-                                <strong>
-                                    {% trans from 'private' %} project.status {% endtrans %} :
-                                </strong>
-                                <br>
-                                <span>
-                                    {{ project.CurrentStatus(project.status,app.request.locale) }}
-                                </span>
-                            </p>
-                            <p>
-                                <hr>
-                                <strong>
-                                    {% trans from 'private' %} project.description {% endtrans %} :
-                                </strong>
-                                <br>
-                                <span>
-                                    {{ project.description }}
-                                </span>
-                            </p>
-                        </div>
-                    </div>
+                <br>
+                <div class="col s12">
+                    <a class="waves-effect waves-green btn-flat red white-text right-align right" href="{{ path('main_private') }}">{% trans from 'private' %} project.back {% endtrans %}</a>
                 </div>
+            </div>
 
-                <div class="col s12 m4">
-                    {% if project.files!=null  %}
-                        <ul class="collection with-header">
-                            <li class="collection-header"><h4>{% trans from 'private' %} project.file_list {% endtrans %}</h4></li>
-                            {% for file in project.files  %}
-                                {% if file.hashname!=null and  file.extfile=="gif" or file.extfile=="png" or file.extfile=="jpg" or file.extfile=="jpeg"  %}
-                                    {% set href= "#project1A"~file.hashname %}
-                                    {% set idhref = "project1A"~file.hashname %}
-                                    <li class="collection-item ">
-                                        <li class="collection-item"><div>{{ project.truncate(file.name,50) }}<a href="{{ href }}" class="secondary-content"><i class="material-icons">attach_file</i></a></div></li>
-                                    </li>
-                                    <div id="{{ idhref }}" class="modal  modal-fixed-footer">
-                                        <div class="modal-content">
-                                            <img src="{{ asset(file.path()) }}" alt="" class="responsive-image materialboxed" style="max-width: 100%; max-height: inherit;">
-                                        </div>
-                                        <div class="modal-footer">
-                                            <a class="modal-action modal-close waves-effect waves-green btn-flat green white-text left-align left" href="{{app.request.getSchemeAndHttpHost()~'/'~file.path()}}">Telecharger</a>
-                                            <button  id="close" class="modal-action modal-close waves-effect waves-green btn-flat blue white-text">{% trans from 'forms' %} form.project.close {% endtrans %}</button>
-                                        </div>
-                                    </div>
-                                {% elseif file.hashname!=null and file.extfile=="PDF" or file.extfile=="pdf" %}
-                                    {% set href= "#project2B"~file.hashname %}
-                                    {% set idhref = "project2B"~file.hashname %}
-                                    <li class="collection-item ">
-                                       <li class="collection-item"><div>{{ project.truncate(file.name,50) }}<a href="{{ href }}" class="secondary-content"><i class="material-icons">attach_file</i></a></div></li>
-                                    </li>
-                                    <div id="{{ idhref }}" class="modal  modal-fixed-footer">
-                                        <div class="modal-content">
-                                            <iframe src="{{app.request.getSchemeAndHttpHost()~'/'~file.path()}}" class="col s12"  width="100%" height="500" align="middle"></iframe>
-                                        </div>
-                                        <div class="modal-footer">
-                                            <a class="modal-action modal-close waves-effect waves-green btn-flat green white-text left-align left" href="{{app.request.getSchemeAndHttpHost()~'/'~file.path()}}">Telecharger</a>
-                                            <button  id="close" class="modal-action modal-close waves-effect waves-green btn-flat blue white-text">{% trans from 'forms' %} form.project.close {% endtrans %}</button>
-                                        </div>
-                                    </div>
-                                {% else %}
-                                    <li class="collection-item ">
-                                        <li class="collection-item"><div>{{ project.truncate(file.name,50) }}<a href="{{app.request.getSchemeAndHttpHost()~'/'~file.path()}}" class="secondary-content upload_file"><i class="material-icons">attach_file</i></a></div></li>
-                                    </li>
-                                {% endif %}
-                            {% endfor %}
-                        </ul>
-                    {% endif %}
-                </div>
+            <div class="col s12">
+                <br>
+                <ul class="tabs">
+                    <li class="tab col s3"><a href="#detail" class="{% if tabs is defined and tabs==1 %} active {% endif %}">{% trans from 'private' %} project.tab1 {% endtrans %}</a></li>
+                    <li class="tab col s3"><a href="#commit" class="{% if tabs is defined and tabs==2 %} active {% endif %}">{% trans from 'private' %} project.tab3 {% endtrans %}</a></li>
+                    <li class="tab col s3"><a href="#planning" class="{% if tabs is defined and tabs==3 %} active {% endif %}">{% trans from 'private' %} project.tab4 {% endtrans %}</a></li>
+                    <li class="tab col s3"><a href="#comment" class="{% if tabs is defined and tabs==4 %} active {% endif %}">{% trans from 'private' %} project.tab5 {% endtrans %}</a></li>
+                </ul>
+            </div>
+            <div id="detail" class="col s12">
+                {{ render(controller('MainBundle:Private:project_information',{'id':id})) }}
+            </div>
+            <div id="commit" class="col s12">
+                {{ render(controller('MainBundle:Private:project_commit',{'id':id})) }}
+            </div>
+            <div id="planning" class="col s12">
+                {{ render(controller('MainBundle:Private:project_planning',{'id':id})) }}
+            </div>
+            <div id="comment" class="col s12">
+                {{ render(controller('MainBundle:Private:project_comment',{'id':id})) }}
             </div>
         </div>
     </div>
 
+    <div class="row white" id="comment_save" style="display: none;">
+        <div class="col s12">
+            <span id="close_comment" class="btn-floating btn waves-effect waves-light red"><i class="material-icons">close</i></span>
+        </div>
+        <div class="col s12" >
+            <div class="row content">
+                <form class="col s12" method="post" action="{{ path('main_private_project_send',{id:id}) }}">
+                    <div class="row">
+                        <input type="hidden" name="hidden" id="hidden" value="{{ id }}">
+                        <div class="input-field col s12">
+                            <i class="material-icons prefix">textsms</i>
+                            <textarea id="description" name="description" class="materialize-textarea" data-length="300"></textarea>
+                            <label for="description">{% trans from 'forms' %} form.base.description {% endtrans %}</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col s12">
+                            <center>
+                                <button class="waves-effect waves-green btn-flat btn  white-text center-align center" type="submit">{% trans from 'private' %} comment.add {% endtrans %}</button>
+                            </center>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
 {% endblock %}
 
 {% block myjs %}
@@ -152,9 +101,23 @@
                 select: $('select'),
                 form : $('#form'),
                 modal:$('.modal'),
+                close:$('#close_comment'),
+                open:$('#new_comment'),
+                body:$('#comment_save'),
                 delete: $('.delete_projet'),
-                link: $('.upload_file')
+                link: $('.upload_file'),
+                detail_planning: $('.detail_planning'),
+                help_planning: $('#help_planning')
             }
+            elt.open.click(function(e){
+                elt.body.slideDown();
+                e.preventDefault();
+            });
+
+            elt.close.click(function(e){
+                elt.body.slideUp();
+                e.preventDefault();
+            });
             elt.link.click(function(){
                 if($(this).val()!="#")
                 {
@@ -169,6 +132,9 @@
                     e.preventDefault();
                 }
             });
+            elt.detail_planning.attr('data-tooltip',elt.help_planning.text());
+
+            $('textarea').characterCounter();
         } );
     </script>
 {% endblock %}

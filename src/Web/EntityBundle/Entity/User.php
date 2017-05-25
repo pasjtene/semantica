@@ -3,6 +3,7 @@
 namespace Web\EntityBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+//use FOS\UserBundle\Entity\User as BaseUser;
 use FOS\UserBundle\Model\User as BaseUser;
 use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
@@ -229,17 +230,17 @@ use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
         return $this->picture;
     }
 
-   /**
-    * Get all roles of application
-    *
-    * @return array
-    */
-    public static function getAppRole()
-    {
-        $array = [self::ROLE_USER, self::ROLE_STAFF, self::ROLE_ADMIN, self::ROLE_SUPER_ADMIN];
+      /**
+       * Get all roles of application
+       *
+       * @return array
+       */
+      public static function getAppRole()
+      {
+          $array = [self::ROLE_USER, self::ROLE_STAFF, self::ROLE_ADMIN, self::ROLE_SUPER_ADMIN];
 
-        return $array;
-    }
+          return $array;
+      }
 
       /**
        * Get user's role as string

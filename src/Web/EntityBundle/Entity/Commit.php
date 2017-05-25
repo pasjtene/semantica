@@ -32,12 +32,6 @@ class Commit extends BaseInterface
      */
     private $participator;
 
-    /**
-     * @Assert\Valid()
-     * @ORM\ManyToOne(targetEntity="Web\EntityBundle\Entity\Comment",cascade={"persist"})
-     * @ORM\JoinColumn(nullable=false)
-     */
-    private $comment;
 
     /**
      * @var string
@@ -105,27 +99,4 @@ class Commit extends BaseInterface
         return $this->participator;
     }
 
-    /**
-     * Set comment
-     *
-     * @param \Web\EntityBundle\Entity\Comment $comment
-     *
-     * @return Commit
-     */
-    public function setComment(\Web\EntityBundle\Entity\Comment $comment)
-    {
-        $this->comment = $comment;
-
-        return $this;
-    }
-
-    /**
-     * Get comment
-     *
-     * @return \Web\EntityBundle\Entity\Comment
-     */
-    public function getComment()
-    {
-        return $this->comment;
-    }
 }

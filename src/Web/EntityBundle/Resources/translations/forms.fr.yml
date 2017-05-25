@@ -26,6 +26,10 @@ form:
     phone: Téléphone
     placeholder_phone: Votre téléphone
     roles: Roles
+    pleasantries: Civilité
+    city: Ville
+    country: Pays
+    username: Téléphone
   cancelling:
     addcode: Code de base
     adddate: Date d'enregistement
@@ -35,6 +39,8 @@ form:
     new: Nouveau commit
     empty: Aucun commit enregistré
     auther: Auteur
+    list: Liste des commits
+    by: par
   historic:
     strartdate: Date de début
     endate: Date de fin
@@ -61,6 +67,9 @@ form:
     enddate: Date de fin
     new: Nouveau planning
     empty: Aucun  planning enregistré
+    task: Tâche
+    tasknb: Tâche
+    detail: plus de détail
   project:
     title: Titre
     placeholder_title: Donner le titre de votre projet

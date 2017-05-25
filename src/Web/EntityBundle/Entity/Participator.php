@@ -102,6 +102,6 @@ class Participator
      */
     public function generateCode()
     {
-        return $this->setCode(md5(uniqid()));
+        return $this->setCode(uniqid());
     }
 }

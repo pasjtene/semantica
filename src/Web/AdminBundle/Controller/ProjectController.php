@@ -42,17 +42,27 @@ class ProjectController extends Controller
      */
     public function deleteAction($id)
     {
-        $em = $this->getDoctrine()->getManager();
+       
+		$em = $this->getDoctrine()->getManager();
         /** @var Projet $project */
         $project = $em->getRepository("EntityBundle:Projet")->find($id);
         $files = new Files();
         if($project->getFiles()!=null)
         {
-            $files->delete('',$project->path());
+            /** @var FileProjet $file */
+            foreach($project->getFiles()  as $file)
+            {
+                $files->delete('',$file->path());
+                $em->remove($file);
+                $em->flush();
+                $em->detach($file);
+            }
+
         }
         $em = $this->getDoctrine()->getManager();
         $em->remove($project);
         $em->flush();
+		
 
         return $this->redirect($this->generateUrl('admin_homepage'));
     }
@@ -157,6 +167,21 @@ class ProjectController extends Controller
     public function detailAction($id)
     {
         $array['id'] =$id;
+        $em = $this->getDoctrine()->getManager();
+
+       $items = $em->getRepository("EntityBundle:Task")->findAll();
+
+        $tasks = null;
+        /** @var Task $item */
+        foreach($items as $item )
+        {
+            if($item->getPlanning()->getProject()->getId()==$id)
+            {
+                $tasks[]=$item;
+            }
+        }
+
+            $array['tasks'] = $tasks;
         return $this->render('AdminBundle:Project:detail.html.twig',$array);
     }
 
@@ -169,6 +194,8 @@ class ProjectController extends Controller
         /** @var Projet $items */
         $items = $em->getRepository("EntityBundle:Projet")->find($id);
         $array['items'] =$items;
+        $data['project_id']=$id;
+        $array['participants'] =$em->getRepository("EntityBundle:Historic")->getByParticipant($data);
         $array['id'] =$id;
         return $this->render('AdminBundle:Project:information.html.twig', $array);
     }
@@ -207,7 +234,12 @@ class ProjectController extends Controller
     public function commitAction($id)
     {
         $em = $this->getDoctrine()->getManager();
-        $items = $em->getRepository("EntityBundle:CommitHistoric")->findByproject($id);
+
+        $em = $this->getDoctrine()->getManager();
+        $query =$em->getRepository("EntityBundle:CommitHistoric");
+        $data = ['title'=>'', "status"=>"" , "libelle"=>"", "project_id"=>$id, "user_id"=>null, "task_id"=>null];
+        $items = $query->getByparamProject($data);
+        //var_dump($items);
         $array['items'] =$items;
         $array['id'] =$id;
         return $this->render('AdminBundle:Project:commit.html.twig', $array);
@@ -265,7 +297,7 @@ class ProjectController extends Controller
             }
             else{
                 $array['error'] = $error;
-                var_dump($error);
+                //var_dump($error);
             }
         }
         $array["index"] =3;

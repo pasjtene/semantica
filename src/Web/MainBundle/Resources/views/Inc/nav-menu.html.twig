@@ -12,6 +12,8 @@
                 <li><a href="{{ path('main_newproject') }}">{% trans from 'nav' %} nav.newprojet {% endtrans %}</a></li>
                 <li><a href="">{% trans from 'nav' %} nav.services {% endtrans %}</a></li>
                 <li><a href="">{% trans from 'nav' %} nav.about {% endtrans %}</a></li>
+                <li><a href="{{ path('app_locale') }}">{% trans from 'nav' %} nav.language2 {% endtrans %}</a></li>
+                <li><a href="{{ path('app_locale') }}">{% trans from 'nav' %} nav.language3 {% endtrans %}</a></li>
                 <li><a href="{{ path('app_locale') }}">{% trans from 'nav' %} nav.language {% endtrans %}</a></li>
             </ul>
         </nav>
@@ -71,21 +73,21 @@
                         <div class="col offset-m1 m2 menu-section">
                             <h4><strong><a href="{{ path('main_aboutstc') }}">{% trans from 'aboutstc' %}leadership.title{% endtrans %}</a></strong> </h4>
                             <p>{% trans from 'aboutstc' %}leadership.our_content {% endtrans %}</p>
-                            <h4><strong><a href="{{ path('main_aboutstc') }}">{% trans from 'aboutstc' %}leadership.block11{% endtrans %}</a></strong> </h4>
+                            <h4><strong><a href="{{ path('main_aboutstcc') }}">{% trans from 'aboutstc' %}leadership.block11{% endtrans %}</a></strong> </h4>
                         </div>
                         <div class="col m2 menu-section">
-                            <h4><strong><a href="{{ path('main_aboutstc') }}">{% trans from 'aboutstc' %}newsroom.title{% endtrans %}</a></strong> </h4>
+                            <h4><strong><a href="{{ path('main_newssroom') }}">{% trans from 'aboutstc' %}newsroom.title{% endtrans %}</a></strong> </h4>
                             <p>{% trans from 'aboutstc' %}newsroom.block1 {% endtrans %}</p>
-                            <h4><strong><a href="{{ path('main_aboutstc') }}">{% trans from 'aboutstc' %}newsroom.block11{% endtrans %}</a></strong> </h4>
+                            <h4><strong><a href="{{ path('main_newsroom') }}">{% trans from 'aboutstc' %}newsroom.block11{% endtrans %}</a></strong> </h4>
                         </div>
-                        <div class="col m2 menu-section"><h4><strong><a href="{{ path('main_aboutstc') }}">{% trans from 'aboutstc' %}events.title{% endtrans %}</a></strong> </h4>
+                        <div class="col m2 menu-section"><h4><strong><a href="{{ path('main_eventss') }}">{% trans from 'aboutstc' %}events.title{% endtrans %}</a></strong> </h4>
                             <p>{% trans from 'aboutstc' %}events.block1 {% endtrans %}</p>
-                            <h4><strong><a href="{{ path('main_aboutstc') }}">{% trans from 'aboutstc' %}events.block11{% endtrans %}</a></strong> </h4>
+                            <h4><strong><a href="{{ path('main_events') }}">{% trans from 'aboutstc' %}events.block11{% endtrans %}</a></strong> </h4>
                         </div>
                         <div class="col  m2">
-                            <h4><strong><a href="{{ path('main_aboutstc') }}">{% trans from 'aboutstc' %}careers.title{% endtrans %}</a></strong> </h4>
+                            <h4><strong><a href="{{ path('main_careers') }}">{% trans from 'aboutstc' %}careers.title{% endtrans %}</a></strong> </h4>
                             <p>{% trans from 'aboutstc' %}careers.block1 {% endtrans %}</p>
-                            <h4><strong><a href="{{ path('main_aboutstc') }}">{% trans from 'aboutstc' %}careers.block11{% endtrans %}</a></strong> </h4>
+                            <h4><strong><a href="{{ path('main_explorecareers') }}">{% trans from 'aboutstc' %}careers.block11{% endtrans %}</a></strong> </h4>
                         </div>
                         <div class="col m3">
                             <div class="card">
@@ -103,8 +105,6 @@
                     </div>
                 </div>
             </li>
-            <li style="display: none;"><a  href="{{ path('app_locale') }}">{% trans from 'nav' %} nav.language {% endtrans %}</a></li>
-            <li style="float:right;"><a href="{{ path('app_locale') }}">{% trans from 'nav' %} nav.language {% endtrans %}</a></li>
         </ul>
     </nav>
 </div>

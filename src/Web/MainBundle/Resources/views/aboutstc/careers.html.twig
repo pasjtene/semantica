@@ -1,0 +1,58 @@
+{% extends 'MainBundle::layout.html.twig' %}
+{% block meta %}
+    <meta name = "{% trans from 'refer' %} industries.title {% endtrans %}" >
+    <meta name = "keywords" content = "{% trans from 'refer' %} industries.description {% endtrans %}" >
+{% endblock %}
+{% block title %}
+    Semantica Technologies Corporation - STC / careers
+{% endblock %}
+
+{% block mycss %}
+    <style>
+
+    </style>
+{% endblock %}
+{% block header %}
+    {{ parent() }}
+    {% include 'MainBundle:Inc:slide.html.twig' %}
+{% endblock %}
+
+{% block  main %}
+    <div class="row" id="main_industries">
+
+        <div class="row">
+
+
+            <div class="section">
+                <h5 class="center-align"> {% trans from 'aboutstc' %} careers.titles {% endtrans %} </h5>
+                <br> <br>
+                <div class="col s12 m6">
+                    <img width="45" src="{{ asset('data/img/careers.jpg') }}" alt="">
+                </div>
+                <div class="col s12 m6">
+                    <h6> {% trans from 'aboutstc' %} careers.descriptions {% endtrans %} </h6>
+                    <p>
+                        {% trans from 'aboutstc' %} careers.descriptions_content {% endtrans %}
+                    </p>
+                    <br>
+                    <h6> {% trans from 'aboutstc' %} careers.responsability {% endtrans %} </h6>
+                    <p>
+                        {% trans from 'aboutstc' %} careers.responsability_content {% endtrans %}
+                    </p>
+                    <br>
+                    <h6> {% trans from 'aboutstc' %} careers.quality {% endtrans %} </h6>
+                    <p>
+                        {% trans from 'aboutstc' %} careers.quality_content {% endtrans %}
+                    </p>
+
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block myjs %}
+    <script>
+
+    </script>
+{% endblock %}

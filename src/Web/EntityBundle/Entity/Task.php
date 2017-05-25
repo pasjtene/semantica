@@ -164,29 +164,6 @@ class Task extends BaseInterface
         return $this->planning;
     }
 
-    /**
-     * Set status
-     *
-     * @param string $status
-     *
-     * @return Task
-     */
-    public function setStatus($status)
-    {
-        $this->status = $status;
-
-        return $this;
-    }
-
-    /**
-     * Get status
-     *
-     * @return string
-     */
-    public function getStatus()
-    {
-        return $this->status;
-    }
 
     /**
      * Set rate
@@ -210,5 +187,30 @@ class Task extends BaseInterface
     public function getRate()
     {
         return $this->rate;
+    }
+
+
+    /**
+     * Set status
+     *
+     * @param string $status
+     *
+     * @return Task
+     */
+    public function setStatus($status)
+    {
+        $this->status = $status;
+
+        return $this;
+    }
+
+    /**
+     * Get status
+     *
+     * @return string
+     */
+    public function getStatus()
+    {
+        return $this->status;
     }
 }

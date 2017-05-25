@@ -24,6 +24,10 @@ form:
     phone: Phone number
     placeholder_phone: Your Phone number
     roles: Roles
+    pleasantries: Pleasantries
+    city: City
+    country: Country
+    username: Phone number
   cancelling:
     addcode: Base code
     adddate: Register Date
@@ -33,6 +37,8 @@ form:
     new: New Commit
     empty: No commit  register
     auther: Auther
+    list: Commits  list
+    by: By
   historic:
     startdate: Start  date
     enddate: End date
@@ -59,6 +65,9 @@ form:
     enddate: End date
     new: New planning
     empty: No planning  register
+    task: Task
+    tasknb: Task numbers
+    detail: more detail
   project:
     title: Title
     placeholder_title: Give the title for your projet
@@ -95,6 +104,10 @@ form:
     identity: Identity
     rate: Rate
     status: Status
+    title: Task List
+    more: More detail
+    finish: Complete
+    nofinish: Incomplete
     new: New task
     tasks: Tasks
     label: Label:

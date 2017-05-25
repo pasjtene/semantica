@@ -91,7 +91,7 @@
             <div class="card-content">
                 <p>
                     <strong>
-                        {% trans from 'forms' %} base.name {% endtrans %} :
+                        {% trans from 'forms' %} form.base.name {% endtrans %} :
                     </strong>
                     <br>
                                             <span>
@@ -107,7 +107,7 @@
                 <p>
                 <hr>
                 <strong>
-                    {% trans from 'forms' %} base.username {% endtrans %} :
+                    {% trans from 'forms' %} form.base.username {% endtrans %} :
                 </strong>
                 <br>
                                             <span>
@@ -121,7 +121,7 @@
                 <p>
                 <hr>
                 <strong>
-                    {% trans from 'forms' %} base.email {% endtrans %} :
+                    {% trans from 'forms' %} form.base.email {% endtrans %} :
                 </strong>
                 <br>
                                             <span>
@@ -135,7 +135,7 @@
                 <p>
                 <hr>
                 <strong>
-                    {% trans from 'forms' %} base.pleasantries {% endtrans %} :
+                    {% trans from 'forms' %} form.base.pleasantries {% endtrans %} :
                 </strong>
                 <br>
                                             <span>
@@ -149,7 +149,7 @@
                 <p>
                 <hr>
                 <strong>
-                    {% trans from 'forms' %} base.city {% endtrans %} :
+                    {% trans from 'forms' %} form.base.city {% endtrans %} :
                 </strong>
                 <br>
                                             <span>
@@ -163,7 +163,7 @@
                 <p>
                 <hr>
                 <strong>
-                    {% trans from 'forms' %} base.country {% endtrans %} :
+                    {% trans from 'forms' %} form.base.country {% endtrans %} :
                 </strong>
                 <br>
                                             <span>
@@ -189,7 +189,7 @@
                         {% set href= "#project1A"~file.hashname %}
                         {% set idhref = "project1A"~file.hashname %}
                         <li class="collection-item ">
-                            <li class="collection-item"><div>{{ project.truncate(file.name,15) }}<a href="{{ href }}" class="secondary-content"><i class="material-icons">attach_file</i></a></div></li>
+                            <li class="collection-item"><div>{{ items.truncate(file.name,15) }}<a href="{{ href }}" class="secondary-content"><i class="material-icons">attach_file</i></a></div></li>
                         </li>
                         <div id="{{ idhref }}" class="modal  modal-fixed-footer">
                             <div class="modal-content">
@@ -220,6 +220,17 @@
                             <li class="collection-item"><div>{{ items.truncate(file.name,15) }}<a href="{{app.request.getSchemeAndHttpHost()~'/'~file.path()}}" class="secondary-content upload_file"><i class="material-icons">attach_file</i></a></div></li>
                         </li>
                     {% endif %}
+                {% endfor %}
+            </ul>
+        {% endif %}
+
+        {% if participants!=null  %}
+            <ul class="collection with-header">
+                <li class="collection-header center-align"><h4><strong>{% trans from 'private' %} private.participant {% endtrans %}</strong></h4></li>
+                {% for participant in participants  %}
+                    <li class="collection-item ">
+                      <div>{{ participant.user.firstname ~ ' ' ~ participant.user.lastname }}</div>
+                    </li>
                 {% endfor %}
             </ul>
         {% endif %}

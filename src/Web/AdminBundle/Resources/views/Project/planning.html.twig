@@ -24,7 +24,7 @@
                        {% trans from 'forms' %} form.Task.new {% endtrans %}
                    </a>
                </td>
-               <td><a href="#"><i class="material-icons">remove</i></a></td>
+               <td><a href="#"><i class="material-icons">delete</i></a></td>
                <td><a href="#"><i class="material-icons">edit</i></a></td>
            </tr>
         {% endfor %}
@@ -74,12 +74,13 @@
                 </div>
 
                 <div class="input-field col s12">
+                    <label for="pl-status">{% trans from 'forms' %} form.Task.tstatus {% endtrans %}</label>
+                    <br><br>
                     <select name="task-status" id="pl-status" required>
                         <option value="Pending">{% trans from 'forms' %} form.Task.pending {% endtrans %}</option>
                         <option value="In progress">{% trans from 'forms' %} form.Task.progress {% endtrans %}</option>
                         <option value="Done">{% trans from 'forms' %} form.Task.done {% endtrans %}</option>
                     </select>
-                    <label for="pl-status">{% trans from 'forms' %} form.Task.tstatus {% endtrans %}</label>
                 </div>
 
                 <div class="input-field col s12">

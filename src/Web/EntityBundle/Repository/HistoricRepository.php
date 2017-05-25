@@ -1,6 +1,7 @@
 <?php
 
 namespace Web\EntityBundle\Repository;
+use Web\EntityBundle\Entity\Historic;
 
 /**
  * HistoricRepository
@@ -10,4 +11,49 @@ namespace Web\EntityBundle\Repository;
  */
 class HistoricRepository extends \Doctrine\ORM\EntityRepository
 {
+    public function  getByProjet($data, $limit=20, $page=1, $count=false )
+    {
+        $query = $this->createQueryBuilder('a');
+        if($count)
+        {
+            $query->select('count(a.id)');
+            return $query->getQuery()->getSingleScalarResult();
+        }
+
+        $query->select(['a','pr'])
+            ->leftJoin('a.project','pr');
+
+        if($data!=null)
+        {
+
+            $parameters['project_id']=$data['project_id'];
+
+
+            $query->andWhere('pr.id =:project_id OR  pr.id IS NULL');
+            $query->setParameters($parameters);
+            $query->addOrderBy('a.id','desc');
+            if($limit)
+            {
+                $page=$page<1?1:$page;
+                $query->setFirstResult(($page-1)*$limit)->setMaxResults($limit);
+            }
+        }
+
+        return $query->getQuery()->getResult();
+
+    }
+
+    public function  getByParticipant($data, $limit=20, $page=1, $count=false )
+    {
+        $list = $this->getByProjet($data,$limit,$page,$count);
+
+        $items=null;
+        /** @var Historic $item */
+        foreach($list as $item)
+        {
+            $items[]= $item->getParticipator();
+        }
+
+        return $items;
+    }
 }

@@ -12,12 +12,14 @@ use Symfony\Component\Security\Core\Authentication\Token\UsernamePasswordToken;
 use Symfony\Component\Security\Core\Exception\AccountStatusException;
 use Symfony\Component\Validator\Constraints\DateTime;
 use Web\EntityBundle\Entity\Comment;
+use Web\EntityBundle\Entity\Commit;
 use Web\EntityBundle\Entity\CommitHistoric;
 use Web\EntityBundle\Entity\FileProjet;
 use Web\EntityBundle\Entity\Files;
 use Web\EntityBundle\Entity\Historic;
-use Web\EntityBundle\Entity\Projet;
 use Web\EntityBundle\Entity\Task;
+use Web\EntityBundle\Entity\Planning;
+use Web\EntityBundle\Entity\Projet;
 use Web\EntityBundle\Entity\User;
 use Web\EntityBundle\Form\UserType;
 
@@ -112,28 +114,40 @@ class PrivateController extends Controller
             if($code!="")
             {
                 /** @var Projet $projet */
-                $projet =  $em->getRepository("EntityBundle:Projet")->findOneBycode($code);
-                $list = $em->getRepository("EntityBundle:CommitHistoric")->findBy(['project'=>$projet],['id'=>'DESC']);
+                $projet =  $em->getRepository("EntityBundle:Projet")->find($code);
+
+                /** @var User $user */
+                $user = $this->getUser();
+                $em = $this->getDoctrine()->getManager();
+                $query =$em->getRepository("EntityBundle:CommitHistoric");
+                $data = ['title'=>'', "status"=>"" , "libelle"=>"", "project_id"=>$projet->getId(), "user_id"=>$user->getId(), "task_id"=>null];
+                $list = $query->getByparamUserAndProject($data);
+
+
+                //$list = $em->getRepository("EntityBundle:CommitHistoric")->findBy(['project'=>$projet],['id'=>'DESC']);
             }
             else{
-                $list = $em->getRepository("EntityBundle:CommitHistoric")->findBy([],['id'=>'DESC']);
+                /** @var User $user */
+                $user = $this->getUser();
+                $em = $this->getDoctrine()->getManager();
+                $query =$em->getRepository("EntityBundle:CommitHistoric");
+                $data = ['title'=>'', "status"=>"" , "libelle"=>"", "project_id"=>null, "user_id"=>$user->getId(), "task_id"=>null];
+                $list = $query->getByparamUser($data);
+                //$list = $em->getRepository("EntityBundle:CommitHistoric")->findBy([],['id'=>'DESC']);
             }
         }
         else
         {
-            $list = $em->getRepository("EntityBundle:CommitHistoric")->findBy([],['id'=>'DESC']);
+            /** @var User $user */
+            $user = $this->getUser();
+            $em = $this->getDoctrine()->getManager();
+            $query =$em->getRepository("EntityBundle:CommitHistoric");
+            $data = ['title'=>'', "status"=>"" , "libelle"=>"", "project_id"=>null, "user_id"=>$user->getId(), "task_id"=>null];
+            $list = $query->getByparamUser($data);
+
+            //$list = $em->getRepository("EntityBundle:CommitHistoric")->findBy([],['id'=>'DESC']);
         }
 
-        $listhelp = $list;
-        $list =null;
-        /** @var CommitHistoric $item */
-        foreach($listhelp as $item)
-        {
-            if($item->getProject()->getUser()->getId()==$user->getId())
-            {
-                $list[] =$item;
-            }
-        }
         $array['list'] = $list;
         $array['items'] = $items;
         $array['tabsindex'] = 3;
@@ -157,21 +171,24 @@ class PrivateController extends Controller
         {
             $val = $request->request;
             $message =$val->get('message');
-            $taskid =$val->get('task');
             $commit =$val->get('commit');
 
             /** @var User $user */
             $user= $em->getRepository("EntityBundle:User")->find($user->getId());
 
-            /** @var Projet $project */
-            $project= $em->getRepository("EntityBundle:Projet")->find($id);
+            /** @var Commit $commits */
+            $commits= $em->getRepository("EntityBundle:Commit")->find($id);
 
-            /** @var Task $task */
-            $task= $em->getRepository("EntityBundle:Task")->find($taskid);
+            /** @var CommitHistoric $commitHis */
+            $commitHis= $em->getRepository("EntityBundle:CommitHistoric")->findOneByCommit($id);
+
+
+            /** @var Projet $projet */
+            $projet= $commitHis->getTask()->getPlanning()->getProject();
 
             $comment = new Comment();
             $comment->setDate(new \DateTime())->setDescription($message);
-            $comment->setUser($user)->setProject($project)->setTask($task);
+            $comment->setUser($user)->setCommit($commits);
 
             $em->persist($comment);
             $em->flush();
@@ -184,7 +201,7 @@ class PrivateController extends Controller
             {
                 if($item->getProject()->getId()==$id)
                 {
-                    $body =  '<p> Code du projet : '.$project->getCode().
+                    $body =  '<p> Code du projet : '.$projet->getCode().
                         '<br/> Commit : '.$commit.
                         '<br/> Suggestion : '.$message.'</p>';
                     $code = $this->sendMail($item->getParticipator()->getUser()->getEmail(), $this->getParameter('mailer_user'), $message, "COMMENT STC(SEMANTICA TECHNOLOGIES CORPORATION)");
@@ -232,28 +249,37 @@ class PrivateController extends Controller
             {
                 /** @var Projet $projet */
                 $projet =  $em->getRepository("EntityBundle:Projet")->findOneBycode($code);
-                $list = $em->getRepository("EntityBundle:Comment")->findBy(['project'=>$projet],['id'=>'DESC','date'=>'DESC']);
+                $list = $em->getRepository("EntityBundle:Comment")->findBy(['projet'=>$projet],['id'=>'ASC','date'=>'DESC']);
             }
             else{
-                $list = $em->getRepository("EntityBundle:Comment")->findBy([],['id'=>'DESC','date'=>'DESC']);
+                $list = $em->getRepository("EntityBundle:Comment")->findBy([],['id'=>'ASC','date'=>'DESC']);
             }
         }
         else
         {
-            $list = $em->getRepository("EntityBundle:Comment")->findBy([],['id'=>'DESC','date'=>'DESC']);
+            $list = $em->getRepository("EntityBundle:Comment")->findBy([],['id'=>'ASC','date'=>'DESC']);
         }
 
         $listhelp = $list;
         $list =null;
-        /** @var Comment $item */
-        foreach($listhelp as $item)
+        /** @var Projet $projet */
+        foreach ($items as $projet)
         {
-            if($item->getProject()->getUser()->getId()==$user->getId())
+            if($projet->getUser()->getId()==$user->getId())
             {
-                $reply = $em->getRepository("EntityBundle:Reply")->findBy([],['id'=>'DESC','date'=>'DESC']);
-                $list[] =['comment'=>$item, 'reply'=>$reply];
+                $collections = null;
+                /** @var Comment $item */
+                foreach($listhelp as $item)
+                {
+                    if($item->getProjet()->getId()==$projet->getId())
+                    {
+                        $collections[] =$item;
 
+                    }
+                }
+                $list[] =['comments'=>$collections, 'project'=>$projet];
             }
+
         }
         $array['list'] = $list;
         $array['items'] = $items;
@@ -380,19 +406,7 @@ class PrivateController extends Controller
         return $this->redirect($this->generateUrl('main_private'));
     }
 
-
-
-    /**
-     * @Route("/project/detail/{id}", name="main_projet_detail", requirements={"id": "\d+"})
-     */
-    public function detailAction($id)
-    {
-        $em = $this->getDoctrine()->getManager();
-        /** @var Projet $project */
-        $project = $em->getRepository("EntityBundle:Projet")->find($id);
-        $array['project'] =$project;
-        return $this->render('MainBundle:Private:detail.html.twig', $array);
-    }
+    
 
     /**
      * @Route("/users", name="main_private_users")
@@ -410,4 +424,170 @@ class PrivateController extends Controller
 
         return $this->render('MainBundle:Private:users.html.twig', $array);
     }
+
+    /**
+     * @Route("/project/detail/{id}", name="main_projet_detail", requirements={"id": "\d+"})
+     */
+    public function detailAction($id)
+    {
+
+        $array['id'] =$id;
+        return $this->render('MainBundle:Private:detail.html.twig',$array);
+    }
+
+
+    /**
+     * @Route("/project/information/{id}", name="main_projet_information", requirements={"id": "\d+"})
+     */
+    public function project_informationAction($id)
+    {
+        $em = $this->getDoctrine()->getManager();
+        /** @var Projet $items */
+        $items = $em->getRepository("EntityBundle:Projet")->find($id);
+        $array['items'] =$items;
+        $array['id'] =$id;
+        return $this->render('MainBundle:Tabs:information.html.twig', $array);
+    }
+
+
+    /**
+     * @Route("/project/comment/{id}", name="main_projet_comment", requirements={"id": "\d+"})
+     */
+    public function project_commentAction($id)
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        $items = $em->getRepository("EntityBundle:Comment")->findByprojet($id);
+        $array['items'] =$items;
+        $array['id'] =$id;
+        return $this->render('MainBundle:Tabs:comment.html.twig', $array);
+    }
+
+
+    /**
+     * @Route("/project/participator/{id}", name="main_projet_participator", requirements={"id": "\d+"})
+     */
+    public function participatorAction($id)
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        $items = $em->getRepository("EntityBundle:Historic")->findByproject($id);
+        $array['items'] =$items;
+        $array['id'] =$id;
+        return $this->render('MainBundle:Tabs:participator.html.twig', $array);
+    }
+
+
+    /**
+     * @Route("/project/planning/{id}", name="main_projet_planning", requirements={"id": "\d+"})
+     */
+    public function project_planningAction($id)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $collections = $em->getRepository("EntityBundle:Planning")->findByproject($id);
+        $items=null;
+        if($collections!=null)
+        {
+            /** @var Planning $item */
+            foreach($collections as $item)
+            {
+                $tasks = $em->getRepository("EntityBundle:Task")->findByplanning($item->getId());
+                $items[] =["planning"=>$item, "tasks"=>$tasks];
+            }
+        }
+        $array['items'] =$items;
+        $array['id'] =$id;
+        return $this->render('MainBundle:Tabs:planning.html.twig', $array);
+    }
+
+
+    /**
+     * @Route("/project/commit/{id}", name="main_projet_commit", requirements={"id": "\d+"})
+     */
+    public function project_commitAction($id)
+    {
+        $em = $this->getDoctrine()->getManager();
+        /** @var User $user */
+        $user = $this->getUser();
+        $em = $this->getDoctrine()->getManager();
+        $query =$em->getRepository("EntityBundle:CommitHistoric");
+        $data = ['title'=>'', "status"=>"" , "libelle"=>"", "project_id"=>$id, "user_id"=>$user->getId(), "task_id"=>null];
+        $items = $query->getByparamUserAndProject($data);
+
+        $array['items'] =$items;
+        $array['id'] =$id;
+        return $this->render('MainBundle:Tabs:commit.html.twig', $array);
+    }
+
+    /**
+     * @Route("/{id2}/project/task/{id}", name="main_projet_task", requirements={"id": "\d+","id2": "\d+"},defaults={"id2":0})
+     */
+    public function taskAction(Request $request,$id,$id2)
+    {
+        /** @var User $user */
+        $user = $this->getUser();
+        $em = $this->getDoctrine()->getManager();
+        $query =$em->getRepository("EntityBundle:Task");
+        $data = ['title'=>'', "status"=>"" , "libelle"=>"", "planning_id"=>$id, "user_id"=>$user->getId()];
+        $items = $query->getByparam($data);
+        $array['items'] =$items;
+        $array['id'] =$id;
+        $array['id2'] =$id2;
+        return $this->render('MainBundle:Private:task.html.twig', $array);
+    }
+
+
+    /**
+     * @Route("/project/send/{id}", name="main_private_project_send", requirements={"id": "\d+"})
+     */
+    public function send_projectAction(Request $request,$id)
+    {
+        $code="";
+        /** @var User $user */
+        $user = $this->getUser();
+        $em = $this->getDoctrine()->getManager();
+
+
+        if($request->isMethod("POST"))
+        {
+            $val = $request->request;
+
+
+            /** @var User $user */
+            $user= $em->getRepository("EntityBundle:User")->find($user->getId());
+
+
+            /** @var Projet $projet */
+            $projet= $em->getRepository("EntityBundle:Projet")->find($id);
+
+            $message = $request->request->get('description');
+            $comment = new Comment();
+            $comment->setDate(new \DateTime());
+            $comment->setUser($user);
+            $comment->setProjet($projet);
+            $comment->setDescription($message);
+            $em->persist($comment);
+            $em->flush();
+            $em->detach($comment);
+
+            $list= $em->getRepository("EntityBundle:Historic")->findAll();
+
+            /** @var Historic $item */
+            foreach($list as $item)
+            {
+                if($item->getProject()->getId()==$id)
+                {
+                    $body =  '<p> Code du projet : '.$projet->getCode().
+                        '<br/> Suggestion : '.$message.'</p>';
+                    $code = $this->sendMail($item->getParticipator()->getUser()->getEmail(), $this->getParameter('mailer_user'), $message, "COMMENT STC(SEMANTICA TECHNOLOGIES CORPORATION)");
+                }
+            }
+
+
+        }
+        return  $this->detailAction($id);
+       // return $this->redirect($this->generateUrl('main_private_commit',["message"=>"test"]));
+    }
+
+
 }
