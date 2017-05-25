@@ -26,6 +26,10 @@ form:
     phone: Téléphone
     placeholder_phone: Votre téléphone
     roles: Roles
+    pleasantries: Civilité
+    city: Ville
+    country: Pays
+    username: Téléphone
   cancelling:
     addcode: Code de base
     adddate: Date d'enregistement

@@ -11,6 +11,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Web\EntityBundle\Entity\Commit;
+use Web\EntityBundle\Entity\CommitHistoric;
 use Web\EntityBundle\Entity\Files;
 use Web\EntityBundle\Entity\Historic;
 use Web\EntityBundle\Entity\Participator;
@@ -19,6 +20,7 @@ use Web\EntityBundle\Entity\Projet;
 use Web\EntityBundle\Entity\Task;
 use Web\EntityBundle\Entity\User;
 use Web\EntityBundle\Entity\Visitor;
+use Web\EntityBundle\Form\CommitType;
 use Web\EntityBundle\Form\ProjetUpdateType;
 use Web\EntityBundle\Repository\UserRepository;
 
@@ -83,7 +85,7 @@ class CommitController extends Controller
         $objet = $id==0? new Commit() : $em->getRepository('EntityBundle:Commit')->find($id);
 
         /** @var Form $form */
-        $form = $this->get("form.factory")->create(ProjetUpdateType::class,$objet);
+        $form = $this->get("form.factory")->create(CommitType::class,$objet);
         if($request->isMethod('POST'))
         {
             $form->handleRequest($request);
@@ -107,7 +109,7 @@ class CommitController extends Controller
                     $objet =new Commit();
                     $array['message'] = "";
                     /** @var Form $form */
-                    $form = $this->get("form.factory")->create(ProjetUpdateType::class,$objet);
+                    $form = $this->get("form.factory")->create(CommitType::class,$objet);
                 }
                 else
                 {
@@ -127,6 +129,53 @@ class CommitController extends Controller
         $array['objet'] = $objet;
         return $this->render('AdminBundle:Commit:form.html.twig',$array);
     }
+
+
+
+
+    /**
+     * @Route("/{projectid}/add/", name="admin_commit_add", requirements={"projectid": "\d+"})
+     */
+    public function addAction(Request $request,$projectid)
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        /** @var User $user */
+        $user = $this->getUser();
+
+        /** @var Projet $projet */
+        $projet = $em->getRepository('EntityBundle:Projet')->find($projectid);
+
+
+        if($request->isMethod('POST'))
+        {
+
+            $commit  =new Commit();
+            /** @var Participator $participant */
+            $participant = $em->getRepository('EntityBundle:Participator')->findOneByuser($user->getId());
+            $message = $request->request->get('description');
+            $task_id = $request->request->get('task_id');
+
+            /** @var Task $task */
+            $task = $em->getRepository('EntityBundle:Task')->find($task_id);
+
+            $commit->setParticipator($participant);
+            $commit->setCode(uniqid());
+
+            $commit->setDescription($message);
+            $commit->setDate(new \DateTime());
+            $historic = new CommitHistoric();
+            $historic->setCommit($commit);
+            $historic->setTask($task);
+
+            $em->persist($historic);
+            $em->flush();
+            $em->detach($historic);
+        }
+
+        return $this->redirect($this->generateUrl('admin_projet_detail',['id'=>$projectid]));
+    }
+
 
     public  function sendMail($to, $from, $body,$subjet)
     {

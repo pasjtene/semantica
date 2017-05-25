@@ -72,7 +72,11 @@
                                     <a  href="{{ path('admin_users_change_role', {id:item.id}) }}"  title="Change role">
                                         <i class="material-icons">group</i>
                                     </a>
-                                    <a data-id="{{ item.id }}" data-state="{{ item.enabled }}" href="#" class="lock_user">
+                                    {% set status = item.enabled %}
+                                    {% if status==null %}
+                                        {% set status=0 %}
+                                    {% endif %}
+                                    <a href="{{ path('admin_change_status_users', {id:item.id,status:status}) }}" data-state="{{ item.enabled }}"  class="lock_user">
                                         <i class="material-icons">{% if item.enabled == 1 %}lock{% else %}lock_open{% endif %}</i>
                                     </a>
 
@@ -96,8 +100,9 @@
             $('#table-users').dataTable();
             //$('select').material_select();
 
-            $('.lock_user').click(function(e)
+          /*  $('.lock_user').click(function(e)
             {
+
                 var id = parseInt($(this).data('id'));
                 var status = parseInt($(this).data('state')) === 0 ? 1 : 0;
                 if(!isNaN)
@@ -108,6 +113,8 @@
                 }
                 e.preventDefault();
             });
+
+            */
 
             $('.delete_user').click(function(e)
             {

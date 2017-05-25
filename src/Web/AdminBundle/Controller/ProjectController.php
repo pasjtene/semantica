@@ -167,6 +167,21 @@ class ProjectController extends Controller
     public function detailAction($id)
     {
         $array['id'] =$id;
+        $em = $this->getDoctrine()->getManager();
+
+       $items = $em->getRepository("EntityBundle:Task")->findAll();
+
+        $tasks = null;
+        /** @var Task $item */
+        foreach($items as $item )
+        {
+            if($item->getPlanning()->getProject()->getId()==$id)
+            {
+                $tasks[]=$item;
+            }
+        }
+
+            $array['tasks'] = $tasks;
         return $this->render('AdminBundle:Project:detail.html.twig',$array);
     }
 
@@ -179,6 +194,8 @@ class ProjectController extends Controller
         /** @var Projet $items */
         $items = $em->getRepository("EntityBundle:Projet")->find($id);
         $array['items'] =$items;
+        $data['project_id']=$id;
+        $array['participants'] =$em->getRepository("EntityBundle:Historic")->getByParticipant($data);
         $array['id'] =$id;
         return $this->render('AdminBundle:Project:information.html.twig', $array);
     }

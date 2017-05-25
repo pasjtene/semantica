@@ -7,6 +7,7 @@ private:
   commit: Commit
   find: Trouver le commit
   choose_project: Choisir un projet
+  participant: Liste des participants
 commit:
   auther: Auteur
   commit: Commit
@@ -19,6 +20,8 @@ commit:
   send: Envoyer
   do_comment: FAIRE UNE SUGGESTION
   task: Tâche
+  add: Ajouter un commit
+  choice_task: Choisir une tâche
 project:
   title: Titre
   description: Description

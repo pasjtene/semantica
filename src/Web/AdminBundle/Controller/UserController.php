@@ -12,11 +12,15 @@ use Web\EntityBundle\Entity\Customer;
 use Web\EntityBundle\Entity\Projet;
 use Web\EntityBundle\Entity\User;
 
+/**
+ * @Route("/users")
+ */
 class UserController extends Controller
 {
 
+
     /**
-     * @Route("/users", name="admin_users")
+     * @Route("/", name="admin_users")
      */
     public function indexAction(Request $request)
     {
@@ -35,21 +39,19 @@ class UserController extends Controller
 
 
     /**
-     * @Route("/{id}/change-state", options={"expose"=true}, name="admin_change_status_users")
+     * @Route("/change-state/{id}/{status}", options={"expose"=true}, name="admin_change_status_users")
      */
-    public function changeStatusAction(Request $request, $id)
+    public function changeStatusAction(Request $request, $id,$status)
     {
         $em = $this->getDoctrine()->getManager();
 
-        if($request->isMethod('POST'))
-        {
-            /** @var User $user */
-            $user = $em->getRepository("EntityBundle:User")->find($id);
+        /** @var User $user */
+        $user = $em->getRepository("EntityBundle:User")->find($id);
 
-            if(is_object($user)){
-                $user->setEnabled($request->get('status'));
-                $em->flush();
-            }
+        if(is_object($user)){
+            $status= $status==1?0:1;
+            $user->setEnabled($status);
+            $em->flush();
         }
 
         return $this->redirect($this->generateUrl('admin_users'));

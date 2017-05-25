@@ -24,6 +24,10 @@ form:
     phone: Phone number
     placeholder_phone: Your Phone number
     roles: Roles
+    pleasantries: Pleasantries
+    city: City
+    country: Country
+    username: Phone number
   cancelling:
     addcode: Base code
     adddate: Register Date
