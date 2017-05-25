@@ -251,4 +251,18 @@ use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
       {
           return implode(", ", $this->roles);
       }
-}
+
+      public function hisParticipant($list, $projet_id){
+          $confirm = 0;
+          /** @var Historic $historic */
+          foreach($list as $historic)
+          {
+              if($historic->getParticipator()->getUser()->getId()==$this->getId() and $projet_id==$historic->getProject()->getId())
+              {
+                  $confirm=1;
+              }
+          }
+          return $confirm;
+      }
+
+  }
