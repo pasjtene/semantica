@@ -66,9 +66,12 @@
                                 <td>{{ item.pleasantries }} </td>
                                 <td>{% if item.enabled == 1 %}{% trans from 'admin' %} user.enabled {% endtrans %}{% else %}{% trans from 'admin' %} user.locked  {% endtrans %}{% endif %} </td>
                                 <td>
-                                    <a href="{{ path('admin_users_change_role', {id:item.id}) }}">{{ item.roleString }}</a>
+                                   {{ item.roleString }}
                                 </td>
                                 <td>
+                                    <a  href="{{ path('admin_users_change_role', {id:item.id}) }}"  title="Change role">
+                                        <i class="material-icons">group</i>
+                                    </a>
                                     <a data-id="{{ item.id }}" data-state="{{ item.enabled }}" href="#" class="lock_user">
                                         <i class="material-icons">{% if item.enabled == 1 %}lock{% else %}lock_open{% endif %}</i>
                                     </a>
