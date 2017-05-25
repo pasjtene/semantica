@@ -34,6 +34,14 @@ class FooterController extends Controller
         return $this->render('MainBundle:Footer:formation.html.twig');
     }
 
+    /**
+     * @Route("/certification", name="main_certification")
+     */
+    public function certificationAction()
+    {
+        return $this->render('MainBundle:Footer:certification.html.twig');
+    }
+
 
 }
 
