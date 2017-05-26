@@ -7,9 +7,11 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\Config\Tests\Util\Validator;
 use Symfony\Component\Form\Form;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
+use Web\EntityBundle\Entity\Comment;
 use Web\EntityBundle\Entity\Files;
 use Web\EntityBundle\Entity\Historic;
 use Web\EntityBundle\Entity\Participator;
@@ -180,8 +182,7 @@ class ProjectController extends Controller
                 $tasks[]=$item;
             }
         }
-
-            $array['tasks'] = $tasks;
+        $array['tasks'] = $tasks;
         return $this->render('AdminBundle:Project:detail.html.twig',$array);
     }
 
@@ -197,7 +198,26 @@ class ProjectController extends Controller
         $data['project_id']=$id;
         $array['participants'] =$em->getRepository("EntityBundle:Historic")->getByParticipant($data);
         $array['id'] =$id;
+        $array['tabs'] = 1;
         return $this->render('AdminBundle:Project:information.html.twig', $array);
+    }
+
+    /**
+     * @Route("/comment/{id}", name="admin_projet_comment", requirements={"id": "\d+"})
+     */
+    public function commentAction($id)
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        $items = $em->getRepository("EntityBundle:Comment")->findByprojet($id);
+
+        $data['project_id']=$id;
+        $array['participants'] =$em->getRepository("EntityBundle:Historic")->findAll();
+        $array['items'] =$items;
+        $array['id'] =$id;
+        $array['tabs'] = 5;
+
+        return $this->render('AdminBundle:Project:comment.html.twig', $array);
     }
 
     /**
@@ -214,7 +234,26 @@ class ProjectController extends Controller
         $array['items'] =$items;
         $array['users'] =$users;
         $array['id'] =$id;
+        $array['tabs'] = 2;
         return $this->render('AdminBundle:Project:participator.html.twig', $array);
+    }
+
+    /**
+     * @Route("/delete-participator/{id}", name="admin_projet_delete_participator", requirements={"id": "\d+"})
+     */
+    public function deleteParticipatorAction($id)
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        /** @var Historic $participator */
+        $participator = $em->getRepository("EntityBundle:Historic")->findByParticipator($id);
+
+        if(is_object($participator)){
+            $participator->setEnddate(new \DateTime());
+            $em->flush();
+        }
+
+        return $this->redirect($this->generateUrl('admin_projet_detail', ['id' => $id]));
     }
 
     /**
@@ -226,8 +265,10 @@ class ProjectController extends Controller
         $items = $em->getRepository("EntityBundle:Planning")->findByproject($id);
         $array['items'] =$items;
         $array['id'] =$id;
+        $array['tabs'] = 4;
         return $this->render('AdminBundle:Project:planning.html.twig', $array);
     }
+
     /**
      * @Route("/commit/{id}", name="admin_projet_commit", requirements={"id": "\d+"})
      */
@@ -239,12 +280,31 @@ class ProjectController extends Controller
         $query =$em->getRepository("EntityBundle:CommitHistoric");
         $data = ['title'=>'', "status"=>"" , "libelle"=>"", "project_id"=>$id, "user_id"=>null, "task_id"=>null];
         $items = $query->getByparamProject($data);
-        //var_dump($items);
+
+
+        $collections = $em->getRepository("EntityBundle:Task")->findAll();
+
+        $tasks = null;
+        /** @var Task $item */
+        foreach($collections as $item )
+        {
+            if($item->getPlanning()->getProject()->getId()==$id)
+            {
+                $tasks[]=$item;
+            }
+        }
+
+
+        $istask = $tasks==null? 0: 1;
+        $array['istask'] = $istask;
+
         $array['items'] =$items;
         $array['id'] =$id;
+        $array['tabs'] = 3;
         $array['historics'] =$em->getRepository("EntityBundle:Historic")->findAll();
         return $this->render('AdminBundle:Project:commit.html.twig', $array);
     }
+
     /**
      * @Route("/update/{id}", name="admin_projet_update", requirements={"id": "\d+"})
      */
@@ -331,7 +391,8 @@ class ProjectController extends Controller
         {
             $params = [
                 'startdate' => new \DateTime($request->request->get("start-date")),
-                'enddate' => new \DateTime($request->request->get("end-date"))
+                'enddate' => new \DateTime($request->request->get("end-date")),
+                'pid' => $request->request->get("planning-id")
             ];
 
             /** @var Projet $project */
@@ -341,10 +402,19 @@ class ProjectController extends Controller
                 throw new NotFoundHttpException();
             }
 
-            $planning = new Planning();
-            $planning->setStartdate($params['startdate'])->setEnddate($params['enddate'])->setProject($project);
+            if(intval($params['pid']) == 0)
+            {
+                $planning = new Planning();
+                $planning->setStartdate($params['startdate'])->setEnddate($params['enddate'])->setProject($project);
 
-            $em->persist($planning);
+                $em->persist($planning);
+            }
+            else{
+                /** @var Planning $planning */
+                $planning = $em->getRepository('EntityBundle:Planning')->find($params['pid']);
+                $planning->setStartdate($params['startdate'])->setEnddate($params['enddate']);
+            }
+
             $em->flush();
         }
 
@@ -385,5 +455,136 @@ class ProjectController extends Controller
         }
 
         return $this->redirect($this->generateUrl('admin_projet_detail', ['id' => $id]));
+    }
+
+    /**
+     * @Route("/{projectid}/planning/{id}", name="admin_projet_delete_planning", requirements={"projectid": "\d+", "id": "\d+"})
+     */
+    public function deletePlanningAction($projectid, $id)
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        /** @var Projet $project */
+        $project = $em->getRepository("EntityBundle:Projet")->find($projectid);
+
+        if(!is_object($project)){
+            throw new NotFoundHttpException();
+        }
+
+        /** @var Planning $planning */
+        $planning = $em->getRepository('EntityBundle:Planning')->find($id);
+
+        if(is_object($planning)){
+            $em->remove($planning);
+            $em->flush();
+        }
+
+        return $this->redirect($this->generateUrl('admin_projet_detail', ['id' => $projectid]));
+    }
+
+    /**
+     * @Route("/{projectid}/planning/{id}/get", name="admin_projet_get_planning", requirements={"projectid": "\d+", "id": "\d+"})
+     */
+    public function getPlanningTaskAction($projectid, $id)
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        /** @var Projet $project */
+        $project = $em->getRepository("EntityBundle:Projet")->find($projectid);
+
+        if(!is_object($project)){
+            throw new NotFoundHttpException();
+        }
+
+        /** @var Planning $planning */
+        $planning = $em->getRepository('EntityBundle:Planning')->find($id);
+
+        if(is_object($planning))
+        {
+            $serializer = SerializerBuilder::create()->build();
+
+            $jsonContent = $serializer->serialize($planning, 'json');
+
+            return new Response($jsonContent);
+        }
+
+        return new JsonResponse(null);
+    }
+
+    /**
+     * @Route("/{projectid}/delete-task/{id}", name="admin_projet_delete_task", requirements={"projectid": "\d+", "id": "\d+"})
+     */
+    public function deletePlanningTaskAction($projectid, $id)
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        /** @var Projet $project */
+        $project = $em->getRepository("EntityBundle:Projet")->find($projectid);
+
+        if(!is_object($project)){
+            throw new NotFoundHttpException();
+        }
+
+        /** @var Task $task */
+        $task = $em->getRepository('EntityBundle:Task')->find($id);
+
+        if(is_object($task)){
+            $em->remove($task);
+            $em->flush();
+        }
+
+        return $this->redirect($this->generateUrl('admin_projet_detail', ['id' => $projectid]));
+    }
+
+    /**
+     * @Route("/comment/add/{id}", name="admin_comment_add", requirements={"id": "\d+"})
+     */
+    public function send_projectAction(Request $request,$id)
+    {
+        $code="";
+        /** @var User $user */
+        $user = $this->getUser();
+        $em = $this->getDoctrine()->getManager();
+
+
+        if($request->isMethod("POST"))
+        {
+            $val = $request->request;
+
+
+            /** @var User $user */
+            $user= $em->getRepository("EntityBundle:User")->find($user->getId());
+
+
+            /** @var Projet $projet */
+            $projet= $em->getRepository("EntityBundle:Projet")->find($id);
+
+            $message = $request->request->get('description');
+            $comment = new Comment();
+            $comment->setDate(new \DateTime());
+            $comment->setUser($user);
+            $comment->setProjet($projet);
+            $comment->setDescription($message);
+            $em->persist($comment);
+            $em->flush();
+            $em->detach($comment);
+
+            $list= $em->getRepository("EntityBundle:Historic")->findAll();
+
+            /** @var Historic $item */
+            foreach($list as $item)
+            {
+                if($item->getProject()->getId()==$id)
+                {
+                    $body =  '<p> Code du projet : '.$projet->getCode().
+                        '<br/> Suggestion : '.$message.'</p>';
+                    $code = $this->sendMail($item->getParticipator()->getUser()->getEmail(), $this->getParameter('mailer_user'), $message, "COMMENT STC(SEMANTICA TECHNOLOGIES CORPORATION)");
+                }
+            }
+
+
+        }
+        return  $this->detailAction($id);
+        // return $this->redirect($this->generateUrl('main_private_commit',["message"=>"test"]));
     }
 }

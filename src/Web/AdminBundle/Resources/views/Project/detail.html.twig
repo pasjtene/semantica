@@ -89,10 +89,12 @@
                     <div class="col s12">
                         <br>
                         <ul class="tabs">
-                            <li class="tab col s3"><a href="#detail" class="active">{% trans from 'private' %} project.tab1 {% endtrans %}</a></li>
-                            <li class="tab col s3"><a  href="#participator" class="">{% trans from 'private' %} project.tab2 {% endtrans %}</a></li>
-                            <li class="tab col s3"><a href="#commit" class="">{% trans from 'private' %} project.tab3 {% endtrans %}</a></li>
-                            <li class="tab col s3"><a href="#planning" class="">{% trans from 'private' %} project.tab4 {% endtrans %}</a></li>
+                            <li class="tab col s2"><a href="#detail" class="{% if tabs is defined and tabs==1 %} active {% endif %}">{% trans from 'private' %} project.tab1 {% endtrans %}</a></li>
+                            <li class="tab col s2"><a  href="#participator" class="{% if tabs is defined and tabs==2 %} active {% endif %}">{% trans from 'private' %} project.tab2 {% endtrans %}</a></li>
+                            <li class="tab col s2"><a href="#commit" class="{% if tabs is defined and tabs==3 %} active {% endif %}">{% trans from 'private' %} project.tab3 {% endtrans %}</a></li>
+                            <li class="tab col s2"><a href="#planning" class="{% if tabs is defined and tabs==4 %} active {% endif %}">{% trans from 'private' %} project.tab4 {% endtrans %}</a></li>
+                            <li class="tab col s2"><a href="#comment" class="{% if tabs is defined and tabs==5 %} active {% endif %}">{% trans from 'private' %} project.tab5 {% endtrans %}</a></li>
+
                         </ul>
                     </div>
                     <div id="detail" class="col s12">
@@ -106,6 +108,9 @@
                     </div>
                     <div id="planning" class="col s12">
                         {{ render(controller('AdminBundle:Project:planning',{'id':id})) }}
+                    </div>
+                    <div id="comment" class="col s12">
+                        {{ render(controller('AdminBundle:Project:comment',{'id':id})) }}
                     </div>
                 </div>
 
@@ -151,6 +156,30 @@
         </div>
     </div>
 
+    <div id="md-new-comment" class="modal">
+        <div class="modal-content">
+
+        </div>
+        <div class="modal-footer">
+            <form class="col s12" method="post" action="{{ path('admin_comment_add',{id:id}) }}">
+                <div class="row">
+                    <input type="hidden" name="hidden" id="hidden" value="{{ id }}">
+                    <div class="input-field col s12">
+                        <i class="material-icons prefix">textsms</i>
+                        <textarea id="description" name="description" class="materialize-textarea" data-length="300"></textarea>
+                        <label for="description">{% trans from 'forms' %} form.base.description {% endtrans %}</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col s12">
+                        <center>
+                            <button class="waves-effect waves-green btn-flat btn  white-text center-align center" type="submit">{% trans from 'private' %} comment.add {% endtrans %}</button>
+                        </center>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
 {% endblock %}
 
 {% block myjs %}
@@ -169,11 +198,23 @@
                 body:$('#commit_save'),
                 delete: $('.delete_projet'),
                 btnNewTask : '.btn-new-task',
+                BtnNewPlanning: $('#btn-new-planning'),
                 planningId: $('#planning-id'),
                 modalTask: $('#md-new-task'),
+                modalPlanning: $("#md-new-planning"),
+                formPlanning: {
+                    sdate: $("#pl-start-date"),
+                    edate: $("#pl-end-date"),
+                    pid: $("#pid")
+                },
                 editParticipator: '.edit-participator',
                 btnNewParticipator: $("#btn-new-participator"),
-                datepicker: '.datepicker'
+                datepicker: '.datepicker',
+                deletePlanning : '.delete-planning',
+                editPlanning : '.edit-planning',
+                modalTaskList: $('#md-task-list'),
+                taskCount: '.task-count',
+                tableTask: $('#table-task')
             };
 
 
@@ -222,7 +263,77 @@
                 elt.planningId.val(pid);
                 elt.modalTask.modal('open');
                 e.preventDefault();
-            })
+            });
+
+            //Supprimer un planning
+            $(elt.deletePlanning).click(function(e){
+                var url = $(this).data('url');
+                if(confirm('Vous confirmez ?')){
+                    window.location = url;
+                }
+                e.preventDefault();
+            });
+
+            $(elt.BtnNewPlanning).click(function(e)
+            {
+                elt.formPlanning.pid.val("0");
+                elt.formPlanning.sdate.val("");
+                elt.formPlanning.edate.val("");
+
+                e.preventDefault();
+            });
+
+            //Modifier un planning
+            $(elt.editPlanning).click(function(e){
+                var id = $(this).data('id'),
+                    sdate = $(this).data('sd'),
+                    edate = $(this).data('ed');
+
+                elt.formPlanning.pid.val(""+id);
+                elt.formPlanning.sdate.val(sdate);
+                elt.formPlanning.edate.val(edate);
+
+                elt.modalPlanning.modal("open");
+
+                e.preventDefault();
+            });
+
+            $(elt.taskCount).click(function(e)
+            {
+                var url = $(this).data('url');
+
+                $.get(url, function(response){
+                    try{
+                        var data = JSON.parse(response);
+                        console.log(data);
+
+                        var tasks = data.tasks,
+                            taskCount = data.tasks.length;
+
+                        var tbody = elt.tableTask.children('tbody');
+                        tbody.empty();
+
+                        if(taskCount === 0)
+                        {
+                            tbody.append('<tr><td colspan="6" class="text-center">No task created </td></tr>');
+                        }
+                        else
+                        {
+                            for(var i = 0; i < taskCount; i++)
+                            {
+                                var task = tasks[i];
+                                var dataRow = '<tr><td>'+(i+1)+'</td><td>'+task.identity+'</td><td>'+task.libelle+'</td><td>'+task.status+'</td><td>'+task.rate+'%</td><td><a href="#"><i class="material-icons">delete</i></a></td></tr>';
+                                tbody.append(dataRow);
+                            }
+                        }
+                    }catch(ex){
+                        console.log("Error while fecthing data !");
+                    }
+                    elt.modalTaskList.modal('open');
+                });
+
+                e.preventDefault();
+            });
         });
     </script>
 {% endblock %}
