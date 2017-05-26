@@ -88,7 +88,7 @@
 
 <div id="md-new-comment" class="modal">
     <div class="modal-content">
-        <form class="col s12" method="post" action="{{ path('main_private_project_send',{id:id}) }}">
+        <form class="col s12" method="post" action="{{ path('admin_comment_add',{id:id}) }}">
             <div class="row">
                 <input type="hidden" name="hidden" id="hidden" value="{{ id }}">
                 <div class="input-field col s12">
