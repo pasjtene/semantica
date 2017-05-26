@@ -7,6 +7,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\Config\Tests\Util\Validator;
 use Symfony\Component\Form\Form;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
@@ -197,7 +198,26 @@ class ProjectController extends Controller
         $data['project_id']=$id;
         $array['participants'] =$em->getRepository("EntityBundle:Historic")->getByParticipant($data);
         $array['id'] =$id;
+        $array['tabs'] = 1;
         return $this->render('AdminBundle:Project:information.html.twig', $array);
+    }
+
+    /**
+     * @Route("/comment/{id}", name="admin_projet_comment", requirements={"id": "\d+"})
+     */
+    public function commentAction($id)
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        $items = $em->getRepository("EntityBundle:Comment")->findByprojet($id);
+
+        $data['project_id']=$id;
+        $array['participants'] =$em->getRepository("EntityBundle:Historic")->findAll();
+        $array['items'] =$items;
+        $array['id'] =$id;
+        $array['tabs'] = 5;
+
+        return $this->render('AdminBundle:Project:comment.html.twig', $array);
     }
 
     /**
@@ -214,7 +234,26 @@ class ProjectController extends Controller
         $array['items'] =$items;
         $array['users'] =$users;
         $array['id'] =$id;
+        $array['tabs'] = 2;
         return $this->render('AdminBundle:Project:participator.html.twig', $array);
+    }
+
+    /**
+     * @Route("/delete-participator/{id}", name="admin_projet_delete_participator", requirements={"id": "\d+"})
+     */
+    public function deleteParticipatorAction($id)
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        /** @var Historic $participator */
+        $participator = $em->getRepository("EntityBundle:Historic")->findByParticipator($id);
+
+        if(is_object($participator)){
+            $participator->setEnddate(new \DateTime());
+            $em->flush();
+        }
+
+        return $this->redirect($this->generateUrl('admin_projet_detail', ['id' => $id]));
     }
 
     /**
@@ -226,8 +265,10 @@ class ProjectController extends Controller
         $items = $em->getRepository("EntityBundle:Planning")->findByproject($id);
         $array['items'] =$items;
         $array['id'] =$id;
+        $array['tabs'] = 4;
         return $this->render('AdminBundle:Project:planning.html.twig', $array);
     }
+
     /**
      * @Route("/commit/{id}", name="admin_projet_commit", requirements={"id": "\d+"})
      */
@@ -242,9 +283,11 @@ class ProjectController extends Controller
         //var_dump($items);
         $array['items'] =$items;
         $array['id'] =$id;
+        $array['tabs'] = 3;
         $array['historics'] =$em->getRepository("EntityBundle:Historic")->findAll();
         return $this->render('AdminBundle:Project:commit.html.twig', $array);
     }
+
     /**
      * @Route("/update/{id}", name="admin_projet_update", requirements={"id": "\d+"})
      */
@@ -331,7 +374,8 @@ class ProjectController extends Controller
         {
             $params = [
                 'startdate' => new \DateTime($request->request->get("start-date")),
-                'enddate' => new \DateTime($request->request->get("end-date"))
+                'enddate' => new \DateTime($request->request->get("end-date")),
+                'pid' => $request->request->get("planning-id")
             ];
 
             /** @var Projet $project */
@@ -341,10 +385,19 @@ class ProjectController extends Controller
                 throw new NotFoundHttpException();
             }
 
-            $planning = new Planning();
-            $planning->setStartdate($params['startdate'])->setEnddate($params['enddate'])->setProject($project);
+            if(intval($params['pid']) == 0)
+            {
+                $planning = new Planning();
+                $planning->setStartdate($params['startdate'])->setEnddate($params['enddate'])->setProject($project);
 
-            $em->persist($planning);
+                $em->persist($planning);
+            }
+            else{
+                /** @var Planning $planning */
+                $planning = $em->getRepository('EntityBundle:Planning')->find($params['pid']);
+                $planning->setStartdate($params['startdate'])->setEnddate($params['enddate']);
+            }
+
             $em->flush();
         }
 
@@ -385,5 +438,84 @@ class ProjectController extends Controller
         }
 
         return $this->redirect($this->generateUrl('admin_projet_detail', ['id' => $id]));
+    }
+
+    /**
+     * @Route("/{projectid}/planning/{id}", name="admin_projet_delete_planning", requirements={"projectid": "\d+", "id": "\d+"})
+     */
+    public function deletePlanningAction($projectid, $id)
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        /** @var Projet $project */
+        $project = $em->getRepository("EntityBundle:Projet")->find($projectid);
+
+        if(!is_object($project)){
+            throw new NotFoundHttpException();
+        }
+
+        /** @var Planning $planning */
+        $planning = $em->getRepository('EntityBundle:Planning')->find($id);
+
+        if(is_object($planning)){
+            $em->remove($planning);
+            $em->flush();
+        }
+
+        return $this->redirect($this->generateUrl('admin_projet_detail', ['id' => $projectid]));
+    }
+
+    /**
+     * @Route("/{projectid}/planning/{id}/get", name="admin_projet_get_planning", requirements={"projectid": "\d+", "id": "\d+"})
+     */
+    public function getPlanningTaskAction($projectid, $id)
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        /** @var Projet $project */
+        $project = $em->getRepository("EntityBundle:Projet")->find($projectid);
+
+        if(!is_object($project)){
+            throw new NotFoundHttpException();
+        }
+
+        /** @var Planning $planning */
+        $planning = $em->getRepository('EntityBundle:Planning')->find($id);
+
+        if(is_object($planning))
+        {
+            $serializer = SerializerBuilder::create()->build();
+
+            $jsonContent = $serializer->serialize($planning, 'json');
+
+            return new Response($jsonContent);
+        }
+
+        return new JsonResponse(null);
+    }
+
+    /**
+     * @Route("/{projectid}/delete-task/{id}", name="admin_projet_delete_task", requirements={"projectid": "\d+", "id": "\d+"})
+     */
+    public function deletePlanningTaskAction($projectid, $id)
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        /** @var Projet $project */
+        $project = $em->getRepository("EntityBundle:Projet")->find($projectid);
+
+        if(!is_object($project)){
+            throw new NotFoundHttpException();
+        }
+
+        /** @var Task $task */
+        $task = $em->getRepository('EntityBundle:Task')->find($id);
+
+        if(is_object($task)){
+            $em->remove($task);
+            $em->flush();
+        }
+
+        return $this->redirect($this->generateUrl('admin_projet_detail', ['id' => $projectid]));
     }
 }

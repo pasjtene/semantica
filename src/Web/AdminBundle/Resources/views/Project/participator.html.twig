@@ -24,8 +24,7 @@
                <td>{{ item.participator.user.firstname }}</td>
                <td>{{ item.participator.user.email }}</td>
                <td>{{ item.participator.user.RoleString }}</td>
-               <td><a href="#" class="edit-participator" data-id="{{ item.id }}" data-url="{{ path('admin_projet_participator', {id:item.id}) }}"><i class="material-icons">edit</i></a></td>
-               <td><a href="#" class="delete-participator" data-id="{{ item.id }}"><i class="material-icons">delete</i></a></td>
+               <td><a href="{{ path('admin_projet_delete_participator', {id:item.id}) }}" class="delete-participator" data-id="{{ item.id }}"><i class="material-icons">delete</i></a></td>
            </tr>
         {% endfor %}
     {% else %}
