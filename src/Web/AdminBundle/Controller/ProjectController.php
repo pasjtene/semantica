@@ -181,8 +181,7 @@ class ProjectController extends Controller
                 $tasks[]=$item;
             }
         }
-
-            $array['tasks'] = $tasks;
+        $array['tasks'] = $tasks;
         return $this->render('AdminBundle:Project:detail.html.twig',$array);
     }
 
@@ -280,7 +279,24 @@ class ProjectController extends Controller
         $query =$em->getRepository("EntityBundle:CommitHistoric");
         $data = ['title'=>'', "status"=>"" , "libelle"=>"", "project_id"=>$id, "user_id"=>null, "task_id"=>null];
         $items = $query->getByparamProject($data);
-        //var_dump($items);
+
+
+        $collections = $em->getRepository("EntityBundle:Task")->findAll();
+
+        $tasks = null;
+        /** @var Task $item */
+        foreach($collections as $item )
+        {
+            if($item->getPlanning()->getProject()->getId()==$id)
+            {
+                $tasks[]=$item;
+            }
+        }
+
+
+        $istask = $tasks==null? 0: 1;
+        $array['istask'] = $istask;
+
         $array['items'] =$items;
         $array['id'] =$id;
         $array['tabs'] = 3;
