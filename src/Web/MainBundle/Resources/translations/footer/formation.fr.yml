@@ -1,0 +1,80 @@
+contact:
+  title: OPTIMISEZ VOS COMPETENCES PROFESSIONNELLES GRACE A NOS FORMATIONS ET CERTIFICATIONS
+  cameroun: Cameroun
+  ville1: Douala-
+  ville1_content: Bonandjo, Immeuble STC
+  cameroun_phone: |
+   (+237)695223547
+   (+237)777823547
+   233453022
+
+  ville2: Yaoundé-
+  ville2_content: Poste Centrale,Immeuble STC
+
+  etranger: Europe
+
+  london: Londres-
+  london_content: 250 london street
+  london_phone: (+44) 01920 635
+
+  paris: Paris-
+  paris_content: 45 rue saint jean
+  paris_phone: (+33) 1 452213
+
+  ville: Villes
+  numero: Téléphone
+  
+contact2:
+    title2: CONTACTEZ-NOUS !
+    cameroun2: Formations
+    ville12: Douala-
+    ville1_content2: Bonandjo, Immeuble STC</br>
+                    •Certification Android Certified Application Developer</br>
+                    •Certification IBM Certified Mobile Application Developer</br>
+                    •Certification MTA Developer</br>
+                    •Certification Kony Certified Developer
+    cameroun_phone2: |
+     (+237)695223547
+     (+237)777823547
+     233453022
+
+    ville22: Yaoundé-
+    ville2_content2: Poste Centrale,Immeuble STC;</br>
+                     •Certification Cisco CCNP (Cisco Certified Networking Professional);</br>
+                     •Certification Cisco CCNA (Cisco Certified Networking Associate);</br>
+                     •Certification CCIE (Cisco Certified Internetwork Expert);</br>
+                     •Certification CompTIA Network+;</br>
+                     •Certification Oracle OCP (Oracle Certified Professional);</br>
+                     •Certification ICCP CDMP (ICCP Certified Data Management Pro);</br>
+                     •Certifications relatives aux bases de données Microsoft SQL Server;</br>
+                     •Certifications IBM relatives à la gestion d’information;</br>
+                     •Certifications MongoDB NoSQL.
+
+    etranger2: Formations
+
+    london2: Londres-
+    london_content2: 250 london street (STC Building) </br>
+                     	•	Certifications C/C++;</br>
+                     	•	Certification ACE (Adobe Certified Expert);</br>
+                        •	Certification MCSD (Microsoft Certified Solutions Developer);</br>
+                     	•	Certification de développeur AWS (Amazon Web Services Certified Developer);</br>
+                     	•	Certification CSSLP (Certified Secure Software Lifecycle Professional).
+
+
+    london_phone2: (+44) 01920 635
+
+    paris2: Paris-
+    paris_content2: 45 Rue Saint jeans (Immeuble STC) </br>
+                    	•	Certification Google Apps for Business Certified Deployment Specialist;</br>
+                    	•	Certification CCDH (Cloudera Certified Developer for Apache Hadoop);</br>
+                    	•	Certifications Java certifié Oracle (OCP, OCM et OCE);</br>
+                    	•	Certification Développeur JBoss certifié Red Hat (RHCJD);</br>
+                    	•	Certification CSD (Certified Scrum Developer)Certifications C/C++.
+    paris_phone2: (+33) 1 452213
+
+    ville2: Services de Formation Nationaux STC
+    certif: Aller à la page Certification
+    write: Ecrivez-Nous
+    ville4: Services de Formation Internationaux STC
+    numero2: Téléphone
+    ville5: -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
