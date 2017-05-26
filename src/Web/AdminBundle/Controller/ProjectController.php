@@ -242,6 +242,7 @@ class ProjectController extends Controller
         //var_dump($items);
         $array['items'] =$items;
         $array['id'] =$id;
+        $array['historics'] =$em->getRepository("EntityBundle:Historic")->findAll();
         return $this->render('AdminBundle:Project:commit.html.twig', $array);
     }
     /**
