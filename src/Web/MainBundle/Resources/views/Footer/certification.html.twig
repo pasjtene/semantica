@@ -23,9 +23,14 @@
             padding-left: 5px;
             /* padding-bottom: 2px;
              width: 220px;*/
+            height: auto;
             overflow: hidden;
             margin-bottom: 0px;
+            max-height: 300px;
+            transition: max-height 4s ease-in-out;
+
         }
+
 
         .img_w {
             max-width: 100%;
@@ -36,15 +41,18 @@
         }
 
         .hg_200 {
-            height: 300px;
-            -webkit-transition: height 4s; /* For Safari 3.1 to 6.0 */
-            transition: height 2s;
+            height: 100%;
+            -webkit-transition: height 2s; /* For Safari 3.1 to 6.0*/
+            transition: max-height 4s;
+
         }
         .hg_400 {
-            height: 100%;
-            -webkit-transition: height 4s; /* For Safari 3.1 to 6.0 */
-            transition: height 4s;
+            /*height: 100%;
+            -webkit-transition: height 4s;  For Safari 3.1 to 6.0
+            transition: height 4s;*/
             border: 1px solid lightgray;
+            max-height: 600px;
+            transition: max-height 4s;
         }
 
         .see_more_cisco {
@@ -109,6 +117,46 @@
             font-weight: bold;
             cursor: pointer;
         }
+
+        .see_more_itil {
+            display: block;
+            background-color: yellowgreen;
+            color: white;
+            text-align: center;
+            font-size: 15px;
+            font-weight: bold;
+            cursor: pointer;
+            margin-top: 3px;
+        }
+        .see_less_itil {
+            display: block;
+            background-color: yellowgreen;
+            color: white;
+            text-align: center;
+            font-size: 15px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .see_more_cobit {
+            display: block;
+            background-color: yellowgreen;
+            color: white;
+            text-align: center;
+            font-size: 15px;
+            font-weight: bold;
+            cursor: pointer;
+            margin-top: 3px;
+        }
+        .see_less_cobit {
+            display: block;
+            background-color: yellowgreen;
+            color: white;
+            text-align: center;
+            font-size: 15px;
+            font-weight: bold;
+            cursor: pointer;
+        }
         .new_cert_group {
             padding: 1px;
             margin: 10px;
@@ -128,9 +176,9 @@
 
         <h5 class="center-align" style="color: #9acd32"><strong>{% trans from 'certification' %} certification.title {% endtrans %}</strong></h5>
         <img class="img_w"  src="{{ asset('data/img/certification.jpg') }}" alt="">
-        <div class="certification_div">
+        <div class="row certification_div">
             <div class="new_cert_group">
-            <div id="cisco" class="new_cert hg_200">
+            <div id="cisco" class="new_cert">
                 <img class="img_w" src="{{ asset('data/img/cisco.jpg') }}" alt="">
                 <p>{% trans from 'certification' %} certification.cisco_content {% endtrans %} </p>
 
@@ -151,7 +199,7 @@
 
             <div class="new_cert_group">
                 <div id="oracle" class="new_cert hg_200">
-                    <img class="img_w"  src="{{ asset('data/img/oracle.jpg') }}" alt="">
+                    <img class="img_w" src="{{ asset('data/img/oracle.jpg') }}" alt="">
                     <p>{% trans from 'certification' %} certification.oracle_content {% endtrans %} </p>
 
                 </div>
@@ -160,23 +208,23 @@
             </div>
 
             <div class="new_cert_group">
-                <div id="cisco" class="new_cert hg_200">
+                <div id="itil" class="new_cert hg_200">
                     <img class="img_w" src="{{ asset('data/img/itil.jpg') }}" alt="">
                     <p>{% trans from 'certification' %} certification.itil_content {% endtrans %} </p>
 
                 </div>
-                <div class="see_more_cisco">See more</div>
-                <div class="see_less_cisco">See Less</div>
+                <div class="see_more_itil">See more</div>
+                <div class="see_less_itil">See Less</div>
             </div>
 
             <div class="new_cert_group">
-                <div id="cisco" class="new_cert hg_200">
+                <div id="cobit" class="new_cert hg_200">
                     <img class="img_w"  src="{{ asset('data/img/cobit.jpg') }}" alt="">
                     <p>{% trans from 'certification' %} certification.cobit_content {% endtrans %} </p>
 
                 </div>
-                <div class="see_more_cisco">See more</div>
-                <div class="see_less_cisco">See Less</div>
+                <div class="see_more_cobit">See more</div>
+                <div class="see_less_cobit">See Less</div>
             </div>
 
         </div>
@@ -244,18 +292,32 @@
             $(".see_less_cisco").hide();
             $(".see_less_lpi").hide();
             $(".see_less_oracle").hide();
+            $(".see_less_itil").hide();
+            $(".see_less_cobit").hide();
+
+
             $(".see_more_cisco").click(
                 function(){
                     //$("#cisco").removeClass("hg_200");
+
                     $("#cisco").addClass("hg_400");
                     $(".see_less_cisco").show();
                     $(".see_more_cisco").hide();
+                    $("#lpi").removeClass("hg_400");
+                    $("#oracle").removeClass("hg_400");
+                    $(".see_less_lpi").hide();
+                    $(".see_more_lpi").show();
+                    $(".see_less_oracle").hide();
+                    $(".see_more_oracle").show();
+                    $(".see_less_itil").hide();
+                    $(".see_more_itil").show();
+
                 }
             );
 
             $(".see_less_cisco").click(
                 function(){
-                    $("#cisco").removeClass("hg_400").addClass("hg_200");;
+                    $("#cisco").removeClass("hg_400");
                     //$("#cisco").addClass("hg_200");
                     $(".see_more_cisco").show();
                     $(".see_less_cisco").hide();
@@ -265,9 +327,13 @@
             $(".see_more_lpi").click(
                 function(){
                     //$("#cisco").removeClass("hg_200");
+
                     $("#lpi").addClass("hg_400");
                     $(".see_less_lpi").show();
                     $(".see_more_lpi").hide();
+                    $("#cisco").removeClass("hg_400");
+                    $(".see_less_cisco").hide();
+                    $(".see_more_cisco").show();
                 }
             );
 
@@ -282,7 +348,7 @@
             $(".see_more_oracle").click(
                 function(){
                     //$("#cisco").removeClass("hg_200");
-                    $("#oracle").addClass("hg_400");
+                    $("#oracle").addClass("hg_400").removeClass("hg_200");
                     $(".see_less_oracle").show();
                     $(".see_more_oracle").hide();
                 }
@@ -293,6 +359,41 @@
                     $("#oracle").removeClass("hg_400").addClass("hg_200");
                     $(".see_more_oracle").show();
                     $(".see_less_oracle").hide();
+                }
+            );
+
+
+            $(".see_more_itil").click(
+                function(){
+                    //$("#cisco").removeClass("hg_200");
+                    $("#itil").addClass("hg_400");
+                    $(".see_less_itil").show();
+                    $(".see_more_itil").hide();
+                }
+            );
+
+            $(".see_less_itil").click(
+                function(){
+                    $("#itil").removeClass("hg_400").addClass("hg_200");
+                    $(".see_more_itil").show();
+                    $(".see_less_itil").hide();
+                }
+            );
+
+            $(".see_more_cobit").click(
+                function(){
+                    //$("#cisco").removeClass("hg_200");
+                    $("#cobit").addClass("hg_400");
+                    $(".see_less_cobit").show();
+                    $(".see_more_cobit").hide();
+                }
+            );
+
+            $(".see_less_cobit").click(
+                function(){
+                    $("#cobit").removeClass("hg_400").addClass("hg_200");
+                    $(".see_more_cobit").show();
+                    $(".see_less_cobit").hide();
                 }
             );
 
