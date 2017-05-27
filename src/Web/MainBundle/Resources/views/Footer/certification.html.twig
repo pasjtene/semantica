@@ -21,9 +21,15 @@
         .new_cert {
             /*border: 1px solid blue;*/
             padding-left: 5px;
-            width: 200px;
+            padding-bottom: 2px;
+            /*width: 220px;*/
             overflow: hidden;
             margin-bottom: 0px;
+        }
+
+        .img_w {
+            max-width: 100%;
+            max-height: 40%;
         }
         .new_cert:hover {
             background-color: lightgray;
@@ -35,41 +41,44 @@
             transition: height 2s;
         }
         .hg_400 {
-            height: 420px;
+            height: 400px;
             -webkit-transition: height 4s; /* For Safari 3.1 to 6.0 */
             transition: height 4s;
+            border: 1px solid lightgray;
         }
 
         .see_more_cisco {
-            dispay: block;
+            display: block;
             background-color: yellowgreen;
             color: white;
             text-align: center;
             font-size: 15px;
             font-weight: bold;
-            width: 200px;
+            /*width: 200px;*/
             cursor: pointer;
+            margin-top: 3px;
         }
         .see_less_cisco {
-            dispay: block;
+            display: block;
             background-color: yellowgreen;
             color: white;
             text-align: center;
             font-size: 15px;
             font-weight: bold;
-            width: 200px;
+            /*width: 200px;*/
             cursor: pointer;
+            margin-top: 3px;
         }
 
         .see_more_lpi {
-            dispay: block;
+            display: block;
             background-color: yellowgreen;
             color: white;
             text-align: center;
             font-size: 15px;
             font-weight: bold;
-            width: 200px;
             cursor: pointer;
+            margin-top: 3px;
         }
         .see_less_lpi {
             display: block;
@@ -78,11 +87,32 @@
             text-align: center;
             font-size: 15px;
             font-weight: bold;
-            width: 200px;
             cursor: pointer;
+            margin-top: 3px;
+        }
+        .see_more_oracle {
+            display: block;
+            background-color: yellowgreen;
+            color: white;
+            text-align: center;
+            font-size: 15px;
+            font-weight: bold;
+            cursor: pointer;
+            margin-top: 3px;
+        }
+        .see_less_oracle {
+            display: block;
+            background-color: yellowgreen;
+            color: white;
+            text-align: center;
+            font-size: 15px;
+            font-weight: bold;
+            cursor: pointer;
+            margin-top: 3px;
         }
         .new_cert_group {
             padding: 1px;
+            margin: 10px;
             /*border: 1px solid lightgray;
             width: 200px;*/
 
@@ -98,11 +128,11 @@
 {% block  main %}
 
         <h5 class="center-align" style="color: #9acd32"><strong>{% trans from 'certification' %} certification.title {% endtrans %}</strong></h5>
-        <img width="1024"  src="{{ asset('data/img/certification.jpg') }}" alt="">
+        <img class="img_w"  src="{{ asset('data/img/certification.jpg') }}" alt="">
         <div class="row certification_div">
             <div class="new_cert_group">
             <div id="cisco" class="new_cert hg_200">
-                <img width="200"   src="{{ asset('data/img/cisco.jpg') }}" alt="">
+                <img class="img_w" src="{{ asset('data/img/cisco.jpg') }}" alt="">
                 <p>{% trans from 'certification' %} certification.cisco_content {% endtrans %} </p>
 
             </div>
@@ -112,7 +142,7 @@
 
             <div class="new_cert_group">
                 <div id="lpi" class="new_cert hg_200">
-                    <img width="200"  src="{{ asset('data/img/lpi.jpg') }}" alt="">
+                    <img class="img_w" src="{{ asset('data/img/lpi.jpg') }}" alt="">
                     <p>{% trans from 'certification' %} certification.lpi_content {% endtrans %} </p>
 
                 </div>
@@ -121,18 +151,18 @@
             </div>
 
             <div class="new_cert_group">
-                <div id="cisco" class="new_cert hg_200">
-                    <img width="200" height="100"  src="{{ asset('data/img/oracle.jpg') }}" alt="">
+                <div id="oracle" class="new_cert hg_200">
+                    <img class="img_w"  src="{{ asset('data/img/oracle.jpg') }}" alt="">
                     <p>{% trans from 'certification' %} certification.oracle_content {% endtrans %} </p>
 
                 </div>
-                <div class="see_more_cisco">See more</div>
-                <div class="see_less_cisco">See Less</div>
+                <div class="see_more_oracle">See more</div>
+                <div class="see_less_oracle">See Less</div>
             </div>
 
             <div class="new_cert_group">
                 <div id="cisco" class="new_cert hg_200">
-                    <img width="200"  src="{{ asset('data/img/itil.jpg') }}" alt="">
+                    <img class="img_w" src="{{ asset('data/img/itil.jpg') }}" alt="">
                     <p>{% trans from 'certification' %} certification.itil_content {% endtrans %} </p>
 
                 </div>
@@ -142,7 +172,7 @@
 
             <div class="new_cert_group">
                 <div id="cisco" class="new_cert hg_200">
-                    <img width="200"  src="{{ asset('data/img/cobit.jpg') }}" alt="">
+                    <img class="img_w"  src="{{ asset('data/img/cobit.jpg') }}" alt="">
                     <p>{% trans from 'certification' %} certification.cobit_content {% endtrans %} </p>
 
                 </div>
@@ -214,6 +244,7 @@
         $( document ).ready(function() {
             $(".see_less_cisco").hide();
             $(".see_less_lpi").hide();
+            $(".see_less_oracle").hide();
             $(".see_more_cisco").click(
                 function(){
                     //$("#cisco").removeClass("hg_200");
@@ -246,6 +277,23 @@
                     $("#lpi").removeClass("hg_400").addClass("hg_200");
                     $(".see_more_lpi").show();
                     $(".see_less_lpi").hide();
+                }
+            );
+
+            $(".see_more_oracle").click(
+                function(){
+                    //$("#cisco").removeClass("hg_200");
+                    $("#oracle").addClass("hg_400");
+                    $(".see_less_oracle").show();
+                    $(".see_more_oracle").hide();
+                }
+            );
+
+            $(".see_less_oracle").click(
+                function(){
+                    $("#oracle").removeClass("hg_400").addClass("hg_200");
+                    $(".see_more_oracle").show();
+                    $(".see_less_oracle").hide();
                 }
             );
 
