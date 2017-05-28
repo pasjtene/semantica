@@ -9,12 +9,41 @@
 
 {% block mycss %}
     <style>
+        .position_wrapper:hover {
+            display:block;
+            background-color: yellowgreen;
+            cursor: pointer;
+        }
+        .position_wrapper {
+            display:block;
+            border-left: 5px solid yellowgreen;
+            background-color: lightgray;
+            width: 100%;
+            float: right;
+        }
 
+        .position_details {
+            display:inline-block;
+            margin-top: 10px;
+            width: 100%;
+            float: right;
+            height: 0;
+            overflow: hidden;
+        }
+        .single_position {
+            float: right;
+            width: 50%;
+        }
+
+        .expand_position {
+            height: auto;
+        }
     </style>
 {% endblock %}
 {% block header %}
     {{ parent() }}
-    {% include 'MainBundle:Inc:slide.html.twig' %}
+
+    <img  src="{{ asset('data/img/jobs.png') }}" alt="">
 {% endblock %}
 
 {% block  main %}
@@ -46,13 +75,47 @@
                     </p>
 
                 </div>
+
             </div>
         </div>
+        <div class="single_position">
+            <div class="position_wrapper">
+            <div class="position">Software developer</div>
+            <div class="location">Douala - Cameroon</div>
+            </div>
+        <div class="position_details">
+            Bac + 5 or equivalent, you have professional experience Of at least 2 years in a similar position, on the following technologies: PHP5 / MYSQL, POO, WEBSERVICES, XSL, Knowledge in MySQL. - Autonomous, organized and rigorous, you are force of proposal and like working as a team, - Ability to skill quickly on the functional,Good analytical and team spirit, - Ability to supervise beginners and juniors, - Your passion for IT and your sense of service are as Of assets that will enable you to carry out your missions and to evolve in our company.
+
+        </div>
+        </div>
+
     </div>
 {% endblock %}
 
 {% block myjs %}
     <script>
+        $( document ).ready(function() {
+            $(".see_less").hide();
 
+            $(".see_more").click(function(){
+                $(".see_more").not(this).each(function () {
+                    $(this).show();
+                    $(this).siblings(".new_cert").removeClass("hg_400");
+                    $(this).siblings(".see_less").hide();
+                });
+                $(this).hide();
+                $(this).siblings(".see_less").show();
+                $(this).siblings(".new_cert").addClass("hg_400");
+            });
+
+            $(".see_less").click(
+                    function(){
+                        $(this).hide();
+                        $(this).siblings(".see_more").show();
+                        $(this).siblings(".new_cert").removeClass("hg_400");
+                    }
+            );
+
+        });
     </script>
 {% endblock %}
