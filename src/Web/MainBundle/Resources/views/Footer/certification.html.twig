@@ -109,6 +109,44 @@
             font-weight: bold;
             cursor: pointer;
         }
+        .see_more_itil {
+            display: block;
+            background-color: yellowgreen;
+            color: white;
+            text-align: center;
+            font-size: 15px;
+            font-weight: bold;
+            cursor: pointer;
+            margin-top: 3px;
+        }
+        .see_less_itil {
+            display: block;
+            background-color: yellowgreen;
+            color: white;
+            text-align: center;
+            font-size: 15px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+        .see_more_cobit {
+            display: block;
+            background-color: yellowgreen;
+            color: white;
+            text-align: center;
+            font-size: 15px;
+            font-weight: bold;
+            cursor: pointer;
+            margin-top: 3px;
+        }
+        .see_less_cobit {
+            display: block;
+            background-color: yellowgreen;
+            color: white;
+            text-align: center;
+            font-size: 15px;
+            font-weight: bold;
+            cursor: pointer;
+        }
         .new_cert_group {
             padding: 1px;
             margin: 10px;
@@ -160,23 +198,23 @@
             </div>
 
             <div class="new_cert_group">
-                <div id="cisco" class="new_cert hg_200">
+                <div id="itil" class="new_cert hg_200">
                     <img class="img_w" src="{{ asset('data/img/itil.jpg') }}" alt="">
                     <p>{% trans from 'certification' %} certification.itil_content {% endtrans %} </p>
 
                 </div>
-                <div class="see_more_cisco">See more</div>
-                <div class="see_less_cisco">See Less</div>
+                <div class="see_more_itil">See more</div>
+                <div class="see_less_itil">See Less</div>
             </div>
 
             <div class="new_cert_group">
-                <div id="cisco" class="new_cert hg_200">
+                <div id="cobit" class="new_cert hg_200">
                     <img class="img_w"  src="{{ asset('data/img/cobit.jpg') }}" alt="">
                     <p>{% trans from 'certification' %} certification.cobit_content {% endtrans %} </p>
 
                 </div>
-                <div class="see_more_cisco">See more</div>
-                <div class="see_less_cisco">See Less</div>
+                <div class="see_more_cobit">See more</div>
+                <div class="see_less_cobit">See Less</div>
             </div>
 
         </div>
@@ -184,57 +222,7 @@
 
 
 
-    <div class="row" id="main_contact">
-            <div class="section">
-                <h5 class="center-align" style="color: #9acd32"><strong>{% trans from 'certification' %} certification.title {% endtrans %}</strong></h5>
-                <br> <br>
-                <div class="col s12 m6" >
-                    <img width="1024"  src="{{ asset('data/img/certification.jpg') }}" alt="">
-                    <table>
-                        <tr>
-                            <td width="400">
-                                <img width="200"   src="{{ asset('data/img/cisco.jpg') }}" alt="">
-                                <br>
-                                <p>{% trans from 'certification' %} certification.cisco_content {% endtrans %} </p>
 
-                                <a href="#">Suite</a>
-                            </td>
-                            <td width="400">
-                                <img width="200" height="100"  src="{{ asset('data/img/oracle.jpg') }}" alt="">
-                                <br>
-                                <p>{% trans from 'certification' %} certification.oracle_content {% endtrans %} </p>
-                                <a href="#">Suite</a>
-                            </td>
-                            <td width="400">
-                                <img width="200"  src="{{ asset('data/img/lpi.jpg') }}" alt="">
-                                <br>
-                                <p>{% trans from 'certification' %} certification.lpi_content {% endtrans %} </p>
-                                <a href="#">Suite</a>
-                            </td>
-                            <td width="400" >
-                                <img width="200"  src="{{ asset('data/img/itil.jpg') }}" alt="">
-                                <br>
-                                <p>{% trans from 'certification' %} certification.itil_content {% endtrans %} </p>
-                                <a href="#">Suite</a>
-                            </td>
-                            <td width="400">
-                                <img width="200"  src="{{ asset('data/img/cobit.jpg') }}" alt="">
-                                <br>
-                                <p>{% trans from 'certification' %} certification.cobit_content {% endtrans %} </p>
-                                <a href="#">Suite</a>
-                            </td>
-                            <td>
-                                <a href="#"><img width="125"  src="{{ asset('data/img/button.jpg') }}" alt=""></a>
-
-                            </td>
-                        </tr>
-
-                    </table>
-                </div>
-
-            </div>
-        </div>
-    </div>
 {% endblock %}
 
 
@@ -244,6 +232,7 @@
             $(".see_less_cisco").hide();
             $(".see_less_lpi").hide();
             $(".see_less_oracle").hide();
+            $(".see_less_cobit").hide();
             $(".see_more_cisco").click(
                 function(){
                     //$("#cisco").removeClass("hg_200");
@@ -294,6 +283,40 @@
                     $(".see_more_oracle").show();
                     $(".see_less_oracle").hide();
                 }
+            );
+
+            $(".see_more_itil").click(
+                    function(){
+                        //$("#cisco").removeClass("hg_200");
+                        $("#itil").addClass("hg_400");
+                        $(".see_less_itil").show();
+                        $(".see_more_itil").hide();
+                    }
+            );
+
+            $(".see_less_itil").click(
+                    function(){
+                        $("#itil").removeClass("hg_400").addClass("hg_200");
+                        $(".see_more_itil").show();
+                        $(".see_less_itil").hide();
+                    }
+            );
+
+            $(".see_more_cobit").click(
+                    function(){
+                        //$("#cisco").removeClass("hg_200");
+                        $("#cobit").addClass("hg_400");
+                        $(".see_less_cobit").show();
+                        $(".see_more_cobit").hide();
+                    }
+            );
+
+            $(".see_less_cobit").click(
+                    function(){
+                        $("#cobit").removeClass("hg_400").addClass("hg_200");
+                        $(".see_more_cobit").show();
+                        $(".see_less_cobit").hide();
+                    }
             );
 
         });
