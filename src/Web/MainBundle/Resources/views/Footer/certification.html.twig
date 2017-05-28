@@ -9,6 +9,7 @@
 
 {% block mycss %}
     <style>
+
         .certification_div {
             border: 1px solid yellowgreen;
             margin-top: 50px;
@@ -18,6 +19,14 @@
             justify-content: center;
         }
 
+        .new_cert_group {
+            padding: 1px;
+            margin: 10px;
+            /*border: 1px solid lightgray;
+            width: 200px;*/
+        }
+
+        /*.new_cert are the flex items*/
         .new_cert {
             /*border: 1px solid blue;*/
             padding-left: 5px;
@@ -25,10 +34,9 @@
              width: 220px;*/
             height: auto;
             overflow: hidden;
-            margin-bottom: 0px;
+            margin-bottom: 0;
             max-height: 300px;
             transition: max-height 4s ease-in-out;
-
         }
 
 
@@ -157,12 +165,47 @@
             font-weight: bold;
             cursor: pointer;
         }
-        .new_cert_group {
-            padding: 1px;
-            margin: 10px;
-            /*border: 1px solid lightgray;
-            width: 200px;*/
 
+
+        /*Media query for iPhone 6 portrait*/
+        @media only screen
+        and (min-device-width : 375px) /* or 213.4375em or 3in or 9cm */
+        and (max-device-width : 667px) /* or 41.6875em*/
+        and (orientation : portrait)
+        {
+            .certification_div {
+                flex-wrap:wrap;
+            }
+        }
+
+        /*Media query for iPhone 6 landscape*/
+        @media only screen
+        and (min-device-width : 375px) /* or 213.4375em or 3in or 9cm */
+        and (max-device-width : 667px) /* or 41.6875em*/
+        and (orientation : landscape)
+        {
+            .certification_div {
+                flex-wrap:wrap;
+            }
+
+            .new_cert_group {
+                width: 45%;
+            }
+        }
+
+        /*Media query for iPhone 6+ landscape*/
+        @media only screen
+        and (min-device-width : 414px)
+        and (max-device-width : 736px)
+        and (orientation : landscape)
+        {
+            .certification_div {
+                flex-wrap:wrap;
+            }
+
+            .new_cert_group {
+                width: 45%;
+            }
         }
 
     </style>
@@ -183,8 +226,9 @@
                 <p>{% trans from 'certification' %} certification.cisco_content {% endtrans %} </p>
 
             </div>
-                <div class="see_more_cisco">See more</div>
-                <div class="see_less_cisco">See Less</div>
+                <div class="see_more_cisco see_more">See more</div>
+                <div class="see_less_cisco see_less">See Less</div>
+
             </div>
 
             <div class="new_cert_group">
@@ -193,8 +237,8 @@
                     <p>{% trans from 'certification' %} certification.lpi_content {% endtrans %} </p>
 
                 </div>
-                <div class="see_more_lpi">See more</div>
-                <div class="see_less_lpi">See Less</div>
+                <div class="see_more_lpi see_more">See more</div>
+                <div class="see_less_lpi see_less">See Less</div>
             </div>
 
             <div class="new_cert_group">
@@ -203,8 +247,8 @@
                     <p>{% trans from 'certification' %} certification.oracle_content {% endtrans %} </p>
 
                 </div>
-                <div class="see_more_oracle">See more</div>
-                <div class="see_less_oracle">See Less</div>
+                <div class="see_more_oracle see_more">See more</div>
+                <div class="see_less_oracle see_less">See Less</div>
             </div>
 
             <div class="new_cert_group">
@@ -213,8 +257,8 @@
                     <p>{% trans from 'certification' %} certification.itil_content {% endtrans %} </p>
 
                 </div>
-                <div class="see_more_itil">See more</div>
-                <div class="see_less_itil">See Less</div>
+                <div class="see_more_itil see_more">See more</div>
+                <div class="see_less_itil see_less">See Less</div>
             </div>
 
             <div class="new_cert_group">
@@ -223,12 +267,11 @@
                     <p>{% trans from 'certification' %} certification.cobit_content {% endtrans %} </p>
 
                 </div>
-                <div class="see_more_cobit">See more</div>
-                <div class="see_less_cobit">See Less</div>
+                <div class="see_more_cobit see_more">See more</div>
+                <div class="see_less_cobit see_less">See Less</div>
             </div>
 
         </div>
-
 
 
 
@@ -282,119 +325,31 @@
 
             </div>
         </div>
-    </div>
 {% endblock %}
 
 
 {% block myjs %}
     <script>
         $( document ).ready(function() {
-            $(".see_less_cisco").hide();
-            $(".see_less_lpi").hide();
-            $(".see_less_oracle").hide();
-            $(".see_less_itil").hide();
-            $(".see_less_cobit").hide();
+            $(".see_less").hide();
 
+            $(".see_more").click(function(){
+                $(".see_more").not(this).each(function () {
+                    $(this).show();
+                    $(this).siblings(".new_cert").removeClass("hg_400");
+                    $(this).siblings(".see_less").hide();
+                });
+                $(this).hide();
+                $(this).siblings(".see_less").show();
+                $(this).siblings(".new_cert").addClass("hg_400");
+            });
 
-            $(".see_more_cisco").click(
-                function(){
-                    //$("#cisco").removeClass("hg_200");
-
-                    $("#cisco").addClass("hg_400");
-                    $(".see_less_cisco").show();
-                    $(".see_more_cisco").hide();
-                    $("#lpi").removeClass("hg_400");
-                    $("#oracle").removeClass("hg_400");
-                    $(".see_less_lpi").hide();
-                    $(".see_more_lpi").show();
-                    $(".see_less_oracle").hide();
-                    $(".see_more_oracle").show();
-                    $(".see_less_itil").hide();
-                    $(".see_more_itil").show();
-
-                }
-            );
-
-            $(".see_less_cisco").click(
-                function(){
-                    $("#cisco").removeClass("hg_400");
-                    //$("#cisco").addClass("hg_200");
-                    $(".see_more_cisco").show();
-                    $(".see_less_cisco").hide();
-                }
-            );
-
-            $(".see_more_lpi").click(
-                function(){
-                    //$("#cisco").removeClass("hg_200");
-
-                    $("#lpi").addClass("hg_400");
-                    $(".see_less_lpi").show();
-                    $(".see_more_lpi").hide();
-                    $("#cisco").removeClass("hg_400");
-                    $(".see_less_cisco").hide();
-                    $(".see_more_cisco").show();
-                }
-            );
-
-            $(".see_less_lpi").click(
-                function(){
-                    $("#lpi").removeClass("hg_400").addClass("hg_200");
-                    $(".see_more_lpi").show();
-                    $(".see_less_lpi").hide();
-                }
-            );
-
-            $(".see_more_oracle").click(
-                function(){
-                    //$("#cisco").removeClass("hg_200");
-                    $("#oracle").addClass("hg_400").removeClass("hg_200");
-                    $(".see_less_oracle").show();
-                    $(".see_more_oracle").hide();
-                }
-            );
-
-            $(".see_less_oracle").click(
-                function(){
-                    $("#oracle").removeClass("hg_400").addClass("hg_200");
-                    $(".see_more_oracle").show();
-                    $(".see_less_oracle").hide();
-                }
-            );
-
-
-            $(".see_more_itil").click(
-                function(){
-                    //$("#cisco").removeClass("hg_200");
-                    $("#itil").addClass("hg_400");
-                    $(".see_less_itil").show();
-                    $(".see_more_itil").hide();
-                }
-            );
-
-            $(".see_less_itil").click(
-                function(){
-                    $("#itil").removeClass("hg_400").addClass("hg_200");
-                    $(".see_more_itil").show();
-                    $(".see_less_itil").hide();
-                }
-            );
-
-            $(".see_more_cobit").click(
-                function(){
-                    //$("#cisco").removeClass("hg_200");
-                    $("#cobit").addClass("hg_400");
-                    $(".see_less_cobit").show();
-                    $(".see_more_cobit").hide();
-                }
-            );
-
-            $(".see_less_cobit").click(
-                function(){
-                    $("#cobit").removeClass("hg_400").addClass("hg_200");
-                    $(".see_more_cobit").show();
-                    $(".see_less_cobit").hide();
-                }
+            $(".see_less").click(
+                    function(){
+                        $(this).hide();
+                        $(this).siblings(".see_more").show();
+                        $(this).siblings(".new_cert").removeClass("hg_400");
+                    }
             );
 
         });
