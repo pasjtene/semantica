@@ -83,10 +83,10 @@
         }
 
 
-        /*Media query for iPhone 6 portrait*/
+        /*Media query for iPhone 5, 6, 6+ portrait*/
         @media only screen
-        and (min-device-width : 375px) /* or 213.4375em or 3in or 9cm */
-        and (max-device-width : 667px) /* or 41.6875em*/
+        and (min-device-width : 320px) /* or 213.4375em or 3in or 9cm */
+        and (max-device-width : 736px) /* or 41.6875em*/
         and (orientation : portrait)
         {
             .certification_div {
@@ -94,10 +94,10 @@
             }
         }
 
-        /*Media query for iPhone 6 landscape*/
+        /*Media query for iPhone 5, 6, 6+ landscape*/
         @media only screen
-        and (min-device-width : 375px) /* or 213.4375em or 3in or 9cm */
-        and (max-device-width : 667px) /* or 41.6875em*/
+        and (min-device-width : 320px)
+        and (max-device-width : 736px)
         and (orientation : landscape)
         {
             .certification_div {
@@ -109,7 +109,9 @@
             }
         }
 
-        /*Media query for iPhone 6+ landscape*/
+
+
+       /* Media query for iPhone 6+ landscape
         @media only screen
         and (min-device-width : 414px)
         and (max-device-width : 736px)
@@ -122,7 +124,7 @@
             .new_cert_group {
                 width: 45%;
             }
-        }
+        }*/
 
     </style>
 {% endblock %}
