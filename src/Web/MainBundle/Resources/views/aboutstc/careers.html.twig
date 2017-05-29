@@ -9,12 +9,14 @@
 
 {% block mycss %}
     <style>
-        .position_wrapper:hover {
+        .position_title:hover {
             display:block;
-            background-color: yellowgreen;
+            /*background-color: #9acd32;*/
+            background-color: rgba(120, 191, 123, 0.5);
             cursor: pointer;
+            /*opacity: 0.4;*/
         }
-        .position_wrapper {
+        .position_title {
             display:block;
             border-left: 5px solid yellowgreen;
             background-color: lightgray;
@@ -27,16 +29,17 @@
             margin-top: 10px;
             width: 100%;
             float: right;
-            height: 0;
             overflow: hidden;
         }
-        .single_position {
+        .position_wrapper {
             float: right;
             width: 50%;
+            clear: both;
+            margin-top: 10px;
         }
 
-        .expand_position {
-            height: auto;
+        .collapse_position {
+            height: 0;
         }
     </style>
 {% endblock %}
@@ -78,15 +81,52 @@
 
             </div>
         </div>
-        <div class="single_position">
-            <div class="position_wrapper">
-            <div class="position">Software developer</div>
-            <div class="location">Douala - Cameroon</div>
+
+        <div class="position_wrapper">
+            <div class="position_title">
+                <div class="position">Software developer</div>
+                <div class="location">Douala - Cameroon</div>
             </div>
         <div class="position_details">
             Bac + 5 or equivalent, you have professional experience Of at least 2 years in a similar position, on the following technologies: PHP5 / MYSQL, POO, WEBSERVICES, XSL, Knowledge in MySQL. - Autonomous, organized and rigorous, you are force of proposal and like working as a team, - Ability to skill quickly on the functional,Good analytical and team spirit, - Ability to supervise beginners and juniors, - Your passion for IT and your sense of service are as Of assets that will enable you to carry out your missions and to evolve in our company.
 
         </div>
+        </div>
+
+        <div class="position_wrapper">
+            <div class="position_title">
+                <div class="position">Senior Software developer</div>
+                <div class="location">Douala - Cameroon</div>
+            </div>
+
+            <div class="position_details">
+                Bac + 5 or equivalent, you have professional experience Of at least 2 years in a similar position, on the following technologies: PHP5 / MYSQL, POO, WEBSERVICES, XSL, Knowledge in MySQL. - Autonomous, organized and rigorous, you are force of proposal and like working as a team, - Ability to skill quickly on the functional,Good analytical and team spirit, - Ability to supervise beginners and juniors, - Your passion for IT and your sense of service are as Of assets that will enable you to carry out your missions and to evolve in our company.
+
+            </div>
+        </div>
+
+        <div class="position_wrapper">
+            <div class="position_title">
+                <div class="position">Software developer</div>
+                <div class="location">Yaounde - Cameroon</div>
+            </div>
+
+            <div class="position_details">
+                Bac + 5 or equivalent, you have professional experience Of at least 2 years in a similar position, on the following technologies: PHP5 / MYSQL, POO, WEBSERVICES, XSL, Knowledge in MySQL. - Autonomous, organized and rigorous, you are force of proposal and like working as a team, - Ability to skill quickly on the functional,Good analytical and team spirit, - Ability to supervise beginners and juniors, - Your passion for IT and your sense of service are as Of assets that will enable you to carry out your missions and to evolve in our company.
+
+            </div>
+        </div>
+
+        <div class="position_wrapper">
+            <div class="position_title">
+                <div class="position">Senior Software developer</div>
+                <div class="location">Yaounde - Cameroon</div>
+            </div>
+
+            <div class="position_details">
+                Bac + 5 or equivalent, you have professional experience Of at least 2 years in a similar position, on the following technologies: PHP5 / MYSQL, POO, WEBSERVICES, XSL, Knowledge in MySQL. - Autonomous, organized and rigorous, you are force of proposal and like working as a team, - Ability to skill quickly on the functional,Good analytical and team spirit, - Ability to supervise beginners and juniors, - Your passion for IT and your sense of service are as Of assets that will enable you to carry out your missions and to evolve in our company.
+
+            </div>
         </div>
 
     </div>
@@ -96,16 +136,16 @@
     <script>
         $( document ).ready(function() {
             $(".see_less").hide();
+            $(".position_details").slideUp(1);
 
-            $(".see_more").click(function(){
+            $(".position_title").click(function(){
                 $(".see_more").not(this).each(function () {
                     $(this).show();
                     $(this).siblings(".new_cert").removeClass("hg_400");
                     $(this).siblings(".see_less").hide();
                 });
-                $(this).hide();
-                $(this).siblings(".see_less").show();
-                $(this).siblings(".new_cert").addClass("hg_400");
+                //$(".position_details").toggleClass("collapse_position");
+                $(".position_details").slideToggle(2500);
             });
 
             $(".see_less").click(
