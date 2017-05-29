@@ -11,6 +11,7 @@ use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
+use Web\EntityBundle\Entity\Comment;
 use Web\EntityBundle\Entity\Files;
 use Web\EntityBundle\Entity\Historic;
 use Web\EntityBundle\Entity\Participator;
@@ -181,8 +182,7 @@ class ProjectController extends Controller
                 $tasks[]=$item;
             }
         }
-
-            $array['tasks'] = $tasks;
+        $array['tasks'] = $tasks;
         return $this->render('AdminBundle:Project:detail.html.twig',$array);
     }
 
@@ -280,7 +280,24 @@ class ProjectController extends Controller
         $query =$em->getRepository("EntityBundle:CommitHistoric");
         $data = ['title'=>'', "status"=>"" , "libelle"=>"", "project_id"=>$id, "user_id"=>null, "task_id"=>null];
         $items = $query->getByparamProject($data);
-        //var_dump($items);
+
+
+        $collections = $em->getRepository("EntityBundle:Task")->findAll();
+
+        $tasks = null;
+        /** @var Task $item */
+        foreach($collections as $item )
+        {
+            if($item->getPlanning()->getProject()->getId()==$id)
+            {
+                $tasks[]=$item;
+            }
+        }
+
+
+        $istask = $tasks==null? 0: 1;
+        $array['istask'] = $istask;
+
         $array['items'] =$items;
         $array['id'] =$id;
         $array['tabs'] = 3;
@@ -517,5 +534,57 @@ class ProjectController extends Controller
         }
 
         return $this->redirect($this->generateUrl('admin_projet_detail', ['id' => $projectid]));
+    }
+
+    /**
+     * @Route("/comment/add/{id}", name="admin_comment_add", requirements={"id": "\d+"})
+     */
+    public function send_projectAction(Request $request,$id)
+    {
+        $code="";
+        /** @var User $user */
+        $user = $this->getUser();
+        $em = $this->getDoctrine()->getManager();
+
+
+        if($request->isMethod("POST"))
+        {
+            $val = $request->request;
+
+
+            /** @var User $user */
+            $user= $em->getRepository("EntityBundle:User")->find($user->getId());
+
+
+            /** @var Projet $projet */
+            $projet= $em->getRepository("EntityBundle:Projet")->find($id);
+
+            $message = $request->request->get('description');
+            $comment = new Comment();
+            $comment->setDate(new \DateTime());
+            $comment->setUser($user);
+            $comment->setProjet($projet);
+            $comment->setDescription($message);
+            $em->persist($comment);
+            $em->flush();
+            $em->detach($comment);
+
+            $list= $em->getRepository("EntityBundle:Historic")->findAll();
+
+            /** @var Historic $item */
+            foreach($list as $item)
+            {
+                if($item->getProject()->getId()==$id)
+                {
+                    $body =  '<p> Code du projet : '.$projet->getCode().
+                        '<br/> Suggestion : '.$message.'</p>';
+                    $code = $this->sendMail($item->getParticipator()->getUser()->getEmail(), $this->getParameter('mailer_user'), $message, "COMMENT STC(SEMANTICA TECHNOLOGIES CORPORATION)");
+                }
+            }
+
+
+        }
+        return  $this->detailAction($id);
+        // return $this->redirect($this->generateUrl('main_private_commit',["message"=>"test"]));
     }
 }

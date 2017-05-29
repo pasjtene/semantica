@@ -71,12 +71,16 @@ class DefaultController extends Controller
             }
             $locale = $this->get('session')->get('_locale');
             $link  =$this->generateUrl('main_confirm',[md5('email') =>$email], UrlGeneratorInterface::ABSOLUTE_URL);
+            $linkunscribe  =$this->generateUrl('main_homepage',[md5('email') =>$email], UrlGeneratorInterface::ABSOLUTE_URL);
             $message =  $translator->trans('sendmail.content',[] ,'home', $locale);
             $array['body'] = $message;
             $array['link'] = $link;
-            $link  =$this->generateUrl('main_confirm',[md5('email') =>$email], UrlGeneratorInterface::ABSOLUTE_URL);
-            $html = $message.' <a href="'.$link.'">'.$link.'</a>';
-            $code = $this->sendMail($email, $this->getParameter('mailer_user'), $html, "SIGN UP TO STC(SEMANTICA TECHNOLOGIES CORPORATION)");
+            //$link  =$this->generateUrl('main_confirm',[md5('email') =>$email], UrlGeneratorInterface::ABSOLUTE_URL);
+            //$html = $message.' <a href="'.$link.'">'.$link.'</a>';
+            $routeview = 'MainBundle:Mail:subscribe.html.twig';
+            $param = ['email'=>$email,'link'=>$link, 'linkunsubscribe'=>$linkunscribe];
+            $code = $this->sentMail($email, $this->getParameter('mailer_user'), $routeview,$param, "SIGN UP TO STC(SEMANTICA TECHNOLOGIES CORPORATION)");
+            //$code = $this->sendMail($email, $this->getParameter('mailer_user'), $html, "SIGN UP TO STC(SEMANTICA TECHNOLOGIES CORPORATION)");
             //$code =$this->sentMail($email,$this->getParameter('mailer_user'),'MainBundle:Inc:confirm.html.twig',$array,"Confirmation");
             $tab = explode('@',$email);
             $array["message"] = "...@".$tab[count($tab)-1];
