@@ -41,6 +41,23 @@
         .collapse_position {
             height: 0;
         }
+
+        .location{
+            border-left: 1px solid gray;
+            width: 35%;
+            float: right;
+            padding-left: 50px;
+            margin: 10px 1px 10px 1px;
+            padding: 10px 1px 10px 15px;
+
+        }
+
+        .position {
+            width: 63%;
+            float: left;
+            margin: 10px 1px 10px 1px;
+            padding: 10px 1px 10px 15px;
+        }
     </style>
 {% endblock %}
 {% block header %}
@@ -84,7 +101,7 @@
 
         <div class="position_wrapper">
             <div class="position_title">
-                <div class="position">Software developer</div>
+                <div class="position">Software developer <br/>Catégorie d’emploi: Développement  de logiciels</div>
                 <div class="location">Douala - Cameroon</div>
             </div>
         <div class="position_details">
@@ -135,27 +152,12 @@
 {% block myjs %}
     <script>
         $( document ).ready(function() {
-            $(".see_less").hide();
-            $(".position_details").slideUp(1);
+
+            $(".position_details").slideUp();
 
             $(".position_title").click(function(){
-                $(".see_more").not(this).each(function () {
-                    $(this).show();
-                    $(this).siblings(".new_cert").removeClass("hg_400");
-                    $(this).siblings(".see_less").hide();
-                });
-                //$(".position_details").toggleClass("collapse_position");
-                $(".position_details").slideToggle(2500);
+                $(this).siblings(".position_details").slideToggle(500);
             });
-
-            $(".see_less").click(
-                    function(){
-                        $(this).hide();
-                        $(this).siblings(".see_more").show();
-                        $(this).siblings(".new_cert").removeClass("hg_400");
-                    }
-            );
-
         });
     </script>
 {% endblock %}
