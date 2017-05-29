@@ -9,6 +9,7 @@
 
 {% block mycss %}
     <style>
+
         .certification_div {
             border: 1px solid yellowgreen;
             margin-top: 50px;
@@ -18,14 +19,23 @@
             justify-content: center;
         }
 
-        .new_cert {
-            /*border: 1px solid blue;*/
-            padding-left: 5px;
-            /* padding-bottom: 2px;
-             width: 220px;*/
-            overflow: hidden;
-            margin-bottom: 0px;
+        .new_cert_group {
+            padding: 1px;
+            margin: 10px;
+            /*border: 1px solid lightgray;
+            width: 200px;*/
         }
+
+        /*.new_cert are the flex items*/
+        .new_cert {
+            padding-left: 5px;
+            height: auto;
+            overflow: hidden;
+            margin-bottom: 0;
+            max-height: 300px;
+            transition: max-height 4s ease-in-out;
+        }
+
 
         .img_w {
             max-width: 100%;
@@ -36,124 +46,85 @@
         }
 
         .hg_200 {
-            height: 300px;
-            -webkit-transition: height 4s; /* For Safari 3.1 to 6.0 */
-            transition: height 2s;
+            height: 100%;
+            -webkit-transition: height 2s; /* For Safari 3.1 to 6.0*/
+            transition: max-height 4s;
+
         }
         .hg_400 {
-            height: 100%;
-            -webkit-transition: height 4s; /* For Safari 3.1 to 6.0 */
-            transition: height 4s;
+            /*height: 100%;
+            -webkit-transition: height 4s;  For Safari 3.1 to 6.0
+            transition: height 4s;*/
             border: 1px solid lightgray;
+            max-height: 600px;
+            transition: max-height 4s;
+        }
+        /*
+
+        */
+        .see_more {
+            display: block;
+            background-color: yellowgreen;
+            color: white;
+            text-align: center;
+            font-size: 15px;
+            font-weight: bold;
+            cursor: pointer;
+            margin-top: 3px;
+        }
+        .see_less {
+            display: block;
+            background-color: yellowgreen;
+            color: white;
+            text-align: center;
+            font-size: 15px;
+            font-weight: bold;
+            cursor: pointer;
         }
 
-        .see_more_cisco {
-            display: block;
-            background-color: yellowgreen;
-            color: white;
-            text-align: center;
-            font-size: 15px;
-            font-weight: bold;
-            /*width: 200px;*/
-            cursor: pointer;
-            margin-top: 3px;
-        }
-        .see_less_cisco {
-            display: block;
-            background-color: yellowgreen;
-            color: white;
-            text-align: center;
-            font-size: 15px;
-            font-weight: bold;
-            /*width: 200px;*/
-            cursor: pointer;
-            /*margin-top: -10px;*/
+
+        /*Media query for iPhone 5, 6, 6+ portrait*/
+        @media only screen
+        and (min-device-width : 320px) /* or 213.4375em or 3in or 9cm */
+        and (max-device-width : 736px) /* or 41.6875em*/
+        and (orientation : portrait)
+        {
+            .certification_div {
+                flex-wrap:wrap;
+            }
         }
 
-        .see_more_lpi {
-            display: block;
-            background-color: yellowgreen;
-            color: white;
-            text-align: center;
-            font-size: 15px;
-            font-weight: bold;
-            cursor: pointer;
-            margin-top: 3px;
-        }
-        .see_less_lpi {
-            display: block;
-            background-color: yellowgreen;
-            color: white;
-            text-align: center;
-            font-size: 15px;
-            font-weight: bold;
-            cursor: pointer;
-            /*margin-top: -10px;*/
-        }
-        .see_more_oracle {
-            display: block;
-            background-color: yellowgreen;
-            color: white;
-            text-align: center;
-            font-size: 15px;
-            font-weight: bold;
-            cursor: pointer;
-            margin-top: 3px;
-        }
-        .see_less_oracle {
-            display: block;
-            background-color: yellowgreen;
-            color: white;
-            text-align: center;
-            font-size: 15px;
-            font-weight: bold;
-            cursor: pointer;
-        }
-        .see_more_itil {
-            display: block;
-            background-color: yellowgreen;
-            color: white;
-            text-align: center;
-            font-size: 15px;
-            font-weight: bold;
-            cursor: pointer;
-            margin-top: 3px;
-        }
-        .see_less_itil {
-            display: block;
-            background-color: yellowgreen;
-            color: white;
-            text-align: center;
-            font-size: 15px;
-            font-weight: bold;
-            cursor: pointer;
-        }
-        .see_more_cobit {
-            display: block;
-            background-color: yellowgreen;
-            color: white;
-            text-align: center;
-            font-size: 15px;
-            font-weight: bold;
-            cursor: pointer;
-            margin-top: 3px;
-        }
-        .see_less_cobit {
-            display: block;
-            background-color: yellowgreen;
-            color: white;
-            text-align: center;
-            font-size: 15px;
-            font-weight: bold;
-            cursor: pointer;
-        }
-        .new_cert_group {
-            padding: 1px;
-            margin: 10px;
-            /*border: 1px solid lightgray;
-            width: 200px;*/
+        /*Media query for iPhone 5, 6, 6+ landscape*/
+        @media only screen
+        and (min-device-width : 320px)
+        and (max-device-width : 736px)
+        and (orientation : landscape)
+        {
+            .certification_div {
+                flex-wrap:wrap;
+            }
 
+            .new_cert_group {
+                width: 45%;
+            }
         }
+
+
+
+       /* Media query for iPhone 6+ landscape
+        @media only screen
+        and (min-device-width : 414px)
+        and (max-device-width : 736px)
+        and (orientation : landscape)
+        {
+            .certification_div {
+                flex-wrap:wrap;
+            }
+
+            .new_cert_group {
+                width: 45%;
+            }
+        }*/
 
     </style>
 {% endblock %}
@@ -166,15 +137,16 @@
 
         <h5 class="center-align" style="color: #9acd32"><strong>{% trans from 'certification' %} certification.title {% endtrans %}</strong></h5>
         <img class="img_w"  src="{{ asset('data/img/certification.jpg') }}" alt="">
-        <div class="certification_div">
+        <div class="row certification_div">
             <div class="new_cert_group">
-            <div id="cisco" class="new_cert hg_200">
+            <div id="cisco" class="new_cert">
                 <img class="img_w" src="{{ asset('data/img/cisco.jpg') }}" alt="">
                 <p>{% trans from 'certification' %} certification.cisco_content {% endtrans %} </p>
 
             </div>
-                <div class="see_more_cisco">See more</div>
-                <div class="see_less_cisco">See Less</div>
+                <div class="see_more">See more</div>
+                <div class="see_less">See Less</div>
+
             </div>
 
             <div class="new_cert_group">
@@ -183,18 +155,18 @@
                     <p>{% trans from 'certification' %} certification.lpi_content {% endtrans %} </p>
 
                 </div>
-                <div class="see_more_lpi">See more</div>
-                <div class="see_less_lpi">See Less</div>
+                <div class="see_more">See more</div>
+                <div class="see_less">See Less</div>
             </div>
 
             <div class="new_cert_group">
                 <div id="oracle" class="new_cert hg_200">
-                    <img class="img_w"  src="{{ asset('data/img/oracle.jpg') }}" alt="">
+                    <img class="img_w" src="{{ asset('data/img/oracle.jpg') }}" alt="">
                     <p>{% trans from 'certification' %} certification.oracle_content {% endtrans %} </p>
 
                 </div>
-                <div class="see_more_oracle">See more</div>
-                <div class="see_less_oracle">See Less</div>
+                <div class="see_more">See more</div>
+                <div class="see_less">See Less</div>
             </div>
 
             <div class="new_cert_group">
@@ -203,8 +175,8 @@
                     <p>{% trans from 'certification' %} certification.itil_content {% endtrans %} </p>
 
                 </div>
-                <div class="see_more_itil">See more</div>
-                <div class="see_less_itil">See Less</div>
+                <div class="see_more">See more</div>
+                <div class="see_less">See Less</div>
             </div>
 
             <div class="new_cert_group">
@@ -213,109 +185,88 @@
                     <p>{% trans from 'certification' %} certification.cobit_content {% endtrans %} </p>
 
                 </div>
-                <div class="see_more_cobit">See more</div>
-                <div class="see_less_cobit">See Less</div>
+                <div class="see_more">See more</div>
+                <div class="see_less">See Less</div>
             </div>
 
         </div>
 
 
 
+    <div class="row" id="main_contact">
+            <div class="section">
+                <h5 class="center-align" style="color: #9acd32"><strong>{% trans from 'certification' %} certification.title {% endtrans %}</strong></h5>
+                <br> <br>
+                <div class="col s12 m6" >
+                    <img width="1024"  src="{{ asset('data/img/certification.jpg') }}" alt="">
+                    <table>
+                        <tr>
+                            <td width="400">
+                                <img width="200"   src="{{ asset('data/img/cisco.jpg') }}" alt="">
+                                <br>
+                                <p>{% trans from 'certification' %} certification.cisco_content {% endtrans %} </p>
 
+                                <a href="#">Suite</a>
+                            </td>
+                            <td width="400">
+                                <img width="200" height="100"  src="{{ asset('data/img/oracle.jpg') }}" alt="">
+                                <br>
+                                <p>{% trans from 'certification' %} certification.oracle_content {% endtrans %} </p>
+                                <a href="#">Suite</a>
+                            </td>
+                            <td width="400">
+                                <img width="200"  src="{{ asset('data/img/lpi.jpg') }}" alt="">
+                                <br>
+                                <p>{% trans from 'certification' %} certification.lpi_content {% endtrans %} </p>
+                                <a href="#">Suite</a>
+                            </td>
+                            <td width="400" >
+                                <img width="200"  src="{{ asset('data/img/itil.jpg') }}" alt="">
+                                <br>
+                                <p>{% trans from 'certification' %} certification.itil_content {% endtrans %} </p>
+                                <a href="#">Suite</a>
+                            </td>
+                            <td width="400">
+                                <img width="200"  src="{{ asset('data/img/cobit.jpg') }}" alt="">
+                                <br>
+                                <p>{% trans from 'certification' %} certification.cobit_content {% endtrans %} </p>
+                                <a href="#">Suite</a>
+                            </td>
+                            <td>
+                                <a href="#"><img width="125"  src="{{ asset('data/img/button.jpg') }}" alt=""></a>
 
+                            </td>
+                        </tr>
+
+                    </table>
+                </div>
+
+            </div>
+        </div>
 {% endblock %}
 
 
 {% block myjs %}
     <script>
         $( document ).ready(function() {
-            $(".see_less_cisco").hide();
-            $(".see_less_lpi").hide();
-            $(".see_less_oracle").hide();
-            $(".see_less_cobit").hide();
-            $(".see_more_cisco").click(
-                function(){
-                    //$("#cisco").removeClass("hg_200");
-                    $("#cisco").addClass("hg_400");
-                    $(".see_less_cisco").show();
-                    $(".see_more_cisco").hide();
-                }
-            );
+            $(".see_less").hide();
 
-            $(".see_less_cisco").click(
-                function(){
-                    $("#cisco").removeClass("hg_400").addClass("hg_200");;
-                    //$("#cisco").addClass("hg_200");
-                    $(".see_more_cisco").show();
-                    $(".see_less_cisco").hide();
-                }
-            );
+            $(".see_more").click(function(){
+                $(".see_more").not(this).each(function () {
+                    $(this).show();
+                    $(this).siblings(".new_cert").removeClass("hg_400");
+                    $(this).siblings(".see_less").hide();
+                });
+                $(this).hide();
+                $(this).siblings(".see_less").show();
+                $(this).siblings(".new_cert").addClass("hg_400");
+            });
 
-            $(".see_more_lpi").click(
-                function(){
-                    //$("#cisco").removeClass("hg_200");
-                    $("#lpi").addClass("hg_400");
-                    $(".see_less_lpi").show();
-                    $(".see_more_lpi").hide();
-                }
-            );
-
-            $(".see_less_lpi").click(
-                function(){
-                    $("#lpi").removeClass("hg_400").addClass("hg_200");
-                    $(".see_more_lpi").show();
-                    $(".see_less_lpi").hide();
-                }
-            );
-
-            $(".see_more_oracle").click(
-                function(){
-                    //$("#cisco").removeClass("hg_200");
-                    $("#oracle").addClass("hg_400");
-                    $(".see_less_oracle").show();
-                    $(".see_more_oracle").hide();
-                }
-            );
-
-            $(".see_less_oracle").click(
-                function(){
-                    $("#oracle").removeClass("hg_400").addClass("hg_200");
-                    $(".see_more_oracle").show();
-                    $(".see_less_oracle").hide();
-                }
-            );
-
-            $(".see_more_itil").click(
+            $(".see_less").click(
                     function(){
-                        //$("#cisco").removeClass("hg_200");
-                        $("#itil").addClass("hg_400");
-                        $(".see_less_itil").show();
-                        $(".see_more_itil").hide();
-                    }
-            );
-
-            $(".see_less_itil").click(
-                    function(){
-                        $("#itil").removeClass("hg_400").addClass("hg_200");
-                        $(".see_more_itil").show();
-                        $(".see_less_itil").hide();
-                    }
-            );
-
-            $(".see_more_cobit").click(
-                    function(){
-                        //$("#cisco").removeClass("hg_200");
-                        $("#cobit").addClass("hg_400");
-                        $(".see_less_cobit").show();
-                        $(".see_more_cobit").hide();
-                    }
-            );
-
-            $(".see_less_cobit").click(
-                    function(){
-                        $("#cobit").removeClass("hg_400").addClass("hg_200");
-                        $(".see_more_cobit").show();
-                        $(".see_less_cobit").hide();
+                        $(this).hide();
+                        $(this).siblings(".see_more").show();
+                        $(this).siblings(".new_cert").removeClass("hg_400");
                     }
             );
 

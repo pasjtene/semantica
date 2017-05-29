@@ -1,0 +1,25 @@
+default:
+  title: SEMANTICA TECHNOLOGIES CORPORATION
+  content: |
+   Your partner in building  secure and reliable software solutions, tailored to the specific need of your business
+  from: From
+  to: To
+  phone: Phone
+  email: Email adress
+  website: Website
+  footer: This email was send from semantica technologies Corporation, to
+subscribe:
+  content: |
+    Hello <strong>name</strong>, and welcome to Semantica Services!
+    You have joined millions of businesses worldwide who use and love Semantica. We have a powerful product suite to help you manage your business with ease. You can check us out at <a href='www.semanticatechnologies.com'>www.semanticatechnologies.com</a>.
+    To activate your Semantica account, please click the link below within the next 30 days.
+    <a href='link'> link </a> <br/>
+    If you have any questions regarding your Semantica account, please contact us at <a href='support@semanticatechnologies.com'>support@semanticatechnologies.com</a> . Our technical support team will assist you with anything you need.
+    Enjoy yourself, and welcome to Semantica.
+    Cheers
+    Semantica Team
+    <a href='www.semanticatechnologies.com'>www.semanticatechnologies.com</a>
+  unsubcribe: |
+    If you don't want to receive further emails from STC, please click here to unsubscribe: <a href='link'>link</a>
+  privacy: |
+   You can read our privacy policies on this link : <a href='http://www.semanticatechnologies.com/en/footer/privacyPolicy'> http://www.semanticatechnologies.com/en/footer/privacyPolicy </a>
