@@ -27,10 +27,14 @@
 
         .position_details {
 
-            margin-top: 10px;
+            /*margin-top: 10px;*/
             width: 100%;
             float: right;
             overflow: hidden;
+            border-left: 1px solid yellowgreen;
+            border-right: 1px solid yellowgreen;
+            border-bottom: 1px solid yellowgreen;
+            padding: 10px;
         }
         .position_wrapper {
             float: right;
@@ -333,7 +337,7 @@
             $(".position_details").slideUp();
 
             $(".position_title").click(function(){
-                $(this).siblings(".position_details").slideToggle(500);
+                $(this).siblings(".position_details").slideToggle(1500);
             });
         });
     </script>
