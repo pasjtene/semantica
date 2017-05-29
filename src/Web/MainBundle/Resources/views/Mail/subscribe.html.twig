@@ -95,7 +95,7 @@
 
             <div id="identity">
                 <p><strong>{% trans from 'mail' %} default.from {% endtrans %}:</strong> <span> contact@semanticatechnologies.com</span> </p>
-                <p><strong>{% trans from 'mail' %} default.to {% endtrans %}:</strong> <span>Sdanicktakam@yahoo.fr</span> </p>
+                <p><strong>{% trans from 'mail' %} default.to {% endtrans %}:</strong> <span>{{ email }}</span> </p>
             </div>
             <div id="head">
                 <div class="element">
@@ -108,8 +108,8 @@
             </div>
             <div id="body">
                <div class="element">
-                  <p> {% trans with {'name':'takam', 'link':'http://lien.com'} from 'mail' %} subscribe.content {% endtrans %}</p>
-                   <p>{% trans with {'link':'http://Sdanicktakam@yahoo.fr'} from 'mail' %} subscribe.unsubcribe {% endtrans %}</p>
+                  <p> {% trans with {'name':email, 'link':link} from 'mail' %} subscribe.content {% endtrans %}</p>
+                   <p>{% trans with {'link':linkunsubscribe} from 'mail' %} subscribe.unsubcribe {% endtrans %}</p>
                    <p>{% trans from 'mail' %} subscribe.privacy {% endtrans %}</p>
                </div>
             </div>
