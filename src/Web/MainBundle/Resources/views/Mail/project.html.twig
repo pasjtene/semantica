@@ -13,7 +13,6 @@
             .container{
                 width: 80%;
                 background-color: white;
-                height: 100%;
                 padding: 4%;
                 padding-left: 6%;
                 padding-right: 6%;
@@ -100,7 +99,7 @@
             </div>
             <div id="head">
                 <div class="element">
-                    <img src="{{ asset('logo-2.ico') }}" alt="">
+                    <img src="{{ asset('logo.png') }}" alt="">
                 </div>
                 <div class="element">
                     <h2>{% trans from 'mail' %} default.title {% endtrans %}</h2>
@@ -109,7 +108,11 @@
             </div>
             <div id="body">
                <div class="element">
-                   contenu du  mail ici
+
+                   <br>
+                   <p>
+                     <p>{% trans from 'mail' %} subscribe.privacy {% endtrans %}</p>
+                   </p>
                </div>
             </div>
             <div id="footer">

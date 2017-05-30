@@ -13,9 +13,18 @@ class MailController extends Controller
     /**
      * @Route("/subscribe", name="main_mail_subscribe")
      */
-    public function contactAction()
+    public function subscribeAction()
     {
         return $this->render('MainBundle:Mail:subscribe.html.twig');
+    }
+
+
+    /**
+     * @Route("/project", name="main_mail_project")
+     */
+    public function projectAction()
+    {
+        return $this->render('MainBundle:Mail:project.html.twig');
     }
 
 
