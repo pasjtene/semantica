@@ -352,7 +352,12 @@ class DefaultController extends Controller
                 $message = $translator->trans('login.reset',[] ,'nav', $locale);
                 $link  =$this->generateUrl('main_editpassword',[md5('email') =>$user->getEmail()], UrlGeneratorInterface::ABSOLUTE_URL);
                 $html = $message.' <a href="'.$link.'">'.$link.'</a>';
-                $code = $this->sendMail($user->getEmail(), $this->getParameter('mailer_user'), $html, "SIGN UP TO STC(SEMANTICA TECHNOLOGIES CORPORATION)");
+                $unlink  =$this->generateUrl('main_homepage',[md5('email') =>$email], UrlGeneratorInterface::ABSOLUTE_URL);
+                $routeview = 'MainBundle:Mail:subscribe.html.twig';
+                $param = ['link'=>$link,'unlink'=>$unlink,'email'=>'http://'.$email,'name'=>$user->getFirstname() .' '. $user->getLastname(), 'semail'=>$email];
+                $code = $this->sentMail($email, $this->getParameter('mailer_user'), $routeview,$param, "RESET PASSWORD  TO STC(SEMANTICA TECHNOLOGIES CORPORATION)");
+
+                //$code = $this->sendMail($user->getEmail(), $this->getParameter('mailer_user'), $html, "SIGN UP TO STC(SEMANTICA TECHNOLOGIES CORPORATION)");
                 //$code =$this->sentMail($email,$this->getParameter('mailer_user'),'MainBundle:Inc:confirm.html.twig',$array,"Confirmation");
                 $tab = explode('@',$user->getEmail());
                 $array["message"] = "...@".$tab[count($tab)-1];

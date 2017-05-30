@@ -37,5 +37,15 @@ class MailController extends Controller
     }
 
 
+
+    /**
+     * @Route("/reset", name="main_mail_reset")
+     */
+    public function resetAction()
+    {
+        return $this->render('MainBundle:Mail:reset.html.twig',['link'=>'reset a password','unlink'=>'unscribre','email'=>'http://Sdanicktyakam@yahoo.fr','semail'=>'Sdanicktyakam@yahoo.fr','name'=>'Danick Takam']);
+    }
+
+
 }
 
