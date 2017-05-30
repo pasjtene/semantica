@@ -173,12 +173,69 @@
             position:relative;
             top:1px;
         }
+        /*Media query for iPhone 5, 6, 6+ portrait*/
+        @media only screen
+        and (min-device-width : 320px) /* or 213.4375em or 3in or 9cm */
+        and (max-device-width : 736px) /* or 41.6875em*/
+        and (orientation : portrait)
+        {
+            .position_wrapper {
+                width: 100%;
+                margin-top: 2px;
+            }
+            .location{
+                display:none;
+                border-left: 1px solid gray;
+
+            }
+            .position {
+                width: 98%;
+                margin: 2px 1px 2px 1px;
+                padding: 5px 2px 5px 5px;
+            }
+
+            .banner_img {
+                display:none;
+            }
+
+        }
+        /*Media query for iPhone 5, 6, 6+ landscape*/
+        @media only screen
+        and (min-device-width : 320px)
+        and (max-device-width : 736px)
+        and (orientation : landscape)
+        {
+            .position_wrapper {
+                width: 100%;
+                margin-top: 2px;
+            }
+
+            .location{
+                border-left: 1px solid gray;
+                width: 34%;
+                float: right;
+                padding-left: 10px;
+                margin: 10px 1px 3px 1px;
+                padding: 10px 5px 5px 15px;
+
+            }
+
+            .position {
+                width: 65%;
+                margin: 2px 1px 2px 1px;
+                padding: 5px 2px 5px 5px;
+            }
+
+            .banner_img {
+                display:none;
+            }
+        }
     </style>
 {% endblock %}
 {% block header %}
     {{ parent() }}
 
-    <img  src="{{ asset('data/img/jobs.png') }}" alt="">
+    <img class="banner_img" src="{{ asset('data/img/jobs.png') }}" alt="">
 {% endblock %}
 
 {% block  main %}
