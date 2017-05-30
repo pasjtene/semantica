@@ -114,7 +114,7 @@ class ProjectController extends Controller
                 $message = $translator->trans('form.project.notification',[] ,'forms', $locale);
 
                 $routeview = 'MainBundle:Mail:project.html.twig';
-                $param = ['email'=>'http://'.$email];
+                $param = ['email'=>'http://'.$email,'semail'=>$email];
                 $code = $this->sentMail($email, $this->getParameter('mailer_user'), $routeview,$param, "SUBMIT PROJET STC(SEMANTICA TECHNOLOGIES CORPORATION)");
 
                 //$code = $this->sendMail($email, $this->getParameter('mailer_user'), $message, "SOMMIT PROJET STC(SEMANTICA TECHNOLOGIES CORPORATION)");

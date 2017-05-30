@@ -24,7 +24,16 @@ class MailController extends Controller
      */
     public function projectAction()
     {
-        return $this->render('MainBundle:Mail:project.html.twig',['email'=>'http://Sdanicktyakam@yahoo.fr']);
+        return $this->render('MainBundle:Mail:project.html.twig',['email'=>'http://Sdanicktyakam@yahoo.fr','semail'=>'Sdanicktyakam@yahoo.fr']);
+    }
+
+
+    /**
+     * @Route("/contact", name="main_mail_contact")
+     */
+    public function contactAction()
+    {
+        return $this->render('MainBundle:Mail:contact.html.twig',['email'=>'http://Sdanicktyakam@yahoo.fr','semail'=>'Sdanicktyakam@yahoo.fr']);
     }
 
 
