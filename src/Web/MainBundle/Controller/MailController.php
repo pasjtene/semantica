@@ -33,7 +33,7 @@ class MailController extends Controller
      */
     public function contactAction()
     {
-        return $this->render('MainBundle:Mail:contact.html.twig',['email'=>'http://Sdanicktyakam@yahoo.fr','semail'=>'Sdanicktyakam@yahoo.fr']);
+        return $this->render('MainBundle:Mail:contact.html.twig',['email'=>'http://Sdanicktyakam@yahoo.fr','semail'=>'Sdanicktyakam@yahoo.fr','name'=>'Danick Takam']);
     }
 
 

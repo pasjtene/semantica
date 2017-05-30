@@ -97,7 +97,7 @@ class DefaultController extends Controller
     /**
      * @Route("/confirm", name="main_confirm")
      */
-    public function confirlAction(Request $request)
+    public function confirmAction(Request $request)
     {
         $val = $request->query;
         $email = $val->get(md5('email'));
@@ -192,10 +192,17 @@ class DefaultController extends Controller
                 $em->flush();
                 $em->detach($suggestion);
 
+                $email  = $suggestion->getVisitor()->getEmail();
+                $name = $suggestion->getVisitor()->getFirstname();
                 $translator = $this->get('translator');
                 $locale = $this->get('session')->get('_locale');
                 $message =  $suggestion->getVisitor()->getFirstname().', '.$translator->trans('contact.message',[] ,'home', $locale);
-                $code = $this->sendMail($suggestion->getVisitor()->getEmail(), $this->getParameter('mailer_user'), $message, "Contact STC(SEMANTICA TECHNOLOGIES CORPORATION)");
+
+                $routeview = 'MainBundle:Mail:subscribe.html.twig';
+                $param = ['email'=>'http://'.$email,'name'=>$name, 'semail'=>$email];
+                $code = $this->sentMail($email, $this->getParameter('mailer_user'), $routeview,$param, "CONTACT UP TO STC(SEMANTICA TECHNOLOGIES CORPORATION)");
+
+                //$code = $this->sendMail($suggestion->getVisitor()->getEmail(), $this->getParameter('mailer_user'), $message, "Contact STC(SEMANTICA TECHNOLOGIES CORPORATION)");
                 $array['confirm'] ="";
                 $suggestion =new Suggestion();
                 /** @var Form $form */
