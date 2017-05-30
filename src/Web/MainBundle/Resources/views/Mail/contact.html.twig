@@ -59,7 +59,7 @@
             }
             #body .element{
                 width: 100%;
-                text-align: justify;
+                text-align: center;
             }
             #footer{
                 margin-top: 4%;
@@ -95,7 +95,7 @@
 
             <div id="identity">
                 <p><strong>{% trans from 'mail' %} default.from {% endtrans %}:</strong> <span> contact@semanticatechnologies.com</span> </p>
-                <p><strong>{% trans from 'mail' %} default.to {% endtrans %}:</strong> <span>{{ email }}</span> </p>
+                <p><strong>{% trans from 'mail' %} default.to {% endtrans %}:</strong> <span>{{ semail }}</span> </p>
             </div>
             <div id="head">
                 <div class="element">
@@ -108,9 +108,12 @@
             </div>
             <div id="body">
                <div class="element">
-                  <p> {% trans with {'name':email, 'link':link} from 'mail' %} subscribe.content {% endtrans %}</p>
-                   <p>{% trans with {'link':linkunsubscribe} from 'mail' %} subscribe.unsubcribe {% endtrans %}</p>
-                   <p>{% trans from 'mail' %} subscribe.privacy {% endtrans %}</p>
+
+                   <br>
+                   <p>
+                     <p>{% trans with {'name':name} from 'mail' %} contact.content {% endtrans %}</p>
+                     <p>{% trans from 'mail' %} subscribe.privacy {% endtrans %}</p>
+                   </p>
                </div>
             </div>
             <div id="footer">
@@ -128,7 +131,7 @@
             <div id="message">
                 <div class="element">
                     <span>
-                        {% trans from 'mail' %} default.footer {% endtrans %} <a href="http://Sdanicktakam@yahoo.fr">Sdanicktakam@yahoo.fr</a>
+                        {% trans from 'mail' %} default.footer {% endtrans %} <a href="{{ email }}">{{ semail }}</a>
                      </span>
                 </div>
             </div>

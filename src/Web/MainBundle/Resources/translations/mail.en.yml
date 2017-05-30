@@ -23,3 +23,15 @@ subscribe:
     If you don't want to receive further emails from STC, please click here to unsubscribe: <a href='link'>link</a>
   privacy: |
    You can read our privacy policies on this link : <a href='http://www.semanticatechnologies.com/en/footer/privacyPolicy'> http://www.semanticatechnologies.com/en/footer/privacyPolicy </a>
+project:
+  content: |
+    Thank you for contacting
+    Semantica for the realization of your project. A member of our team will contact you
+    Soon for more details and a possible telephone or in-person appointment with our
+    Analysts / programmers
+contact:
+  content: |
+   name , We have received your message. A member of our customer service will contact you shortly. Thank you for your interest in SEMANTICA.
+reset:
+  content: |
+    name, you lost your password. You can reset easily by clicking this link
