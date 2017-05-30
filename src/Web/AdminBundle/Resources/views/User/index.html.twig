@@ -80,7 +80,7 @@
                                         <i class="material-icons">{% if item.enabled == 1 %}lock{% else %}lock_open{% endif %}</i>
                                     </a>
 
-                                    <a data-id="{{ item.id }}" href="#" class="delete_user">
+                                    <a data-id="{{ item.id }}" href="{{ path('admin_remove_users', {id:item.id}) }}" class="delete_user {% if item.id == app.user.id %}hide{% endif %}">
                                         <i class="material-icons">delete</i>
                                     </a>
                                 </td>
@@ -116,11 +116,11 @@
 
             */
 
-            $('.delete_user').click(function(e)
+            /*$('.delete_user').click(function(e)
             {
 
                 e.preventDefault();
-            });
+            });*/
         } );
     </script>
 {% endblock %}

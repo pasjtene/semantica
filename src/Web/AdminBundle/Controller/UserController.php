@@ -127,4 +127,21 @@ class UserController extends Controller
 
     }
 
+    /**
+     * @Route("/users/{id}/remove", options={"expose"=true}, name="admin_remove_users")
+     */
+    public function removeUserAction(Request $request, $id)
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        /** @var User $user */
+        $user = $em->getRepository("EntityBundle:User")->find($id);
+
+        if(is_object($user)){
+            $em->remove($user);
+            $em->flush();
+        }
+
+        return $this->redirect($this->generateUrl('admin_users'));
+    }
 }
