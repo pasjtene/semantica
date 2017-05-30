@@ -1,0 +1,41 @@
+default:
+  title: SEMANTICA TECHNOLOGIES CORPORATION
+  content: |
+    Votre partenaire  constructruit des solutions logicielles sécurisées et fiables, adaptées aux besoins spécifiques de votre entreprise
+  from: De
+  to: A
+  phone: Téléphone
+  email: Adresse email
+  website: Site internet
+  footer: Cette adresse email a été envoyé par Semantica à,
+subscribe:
+  content: |
+    Salut <strong>name</strong>, et bien venu  dans le service de Semantica!
+    Vous avez rejoint des millions d'entreprises dans le monde entier qui utilisent et adorent Semantica. Nous avons une puissante suite de produits pour vous aider à gérer votre entreprise avec facilité. Vous pouvez nous consulter à <a href='www.semanticatechnologies.com'>www.semanticatechnologies.com</a>.
+    Pour activer votre compte Semantica, cliquez sur le lien ci-dessous dans les 30 prochains jours.
+    <a href='link'> link </a> <br/>
+    Si vous avez des questions concernant votre compte Semantica, contactez-nous au <a href='support@semanticatechnologies.com'>support@semanticatechnologies.com</a> .
+    Notre équipe de support technique vous aidera avec tout ce dont vous avez besoin.
+    Amusez-vous, et bienvenue à Semantica.
+    À votre santé
+    Équipe Semantica
+    <a href='www.semanticatechnologies.com'>www.semanticatechnologies.com</a>
+  unsubcribe: |
+    Si vous ne souhaitez plus recevoir de courriels de STC, cliquez ici pour vous désabonner: <a href='link'>link</a>
+  privacy: |
+   Vous pouvez lire nos politiques de confidentialité sur ce lien: <a href='http://www.semanticatechnologies.com/en/footer/privacyPolicy'> http://www.semanticatechnologies.com/en/footer/privacyPolicy </a>
+project:
+  content: |
+    Merci de vous contacter
+    Semantica pour la réalisation de votre projet. Un membre de notre équipe vous contactera
+    Bientôt pour plus de détails et un éventuel rendez-vous téléphonique ou en personne avec notre
+    Analystes / programmeurs
+contact:
+  content: |
+   <strong>name</strong> , Nous avons reçu votre message. Un membre de notre service à la clientèle vous contactera sous peu. Nous vous remercions de votre intérêt pour SEMANTICA.
+reset:
+  content: |
+    <strong>name</strong>, Vous avez perdu votre mot de passe. Vous pouvez réinitialiser facilement en cliquant sur ce lien
+comment:
+  content: |
+   Le projet  <strong>projectname</strong>   Vient d'être commenté par <strong>name</strong>:
