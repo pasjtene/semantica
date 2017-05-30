@@ -15,7 +15,7 @@ class MailController extends Controller
      */
     public function subscribeAction()
     {
-        return $this->render('MainBundle:Mail:subscribe.html.twig');
+        return $this->render('MainBundle:Mail:subscribe.html.twig',['email'=>'Sdanicktakam@yahoo.fr','link'=>'je suis le lien', 'linkunsubscribe'=>'unsubscribe' ]);
     }
 
 
