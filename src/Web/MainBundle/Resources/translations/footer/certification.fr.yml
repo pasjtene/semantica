@@ -1,0 +1,35 @@
+certification:
+  title: CERTIFICATION A STC
+  oracle:
+  oracle_content: |
+   Oracle Certified Database Associate:Le programme de Certification Oracle commence à partir
+   du niveau Associate. A ce niveau là, les personnes certifiées
+   Associate possèdent des notions qui leur permettront de travailler
+   au sein d’une équipe d'administrateurs de base de données ou développeur d'applications
+  lpi: LPI
+  lpi_content: |
+   Le programme de certification du Linux Professional Institute a pour but
+   de valider les compétences des professionnels utilisant le système Linux
+   et les outils qui lui sont associés. Il est conçu pour être totalement
+   indépendant de la distribution Linux utilisée. Pour cela, il suit le
+   standard LSB (Linux Standard Base) ainsi que les autres standards et
+   conventions pertinents.
+  cisco: CCNA
+  cisco_content: |
+   Les cours de la Networking Academy sont dispensés en ligne sur une plate-forme d'apprentissage
+   en partenariat avec les établissements éducatifs locaux. Cisco propose un cursus, une plate-forme
+   d'apprentissage et des ressources pour l'assistance. Les établissements éducatifs locaux embauchent
+   les enseignants, mettent à disposition les machines et intègrent les élèves.
+  itil: ITIL
+  itil_content: |
+   ITIL propose une démarche de gestion de la production et des services informatiques.
+   Après plusieurs années de réflexion et d'expérience, ITIL se pose comme le référentiel
+   le plus abouti des meilleures pratiques. Ainsi, ITIL facilite l’organisation et le déploiement
+   d'un système d'information en adéquation avec les objectifs du métier de votre organisation.
+  cobit: COBIT
+  cobit_content: |
+   COBIT 5 fournit les bonnes pratiques de gouvernance IT pour les professionnels et les managers IT.
+   Cette formation COBIT 5 aborde les sujets de l'examen de certification COBIT 5 Foundation et nécessite
+   du travail personnel avant et pendant la formation. L'examen de certification COBIT 5 a lieu le dernier
+   jour du cours.
+
