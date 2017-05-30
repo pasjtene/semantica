@@ -577,9 +577,15 @@ class PrivateController extends Controller
             {
                 if($item->getProject()->getId()==$id)
                 {
+                    $email =$item->getParticipator()->getUser()->getEmail();
+                    $name = $item->getParticipator()->getUser()->getFirstname(). " ". $item->getParticipator()->getUser()->getLastname();
                     $body =  '<p> Code du projet : '.$projet->getCode().
                         '<br/> Suggestion : '.$message.'</p>';
-                    $code = $this->sendMail($item->getParticipator()->getUser()->getEmail(), $this->getParameter('mailer_user'), $message, "COMMENT STC(SEMANTICA TECHNOLOGIES CORPORATION)");
+                    //$code = $this->sendMail($item->getParticipator()->getUser()->getEmail(), $this->getParameter('mailer_user'), $message, "COMMENT STC(SEMANTICA TECHNOLOGIES CORPORATION)");
+                    $routeview = 'MainBundle:Mail:subscribe.html.twig';
+                    $param = ['email'=>'http://'.$email,'name'=>$name, 'semail'=>$email, "project"=>$projet->getTitle(), "message"=>$message];
+                    $code = $this->sentMail($email, $this->getParameter('mailer_user'), $routeview,$param, "COMMENT TO STC(SEMANTICA TECHNOLOGIES CORPORATION)");
+
                 }
             }
 
@@ -589,5 +595,21 @@ class PrivateController extends Controller
        // return $this->redirect($this->generateUrl('main_private_commit',["message"=>"test"]));
     }
 
+
+
+    public  function sentMail($to, $from, $routeview, $parm,$subjet)
+    {
+        // ->setReplyTo('xxx@xxx.xxx')
+
+        $message = \Swift_Message::newInstance()
+            ->setSubject($subjet)
+            ->setFrom($from) // 'info@achgroupe.com' => 'Achgroupe : Course en ligne '
+            ->setTo($to)
+            ->setBody($this->renderView($routeview, $parm))
+            //'MyBundle:Default:mail.html.twig'
+            ->setContentType('text/html');
+        return $this->get('mailer')->send($message);
+
+    }
 
 }

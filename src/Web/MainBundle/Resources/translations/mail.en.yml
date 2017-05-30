@@ -35,3 +35,6 @@ contact:
 reset:
   content: |
     name, you lost your password. You can reset easily by clicking this link
+comment:
+  content: |
+   The ' projectname ' project has just been commented on by name:

@@ -47,5 +47,15 @@ class MailController extends Controller
     }
 
 
+    /**
+     * @Route("/comment", name="main_mail_comment")
+     */
+    public function commentAction()
+    {
+        return $this->render('MainBundle:Mail:comment.html.twig',['email'=>'http://Sdanicktyakam@yahoo.fr','semail'=>'Sdanicktyakam@yahoo.fr','name'=>'Danick Takam', 'project'=>'GESTION DES FLOTTES', 'message'=>'Le projet devient  de plus en plus lent.et  les delai sont très proches']);
+    }
+
+
+
 }
 
