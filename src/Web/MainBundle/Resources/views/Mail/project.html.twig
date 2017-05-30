@@ -111,6 +111,7 @@
 
                    <br>
                    <p>
+                     <p>{% trans from 'mail' %} project.content {% endtrans %}</p>
                      <p>{% trans from 'mail' %} subscribe.privacy {% endtrans %}</p>
                    </p>
                </div>
@@ -130,7 +131,7 @@
             <div id="message">
                 <div class="element">
                     <span>
-                        {% trans from 'mail' %} default.footer {% endtrans %} Sdanicktakam@yahoo.fr
+                        {% trans from 'mail' %} default.footer {% endtrans %} <a href="{{ email }}">{{ email }}</a>
                      </span>
                 </div>
             </div>

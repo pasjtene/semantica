@@ -112,7 +112,12 @@ class ProjectController extends Controller
                 $translator = $this->get('translator');
                 $locale = $this->get('session')->get('_locale');
                 $message = $translator->trans('form.project.notification',[] ,'forms', $locale);
-                $code = $this->sendMail($email, $this->getParameter('mailer_user'), $message, "SOMMIT PROJET STC(SEMANTICA TECHNOLOGIES CORPORATION)");
+
+                $routeview = 'MainBundle:Mail:project.html.twig';
+                $param = ['email'=>'http://'.$email];
+                $code = $this->sentMail($email, $this->getParameter('mailer_user'), $routeview,$param, "SUBMIT PROJET STC(SEMANTICA TECHNOLOGIES CORPORATION)");
+
+                //$code = $this->sendMail($email, $this->getParameter('mailer_user'), $message, "SOMMIT PROJET STC(SEMANTICA TECHNOLOGIES CORPORATION)");
 
                 $objet = new Projet();
                 /** @var Form $form */
@@ -156,5 +161,21 @@ class ProjectController extends Controller
         return $this->get('mailer')->send($message);
 
     }
+
+    public  function sentMail($to, $from, $routeview, $parm,$subjet)
+    {
+        // ->setReplyTo('xxx@xxx.xxx')
+
+        $message = \Swift_Message::newInstance()
+            ->setSubject($subjet)
+            ->setFrom($from) // 'info@achgroupe.com' => 'Achgroupe : Course en ligne '
+            ->setTo($to)
+            ->setBody($this->renderView($routeview, $parm))
+            //'MyBundle:Default:mail.html.twig'
+            ->setContentType('text/html');
+        return $this->get('mailer')->send($message);
+
+    }
+
 
 }

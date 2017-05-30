@@ -24,7 +24,7 @@ class MailController extends Controller
      */
     public function projectAction()
     {
-        return $this->render('MainBundle:Mail:project.html.twig');
+        return $this->render('MainBundle:Mail:project.html.twig',['email'=>'http://Sdanicktyakam@yahoo.fr']);
     }
 
 
