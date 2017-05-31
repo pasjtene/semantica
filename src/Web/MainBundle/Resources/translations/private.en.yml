@@ -54,6 +54,7 @@ project:
   tab3: Commit
   tab4: Planning
   tab5: Comment
+  choose_title: Search by status
 comment:
   project: Project
   reply: Reply
