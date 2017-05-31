@@ -9,6 +9,57 @@
 
 {% block mycss %}
     <style>
+        .img_wrap {
+            position: relative;
+            border: 2px solid green;
+            width: 100%;
+            height: 400px;
+
+        }
+        .img_text {
+            position: absolute;
+            font-size: 60px;
+            font-weight: bold;
+            color:#5cb811;
+            /*top: 790px;
+            margin-top: 760px;*/
+            margin-top: 59%;
+            z-index: 10;
+            display: inline-block;
+        }
+
+        .img_f {
+
+            /* margin-top: 10px !important;*/
+             position: absolute;
+            top:100px;
+
+        }
+        .img_div {
+            padding: 1px;
+            position: relative;
+            top: 20px;
+            display: block;
+
+        }
+
+        .img_di {
+            visibility: hidden;
+            padding: 1px;
+            display: none;
+            top: 20px;
+            display: block;
+        }
+        .posi {
+            position: absolute;
+            top: 500px;
+        }
+
+        .roww {
+            border: 2px solid green;
+            position: static;
+            top:990px;
+        }
 
     </style>
 {% endblock %}
@@ -18,16 +69,31 @@
 {% endblock %}
 
 {% block  main %}
-    <div class="row" id="main_contact">
-
-        <div class="row">
 
 
-            <div class="section">
-                <h5 class="center-align" style="color: #9acd32"><strong>{% trans from 'formation' %} formation.title {% endtrans %}</strong></h5>
+    <div class="img_div">
+    <h5 class="center-align" style="color: #9acd32"><strong>{% trans from 'formation' %} formation.title {% endtrans %}</strong></h5>
+        <div class="img_text">{% trans from 'formation' %} formation.image {% endtrans %}</div>
+        <img class="img_f" width="100%"   src="{{ asset('data/img/formation3.jpg') }}" alt="">
+    </div>
+
+     <div class="img_di">
+        <img class="im_f" width="100%"   src="{{ asset('data/img/formation3.jpg') }}" alt="">
+    </div>
+
+
+
+                <div class="row">
+
+                 <div class="section">
+
                 <br> <br>
-                <div class="col s12">
-                    <img width="100%"   src="{{ asset('data/img/formation3.jpg') }}" alt="">
+
+
+
+                <div class="coloo s12o">
+
+
                     <table class="striped">
                         <thead>
                         <th style="font-size: 150%"> {% trans from 'formation' %} formation.cameroun {% endtrans %} </th>
@@ -108,9 +174,14 @@
                     </table>
                 </div>
 
+
+
             </div>
         </div>
     </div>
+
+
+
 {% endblock %}
 
 {% block myjs %}
