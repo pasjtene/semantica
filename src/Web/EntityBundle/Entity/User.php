@@ -265,4 +265,17 @@ use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
           return $confirm;
       }
 
+      public function isCurrentParticipant($list, $projet_id){
+          $confirm = 0;
+          /** @var Historic $historic */
+          foreach($list as $historic)
+          {
+              if($historic->getParticipator()->getUser()->getId()==$this->getId() and $projet_id==$historic->getProject()->getId() and ($historic->getEnddate()==null or $historic->getEnddate()>=(new \DateTime())))
+              {
+                  $confirm=1;
+              }
+          }
+          return $confirm;
+      }
+
   }

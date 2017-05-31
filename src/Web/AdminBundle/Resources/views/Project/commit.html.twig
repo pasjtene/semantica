@@ -1,5 +1,5 @@
 <br>
-{% if app.user.hisParticipant(historics,id) and istask %}
+{% if app.user.isCurrentParticipant(historics,id) and istask %}
     <a href="#" id="new_commit" class="waves-effect waves-light btn">{% trans from 'forms' %} form.commit.new {% endtrans %}</a>
 {% else %}
     <a disabled="true" href="#" id="new_commit" class="waves-effect waves-light btn">{% trans from 'forms' %} form.commit.new {% endtrans %}</a>
@@ -26,7 +26,7 @@
                <td>{{ item.task.planning.project.truncate(item.commit.description,50) }}</td>
                <td>{{ item.commit.date|date('d-m-y') }}</td>
                <td>
-                   {% if app.user.hisParticipant(historics,id) and app.user.id == item.commit.participator.user.id  %}
+                   {% if app.user.isCurrentParticipant(historics,id) and app.user.id == item.commit.participator.user.id  %}
                        <a  href="{{ path('admin_comit_delete',{id:item.commit.id, projectid:id}) }}"><i class="material-icons">delete</i></a>
                    {% else %}
                        <a disabled="true" href="{{ path('admin_comit_delete',{id:item.commit.id, projectid:id}) }}" class="waves-effect waves-light btn"><i disabled="true" class="material-icons">delete</i> </a>
