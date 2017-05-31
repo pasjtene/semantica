@@ -128,7 +128,7 @@ class UserController extends Controller
     }
 
     /**
-     * @Route("/users/{id}/remove", options={"expose"=true}, name="admin_remove_users")
+     * @Route("/{id}/remove", options={"expose"=true}, name="admin_remove_users")
      */
     public function removeUserAction(Request $request, $id)
     {

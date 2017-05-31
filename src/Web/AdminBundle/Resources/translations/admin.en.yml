@@ -13,6 +13,7 @@ user:
   locked: locked
   lock_label: Disable user
   unlock_label: Activate user
+  msg_delete: Do you really want to delete user
 role:
   title: Change user's role
   username: Username :

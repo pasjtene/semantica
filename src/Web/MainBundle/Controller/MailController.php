@@ -13,11 +13,6 @@ class MailController extends Controller
     /**
      * @Route("/subscribe", name="main_mail_subscribe")
      */
-    public function contactAction()
-    {
-        return $this->render('MainBundle:Mail:subscribe.html.twig');
-    }
-
     public function subscribeAction()
     {
         return $this->render('MainBundle:Mail:subscribe.html.twig',['email'=>'Sdanicktakam@yahoo.fr','link'=>'je suis le lien', 'linkunsubscribe'=>'unsubscribe' ]);
