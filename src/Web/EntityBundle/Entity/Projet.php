@@ -34,7 +34,7 @@ class Projet extends BaseInterface
     /**
      * @Assert\Valid()
      * @ORM\ManyToOne(targetEntity="Web\EntityBundle\Entity\Visitor",cascade={"persist"})
-     * @ORM\JoinColumn(nullable=truen onDelete="CASCADE")
+     * @ORM\JoinColumn(nullable=true , onDelete="CASCADE")
      */
     private $visitor;
 
