@@ -30,4 +30,18 @@ class UserRepository extends \Doctrine\ORM\EntityRepository
 
         return $array;
     }
+
+
+    public function findActifUser()
+    {
+
+        $query = $this->createQueryBuilder('a');
+        $query->select(['a'])
+              ->Where('a.active is null ')
+              ->orWhere('a.active = true ')
+              ->addOrderBy('a.id','desc');
+
+        return $query->getQuery()->getResult();
+
+    }
 }

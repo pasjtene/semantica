@@ -29,7 +29,7 @@ class UserController extends Controller
 
         $em = $this->getDoctrine()->getManager();
 
-        $items = $em->getRepository("EntityBundle:User")->findAll();
+        $items = $em->getRepository("EntityBundle:User")->findActifUser();
 
         $array = ['items' => $items];
 
@@ -138,7 +138,9 @@ class UserController extends Controller
         $user = $em->getRepository("EntityBundle:User")->find($id);
 
         if(is_object($user)){
-            $em->remove($user);
+
+            $user->setActive(false);
+            $user->setEnabled(false);
             $em->flush();
         }
 
