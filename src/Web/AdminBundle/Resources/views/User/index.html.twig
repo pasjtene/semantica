@@ -44,6 +44,7 @@
                         <strong class="card-title">{% trans from 'admin' %} user.title {% endtrans %}</strong>
                     </center>
                     <br/><br/>
+                    <span id="cnf-msg" class="hide">{% trans from 'admin' %} user.msg_delete {% endtrans %}</span>
                     <table id="table-users" class="centered bordered responsive-table">
                         <thead>
                         <tr>
@@ -80,7 +81,7 @@
                                         <i class="material-icons">{% if item.enabled == 1 %}lock{% else %}lock_open{% endif %}</i>
                                     </a>
 
-                                    <a data-id="{{ item.id }}" href="#" class="delete_user">
+                                    <a  data-name="{{ item.firstname }} {{ item.lastname }}"  data-id="{{ item.id }}" href="" class="delete_user {% if item.id == app.user.id %}hide{% endif %}">
                                         <i class="material-icons">delete</i>
                                     </a>
                                 </td>
@@ -115,9 +116,15 @@
             });
 
             */
-
             $('.delete_user').click(function(e)
             {
+                var msg = $("#cnf-msg").text()+" '"+$(this).data('name')+"' ?";
+                if(confirm(msg))
+                {
+                    var url = Routing.generate('admin_remove_users', {_locale:locale, id:$(this).data('id')}, true);
+
+                    window.location = url;
+                }
 
                 e.preventDefault();
             });

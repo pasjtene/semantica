@@ -42,18 +42,22 @@ class CommitController extends Controller
 
         /** @var User $user */
         $user = $this->getUser();
+
+        /** @var Participator $participator */
+        $participator = $em->getRepository('EntityBundle:Participator')->findOneByUser($user->getId());
+
         /** @var Historic $exit */
-        $exit = $em->getRepository('EntityBundle:Historic')->findOneByparticipator($user->getId());
+        $exit = $em->getRepository('EntityBundle:Historic')->findOneByParticipator($participator->getId());
 
         /** @var Projet $projet */
         $projet = $em->getRepository('EntityBundle:Projet')->find($projectid);
 
-        if($commit->getId()!=$commit->getId() or $exit==null)
+        if($exit==null)
         {
             $array = ['id'=>$projet->getId(), "badUser_commit"=>""];
             return $this->redirect($this->generateUrl('admin_projet_detail',$array));
         }
-        $em = $this->getDoctrine()->getManager();
+
         $em->remove($commit);
         $em->flush();
 

@@ -54,8 +54,5 @@ class MailController extends Controller
     {
         return $this->render('MainBundle:Mail:comment.html.twig',['email'=>'http://Sdanicktyakam@yahoo.fr','semail'=>'Sdanicktyakam@yahoo.fr','name'=>'Danick Takam', 'project'=>'GESTION DES FLOTTES', 'message'=>'Le projet avance tres bien']);
     }
-
-
-
 }
 

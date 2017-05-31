@@ -13,6 +13,7 @@ user:
   locked: désactivé
   lock_label: Désactiver l'utilisateur
   unlock_label: Activer l'utilisateur
+  msg_delete: Voulez vous vraiment supprimer l'utilisateur ?
 role:
   title: Changer le rôle d'utitlisateur
   username: Nom de l'utilisateur
