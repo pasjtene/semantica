@@ -36,6 +36,19 @@ class Participator
      */
     private $code;
 
+    /**
+     * @var boolean
+     * @ORM\Column(name="is_active", type="boolean")
+     */
+    private $active;
+
+    /**
+     * Participator constructor.
+     */
+    public function __construct()
+    {
+        $this->active = true;
+    }
 
     /**
      * Get id
@@ -103,5 +116,23 @@ class Participator
     public function generateCode()
     {
         return $this->setCode(uniqid());
+    }
+
+    /**
+     * Get or Set Active
+     *
+     * @param bool $value
+     *
+     * @return Participator|bool
+     */
+    public function isActive($value = null)
+    {
+        if($value == null){
+            return $this->active;
+        }
+
+        $this->active = $value;
+
+        return $this;
     }
 }

@@ -24,7 +24,7 @@
                <td>{{ item.participator.user.firstname }}</td>
                <td>{{ item.participator.user.email }}</td>
                <td>{{ item.participator.user.RoleString }}</td>
-               <td><a href="{{ path('admin_projet_delete_participator', {id:item.id}) }}" class="delete-participator" data-id="{{ item.id }}"><i class="material-icons">delete</i></a></td>
+               <td><a href="{{ path('admin_projet_delete_participator', {pid:id,  id:item.id}) }}" class="delete-participator" data-id="{{ item.id }}"><i class="material-icons">delete</i></a></td>
            </tr>
         {% endfor %}
     {% else %}
@@ -38,7 +38,7 @@
 </table>
 
 <div id="{{ idhref2 }}" class="modal modal-fixed-footer">
-    <form action="{{ path('admin_projet_edit', {id:id}) }}" method="post">
+    <form action="{{ path('admin_projet_new_participator', {id:id}) }}" method="post">
         <div class="modal-content">
                 <div class="input-field col s12">
                     <label for="user-choice">Select a user</label>
