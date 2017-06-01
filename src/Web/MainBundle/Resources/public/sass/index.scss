@@ -28,6 +28,9 @@
       min-height: 136px !important;
       background-color: $default_text !important;
       color: $default;
+      input,label{
+        color: $secondary;
+      }
       h5,label{
         color: $default !important;
       }
