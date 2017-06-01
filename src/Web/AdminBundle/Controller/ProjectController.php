@@ -543,56 +543,5 @@ class ProjectController extends Controller
 
         return $this->redirect($this->generateUrl('admin_projet_detail', ['id' => $projectid])."#planning");
     }
-
-    /**
-     * @Route("/comment/add/{id}", name="admin_comment_add", requirements={"id": "\d+"})
-     */
-    public function send_projectAction(Request $request,$id)
-    {
-        $code="";
-        /** @var User $user */
-        $user = $this->getUser();
-        $em = $this->getDoctrine()->getManager();
-
-
-        if($request->isMethod("POST"))
-        {
-            $val = $request->request;
-
-
-            /** @var User $user */
-            $user= $em->getRepository("EntityBundle:User")->find($user->getId());
-
-
-            /** @var Projet $projet */
-            $projet= $em->getRepository("EntityBundle:Projet")->find($id);
-
-            $message = $request->request->get('description');
-            $comment = new Comment();
-            $comment->setDate(new \DateTime());
-            $comment->setUser($user);
-            $comment->setProjet($projet);
-            $comment->setDescription($message);
-            $em->persist($comment);
-            $em->flush();
-            $em->detach($comment);
-
-            $list= $em->getRepository("EntityBundle:Historic")->findAll();
-
-            /** @var Historic $item */
-            foreach($list as $item)
-            {
-                if($item->getProject()->getId()==$id)
-                {
-                    $body =  '<p> Code du projet : '.$projet->getCode().
-                        '<br/> Suggestion : '.$message.'</p>';
-                    $code = $this->sendMail($item->getParticipator()->getUser()->getEmail(), $this->getParameter('mailer_user'), $message, "COMMENT STC(SEMANTICA TECHNOLOGIES CORPORATION)");
-                }
-            }
-
-
-        }
-        return  $this->detailAction($id);
-        // return $this->redirect($this->generateUrl('main_private_commit',["message"=>"test"]));
-    }
+    
 }

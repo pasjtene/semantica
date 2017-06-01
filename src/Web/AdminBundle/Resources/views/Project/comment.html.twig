@@ -35,9 +35,9 @@
                </td>
                <td>
                    {% if  app.user.id == item.user.id  %}
-                       <a  href="{{ path('admin_comiment_delete',{projectid:id, id:item.id}) }}" data-pid="{{ id }}" data-id="{{ item.id }}" class="delete-commit"><i class="material-icons">delete</i></a>
+                       <a  href="{{ path('admin_comment_delete',{projectid:id, id:item.id}) }}" data-pid="{{ id }}" data-id="{{ item.id }}" class="delete-commit"><i class="material-icons">delete</i></a>
                    {% else %}
-                       <a disabled="true" href="{{ path('admin_comiment_delete',{projectid:id, id:item.id}) }}" data-pid="{{ id }}" data-id="{{ item.id }}" class="waves-effect waves-light btn delete-commit"><i disabled="true" class="material-icons">delete</i> </a>
+                       <a disabled="true" href="{{ path('admin_comment_delete',{projectid:id, id:item.id}) }}" data-pid="{{ id }}" data-id="{{ item.id }}" class="waves-effect waves-light btn delete-commit"><i disabled="true" class="material-icons">delete</i> </a>
                    {% endif %}
                </td>
            </tr>
