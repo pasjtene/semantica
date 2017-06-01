@@ -425,7 +425,7 @@ class ProjectController extends Controller
             $em->flush();
         }
 
-        return $this->redirect($this->generateUrl('admin_projet_detail', ['id' => $id]));
+        return $this->redirect($this->generateUrl('admin_projet_detail', ['id' => $id])."#planning");
     }
 
     /**
@@ -461,7 +461,7 @@ class ProjectController extends Controller
             $em->flush();
         }
 
-        return $this->redirect($this->generateUrl('admin_projet_detail', ['id' => $id]));
+        return $this->redirect($this->generateUrl('admin_projet_detail', ['id' => $id])."#planning");
     }
 
     /**
@@ -486,7 +486,7 @@ class ProjectController extends Controller
             $em->flush();
         }
 
-        return $this->redirect($this->generateUrl('admin_projet_detail', ['id' => $projectid]));
+        return $this->redirect($this->generateUrl('admin_projet_detail', ['id' => $projectid])."#planning");
     }
 
     /**
@@ -519,7 +519,7 @@ class ProjectController extends Controller
     }
 
     /**
-     * @Route("/{projectid}/delete-task/{id}", name="admin_projet_delete_task", requirements={"projectid": "\d+", "id": "\d+"})
+     * @Route("/{projectid}/delete-task/{id}", name="admin_projet_delete_task", options={"expose"=true}, requirements={"projectid": "\d+", "id": "\d+"})
      */
     public function deletePlanningTaskAction($projectid, $id)
     {
@@ -540,7 +540,7 @@ class ProjectController extends Controller
             $em->flush();
         }
 
-        return $this->redirect($this->generateUrl('admin_projet_detail', ['id' => $projectid]));
+        return $this->redirect($this->generateUrl('admin_projet_detail', ['id' => $projectid])."#planning");
     }
 
     /**

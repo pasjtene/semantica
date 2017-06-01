@@ -282,9 +282,11 @@
             });
 
             //Supprimer un planning
-            $(elt.deletePlanning).click(function(e){
-                var url = $(this).data('url');
-                if(confirm('Vous confirmez ?')){
+            $(elt.deletePlanning).click(function(e)
+            {
+                var url = $(this).data('url'),
+                msg = $("#msg-pla-cnf").text();
+                if(confirm(msg)){
                     window.location = url;
                 }
                 e.preventDefault();
@@ -324,6 +326,7 @@
                         console.log(data);
 
                         var tasks = data.tasks,
+                            pid = data.project.id,
                             taskCount = data.tasks.length;
 
                         var tbody = elt.tableTask.children('tbody');
@@ -338,7 +341,7 @@
                             for(var i = 0; i < taskCount; i++)
                             {
                                 var task = tasks[i];
-                                var dataRow = '<tr><td>'+(i+1)+'</td><td>'+task.identity+'</td><td>'+task.libelle+'</td><td>'+task.status+'</td><td>'+task.rate+'%</td><td><a href="#"><i class="material-icons">delete</i></a></td></tr>';
+                                var dataRow = '<tr><td>'+(i+1)+'</td><td>'+task.identity+'</td><td>'+task.libelle+'</td><td>'+task.status+'</td><td>'+task.rate+'%</td><td><a href="#" class="delete-task" data-pid="'+pid+'" data-id="'+task.id+'"><i class="material-icons">delete</i></a></td></tr>';
                                 tbody.append(dataRow);
                             }
                         }
@@ -348,6 +351,19 @@
                     elt.modalTaskList.modal('open');
                 });
 
+                e.preventDefault();
+            });
+
+            elt.tableTask.on('click', '.delete-task', function(e)
+            {
+                var id = $(this).data('id'),
+                    pid = $(this).data('pid'),
+                    url = Routing.generate('admin_projet_delete_task', {_locale:locale, projectid:pid, id:id}, true);
+
+                if(confirm($('#msg-tas-cnf').text()))
+                {
+                    window.location = url;
+                }
                 e.preventDefault();
             });
         });

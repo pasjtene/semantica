@@ -29,3 +29,7 @@ participant:
   edit: Modifier
   new: Ajouter un participant
   msg_delete: Voulez vous vraiment supprimer le participant
+planning:
+  msg_delete: Voulez vous vraiment supprimer ce planning ?
+task:
+  msg_delete: Voulez vous vraiment supprimer cette tâche ?
