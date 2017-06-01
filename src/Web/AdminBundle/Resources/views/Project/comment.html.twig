@@ -12,6 +12,7 @@
         <th>{% trans from 'forms' %} form.base.description {% endtrans %}</th>
         <th>{% trans from 'forms' %} form.base.date {% endtrans %}</th>
         <th>#</th>
+        <th>#</th>
     </tr>
     </thead>
 
@@ -31,6 +32,13 @@
                <td>{{ item.date|date('d-m-y h:m:s') }}</td>
                <td>
                    <a href="{{ '#comment'~item.id }}"><i class="material-icons">view_headline</i></a>
+               </td>
+               <td>
+                   {% if  app.user.id == item.user.id  %}
+                       <a  href="{{ path('admin_comiment_delete',{projectid:id, id:item.id}) }}" data-pid="{{ id }}" data-id="{{ item.id }}" class="delete-commit"><i class="material-icons">delete</i></a>
+                   {% else %}
+                       <a disabled="true" href="{{ path('admin_comiment_delete',{projectid:id, id:item.id}) }}" data-pid="{{ id }}" data-id="{{ item.id }}" class="waves-effect waves-light btn delete-commit"><i disabled="true" class="material-icons">delete</i> </a>
+                   {% endif %}
                </td>
            </tr>
             <div id="{{ 'comment'~item.id }}" class="modal modal-fixed-footer">
