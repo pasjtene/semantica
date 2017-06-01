@@ -31,7 +31,7 @@ class CommitController extends Controller
 {
 
     /**
-     * @Route("/{projectid}/delete/{id}", name="admin_comit_delete", requirements={"id": "\d+", "projetid": "\d+"})
+     * @Route("/{projectid}/delete/{id}", name="admin_comit_delete", options={"expose"=true}, requirements={"id": "\d+", "projetid": "\d+"})
      */
     public function deleteAction($id,$projectid)
     {
@@ -61,8 +61,8 @@ class CommitController extends Controller
         $em->remove($commit);
         $em->flush();
 
-        $array = ['id'=>$projet->getId(), "deletesuccess_commit"=>""];
-        return $this->redirect($this->generateUrl('admin_projet_detail',$array));
+        $array = ['id'=>$projet->getId()];
+        return $this->redirect($this->generateUrl('admin_projet_detail',$array)."#commit");
     }
 
     /**
@@ -177,7 +177,7 @@ class CommitController extends Controller
             $em->detach($historic);
         }
 
-        return $this->redirect($this->generateUrl('admin_projet_detail',['id'=>$projectid]));
+        return $this->redirect($this->generateUrl('admin_projet_detail',['id'=>$projectid])."#commit");
     }
 
 

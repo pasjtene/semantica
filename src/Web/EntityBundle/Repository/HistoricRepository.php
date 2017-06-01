@@ -56,4 +56,25 @@ class HistoricRepository extends \Doctrine\ORM\EntityRepository
 
         return $items;
     }
+    
+    public function findCurrentHistoric($id)
+    {
+        $query = $this->_em->createQuery("SELECT h FROM EntityBundle:Historic h WHERE h.participator = :pid AND h.enddate IS NULL");
+        $query->setParameters(['pid' => $id]);
+        
+        return $query->getOneOrNullResult();
+    }
+
+    public function findCurrentParticipators($projectId)
+    {
+        $query = $this->createQueryBuilder('h');
+        $query->distinct('p')
+              ->leftJoin('h.participator', 'p')
+              ->where('h.project = :pid')
+              ->andWhere('p.active = true');
+
+        $query->setParameters(['pid' => $projectId]);
+
+        return $query->getQuery()->getResult();
+    }
 }

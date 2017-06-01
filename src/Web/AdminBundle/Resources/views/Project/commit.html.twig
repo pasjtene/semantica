@@ -4,7 +4,7 @@
 {% else %}
     <a disabled="true" href="#" id="new_commit" class="waves-effect waves-light btn">{% trans from 'forms' %} form.commit.new {% endtrans %}</a>
 {% endif %}
-
+<span class="hide" id="msg-cmit-cnf">{% trans from 'admin' %} commit.msg_delete {% endtrans %}</span>
 <table class="bordered highlight centered responsive-table">
     <thead>
     <tr>
@@ -27,9 +27,9 @@
                <td>{{ item.commit.date|date('d-m-y') }}</td>
                <td>
                    {% if app.user.isCurrentParticipant(historics,id) and app.user.id == item.commit.participator.user.id  %}
-                       <a  href="{{ path('admin_comit_delete',{id:item.commit.id, projectid:id}) }}"><i class="material-icons">delete</i></a>
+                       <a  href="#" data-pid="{{ id }}" data-id="{{ item.commit.id }}" class="delete-commit"><i class="material-icons">delete</i></a>
                    {% else %}
-                       <a disabled="true" href="{{ path('admin_comit_delete',{id:item.commit.id, projectid:id}) }}" class="waves-effect waves-light btn"><i disabled="true" class="material-icons">delete</i> </a>
+                       <a disabled="true" href="#" data-pid="{{ id }}" data-id="{{ item.commit.id }}" class="waves-effect waves-light btn delete-commit"><i disabled="true" class="material-icons">delete</i> </a>
                    {% endif %}
                </td>
                <td>
