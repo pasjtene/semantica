@@ -9,6 +9,10 @@
 
 {% block mycss %}
     <style>
+
+        .page_title {
+            margin-bottom: 5px;
+        }
         .img_wrap {
             position: relative;
             border: 2px solid green;
@@ -18,12 +22,12 @@
         }
         .img_text {
             position: absolute;
-            font-size: 60px;
+            font-size: 55px;
             font-weight: bold;
             color:#5cb811;
             /*top: 790px;
             margin-top: 760px;*/
-            margin-top: 59%;
+            margin-top: 55%;
             z-index: 10;
             display: inline-block;
         }
@@ -32,14 +36,15 @@
 
             /* margin-top: 10px !important;*/
              position: absolute;
-            top:100px;
+            top:3px;
 
         }
         .img_div {
             padding: 1px;
             position: relative;
             top: 20px;
-            display: block;
+            display: flex;
+            height: 50%;
 
         }
 
@@ -49,6 +54,65 @@
             display: none;
             top: 20px;
             display: block;
+        }
+
+        /*Media query for iPhone 5, 6, 6+ portrait*/
+        @media only screen
+        and (min-device-width : 320px) /* or 213.4375em or 3in or 9cm */
+        and (max-device-width : 736px) /* or 41.6875em*/
+        and (orientation : portrait)
+        {
+
+            .page_title {
+                margin-bottom: 5px;
+            }
+
+            .img_text {
+                font-size: 20px;
+                color:#5cb811;
+                margin-top: 46%;
+                color:orange;
+
+            }
+
+            .img_div {
+                top: 5px;
+
+            }
+
+            .banner_img {
+                display:none;
+            }
+
+        }
+
+        /*Media query for iPhone 5, 6, 6+ landscape*/
+        @media only screen
+        and (min-device-width : 320px)
+        and (max-device-width : 736px)
+        and (orientation : landscape)
+        {
+
+           .page_title {
+               margin-bottom: 3px;
+           }
+            .img_text {
+                font-size: 30px;
+                font-weight: bold;
+                color:#5cb811;
+                color:orange;
+                top: 40%;
+            }
+
+            .banner_img {
+                display:none;
+            }
+
+            .img_div {
+                top: 5px;
+
+            }
+
         }
 
 
@@ -61,9 +125,8 @@
 
 {% block  main %}
 
-
+<h5 class="center-align page_title" style="color: #9acd32"><strong>{% trans from 'formation' %} formation.title {% endtrans %}</strong></h5>
     <div class="img_div">
-    <h5 class="center-align" style="color: #9acd32"><strong>{% trans from 'formation' %} formation.title {% endtrans %}</strong></h5>
         <div class="img_text">{% trans from 'formation' %} formation.image {% endtrans %}</div>
         <img class="img_f" width="100%"   src="{{ asset('data/img/formation3.jpg') }}" alt="">
     </div>
