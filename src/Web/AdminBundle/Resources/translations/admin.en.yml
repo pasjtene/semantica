@@ -13,7 +13,7 @@ user:
   locked: locked
   lock_label: Disable user
   unlock_label: Activate user
-  msg_delete: Do you really want to delete user
+  msg_delete: Do you really want to delete the user
 role:
   title: Change user's role
   username: Username :
@@ -28,3 +28,4 @@ participant:
   empty: No participant for this project
   edit: Edit
   new: Add participant
+  msg_delete: Do you really want to delete the participant

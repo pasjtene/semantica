@@ -209,6 +209,7 @@
                 },
                 editParticipator: '.edit-participator',
                 btnNewParticipator: $("#btn-new-participator"),
+                deleteParticipator: '.delete-participator',
                 datepicker: '.datepicker',
                 deletePlanning : '.delete-planning',
                 editPlanning : '.edit-planning',
@@ -253,6 +254,21 @@
                 $.get(url, function(response){
                     console.log(response);
                 });
+
+                e.preventDefault();
+            });
+
+            $(elt.deleteParticipator).click(function(e)
+            {
+                var paid = $(this).data('id'),
+                    prid = $(this).data('pid'),
+                    url = Routing.generate('admin_projet_delete_participator', {_locale:locale, pid:prid, id:paid}, true),
+                    msg = $("#cnf-prt-msg").text()+" "+$(this).parent('td').prev('td').prev('td').prev('td').text()+" ?";
+
+                if(confirm(msg))
+                {
+                    window.location = url;
+                }
 
                 e.preventDefault();
             });

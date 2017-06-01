@@ -133,7 +133,7 @@ class ProjectController extends Controller
                 $historic->setParticipator($participator)->setProject($project)->setRoles($params['roles'])->setStartdate($params['startdate']);
                 if (strlen($params['enddate']) > 0) {
                     $historic->setEnddate(new \DateTime($params['enddate']));
-                    $participator->isActive(false);
+                    $participator->setIsActive(false);
                 }
 
                 $em->persist($historic);
@@ -145,7 +145,7 @@ class ProjectController extends Controller
             }
         }
 
-        return $this->redirect($this->generateUrl('admin_projet_detail', ['id' => $id]));
+        return $this->redirect($this->generateUrl('admin_projet_detail', ['id' => $id])."#participator");
     }
 
     /**
@@ -240,7 +240,7 @@ class ProjectController extends Controller
     }
 
     /**
-     * @Route("/{pid}/delete-participator/{id}", name="admin_projet_delete_participator", requirements={"id": "\d+"})
+     * @Route("/{pid}/delete-participator/{id}", name="admin_projet_delete_participator", options={"expose"=true}, requirements={"id": "\d+"})
      */
     public function deleteParticipatorAction($pid, $id)
     {
@@ -255,14 +255,12 @@ class ProjectController extends Controller
         if(is_object($participator))
         {
             $currentHistoric->setEnddate(new \DateTime());
+            $participator->setIsActive(false);
 
-            $participator->isActive(false);
-            var_dump($participator);
-            die();
             $em->flush();
         }
 
-        return $this->redirect($this->generateUrl('admin_projet_detail', ['id' => $pid]));
+        return $this->redirect($this->generateUrl('admin_projet_detail', ['id' => $pid])."#participator");
     }
 
     /**

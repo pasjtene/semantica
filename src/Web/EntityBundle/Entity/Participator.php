@@ -119,18 +119,24 @@ class Participator
     }
 
     /**
-     * Get or Set Active
+     * Get Active
+     *
+     * @return bool
+     */
+    public function isActive()
+    {
+        return $this->active;
+    }
+
+    /**
+     * Set Active
      *
      * @param bool $value
      *
-     * @return Participator|bool
+     * @return Participator
      */
-    public function isActive($value = null)
+    public function setIsActive($value)
     {
-        if($value == null){
-            return $this->active;
-        }
-
         $this->active = $value;
 
         return $this;

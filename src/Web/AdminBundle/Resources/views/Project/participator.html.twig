@@ -3,7 +3,7 @@
 
 <br>
 <a href="{{ href2 }}" class="waves-effect waves-light btn" id="btn-new-participator">{% trans from 'forms' %} form.participator.new {% endtrans %}</a>
-
+<span id="cnf-prt-msg" class="hide">{% trans from 'admin' %} participant.msg_delete {% endtrans %}</span>
 <table class="bordered highlight centered responsive-table">
     <thead>
     <tr>
@@ -21,10 +21,10 @@
         {% for item in items %}
            <tr>
                <td>{{ item.participator.code }}</td>
-               <td>{{ item.participator.user.firstname }}</td>
+               <td>{{ item.participator.user.firstname }} {{ item.participator.user.lastname }}</td>
                <td>{{ item.participator.user.email }}</td>
                <td>{{ item.participator.user.RoleString }}</td>
-               <td><a href="{{ path('admin_projet_delete_participator', {pid:id,  id:item.id}) }}" class="delete-participator" data-id="{{ item.id }}"><i class="material-icons">delete</i></a></td>
+               <td><a href="#" class="delete-participator" data-pid="{{ id }}" data-id="{{ item.id }}"><i class="material-icons">delete</i></a></td>
            </tr>
         {% endfor %}
     {% else %}
