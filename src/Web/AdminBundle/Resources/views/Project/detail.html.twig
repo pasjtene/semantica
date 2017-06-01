@@ -215,7 +215,8 @@
                 editPlanning : '.edit-planning',
                 modalTaskList: $('#md-task-list'),
                 taskCount: '.task-count',
-                tableTask: $('#table-task')
+                tableTask: $('#table-task'),
+                deleteCommit : '.delete-commit'
             };
 
 
@@ -364,6 +365,20 @@
                 {
                     window.location = url;
                 }
+                e.preventDefault();
+            });
+
+            $(elt.deleteCommit).click(function(e)
+            {
+                var cmid = $(this).data('id'),
+                    prid = $(this).data('pid'),
+                    url = Routing.generate('admin_comit_delete', {_locale:locale, projectid:prid, id:cmid}, true);
+
+                if(confirm($("#msg-cmit-cnf").text()))
+                {
+                    window.location = url;
+                }
+
                 e.preventDefault();
             });
         });

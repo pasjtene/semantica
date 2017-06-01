@@ -33,3 +33,5 @@ planning:
   msg_delete: Voulez vous vraiment supprimer ce planning ?
 task:
   msg_delete: Voulez vous vraiment supprimer cette tâche ?
+commit:
+  msg_delete: Voulez vous vraiment supprimer ce commit ?
