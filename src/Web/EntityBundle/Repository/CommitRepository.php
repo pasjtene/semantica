@@ -10,4 +10,18 @@ namespace Web\EntityBundle\Repository;
  */
 class CommitRepository extends \Doctrine\ORM\EntityRepository
 {
+    public function findUser($id)
+    {
+
+        $query = $this->createQueryBuilder('a');
+        $query->select(['a','p','u'])
+            ->leftJoin('a.participator','p')
+            ->leftJoin('p.user','u')
+            ->Where('u.id =:p_id ')
+            ->setParameter('p_id',$id)
+            ->addOrderBy('a.id','desc');
+
+        return $query->getQuery()->getResult();
+
+    }
 }

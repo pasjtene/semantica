@@ -44,6 +44,7 @@ class ConfigController extends Controller
         $user->setCity('Douala');
         $user->setCountry('Cameroun');
         $user->setPleasantries("Pr");
+        $user->setActive(true);
 
 
         $em = $this->getDoctrine()->getManager();
@@ -68,6 +69,7 @@ class ConfigController extends Controller
         $user->setCity('Douala');
         $user->setCountry('Cameroun');
         $user->setPleasantries("Pr");
+        $user->setActive(true);
 
 
         $em = $this->getDoctrine()->getManager();
@@ -91,6 +93,7 @@ class ConfigController extends Controller
         $user->setCity('Douala');
         $user->setCountry('Cameroun');
         $user->setPleasantries("Pr");
+        $user->setActive(true);
 
 
         $em = $this->getDoctrine()->getManager();
@@ -115,6 +118,7 @@ class ConfigController extends Controller
         $user->setCity('Douala');
         $user->setCountry('Cameroun');
         $user->setPleasantries("Pr");
+        $user->setActive(true);
 
 
         $em = $this->getDoctrine()->getManager();
