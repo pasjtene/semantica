@@ -1,0 +1,76 @@
+{% extends 'MainBundle::layout.html.twig' %}
+{% block meta %}
+    <meta name = "{% trans from 'refer' %} industries.title {% endtrans %}" >
+    <meta name = "keywords" content = "{% trans from 'refer' %} industries.description {% endtrans %}" >
+{% endblock %}
+{% block title %}
+    Semantica Technologies Corporation - STC / Industries
+{% endblock %}
+
+{% block mycss %}
+    <style>
+
+    </style>
+{% endblock %}
+{% block header %}
+    {{ parent() }}
+    {% include 'MainBundle:Inc:slide.html.twig' %}
+{% endblock %}
+
+{% block  main %}
+    <div class="row" id="main_industries">
+
+        <div class="row">
+
+
+            <div class="section">
+                <h5 class="center-align"> {% trans from 'industries' %} industries.title {% endtrans %} </h5>
+                <br> <br>
+                <div class="col s12 m6">
+                    <img src="{{ asset('data/img/five.jpg') }}" alt="">
+                </div>
+                <div class="col s12 m6">
+                    <h6> {% trans from 'industries' %} industries.block1 {% endtrans %} </h6>
+                    <p>
+                        {% trans from 'industries' %} industries.block1_content {% endtrans %}
+                    </p>
+                    <br>
+                    <h6> {% trans from 'industries' %} industries.block2 {% endtrans %} </h6>
+                    <p>
+                        {% trans from 'industries' %} industries.block2_content {% endtrans %}
+                    </p>
+                    <br><br>
+                    <h6> {% trans from 'industries' %} industries.block3 {% endtrans %} </h6>
+                    <p>
+                        {% trans from 'industries' %} industries.block3_content {% endtrans %}
+                    </p>
+                    <br>
+                    <h6> {% trans from 'industries' %} industries.block4 {% endtrans %} </h6>
+                    <p>
+                        {% trans from 'industries' %} industries.block4_content {% endtrans %}
+                    </p>
+                    <br>
+                    <h6> {% trans from 'industries' %} industries.block5 {% endtrans %} </h6>
+                    <p>
+                        {% trans from 'industries' %} industries.block5_content {% endtrans %}
+                    </p>
+                    <br>
+                    <h6> {% trans from 'industries' %} industries.block6 {% endtrans %} </h6>
+                    <p>
+                        {% trans from 'industries' %} industries.block6_content {% endtrans %}
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block myjs %}
+    <script>
+
+        $(function(){
+
+        });
+
+    </script>
+{% endblock %}

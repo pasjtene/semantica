@@ -1,0 +1,262 @@
+{% extends 'MainBundle::layout.html.twig' %}
+{% block meta %}
+    <meta name = "{% trans from 'refer' %} home.title {% endtrans %}" >
+    <meta name = "keywords" content = "{% trans from 'refer' %} home.description {% endtrans %}" >
+{% endblock %}
+{% block title %}
+    Semantica Technologies Corporation - STC
+{% endblock %}
+
+
+{% block mycss %}
+    <link rel="stylesheet" href="{{ asset('components/cssbase/datatablehelp.css') }}">
+    <link rel="stylesheet" href="{{ asset('components/cssbase/datatablehelp2.css') }}">
+    <style>
+
+        strong{
+            font-weight: bold;
+        }
+        footer{
+            bottom: 0;
+            width: 100% !important;
+        }
+        #zone_table{
+            height: 352px;
+            overflow-y: auto;
+        }
+        .modal-content{
+            overflow-x: hidden;
+        }
+        .mega-menu{
+            z-index: 9999999999999999999999999999 !important;
+        }
+        #vertical_nav ul{
+            position: absolute !important;
+        }
+    </style>
+{% endblock %}
+{% block header %}
+    {{ parent() }}
+    {% if app.request.query.get("message") is defined and  app.request.query.get("message")!=null  %}
+        <div id="notification" class="green white-text" style="display:none; position: absolute; top: 10%; left: 45%; z-index: 99999999999;  padding: 2%; font-weight: bold;">
+            {% trans from 'private' %} commit.notification  {% endtrans %}
+        </div>
+    {% endif %}
+    <div class="row" id="main_account">
+        <div class="row">
+            <div class="col s12">
+                <div class="col s5 m3">
+                    {% include 'MainBundle:Inc:vertical-nav.html.twig' %}
+                </div>
+                <div class="col s7 m9">
+                    <br><br>
+                    <div class="row" id="search">
+                        <form action="" method="post" id="form">
+                            <div class="col s12">
+                                <div class="input-field col s12 m4">
+                                    <select id="code" name="code">
+                                        <option value="" {% if code is defined and code=="" %} selected {% endif %}  >{% trans from 'private' %} private.choose_project {% endtrans %}</option>
+                                        {% for item in items %}
+                                            <option value="{{ item.id }}" {% if code is defined and code==item.id %} selected {% endif %}> {{ item.title }}</option>
+                                        {% endfor %}
+                                    </select>
+                                </div>
+                            </div>
+
+                        </form>
+                    </div>
+                    <div id="zone_table">
+                        <table class="bordered responsive-table ">
+                            <thead>
+                            <tr>
+                                <th>{% trans from 'private' %} commit.auther  {% endtrans %}</th>
+                                <th>{% trans from 'private' %} commit.commit  {% endtrans %}</th>
+                                <th>{% trans from 'private' %} commit.message  {% endtrans %}</th>
+                                <th>{% trans from 'private' %} commit.date  {% endtrans %}</th>
+                                <th>#</th>
+                            </tr>
+                            </thead>
+
+                            <tbody>
+                            {% if list!=null %}
+                                {% for item in list %}
+                                    {% set href= "#commit"~item.id %}
+                                    {% set idhref = "commit"~item.id %}
+                                    {% set href2= "#commitA"~item.id %}
+                                    {% set idhref2 = "commitA"~item.id %}
+                                    <tr>
+                                        <td>{{ item.commit.participator.user.firstname }}</td>
+                                        <td>{{ item.commit.code }}</td>
+                                        <td>{{ item.commit.getValue(item.commit.description,30) }}</td>
+                                        <td>{{ item.commit.date|date('d-m-Y h:m:s') }}</td>
+                                        <td><a class="modal-trigger " href="{{ href }}"><i class="material-icons">view_headline</i></a></td>
+                                        {# <td><a class="modal-trigger waves-effect waves-light " href="{{ href2 }}"> <i class="material-icons">comment</i>   </a></td>#}
+                                    </tr>
+                                    <div id="{{ idhref }}" class="modal modal-fixed-footer">
+                                        <div class="modal-content">
+                                            <center>
+                                                <h4> {% trans from 'home' %} main.detail {% endtrans %}</h4>
+                                            </center>
+                                            <p>
+
+                                                <strong>
+                                                    {% trans from 'private' %} commit.project  {% endtrans %}
+                                                </strong>
+                                                <br>
+                                                <span>
+                                                    {{ item.task.planning.project.description }}
+                                                </span>
+                                            </p>
+                                            <p>
+
+                                                <strong>
+                                                    {% trans from 'private' %} commit.task  {% endtrans %} &nbsp;&nbsp; (<strong >{{ item.task.status }}</strong>) &nbsp;&nbsp; <strong class="green-text">{{ item.task.rate }} % </strong>
+                                                </strong>
+                                                <br>
+                                                <span>
+                                                    {{ item.task.description }}
+                                                </span>
+                                            </p>
+                                            <hr>
+                                            <p>
+
+                                                <strong>
+                                                    {% trans from 'private' %} commit.auther  {% endtrans %}
+                                                </strong>
+                                                <br>
+                                            <span>
+                                                {{ item.commit.participator.user.firstname }}
+                                            </span>
+                                            </p>
+                                            <p>
+                                                <strong>
+                                                    {% trans from 'private' %} commit.commit  {% endtrans %}
+                                                </strong>
+                                                <br>
+                                            <span>
+                                                {{ item.commit.code }}
+                                            </span>
+                                            </p>
+                                            <p>
+                                                <strong>
+                                                    {% trans from 'private' %} commit.date  {% endtrans %}
+                                                </strong>
+                                                <br>
+                                            <span>
+                                                {{ item.commit.date|date('d-m-y') }}
+                                            </span>
+                                            </p>
+                                            <p>
+                                                <strong>
+                                                    {% trans from 'private' %} commit.message  {% endtrans %}
+                                                </strong>
+                                                <br>
+                                            <span>
+                                                {{ item.commit.description }}
+                                            </span>
+                                            </p>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat ">{% trans from 'forms' %} form.project.close {% endtrans %}</a>
+                                        </div>
+                                    </div>
+                                    <div id="{{ idhref2 }}" class="modal modal-fixed-footer">
+                                         <form method="post" action="{{ path('main_private_commit_send',{id:item.commit.id}) }}" enctype="multipart/form-data">
+                                            <div class="modal-content">
+                                                <center><h3>{% trans from 'private' %} commit.do_comment {% endtrans %}</h3></center>
+                                                <div class="modal-content">
+                                                    <input type="hidden" id="task" name="task" value="{{ item.commit.id }}">
+                                                    <div class="input-field col s12">
+                                                        <i class="material-icons prefix">textsms</i>
+                                                        <textarea id="message" name="message" class="materialize-textarea tinymce" ></textarea>
+                                                        <label for="message">{% trans from 'home' %} main.message {% endtrans %}</label>
+                                                    </div>
+                                                    <br> <br>
+                                                </div>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button  id="close" type="submit" class=" waves-effect waves-green btn-flat  white-text">{% trans from 'home' %} main.send {% endtrans %}</button>
+                                            </div>
+                                         </form>
+                                    </div>
+                                {% endfor %}
+                            {% else %}
+                                <tr>
+                                    <td colspan="6" class="center">
+                                        <h4>
+                                            {% trans from 'private' %} commit.empty  {% endtrans %}
+                                        </h4>
+                                    </td>
+                                </tr>
+                            {% endif %}
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
+{% block  main %}
+
+{% endblock %}
+
+{% block myjs %}
+    <script>
+        $(document).ready(function() {
+            var elt= {
+                code: $('#code'),
+                select: $('select'),
+                form : $('#form'),
+                modal:$('.modal'),
+                notification: $("#notification")
+            }
+            elt.modal.modal();
+            //elt.select.material_select();
+            elt.code.change(function(){
+                elt.form.submit();
+            });
+
+            {% if app.request.query.get("message") is defined and  app.request.query.get("message")!=null  %}
+            elt.notification.slideDown(100);
+            t = setInterval(function(){
+                elt.notification.slideUp();
+                window.location.href ='{{ path("main_private_commit") }}';
+                clearInterval(t);
+            },4000);
+            {% endif %}
+        } );
+    </script>
+
+    <script src="https://cloud.tinymce.com/stable/tinymce.min.js"></script>
+    <script>
+        tinymce.init({
+            selector: 'textarea',
+            height: 300,
+            menubar: false,
+            theme: 'modern',
+            plugins: [
+                'advlist autolink lists  charmap print preview hr anchor pagebreak',
+                'searchreplace wordcount visualblocks visualchars code fullscreen',
+                'insertdatetime  nonbreaking save table contextmenu directionality',
+                'emoticons template paste textcolor colorpicker textpattern imagetools codesample toc'
+            ],
+            toolbar1: 'undo redo | insert | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent ',
+            toolbar2: 'print preview media | forecolor backcolor emoticons | codesample',
+            image_advtab: true,
+            templates: [
+                { title: 'Test template 1', content: 'Test 1' },
+                { title: 'Test template 2', content: 'Test 2' }
+            ],
+            content_css: [
+                '//fonts.googleapis.com/css?family=Lato:300,300i,400,400i',
+                '//www.tinymce.com/css/codepen.min.css'
+            ]
+        });
+
+    </script>
+    <script src="https://cloud.tinymce.com/stable/tinymce.min.js?apiKey=4fcmcglus7w1s8esa5k42gfv78h0gl8ihztqd36tupbqvlev"></script>
+
+{% endblock %}

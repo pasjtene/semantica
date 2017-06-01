@@ -1,0 +1,40 @@
+formation:
+  title: OPTIMIZER VOS COMPETENCES PROFESSIONNELLES GRACE A NOS FORMATIONS ET CERTIFICATIONS
+  cameroun: Cameroun
+  image: Programmes de Formation et d'Education
+
+  ville2: Yaounde-
+  ville2_content: Central Station, STC Building
+  ville1: Douala-
+  ville1_content: Bonandjo, STC Building
+  cameroun_phone: |
+   (+237)695223547
+   (+237)777823547
+   233453022
+
+  android:  Certification Android Certified Application Developer;
+  ibm:  Certification IBM Certified Mobile Application Developer;
+  mta:  Certification MTA Developer;
+  kony:  Certification Kony Certified Developer;
+  ccnp:  Certification Cisco CCNP (Cisco Certified Networking Professional);
+  ccna:  Certification Cisco CCNA (Cisco Certified Networking Associate);
+  ccie:  Certification CCIE (Cisco Certified Internetwork Expert);
+  ocp:  Certification Oracle OCP (Oracle Certified Professional).
+
+  etranger: Europe
+  london: London-
+  london_content: 250 london street
+  paris: Paris-
+  paris_content: 45 rue saint jean
+  etranger_phone: (+33) 1 452213/(+44) 01920 635
+  ville: Ville
+  numero: téléphone
+  ace: Certification ACE (Adobe Certified Expert);
+  mscd: Certification MCSD (Microsoft Certified Solutions Developer);
+  aws: Certification de développeur AWS (Amazon Web Services Certified Developer);
+  csslp: Certification CSSLP (Certified Secure Software Lifecycle Professional);
+  ccdh: Certification CCDH (Cloudera Certified Developer for Apache Hadoop);
+  java: Certifications Java certifié Oracle (OCP, OCM et OCE);
+  csd: Certification CSD (Certified Scrum Developer)Certifications C/C++.
+
+  certif: Go to Certification page

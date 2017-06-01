@@ -1,0 +1,72 @@
+{% extends 'MainBundle::layout.html.twig' %}
+{% block title %}
+    Semantica Technologies Corporation - STC-Confirm
+{% endblock %}
+
+{% block mycss %}
+    <style>
+        .card{
+            padding: 4% !important;
+            text-align: center;
+        }
+    </style>
+{% endblock %}
+{% block header %}
+    {{ parent() }}
+    {% include 'MainBundle:Inc:slide.html.twig' %}
+{% endblock %}
+{% block  main %}
+    <div class="row" id="main_confirm">
+
+        <div class="col s12 offset-m3 m6 ">
+            <div class="card">
+                <form action="{{ path('main_confirm') }}" id="form" method="post">
+                   <div class="row">
+                       <div class="input-field col s12 m12 ">
+                           {{ form_widget(form.firstname,{'attr':{'class':''}}) }}
+                           {{ form_label(form.firstname) }}
+                           <div class="error"  >{{ form_errors(form.firstname) }}</div>
+                       </div>
+                   </div>
+                    <div class="row">
+                        <div class="input-field col s12 m12 ">
+                            {{ form_widget(form.username,{'attr':{'class':''}}) }}
+                            {{ form_label(form.username) }}
+                            <div class="error"  >{{ form_errors(form.username) }}</div>
+                        </div>
+                    </div>
+                    <input type="hidden" name="email" value="{{ email }}">
+                    <div class="row">
+                        <div class="input-field col s12 m12 ">
+                            {{ form_label(form.pleasantries) }}
+                            <br><br>
+                            {{ form_widget(form.pleasantries,{'attr':{'class':''}}) }}
+                            <div class="error"  >{{ form_errors(form.pleasantries) }}</div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s12 m12 ">
+                            {{ form_widget(form.password,{'attr':{'class':''}}) }}
+                            {{ form_label(form.password) }}
+                            <div class="error"  >{{ form_errors(form.password) }}</div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col s12">
+                            <button class="waves-effect waves-light btn" type="submit" id="send">{% trans from 'forms' %} form.user.save {% endtrans %}</button>
+                            <br/>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block myjs %}
+    <script>
+        $(function(){
+          // $('select').material_select();
+        });
+    </script>
+{% endblock %}

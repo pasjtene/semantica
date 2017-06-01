@@ -1,0 +1,51 @@
+about:
+  title: ABOUT STC
+  corporate: Corporate Information
+  news: Newsroom
+  investor:  Privacy Policy
+  policy: Privacy Policy
+  carreers: Careers
+  explorecareers: Explore careers
+  language: Language
+  block1: ours Privacy Policy
+
+education:
+  title: EDUCATION
+  training: Trainning
+  certification: Certifications
+  universite: STC University
+  freeonline: Free Online Trainning
+  certifications: Certifications
+
+
+site:
+  title: STC SITES
+  url: semanticatechnologies.com
+  dev: STCPro
+  support: Support Portal
+  partner: FunGlobe
+  lab: Labs
+
+
+preference:
+  title: PREFERENCES
+  corporate: Corporate Information
+  login: Login
+  email: Email Preference
+  contact: Contact informations
+
+
+
+connect:
+  title: CONNECT WITH US
+  twitter: Twitter
+  link: Lindln
+  facebook: Facebook
+  youtube: Youtube
+  devcentral: DevCentral
+corporigh:
+  title: © 2017 STC Software. Inc. All rights reserved.
+  link: policies
+  other: Trademark
+
+

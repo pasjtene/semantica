@@ -1,0 +1,25 @@
+nav:
+  home: Home
+  industries:  Industries
+  login: Login
+  signup: Sign Up
+  contact: Contact
+  connection: Connection
+  careers: Careers
+  register: Register
+  logout: Logout
+  language: French
+  newprojet: Submit your project
+  account: Account
+  about: About STC
+  services: Services
+  careers: Careers
+
+footer:
+  copyright: Copyright © 2017 Semantica Technologies Corporation - STC - All Rights Reserved.
+  by:  Powered PASCAL JT
+slide:
+  title: |
+   WELCOME TO  SEMANTICA TECHNOLOGIES CORPORATION -STC
+  content: |
+    Your partner in building  secure and reliable software solutions, tailored to the specific need of your business

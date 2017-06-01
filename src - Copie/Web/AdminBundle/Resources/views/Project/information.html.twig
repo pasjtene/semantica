@@ -1,0 +1,238 @@
+<div  class="col s12">
+    <br>
+    <div class="col s12 m4">
+        <div class="card">
+            <div class="card-title center-align">
+                <br>
+                <strong>{% trans from 'private' %} project.base_information {% endtrans %}</strong>
+            </div>
+            <div class="card-content">
+                <p>
+                    <strong>
+                        {% trans from 'private' %} project.title {% endtrans %} :
+                    </strong>
+                    <br>
+                                            <span>
+                                                {{ items.title }}
+                                            </span>
+                </p>
+                <p>
+                <hr>
+                <strong>
+                    {% trans from 'private' %} project.code {% endtrans %} :
+                </strong>
+                <br>
+                                            <span>
+                                                {{ items.code }}
+                                            </span>
+                </p>
+                <p>
+                <hr>
+                <strong>
+                    {% trans from 'private' %} project.company {% endtrans %} :
+                </strong>
+                <br>
+                                            <span>
+                                                {{ items.company }}
+                                            </span>
+                </p>
+                <p>
+                <hr>
+                <strong>
+                    {% trans from 'private' %} project.date {% endtrans %} :
+                </strong>
+                <br>
+                                            <span>
+                                                {{ items.date|date('d-m-Y h:i:s') }}
+                                            </span>
+                </p>
+                <p>
+                <hr>
+                <strong>
+                    {% trans from 'private' %} project.status {% endtrans %} :
+                </strong>
+                <br>
+                                            <span>
+                                                {{ items.CurrentStatus(items.status,app.request.locale) }}
+                                            </span>
+                </p>
+                <p>
+                <hr>
+                <strong>
+                    {% trans from 'private' %} project.comment {% endtrans %} :
+                </strong>
+                <br>
+                                            <span>
+                                                {{ items.comment|raw }}
+                                            </span>
+                </p>
+                <p>
+                <hr>
+                <strong>
+                    {% trans from 'private' %} project.description {% endtrans %} :
+                </strong>
+                <br>
+                                            <span>
+                                                {{ items.description|raw }}
+                                            </span>
+                </p>
+
+            </div>
+        </div>
+
+    </div>
+
+    <div class="col s12 m4">
+        <div class="card">
+            <div class="card-title center-align">
+                <br>
+                <strong>{% trans from 'private' %} project.client_information {% endtrans %}</strong>
+            </div>
+            <div class="card-content">
+                <p>
+                    <strong>
+                        {% trans from 'forms' %} form.base.name {% endtrans %} :
+                    </strong>
+                    <br>
+                                            <span>
+                                               <span>
+                                                {% if items.user!=null %}
+                                                    {{ items.user.firstname }}
+                                                {% else %}
+                                                    {{ items.visitor.firstname }}
+                                                {% endif %}
+                                            </span>
+                                            </span>
+                </p>
+                <p>
+                <hr>
+                <strong>
+                    {% trans from 'forms' %} form.base.username {% endtrans %} :
+                </strong>
+                <br>
+                                            <span>
+                                                {% if items.user!=null %}
+                                                    {{ items.user.username }}
+                                                {% else %}
+                                                    {{ items.visitor.phone }}
+                                                {% endif %}
+                                            </span>
+                </p>
+                <p>
+                <hr>
+                <strong>
+                    {% trans from 'forms' %} form.base.email {% endtrans %} :
+                </strong>
+                <br>
+                                            <span>
+                                                {% if items.user!=null %}
+                                                    {{ items.user.email }}
+                                                {% else %}
+                                                    {{ items.visitor.email }}
+                                                {% endif %}
+                                            </span>
+                </p>
+                <p>
+                <hr>
+                <strong>
+                    {% trans from 'forms' %} form.base.pleasantries {% endtrans %} :
+                </strong>
+                <br>
+                                            <span>
+                                                {% if items.user!=null %}
+                                                    {{ items.user.pleasantries }}
+                                                {% else %}
+                                                    {{ items.visitor.pleasantries }}
+                                                {% endif %}
+                                            </span>
+                </p>
+                <p>
+                <hr>
+                <strong>
+                    {% trans from 'forms' %} form.base.city {% endtrans %} :
+                </strong>
+                <br>
+                                            <span>
+                                                {% if items.user!=null %}
+                                                    {{ items.user.city }}
+                                                {% else %}
+                                                    {{ items.visitor.city }}
+                                                {% endif %}
+                                            </span>
+                </p>
+                <p>
+                <hr>
+                <strong>
+                    {% trans from 'forms' %} form.base.country {% endtrans %} :
+                </strong>
+                <br>
+                                            <span>
+                                                {% if items.user!=null %}
+                                                    {{ items.user.country }}
+                                                {% else %}
+                                                    {{ items.visitor.country }}
+                                                {% endif %}
+                                            </span>
+                </p>
+
+            </div>
+        </div>
+
+    </div>
+
+    <div class="col s12 m4">
+        {% if items.files!=null  %}
+            <ul class="collection with-header">
+                <li class="collection-header center-align"><h4><strong>{% trans from 'private' %} project.file_list {% endtrans %}</strong></h4></li>
+                {% for file in items.files  %}
+                    {% if file.hashname!=null and  file.extfile=="gif" or file.extfile=="png" or file.extfile=="jpg" or file.extfile=="jpeg"  %}
+                        {% set href= "#project1A"~file.hashname %}
+                        {% set idhref = "project1A"~file.hashname %}
+                        <li class="collection-item ">
+                            <li class="collection-item"><div>{{ items.truncate(file.name,15) }}<a href="{{ href }}" class="secondary-content"><i class="material-icons">attach_file</i></a></div></li>
+                        </li>
+                        <div id="{{ idhref }}" class="modal  modal-fixed-footer">
+                            <div class="modal-content">
+                                <img src="{{ asset(file.path()) }}" alt="" class="responsive-image materialboxed" style="max-width: 100%; max-height: inherit;">
+                            </div>
+                            <div class="modal-footer">
+                                <a class="modal-action modal-close waves-effect waves-green btn-flat green white-text left-align left" href="{{app.request.getSchemeAndHttpHost()~'/'~file.path()}}">Telecharger</a>
+                                <button  id="close" class="modal-action modal-close waves-effect waves-green btn-flat blue white-text">{% trans from 'forms' %} form.project.close {% endtrans %}</button>
+                            </div>
+                        </div>
+                    {% elseif file.hashname!=null and file.extfile=="PDF" or file.extfile=="pdf" %}
+                        {% set href= "#project2B"~file.hashname %}
+                        {% set idhref = "project2B"~file.hashname %}
+                        <li class="collection-item ">
+                           <li class="collection-item"><div>{{ items.truncate(file.name,15) }}<a href="{{ href }}" class="secondary-content"><i class="material-icons">attach_file</i></a></div></li>
+                        </li>
+                        <div id="{{ idhref }}" class="modal  modal-fixed-footer">
+                            <div class="modal-content">
+                                <iframe src="{{app.request.getSchemeAndHttpHost()~'/'~file.path()}}" class="col s12"  width="100%" height="500" align="middle"></iframe>
+                            </div>
+                            <div class="modal-footer">
+                                <a class="modal-action modal-close waves-effect waves-green btn-flat green white-text left-align left" href="{{app.request.getSchemeAndHttpHost()~'/'~file.path()}}">Telecharger</a>
+                                <button  id="close" class="modal-action modal-close waves-effect waves-green btn-flat blue white-text">{% trans from 'forms' %} form.project.close {% endtrans %}</button>
+                            </div>
+                        </div>
+                    {% else %}
+                        <li class="collection-item ">
+                            <li class="collection-item"><div>{{ items.truncate(file.name,15) }}<a href="{{app.request.getSchemeAndHttpHost()~'/'~file.path()}}" class="secondary-content upload_file"><i class="material-icons">attach_file</i></a></div></li>
+                        </li>
+                    {% endif %}
+                {% endfor %}
+            </ul>
+        {% endif %}
+
+        {% if participants!=null  %}
+            <ul class="collection with-header">
+                <li class="collection-header center-align"><h4><strong>{% trans from 'private' %} private.participant {% endtrans %}</strong></h4></li>
+                {% for participant in participants  %}
+                    <li class="collection-item ">
+                      <div>{{ participant.user.firstname ~ ' ' ~ participant.user.lastname }}</div>
+                    </li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+    </div>
+</div>

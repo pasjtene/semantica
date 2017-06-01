@@ -1,0 +1,34 @@
+certification:
+  title: CERTIFICATION TO STC
+  oracle:
+  oracle_content: |
+   Oracle Certified Database Associate: Oracle Certification Program Starts From
+   Of the Associate level. At this level, certified persons
+   Associate have notions that will allow them to work
+   Within a team of database administrators or application developer
+  lpi: LPI
+  lpi_content: |
+   The purpose of the Linux Professional Institute certification program is to
+   To validate the skills of professionals using the Linux system
+   And the tools associated with it. It is designed to be totally
+   Independent of the Linux distribution used. For this, it follows the
+   Linux Standard Base (LSB) as well as other standards and
+   Relevant conventions.
+  cisco: CISCO
+  cisco_content: |
+   Networking Academy courses are delivered on-line on a learning platform
+   In partnership with local educational institutions. Cisco offers a curriculum, a platform
+   Learning and resources for assistance. Local educational institutions hire
+   The teachers, make the machines available and integrate the pupils.
+  itil: ITIL
+  itil_content: |
+   ITIL offers a management approach to production and IT services.
+   After several years of reflection and experience, ITIL poses as the reference
+   The most successful of best practices. Thus, ITIL facilitates the organization and deployment
+   An information system in line with the objectives of your organization's business.
+  cobit: COBIT
+  cobit_content: |
+   COBIT 5 provides good governance practices for IT professionals and managers.
+   This COBIT 5 course addresses the topics of the COBIT 5 Foundation certification exam and requires
+   Of personal work before and during training. The COBIT 5 certification exam takes place the last
+   Day of the course.

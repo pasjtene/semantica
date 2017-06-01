@@ -1,0 +1,119 @@
+{% extends 'MainBundle::layout.html.twig' %}
+{% block meta %}
+    <meta name = "{% trans from 'refer' %} home.title {% endtrans %}" >
+    <meta name = "keywords" content = "{% trans from 'refer' %} home.description {% endtrans %}" >
+{% endblock %}
+{% block title %}
+    Semantica Technologies Corporation - STC
+{% endblock %}
+
+
+{% block mycss %}
+    <link rel="stylesheet" href="{{ asset('components/cssbase/datatablehelp.css') }}">
+    <link rel="stylesheet" href="{{ asset('components/cssbase/datatablehelp2.css') }}">
+    <style>
+        strong{
+            font-weight: bold;
+        }
+        #main_account #vertical_nav ul{
+            height: 82% !important;
+        }
+        .mega-menu{
+            z-index: 9999999999999999999999999999 !important;
+        }
+        #vertical_nav ul{
+            position: absolute !important;
+        }
+    </style>
+{% endblock %}
+{% block header %}
+    {{ parent() }}
+    <div class="row" id="main_account">
+        <div class="row">
+            <div class="col s12">
+                <div class="col s5 m3">
+                    {% include 'MainBundle:Inc:vertical-nav.html.twig' %}
+                </div>
+                <div class="col s7 m9">
+                    <br><br>
+                    <div class="row">
+                        <div class="col s12">
+                            <form action="{{ path('main_private') }}" id="form" method="post">
+                                <div class="modal-content">
+                                    <h4>{% trans from 'private' %} private.profile {% endtrans %}</h4>
+                                    <div class="row">
+                                        <div class="row">
+                                            <div class="input-field col s12 m6 ">
+                                                {{ form_widget(form.firstname,{'attr':{'class':''}}) }}
+                                                {{ form_label(form.firstname) }}
+                                                <div class="error"  >{{ form_errors(form.firstname) }}</div>
+                                            </div>
+                                            <div class="input-field col s12 m6 ">
+                                                {{ form_widget(form.lastname,{'attr':{'class':''}}) }}
+                                                {{ form_label(form.lastname) }}
+                                                <div class="error"  >{{ form_errors(form.lastname) }}</div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="input-field col s12 m6 ">
+                                                {{ form_widget(form.username,{'attr':{'class':''}}) }}
+                                                {{ form_label(form.username) }}
+                                                <div class="error"  >{{ form_errors(form.username) }}</div>
+                                            </div>
+                                            <div class="input-field col s12 m6 ">
+                                                {{ form_widget(form.email,{'attr':{'class':'','disabled':'on' }}) }}
+                                                {{ form_label(form.email) }}
+                                                <div class="error"  >{{ form_errors(form.email) }}</div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="input-field col s12 m6 ">
+                                                {{ form_widget(form.pleasantries,{'attr':{'class':''}}) }}
+                                                {{ form_label(form.pleasantries) }}
+                                                <div class="error"  >{{ form_errors(form.pleasantries) }}</div>
+                                            </div>
+                                            <div class="input-field col s12 m6 ">
+                                                {{ form_widget(form.city,{'attr':{'class':''}}) }}
+                                                {{ form_label(form.city) }}
+                                                <div class="error"  >{{ form_errors(form.city) }}</div>
+                                            </div>
+                                            <input type="hidden"  value="{{ objet.password }}" id="password" name="password">
+                                        </div>
+                                        <div class="row">
+                                            <div class="input-field col s12 m6 ">
+                                                {{ form_widget(form.country,{'attr':{'class':''}}) }}
+                                                {{ form_label(form.country) }}
+                                                <div class="error"  >{{ form_errors(form.country) }}</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col s12">
+                                            <button class="waves-effect waves-light btn" type="submit" id="send">{% trans from 'forms' %} form.user.save {% endtrans %}</button>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+{% block  main %}
+
+{% endblock %}
+
+{% block myjs %}
+    <script>
+        $(document).ready(function() {
+            var elt= {
+                select: $('select')
+            }
+          //  elt.select.material_select();
+
+        } );
+    </script>
+{% endblock %}
