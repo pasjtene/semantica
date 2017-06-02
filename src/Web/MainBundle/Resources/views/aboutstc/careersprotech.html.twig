@@ -230,6 +230,15 @@
                 display:none;
             }
         }
+        .couleur{
+            color: royalblue;
+        }
+        .imageflottante
+        {
+            float: right;
+            height:100px;
+            width:5px;
+        }
     </style>
 {% endblock %}
 {% block header %}
@@ -245,25 +254,121 @@
 
 
             <div class="section">
-                <h5 class="center-align"> {% trans from 'aboutstc' %} explorecareers.title {% endtrans %} </h5>
+                <h5 class="center-align"> {% trans from 'aboutstc' %} careers.title6 {% endtrans %} </h5>
                 <br> <br>
-                <div class="col s12 m6">
-                    <img width="45" src="{{ asset('data/img/exploca.jpg') }}" alt="">
-                </div>
-                <div class="col s12 m6">
-                    <h6> {% trans from 'aboutstc' %} explorecareers.description {% endtrans %} </h6>
+                <div  class="col s12 m6 l4"  >
+
+                    <h6> {% trans from 'aboutstc' %} careers.domaine7 {% endtrans %} </h6>
+
                     <p>
-                        {% trans from 'aboutstc' %} explorecareers.description_content {% endtrans %}
+                    <a   href="{{ path('main_careers') }}" > {% trans from 'aboutstc' %}  careers.domaine1 {% endtrans %} </a>
                     </p>
-                    <br>
-                    <h6> {% trans from 'aboutstc' %} explorecareers.liste {% endtrans %} </h6>
-                    <br>
-
+                    <p>
+                    <a  href="{{ path('main_careers') }}"> {% trans from 'aboutstc' %}  careers.domaine2 {% endtrans %} </a>
+                    </p>
+                    <p>
+                        <a  href="{{ path('main_careers') }}" > {% trans from 'aboutstc' %}  careers.domaine3 {% endtrans %} </a>
+                    </p>
+                    <p>
+                    <a  href="{{ path('main_careers') }}" > {% trans from 'aboutstc' %}  careers.domaine4 {% endtrans %} </a>
+                    </p>
+                    <p>
+                    <a  href="{{ path('main_careers') }}" > {% trans from 'aboutstc' %}  careers.domaine5 {% endtrans %} </a>
+                    </p>
+                    <p>
+                    <a  href="{{ path('main_careers') }}" > {% trans from 'aboutstc' %}  careers.domaine6 {% endtrans %} </a>
+                    </p>
                 </div>
+                <div class="col s12 m6 l8">
+                    <h6> {% trans from 'aboutstc' %} careers.domaine7 {% endtrans %} </h6>
+                    <p>
+                        <h6> {% trans from 'aboutstc' %} careers.domaine1 {% endtrans %} </h6>
+                    </p>
+                    <p>
+                     {% trans from 'aboutstc' %} careers.produitech_content {% endtrans %}
+                    </p>
+                    <div class="col s12 m6 l4">
+                        <img  src="{{ asset('data/img/protech.jpg') }}" alt="">
+                    </div>
+                    <div align="center" class="couleur">
+                    {% trans from 'aboutstc' %} careers.equiproduittech {% endtrans %}
+                    </div>
+                    <div class="col s12 m6 l5">
+                          <ul>
+                              <li>
+                                  {% trans from 'aboutstc' %} careers.equiproduittech1 {% endtrans %}
+                              </li>
+                              <li>
+                                  {% trans from 'aboutstc' %} careers.equiproduittech2 {% endtrans %}
+                              </li>
+                              <li>
+                                  {% trans from 'aboutstc' %} careers.equiproduittech3 {% endtrans %}
+                              </li>
+                              <li>
+                                  {% trans from 'aboutstc' %} careers.equiproduittech4 {% endtrans %}
+                              </li>
+                              <li>
+                                  {% trans from 'aboutstc' %} careers.equiproduittech5 {% endtrans %}
+                              </li>
+                          </ul>
+                    </div>
+                    <div class="col s12 m6 l3">
+                        <ul>
+                            <li>
+                                {% trans from 'aboutstc' %} careers.equiproduittech6 {% endtrans %}
+                            </li>
+                            <li>
+                                {% trans from 'aboutstc' %} careers.equiproduittech7 {% endtrans %}
+                            </li>
+                            <li>
+                                {% trans from 'aboutstc' %} careers.equiproduittech8 {% endtrans %}
+                            </li>
+                            <li>
+                                {% trans from 'aboutstc' %} careers.equiproduittech9 {% endtrans %}
+                            </li>
+                            <li>
+                                {% trans from 'aboutstc' %} careers.equiproduittech10 {% endtrans %}
+                            </li>
+                        </ul>
+                    </div>
+                    <div>
+                    {% trans from 'aboutstc' %} careers.produitech_content1 {% endtrans %}
+                    </div>
+                    <div class="couleur">
+                        <p>
+                        {% trans from 'aboutstc' %} careers.eventsrencontre {% endtrans %}
+                        </p>
+                    </div>
+                    <div>
+                        <p>
+                            {% trans from 'aboutstc' %} careers.eventsrencontre_content {% endtrans %}
+                        </p>
+                    </div>
+                    <div align="center">
+                        <img  src="{{ asset('data/img/pop.jpg') }}" alt="">
+                    </div>
+                    <div class="couleur">
+                        <p>
+                            {% trans from 'aboutstc' %} careers.produitsolution {% endtrans %}
+                        </p>
+                    </div>
+                    <div>
+                        <p>
+                            <img class="imageflottante" src="{{ asset('data/img/float.jpg') }}" alt="">
+                            {% trans from 'aboutstc' %} careers.produitsolution_content {% endtrans %}
+                        </p>
+                        </br>
+                    </div>
+                    <div align="center">
+                    <h6> {% trans from 'aboutstc' %} careers.title5 {% endtrans %} </h6>
+                    </div>
 
+                    <div class="col s12 m6 l5">
+
+                    </div>
+                </div>
             </div>
         </div>
-
         <div class="position_wrapper">
             <div class="position_title">
                 <div class="position">Software developer  <br/> Job Category: Software Development</div>
@@ -274,7 +379,7 @@
                 Douala - Cameroon <br/> <br/>
 
                 <h5> ABOUT THE POST </h5>
-                <h6><strong>STC. Makes Work Life Better™</strong></br></h6>
+                <h6><strong>STC Makes Work Life Better™</strong></br></h6>
                 This is our promise. Not only for our customers, but our employees as well.<br/><br/>
 
                 STC is a cloud company powered by people.  Join us as we transform the world of work for millions of employees around
@@ -416,7 +521,6 @@
 
                 <div class="greenButton">Postuler pour ce poste</div>
 
-
             </div>
         </div>
         <div class="position_wrapper">
@@ -429,7 +533,7 @@
                 Yaoude- Cameroon <br/> <br/>
 
                 <h5> ABOUT THE POST </h5>
-                <h6><strong>STC Makes Work Life Better™</strong></br></h6>
+                <h6><strong>STC. Makes Work Life Better™</strong></br></h6>
                 This is our promise. Not only for our customers, but our employees as well.<br/><br/>
 
                 STC is a cloud company powered by people.  Join us as we transform the world of work for millions of employees around
@@ -507,7 +611,7 @@
                 Yaoundé - Cameroun <br/> <br/>
 
                 <h5> A PROPOS DU POSTE </h5>
-                <h6><strong>STC  Rend  mieux la vie professionnelle™</strong></br></h6>
+                <h6><strong>STC.  Rend  mieux la vie professionnelle™</strong></br></h6>
                 C'est notre promesse. Non seulement pour nos clients, mais aussi pour nos employés.<br/><br/>
 
                 STC est une entreprise cloud développée par des personnes. Rejoignez-nous alors que nous transformons le monde du travail pour des millions d'employés autour de
@@ -637,6 +741,7 @@
                 <strong>WORKING ENVIRONMENT & PHYSICAL DEMANDS</strong><br/>
                 General office environment <br/><br/>
                 <div class="greenButton">Apply for this position</div>
+
             </div>
         </div>
 
@@ -698,7 +803,7 @@
                 </ul>
 
                 <strong>ENVIRONNEMENT DE TRAVAIL ET DEMANDES PHYSIQUES</strong><br/>
-               Environnement de bureau général. <br/><br/>
+                Environnement de bureau général. <br/><br/>
                 <div class="greenButton">Postulez pour ce poste</div>
 
             </div>
@@ -764,6 +869,7 @@
                 <strong>WORKING ENVIRONMENT & PHYSICAL DEMANDS</strong><br/>
                 General office environment <br/><br/>
                 <div class="greenButton">Apply for this position</div>
+
             </div>
         </div>
 
@@ -840,7 +946,7 @@
 
             <div class="position_details">
                 <strong>Customer Relationship</strong><br/>
-                    Douala and yaounde- Cameroon <br/> <br/>
+                Douala and yaounde- Cameroon <br/> <br/>
                 <h5>Job Descriptions</h5>
                 The client relationship manager works closely with the sales team to manage relationships with clients.</br></br>
                 Bac + 5 or equivalent, you have professional experience Of at least 2 years in a similar
@@ -874,6 +980,7 @@
                     <li>Previous experience working as a client relationship manager or a track record of
                         managing client relationships.</li>
                 </ul>
+
                 <div class="greenButton">Apply for this position</div>
             </div>
         </div>
@@ -926,6 +1033,9 @@
                 <div class="greenButton">Postulez pour ce poste</div>
             </div>
         </div>
+
+
+
     </div>
 {% endblock %}
 

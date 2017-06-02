@@ -174,6 +174,51 @@ eventss:
    traitée ad hoc.
 careers:
   title:  <strong> CARRIERES </strong>
+  title5: Emplois – Produits et technologie
+  title6: Explorez nos domaines d'emplois
+  domaine1: Produits et technologies
+  domaine2: Ventes et  marketing
+  domaine3: Services à la clientele
+  domaine4: Carrière professionnele en entreprise
+  domaine5: Services
+  domaine6: Nouveaux diplômes
+  domaine7: Domaines D'emplois
+  domaine8: Domaines D'emplois
+  domaine9: Rencontrez les membres de notre Personnel
+  produitech_content:  |
+   Nos équipes de développement, de gestion des produits, des TI et de l'hébergement évoluent dans un environnement agréable
+   et dynamique qui encourage et récompense la collaboration et la créativité. Elles s'affairent constamment à résoudre des
+   problèmes complexes liés au développement, à l'infrastructure ou à la sécurité de nos solutions. Si vous souhaitez faire
+   partie d'une équipe qui carbure aux innovations et qui offre de nombreuses possibilités d'avancement, choisissez STC.
+  equiproduittech: Équipes des produits et de la technologie
+  equiproduittech1: Architectes de réseaux et d'applications
+  equiproduittech2: Hébergement infonuagique
+  equiproduittech3: Administration de bases de données
+  equiproduittech4: Infrastructure mondiale
+  equiproduittech5: Gestion de produits
+  equiproduittech6: Assurance de la qualité
+  equiproduittech7: Sécurité
+  equiproduittech8: Conception des logiciels
+  equiproduittech9: Ingénieurs d'essais
+  equiproduittech10: Expérience utilisateur
+  produitech_content1:   |
+   Vous croyez à l'importance de la formation continue? Nous aussi! Nos employés peuvent participer à des séances de clavardage
+   portant sur une foule de sujets, allant des défis de l'infonuagique aux placements en ligne.
+  eventsrencontre: Événements et rencontres
+  eventsrencontre_content:   |
+   STC est très active dans les collectivités où nous vivons et où nous travaillons. Nous participons à de
+   nombreuses activités et organisons régulièrement des rencontres sur le thème de la technologie et des journées
+   spéciales sur les campus. Par exemple, STC commandite le défi HackerNest et fournit la bière et le maïs
+   soufflé pour l'occasion. Ces rencontres permettent aux employés de discuter avec leurs pairs des innovations dans
+   le monde de la technologie.
+  produitsolution: Nos produits et solutions
+  produitsolution_content:   |
+   Nous créons des mises à jour qui facilitent la vie au travail pour nos clients, et ce, au moins trois fois par année.
+   Nous innovons constamment, et tout le monde le reconnaît : nos clients, les experts de l'industrie et, plus important
+   encore, les utilisateurs de nos logiciels. Qu'il s'agisse de permettre aux employés de consulter leur horaire de travail,
+   de saisir leurs heures ou de demander un congé à l'aide de notre application mobile libre-service sous Android ou d'intégrer
+   notre programme d'aide aux employés à notre système de gestion des changements de situation professionnelle et personnelle,
+   nos logiciels améliorent la vie au travail.
   block1: <p>Découvrez pourquoi STC est un excellent endroit pour travailler, parcourir les offres d'emploi et postuler pour rejoindre notre équipe. </p>
   block11: Explorer les carrières
   titles: CARRIERE A STC
