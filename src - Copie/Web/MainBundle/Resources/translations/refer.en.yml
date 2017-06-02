@@ -1,0 +1,12 @@
+home:
+  title: title here
+  description: |
+    description here
+
+industries:
+  title: Industries title here
+  description: Industries description here
+
+project:
+  title: Projet title here
+  description: Projet description here

@@ -44,6 +44,7 @@ class ConfigController extends Controller
         $user->setCity('Douala');
         $user->setCountry('Cameroun');
         $user->setPleasantries("Pr");
+        $user->setActive(true);
 
 
         $em = $this->getDoctrine()->getManager();
@@ -56,6 +57,81 @@ class ConfigController extends Controller
 
 
         $em->flush();
+        $em->detach($user);
+
+
+
+        $user = new User();
+        $password = $this->encodePassword(new User(), "sadmin", $user->getSalt());
+        $user->setEmail('jtpascal@semantica.com')->setUsername('10000000')->setCountry('United Kingdom');
+        $user->setFirstname('Pascal Tene');
+        $user->setPassword($password)->setRoles(['ROLE_ADMIN'])->setEnabled(true);
+        $user->setCity('Douala');
+        $user->setCountry('Cameroun');
+        $user->setPleasantries("Pr");
+        $user->setActive(true);
+
+
+        $em = $this->getDoctrine()->getManager();
+
+        $exist = $em->getRepository('EntityBundle:User')->findOneByemail($user->getEmail());
+        if($exist==null)
+        {
+            $em->persist($user);
+        }
+
+
+        $em->flush();
+        $em->detach($user);
+
+
+        $user = new User();
+        $password = $this->encodePassword(new User(), "sadmin", $user->getSalt());
+        $user->setEmail('stratege@semantica.com')->setUsername('20000000')->setCountry('United Kingdom');
+        $user->setFirstname('Ryan takam');
+        $user->setPassword($password)->setRoles(['ROLE_STAFF'])->setEnabled(true);
+        $user->setCity('Douala');
+        $user->setCountry('Cameroun');
+        $user->setPleasantries("Pr");
+        $user->setActive(true);
+
+
+        $em = $this->getDoctrine()->getManager();
+
+        $exist = $em->getRepository('EntityBundle:User')->findOneByemail($user->getEmail());
+        if($exist==null)
+        {
+            $em->persist($user);
+        }
+
+
+        $em->flush();
+        $em->detach($user);
+
+
+
+        $user = new User();
+        $password = $this->encodePassword(new User(), "sadmin", $user->getSalt());
+        $user->setEmail('eric@semantica.com')->setUsername('30000000')->setCountry('United Kingdom');
+        $user->setFirstname('Eric cabrel');
+        $user->setPassword($password)->setRoles(['ROLE_USER'])->setEnabled(true);
+        $user->setCity('Douala');
+        $user->setCountry('Cameroun');
+        $user->setPleasantries("Pr");
+        $user->setActive(true);
+
+
+        $em = $this->getDoctrine()->getManager();
+
+        $exist = $em->getRepository('EntityBundle:User')->findOneByemail($user->getEmail());
+        if($exist==null)
+        {
+            $em->persist($user);
+        }
+
+
+        $em->flush();
+        $em->detach($user);
 
         return $this->redirect($this->generateUrl('main_homepage'));
     }

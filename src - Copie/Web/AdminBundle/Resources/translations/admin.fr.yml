@@ -1,0 +1,30 @@
+project:
+  delete: Voulez vous vraiment supprimer ce projet ?
+user:
+  title: Liste des utilisateurs
+  firstname: Prénom
+  lastname: Nom
+  gender: Civilité
+  status: Statut
+  roles: Roles
+  empty: Aucun utilisateur enregistré dans notre base de données
+  delete: Supprimer
+  enabled: activé
+  locked: désactivé
+  lock_label: Désactiver l'utilisateur
+  unlock_label: Activer l'utilisateur
+  msg_delete: Voulez vous vraiment supprimer l'utilisateur ?
+role:
+  title: Changer le rôle d'utitlisateur
+  username: Nom de l'utilisateur
+  current_role: Rôle(s) actuel(s) :
+  select_role: Selectionner le(s) rôle(s) de l'utilisateur
+  save: Enregistrer
+participant:
+  username: Nom complet
+  roles: Rôles
+  startdate: Date de début
+  enddate: Date de fin
+  empty: Aucun participant pour ce projet
+  edit: Modifier
+  new: Ajouter un participant

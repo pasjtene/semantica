@@ -31,7 +31,7 @@ class CommitController extends Controller
 {
 
     /**
-     * @Route("/{projectid}/delete/{id}", name="admin_comit_delete", requirements={"id": "\d+", "projetid": "\d+"})
+     * @Route("/{projectid}/delete/{id}", name="admin_comit_delete", options={"expose"=true}, requirements={"id": "\d+", "projetid": "\d+"})
      */
     public function deleteAction($id,$projectid)
     {
@@ -42,23 +42,27 @@ class CommitController extends Controller
 
         /** @var User $user */
         $user = $this->getUser();
+
+        /** @var Participator $participator */
+        $participator = $em->getRepository('EntityBundle:Participator')->findOneByUser($user->getId());
+
         /** @var Historic $exit */
-        $exit = $em->getRepository('EntityBundle:Historic')->findOneByparticipator($user->getId());
+        $exit = $em->getRepository('EntityBundle:Historic')->findOneByParticipator($participator->getId());
 
         /** @var Projet $projet */
         $projet = $em->getRepository('EntityBundle:Projet')->find($projectid);
 
-        if($commit->getId()!=$commit->getId() or $exit==null)
+        if($exit==null)
         {
             $array = ['id'=>$projet->getId(), "badUser_commit"=>""];
             return $this->redirect($this->generateUrl('admin_projet_detail',$array));
         }
-        $em = $this->getDoctrine()->getManager();
+
         $em->remove($commit);
         $em->flush();
 
-        $array = ['id'=>$projet->getId(), "deletesuccess_commit"=>""];
-        return $this->redirect($this->generateUrl('admin_projet_detail',$array));
+        $array = ['id'=>$projet->getId()];
+        return $this->redirect($this->generateUrl('admin_projet_detail',$array)."#commit");
     }
 
     /**
@@ -173,7 +177,7 @@ class CommitController extends Controller
             $em->detach($historic);
         }
 
-        return $this->redirect($this->generateUrl('admin_projet_detail',['id'=>$projectid]));
+        return $this->redirect($this->generateUrl('admin_projet_detail',['id'=>$projectid])."#commit");
     }
 
 
