@@ -12,6 +12,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Web\EntityBundle\Entity\Comment;
+use Web\EntityBundle\Entity\FileProjet;
 use Web\EntityBundle\Entity\Files;
 use Web\EntityBundle\Entity\Historic;
 use Web\EntityBundle\Entity\Participator;
@@ -95,7 +96,7 @@ class ProjectController extends Controller
     }
 
     /**
-     * @Route("/view/{id}", name="admin_projet_edit", requirements={"id": "\d+"})
+     * @Route("/view/{id}", name="admin_projet_new_participator", requirements={"id": "\d+"})
      */
     public function viewProjetAction(Request $request, $id)
     {
@@ -133,6 +134,7 @@ class ProjectController extends Controller
                 $historic->setParticipator($participator)->setProject($project)->setRoles($params['roles'])->setStartdate($params['startdate']);
                 if (strlen($params['enddate']) > 0) {
                     $historic->setEnddate(new \DateTime($params['enddate']));
+                    $participator->setIsActive(false);
                 }
 
                 $em->persist($historic);
@@ -144,7 +146,7 @@ class ProjectController extends Controller
             }
         }
 
-        return $this->redirect($this->generateUrl('admin_projet_detail', ['id' => $id]));
+        return $this->redirect($this->generateUrl('admin_projet_detail', ['id' => $id])."#participator");
     }
 
     /**
@@ -154,11 +156,11 @@ class ProjectController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $participant = $em->getRepository('EntityBundle:Historic')->find($id);
+        $participants = $em->getRepository('EntityBundle:Historic')->findByParticipator($id);
 
         $serializer = SerializerBuilder::create()->build();
 
-        $jsonContent = $serializer->serialize($participant, 'json');
+        $jsonContent = $serializer->serialize($participants, 'json');
 
         return new Response($jsonContent);
     }
@@ -226,7 +228,7 @@ class ProjectController extends Controller
     public function participatorAction($id)
     {
         $em = $this->getDoctrine()->getManager();
-        $items = $em->getRepository("EntityBundle:Historic")->findByproject($id);
+        $items = $em->getRepository("EntityBundle:Historic")->findCurrentParticipators($id);
 
         $users = $em->getRepository('EntityBundle:User')->findStaff();
         $users = $this->exludeUser($users, $items);
@@ -239,21 +241,27 @@ class ProjectController extends Controller
     }
 
     /**
-     * @Route("/delete-participator/{id}", name="admin_projet_delete_participator", requirements={"id": "\d+"})
+     * @Route("/{pid}/delete-participator/{id}", name="admin_projet_delete_participator", options={"expose"=true}, requirements={"id": "\d+"})
      */
-    public function deleteParticipatorAction($id)
+    public function deleteParticipatorAction($pid, $id)
     {
         $em = $this->getDoctrine()->getManager();
 
-        /** @var Historic $participator */
-        $participator = $em->getRepository("EntityBundle:Historic")->findByParticipator($id);
+        /** @var Participator $participator */
+        $participator = $em->getRepository("EntityBundle:Participator")->find($id);
 
-        if(is_object($participator)){
-            $participator->setEnddate(new \DateTime());
+        /** @var Historic $currentHistoric */
+        $currentHistoric = $em->getRepository("EntityBundle:Historic")->findCurrentHistoric($id);
+
+        if(is_object($participator))
+        {
+            $currentHistoric->setEnddate(new \DateTime());
+            $participator->setIsActive(false);
+
             $em->flush();
         }
 
-        return $this->redirect($this->generateUrl('admin_projet_detail', ['id' => $id]));
+        return $this->redirect($this->generateUrl('admin_projet_detail', ['id' => $pid])."#participator");
     }
 
     /**
@@ -418,7 +426,7 @@ class ProjectController extends Controller
             $em->flush();
         }
 
-        return $this->redirect($this->generateUrl('admin_projet_detail', ['id' => $id]));
+        return $this->redirect($this->generateUrl('admin_projet_detail', ['id' => $id])."#planning");
     }
 
     /**
@@ -454,7 +462,7 @@ class ProjectController extends Controller
             $em->flush();
         }
 
-        return $this->redirect($this->generateUrl('admin_projet_detail', ['id' => $id]));
+        return $this->redirect($this->generateUrl('admin_projet_detail', ['id' => $id])."#planning");
     }
 
     /**
@@ -479,7 +487,7 @@ class ProjectController extends Controller
             $em->flush();
         }
 
-        return $this->redirect($this->generateUrl('admin_projet_detail', ['id' => $projectid]));
+        return $this->redirect($this->generateUrl('admin_projet_detail', ['id' => $projectid])."#planning");
     }
 
     /**
@@ -512,7 +520,7 @@ class ProjectController extends Controller
     }
 
     /**
-     * @Route("/{projectid}/delete-task/{id}", name="admin_projet_delete_task", requirements={"projectid": "\d+", "id": "\d+"})
+     * @Route("/{projectid}/delete-task/{id}", name="admin_projet_delete_task", options={"expose"=true}, requirements={"projectid": "\d+", "id": "\d+"})
      */
     public function deletePlanningTaskAction($projectid, $id)
     {
@@ -533,58 +541,7 @@ class ProjectController extends Controller
             $em->flush();
         }
 
-        return $this->redirect($this->generateUrl('admin_projet_detail', ['id' => $projectid]));
+        return $this->redirect($this->generateUrl('admin_projet_detail', ['id' => $projectid])."#planning");
     }
-
-    /**
-     * @Route("/comment/add/{id}", name="admin_comment_add", requirements={"id": "\d+"})
-     */
-    public function send_projectAction(Request $request,$id)
-    {
-        $code="";
-        /** @var User $user */
-        $user = $this->getUser();
-        $em = $this->getDoctrine()->getManager();
-
-
-        if($request->isMethod("POST"))
-        {
-            $val = $request->request;
-
-
-            /** @var User $user */
-            $user= $em->getRepository("EntityBundle:User")->find($user->getId());
-
-
-            /** @var Projet $projet */
-            $projet= $em->getRepository("EntityBundle:Projet")->find($id);
-
-            $message = $request->request->get('description');
-            $comment = new Comment();
-            $comment->setDate(new \DateTime());
-            $comment->setUser($user);
-            $comment->setProjet($projet);
-            $comment->setDescription($message);
-            $em->persist($comment);
-            $em->flush();
-            $em->detach($comment);
-
-            $list= $em->getRepository("EntityBundle:Historic")->findAll();
-
-            /** @var Historic $item */
-            foreach($list as $item)
-            {
-                if($item->getProject()->getId()==$id)
-                {
-                    $body =  '<p> Code du projet : '.$projet->getCode().
-                        '<br/> Suggestion : '.$message.'</p>';
-                    $code = $this->sendMail($item->getParticipator()->getUser()->getEmail(), $this->getParameter('mailer_user'), $message, "COMMENT STC(SEMANTICA TECHNOLOGIES CORPORATION)");
-                }
-            }
-
-
-        }
-        return  $this->detailAction($id);
-        // return $this->redirect($this->generateUrl('main_private_commit',["message"=>"test"]));
-    }
+    
 }

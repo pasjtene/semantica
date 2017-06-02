@@ -16,7 +16,7 @@ class UserRepository extends \Doctrine\ORM\EntityRepository
     {
         $array = [];
 
-        $query = $this->_em->createQuery('SELECT u FROM EntityBundle:User u');
+        $query = $this->_em->createQuery('SELECT u FROM EntityBundle:User u where u.active is null  or u.active = true');
         $result = $query->getResult();
 
         /** @var User $item */
@@ -30,4 +30,20 @@ class UserRepository extends \Doctrine\ORM\EntityRepository
 
         return $array;
     }
+
+
+    public function findActifUser()
+    {
+
+        $query = $this->createQueryBuilder('a');
+        $query->select(['a'])
+              ->Where('a.active is null ')
+              ->orWhere('a.active = true ')
+              ->addOrderBy('a.id','desc');
+
+        return $query->getQuery()->getResult();
+
+    }
+
+
 }

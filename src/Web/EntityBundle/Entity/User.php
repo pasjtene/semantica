@@ -46,6 +46,11 @@ use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
      */
     protected $lastname;
 
+      /**
+       * @var boolean
+       * @ORM\Column(name="active", type="boolean", nullable=true)
+       */
+      protected $active;
 
     /**
      * @var string
@@ -278,4 +283,28 @@ use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
           return $confirm;
       }
 
-  }
+  
+    /**
+     * Set active
+     *
+     * @param boolean $active
+     *
+     * @return User
+     */
+    public function setActive($active)
+    {
+        $this->active = $active;
+
+        return $this;
+    }
+
+    /**
+     * Get active
+     *
+     * @return boolean
+     */
+    public function getActive()
+    {
+        return $this->active;
+    }
+}

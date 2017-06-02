@@ -9,6 +9,8 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Web\EntityBundle\Entity\Contact;
 use Web\EntityBundle\Entity\Customer;
+use Web\EntityBundle\Entity\FileProjet;
+use Web\EntityBundle\Entity\Files;
 use Web\EntityBundle\Entity\Projet;
 use Web\EntityBundle\Entity\User;
 
@@ -29,7 +31,7 @@ class UserController extends Controller
 
         $em = $this->getDoctrine()->getManager();
 
-        $items = $em->getRepository("EntityBundle:User")->findAll();
+        $items = $em->getRepository("EntityBundle:User")->findActifUser();
 
         $array = ['items' => $items];
 
@@ -138,8 +140,42 @@ class UserController extends Controller
         $user = $em->getRepository("EntityBundle:User")->find($id);
 
         if(is_object($user)){
+            $commits = $em->getRepository("EntityBundle:Commit")->findUser($id);
+            $historics = $em->getRepository("EntityBundle:Participator")->findByuser($id);
+            $projets = $em->getRepository("EntityBundle:Projet")->findByuser($id);
+            foreach ($commits as $commit)
+            {
+                $em->remove($commit);
+                $em->flush();
+                $em->detach($commit);
+            }
+
+            foreach ($historics as $his)
+            {
+                $em->remove($his);
+                $em->flush();
+                $em->detach($his);
+            }
+
+            /** @var Projet $projet */
+            foreach ($projets as $projet)
+            {
+                $files = new Files();
+                /** @var FileProjet $file */
+                foreach($projet->getFiles()  as $file)
+                {
+                    $files->delete('',$file->path());
+                    $em->remove($file);
+                    $em->flush();
+                    $em->detach($file);
+                }
+                $em->remove($projet);
+                $em->flush();
+                $em->detach($projet);
+            }
             $em->remove($user);
             $em->flush();
+            $em->detach($user);
         }
 
         return $this->redirect($this->generateUrl('admin_users'));

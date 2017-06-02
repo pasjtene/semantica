@@ -27,21 +27,21 @@ class Projet extends BaseInterface
     /**
      * @Assert\Valid()
      * @ORM\OneToMany(targetEntity="Web\EntityBundle\Entity\FileProjet", mappedBy="project",cascade={"persist"})
-     * @ORM\JoinColumn(nullable=false)
+     * @ORM\JoinColumn(nullable=false, onDelete="CASCADE")
      */
     private $files;
 
     /**
      * @Assert\Valid()
      * @ORM\ManyToOne(targetEntity="Web\EntityBundle\Entity\Visitor",cascade={"persist"})
-     * @ORM\JoinColumn(nullable=true)
+     * @ORM\JoinColumn(nullable=true, onDelete="CASCADE")
      */
     private $visitor;
 
     /**
      * @Assert\Valid()
      * @ORM\ManyToOne(targetEntity="Web\EntityBundle\Entity\User",cascade={"persist"})
-     * @ORM\JoinColumn(nullable=true)
+     * @ORM\JoinColumn(nullable=true, onDelete="CASCADE")
      */
     private $user;
 
