@@ -81,6 +81,15 @@ class AboutstcController extends Controller
     }
 
     /**
+     * @Route("/careersprotech", name="main_careersprotech")
+     */
+    public function careersprotechAction()
+    {
+        $array['index']=5;
+        return $this->render('MainBundle:aboutstc:careersprotech.html.twig',$array);
+    }
+
+    /**
      * @Route("/explorecareers", name="main_explorecareers")
      */
     public function explorecareersAction()
@@ -88,5 +97,6 @@ class AboutstcController extends Controller
         $array['index']=5;
         return $this->render('MainBundle:aboutstc:explorecareers.html.twig',$array);
     }
+
 
 }
