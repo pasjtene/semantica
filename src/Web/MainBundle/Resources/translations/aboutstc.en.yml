@@ -181,6 +181,50 @@ eventss:
    Ad hoc treatment.
 careers:
   title:  <strong> CAREERS </strong>
+  title5: Product & Technology Jobs
+  title6: Explore our areas of employment
+  domaine1: Product & Technology
+  domaine2: Sales &  marketing
+  domaine3: Customer Service
+  domaine4: Corporate
+  domaine5: Services
+  domaine6: News Grades
+  domaine7: CAREER AREAS
+  domaine8: CAREER AREAS
+  domaine9: Meet our Staff
+  produitech_content:  |
+     Our Development, Product Management, IT and Hosting employees enjoy a fun and fast-paced environment where collaboration
+     and creativity is rewarded and encouraged. We are constantly tackling and solving challenging problems from development,
+     to infrastructure, to security. If you want to be part of a team where innovation fuels your world and career growth is
+     abundant, choose Ceridian.
+  equiproduittech: Technology and Product Teams
+  equiproduittech1: Application and Network Architects
+  equiproduittech2: Cloud Hosting
+  equiproduittech3: Database Administration
+  equiproduittech4: Global Infrastructure
+  equiproduittech5: Product Management
+  equiproduittech6: Quality Assurance
+  equiproduittech7: Security
+  equiproduittech8: Software Development
+  equiproduittech9: Test Engineering
+  equiproduittech10: User Experience Design
+  produitech_content1:   |
+     Passionate about continuing your education while at work? So are we! By popular request, we now have Fireside Chats
+     for employees where you can learn about a variety of topics from Winning in the Cloud to Online Investing.
+  eventsrencontre: Events and meetups
+  eventsrencontre_content:   |
+     SWe are very active in the communities in which we work. We regularly host or attend technology meetups and campus
+     events. For example, we regularly host the HackerNest meetup where we supply the beer and popcorn for the event and
+     enjoy chatting with our peers in the community about cool things going on in the world of technology.
+  produitsolution: Cool stuff we build
+  produitsolution_content:   |
+     We build cool stuff and we ship it - at least three times a year. We are constantly innovating and people recognize
+     it. Clients recognize it. Industry experts recognize it. And most importantly the people who use our software love us
+     for it. Whether we're making it easier for employees to check their schedule and book time off from their mobile device,
+     building our own Android time capture and self-service device, or tightly integrating our employee assistance program
+     with the various work and life events that we track in the system.
+
+
   block1: <p>Learn why STC is a great place to work, browse job openings, and apply to join our team. </p>
   block11: Explore Careers
   titles: CAREERS AT STC

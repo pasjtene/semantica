@@ -13,7 +13,7 @@ user:
   locked: désactivé
   lock_label: Désactiver l'utilisateur
   unlock_label: Activer l'utilisateur
-  msg_delete: Voulez vous vraiment supprimer l'utilisateur ?
+  msg_delete: Voulez vous vraiment supprimer l'utilisateur
 role:
   title: Changer le rôle d'utitlisateur
   username: Nom de l'utilisateur
@@ -28,3 +28,10 @@ participant:
   empty: Aucun participant pour ce projet
   edit: Modifier
   new: Ajouter un participant
+  msg_delete: Voulez vous vraiment supprimer le participant
+planning:
+  msg_delete: Voulez vous vraiment supprimer ce planning ?
+task:
+  msg_delete: Voulez vous vraiment supprimer cette tâche ?
+commit:
+  msg_delete: Voulez vous vraiment supprimer ce commit ?

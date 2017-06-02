@@ -1,5 +1,61 @@
+strong{
+  font-weight: bold;
+}
+footer{
+  bottom: 0;
+  width: 100% !important;
+}
+.mega-menu{
+  z-index: 9999999999999999999999999999 !important;
+}
+
 #main_account
 {
+
+  #page_mobile, #page_mobile
+  {
+    display: none !important;
+  }
+  @media screen  and (min-width: 768px){
+    #page_mobile{
+      display: none !important;
+    }
+    #page_desktop{
+      display: block !important;
+    }
+  }
+
+  @media screen  and (max-width: 769px){
+    #page_mobile{
+      display: block !important;
+    }
+    #page_desktop{
+      display: none !important;
+    }
+  }
+
+   #idhorizontal_nav{
+    background-color: #eeeeee !important;;
+    border: 1px solid #eee;
+    box-shadow:2px 2px 2px  #eee;
+    min-height: 57px;
+  }
+
+   #idhorizontal_nav a{
+    color: #000 !important;
+  }
+  .active_ok{
+    font-weight: bold;
+  }
+
+  #zone_table{
+    height: 352px;
+    overflow-y: auto;
+  }
+  #vertical_nav ul{
+    position: absolute !important;
+  }
+
   height: 100% !important;
 
   #vertical_nav{
