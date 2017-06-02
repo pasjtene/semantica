@@ -1,0 +1,4 @@
+email_empty: Email address can't be empty
+email_format: Email adress format is not  correct
+name: Name can't be empty
+message: Message can't be empty

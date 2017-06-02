@@ -1,0 +1,100 @@
+{% extends 'AdminBundle::layout.html.twig' %}
+{% block meta %}
+    <meta name = "{% trans from 'refer' %} home.title {% endtrans %}" >
+    <meta name = "keywords" content = "{% trans from 'refer' %} home.description {% endtrans %}" >
+{% endblock %}
+{% block title %}
+    Semantica Technologies Corporation - STC - Admin
+{% endblock %}
+
+{% block mycss %}
+    <link rel="stylesheet" href="{{ asset('components/cssbase/datatablehelp.css') }}">
+    <link rel="stylesheet" href="{{ asset('components/cssbase/datatablehelp2.css') }}">
+    <style>
+        #navadmin{
+            padding-top: 1.5%;
+        }
+        strong{
+            font-weight: bold;
+        }
+    </style>
+{% endblock %}
+{% block header %}
+    {{ parent() }}
+
+{% endblock %}
+{% block  main %}
+
+    <div class="row">
+        <div class="col l12">
+            <div class="card z-depth-1">
+                <div class="card-content">
+                    <center>
+                        <strong class="card-title">{% trans from 'forms' %} form.project.list {% endtrans %}</strong>
+                    </center>
+                    <br/><br/>
+                    <table id="table" class="centered bordered responsive-table">
+                        <thead>
+                        <tr>
+                            <th>{% trans from 'forms' %} form.user.firstname {% endtrans %}</th>
+                            <th>{% trans from 'forms' %} form.project.title {% endtrans %}</th>
+                            <th>{% trans from 'forms' %} form.project.status {% endtrans %}</th>
+                            <th>{% trans from 'forms' %} form.project.date {% endtrans %}</th>
+                            <th>#</th>
+                            <th>#</th>
+                            <th>#</th>
+                        </tr>
+                        </thead>
+
+                        <tbody>
+                        {% for projet in list  %}
+                            {% set href2= "#project2"~projet.id %}
+                            {% set idhref2 = "project2"~projet.id %}
+                            <tr>
+                                <td>
+                                    {% if projet.user!=null %}
+                                        {{ projet.truncate(projet.user.firstname,30) }}
+                                    {% else %}
+                                        {{ projet.truncate(projet.visitor.firstname,30) }}
+                                    {% endif %}
+                                </td>
+                                <td>{{ projet.truncate(projet.title,30) }}</td>
+                                <td>{{ projet.truncate(projet.CurrentStatus(projet.status,app.request.locale),30) }}</td>
+                                <td>{{ projet.date|date('d-m-Y h:i:s') }}</td>
+                                <td>
+                                    <a href="{{ path('admin_projet_detail',{id:projet.id}) }}"><i class="material-icons">view_headline</i></a>
+                                </td>
+                                <td>
+                                    <a href="{{ path('admin_projet_update',{id:projet.id}) }}"><i class="material-icons">edit</i></a>
+                                </td>
+                                <td>
+                                    {% set key = 'data'~loop.index %}
+                                    <span id="{{ key }}" style="display: none;">
+                                        {% trans from 'admin' %} project.delete {% endtrans %} '{{ projet.title }}'
+                                    </span>
+                                    <a data-id="{{ key }}" href="{{ path('admin_projet_delete',{id:projet.id}) }}" class="delete_projet"><i class="material-icons">delete</i></a>
+                                </td>
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block myjs %}
+    <script>
+        $(document).ready(function() {
+            $('#table').dataTable();
+            $('.modal').modal();
+            $('.delete_projet').click(function(e){
+                if(!confirm($('#'+$(this).data('id')).text().trim()))
+                {
+                    e.preventDefault();
+                }
+            });
+        } );
+    </script>
+{% endblock %}

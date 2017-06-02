@@ -1,0 +1,36 @@
+nav:
+  home: Accueil
+  logout: Déonnexion
+  contact: Contact
+  projet: Projet
+  users: Utilisateurs
+login:
+  title: SEMANTICA TECHNOLOGIES CORPORATION
+  title_br: STC
+  content: |
+   Votre partenaire  constructruit des solutions logicielles sécurisées et fiables, adaptées aux besoins spécifiques de votre entreprise
+  email: Email  ou Téléphone
+  password: Mot de passe
+  connection: Connexion
+  login: AUTHENTIFICATION
+  identity: Identifiant
+  password_pl: Votre mot de passe
+  error: Identifiant ou mot de passe incorrect
+  forgot: Mot de passe oublié
+  reset: Cliquer ici  pour reinitialiser votre mot de passe
+reset:
+  error: Nous n'arrivons pas a trouver cette adresse email. veillez resayer une adresse email valide
+  placeholder_email: Entrer votre adresse email
+  email: Adresse email
+  send: Valider
+  content: Vous avez oublié votre mot de passe,  vous ne vous souvenez plus. <br/> Nous allons vous envoyé un lien pour pouvoir reinitialiser
+  title: Recuperer le mot de passe
+editpassword:
+  password: Mot de passe
+  confirmpassword: Confirmer le mot  de passe
+  title: Reinitialiser le mot de passe
+  content: |
+   Nous sommes là  pour  vous. si vous avez les soucis de mot de passe c'est facile à réinitialiser.
+   <br/> Nous sécurisons et gardons vos informations confidentielles
+
+

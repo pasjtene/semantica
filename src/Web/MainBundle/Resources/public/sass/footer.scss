@@ -1,0 +1,36 @@
+#main_carreers{
+
+    margin-top: 4% !important;
+    label,h5,h6{
+        color: $secondary_text !important;
+    }
+    h6{
+        font-size: 1.5rem !important;
+    }
+    h5{
+        font-weight: bold !important;
+        font-size: 2.5rem !important;
+    }
+
+
+    text-align: justify !important;
+    #section{
+        p{
+            color: $secondary_text !important;
+        }
+        img{
+            width: inherit !important;
+        }
+    }
+
+    img{
+        width: 90% !important;
+    }
+    #bloc1{
+        background-color: $auther;
+        min-height: 100%;
+    }
+    #bloc2{
+
+    }
+}
