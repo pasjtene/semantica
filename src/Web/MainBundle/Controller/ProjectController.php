@@ -106,8 +106,6 @@ class ProjectController extends Controller
 
                 $em->persist($objet);
                 $em->flush();
-                $parts = explode("@", $this->getParameter('mailer_user'));
-                $username = $parts[0];
 
                 $em->detach($objet);
 
@@ -117,8 +115,7 @@ class ProjectController extends Controller
 
                 $routeview = 'MainBundle:Mail:project.html.twig';
                 $param = ['email'=>'http://'.$email,'semail'=>$email];
-                $code = $this->sentMail($email, $username, $routeview,$param, "SUBMIT PROJET STC(SEMANTICA TECHNOLOGIES CORPORATION)");
-                //$code = $this->sentMail($email, $this->getParameter('mailer_user'), $routeview,$param, "SUBMIT PROJET STC(SEMANTICA TECHNOLOGIES CORPORATION)");
+                $code = $this->sentMail($email, $this->getParameter('mailer_user'), $routeview,$param, "SUBMIT PROJET STC(SEMANTICA TECHNOLOGIES CORPORATION)");
 
                 //$code = $this->sendMail($email, $this->getParameter('mailer_user'), $message, "SOMMIT PROJET STC(SEMANTICA TECHNOLOGIES CORPORATION)");
 
