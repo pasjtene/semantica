@@ -68,6 +68,16 @@
             list-style-type: none  !important;
         }
 
+        #nav_menu #nav_top ul:not(.browser-default) li {
+            list-style-type: none  !important;
+            padding-left: 10px;
+            border-right: solid 2px black;
+        }
+
+        #nav_menu #nav_top ul:not(.browser-default) li:last-child {
+            border-right: 0;
+        }
+
     </style>
 {% endblock %}
 {% block header %}
