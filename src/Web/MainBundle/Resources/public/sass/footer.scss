@@ -92,22 +92,28 @@ $color2_footer: #797979;
         }
         .carousel
         {
-            span{
+            a{
+                color: $color_footer !important;
+            }
+            .element{
                 display: none;
                 font-family: 'algerian';
                 font-size: 1.5em;
                 font-weight: bold;
                 position: relative;
-                top: 40px;
-                left: 50px;
-
+                top: 80px;
+                left: 1px;
+                z-index: 9;
+                background-color: rgba(0,0,0,0.1) !important;
+                text-align: center;
+                padding-bottom: 6px;
+                padding-top: 6px;
             }
             img{
                 height: 200px !important;
             }
             a:hover{
-                background-color: rgba(0,0,0,0.3) !important;
-                span{
+                .element{
                     display: block;
                 }
             }
