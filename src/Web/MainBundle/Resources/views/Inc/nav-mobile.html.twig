@@ -8,14 +8,14 @@
                 <li> <a href="{{ path('fos_user_security_login') }}">   {% trans from 'nav' %} nav.connection {% endtrans %}</a></li>
             {% endif %}
             {% if app.user!=null %}
-                <li><a href="{{ path('main_private') }}"><span></span> {% trans from 'nav' %} nav.account {% endtrans %}</a></li>
+                <li><a href="{{ path('main_private') }}"> {% trans from 'nav' %} nav.account {% endtrans %}</a></li>
             {% else %}
-                <li><a id="mobile_register" href="{{ path('main_homepage') }}#register"><span></span> {% trans from 'nav' %} nav.register {% endtrans %}</a></li>
+                <li><a id="mobile_register" href="{{ path('main_homepage') }}#register"> {% trans from 'nav' %} nav.register {% endtrans %}</a></li>
             {% endif %}
-            <li><a href="{{ path('main_homepage') }}#contact"><span></span> {% trans from 'nav' %} nav.contact {% endtrans %}</a></li>
-            <li><a href="{{ path('main_careers') }}"><span></span> {% trans from 'nav' %} nav.careers {% endtrans %}</a></li>
-            <li><a href="{{ path('app_locale_en') }}" title="English(EN)"><span></span> {% trans from 'firstnav' %} nav.language2 {% endtrans %}</a></li>
-            <li><a href="{{ path('app_locale_fr') }}" title="French(FR)"><span></span> {% trans from 'firstnav' %} nav.language3 {% endtrans %}</a></li>
+            <li><a href="{{ path('main_homepage') }}#contact"> {% trans from 'nav' %} nav.contact {% endtrans %}</a></li>
+            <li><a href="{{ path('main_careers') }}"> {% trans from 'nav' %} nav.careers {% endtrans %}</a></li>
+            <li><a href="{{ path('app_locale_en') }}" title="English(EN)"> {% trans from 'firstnav' %} nav.language2 {% endtrans %}</a></li>
+            <li><a href="{{ path('app_locale_fr') }}" title="French(FR)"> {% trans from 'firstnav' %} nav.language3 {% endtrans %}</a></li>
         </ul>
         <ul class="side-nav center center-align" id="mobile-demo">
             <li><div class="userView">
@@ -34,12 +34,12 @@
             {% if app.user!=null %}
                 <li><a href="{{ path('main_private') }}">{% trans from 'nav' %} nav.account {% endtrans %}</a></li>
             {% else %}
-                <li><a id="mobile_register" href="{{ path('main_homepage') }}#register"><span></span> {% trans from 'nav' %} nav.register {% endtrans %}</a></li>
+                <li><a id="mobile_register" href="{{ path('main_homepage') }}#register"> {% trans from 'nav' %} nav.register {% endtrans %}</a></li>
             {% endif %}
-            <li><a href="{{ path('main_homepage') }}#contact"><span></span> {% trans from 'nav' %} nav.contact {% endtrans %}</a></li>
-            <li><a href="{{ path('main_careers') }}"><span></span> {% trans from 'nav' %} nav.careers {% endtrans %}</a></li>
-            <li><a href="{{ path('app_locale_en') }}"><span></span> {% trans from 'firstnav' %} nav.language2 {% endtrans %}</a></li>
-            <li><a href="{{ path('app_locale_fr') }}"><span></span> {% trans from 'firstnav' %} nav.language3 {% endtrans %}</a></li>
+            <li><a href="{{ path('main_homepage') }}#contact"> {% trans from 'nav' %} nav.contact {% endtrans %}</a></li>
+            <li><a href="{{ path('main_careers') }}"> {% trans from 'nav' %} nav.careers {% endtrans %}</a></li>
+            <li><a href="{{ path('app_locale_en') }}"> {% trans from 'firstnav' %} nav.language2 {% endtrans %}</a></li>
+            <li><a href="{{ path('app_locale_fr') }}"> {% trans from 'firstnav' %} nav.language3 {% endtrans %}</a></li>
         </ul>
     </div>
 </nav>
