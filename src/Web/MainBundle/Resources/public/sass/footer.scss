@@ -1,38 +1,118 @@
+$color_footer: #808080;
+$color_hover_footer: #EEA01C;
+$color2_footer: #797979;
 #main_careers{
 
+    color: $color2_footer;
     margin-top: 4% !important;
-    label,h5,h6{
-        color: $secondary_text !important;
-    }
-    h6{
-        font-size: 1.5rem !important;
-    }
-    h5{
-        font-weight: bold !important;
-        font-size: 2.5rem !important;
-    }
-
 
     text-align: justify !important;
-    #section{
-        p{
-            color: $secondary_text !important;
-        }
-        img{
-            width: inherit !important;
-        }
-    }
 
+    h5{
+        text-align: justify !important;
+    }
     img{
-        width: 90% !important;
+        min-width: 300px !important;
+        max-width: 90% !important;
+        height: 150px;
     }
 
     #bloc1{
         background-color: $auther;
-        min-height: 100%;
-        color: black;
+        height: 100%;
+        min-height:660px;
+
+        p{
+           margin-left: 34% !important;
+        }
+        h5{
+            margin-left: 26% !important;
+        }
+
+        @media screen and (max-width: 736px){
+            min-height: 100%;
+            p{
+                margin-left: 6% !important;
+            }
+            h5{
+                margin-left: 2% !important;
+            }
+        }
+        a{
+            color: $color_footer !important;
+        }
+        a:hover{
+            color: $color_hover_footer !important;
+        }
     }
     #bloc2{
 
+        .element{
+            width: 255px !important;
+            min-height: 150px;
+        }
+        .hover_img{
+            text-align: left;
+            position: relative;
+            left: 98px;
+            top: 46px;
+            z-index: 9;
+            background-color: $auther;
+            width: 62%;
+            padding: 4%;
+            opacity: 0.8;
+        }
+        a{
+            color: $color_footer !important;
+
+        }
+        a:hover{
+            .hover_img{
+                background-color: $color_hover_footer !important;
+                color: white !important;
+            }
+        }
     }
+
+    .meet-our-people-shadow {
+        float: left;
+        width: 100%;
+        height: 30px;
+        background-repeat: no-repeat;
+        background-position: top center;
+        position: relative;
+        top: -30px;
+    }
+
+    #member{
+        h5{
+            font-size: 2.5em;
+            text-decoration: underline;
+            font-weight: bold;
+        }
+        .carousel
+        {
+            span{
+                display: none;
+                font-family: 'algerian';
+                font-size: 1.5em;
+                font-weight: bold;
+                position: relative;
+                top: 40px;
+                left: 50px;
+
+            }
+            img{
+                height: 200px !important;
+            }
+            a:hover{
+                background-color: rgba(0,0,0,0.3) !important;
+                span{
+                    display: block;
+                }
+            }
+        }
+
+    }
+
 }
