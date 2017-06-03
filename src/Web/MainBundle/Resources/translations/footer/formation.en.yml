@@ -1,41 +1,94 @@
 formation:
   title: OPTIMIZE YOUR PROFESSIONAL COMPETENCES THANKS TO OUR TRAININGS AND CERTIFICATIONS
   cameroun: Cameroon
-  image: Training Programs and Education
+  image: TRAINING AND CERTIFICATIONS AT STC
 
-  ville2: Yaoundé-
+  cameroun_title: OUR TRAINING OFFER IN CAMEROON
+  cameroun_ville: Douala-Yaounde
   ville2_content: Central Station, STC Building
-  ville1: Douala-
+
   ville1_content: Bonandjo, STC Building
   cameroun_phone: |
    (+237)695223547
    (+237)777823547
    233453022
-  android:  Certification Android Certified Application Developer
-  ibm:  Certification IBM Certified Mobile Application Developer
-  mta:  Certification MTA Developer
-  kony:  Certification Kony Certified Developer
-  ccnp:  Certification Cisco CCNP (Cisco Certified Networking Professional);</br>
-  ccna:  Certification Cisco CCNA (Cisco Certified Networking Associate);</br>
-  ccie:  Certification CCIE (Cisco Certified Internetwork Expert);</br>
-  ocp:  Certification Oracle OCP (Oracle Certified Professional);</br>
+  android: Certification Android Certified Application Developer
+  ibm: Certification IBM Certified Mobile Application Developer
+  mta: Certification MTA Developer
+  kony: Certification Kony Certified Developer
+  ccnp: Certification Cisco CCNP (Cisco Certified Networking Professional);</br>
+  ccna: Certification Cisco CCNA (Cisco Certified Networking Associate);</br>
+  ccie: Certification CCIE (Cisco Certified Internetwork Expert);</br>
+  ocp: Certification Oracle OCP (Oracle Certified Professional);</br>
 
   etranger: Europe
-  london: Londres-
-  london_content: 250 london street
 
-  paris: Paris-
+  europe_title: OUR TRAINING OFFER IN EUROPE
+  london_content: 250 london street
+  etranger_ville: Londres-Paris
   paris_content: 45 rue saint jean
   etranger_phone: (+33) 1 452213/(+44) 01920 635
 
-  ville: City
-  numero: Phone
-  ace: Certification ACE (Adobe Certified Expert);
-  mscd: Certification MCSD (Microsoft Certified Solutions Developer);
-  aws: Certification de développeur AWS (Amazon Web Services Certified Developer);
-  csslp: Certification CSSLP (Certified Secure Software Lifecycle Professional);
-  ccdh: Certification CCDH (Cloudera Certified Developer for Apache Hadoop);
   java: Certifications Java certifié Oracle (OCP, OCM et OCE);
   csd: Certification CSD (Certified Scrum Developer)Certifications C/C++.
 
-souscrire: Souscrire
+  souscrire: Registration
+  ccna_content: |
+   The first 4 modules of the CCNA academic program provide students with
+   The basic knowledge and skills of computer networks.
+   They represent approximately 280 hours of instruction, including 60 hours of practical work.
+   Students who successfully complete these first 4 modules are ideally prepared
+   To pass the first level of certification (CCNA). The transition from the
+   Certification is not an obligation.
+   Modules 1 .. Network basics
+   Modules 2 .. Basics of routing and routing
+   Modules 3 .. Basic Switching and Intermediate Routing
+   Modules 4 .. WAN Technology
+   Cisco has released details of a major revision of its main
+   Certified Cisco Network Associate (CCNA), as well as the introduction of a
+   New "associate" level certification
+   Cisco Certified Entry Network Technician (CCENT) for Professionals
+   Working on small and medium sized networks.
+
+  ccnp_content: |
+   Cisco Certified Network Professional (CCNP®) validates the ability of candidates to program,
+   Implement, verify and troubleshoot local and extensive enterprise networks,
+   And working in collaboration with specialists in advanced solutions (security,
+   Voice, wireless and video). The CCNP certification is intended for individuals with
+   Less 1 year experience in networking who wish to develop their skills
+   And work autonomously on complex network solutions. The holders of
+   CCNP certification have demonstrated the required competencies in several professional functions,
+   Such as the network technician, the support engineer, the system and network engineer.
+
+  java_content: |
+   Java Certification is a set of tests provided by Oracle to certify developers
+   And computer programmers on the various components of Java technology.
+   Oracle's Certified Professional SE Programmer (OCPJP) is the fundamental exam to demonstrate
+   The good understanding of Java and it is a requirement for other Java certifications. he
+   Is considered a sufficiently detailed test of knowledge of the main
+   Features and structures of the Java programming language. It tests a
+   Java API set and basic features, going from the basics like loops
+   And variables, to more complex topics like Threads, Collections and Generics.
+
+  ibm_content: |
+   This intermediate level certification is intended for developers who have hands-on
+   experience using Worklight V6.0 to develop mobile hybrid and native applications.
+   A mobile application developer who achieves this certification can use Worklight V6.0
+   to develop client-side applications, develop server-side integration and security components,
+   and test, deploy and manage Worklight V6.0 applications.
+   This mobile application developer is generally self-sufficient and is able to perform most of
+   the tasks involved in the role with limited assistance from peers and vendor support services.
+   The mobile application developer efficiently uses product documentation.
+   To attain the IBM Certified Mobile Application Developer - Worklight V6.0 certification,
+   candidates must pass 1 test. To prepare for the test, it is recommended to refer to the
+   job role description and recommended prerequisite skills, and click the link to the test
+   below to refer to the test objectives (skills measured on the test) and the Test preparation tab.
+
+  scrum_content: |
+   Certified Scrum Developers have demonstrated, through a combination of formal training and a technical
+   skills assessment, that they have a working understanding of Scrum principles and have learned
+   specialized Agile engineering skills. The Certified Scrum Developer® course is aimed at software
+   developers (programmers) who are building software in a Scrum environment. The goal is to expose
+   students to the most important tools and techniques that need to be applied in order to build good
+   software in the iterative and incremental fashion that Scrum requires. These ideas are central to
+   the entire field of Agile software development.
