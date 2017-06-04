@@ -123,6 +123,15 @@
                 $(this).addClass('active');
             });
 
+            //$(".first-row").hide();
+            $(".mobile_menu_icon").click(function(){
+                //$(".first-row").toggle();
+                var vis = 1;
+                $(".first-row").addClass('display-on');
+                $(".first-row").removeClass('displaynone');
+                $(".first-row").animate({width: 'toggle', height:'toggle',},350);
+            });
+
 
             $("#li_service").hover(function() {
                 $('.mega-menu').removeClass('display-on');
@@ -168,6 +177,13 @@
             });
 
             $('#nav_top ul li a').click(function(){
+                if($(this).val()!="#")
+                {
+                    window.location.href = $(this).attr('href');
+                }
+            });
+
+            $('#first_nav ul li a').click(function(){
                 if($(this).val()!="#")
                 {
                     window.location.href = $(this).attr('href');

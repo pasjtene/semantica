@@ -1,11 +1,16 @@
-<div class="first-row">
-    <div class="first-row-menu">
+<a href="javascript:void(0);" style="font-size:15px;" class="mobile_menu_icon">&#9776;</a>
+<div class="first-row displaynone">
+    <div class="first-row-menu" id="first_nav">
         <ul>
-            <li class="midline-menu"><a href="{{ path('main_homepage') }}">{% trans from 'firstnav' %} nav.login {% endtrans %}</a></li>
             {% if app.user!=null %}
-                <li class="midline-menu"><a href="{{ path('main_private') }}">{% trans from 'firstnav' %} nav.signup {% endtrans %}</a></li>
+                <li class="midline-menu"><a href="{{ path('fos_user_security_logout') }}">{% trans from 'nav' %} nav.logout {% endtrans %}</a></li>
             {% else %}
-                <li class="midline-menu"><a href="{{ path('main_homepage') }}#sendmail">{% trans from 'firstnav' %} nav.signup {% endtrans %}</a></li>
+                <li class="midline-menu"> <a href="{{ path('fos_user_security_login') }}">   {% trans from 'nav' %} nav.connection {% endtrans %}</a></li>
+            {% endif %}
+            {% if app.user!=null %}
+                <li class="midline-menu"><a href="{{ path('main_private') }}"> {% trans from 'nav' %} nav.account {% endtrans %}</a></li>
+            {% else %}
+                <li class="midline-menu"><a id="mobile_register" href="{{ path('main_homepage') }}#register"> {% trans from 'nav' %} nav.register {% endtrans %}</a></li>
             {% endif %}
 
             <li class="midline-menu"><a href="{{ path('main_homepage') }}#contact"> {% trans from 'nav' %} nav.contact {% endtrans %}</a></li>
