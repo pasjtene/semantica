@@ -66,6 +66,8 @@
     height: auto;
     float: right!important;
     padding-bottom: 20px!important;
+    position: relative;
+    z-index: 999999;
   }
 
   .first-row-menu ul li {
@@ -76,10 +78,11 @@
     height: 70%;
     color: black;
     padding-right: 10px;
-    width: 70%;
+    width: 50%;
     float: left;
     margin-top: 0px;
-    margin-right: 50px;
-    z-index: 99999;
+    margin-right: 5px;
+    position: relative;
+    z-index: 999999;
   }
 }
