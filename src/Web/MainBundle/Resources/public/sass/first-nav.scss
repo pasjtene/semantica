@@ -24,7 +24,7 @@ body, html {height: 100%; }
 }
 
 .first-row-menu ul li a {
-  color: $secondary !important;
+  color: $secondary;
 }
 
 .first-row-menu ul li a:hover {
@@ -73,7 +73,14 @@ body, html {height: 100%; }
 
   .first-row-menu ul li {
     display: block;
-    padding-right: 5px;
+    padding: 10px;
+    font-size: 25px;
+    font-weight: bold;
+    tex: white;
+  }
+
+  .first-row-menu ul li a {
+    color: white !important;
   }
 
   .first-row {
@@ -86,7 +93,8 @@ body, html {height: 100%; }
     position: relative;
     z-index: 999999;
     box-shadow: 5px 5px 2px #888888;
-    opacity: 0.9;
+    background-color: black;
+    opacity: 0.8;
     border-top: 2px solid red;
   }
 }
