@@ -123,11 +123,17 @@
                 $(this).addClass('active');
             });
 
-            //$(".first-row").hide();
+
+                if ($(window).width() > 667) {
+                    $(".first-row").show();
+                }
+
+
+                //$(".first-row").css("display", "block");
             $(".mobile_menu_icon").click(function(){
+                //$(".first-row").css("display", "block");
                 //$(".first-row").toggle();
-                //$(".first-row").addClass('display-on');
-                $(".first-row").toggleClass('displaynone');
+               $(".first-row").toggleClass('displaynone');
                 $(".first-row").animate({width: 'toggle', height:'toggle',},350);
             });
 

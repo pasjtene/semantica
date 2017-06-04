@@ -3,7 +3,7 @@
 }
 
 #nav_menu{
-  z-index: 9999999999999999999999999;
+  z-index: 9999;
   span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
     margin: 0;
     padding: 0;
@@ -57,14 +57,14 @@
     position: relative;
     min-height: 45px;
     height: 100%;
-    z-index: 9999999999999999999999999;
+    z-index: 9999;
   }
 
   nav.menu:hover {
     position: relative;
     min-height: 45px;
     height: 100%;
-    z-index: 9999999999999999999999999;
+    z-index: 9999;
     border-bottom: 4px solid yellowgreen;
   }
 
@@ -90,7 +90,7 @@
     transition-duration: 0.3s;
     -moz-transition-duration: 0.3s;
     -webkit-transition-duration: 0.3s;
-    z-index: 9999999999999999999999999;
+    z-index: 9999;
   }
 
   .menu-section {
@@ -114,7 +114,7 @@
     display: block;
     -webkit-box-shadow: 0 1px 2px $auther;
     -moz-box-shadow: 0 1px 2px $auther;
-    z-index: 9999999999999999999999999;
+    z-index: 9999;
   }
   .xs-menu-cont > a:hover{
     cursor: pointer;
