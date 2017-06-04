@@ -155,6 +155,18 @@
     padding: 0;
   }
 
+  #menutoggle {
+    width: 40px;
+    position: absolute;
+    top:1px;
+    z-index: 9;
+    background-color: white;
+  }
+
+  #menutoggle1 {
+    visibility: hidden;
+  }
+
   /*--column--*/
   .mm-6column:after, .mm-6column:before, .mm-3column:after, .mm-3column:before{
     content:"";
