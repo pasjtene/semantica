@@ -7,10 +7,11 @@
             {% else %}
                 <li class="midline-menu"><a href="{{ path('main_homepage') }}#sendmail">{% trans from 'firstnav' %} nav.signup {% endtrans %}</a></li>
             {% endif %}
-            <li class="midline-menu"><a href="{{ path('main_homepage') }}#contact">{% trans from 'nav' %} nav.contact {% endtrans %}</a></li>
-            <li><a href="">{% trans from 'firstnav' %} nav.careers {% endtrans %}</a></li>
-            <li class="midline-menu"><a href="{{ path('main_homepage') }}#contact">{% trans from 'nav' %} nav.contact {% endtrans %}</a></li>
-            <li><a href="">{% trans from 'firstnav' %} nav.careers {% endtrans %}</a></li>
+
+            <li class="midline-menu"><a href="{{ path('main_homepage') }}#contact"> {% trans from 'nav' %} nav.contact {% endtrans %}</a></li>
+            <li class="midline-menu"><a href="{{ path('main_careers') }}"> {% trans from 'nav' %} nav.careers {% endtrans %}</a></li>
+            <li class="midline-menu"><a href="{{ path('app_locale_en') }}" title="English(EN)"> {% trans from 'firstnav' %} nav.language2 {% endtrans %}</a></li>
+            <li><a href="{{ path('app_locale_fr') }}" title="French(FR)"> {% trans from 'firstnav' %} nav.language3 {% endtrans %}</a></li>
         </ul>
     </div>
 </div>
