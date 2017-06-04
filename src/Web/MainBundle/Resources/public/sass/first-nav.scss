@@ -1,15 +1,19 @@
+
 .first-row {
   height: 36px;
   background-color: #4D4F53;
   background-color: #f4f4f4;
+  background-color: $auther;
   color: black;
   padding-right: 300px;
+  border: 1px solid red;
 }
 
 .first-row-menu {
   height: 36px;
   float: right!important;
   padding-bottom: 20px!important;
+  border-bottom: 1px solid blue;
 }
 
 .first-row-menu ul li {
@@ -22,9 +26,14 @@
   content: "   |";
 }
 
+.first-row-menu ul li a {
+  color: $secondary !important;
+}
+
 .first-row-menu ul li a:hover {
-  color:blue;
-  text-decoration: underline;
+  color:$blue_color !important;
+  font-weight: bold;
+  background-color: $auther !important;
 }
 
 .first-row-menu {
