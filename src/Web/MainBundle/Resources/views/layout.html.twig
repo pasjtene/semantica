@@ -194,6 +194,13 @@
                 }
             });
 
+            $('#first_nav_mobile ul li a').click(function(){
+                if($(this).val()!="#")
+                {
+                    window.location.href = $(this).attr('href');
+                }
+            });
+
             $('#vertical_nav ul li a').click(function(){
                 if($(this).val()!="#")
                 {
