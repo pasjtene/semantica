@@ -225,7 +225,7 @@
 
   }
 
-  @media (max-width: 600px) {
+  @media (max-width: 667px) {
     .menu {
       display:none;
     }
@@ -235,6 +235,7 @@
     }
     .xs-menu-cont{
       display:block ;
+      border: 1px solid red;
     }
   }
 
