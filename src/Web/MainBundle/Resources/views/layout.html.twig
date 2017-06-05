@@ -124,15 +124,15 @@
             });
 
 
-                if ($(window).width() > 667) {
-                    $(".first-row").show();
-                }
+                //if ($(window).width() > 667) {
+                    //$(".first-row").show();
+               // }
 
-
+            $(".first-row-mobile").hide();
                 //$(".first-row").css("display", "block");
             $(".mobile_menu_icon").click(function(){
-               $(".first-row").toggleClass('displaynone');
-                $(".first-row").animate({width: 'toggle', height:'toggle',},350);
+               $(".first-row-mobile").toggleClass('displaynone');
+                $(".first-row-mobile").animate({width: 'toggle', height:'toggle',},350);
             });
 
 
