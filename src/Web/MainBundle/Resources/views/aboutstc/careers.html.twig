@@ -46,13 +46,13 @@
                     <a class="center-align" href="{{ path('main_explorecareers') }}" > {% trans from 'aboutstc' %}  careers.domaine6 {% endtrans %} </a>
                 </p>
             </div>
-            <div class="col s12 m6 offset-m1" id="bloc2">
+            <div class="col s12  m6 l6 offset-l1" id="bloc2">
                 <div class="col s12">
                     <h5 class="center-align"> {% trans from 'aboutstc' %}careers.domaine8  {% endtrans %} </h5>
                 </div>
                 <div class="row">
                     <div class="col s12">
-                        <div class="col s12 m6">
+                        <div class="col s12 m6 content_body" >
                             <a href="{{ path ('main_careersprotech') }}" class="blue-text">
                                 <div class="element" style="background: url('{{ asset('data/img/footer/img1.jpg') }}') no-repeat; ">
                                  <div class="hover_img">
@@ -61,9 +61,9 @@
                                 </div>
                             </a>
                         </div>
-                        <div class="col s12 m6">
+                        <div class="col s12 m6 content_body">
                             <a href="{{ path ('main_careersprotech') }}" class="blue-text">
-                                <div class="element" style="background: url('{{ asset('data/img/footer/img2.jpg') }}') no-repeat; ">
+                                <div class="element ko" style="background: url('{{ asset('data/img/footer/img2.jpg') }}') no-repeat; ">
                                  <div class="hover_img">
                                      {% trans from 'aboutstc' %}careers.domaine2  {% endtrans %}
                                  </div>
@@ -74,7 +74,7 @@
                 </div>
                 <div class="row">
                     <div class="col s12">
-                        <div class="col s12 m6">
+                        <div class="col s12 m6 content_body">
                             <a href="{{ path ('main_careersprotech') }}" class="blue-text">
                                 <div class="element" style="background: url('{{ asset('data/img/footer/img3.jpg') }}') no-repeat; ">
                                  <div class="hover_img">
@@ -83,9 +83,9 @@
                                 </div>
                             </a>
                         </div>
-                        <div class="col s12 m6">
+                        <div class="col s12 m6 content_body">
                             <a href="{{ path ('main_careersprotech') }}" class="blue-text">
-                                <div class="element" style="background: url('{{ asset('data/img/footer/img4.jpg') }}') no-repeat; ">
+                                <div class="element ko" style="background: url('{{ asset('data/img/footer/img4.jpg') }}') no-repeat; ">
                                  <div class="hover_img">
                                      {% trans from 'aboutstc' %}careers.domaine4  {% endtrans %}
                                  </div>
@@ -96,7 +96,7 @@
                 </div>
                <div class="row">
                    <div class="col s12">
-                       <div class="col s12 m6">
+                       <div class="col s12 m6 content_body">
                            <a href="{{ path ('main_careersprotech') }}" class="blue-text">
                                <div class="element" style="background: url('{{ asset('data/img/footer/img5.jpg') }}') no-repeat; ">
                                  <div class="hover_img">
@@ -110,35 +110,40 @@
             </div>
             <div class="meet-our-people-shadow" style=" background-image: url({{ asset('data/img/footer/meet-our-people-shadow.png') }});"></div>
         </div>
-    </div>
 
-    <div class="row" id="member">
-        <div class="col s12 center center-align"><h5>{% trans from 'aboutstc' %}careers.domaine9  {% endtrans %}</h5></div>
-        <div class="col s12">
-            <div class="carousel">
-                <a class="carousel-item" href="{{ path ('main_explorecareers') }}">
-                    <div class="element"> user 1</div>
-                    <img src="{{ asset('data/img/footer/img1.jpg') }}">
-                </a>
-                <a class="carousel-item" href="{{ path ('main_explorecareers') }}">
-                    <div class="element"> user 2</div>
-                    <img src="{{ asset('data/img/footer/img2.jpg') }}">
-                </a>
-                <a class="carousel-item" href="{{ path ('main_explorecareers') }}">
-                    <div class="element"> user 3</div>
-                    <img src="{{ asset('data/img/footer/img3.jpg') }}">
-                </a>
-                <a class="carousel-item" href="{{ path ('main_explorecareers') }}">
-                    <div class="element"> user 4</div>
-                    <img src="{{ asset('data/img/footer/img4.jpg') }}">
-                </a>
-                <a class="carousel-item" href="{{ path ('main_explorecareers') }}">
-                    <div class="element"> user 5</div>
-                    <img src="{{ asset('data/img/footer/img5.jpg') }}">
-                </a>
+        <div class="row" id="member">
+            <div class="col s12 center center-align">
+               <center>
+                   <h5>{% trans from 'aboutstc' %}careers.domaine9  {% endtrans %}</h5>
+               </center>
+            </div>
+            <div class="col s12">
+                <div class="carousel">
+                    <a class="carousel-item" href="{{ path ('main_explorecareers') }}">
+                        <div class="element"> user 1</div>
+                        <img src="{{ asset('data/img/footer/img1.jpg') }}">
+                    </a>
+                    <a class="carousel-item" href="{{ path ('main_explorecareers') }}">
+                        <div class="element"> user 2</div>
+                        <img src="{{ asset('data/img/footer/img2.jpg') }}">
+                    </a>
+                    <a class="carousel-item" href="{{ path ('main_explorecareers') }}">
+                        <div class="element"> user 3</div>
+                        <img src="{{ asset('data/img/footer/img3.jpg') }}">
+                    </a>
+                    <a class="carousel-item" href="{{ path ('main_explorecareers') }}">
+                        <div class="element"> user 4</div>
+                        <img src="{{ asset('data/img/footer/img4.jpg') }}">
+                    </a>
+                    <a class="carousel-item" href="{{ path ('main_explorecareers') }}">
+                        <div class="element"> user 5</div>
+                        <img src="{{ asset('data/img/footer/img5.jpg') }}">
+                    </a>
+                </div>
             </div>
         </div>
     </div>
+
 {% endblock %}
 
 {% block myjs %}
