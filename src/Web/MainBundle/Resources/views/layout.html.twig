@@ -207,6 +207,15 @@
                 }
             });
 
+            $('#idhorizontal_nav ul li a').click(function(){
+                if($(this).val()!="#")
+                {
+                    window.location.href = $(this).attr('href');
+                }
+            });
+
+
+
 
             $('#mobile_register').click(function(){
                 $('#email').focus();
@@ -262,6 +271,7 @@
                 //  alert();
                 e.preventDefaults();
             });
+
 
 
         });
