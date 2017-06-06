@@ -72,6 +72,30 @@ $color2_footer: #797979;
                 color: white !important;
             }
         }
+
+        @media screen and (max-width: 660px) {
+            padding-left: 13%;
+            padding-bottom: 4%;
+            .s12{
+                margin-top: 2%;
+            }
+        }
+
+        @media screen and (min-width: 661px ) and (max-width: 1024px) {
+           .content_body{
+               padding: 2% 0% 2% 4%;
+               img, .element{
+                   min-width: 100px !important;
+                   max-width: 188px !important;
+               }
+               .ko{
+                  margin-left: 48%;
+               }
+               .hover_img{
+                   left: 71px;
+               }
+           }
+        }
     }
 
     .meet-our-people-shadow {
@@ -89,15 +113,18 @@ $color2_footer: #797979;
             font-size: 2.5em;
             text-decoration: underline;
             font-weight: bold;
+            text-align: center !important;
         }
         .carousel
         {
             a{
-                color: $color_footer !important;
+                color: $default !important;
+                z-index: 9999999999999;
+                font-weight: bold;
+                text-shadow: 6px 6px 6px black;
             }
             .element{
                 display: none;
-                font-family: 'algerian';
                 font-size: 1.5em;
                 font-weight: bold;
                 position: relative;
@@ -110,7 +137,7 @@ $color2_footer: #797979;
                 padding-top: 6px;
             }
             img{
-                height: 200px !important;
+               // height: 200px !important;
             }
             a:hover{
                 .element{
@@ -121,4 +148,10 @@ $color2_footer: #797979;
 
     }
 
+}
+
+@media screen and (max-width: 767px) {
+    .fixNavigation{
+        border-bottom: none !important;
+    }
 }
