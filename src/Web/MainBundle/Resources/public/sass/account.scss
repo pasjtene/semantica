@@ -28,6 +28,9 @@ footer{
   @media screen  and (max-width: 769px){
     #page_mobile{
       display: block !important;
+      .card{
+        padding: 2% !important;
+      }
     }
     #page_desktop{
       display: none !important;
