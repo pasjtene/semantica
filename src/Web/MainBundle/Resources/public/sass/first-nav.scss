@@ -59,6 +59,10 @@
   display: inline-block;
 }
 
+.mfirst-row-menu {
+  display: none;
+}
+
 @media screen and (max-width: 600px) {
 
   .first-row-menu ul li {
@@ -79,6 +83,7 @@
 
   .mfirst-row-menu {
     float: right!important;
+    display: block;
     padding-bottom: 20px!important;
   }
 
