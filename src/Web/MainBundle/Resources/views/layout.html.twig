@@ -84,7 +84,6 @@
             border-right: solid 2px black;
         }
 
-
     </style>
 {% endblock %}
 {% block header %}
@@ -223,10 +222,11 @@
 
                     //on ajoute la classe "fixNavigation" a <div id="navigation">
                     $('#menu_big').addClass("fixNavigation");
+                    //$('##mobile_rest').addClass("fixemobile_rest");
                 } else {
-
                     //sinon on retire la classe "fixNavigation" a <div id="navigation">
                     $('#menu_big').removeClass("fixNavigation");
+                    //$('##mobile_rest').removeClass("fixemobile_rest");
                 }
             });
 
@@ -242,11 +242,16 @@
 
                     //on ajoute la classe "fixNavigation" a <div id="navigation">
                     $('#menu_small').addClass("fixNavigation");
+                    $('#mobile_rest').addClass("fixemobile_rest");
+                    $('#mobile_rest').removeClass("fixeno_mobile_rest");
+                   // alert()
                    // $('#mobile_help').fadeIn();
                 } else {
 
                     //sinon on retire la classe "fixNavigation" a <div id="navigation">
                     $('#menu_small').removeClass("fixNavigation");
+                    $('#mobile_rest').removeClass("fixemobile_rest");
+                    $('#mobile_rest').addClass("fixeno_mobile_rest");
                    // $('#mobile_help').fadeOut();
                 }
             });

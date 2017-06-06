@@ -80,8 +80,14 @@
   .mfirst-row-menu {
     float: right!important;
     padding-bottom: 20px!important;
-    position: relative;
+    position: fixed;
+    top: 2.7em;
     z-index: 999999;
+    width: 80%;
+    box-shadow: 5px 5px 2px #888888;
+    background-color: black;
+    opacity: 0.8;
+    border-top: 2px solid red;
   }
 
   .mfirst-row-menu ul li {
@@ -90,6 +96,7 @@
     font-size: 25px;
     font-weight: bold;
     tex: white;
+    padding-left: 7em;
   }
 
   .mfirst-row-menu ul li a {
@@ -118,4 +125,21 @@
     opacity: 0.8;
     border-top: 2px solid red;
   }
+}
+
+#mobile_rest{
+  background-color: white;
+  padding: 1% 2% 1% 2%;
+  font-weight: bold;
+}
+.fixemobile_rest{
+  position: fixed;
+  top: 0em;
+  z-index: 9999999999;
+  left: 24.8em;
+}
+
+.fixeno_mobile_rest{
+  position: relative;
+  left: 1em;
 }
