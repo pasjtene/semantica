@@ -80,14 +80,6 @@
   .mfirst-row-menu {
     float: right!important;
     padding-bottom: 20px!important;
-    position: fixed;
-    top: 2.7em;
-    z-index: 999999;
-    width: 80%;
-    box-shadow: 5px 5px 2px #888888;
-    background-color: black;
-    opacity: 0.8;
-    border-top: 2px solid red;
   }
 
   .mfirst-row-menu ul li {
@@ -118,8 +110,10 @@
     float: left;
     margin-top: 0px;
     margin-right: 5px;
-    position: relative;
+    position: fixed;
+    top: 2.7em;
     z-index: 999999;
+    width: 80%;
     box-shadow: 5px 5px 2px #888888;
     background-color: black;
     opacity: 0.8;
