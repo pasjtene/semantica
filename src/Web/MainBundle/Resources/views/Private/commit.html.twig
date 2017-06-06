@@ -48,8 +48,9 @@
             <div class="col s12">
                 <div class="row">
                     <div class="col s12">
+                        {% include 'MainBundle:Inc:horizontal-nav.hml.twig' %}
                         {% if list!=null %}
-                            {% include 'MainBundle:Inc:horizontal-nav.hml.twig' %}
+
                         {% else %}
                             <h4>  {% trans from 'private' %} commit.empty  {% endtrans %} </h4>
                         {% endif %}
@@ -77,8 +78,8 @@
                             <ul class="collapsible" data-collapsible="accordion">
 
                                 {% for item in list %}
-                                    <li>
-                                        <div class="collapsible-header"><i class="material-icons">book</i>{{ item.commit.getValue(item.commit.description,30) }}</div>
+                                    <li  class="">
+                                        <div class="collapsible-header grey lighten-3" ><i class="material-icons">book</i>{{ item.commit.getValue(item.commit.description,30) }}</div>
                                         <div class="collapsible-body">
                                             <div class="row">
                                                 <div class="col s12">
