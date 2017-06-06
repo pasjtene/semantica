@@ -182,7 +182,15 @@
 
     <div class="col s12 m4">
         {% if items.files!=null  %}
-            <ul class="collection with-header">
+            <ul class="collection with-header" id="page_mobile">
+                <li class="collection-header center-align"><h4><strong>{% trans from 'private' %} project.file_list {% endtrans %}</strong></h4></li>
+                {% for file in items.files  %}
+                    <li class="collection-item ">
+                        <li class="collection-item"><div>{{ items.truncate(file.name,15) }}<a href="{{app.request.getSchemeAndHttpHost()~'/'~file.path()}}" class="secondary-content upload_file"><i class="material-icons">attach_file</i></a></div></li>
+                    </li>
+                {% endfor %}
+            </ul>
+            <ul class="collection with-header" id="page_desktop">
                 <li class="collection-header center-align"><h4><strong>{% trans from 'private' %} project.file_list {% endtrans %}</strong></h4></li>
                 {% for file in items.files  %}
                     {% if file.hashname!=null and  file.extfile=="gif" or file.extfile=="png" or file.extfile=="jpg" or file.extfile=="jpeg"  %}
