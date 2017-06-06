@@ -4,43 +4,112 @@
         <a id="new_comment" href="" class=" btn waves-effect waves-green btn-flat white-text">{% trans from 'private' %} comment.new {% endtrans %}</a>
     </div>
 </div>
-<table class="bordered highlight centered responsive-table">
-    <thead>
-    <tr>
-        <th>N°</th>
-        <th>{% trans from 'forms' %} form.commit.auther {% endtrans %}</th>
-        <th>{% trans from 'forms' %} form.base.description {% endtrans %}</th>
-        <th>{% trans from 'forms' %} form.base.date {% endtrans %}</th>
-        <th>#</th>
-    </tr>
-    </thead>
 
-    <tbody>
-    {% if items!=null %}
-        {% for item in items %}
-           <tr>
-               <td>{{ loop.index }}</td>
-               <td>
-                   {% if item.user!=null %}
+<div class="row" id="page_mobile">
+    <div class="col s12">
+        <div class="row">
+            <div class="col s12">
+                {% if items!=null %}
+                {% else %}
+                    <h4>  {% trans from 'private' %} comment.empty {% endtrans %} </h4>
+                {% endif %}
+            </div>
+        </div>
+        <div class="col s12">
+            <div class="row">
+                <div class="col s12">
+                    <ul class="collapsible" data-collapsible="accordion">
+
+                        {% for item in items %}
+                            <li>
+                                <div class="collapsible-header grey lighten-3"><i class="material-icons">book</i>{{ item.projet.truncate(item.description,30) }}</div>
+                                <div class="collapsible-body">
+                                    <div class="row">
+                                        <div class="col s12">
+                                            <div class="card">
+                                                <section>
+                                                    <strong>{% trans from 'forms' %} form.commit.auther {% endtrans %}</strong>
+                                                    <br>
+                                                    <span>
+                                                         {% if item.user!=null %}
+                                                            {{ item.user.firstname }}</td>
+                                                         {% else %}
+                                                            {{ item.participator.user.firstname }}</td>
+                                                         {% endif %}
+                                                    </span>
+                                                </section>
+                                                <div class="divider"></div>
+
+
+                                                <section>
+                                                    <strong>{% trans from 'forms' %} form.base.date {% endtrans %}</strong>
+                                                    <br>
+                                                    {{ item.date|date('d-m-y h:m:s') }}
+                                                </section>
+                                                <div class="divider"></div>
+
+                                                <section>
+                                                    <strong>{% trans from 'forms' %} form.base.description {% endtrans %}</strong>
+                                                    <br>
+                                                    <div class="row">
+                                                        <div class="col s12">
+                                                            <div class="card">
+                                                                {{ item.description }}
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </section>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="col s12" id="page_desktop">
+    <table class="bordered highlight centered responsive-table">
+        <thead>
+        <tr>
+            <th>N°</th>
+            <th>{% trans from 'forms' %} form.commit.auther {% endtrans %}</th>
+            <th>{% trans from 'forms' %} form.base.description {% endtrans %}</th>
+            <th>{% trans from 'forms' %} form.base.date {% endtrans %}</th>
+            <th>#</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        {% if items!=null %}
+            {% for item in items %}
+                <tr>
+                    <td>{{ loop.index }}</td>
+                    <td>
+                        {% if item.user!=null %}
                         {{ item.user.firstname }}</td>
-                   {% else %}
-                        {{ item.participator.user.firstname }}</td>
-                   {% endif %}
+                    {% else %}
+                         {{ item.participator.user.firstname }}</td>
+                    {% endif %}
 
-               <td>{{ item.projet.truncate(item.description,40) }}</td>
-               <td>{{ item.date|date('d-m-y h:m:s') }}</td>
-               <td>
-                   <a href="{{ '#comment'~item.id }}"><i class="material-icons">view_headline</i></a>
-               </td>
-           </tr>
-            <div id="{{ 'comment'~item.id }}" class="modal modal-fixed-footer">
-                <div class="modal-content black-text">
-                    <h4>{% trans from 'forms' %} form.Task.more {% endtrans %}</h4>
-                    <p>
-                        <strong>
-                            {% trans from 'forms' %} form.commit.auther {% endtrans %} :
-                        </strong>
-                        <br>
+                    <td>{{ item.projet.truncate(item.description,40) }}</td>
+                    <td>{{ item.date|date('d-m-y h:m:s') }}</td>
+                    <td>
+                        <a href="{{ '#comment'~item.id }}"><i class="material-icons">view_headline</i></a>
+                    </td>
+                </tr>
+                <div id="{{ 'comment'~item.id }}" class="modal modal-fixed-footer">
+                    <div class="modal-content black-text">
+                        <h4>{% trans from 'forms' %} form.Task.more {% endtrans %}</h4>
+                        <p>
+                            <strong>
+                                {% trans from 'forms' %} form.commit.auther {% endtrans %} :
+                            </strong>
+                            <br>
                                 <span>
                                      {% if item.user!=null %}
                                         {{ item.user.firstname }}</td>
@@ -48,42 +117,43 @@
                                         {{ item.participator.user.firstname }}</td>
                                      {% endif %}
                                 </span>
-                    </p>
-                    <p>
-                    <hr>
-                    <strong>
-                        {% trans from 'forms' %} form.base.date {% endtrans %} :
-                    </strong>
-                    <br>
+                        </p>
+                        <p>
+                        <hr>
+                        <strong>
+                            {% trans from 'forms' %} form.base.date {% endtrans %} :
+                        </strong>
+                        <br>
                                 <span>
                                    {{ item.date|date('d-m-y h:m:s') }}
                                 </span>
-                    </p>
-                    <p>
-                    <hr>
-                    <strong>
-                        {% trans from 'forms' %} form.base.description {% endtrans %} :
-                    </strong>
-                    <br>
+                        </p>
+                        <p>
+                        <hr>
+                        <strong>
+                            {% trans from 'forms' %} form.base.description {% endtrans %} :
+                        </strong>
+                        <br>
                                 <span>
                                    {{ item.description }}
                                 </span>
-                    </p>
+                        </p>
 
+                    </div>
+                    <div class="modal-footer">
+                        <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Agree</a>
+                    </div>
                 </div>
-                <div class="modal-footer">
-                    <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Agree</a>
-                </div>
-            </div>
-        {% endfor %}
-    {% else %}
-        <tr>
-            <td colspan="6">
-                <h6> {% trans from 'private' %} comment.empty {% endtrans %}</h6>
-            </td>
-        </tr>
-    {% endif %}
-    </tbody>
-</table>
+            {% endfor %}
+        {% else %}
+            <tr>
+                <td colspan="6">
+                    <h6> {% trans from 'private' %} comment.empty {% endtrans %}</h6>
+                </td>
+            </tr>
+        {% endif %}
+        </tbody>
+    </table>
+</div>
 
 
