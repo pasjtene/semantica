@@ -1,85 +1,154 @@
 <br>
-<table class="bordered highlight centered responsive-table">
-    <thead>
-    <tr>
-        <th>N°</th>
-        <th>{% trans from 'forms' %} form.commit.code {% endtrans %}</th>
-        <th>{% trans from 'forms' %} form.commit.auther {% endtrans %}</th>
-        <th>{% trans from 'forms' %} form.base.description {% endtrans %}</th>
-        <th>{% trans from 'forms' %} form.base.date {% endtrans %}</th>
-        <th>#</th>
-    </tr>
-    </thead>
 
-    <tbody>
-    {% if items!=null %}
-        {% for item in items %}
-           <tr>
-               <td>{{ loop.index }}</td>
-               <td>{{ item.commit.code }}</td>
-               <td>{{ item.commit.participator.user.firstname }}</td>
-               <td>{{ item.task.planning.project.truncate(item.commit.description,50) }}</td>
-               <td>{{ item.commit.date|date('d-m-y') }}</td>
-               <td>
-                   <a href="{{ '#commit'~item.id }}"><i class="material-icons">view_headline</i></a>
-               </td>
-           </tr>
-           <div id="{{ 'commit'~item.id }}" class="modal modal-fixed-footer">
-                <div class="modal-content black-text">
-                    <h4>{% trans from 'forms' %} form.Task.more {% endtrans %}</h4>
-                    <p>
-                        <strong>
-                            {% trans from 'forms' %} form.commit.code {% endtrans %} :
-                        </strong>
-                        <br>
+<div class="row" id="page_mobile">
+    <div class="col s12">
+        <div class="row">
+            <div class="col s12">
+                {% if items!=null %}
+                {% else %}
+                    <h4>  {% trans from 'private' %} commit.empty  {% endtrans %} </h4>
+                {% endif %}
+            </div>
+        </div>
+        <div class="col s12">
+            <div class="row">
+                <div class="col s12">
+                    <ul class="collapsible" data-collapsible="accordion">
+
+                        {% for item in items %}
+                            <li>
+                                <div class="collapsible-header grey lighten-3"><i class="material-icons">book</i>{{ item.commit.getValue(item.commit.description,30) }}</div>
+                                <div class="collapsible-body">
+                                    <div class="row">
+                                        <div class="col s12">
+                                            <div class="card">
+                                                <section>
+                                                    <strong>{% trans from 'private' %} commit.auther  {% endtrans %}</strong>
+                                                    <br>
+                                                    {{ item.commit.participator.user.firstname }}
+                                                </section>
+                                                <div class="divider"></div>
+
+                                                <section>
+                                                    <strong>{% trans from 'private' %} commit.commit  {% endtrans %}</strong>
+                                                    <br>
+                                                    {{ item.commit.code }}
+                                                </section>
+                                                <div class="divider"></div>
+
+                                                <section>
+                                                    <strong>{% trans from 'private' %} commit.date  {% endtrans %}</strong>
+                                                    <br>
+                                                    {{ item.commit.date|date('d-m-y h:m:s') }}
+                                                </section>
+                                                <div class="divider"></div>
+
+                                                <section>
+                                                    <strong>{% trans from 'private' %} commit.message  {% endtrans %}</strong>
+                                                    <br>
+                                                    <div class="row">
+                                                        <div class="col s12">
+                                                            <div class="card">
+                                                                {{ item.commit.description }}
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </section>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="col s12" id="page_desktop">
+    <table class="bordered highlight centered responsive-table" >
+        <thead>
+        <tr>
+            <th>N°</th>
+            <th>{% trans from 'forms' %} form.commit.code {% endtrans %}</th>
+            <th>{% trans from 'forms' %} form.commit.auther {% endtrans %}</th>
+            <th>{% trans from 'forms' %} form.base.description {% endtrans %}</th>
+            <th>{% trans from 'forms' %} form.base.date {% endtrans %}</th>
+            <th>#</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        {% if items!=null %}
+            {% for item in items %}
+                <tr>
+                    <td>{{ loop.index }}</td>
+                    <td>{{ item.commit.code }}</td>
+                    <td>{{ item.commit.participator.user.firstname }}</td>
+                    <td>{{ item.task.planning.project.truncate(item.commit.description,50) }}</td>
+                    <td>{{ item.commit.date|date('d-m-y') }}</td>
+                    <td>
+                        <a href="{{ '#commit'~item.id }}"><i class="material-icons">view_headline</i></a>
+                    </td>
+                </tr>
+                <div id="{{ 'commit'~item.id }}" class="modal modal-fixed-footer">
+                    <div class="modal-content black-text">
+                        <h4>{% trans from 'forms' %} form.Task.more {% endtrans %}</h4>
+                        <p>
+                            <strong>
+                                {% trans from 'forms' %} form.commit.code {% endtrans %} :
+                            </strong>
+                            <br>
                         <span>
                             {{ item.commit.code }}
                         </span>
-                    </p>
-                    <p>
-                        <strong>
-                            {% trans from 'forms' %} form.commit.auther {% endtrans %} :
-                        </strong>
-                        <br>
+                        </p>
+                        <p>
+                            <strong>
+                                {% trans from 'forms' %} form.commit.auther {% endtrans %} :
+                            </strong>
+                            <br>
                         <span>
                             {{ item.commit.participator.user.firstname }}
                         </span>
-                    </p>
-                    <p>
-                    <hr>
-                    <strong>
-                        {% trans from 'forms' %} form.base.date {% endtrans %} :
-                    </strong>
-                    <br>
+                        </p>
+                        <p>
+                        <hr>
+                        <strong>
+                            {% trans from 'forms' %} form.base.date {% endtrans %} :
+                        </strong>
+                        <br>
                                 <span>
                                    {{ item.commit.date|date('d-m-y h:m:s') }}
                                 </span>
-                    </p>
-                    <p>
-                    <hr>
-                    <strong>
-                        {% trans from 'forms' %} form.base.description {% endtrans %} :
-                    </strong>
-                    <br>
+                        </p>
+                        <p>
+                        <hr>
+                        <strong>
+                            {% trans from 'forms' %} form.base.description {% endtrans %} :
+                        </strong>
+                        <br>
                                 <span>
                                    {{ item.commit.description }}
                                 </span>
-                    </p>
+                        </p>
 
+                    </div>
+                    <div class="modal-footer">
+                        <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Agree</a>
+                    </div>
                 </div>
-                <div class="modal-footer">
-                    <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Agree</a>
-                </div>
-            </div>
-        {% endfor %}
-    {% else %}
-        <tr>
-            <td colspan="6">
-                <h6> {% trans from 'forms' %} form.planning.empty {% endtrans %}</h6>
-            </td>
-        </tr>
-    {% endif %}
-    </tbody>
-</table>
+            {% endfor %}
+        {% else %}
+            <tr>
+                <td colspan="6">
+                    <h6> {% trans from 'forms' %} form.planning.empty {% endtrans %}</h6>
+                </td>
+            </tr>
+        {% endif %}
+        </tbody>
+    </table>
+</div>
 
 

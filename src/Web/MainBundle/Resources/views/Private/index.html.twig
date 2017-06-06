@@ -22,8 +22,8 @@
            <div class="col s12">
                <div class="row">
                    <div class="col s12">
+                       {% include 'MainBundle:Inc:horizontal-nav.hml.twig' %}
                        {% if list!=null %}
-                           {% include 'MainBundle:Inc:horizontal-nav.hml.twig' %}
                        {% else %}
                            <h4> {% trans from 'private' %} project.empty  {% endtrans %} </h4>
                        {% endif %}

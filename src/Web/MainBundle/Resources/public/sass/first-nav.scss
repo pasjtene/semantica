@@ -1,9 +1,14 @@
+
+
 .first-row {
   height: 36px;
-  background-color: #4D4F53;
-  background-color: #f4f4f4;
+  background-color: $auther;
   color: black;
   padding-right: 300px;
+}
+
+.first-row-mobile {
+  display:none;
 }
 
 .first-row-menu {
@@ -22,9 +27,14 @@
   content: "   |";
 }
 
+.first-row-menu ul li a {
+  color: $secondary;
+}
+
 .first-row-menu ul li a:hover {
-  color:blue;
-  text-decoration: underline;
+  color:$blue_color !important;
+  font-weight: bold;
+  background-color: $auther !important;
 }
 
 .first-row-menu {
@@ -37,11 +47,98 @@
   margin-top: 6px;
 }
 
+.mobile_menu_icon {
+  display: none;
+}
+
+.displaynone {
+  display: none;
+}
+
+.display-on {
+  display: inline-block;
+}
+
+.mfirst-row-menu {
+  display: none;
+}
+
 @media screen and (max-width: 600px) {
-  .first-row {
-    height: 36px;
-    background-color: #4D4F53;
-    color: black;
-    padding-right: 10px;
+
+  .first-row-menu ul li {
+    display: inline;
+    padding-right: 5px;
+    color: red;
   }
+
+  #first_nav {
+    display: none;
+  }
+
+  .mobile_menu_icon {
+    display: inline-block;
+    float: right;
+    margin-right: 15px;
+  }
+
+  .mfirst-row-menu {
+    float: right!important;
+    display: block;
+    padding-bottom: 20px!important;
+  }
+
+  .mfirst-row-menu ul li {
+    display: block;
+    padding: 10px;
+    font-size: 25px;
+    font-weight: bold;
+    tex: white;
+    padding-left: 7em;
+  }
+
+  .mfirst-row-menu ul li a {
+    color: white !important;
+  }
+
+  .first-row {
+    diplay:none;
+  }
+  .first-row-menu {
+    diplay:none;
+  }
+
+  .first-row-mobile {
+    display: inline-block;
+    height: 70%;
+    padding-right: 10px;
+    width: 85%;
+    float: left;
+    margin-top: 0px;
+    margin-right: 5px;
+    position: fixed;
+    top: 2.7em;
+    z-index: 999999;
+    width: 80%;
+    box-shadow: 5px 5px 2px #888888;
+    background-color: black;
+    opacity: 0.8;
+    border-top: 2px solid red;
+  }
+}
+
+#mobile_rest{
+  background-color: white;
+  padding: 1% 2% 1% 2%;
+  font-weight: bold;
+}
+.fixemobile_rest{
+  position: fixed;
+  top: 0em;
+  z-index: 9999999999;
+  left: 24.8em;
+}
+
+.fixeno_mobile_rest{
+  position: relative;
+  left: 1em;
 }
