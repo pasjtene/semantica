@@ -229,6 +229,32 @@
             .banner_img {
                 display:none;
             }
+            .elements{
+                display: none;
+                font-family: 'algerian';
+                font-size: 11.5em;
+                font-weight: bold;
+                position: relative;
+                top: 80px;
+                left: 20px;
+                background-color: rgba(0,0,0,0.1) !important;
+                text-align: center;
+                padding-bottom: 6px;
+                padding-top: 6px;
+                width: 100%;
+                height: 300px;
+            }
+            .hover_images{
+                text-align: right;
+                position: relative;
+                left: 158px;
+                top: 46px;
+                z-index: 9;
+                background-color:  #eeeeee;
+                width: 62%;
+                padding: 4%;
+                opacity: 0.8;
+            }
         }
     </style>
 {% endblock %}
@@ -248,7 +274,11 @@
                 <h5 class="center-align"> {% trans from 'aboutstc' %} explorecareers.title {% endtrans %} </h5>
                 <br> <br>
                 <div class="col s12 m6">
-                    <img width="45" src="{{ asset('data/img/exploca.jpg') }}" alt="">
+                    <div  div class="elements" style="background: url('{{ asset('data/img/explot.jpg') }}') no-repeat; ">
+                        <div class="hover_images">
+                            {% trans from 'aboutstc' %}careers.domaine2  {% endtrans %}
+                        </div>
+                    </div>
                 </div>
                 <div class="col s12 m6">
                     <h6> {% trans from 'aboutstc' %} explorecareers.description {% endtrans %} </h6>
