@@ -271,6 +271,11 @@
                     cpt+=files[i].size;
                 }
                // console.log(cpt/781);
+                if((cpt/(1024*781))>0)
+                {
+                    alert('la taille des fichiers ne peut etre superieur a 5Mo');
+                    ctrls.fileProject.val(null);
+                }
                 if(test==0)
                 {
                     ctrls.result_selects.text(files.length);
