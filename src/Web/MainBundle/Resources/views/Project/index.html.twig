@@ -97,11 +97,25 @@
                         </div>
                         <div class="row">
                             <div class="col s12" id="zone_file">
-                                <fieldset >
+                                {#<fieldset >
                                     <legende></legende>
                                     <div class=" s12 ">
                                         {{ form_widget(form.files,{'attr':{'class':''}}) }}
                                         <div class="error"  >{{ form_errors(form.files) }}</div>
+                                    </div>
+                                </fieldset>#}
+                                <fieldset>
+                                    <legend>Documents du projet</legend>
+                                    <input type="file" multiple="multiple" name="file[]" id="file-project" accept="application/pdf" class="hide"/>
+                                    <div class="col row">
+                                        <div class="col s10">
+                                            <div class="input-field">
+                                                <input type="text" id="input-file-project" name="input-file-project" readonly="readonly" style="width:100%"/>
+                                            </div>
+                                        </div>
+                                        <div class="col s2">
+                                            <button class="waves-effect waves-light btn" id="btn-file-project" type="submit">Parcourir...</button>
+                                        </div>
                                     </div>
                                 </fieldset>
                             </div>
@@ -159,8 +173,14 @@
 {% endblock %}
 
 {% block myjs %}
-    <script src="{{ asset('components/jsbase/Imbrication.js') }}"></script>
+    {#<script src="{{ asset('components/jsbase/Imbrication.js') }}"></script>#}
     <script>
+        var ctrls = {
+            fileProject : $('#file-project'),
+            iptFileProject : $('#input-file-project'),
+            btnProject : $('#btn-file-project')
+        };
+
         $(function(){
             $('select').material_select();
             {% if message is defined  %}
@@ -191,6 +211,22 @@
                    $('.delete').text('Delete');
                {% endif %}
            },100);
+
+            ctrls.btnProject.click(function(e){
+                ctrls.fileProject.trigger('click');
+
+                e.preventDefault();
+            });
+
+            ctrls.fileProject.change(function(e){
+                var files = e.target.files;
+
+                console.log(files);
+
+                ctrls.iptFileProject.val(files.length + " fichier(s) sélectionnés !");
+            });
+
+
         });
     </script>
 
