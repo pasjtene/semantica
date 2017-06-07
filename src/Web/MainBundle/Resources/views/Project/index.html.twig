@@ -136,7 +136,7 @@
                                     <div class="file-field input-field" id="uploadfile">
                                         <div class="btn">
                                             <span>File</span>
-                                            <input type="file" multiple name="file[]" id="file-project" >
+                                            <input type="file" multiple name="file[]" id="file-project" accept="application/pdf" >
                                         </div>
                                         <div class="file-path-wrapper">
                                             <input class="file-path validate" type="text" placeholder="{% trans from 'project' %} project.file {% endtrans %}">
@@ -254,15 +254,28 @@
 
                 console.log(files);
 
-                ctrls.result_selects.text(files.length);
+                ctrls.result_selects.text(0);
+                ctrls.result_count.text(0 + "Mo");
 
                 var cpt =0;
+                var  test =0;
                 for(var i=0; i<files.length;i++)
                 {
+                    if(files[i].type!="application/pdf" && files[i].type!="application/vnd.openxmlformats-officedocument.wordprocessingml.document")
+                    {
+                        test=-1;
+                        alert('Le type de fichier '+ files[i].type+"' n'a pas été géré vous devez choisir les fichiers word ou pdf");
+                        ctrls.fileProject.val(null);
+                        break;
+                    }
                     cpt+=files[i].size;
                 }
                // console.log(cpt/781);
-                ctrls.result_count.text( (cpt/781).toFixed(2) +'Ko => ('+ (cpt/(1024*781)).toFixed(2) + 'Mo)');
+                if(test==0)
+                {
+                    ctrls.result_selects.text(files.length);
+                    ctrls.result_count.text( (cpt/781).toFixed(2) +'Ko => ('+ (cpt/(1024*781)).toFixed(2) + 'Mo)');
+                }
             });
 
 
