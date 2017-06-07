@@ -148,6 +148,9 @@ class FileProjet
         return $this;
     }
 
+    /**
+     * @return UploadedFile
+     */
     public function getFile()
     {
         return  $this->file;
