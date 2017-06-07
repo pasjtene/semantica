@@ -262,7 +262,7 @@
                     cpt+=files[i].size;
                 }
                // console.log(cpt/781);
-                ctrls.result_count.text(cpt/781 +'Ko => ('+ (cpt/(1024*781)) + 'Mo)');
+                ctrls.result_count.text( (cpt/781).toFixed(2) +'Ko => ('+ (cpt/(1024*781)).toFixed(2) + 'Mo)');
             });
 
 
