@@ -12,32 +12,6 @@ footer{
 #main_account
 {
 
-  #page_mobile, #page_mobile
-  {
-    display: none !important;
-  }
-  @media screen  and (min-width: 768px){
-    #page_mobile{
-      display: none !important;
-    }
-    #page_desktop{
-      display: block !important;
-    }
-  }
-
-  @media screen  and (max-width: 769px){
-    #page_mobile{
-      display: block !important;
-      .card{
-        padding: 2% !important;
-        margin: 2% !important;
-      }
-    }
-    #page_desktop{
-      display: none !important;
-    }
-  }
-
    #idhorizontal_nav{
     background-color: #eeeeee !important;;
     border: 1px solid #eee;

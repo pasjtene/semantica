@@ -36,7 +36,101 @@
     {{ parent() }}
 {% endblock %}
 {% block  main %}
-    <div class="row">
+    <div class="row" id="page_mobile">
+        <div class="col s12">
+            <div class="row">
+                <div class="col s12">
+                    {% if items!=null %}
+
+                    {% else %}
+                        <h4>  {% trans from 'private' %} project.empty  {% endtrans %} </h4>
+                    {% endif %}
+                </div>
+            </div>
+            <div class="col s12">
+                <div class="row">
+                    <div class="col s12">
+                        <ul class="collapsible" data-collapsible="accordion">
+
+                            {% for item in items %}
+                                <li  class="">
+                                    <div class="collapsible-header grey lighten-3" ><i class="material-icons">book</i> {{ item.firstname~" "~item.lastname }}</div>
+                                    <div class="collapsible-body">
+                                        <div class="row">
+                                            <div class="col s12">
+                                                <div class="card">
+                                                    <section>
+                                                        <strong>{% trans from 'admin' %} user.firstname  {% endtrans %}</strong>
+                                                        <br>
+                                                        {{ item.firstname }}
+                                                    </section>
+                                                    <div class="divider"></div>
+
+                                                    <section>
+                                                        <strong>{% trans from 'admin' %} user.lastname  {% endtrans %}</strong>
+                                                        <br>
+                                                        {% if item.lastname==null %}
+                                                            //
+                                                        {% else %}
+                                                            {{ item.lastname }}
+                                                        {% endif %}
+
+                                                    </section>
+                                                    <div class="divider"></div>
+
+                                                    <section>
+                                                        <strong>{% trans from 'admin' %} user.gender  {% endtrans %}</strong>
+                                                        <br>
+                                                        {{ item.pleasantries }}
+                                                    </section>
+                                                    <div class="divider"></div>
+
+                                                    <section>
+                                                        <strong>{% trans from 'admin' %} user.status  {% endtrans %}</strong>
+                                                        <br>
+                                                        {% if item.enabled == 1 %}{% trans from 'admin' %} user.enabled {% endtrans %}{% else %}{% trans from 'admin' %} user.locked  {% endtrans %}{% endif %}
+                                                    </section>
+                                                    <div class="divider"></div>
+
+                                                    <section>
+                                                        <strong>{% trans from 'admin' %} user.roles  {% endtrans %}</strong>
+                                                        <br>
+                                                        <div class="row">
+                                                            <div class="col s12">
+                                                                <div class="card">
+                                                                    {{ item.roleString }}
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </section>
+                                                    <br>
+                                                    <a  href="{{ path('admin_users_change_role', {id:item.id}) }}"  title="Change role">
+                                                        <i class="material-icons">group</i>
+                                                    </a>
+                                                    {% set status = item.enabled %}
+                                                    {% if status==null %}
+                                                        {% set status=0 %}
+                                                    {% endif %}
+                                                    <a href="{{ path('admin_change_status_users', {id:item.id,status:status}) }}" data-state="{{ item.enabled }}"  class="lock_user">
+                                                        <i class="material-icons">{% if item.enabled == 1 %}lock{% else %}lock_open{% endif %}</i>
+                                                    </a>
+
+                                                    <a href="{{ path('admin_remove_users',{id:item.id}) }}" data-name="{{ item.firstname }} {{ item.lastname }}"  data-id="{{ item.id }}" href="" class="delete_user {% if item.id == app.user.id %}hide{% endif %}">
+                                                        <i class="material-icons">delete</i>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row" id="page_desktop">
         <div class="col l12">
             <div class="card z-depth-1">
                 <div class="card-content">

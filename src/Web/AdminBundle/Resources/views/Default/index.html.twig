@@ -25,7 +25,93 @@
 {% endblock %}
 {% block  main %}
 
-    <div class="row">
+    <div class="row" id="page_mobile">
+        <div class="col s12">
+            <div class="row">
+                <div class="col s12">
+                    {% if list!=null %}
+
+                    {% else %}
+                        <h4>  {% trans from 'private' %} project.empty  {% endtrans %} </h4>
+                    {% endif %}
+                </div>
+            </div>
+            <div class="col s12">
+                <div class="row">
+                    <div class="col s12">
+                        <ul class="collapsible" data-collapsible="accordion">
+
+                            {% for projet in list %}
+                                <li  class="">
+                                    <div class="collapsible-header grey lighten-3" ><i class="material-icons">book</i>{{ projet.truncate(projet.title,30) }}</div>
+                                    <div class="collapsible-body">
+                                        <div class="row">
+                                            <div class="col s12">
+                                                <div class="card">
+                                                    <section>
+                                                        <strong>{% trans from 'forms' %} form.user.firstname {% endtrans %}</strong>
+                                                        <br>
+                                                        {% if projet.user!=null %}
+                                                            {{ projet.user.firstname }}
+                                                        {% else %}
+                                                            {{ projet.visitor.firstname }}
+                                                        {% endif %}
+                                                    </section>
+                                                    <div class="divider"></div>
+
+                                                    <section>
+                                                        <strong>{% trans from 'forms' %} form.project.title {% endtrans %}</strong>
+                                                        <br>
+                                                        {{ projet.title }}
+                                                    </section>
+                                                    <div class="divider"></div>
+
+                                                    <section>
+                                                        <strong>{% trans from 'forms' %} form.project.status {% endtrans %}</strong>
+                                                        <br>
+                                                        {{ projet.CurrentStatus(projet.status,app.request.locale) }}
+                                                    </section>
+                                                    <div class="divider"></div>
+
+                                                    <section>
+                                                        <strong>{% trans from 'forms' %} form.project.date {% endtrans %}</strong>
+                                                        <br>
+                                                        {{ projet.date|date('d-m-Y h:i:s') }}
+                                                    </section>
+                                                    <div class="divider"></div>
+
+                                                    <section>
+                                                        <strong>{% trans from 'forms' %} form.project.description {% endtrans %}</strong>
+                                                        <br>
+                                                        <div class="row">
+                                                            <div class="col s12">
+                                                                <div class="card">
+                                                                    {{ projet.description }}
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </section>
+                                                    <br>
+                                                    <a href="{{ path('admin_projet_detail',{id:projet.id}) }}"><i class="material-icons">view_headline</i></a>
+                                                    <a href="{{ path('admin_projet_update',{id:projet.id}) }}"><i class="material-icons">edit</i></a>
+                                                    {% set key = 'data'~loop.index %}
+                                                    <span id="{{ key }}" style="display: none;">
+                                                        {% trans from 'admin' %} project.delete {% endtrans %} '{{ projet.title }}'
+                                                    </span>
+                                                    <a data-id="{{ key }}" href="{{ path('admin_projet_delete',{id:projet.id}) }}" class="delete_projet"><i class="material-icons">delete</i></a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row" id="page_desktop">
         <div class="col l12">
             <div class="card z-depth-1">
                 <div class="card-content">

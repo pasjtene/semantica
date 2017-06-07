@@ -135,3 +135,32 @@ footer{
   color: red !important;
   background: transparent !important;
 }
+
+
+
+// style pour activer les tabeaux selon la taille de l'écran
+#page_mobile, #page_mobile
+{
+  display: none !important;
+}
+@media screen  and (min-width: 768px){
+  #page_mobile{
+    display: none !important;
+  }
+  #page_desktop{
+    display: block !important;
+  }
+}
+
+@media screen  and (max-width: 769px){
+  #page_mobile{
+    display: block !important;
+    .card{
+      padding: 2% !important;
+      margin: 2% !important;
+    }
+  }
+  #page_desktop{
+    display: none !important;
+  }
+}
