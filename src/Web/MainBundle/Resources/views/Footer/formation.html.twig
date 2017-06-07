@@ -300,32 +300,32 @@
 
             }
         }
+        .banner_img{
+            width: 100%;
+        }
+        .forme{
+            text-align: center;
+            color: yellowgreen;
+        }
+
+
+
     </style>
 {% endblock %}
 {% block header %}
     {{ parent() }}
 
-    <img class="banner_img" src="{{ asset('data/img/jobs.png') }}" alt="">
+    <img class="banner_img" src="{{ asset('data/img/forma.jpg') }}" alt="">
 {% endblock %}
 
 {% block  main %}
+    </br></br></br>
+    <div class="forme">
+    <p>
+    <h4>{%  trans from 'formation' %} formation.image{% endtrans %}</h4>
+   </p>
+    </div>
     <div class="row" id="main_formation">
-
-        <div class="row">
-
-
-            <div class="section">
-                <h5 style="color:#9acd32 " class="center-align"> {% trans from 'formation' %} formation.title {% endtrans %} </h5>
-                <br> <br>
-                <div class="img_div">
-                    <div class="img_text">{% trans from 'formation' %} formation.image {% endtrans %}</div>
-                </div>
-                <div class="img_di">
-                    <img class="im_f" width="100%"   src="{{ asset('data/img/form.jpg') }}" alt="">
-                </div>
-            </div>
-        </div>
-
         <div class="position_wrapper">
             <div class="position_title">
                 <div class="position">{%  trans from 'formation' %} formation.ccna {% endtrans %}</div>
@@ -401,6 +401,8 @@
 
         </div>
     </div>
+    </br>
+    </br>
 {% endblock %}
 
 {% block myjs %}
