@@ -5,6 +5,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\Config\Tests\Util\Validator;
 use Symfony\Component\Form\Form;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\HttpFoundation\Request;
 use Web\EntityBundle\Entity\FileProjet;
 use Web\EntityBundle\Entity\Files;
@@ -23,8 +24,6 @@ class ProjectController extends Controller
      */
     public function indexAction(Request $request)
     {
-
-
         $objet = new Projet();
         /** @var Form $form */
         $form = $this->get("form.factory")->create(ProjetType::class,$objet);
@@ -36,27 +35,29 @@ class ProjectController extends Controller
             $em = $this->getDoctrine()->getManager();
             $objet->setDate(new \DateTime());
             $file = new Files();
-            if ($objet->getFiles() != null) {
 
-                /** @var FileProjet $item */
-                foreach ($objet->getFiles() as $item){
-                    $file->file = $item->getFile();
+            $files = $request->files->all();
 
-                    $tab = explode('.',$item->getFile()->getClientOriginalName());
-                    $item->setName($item->getFile()->getClientOriginalName());
-                    $item->setExtfile($tab[count($tab)-1]);
-                    $item->setHashname(uniqid().'.'.$item->getExtfile());
-                    $item->setProject($objet);
-                    $file->add($file->initialpath."projet",  $item->getHashname());
+            if(sizeof($files) > 0)
+            {
+                /** @var UploadedFile $uploadedFile */
+                foreach ($files["file"] as $uploadedFile)
+                {
+                    $fileProjet = new FileProjet();
+                    $fileProjet->setFile($uploadedFile);
+
+                    $file->file = $fileProjet->getFile();
+
+                    $tab = explode('.',$fileProjet->getFile()->getClientOriginalName());
+                    $fileProjet->setName($fileProjet->getFile()->getClientOriginalName());
+                    $fileProjet->setExtfile($tab[count($tab)-1]);
+                    $fileProjet->setHashname(uniqid().'.'.$fileProjet->getExtfile());
+                    $fileProjet->setProject($objet);
+                    $file->add($file->initialpath."projet",  $fileProjet->getHashname());
                 }
-
-
             }
 
             $objet->setCode(uniqid())->setState(true)->setStatus("0")->getUser()->setRoles(['ROLE_USER'])->setEnabled(true)->setPassword("test")->setPleasantries("M.");
-
-
-
 
             /** @var User $user */
             $user =$em->getRepository('EntityBundle:User')->findOneByemail($objet->getUser()->getEmail());
