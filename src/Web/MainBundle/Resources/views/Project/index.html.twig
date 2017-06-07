@@ -271,16 +271,20 @@
                     cpt+=files[i].size;
                 }
                // console.log(cpt/781);
-                if((cpt/(1024*781))>0)
+                var taille  =(cpt/(1024*781));
+                if(taille>5)
                 {
-                    alert('la taille des fichiers ne peut etre superieur a 5Mo');
+                    alert("les fichiers téléchargés sont  trop grands ("+taille.toFixed(2)+"Mo).  la taille des fichiers accordée est  5Mo ");
                     ctrls.fileProject.val(null);
                 }
-                if(test==0)
-                {
-                    ctrls.result_selects.text(files.length);
-                    ctrls.result_count.text( (cpt/781).toFixed(2) +'Ko => ('+ (cpt/(1024*781)).toFixed(2) + 'Mo)');
+                else{
+                    if(test==0)
+                    {
+                        ctrls.result_selects.text(files.length);
+                        ctrls.result_count.text( (cpt/781).toFixed(2) +'Ko => ('+ (cpt/(1024*781)).toFixed(2) + 'Mo)');
+                    }
                 }
+
             });
 
 
