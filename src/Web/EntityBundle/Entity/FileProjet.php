@@ -138,7 +138,7 @@ class FileProjet
 
     protected $file;
 
-    public function setFile(UploadedFile $file)
+   /* public function setFile(UploadedFile $file)
     {
         $this->file= $file;
         if(  $this->file!=null){
@@ -146,7 +146,7 @@ class FileProjet
         }
 
         return $this;
-    }
+    }*/
 
     /**
      * @return UploadedFile

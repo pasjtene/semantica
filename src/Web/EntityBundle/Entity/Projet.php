@@ -27,7 +27,7 @@ class Projet extends BaseInterface
     /**
      * @Assert\Valid()
      * @ORM\OneToMany(targetEntity="Web\EntityBundle\Entity\FileProjet", mappedBy="project",cascade={"persist"})
-     * @ORM\JoinColumn(nullable=false, onDelete="CASCADE")
+     * @ORM\JoinColumn(nullable=true, onDelete="CASCADE")
      */
     private $files;
 
