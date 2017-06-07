@@ -133,13 +133,16 @@
                                     </div>
                                    #}
 
-                                    <div class="file-field input-field">
+                                    <div class="file-field input-field" id="uploadfile">
                                         <div class="btn">
                                             <span>File</span>
                                             <input type="file" multiple name="file[]" id="file-project" >
                                         </div>
                                         <div class="file-path-wrapper">
                                             <input class="file-path validate" type="text" placeholder="{% trans from 'project' %} project.file {% endtrans %}">
+                                        </div>
+                                        <div class="right-align">
+                                            <strong class="green-text">{% trans from 'project' %} project.file_count {% endtrans %} : <span id="result_count">0 </span>  </strong> &nbsp;&nbsp;&nbsp;&nbsp; {% trans from 'project' %} project.file_select {% endtrans %} : <span id="result_selects">0</span>
                                         </div>
                                     </div>
                                 </fieldset>
@@ -203,7 +206,10 @@
         var ctrls = {
             fileProject : $('#file-project'),
             iptFileProject : $('#input-file-project'),
-            btnProject : $('#btn-file-project')
+            btnProject : $('#btn-file-project'),
+            result_selects:  $('#result_selects'),
+            result_count: $('#result_count')
+
         };
 
         $(function(){
@@ -248,7 +254,15 @@
 
                 console.log(files);
 
-                ctrls.iptFileProject.val(files.length + " fichier(s) sélectionnés !");
+                ctrls.result_selects.text(files.length);
+
+                var cpt =0;
+                for(var i=0; i<files.length;i++)
+                {
+                    cpt+=files[i].size;
+                }
+               // console.log(cpt/781);
+                ctrls.result_count.text(cpt/781 +'Ko => ('+ (cpt/(1024*781)) + 'Mo)');
             });
 
 

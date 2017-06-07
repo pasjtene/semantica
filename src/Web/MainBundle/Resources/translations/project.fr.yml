@@ -1,2 +1,4 @@
 projecSt:
   file: Selectionez les fichiers (Taille max : 5Mo)
+  file_select: nombre de fichiers selectionné
+  file_count: Taille des fichiers

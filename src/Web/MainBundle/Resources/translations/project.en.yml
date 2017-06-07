@@ -1,2 +1,4 @@
 project:
   file: Select  files (max size  5Mo)
+  file_select: file(s) number(s)  select
+  file_count: count file(s)
