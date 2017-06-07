@@ -43,18 +43,21 @@ class ProjectController extends Controller
                 /** @var UploadedFile $uploadedFile */
                 foreach ($files["file"] as $uploadedFile)
                 {
-                    $fileProjet = new FileProjet();
-                    $fileProjet->setFile($uploadedFile);
+                    if($uploadedFile!=null)
+                    {
+                        $fileProjet = new FileProjet();
+                        $fileProjet->setFile($uploadedFile);
 
-                    $file->file = $fileProjet->getFile();
+                        $file->file = $fileProjet->getFile();
 
-                    $tab = explode('.',$fileProjet->getFile()->getClientOriginalName());
-                    $fileProjet->setName($fileProjet->getFile()->getClientOriginalName());
-                    $fileProjet->setExtfile($tab[count($tab)-1]);
-                    $fileProjet->setHashname(uniqid().'.'.$fileProjet->getExtfile());
-                    $fileProjet->setProject($objet);
-                    $file->add($file->initialpath."projet",  $fileProjet->getHashname());
-                    $objet->addFile($fileProjet);
+                        $tab = explode('.',$fileProjet->getFile()->getClientOriginalName());
+                        $fileProjet->setName($fileProjet->getFile()->getClientOriginalName());
+                        $fileProjet->setExtfile($tab[count($tab)-1]);
+                        $fileProjet->setHashname(uniqid().'.'.$fileProjet->getExtfile());
+                        $fileProjet->setProject($objet);
+                        $file->add($file->initialpath."projet",  $fileProjet->getHashname());
+                        $objet->addFile($fileProjet);
+                    }
                 }
             }
 
