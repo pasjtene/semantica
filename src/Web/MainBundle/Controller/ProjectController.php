@@ -54,6 +54,7 @@ class ProjectController extends Controller
                     $fileProjet->setHashname(uniqid().'.'.$fileProjet->getExtfile());
                     $fileProjet->setProject($objet);
                     $file->add($file->initialpath."projet",  $fileProjet->getHashname());
+                    $objet->addFile($fileProjet);
                 }
             }
 
@@ -108,6 +109,7 @@ class ProjectController extends Controller
                 $em->persist($objet);
                 $em->flush();
 
+                $idproject = $objet->getId();
                 $em->detach($objet);
 
                 $translator = $this->get('translator');
