@@ -2,43 +2,110 @@
 <a href="#md-new-planning" class="waves-effect waves-light btn" id="btn-new-planning">{% trans from 'forms' %} form.planning.new {% endtrans %}</a>
 <span class="hide" id="msg-pla-cnf">{% trans from 'admin' %} planning.msg_delete {% endtrans %}</span>
 <span class="hide" id="msg-tas-cnf">{% trans from 'admin' %} task.msg_delete {% endtrans %}</span>
-<table class="bordered highlight centered responsive-table">
-    <thead>
-    <tr>
-        <th>{% trans from 'forms' %} form.planning.startdate {% endtrans %}</th>
-        <th>{% trans from 'forms' %} form.planning.startdate {% endtrans %}</th>
-        <th>{% trans from 'forms' %} form.Task.tasks {% endtrans %}</th>
-        <th>#</th>
-        <th>#</th>
-        <th>#</th>
-    </tr>
-    </thead>
 
-    <tbody>
-    {% if items!=null %}
-        {% for item in items %}
-           <tr>
-               <td>{{ item.startdate|date('d-m-y') }}</td>
-               <td>{{ item.enddate|date('d-m-y') }}</td>
-               <td><a href="#" class="task-count" data-url="{{ path('admin_projet_get_planning', {projectid: id, id: item.id}) }}">{{ item.tasks|length }}</a></td>
-               <td>
-                   <a href="#" data-pid="{{ item.id }}" class="btn btn-flat blue white-text btn-new-task">
-                       {% trans from 'forms' %} form.Task.new {% endtrans %}
-                   </a>
-               </td>
-               <td><a data-url="{{ path('admin_projet_delete_planning', {projectid: id, id:item.id}) }}" class="delete-planning" href="#"><i class="material-icons">delete</i></a></td>
-               <td><a href="#" data-id="{{ item.id }}" data-sd="{{ item.startdate|date('d M, Y') }}" data-ed="{{ item.enddate|date('d M, Y') }}" class="edit-planning"><i class="material-icons">edit</i></a></td>
-           </tr>
-        {% endfor %}
-    {% else %}
+
+<div class="row" id="page_mobile">
+    <div class="col s12">
+        <div class="row">
+            <div class="col s12">
+                {% if items!=null %}
+                {% else %}
+                    <h4>  {% trans from 'forms' %} form.planning.empty  {% endtrans %} </h4>
+                {% endif %}
+            </div>
+        </div>
+        <div class="col s12">
+            <div class="row">
+                <div class="col s12">
+                    <ul class="collapsible" data-collapsible="accordion">
+
+                        {% for item in items %}
+                            <li>
+                                <div class="collapsible-header grey lighten-3"><i class="material-icons">book</i> planning {{ loop.index }}</div>
+                                <div class="collapsible-body">
+                                    <div class="row">
+                                        <div class="col s12">
+                                            <div class="card">
+
+
+                                                <section>
+                                                    <strong>{% trans from 'forms' %} form.planning.startdate {% endtrans %}</strong>
+                                                    <br>
+                                                    {{ item.startdate|date('d-m-y h:m:s') }}
+                                                </section>
+                                                <div class="divider"></div>
+
+                                                <section>
+                                                    <strong>{% trans from 'forms' %} form.planning.enddate {% endtrans %}</strong>
+                                                    <br>
+                                                    {{ item.enddate|date('d-m-y h:m:s') }}
+                                                </section>
+                                                <div class="divider"></div>
+                                                <section>
+                                                    <strong>{% trans from 'forms' %} form.planning.tasknb {% endtrans %}</strong>
+                                                    <br>
+                                                    <a href="#" class="task-count" data-url="{{ path('admin_projet_get_planning', {projectid: id, id: item.id}) }}">{{ item.tasks|length }}</a>
+                                                </section>
+                                                <br>
+                                                <a href="#" data-pid="{{ item.id }}" class="btn btn-flat blue white-text btn-new-task">
+                                                    {% trans from 'forms' %} form.Task.new {% endtrans %}
+                                                </a>
+                                                <a data-url="{{ path('admin_projet_delete_planning', {projectid: id, id:item.id}) }}" class="delete-planning btn btn-flat  red-text" href="#">
+                                                    <i class="material-icons">delete</i>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="col s12" id="page_desktop">
+    <table class="bordered highlight centered responsive-table">
+        <thead>
         <tr>
-            <td colspan="6">
-                <h6> {% trans from 'forms' %} form.planning.empty {% endtrans %}</h6>
-            </td>
+            <th>{% trans from 'forms' %} form.planning.startdate {% endtrans %}</th>
+            <th>{% trans from 'forms' %} form.planning.startdate {% endtrans %}</th>
+            <th>{% trans from 'forms' %} form.Task.tasks {% endtrans %}</th>
+            <th>#</th>
+            <th>#</th>
+            <th>#</th>
         </tr>
-    {% endif %}
-    </tbody>
-</table>
+        </thead>
+
+        <tbody>
+        {% if items!=null %}
+            {% for item in items %}
+                <tr>
+                    <td>{{ item.startdate|date('d-m-y') }}</td>
+                    <td>{{ item.enddate|date('d-m-y') }}</td>
+                    <td><a href="#" class="task-count" data-url="{{ path('admin_projet_get_planning', {projectid: id, id: item.id}) }}">{{ item.tasks|length }}</a></td>
+                    <td>
+                        <a href="#" data-pid="{{ item.id }}" class="btn btn-flat blue white-text btn-new-task">
+                            {% trans from 'forms' %} form.Task.new {% endtrans %}
+                        </a>
+                    </td>
+                    <td><a data-url="{{ path('admin_projet_delete_planning', {projectid: id, id:item.id}) }}" class="delete-planning" href="#"><i class="material-icons">delete</i></a></td>
+                    <td><a href="#" data-id="{{ item.id }}" data-sd="{{ item.startdate|date('d M, Y') }}" data-ed="{{ item.enddate|date('d M, Y') }}" class="edit-planning"><i class="material-icons">edit</i></a></td>
+                </tr>
+            {% endfor %}
+        {% else %}
+            <tr>
+                <td colspan="6">
+                    <h6> {% trans from 'forms' %} form.planning.empty {% endtrans %}</h6>
+                </td>
+            </tr>
+        {% endif %}
+        </tbody>
+    </table>
+</div>
 
 <div id="md-new-planning" class="modal modal-fixed-footer">
     <form action="{{ path('admin_projet_new_planning', {id:id}) }}" method="post">
