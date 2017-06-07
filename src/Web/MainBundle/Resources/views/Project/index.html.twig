@@ -142,7 +142,10 @@
                                             <input class="file-path validate" type="text" placeholder="{% trans from 'project' %} project.file {% endtrans %}">
                                         </div>
                                         <div class="right-align">
-                                            <strong class="green-text">{% trans from 'project' %} project.file_count {% endtrans %} : <span id="result_count">0 </span>  </strong> &nbsp;&nbsp;&nbsp;&nbsp; {% trans from 'project' %} project.file_select {% endtrans %} : <span id="result_selects">0</span>
+                                            <strong id="codeError1" style="display: none" class="green-text">{% trans from 'project' %} project.file_count {% endtrans %} : <span id="result_count">0 </span>  </strong> &nbsp;&nbsp;&nbsp;&nbsp;
+                                            <span id="codeError2" style="display: none">
+                                                {% trans from 'project' %} project.file_select {% endtrans %} : <span id="result_selects">0</span>
+                                            </span>
                                         </div>
                                     </div>
                                 </fieldset>
@@ -198,6 +201,10 @@
             </div>
         </div>
     </div>
+    <input type="hidden" id="error1" value="{% trans from 'project' %}project.error1 {% endtrans %}">
+    <input type="hidden" id="error2" value="{% trans from 'project' %}project.error2 {% endtrans %}">
+    <input type="hidden" id="error3" value="{% trans from 'project' %}project.error3 {% endtrans %}">
+    <input type="hidden" id="error4" value="{% trans from 'project' %}project.error4 {% endtrans %}">
 {% endblock %}
 
 {% block myjs %}
@@ -208,7 +215,13 @@
             iptFileProject : $('#input-file-project'),
             btnProject : $('#btn-file-project'),
             result_selects:  $('#result_selects'),
-            result_count: $('#result_count')
+            result_count: $('#result_count'),
+            error1: $('#error1'),
+            error2: $('#error2'),
+            error3: $('#error3'),
+            error4: $('#error4'),
+            codeError1 : $('#codeError1'),
+            codeError2 : $('#codeError2')
 
         };
 
@@ -253,7 +266,8 @@
                 var files = e.target.files;
 
                 console.log(files);
-
+                ctrls.codeError1.hide();
+                ctrls.codeError2.hide();
                 ctrls.result_selects.text(0);
                 ctrls.result_count.text(0 + "Mo");
 
@@ -264,7 +278,7 @@
                     if(files[i].type!="application/pdf" && files[i].type!="application/vnd.openxmlformats-officedocument.wordprocessingml.document")
                     {
                         test=-1;
-                        alert('Le type de fichier '+ files[i].type+"' n'a pas été géré vous devez choisir les fichiers word ou pdf");
+                        alert(ctrls.error1.val()+ files[i].type+ +"  "+ctrls.error2.val());
                         ctrls.fileProject.val(null);
                         break;
                     }
@@ -274,12 +288,14 @@
                 var taille  =(cpt/(1024*781));
                 if(taille>5)
                 {
-                    alert("les fichiers téléchargés sont  trop grands ("+taille.toFixed(2)+"Mo).  la taille des fichiers accordée est  5Mo ");
+                    alert(ctrls.error3.val()+taille.toFixed(2)+ ctrls.error4.val());
                     ctrls.fileProject.val(null);
                 }
                 else{
                     if(test==0)
                     {
+                        ctrls.codeError1.slideDown();
+                        ctrls.codeError2.slideDown();
                         ctrls.result_selects.text(files.length);
                         ctrls.result_count.text( (cpt/781).toFixed(2) +'Ko => ('+ (cpt/(1024*781)).toFixed(2) + 'Mo)');
                     }
