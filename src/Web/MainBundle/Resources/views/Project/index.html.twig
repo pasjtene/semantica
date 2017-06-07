@@ -50,6 +50,13 @@
             color: white;
         }
 
+        .newerror{
+            background-color: red;
+            padding: 4%;
+            text-align: center;
+            color: white;
+        }
+
     </style>
 {% endblock %}
 {% block header %}
@@ -58,6 +65,16 @@
 {% endblock %}
 {% block  main %}
     <div class="row" id="main_project">
+        {% if error1 is defined %}
+          <div class="col s12 newerror">
+              {% trans from 'project' %} project.error3  {% endtrans %} {{ error1 }}  {% trans from 'project' %} project.error4  {% endtrans %}
+          </div>
+        {% endif %}
+        {% if error2 is defined %}
+            <div class="col s12 newerror">
+                {% trans from 'project' %} project.error1  {% endtrans %} {{ error2 }}  {% trans from 'project' %} project.error2  {% endtrans %}
+            </div>
+        {% endif %}
         {% if message is defined %}
             <div id="notification" class="green white-text" style=" position: absolute; top: 10%; left: 45%; z-index: 99999999999;  padding: 2%; font-weight: bold;">
                 {% trans from 'forms' %} form.project.save  {% endtrans %}
@@ -275,7 +292,7 @@
                 var  test =0;
                 for(var i=0; i<files.length;i++)
                 {
-                    if(files[i].type!="application/pdf" && files[i].type!="application/vnd.openxmlformats-officedocument.wordprocessingml.document")
+                    if(files[i].type!="application/pdf" && files[i].type!="application/vnd.openxmlformats-officedocument.wordprocessingml.document" && files[i].type!="image/jpg" && files[i].type!="image/png" && files[i].type!="image/jpeg" && files[i].type!="image/gif" && files[i].type!="image/bnp")
                     {
                         test=-1;
                         alert(ctrls.error1.val()+ files[i].type+ +"  "+ctrls.error2.val());
