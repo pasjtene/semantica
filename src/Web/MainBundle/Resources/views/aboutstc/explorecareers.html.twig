@@ -229,33 +229,29 @@
             .banner_img {
                 display:none;
             }
-            .elements{
-                display: none;
-                font-family: 'algerian';
-                font-size: 11.5em;
-                font-weight: bold;
-                position: relative;
-                top: 80px;
-                left: 20px;
-                background-color: rgba(0,0,0,0.1) !important;
-                text-align: center;
-                padding-bottom: 6px;
-                padding-top: 6px;
-                width: 100%;
-                height: 300px;
-            }
-            .hover_images{
-                text-align: right;
-                position: relative;
-                left: 158px;
-                top: 46px;
-                z-index: 9;
-                background-color:  #eeeeee;
-                width: 62%;
-                padding: 4%;
-                opacity: 0.8;
-            }
+
+
         }
+
+        .hover_images{
+            text-align: right;
+            position: relative;
+            left: 158px;
+            top: 46px;
+            z-index: 9;
+            background-color:  #e9f3eb;
+            width: 62%;
+            padding: 4%;
+            opacity: 0.8;
+        }
+
+        .elements
+        {
+            background: url('{{ asset('data/img/eplot.jpg') }}') no-repeat;
+            max-width: 100%;
+            height: 270px;
+        }
+
     </style>
 {% endblock %}
 {% block header %}
@@ -274,9 +270,9 @@
                 <h5 class="center-align"> {% trans from 'aboutstc' %} explorecareers.title {% endtrans %} </h5>
                 <br> <br>
                 <div class="col s12 m6">
-                    <div  div class="elements" style="background: url('{{ asset('data/img/explot.jpg') }}') no-repeat; ">
+                    <div  div class="elements">
                         <div class="hover_images">
-                            {% trans from 'aboutstc' %}careers.domaine2  {% endtrans %}
+                            <h6>{% trans from 'aboutstc' %}careers.title7  {% endtrans %}</h6>
                         </div>
                     </div>
                 </div>
