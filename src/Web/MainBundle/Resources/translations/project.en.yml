@@ -1,7 +1,7 @@
 project:
   file: Select  files (max size  5Mo and require word or pdf document)
-  file_select: file(s) number(s)  select
-  file_count: count file(s)
+  file_select: file(s) selected
+  file_count: Selected file(s) size
   error1: The file type
   error2:  Has not been managed. you must choose the word or pdf files
   error3: Downloaded files are too large (
