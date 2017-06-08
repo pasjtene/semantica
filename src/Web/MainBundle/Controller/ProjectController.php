@@ -55,7 +55,7 @@ class ProjectController extends Controller
                         }
                         $fileProjet = new FileProjet();
                         $fileProjet->setFile($uploadedFile);
-                        $tab = explode('.', $fileProjet->getClientOriginalName());
+                        $tab = explode('.', $uploadedFile->getClientOriginalName());
                         $ext = $tab[count($tab) - 1];
                         if (!preg_match("#pdf|docx|doc|png|jpg|gif|jpeg|bnp#", strtolower($ext))) {
                             $errors['error2'] = $ext;
