@@ -14,6 +14,8 @@ use Web\EntityBundle\Entity\User;
 use Web\EntityBundle\Entity\Visitor;
 use Web\EntityBundle\Form\ProjetType;
 
+define('FILE_SIZE_MAX', 5*1024*1024);
+
 /**
  * @Route("/project")
  */
@@ -38,28 +40,55 @@ class ProjectController extends Controller
 
             $files = $request->files->all();
 
-            if(sizeof($files) > 0)
+            $errors = null;
+            if (sizeof($files) > 0)
             {
                 /** @var UploadedFile $uploadedFile */
                 foreach ($files["file"] as $uploadedFile)
                 {
-                    if($uploadedFile!=null)
+                    if ($uploadedFile != null)
                     {
+                        if($uploadedFile->getClientSize() > FILE_SIZE_MAX)
+                        {
+                            $errors['error1'] = $uploadedFile->getClientSize();
+                            break;
+                        }
                         $fileProjet = new FileProjet();
                         $fileProjet->setFile($uploadedFile);
+                        $tab = explode('.', $fileProjet->getClientOriginalName());
+                        $ext = $tab[count($tab) - 1];
+                        if (!preg_match("#pdf|docx|doc|png|jpg|gif|jpeg|bnp#", strtolower($ext))) {
+                            $errors['error2'] = $ext;
+                            break;
+                        }
+                    }
+                }
 
-                        $file->file = $fileProjet->getFile();
+                if ($errors == null) {
 
-                        $tab = explode('.',$fileProjet->getFile()->getClientOriginalName());
-                        $fileProjet->setName($fileProjet->getFile()->getClientOriginalName());
-                        $fileProjet->setExtfile($tab[count($tab)-1]);
-                        $fileProjet->setHashname(uniqid().'.'.$fileProjet->getExtfile());
-                        $fileProjet->setProject($objet);
-                        $file->add($file->initialpath."projet",  $fileProjet->getHashname());
-                        $objet->addFile($fileProjet);
+                    /** @var UploadedFile $uploadedFile */
+                    foreach ($files["file"] as $uploadedFile) {
+                        if ($uploadedFile != null) {
+                            $fileProjet = new FileProjet();
+                            $fileProjet->setFile($uploadedFile);
+
+                            $file->file = $fileProjet->getFile();
+
+                            $tab = explode('.', $fileProjet->getFile()->getClientOriginalName());
+                            $fileProjet->setName($fileProjet->getFile()->getClientOriginalName());
+                            $fileProjet->setExtfile($tab[count($tab) - 1]);
+                            $fileProjet->setHashname(uniqid() . '.' . $fileProjet->getExtfile());
+                            $fileProjet->setProject($objet);
+                            $file->add($file->initialpath . "projet", $fileProjet->getHashname());
+                            $objet->addFile($fileProjet);
+                        }
                     }
                 }
             }
+
+
+
+
 
             $objet->setCode(uniqid())->setState(true)->setStatus("0")->getUser()->setRoles(['ROLE_USER'])->setEnabled(true)->setPassword("test")->setPleasantries("M.");
 
@@ -104,7 +133,7 @@ class ProjectController extends Controller
             /** @var Validator $validator */
             $validator = $this->get('validator');
             $error = $validator->validate($objet);
-            if(count($error) == 0)
+            if(count($error) == 0 and $errors==null)
             {
 
                 $email =$objet->getUser()==null ? $objet->getVisitor()->getEmail(): $objet->getUser()->getEmail();
@@ -132,7 +161,9 @@ class ProjectController extends Controller
             }
             else{
                 $array['error'] = $error;
-               // var_dump($error);
+                $array['error1'] = $errors['error1'];
+                $array['error2'] = $errors['error2'];
+                // var_dump($error);
             }
 
         }
