@@ -1,4 +1,4 @@
-projecSt:
+project:
   file: Selectionez les fichiers (Taille max  5Mo.  Fichier accordé word , pdf ou  image (jpg, png, gif, jpeg, bnp))
   file_select: nombre de fichiers selectionné
   file_count: Taille des fichiers
