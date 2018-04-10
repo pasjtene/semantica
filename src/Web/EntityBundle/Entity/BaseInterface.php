@@ -9,7 +9,7 @@ use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
  * BaseInterface
  * @ORM\InheritanceType("JOINED")
  * @ORM\DiscriminatorColumn(name="discriminator", type="string")
- * @ORM\DiscriminatorMap({"Projet" = "Projet", "Commit" = "Commit", "Reply" = "Reply", "Comment" = "Comment" , "Suggestion" = "Suggestion", "Task" = "Task"})
+ * @ORM\DiscriminatorMap({"Projet" = "Projet", "Commit" = "Commit","Comment" = "Comment" , "Suggestion" = "Suggestion", "Task" = "Task"})
  * @ORM\Table(name="base_interface")
  * @ORM\Entity(repositoryClass="Web\EntityBundle\Repository\BaseInterfaceRepository")
  */
@@ -30,6 +30,21 @@ abstract class BaseInterface
      * @ORM\Column(name="description", type="text")
      */
     protected $description;
+
+    public function getValue($string, $length){
+        $value =null;
+        $tab = str_split($string);
+        for($i=0;$i<strlen($string);$i++)
+        {
+            $value .=$tab[$i];
+            if($i==$length-1)
+            {
+                $value .="[...]";
+                return $value;
+            }
+        }
+        return $value;
+    }
 
     /**
      * @var \DateTime

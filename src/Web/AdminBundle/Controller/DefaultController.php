@@ -6,6 +6,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Web\EntityBundle\Entity\Contact;
 use Web\EntityBundle\Entity\Customer;
 use Web\EntityBundle\Entity\Projet;
@@ -19,7 +20,7 @@ class DefaultController extends Controller
     public function indexAction()
     {
         $em = $this->getDoctrine()->getManager();
-        $list = $em->getRepository("EntityBundle:Projet")->findBy([],['id'=>'DESC','time'=>'DESC']);
+        $list = $em->getRepository("EntityBundle:Projet")->findBy([],['id'=>'DESC','date'=>'DESC']);
         $array['list'] = $list;
         return $this->render('AdminBundle:Default:index.html.twig',$array);
     }
@@ -39,7 +40,7 @@ class DefaultController extends Controller
     public function contactAction(Request $request)
     {
         $em = $this->getDoctrine()->getManager();
-        $list = $em->getRepository("EntityBundle:Contact")->findBy([],['id'=>'DESC']);
+        $list = $em->getRepository("EntityBundle:Suggestion")->findBy([],['id'=>'DESC']);
         if($request->isMethod("POST"))
         {
             $val = $request->request;
@@ -83,23 +84,6 @@ class DefaultController extends Controller
     }
 
     /**
-     * @Route("/customer", name="admin_customer")
-     */
-    public function customerAction(Request $request)
-    {
-        $em = $this->getDoctrine()->getManager();
-        $list = $em->getRepository("EntityBundle:Customer")->findBy([],['id'=>'DESC']);
-        $array['list'] = $list;
-        if($request->query->get("message")!=null){
-            $array['message'] = "test";
-        }
-        return $this->render('AdminBundle:Default:customer.html.twig',$array);
-    }
-
-
-
-
-    /**
      * @Route("/customer/send/{id}", name="admin_sendcustomer", requirements={"id": "\d+"})
      */
     public function sendMailcustomerAction(Request $request,$id)
@@ -125,8 +109,6 @@ class DefaultController extends Controller
         return $this->redirect($this->generateUrl('admin_customer',["message"=>"test"]));
     }
 
-
-
     public  function sentMail($to, $from, $routeview, $param,$subjet)
     {
         // ->setReplyTo('xxx@xxx.xxx')
@@ -149,8 +131,6 @@ class DefaultController extends Controller
     {
         return $this->render('AdminBundle:Security:login.html.twig');
     }
-
-
 
     /**
      * @Route("/download/{id}", name="admin_download", requirements={"id": "\d+"})
@@ -190,4 +170,5 @@ class DefaultController extends Controller
 
         return $response;
     }
+
 }

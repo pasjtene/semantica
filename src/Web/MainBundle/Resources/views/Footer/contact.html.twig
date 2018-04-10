@@ -1,0 +1,243 @@
+{% extends 'MainBundle::layout.html.twig' %}
+{% block meta %}
+    <meta name = "{% trans from 'refer' %} home.title {% endtrans %}" >
+    <meta name = "keywords" content = "{% trans from 'refer' %} home.description {% endtrans %}" >
+{% endblock %}
+{% block title %}
+    Semantica Technologies Corporation - STC / Contact
+{% endblock %}
+
+{% block mycss %}
+    <style>
+        body {
+            font-family: Proxima,"Helvetica Neue",Helvetica,Arial,"Lucida Grande",sans-serif;
+            font-size: 16px;
+            font-weight: 400;
+            line-height: 1.375;
+            color: #4D4F53;
+            background-color: #FFF;
+            position: relative;
+        }
+        th {
+            font-weight: bold;
+            font-size: 150%;
+        }
+
+        .page_title {
+            margin-bottom: 5px;
+        }
+        .img_wrap {
+            position: relative;
+            border: 2px solid green;
+            width: 100%;
+            height: 400px;
+
+        }
+        .img_text {
+            position: absolute;
+            font-size: 55px;
+            font-weight: bold;
+            color:#5cb811;
+            /*top: 790px;
+            margin-top: 760px;*/
+            margin-top: 35%;
+            margin-left: 10%;
+            z-index: 10;
+            display: inline-block;
+        }
+
+        .img_f {
+
+            /* margin-top: 10px !important;*/
+            position: absolute;
+            top:3px;
+
+        }
+        .img_div {
+            padding: 1px;
+            position: relative;
+            top: 20px;
+            display: flex;
+            height: 50%;
+
+        }
+
+        .img_di {
+            visibility: hidden;
+            padding: 1px;
+            display: none;
+            top: 20px;
+            display: block;
+        }
+
+        /*Media query for iPhone 5, 6, 6+ portrait*/
+        @media only screen
+        and (min-device-width : 320px) /* or 213.4375em or 3in or 9cm */
+        and (max-device-width : 736px) /* or 41.6875em*/
+        and (orientation : portrait)
+        {
+
+            .page_title {
+                margin-bottom: 5px;
+            }
+
+            .img_text {
+                font-size: 20px;
+                color:#5cb811;
+                margin-top:46%;
+                color:orange;
+
+            }
+
+            .img_div {
+                top: 5px;
+
+            }
+
+            .banner_img {
+                display:none;
+            }
+
+        }
+
+        /*Media query for iPhone 5, 6, 6+ landscape*/
+        @media only screen
+        and (min-device-width : 320px)
+        and (max-device-width : 736px)
+        and (orientation : landscape) {
+
+            .page_title {
+                margin-bottom: 3px;
+            }
+
+            .img_text {
+                font-size: 30px;
+                font-weight: bold;
+                color: #5cb811;
+                color: orange;
+                top: 40%;
+            }
+
+            .banner_img {
+                display: none;
+            }
+
+            .img_div {
+                top: 5px;
+
+            }
+        }
+
+    </style>
+{% endblock %}
+{% block header %}
+    {{ parent() }}
+    {% include 'MainBundle:Inc:slide.html.twig' %}
+{% endblock %}
+
+{% block  main %}
+    <div class="row" id="main_contact">
+
+        <div class="row">
+
+
+            <div class="section">
+                <h5 class="center-align" style="color: #9acd32"><strong>{% trans from 'contact' %} contact.title {% endtrans %}</strong></h5>
+                <br> <br>
+                <div class="img_div">
+                    <div class="img_text">{% trans from 'contact' %} contact.image {% endtrans %}</div>
+                    <img class="img_f" width="100%"   src="{{ asset('data/img/contact.jpg') }}" alt="">
+                </div>
+
+                <div class="img_di">
+                    <img class="im_f" width="100%"   src="{{ asset('data/img/contact.jpg') }}" alt="">
+                </div>
+                <br><br>
+                    <table class="striped">
+                        <thead>
+                        <th> {% trans from 'contact' %} contact.cameroun {% endtrans %} </th>
+
+                        </thead>
+                        <tbody>
+                        <tr class="even">
+                            <td>
+                                <b>{% trans from 'contact' %} contact.ville1 {% endtrans %}</b><br>
+                                {% trans from 'contact' %} contact.ville1_content {% endtrans %}<br>
+                                <b>{% trans from 'contact' %} contact.ville2 {% endtrans %}</b><br>
+                                {% trans from 'contact' %} contact.ville2_content {% endtrans %}
+                                <br><br><b></b>
+
+
+
+                            </td>
+                            <td>
+                                {% trans from 'contact' %} contact.cameroun_phone {% endtrans %} <br>
+                               {% trans from 'contact' %} contact.Tall-Free {% endtrans %} <br>
+                                {% trans from 'contact' %} contact.Fax {% endtrans %} <br>
+                                <a href="http://camerounstc@yahoo.fr"><u>Email</u></a>
+
+
+                            </td>
+                            <td>
+                                {% trans from 'contact' %} contact.support {% endtrans %} <br>
+                               <a href="#">{% trans from 'contact' %} contact.submit {% endtrans %} </a>
+                                <br><br>
+
+                            </td>
+
+                        </tr>
+
+                        </tbody>
+                        <thead>
+
+                        <th> {% trans from 'contact' %} contact.etranger {% endtrans %} </th>
+
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td>
+
+                                <b>{% trans from 'contact' %} contact.london {% endtrans %}</b><br>
+                                {% trans from 'contact' %} contact.london_content {% endtrans %}<br>
+                                <b>{% trans from 'contact' %} contact.paris {% endtrans %}</b><br>
+                                {% trans from 'contact' %} contact.paris_content {% endtrans %}
+                                <br><br><b></b>
+
+
+
+                            </td>
+                            <td >
+                                {% trans from 'contact' %} contact.london_phone {% endtrans %}<br>
+                                {% trans from 'contact' %} contact.Tall-Free {% endtrans %} <br>
+                                {% trans from 'contact' %} contact.Fax {% endtrans %} <br>
+                                <a href="http://camerounstc@yahoo.fr"><u>Email</u></a>
+
+
+                            </td>
+                            <td >
+                                {% trans from 'contact' %} contact.support {% endtrans %}<br>
+                                <a href="#">{% trans from 'contact' %} contact.submit {% endtrans %} </a>
+                                <br><br>
+
+                            </td>
+
+                        </tr>
+
+                        </tbody>
+
+
+
+
+                    </table>
+
+
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block myjs %}
+    <script>
+
+    </script>
+{% endblock %}

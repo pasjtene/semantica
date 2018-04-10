@@ -1,28 +1,128 @@
 {% extends 'AdminBundle::layout.html.twig' %}
 {% block meta %}
-    <meta name = "{% trans from 'refer' %} home.title {% endtrans %}" >
-    <meta name = "keywords" content = "{% trans from 'refer' %} home.description {% endtrans %}" >
+    <meta name = "{% trans from 'refer' %} project.title {% endtrans %}" >
+    <meta name = "keywords" content = "{% trans from 'refer' %} project.description {% endtrans %}" >
 {% endblock %}
 {% block title %}
-    Semantica Technologies Corporation - STC - Admin
+    Semantica Technologies Corporation - STC
 {% endblock %}
 
 {% block mycss %}
     <style>
+        body{
+            overflow: hidden;
+        }
+        .error{
+            color:red;
+        }
+        #main_project .btn.delete {
+            background-color: red !important;
+        }
+        #main_project .btn.ajout {
+            background-color: #0083c0 !important;
+        }
+        .card{
+            padding: 2%;
+        }
+
+        input[type='file']{
+            background-color: #eeeeee !important;
+            width: 100% !important;
+        }
+        #zone_file{
+            max-height: 400px !important;
+            overflow-y: auto;
+        }
+        #zone_file label{
+            display: none;
+        }
 
     </style>
 {% endblock %}
 {% block header %}
     {{ parent() }}
-
+    {% include 'MainBundle:Inc:slide.html.twig' %}
 {% endblock %}
 {% block  main %}
-    <div class="row" id="main_index">
+    <div class="row" id="main_project">
+        {% if message is defined %}
+            <div id="notification" class="green white-text" style=" position: absolute; top: 10%; left: 45%; z-index: 99999999999;  padding: 2%; font-weight: bold;">
+                {% trans from 'forms' %} form.project.save  {% endtrans %}
+            </div>
+        {% endif %}
+        <div class="col s12">
+            <br>
+            <div class="card">
+                <form method="post" action="" enctype="multipart/form-data">
+                    <div class="row">
+                        <div class="row">
+                            <div class="col s12">
+                                <div class="input-field col s12 m6 ">
+                                    <select id="code" name="code" required>
+                                        <option value="" {% if objet is defined and objet.status=="" %} selected {% endif %} >{% trans from 'private' %} project.choose {% endtrans %}</option>
+                                        <option value="" {% if objet is defined and objet.status=="" %} selected {% endif %} >{% trans from 'private' %} project.choose {% endtrans %}</option>
+                                        <option value="0" {% if objet is defined and objet.status=="0" %} selected {% endif %}> {% trans from 'private' %} project.notvalid  {% endtrans %}</option>
+                                        <option value="1" {% if objet is defined and objet.status=="1" %} selected {% endif %}> {% trans from 'private' %} project.accepted  {% endtrans %}</option>
+                                        <option value="2" {% if objet is defined and objet.status=="2" %} selected {% endif %}> {% trans from 'private' %} project.progress  {% endtrans %}</option>
+                                        <option value="3" {% if objet is defined and objet.status=="3" %} selected {% endif %}> {% trans from 'private' %} project.finish  {% endtrans %}</option>
+                                        <option value="4" {% if objet is defined and objet.status=="4" %} selected {% endif %}> {% trans from 'private' %} project.break  {% endtrans %}</option>
+                                        <option value="5" {% if objet is defined and objet.status=="5" %} selected {% endif %}> {% trans from 'private' %} project.run  {% endtrans %}</option>
+                                    </select>
+                                </div>
+                                <div class="input-field col s12 m6 ">
+                                    {{ form_widget(form.title,{'attr':{'class':''}}) }}
+                                    {{ form_label(form.title) }}
+                                    <div class="error"  >{{ form_errors(form.title) }}</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col s12">
+                                <div class="input-field col s12">
+                                    <i class="material-icons prefix">mode_edit</i>
+                                    {{ form_widget(form.comment,{'attr':{'class':'materialize-textarea'}}) }}
+                                    {{ form_label(form.comment) }}
+                                    <div class="error"  >{{ form_errors(form.comment) }}</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col s12">
+                                <div class="input-field col s12">
+                                    <i class="material-icons prefix">mode_edit</i>
+                                    {{ form_widget(form.description,{'attr':{'class':'materialize-textarea'}}) }}
+                                    {{ form_label(form.description) }}
+                                    <div class="error"  >{{ form_errors(form.description) }}</div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="row">
+                        <div class="col s12 center center-align">
+                            <button class="waves-effect waves-light btn" type="submit">{% trans from 'forms' %} form.project.submit {% endtrans %} </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
     </div>
 {% endblock %}
 
 {% block myjs %}
     <script>
+        $(function(){
+            {% if message is defined  %}
+            $('#notification').slideDown(100);
+            t = setInterval(function(){
+                $('#notification').slideUp();
+                clearInterval(t);
+            },4000);
+            {% endif %}
 
+        });
     </script>
+
 {% endblock %}

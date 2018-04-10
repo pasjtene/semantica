@@ -1,10 +1,16 @@
-<a id="mobile_help" style="display: none;"><img src="{{ asset('data/img/menu.svg') }}" alt=""></a>
+{# <a id="mobile_help" style="display: none;"><img src="{{ asset('data/img/menu.svg') }}" alt=""></a> #}
 <div id="nav_menu">
     <header >
-        {% include 'MainBundle:Inc:nav-mobile.html.twig' %}
+
+       {#
+            &#9776;
+             {% include 'MainBundle:Inc:nav-mobile.html.twig' %}
+       #}
+
     </header>
     <div class="xs-menu-cont" id="menu_small">
         <a id="menutoggle"><img src="{{ asset('data/img/menu.svg') }}" alt=""></a>
+
         <nav class="xs-menu displaynone" >
             <ul>
                 <li><a href="{{ path('main_homepage') }}">{% trans from 'nav' %} nav.home {% endtrans %}</a></li>
@@ -12,17 +18,19 @@
                 <li><a href="{{ path('main_newproject') }}">{% trans from 'nav' %} nav.newprojet {% endtrans %}</a></li>
                 <li><a href="">{% trans from 'nav' %} nav.services {% endtrans %}</a></li>
                 <li><a href="">{% trans from 'nav' %} nav.about {% endtrans %}</a></li>
+                <li><a href="{{ path('app_locale') }}">{% trans from 'nav' %} nav.language2 {% endtrans %}</a></li>
+                <li><a href="{{ path('app_locale') }}">{% trans from 'nav' %} nav.language3 {% endtrans %}</a></li>
                 <li><a href="{{ path('app_locale') }}">{% trans from 'nav' %} nav.language {% endtrans %}</a></li>
             </ul>
         </nav>
     </div>
     <nav class="menu" id="menu_big">
         <ul>
-            <li><a href="{{ path('main_homepage') }}">{% trans from 'nav' %} nav.home {% endtrans %}</a></li>
-            <li><a href="{{ path('main_industries') }}">{% trans from 'nav' %} nav.industries {% endtrans %}</a></li>
-            <li><a href="{{ path('main_newproject') }}">{% trans from 'nav' %} nav.newprojet {% endtrans %}</a></li>
+            <li><a class="{% if index is defined and index==1 %} active_menu {% endif %}" href="{{ path('main_homepage') }}">{% trans from 'nav' %} nav.home {% endtrans %}</a></li>
+            <li><a class="{% if index is defined and index==2 %} active_menu {% endif %}" href="{{ path('main_industries') }}">{% trans from 'nav' %} nav.industries {% endtrans %}</a></li>
+            <li><a class="{% if index is defined and index==3 %} active_menu {% endif %}" href="{{ path('main_newproject') }}">{% trans from 'nav' %} nav.newprojet {% endtrans %}</a></li>
             <li class="drop-down" id="li_service">
-                <a href="#service">{% trans from 'nav' %} nav.services {% endtrans %} </a>
+                <a class="{% if index is defined and index==4 %} active_menu {% endif %}" href="#service" >{% trans from 'nav' %} nav.services {% endtrans %} </a>
 
                 <div class="mega-menu fadeIn animated" id="m_service">
                    <div class="row">
@@ -34,17 +42,17 @@
                        <div class="col m2 menu-section">
                            <h4><strong><a href="{{ path('main_application') }}">{% trans from 'service' %}service.app_service {% endtrans %}</a></strong> </h4>
                            <p>{% trans from 'service' %}service.app_content {% endtrans %}</p>
-                           <h4><strong><a href="{{ path('main_inf') }}">{% trans from 'service' %}service.explore_our_app {% endtrans %}</a></strong> </h4>
+                           <h4><strong><a href="{{ path('main_exploreapp') }}">{% trans from 'service' %}service.explore_our_app {% endtrans %}</a></strong> </h4>
                        </div>
                        <div class="col m2 menu-section">
                            <h4><strong><a href="{{ path('main_business') }}">{% trans from 'service' %}service.business_service {% endtrans %}</a></strong> </h4>
                            <p>{% trans from 'service' %}service.business_content {% endtrans %}</p>
-                           <h4><strong><a href="{{ path('main_inf') }}">{% trans from 'service' %}service.explore_our_business {% endtrans %}</a></strong> </h4>
+                           <h4><strong><a href="{{ path('main_serviceconseil') }}">{% trans from 'service' %}service.explore_our_business {% endtrans %}</a></strong> </h4>
                        </div>
                        <div class="col m2">
                            <h4><strong><a href="{{ path('main_inf') }}">{% trans from 'service' %}service.infrast_service {% endtrans %}</a></strong> </h4>
                            <p>{% trans from 'service' %}service.infrast_content {% endtrans %}</p>
-                           <h4><strong><a href="{{ path('main_inf') }}">{% trans from 'service' %}service.explore_our_infrast {% endtrans %}</a></strong> </h4>
+                           <h4><strong><a href="{{ path('main_infras') }}">{% trans from 'service' %}service.explore_our_infrast {% endtrans %}</a></strong> </h4>
                        </div>
                        <div class="col m3">
                            <div class="card">
@@ -65,31 +73,27 @@
 
             </li>
             <li class="drop-down" id="li_about">
-                <a href="#about">{% trans from 'nav' %} nav.about {% endtrans %} </a>
+                <a class="{% if index is defined and index==5 %} active_menu {% endif %}" href="#about">{% trans from 'nav' %} nav.about {% endtrans %} </a>
                 <div class="mega-menu fadeIn animated" id="m_about">
                     <div class="row">
                         <div class="col offset-m1 m2 menu-section">
-                            <h4><strong>ABOUT US</strong> </h4>
-                            <p>Inventory</p>
-                            <p>Leadership</p>
-                            <p>Breifing center</p>
-                            <p>Policies</p>
-                            <p><strong>Learn more abour SCT</strong></p>
+                            <h4><strong><a href="{{ path('main_aboutstc') }}">{% trans from 'aboutstc' %}leadership.title{% endtrans %}</a></strong> </h4>
+                            <p>{% trans from 'aboutstc' %}leadership.our_content {% endtrans %}</p>
+                            <h4><strong><a href="{{ path('main_aboutstcc') }}">{% trans from 'aboutstc' %}leadership.block11{% endtrans %}</a></strong> </h4>
                         </div>
                         <div class="col m2 menu-section">
-                            <h4><strong>NEW</strong> </h4>
-                            <p>Get the latest information about our company. </p>
-                            <p><strong>Go to the Newsroom </strong></p>
+                            <h4><strong><a href="{{ path('main_newssroom') }}">{% trans from 'aboutstc' %}newsroom.title{% endtrans %}</a></strong> </h4>
+                            <p>{% trans from 'aboutstc' %}newsroom.block1 {% endtrans %}</p>
+                            <h4><strong><a href="{{ path('main_newsroom') }}">{% trans from 'aboutstc' %}newsroom.block11{% endtrans %}</a></strong> </h4>
                         </div>
-                        <div class="col m2 menu-section">
-                            <h4><strong>EVENTS</strong> </h4>
-                            <p>Global conferences, online webinars, and everything in between. </p>
-                            <p><strong>Browse Events</strong></p>
+                        <div class="col m2 menu-section"><h4><strong><a href="{{ path('main_eventss') }}">{% trans from 'aboutstc' %}events.title{% endtrans %}</a></strong> </h4>
+                            <p>{% trans from 'aboutstc' %}events.block1 {% endtrans %}</p>
+                            <h4><strong><a href="{{ path('main_events') }}">{% trans from 'aboutstc' %}events.block11{% endtrans %}</a></strong> </h4>
                         </div>
                         <div class="col  m2">
-                            <h4><strong>CAREERS</strong> </h4>
-                            <p>Learn why F5 is a great place to work, browse job openings, and apply to join our team. </p>
-                            <p><strong>Explore Careers </strong></p>
+                            <h4><strong><a href="{{ path('main_careers') }}">{% trans from 'aboutstc' %}careers.title{% endtrans %}</a></strong> </h4>
+                            <p>{% trans from 'aboutstc' %}careers.block1 {% endtrans %}</p>
+                            <h4><strong><a href="{{ path('main_explorecareers') }}">{% trans from 'aboutstc' %}careers.block11{% endtrans %}</a></strong> </h4>
                         </div>
                         <div class="col m3">
                             <div class="card">
@@ -98,7 +102,7 @@
                                 </div>
                                 <div class="card-content" style="line-height: 1.5em;">
                                     <p>
-                                        Product Development Careers at SCT: Make A Contribution
+                                        Product Development Careers at STC: Make A Contribution
                                         to Products Companies Depend On Every Day.
                                     </p>
                                 </div>
@@ -107,8 +111,6 @@
                     </div>
                 </div>
             </li>
-            <li style="display: none;"><a  href="{{ path('app_locale') }}">{% trans from 'nav' %} nav.language {% endtrans %}</a></li>
-            <li style="float:right;"><a href="{{ path('app_locale') }}">{% trans from 'nav' %} nav.language {% endtrans %}</a></li>
         </ul>
     </nav>
 </div>

@@ -25,7 +25,7 @@ class Participator
     /**
      * @Assert\Valid()
      * @ORM\ManyToOne(targetEntity="Web\EntityBundle\Entity\User",cascade={"persist"})
-     * @ORM\JoinColumn(nullable=false)
+     * @ORM\JoinColumn(nullable=false, onDelete="CASCADE")
      */
     private $user;
 
@@ -36,6 +36,19 @@ class Participator
      */
     private $code;
 
+    /**
+     * @var boolean
+     * @ORM\Column(name="is_active", type="boolean")
+     */
+    private $active;
+
+    /**
+     * Participator constructor.
+     */
+    public function __construct()
+    {
+        $this->active = true;
+    }
 
     /**
      * Get id
@@ -93,5 +106,39 @@ class Participator
     public function getUser()
     {
         return $this->user;
+    }
+
+    /**
+     * Generate random code for user
+     *
+     * @return Participator
+     */
+    public function generateCode()
+    {
+        return $this->setCode(uniqid());
+    }
+
+    /**
+     * Get Active
+     *
+     * @return bool
+     */
+    public function isActive()
+    {
+        return $this->active;
+    }
+
+    /**
+     * Set Active
+     *
+     * @param bool $value
+     *
+     * @return Participator
+     */
+    public function setIsActive($value)
+    {
+        $this->active = $value;
+
+        return $this;
     }
 }

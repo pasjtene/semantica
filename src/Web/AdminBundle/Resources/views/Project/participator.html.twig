@@ -1,0 +1,147 @@
+{% set href2= "#project2"~id %}
+{% set idhref2 = "project2"~id %}
+
+<br>
+<a href="{{ href2 }}" class="waves-effect waves-light btn" id="btn-new-participator">{% trans from 'forms' %} form.participator.new {% endtrans %}</a>
+<span id="cnf-prt-msg" class="hide">{% trans from 'admin' %} participant.msg_delete {% endtrans %}</span>
+
+
+<div class="row" id="page_mobile">
+    <div class="col s12">
+        <div class="row">
+            <div class="col s12">
+                {% if items!=null %}
+                {% else %}
+                    <h4>   {% trans from 'forms' %} form.participator.empty {% endtrans %} </h4>
+                {% endif %}
+            </div>
+        </div>
+        <div class="col s12">
+            <div class="row">
+                <div class="col s12">
+                    <ul class="collapsible" data-collapsible="accordion">
+
+                        {% for item in items %}
+                            <li>
+                                <div class="collapsible-header grey lighten-3"><i class="material-icons">book</i>{{ item.participator.user.firstname }}</div>
+                                <div class="collapsible-body">
+                                    <div class="row">
+                                        <div class="col s12">
+                                            <div class="card">
+                                                <section>
+                                                    <strong>{% trans from 'forms' %} form.participator.code {% endtrans %}</strong>
+                                                    <br>
+                                                    <span>
+                                                         {{ item.participator.code }}
+                                                    </span>
+                                                </section>
+                                                <div class="divider"></div>
+
+
+                                                <section>
+                                                    <strong>{% trans from 'forms' %} form.base.name {% endtrans %}</strong>
+                                                    <br>
+                                                    {{ item.participator.user.firstname }} {{ item.participator.user.lastname }}
+                                                </section>
+                                                <div class="divider"></div>
+
+                                                <section>
+                                                    <strong>{% trans from 'forms' %} form.base.email {% endtrans %}</strong>
+                                                    <br>
+                                                    {{ item.participator.user.email }}
+                                                </section>
+                                                <div class="divider"></div>
+                                                <section>
+                                                    <strong>{% trans from 'forms' %} form.base.roles {% endtrans %}</strong>
+                                                    <br>
+                                                    {{ item.participator.user.RoleString }}
+                                                </section>
+                                                <br>
+                                                <a href="{{ path('admin_projet_delete_participator',{id:item.participator.id,pid:id}) }}" class="delete-participator" data-pid="{{ id }}" data-id="{{ item.id }}"><i class="material-icons">delete</i></a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="col s12" id="page_desktop">
+    <table class="bordered highlight centered responsive-table">
+        <thead>
+        <tr>
+            <th>{% trans from 'forms' %} form.participator.code {% endtrans %}</th>
+            <th>{% trans from 'forms' %} form.base.name {% endtrans %}</th>
+            <th>{% trans from 'forms' %} form.base.email {% endtrans %}</th>
+            <th>{% trans from 'forms' %} form.base.roles {% endtrans %}</th>
+            <th>#</th>
+            <th>#</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        {% if items!=null %}
+            {% for item in items %}
+                <tr>
+                    <td>{{ item.participator.code }}</td>
+                    <td>{{ item.participator.user.firstname }} {{ item.participator.user.lastname }}</td>
+                    <td>{{ item.participator.user.email }}</td>
+                    <td>{{ item.participator.user.RoleString }}</td>
+                    <td><a href="{{ path('admin_projet_delete_participator',{id:item.participator.id,pid:id}) }}" class="delete-participator" data-pid="{{ id }}" data-id="{{ item.id }}"><i class="material-icons">delete</i></a></td>
+                </tr>
+            {% endfor %}
+        {% else %}
+            <tr>
+                <td colspan="6">
+                    <h6> {% trans from 'forms' %} form.participator.empty {% endtrans %}</h6>
+                </td>
+            </tr>
+        {% endif %}
+        </tbody>
+    </table>
+</div>
+
+<div id="{{ idhref2 }}" class="modal modal-fixed-footer">
+    <form action="{{ path('admin_projet_new_participator', {id:id}) }}" method="post">
+        <div class="modal-content">
+                <div class="input-field col s12">
+                    <label for="user-choice">Select a user</label>
+                    <br><br>
+                    <select name="user-choice" id="user-choice" required>
+                        {% for user in users %}
+                            <option value="{{ user.id }}">{{ user.firstname }} {{ user.lastname }}</option>
+                        {% endfor %}
+                    </select>
+                    <br>
+                </div>
+
+                <div class="input-field col s12">
+
+                    <textarea id="roles" name="roles" class="materialize-textarea" required placeholder="Software architect, Web designer, Project manager, etc."></textarea>
+                    <label for="roles">Roles for this project :</label>
+                </div>
+
+                <div class="input-field col s12">
+                    <input type="date" id="start-date" name="start-date" class="datepicker" required/>
+                    <label for="start-date">Start date :</label>
+                </div>
+
+                <div class="input-field col s12">
+                    <input type="date" id="end-date" name="end-date" class="datepicker"/>
+                    <label for="end-date">End date :</label>
+                </div>
+
+                <input type="hidden" name="input-action" id="input-action" value="0"/>
+                <input type="hidden" name="historicid" id="historic-id" value="0"/>
+        </div>
+        <div class="modal-footer">
+            <button class="waves-effect waves-green btn-flat" type="submit" name="action">Submit<i class="material-icons right">send</i></button>
+            <button class=" modal-action modal-close waves-effect waves-green btn-flat">{% trans from 'forms' %} form.project.close {% endtrans %}</button>
+        </div>
+    </form>
+</div>

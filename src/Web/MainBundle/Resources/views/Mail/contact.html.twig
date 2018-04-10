@@ -1,0 +1,137 @@
+<html>
+    <head>
+    <title> {% trans from 'mail' %} default.title {% endtrans %}</title>
+    <style>
+        body{
+            background-color: #eeeeee;
+            height: 100%;
+            margin: 1%;
+        }
+        .container{
+            width: 80%;
+            background-color: white;
+            padding: 4%;
+            min-height:700px;
+            -webkit-box-shadow:  0 0 0 2px  #eeeeee, 0 0 0 4px white, 0 0 0 6px yellowgreen;
+            -moz-box-shadow:  0 0 0 2px  #eeeeee, 0 0 0 4px white, 0 0 0 6px  yellowgreen;
+            box-shadow:  0 0 0 2px  #eeeeee, 0 0 0 4px white, 0 0 0 6px  yellowgreen;
+        }
+
+        #identity{
+            padding-bottom: 1%;
+            border-bottom: #eeeeee solid 1px;
+        }
+
+        hr{
+            border: #eeeeee solid 1px;
+        }
+        #head img{
+            max-width: 60%;
+        }
+
+        #head #title {
+            text-align: center;
+        }
+        #head #title h2{
+            background-color:  yellowgreen;
+            color: white;
+            font-weight: bold;
+            font-family: "ALGERIAN";
+        }
+        #identity span{
+            color: grey;
+        }
+        #body{
+            min-height:290px;
+            border: solid 1px #eeeeee;
+            text-align: center;
+            margin: 4%;
+            padding: 2%;
+        }
+
+        #footer{
+            border-top: #eeeeee solid 2px;
+            display: flex;
+        }
+        #footer strong{
+            color: yellowgreen;
+        }
+        #footer span{
+            color: grey;
+        }
+        #message span{
+            color: grey;
+            text-align: center;
+        }
+        table{
+            width: 100%;
+        }
+    </style>
+</head>
+    <body>
+        <div class="container">
+
+            <div id="identity">
+                <p><strong>{% trans from 'mail' %} default.from {% endtrans %}:</strong> <span> contact@semanticatechnologies.com</span> </p>
+                <p><strong>{% trans from 'mail' %} default.to {% endtrans %}:</strong> <span>{{ semail }}</span> </p>
+            </div>
+            <div id="head">
+               <table>
+                   <tr>
+                       <td>
+                           <div class="element">
+                               {# <img src="{{ app.request.baseUrl~'/logo.png' }}" alt=""> #}
+                               <img src="http://www.semanticatechnologies.com/logo.png" alt="">
+                           </div>
+                       </td>
+                       <td>
+                           <div class="element" id="title">
+                               <h2>{% trans from 'mail' %} default.title {% endtrans %}</h2>
+                               <h4>{% trans from 'mail' %} default.content {% endtrans %}</h4>
+                           </div>
+                       </td>
+                   </tr>
+               </table>
+
+            </div>
+            <div id="body">
+               <div class="element">
+
+                   <br>
+                   <p>
+                     <p>{% trans with {'name':name} from 'mail' %} contact.content {% endtrans %}</p>
+                     <p>{% trans from 'mail' %} subscribe.privacy {% endtrans %}</p>
+                   </p>
+               </div>
+            </div>
+            <div id="footer">
+                <table>
+                    <tr>
+                        <td>
+                            <div class="element">
+                                <strong> {% trans from 'mail' %} default.phone {% endtrans %}: <br></strong> <span>0044 1344 573229 </span><br>
+                                <span>
+                                    6 Jaguar Lane, Bracknell, RG12 9PE, Berkshire, United Kingdom.
+                                </span>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="element">
+                                <strong>{% trans from 'mail' %} default.email {% endtrans %}: <br> </strong> <span>contact@semanticatechnologies.com</span> <br>
+                                <strong>{% trans from 'mail' %} default.phone {% endtrans %}: <br></strong> <span>semanticatechnologies.com</span>
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+
+            </div>
+            <div id="message">
+                <div class="element">
+                    <span>
+                        {% trans from 'mail' %} default.footer {% endtrans %} <a href="{{ email }}">{{ semail }}</a>
+                     </span>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

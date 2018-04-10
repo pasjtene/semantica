@@ -26,8 +26,11 @@
 
     #sendmail{
       min-height: 136px !important;
-      background-color: $default_text !important;
+      background-color: rgba(0,0,0,0.5) !important;
       color: $default;
+      input,label{
+        //color: $secondary;
+      }
       h5,label{
         color: $default !important;
       }

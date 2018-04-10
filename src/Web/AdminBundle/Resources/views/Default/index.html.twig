@@ -25,7 +25,93 @@
 {% endblock %}
 {% block  main %}
 
-    <div class="row">
+    <div class="row" id="page_mobile">
+        <div class="col s12">
+            <div class="row">
+                <div class="col s12">
+                    {% if list!=null %}
+
+                    {% else %}
+                        <h4>  {% trans from 'private' %} project.empty  {% endtrans %} </h4>
+                    {% endif %}
+                </div>
+            </div>
+            <div class="col s12">
+                <div class="row">
+                    <div class="col s12">
+                        <ul class="collapsible" data-collapsible="accordion">
+
+                            {% for projet in list %}
+                                <li  class="">
+                                    <div class="collapsible-header grey lighten-3" ><i class="material-icons">book</i>{{ projet.truncate(projet.title,30) }}</div>
+                                    <div class="collapsible-body">
+                                        <div class="row">
+                                            <div class="col s12">
+                                                <div class="card">
+                                                    <section>
+                                                        <strong>{% trans from 'forms' %} form.user.firstname {% endtrans %}</strong>
+                                                        <br>
+                                                        {% if projet.user!=null %}
+                                                            {{ projet.user.firstname }}
+                                                        {% else %}
+                                                            {{ projet.visitor.firstname }}
+                                                        {% endif %}
+                                                    </section>
+                                                    <div class="divider"></div>
+
+                                                    <section>
+                                                        <strong>{% trans from 'forms' %} form.project.title {% endtrans %}</strong>
+                                                        <br>
+                                                        {{ projet.title }}
+                                                    </section>
+                                                    <div class="divider"></div>
+
+                                                    <section>
+                                                        <strong>{% trans from 'forms' %} form.project.status {% endtrans %}</strong>
+                                                        <br>
+                                                        {{ projet.CurrentStatus(projet.status,app.request.locale) }}
+                                                    </section>
+                                                    <div class="divider"></div>
+
+                                                    <section>
+                                                        <strong>{% trans from 'forms' %} form.project.date {% endtrans %}</strong>
+                                                        <br>
+                                                        {{ projet.date|date('d-m-Y h:i:s') }}
+                                                    </section>
+                                                    <div class="divider"></div>
+
+                                                    <section>
+                                                        <strong>{% trans from 'forms' %} form.project.description {% endtrans %}</strong>
+                                                        <br>
+                                                        <div class="row">
+                                                            <div class="col s12">
+                                                                <div class="card">
+                                                                    {{ projet.description }}
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </section>
+                                                    <br>
+                                                    <a href="{{ path('admin_projet_detail',{id:projet.id}) }}"><i class="material-icons">view_headline</i></a>
+                                                    <a href="{{ path('admin_projet_update',{id:projet.id}) }}"><i class="material-icons">edit</i></a>
+                                                    {% set key = 'data'~loop.index %}
+                                                    <span id="{{ key }}" style="display: none;">
+                                                        {% trans from 'admin' %} project.delete {% endtrans %} '{{ projet.title }}'
+                                                    </span>
+                                                    <a data-id="{{ key }}" href="{{ path('admin_projet_delete',{id:projet.id}) }}" class="delete_projet"><i class="material-icons">delete</i></a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row" id="page_desktop">
         <div class="col l12">
             <div class="card z-depth-1">
                 <div class="card-content">
@@ -36,11 +122,9 @@
                     <table id="table" class="centered bordered responsive-table">
                         <thead>
                         <tr>
-                            <th>{% trans from 'forms' %} form.project.name {% endtrans %}</th>
-                            <th>{% trans from 'forms' %} form.project.phone {% endtrans %}</th>
-                            <th>{% trans from 'forms' %} form.project.email {% endtrans %}</th>
-                            <th>{% trans from 'forms' %} form.project.type {% endtrans %}</th>
-                            <th>{% trans from 'forms' %} form.project.objet {% endtrans %}</th>
+                            <th>{% trans from 'forms' %} form.user.firstname {% endtrans %}</th>
+                            <th>{% trans from 'forms' %} form.project.title {% endtrans %}</th>
+                            <th>{% trans from 'forms' %} form.project.status {% endtrans %}</th>
                             <th>{% trans from 'forms' %} form.project.date {% endtrans %}</th>
                             <th>#</th>
                             <th>#</th>
@@ -50,159 +134,33 @@
 
                         <tbody>
                         {% for projet in list  %}
-                            {% set href= "#project"~projet.id %}
-                            {% set idhref = "project"~projet.id %}
                             {% set href2= "#project2"~projet.id %}
                             {% set idhref2 = "project2"~projet.id %}
                             <tr>
-                                <td>{{ projet.truncate(projet.name,30) }}</td>
-                                <td>{{ projet.truncate(projet.phone,30) }}</td>
-                                <td>{{ projet.truncate(projet.email,30) }}</td>
-                                <td>{{ projet.truncate(projet.type,30) }}</td>
-                                <td>{{ projet.truncate(projet.objet,30) }}</td>
-                                <td>{{ projet.time|date('d-m-Y h:i:s') }}</td>
                                 <td>
-                                    {% if projet.hashfiles!=null  %}
-                                        {% if projet.hashfiles!=null and  projet.extfiles=="gif" or projet.extfiles=="png" or projet.extfiles=="jpg" or projet.extfiles=="jpeg"  or projet.extfiles=="PDF" or projet.extfiles=="pdf" %}
-                                            <a href="{{ href }}"><i class="material-icons">attach_file</i></a>
-                                        {% else %}
-                                            <a href="{{app.request.getSchemeAndHttpHost()~'/'~projet.path()}}"><i class="material-icons">attach_file</i></a>
-                                        {% endif %}
+                                    {% if projet.user!=null %}
+                                        {{ projet.truncate(projet.user.firstname,30) }}
+                                    {% else %}
+                                        {{ projet.truncate(projet.visitor.firstname,30) }}
                                     {% endif %}
                                 </td>
+                                <td>{{ projet.truncate(projet.title,30) }}</td>
+                                <td>{{ projet.truncate(projet.CurrentStatus(projet.status,app.request.locale),30) }}</td>
+                                <td>{{ projet.date|date('d-m-Y h:i:s') }}</td>
                                 <td>
-                                    <a href="{{ href2 }}"><i class="material-icons">view_headline</i></a>
+                                    <a href="{{ path('admin_projet_detail',{id:projet.id}) }}"><i class="material-icons">view_headline</i></a>
+                                </td>
+                                <td>
+                                    <a href="{{ path('admin_projet_update',{id:projet.id}) }}"><i class="material-icons">edit</i></a>
                                 </td>
                                 <td>
                                     {% set key = 'data'~loop.index %}
                                     <span id="{{ key }}" style="display: none;">
-                                        {% trans from 'admin' %} project.delete {% endtrans %} '{{ projet.objet }}'
+                                        {% trans from 'admin' %} project.delete {% endtrans %} '{{ projet.title }}'
                                     </span>
                                     <a data-id="{{ key }}" href="{{ path('admin_projet_delete',{id:projet.id}) }}" class="delete_projet"><i class="material-icons">delete</i></a>
                                 </td>
                             </tr>
-                            <div id="{{ idhref2 }}" class="modal modal-fixed-footer">
-                                <div class="modal-content">
-                                    <center>
-                                        <h4> {% trans from 'home' %} main.detail {% endtrans %}</h4>
-                                    </center>
-                                    <p>
-                                        <strong>
-                                            {% trans from 'forms' %} form.project.name {% endtrans %}
-                                        </strong>
-                                        <br>
-                                <span>
-                                    {{ projet.name }}
-                                </span>
-                                    </p>
-                                    <p>
-                                        <strong>
-                                            {% trans from 'forms' %} form.project.phone {% endtrans %}
-                                        </strong>
-                                        <br>
-                                <span>
-                                    {{ projet.email }}
-                                </span>
-                                    </p>
-                                    <p>
-                                        <strong>
-                                            {% trans from 'forms' %} form.project.email {% endtrans %}
-                                        </strong>
-                                        <br>
-                                <span>
-                                    {{ projet.phone }}
-                                </span>
-                                    </p>
-                                    <p>
-                                        <strong>
-                                            {% trans from 'forms' %} form.project.type {% endtrans %}
-                                        </strong>
-                                        <br>
-                                <span>
-                                    {{ projet.type }}
-                                </span>
-                                    </p>
-                                    <p>
-                                        <strong>
-                                            {% trans from 'forms' %} form.project.objet {% endtrans %}
-                                        </strong>
-                                        <br>
-                                <span>
-                                    {{ projet.objet }}
-                                </span>
-                                    </p>
-                                    <p>
-                                        <strong>
-                                            {% trans from 'forms' %} form.project.country {% endtrans %}
-                                        </strong>
-                                        <br>
-                                <span>
-                                    {{ projet.country }}
-                                </span>
-                                    </p>
-                                    <p>
-                                        <strong>
-                                            {% trans from 'forms' %} form.project.city {% endtrans %}
-                                        </strong>
-                                        <br>
-                                <span>
-                                    {{ projet.city }}
-                                </span>
-                                    </p>
-                                    <p>
-                                        <strong>
-                                            {% trans from 'forms' %} form.project.adress {% endtrans %}
-                                        </strong>
-                                        <br>
-                                <span>
-                                    {{ projet.adress }}
-                                </span>
-                                    </p>
-                                    <p>
-                                        <strong>
-                                            {% trans from 'forms' %} form.project.date {% endtrans %}
-                                        </strong>
-                                        <br>
-                                <span>
-                                    {{ projet.time|date('d-m-Y h:i:s') }}
-                                </span>
-                                    </p>
-                                    <p>
-                                        <strong>
-                                            {% trans from 'forms' %} form.project.description {% endtrans %}
-                                        </strong>
-                                        <br>
-                                <span>
-                                    {{ projet.description|raw }}
-                                </span>
-                                    </p>
-                                </div>
-                                <div class="modal-footer">
-                                    <button    class=" modal-action modal-close waves-effect waves-green btn-flat blue white-text">{% trans from 'forms' %} form.project.close {% endtrans %}</button>
-                                </div>
-                            </div>
-                            {% if projet.hashfiles!=null and  projet.extfiles=="pdf" or projet.extfiles=="PDF"  %}
-                                <div id="{{ idhref }}" class="modal  modal-fixed-footer">
-                                    <div class="modal-content">
-                                        {# {{ path('admin_download',{id:projet.id}) }} #}
-                                        <iframe src="{{app.request.getSchemeAndHttpHost()~'/'~projet.path()}}" class="col s12"  width="100%" height="500" align="middle"></iframe>
-                                    </div>
-                                    <div class="modal-footer">
-                                        <button  id="close" class="modal-action modal-close waves-effect waves-green btn-flat blue white-text">{% trans from 'forms' %} form.project.close {% endtrans %}</button>
-                                    </div>
-                                </div>
-                            {% endif %}
-
-                            {% if projet.hashfiles!=null and  projet.extfiles=="gif" or projet.extfiles=="png" or projet.extfiles=="jpg" or projet.extfiles=="jpeg"  %}
-                                <div id="{{ idhref }}" class="modal  modal-fixed-footer">
-                                    <div class="modal-content">
-                                        <img src="{{ asset(projet.path()) }}" alt="" class="responsive-image materialboxed" style="max-width: 100%; max-height: inherit;">
-                                    </div>
-                                    <div class="modal-footer">
-                                        <button  id="close" class="modal-action modal-close waves-effect waves-green btn-flat blue white-text">{% trans from 'forms' %} form.project.close {% endtrans %}</button>
-                                    </div>
-                                </div>
-                            {% endif %}
                         {% endfor %}
                         </tbody>
                     </table>
@@ -216,9 +174,7 @@
     <script>
         $(document).ready(function() {
             $('#table').dataTable();
-            $('select').material_select();
             $('.modal').modal();
-
             $('.delete_projet').click(function(e){
                 if(!confirm($('#'+$(this).data('id')).text().trim()))
                 {

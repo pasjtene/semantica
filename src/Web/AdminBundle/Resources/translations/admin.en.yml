@@ -1,2 +1,37 @@
 project:
   delete: Do you really want to delete
+user:
+  title: User's list
+  firstname: Firstname
+  lastname: Lastname
+  gender: Gender
+  status: Status
+  roles: Roles
+  empty: No user registered in our database
+  delete: Delete
+  enabled: enabled
+  locked: locked
+  lock_label: Disable user
+  unlock_label: Activate user
+  msg_delete: Do you really want to delete the user
+role:
+  title: Change user's role
+  username: Username :
+  current_role: Actuals roles :
+  select_role: Select user's role
+  save: Save changes
+participant:
+  username: Fullname
+  roles: Roles
+  startdate: Start date
+  enddate: End date
+  empty: No participant for this project
+  edit: Edit
+  new: Add participant
+  msg_delete: Do you really want to delete the participant
+planning:
+  msg_delete: Do you really want to delete this planning ?
+task:
+  msg_delete: Do you really want to delete this task ?
+commit:
+  msg_delete: Do you really want to delete this commit ?

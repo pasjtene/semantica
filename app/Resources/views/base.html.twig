@@ -57,14 +57,16 @@
 {% endblock footer %}
 
 {% block javascripts %}
+    <script src="{{ asset('bundles/fosjsrouting/js/router.js') }}"></script>
+    <script src="{{ path('fos_js_routing_js', { callback: 'fos.Router.setData' }) }}"></script>
     <script type="application/javascript" src="{{ asset('components/jsbase/jquery.min.js') }}"></script>
     <script type="application/javascript" src="{{ asset('components/jsbase/materialize.js') }}"></script>
     <script type="application/javascript" src="{{ asset('components/jsbase/select2.js') }}"></script>
     <script type="application/javascript" src="{{ asset('components/jsbase/jquery.dataTables.js') }}"></script>
     <script type="application/javascript" src="{{ asset('components/jsbase/dataTables.material.js') }}"></script>
     <script type="application/javascript" src="{{ asset('data/js/master.js') }}"></script>
-
     <script>
+        var locale = "{{ app.request.locale }}";
         $(function(){
             //$(".button-collapse").sideNav();
         })

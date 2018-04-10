@@ -23,17 +23,25 @@ class Projet extends BaseInterface
      */
     protected $id;
 
+
+    /**
+     * @Assert\Valid()
+     * @ORM\OneToMany(targetEntity="Web\EntityBundle\Entity\FileProjet", mappedBy="project",cascade={"persist"})
+     * @ORM\JoinColumn(nullable=true, onDelete="CASCADE")
+     */
+    private $files;
+
     /**
      * @Assert\Valid()
      * @ORM\ManyToOne(targetEntity="Web\EntityBundle\Entity\Visitor",cascade={"persist"})
-     * @ORM\JoinColumn(nullable=true)
+     * @ORM\JoinColumn(nullable=true, onDelete="CASCADE")
      */
     private $visitor;
 
     /**
      * @Assert\Valid()
      * @ORM\ManyToOne(targetEntity="Web\EntityBundle\Entity\User",cascade={"persist"})
-     * @ORM\JoinColumn(nullable=true)
+     * @ORM\JoinColumn(nullable=true, onDelete="CASCADE")
      */
     private $user;
 
@@ -46,6 +54,11 @@ class Projet extends BaseInterface
      */
     private $status;
 
+    /**
+     * @var string
+     * @ORM\Column(name="comment", type="text",  nullable=true)
+     */
+    private $comment;
 
     /**
      * @var string
@@ -76,24 +89,6 @@ class Projet extends BaseInterface
     private $title;
 
 
-    /**
-     * @var string
-     * @ORM\Column(name="files", type="text", nullable=true)
-     */
-    private $files;
-
-    /**
-     * @var string
-     * @ORM\Column(name="hashfiles", type="text", nullable=true)
-     */
-    private $hashfiles;
-
-    /**
-     * @var string
-     * @ORM\Column(name="extfiles", type="text", nullable=true)
-     */
-    private $extfiles;
-
 
     public function truncate($string, $length){
         $value =null;
@@ -111,26 +106,8 @@ class Projet extends BaseInterface
     }
 
 
-    protected $file;
 
-    public function setFile(UploadedFile $file)
-    {
-        $this->file= $file;
-        if(  $this->file!=null){
-            $this->setFiles(uniqid().$this->getFile()->getClientOriginalName());
-        }
 
-        return $this;
-    }
-
-    public function getFile()
-    {
-        return  $this->file;
-    }
-    public function path(){
-        $file = new Files();
-        return $this->hashfiles==null? null: $file->initialpath."projet/".$this->hashfiles;
-    }
 
 
     /**
@@ -230,78 +207,6 @@ class Projet extends BaseInterface
     }
 
     /**
-     * Set files
-     *
-     * @param string $files
-     *
-     * @return Projet
-     */
-    public function setFiles($files)
-    {
-        $this->files = $files;
-
-        return $this;
-    }
-
-    /**
-     * Get files
-     *
-     * @return string
-     */
-    public function getFiles()
-    {
-        return $this->files;
-    }
-
-    /**
-     * Set hashfiles
-     *
-     * @param string $hashfiles
-     *
-     * @return Projet
-     */
-    public function setHashfiles($hashfiles)
-    {
-        $this->hashfiles = $hashfiles;
-
-        return $this;
-    }
-
-    /**
-     * Get hashfiles
-     *
-     * @return string
-     */
-    public function getHashfiles()
-    {
-        return $this->hashfiles;
-    }
-
-    /**
-     * Set extfiles
-     *
-     * @param string $extfiles
-     *
-     * @return Projet
-     */
-    public function setExtfiles($extfiles)
-    {
-        $this->extfiles = $extfiles;
-
-        return $this;
-    }
-
-    /**
-     * Get extfiles
-     *
-     * @return string
-     */
-    public function getExtfiles()
-    {
-        return $this->extfiles;
-    }
-
-    /**
      * Set company
      *
      * @param string $company
@@ -325,29 +230,8 @@ class Projet extends BaseInterface
         return $this->company;
     }
 
-    /**
-     * Set person
-     *
-     * @param \Web\EntityBundle\Entity\Person $person
-     *
-     * @return Projet
-     */
-    public function setPerson(\Web\EntityBundle\Entity\Person $person)
-    {
-        $this->person = $person;
 
-        return $this;
-    }
 
-    /**
-     * Get person
-     *
-     * @return \Web\EntityBundle\Entity\Person
-     */
-    public function getPerson()
-    {
-        return $this->person;
-    }
 
     /**
      * Set visitor
@@ -395,5 +279,136 @@ class Projet extends BaseInterface
     public function getUser()
     {
         return $this->user;
+    }
+
+    public  function CurrentStatus($value,$langage)
+    {
+        $val=null;
+        if($langage=='fr')
+        {
+            switch($value)
+            {
+                case '0':
+                case 'En cours':
+                   $val = "Non validé";
+                    break;
+                case '1':
+                    $val = "Accepté";
+                    break;
+                case '2':
+                    $val = "En cours";
+                    break;
+                case '3':
+                    $val = "Terminé";
+                    break;
+                case '4':
+                    $val = "En pause";
+                    break;
+                case '5':
+                    $val = "Budget épuisé";
+                    break;
+            }
+        }
+        else
+        {
+            switch($value)
+            {
+                case '0':
+                case 'En cours':
+                    $val = "Not valid";
+                    break;
+                case '1':
+                    $val = "Accepted";
+                    break;
+                case '2':
+                    $val = "In progress";
+                    break;
+                case '3':
+                    $val = "Finish";
+                    break;
+                case '4':
+                    $val = "On break";
+                    break;
+                case '5':
+                    $val = "Budget run-down";
+                    break;
+            }
+        }
+        return $val;
+
+    }
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->files = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Add file
+     *
+     * @param \Web\EntityBundle\Entity\FileProjet $file
+     *
+     * @return Projet
+     */
+    public function addFile(\Web\EntityBundle\Entity\FileProjet $file)
+    {
+        $file->setProject($this);
+        $this->files[] = $file;
+        return $this;
+    }
+
+    public function setFiles(\Doctrine\Common\Collections\ArrayCollection $files){
+        $this->files = $files;
+        /** @var FileProjet $file */
+        foreach ($files as $file){
+            $file->setProject($this);
+        }
+    }
+
+    /**
+     * Remove file
+     *
+     * @param \Web\EntityBundle\Entity\FileProjet $file
+     */
+    public function removeFile(\Web\EntityBundle\Entity\FileProjet $file)
+    {
+        $this->files->removeElement($file);
+    }
+
+    /**
+     * Get files
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getFiles()
+    {
+        return $this->files;
+    }
+
+
+    /**
+     * Set comment
+     *
+     * @param string $comment
+     *
+     * @return Projet
+     */
+    public function setComment($comment)
+    {
+        $this->comment = $comment;
+
+        return $this;
+    }
+
+    /**
+     * Get comment
+     *
+     * @return string
+     */
+    public function getComment()
+    {
+        return $this->comment;
     }
 }

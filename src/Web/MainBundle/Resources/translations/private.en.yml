@@ -3,18 +3,30 @@ private:
   profile: My profile
   project: My project
   comment: Comment
+  users: Users
   commit: Commit
   find: Find commit
   choose_project: Choose a project
+  participant: Participants List
 commit:
   auther: Auther
   commit: Commit
   message: Message
   date: Date
+  empty: No Commit are saved or any commits match your search
+  comment: Comment
+  project: Project  description
+  send: Send
+  do_comment: MAKE A SUGGESTION
+  notification: Comment sent successfully
+  task: Task
+  add: Add commit
+  choice_task: Choice task
 project:
   title: Title
+  back: Back
+  file_list: Files List
   description: Description
-  date: Date
   date: Date
   code: Code
   file: Upload file
@@ -25,8 +37,33 @@ project:
   rejects: Rejects
   ready: Ready
   delivered: Delivered
+  accepted: Accepted
+  finish: Finish
+  run: Budget run-down
   close: Close
   choose: Choose status
   status: Status
+  delete: Delete
   empty: No projects are saved or any projects match your search
-
+  comment: Satus comment
+  company: Company
+  base_information: Base Informations
+  client_information: Client  Informations
+  tab1: Informations
+  tab2: Participator
+  tab3: Commit
+  tab4: Planning
+  tab5: Comment
+  choose_title: Search by status
+comment:
+  project: Project
+  reply: Reply
+  auther: Auther
+  task: Task
+  date: Date
+  description: Description
+  empty: No Comment are saved
+  empty_project: No Project are saved
+  new: New Comment
+  by: By
+  add: Add comment

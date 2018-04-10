@@ -1,0 +1,1002 @@
+{% extends 'MainBundle::layout.html.twig' %}
+{% block meta %}
+    <meta name = "{% trans from 'refer' %} industries.title {% endtrans %}" >
+    <meta name = "keywords" content = "{% trans from 'refer' %} industries.description {% endtrans %}" >
+    <meta charset="UTF-8" />
+{% endblock %}
+{% block title %}
+    Semantica Technologies Corporation - STC / careers
+{% endblock %}
+
+{% block mycss %}
+    <style>
+        .position_title:hover {
+            display:block;
+            /*background-color: #9acd32;*/
+            background-color: rgba(120, 191, 123, 0.5);
+            cursor: pointer;
+            /*opacity: 0.4;*/
+        }
+        .position_title {
+            display:block;
+            border-left: 5px solid yellowgreen;
+            background-color: lightgray;
+            width: 100%;
+            float: right;
+        }
+
+        .position_details {
+
+            /*margin-top: 10px;*/
+            width: 100%;
+            float: right;
+            overflow: hidden;
+            border-left: 1px solid yellowgreen;
+            border-right: 1px solid yellowgreen;
+            border-bottom: 1px solid yellowgreen;
+            padding: 10px;
+        }
+        .position_wrapper {
+            float: right;
+            width: 50%;
+            clear: both;
+            margin-top: 10px;
+        }
+
+        .collapse_position {
+            height: 0;
+        }
+
+        .location{
+            border-left: 1px solid gray;
+            width: 35%;
+            float: right;
+            padding-left: 50px;
+            margin: 15px 1px 5px 1px;
+            padding: 10px 1px 10px 15px;
+
+        }
+
+        .position {
+            width: 63%;
+            float: left;
+            margin: 5px 1px 5px 1px;
+            padding: 10px 1px 10px 15px;
+        }
+
+        ul {
+            list-style-type: disc;
+            list-style-position: inside;
+        }
+        ol {
+            list-style-type: decimal;
+            list-style-position: inside;
+        }
+        ul ul, ol ul {
+            list-style-type: circle;
+            list-style-position: inside;
+            margin-left: 15px;
+        }
+        ol ol, ul ol {
+            list-style-type: lower-latin;
+            list-style-position: inside;
+            margin-left: 15px;
+        }
+
+        ul:not(.browser-default) li {
+            list-style-type: square;
+        }
+
+        .blueButton {
+            -moz-box-shadow: 0px 1px 0px 0px #f0f7fa;
+            -webkit-box-shadow: 0px 1px 0px 0px #f0f7fa;
+            box-shadow: 0px 1px 0px 0px #f0f7fa;
+            background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #33bdef), color-stop(1, #019ad2));
+            background:-moz-linear-gradient(top, #33bdef 5%, #019ad2 100%);
+            background:-webkit-linear-gradient(top, #33bdef 5%, #019ad2 100%);
+            background:-o-linear-gradient(top, #33bdef 5%, #019ad2 100%);
+            background:-ms-linear-gradient(top, #33bdef 5%, #019ad2 100%);
+            background:linear-gradient(to bottom, #33bdef 5%, #019ad2 100%);
+            filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#33bdef', endColorstr='#019ad2',GradientType=0);
+            background-color:#33bdef;
+            -moz-border-radius:6px;
+            -webkit-border-radius:6px;
+            border-radius:6px;
+            border:1px solid #057fd0;
+            display:inline-block;
+            cursor:pointer;
+            color:#ffffff;
+            font-family:Arial;
+            font-size:15px;
+            font-weight:bold;
+            padding:6px 24px;
+            text-decoration:none;
+            text-shadow:0px -1px 0px #5b6178;
+        }
+        .blueButton:hover {
+            background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #019ad2), color-stop(1, #33bdef));
+            background:-moz-linear-gradient(top, #019ad2 5%, #33bdef 100%);
+            background:-webkit-linear-gradient(top, #019ad2 5%, #33bdef 100%);
+            background:-o-linear-gradient(top, #019ad2 5%, #33bdef 100%);
+            background:-ms-linear-gradient(top, #019ad2 5%, #33bdef 100%);
+            background:linear-gradient(to bottom, #019ad2 5%, #33bdef 100%);
+            filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#019ad2', endColorstr='#33bdef',GradientType=0);
+            background-color:#019ad2;
+        }
+        .blueButton:active {
+            position:relative;
+            top:1px;
+        }
+
+        .greenButton {
+            float: right;
+        }
+
+        .greenButton {
+            -moz-box-shadow:inset 0px 1px 0px 0px #caefab;
+            -webkit-box-shadow:inset 0px 1px 0px 0px #caefab;
+            box-shadow:inset 0px 1px 0px 0px #caefab;
+            background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #77d42a), color-stop(1, #5cb811));
+            background:-moz-linear-gradient(top, #77d42a 5%, #5cb811 100%);
+            background:-webkit-linear-gradient(top, #77d42a 5%, #5cb811 100%);
+            background:-o-linear-gradient(top, #77d42a 5%, #5cb811 100%);
+            background:-ms-linear-gradient(top, #77d42a 5%, #5cb811 100%);
+            background:linear-gradient(to bottom, #77d42a 5%, #5cb811 100%);
+            filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#77d42a', endColorstr='#5cb811',GradientType=0);
+            background-color:#77d42a;
+            -moz-border-radius:6px;
+            -webkit-border-radius:6px;
+            border-radius:6px;
+            border:1px solid #268a16;
+            display:inline-block;
+            cursor:pointer;
+            /*color:#306108;*/
+            color:#ffffff;
+            font-family:Arial;
+            font-size:15px;
+            font-weight:bold;
+            padding:6px 24px;
+            text-decoration:none;
+            text-shadow:0px 1px 0px #aade7c;
+        }
+        .greenButton:hover {
+            background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #5cb811), color-stop(1, #77d42a));
+            background:-moz-linear-gradient(top, #5cb811 5%, #77d42a 100%);
+            background:-webkit-linear-gradient(top, #5cb811 5%, #77d42a 100%);
+            background:-o-linear-gradient(top, #5cb811 5%, #77d42a 100%);
+            background:-ms-linear-gradient(top, #5cb811 5%, #77d42a 100%);
+            background:linear-gradient(to bottom, #5cb811 5%, #77d42a 100%);
+            filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#5cb811', endColorstr='#77d42a',GradientType=0);
+            background-color:#5cb811;
+        }
+        .greenButton:active {
+            position:relative;
+            top:1px;
+        }
+        /*Media query for iPhone 5, 6, 6+ portrait*/
+        @media only screen
+        and (min-device-width : 320px) /* or 213.4375em or 3in or 9cm */
+        and (max-device-width : 736px) /* or 41.6875em*/
+        and (orientation : portrait)
+        {
+            .position_wrapper {
+                width: 100%;
+                margin-top: 2px;
+            }
+            .location{
+                display:none;
+                border-left: 1px solid gray;
+
+            }
+            .position {
+                width: 98%;
+                margin: 2px 1px 2px 1px;
+                padding: 5px 2px 5px 5px;
+            }
+
+            .banner_img {
+                display:none;
+            }
+
+        }
+        /*Media query for iPhone 5, 6, 6+ landscape*/
+        @media only screen
+        and (min-device-width : 320px)
+        and (max-device-width : 736px)
+        and (orientation : landscape)
+        {
+            .position_wrapper {
+                width: 100%;
+                margin-top: 2px;
+            }
+
+            .location{
+                border-left: 1px solid gray;
+                width: 34%;
+                float: right;
+                padding-left: 10px;
+                margin: 10px 1px 3px 1px;
+                padding: 10px 5px 5px 15px;
+
+            }
+
+            .position {
+                width: 65%;
+                margin: 2px 1px 2px 1px;
+                padding: 5px 2px 5px 5px;
+            }
+
+            .banner_img {
+                display:none;
+            }
+        }
+        .couleur{
+            color: royalblue;
+        }
+        .imageflottante
+        {
+            float: right;
+            height:100px;
+            width:5px;
+        }
+    </style>
+{% endblock %}
+{% block header %}
+    {{ parent() }}
+
+    <img class="banner_img" src="{{ asset('data/img/jobs.png') }}" alt="">
+{% endblock %}
+
+{% block  main %}
+    <div class="row" id="main_industries">
+
+        <div class="row">
+
+
+            <div class="section">
+                <h5 class="center-align"> {% trans from 'aboutstc' %} careers.title6 {% endtrans %} </h5>
+                <br> <br>
+                <div  class="col s12 m6 l4"  >
+
+                    <h6> {% trans from 'aboutstc' %} careers.domaine7 {% endtrans %} </h6>
+
+                    <p>
+                    <a   href="{{ path('main_careers') }}" > {% trans from 'aboutstc' %}  careers.domaine1 {% endtrans %} </a>
+                    </p>
+                    <p>
+                    <a  href="{{ path('main_careers') }}"> {% trans from 'aboutstc' %}  careers.domaine2 {% endtrans %} </a>
+                    </p>
+                    <p>
+                        <a  href="{{ path('main_careers') }}" > {% trans from 'aboutstc' %}  careers.domaine3 {% endtrans %} </a>
+                    </p>
+                    <p>
+                    <a  href="{{ path('main_careers') }}" > {% trans from 'aboutstc' %}  careers.domaine4 {% endtrans %} </a>
+                    </p>
+                    <p>
+                    <a  href="{{ path('main_careers') }}" > {% trans from 'aboutstc' %}  careers.domaine5 {% endtrans %} </a>
+                    </p>
+                    <p>
+                    <a  href="{{ path('main_careers') }}" > {% trans from 'aboutstc' %}  careers.domaine6 {% endtrans %} </a>
+                    </p>
+                </div>
+                <div class="col s12 m6 l8">
+                    <h6> {% trans from 'aboutstc' %} careers.domaine7 {% endtrans %} </h6>
+                    <p>
+                        <h6> {% trans from 'aboutstc' %} careers.domaine1 {% endtrans %} </h6>
+                    </p>
+                    <p>
+                     {% trans from 'aboutstc' %} careers.produitech_content {% endtrans %}
+                    </p>
+                    <div class="col s12 m6 l4">
+                        <img  src="{{ asset('data/img/protech.jpg') }}" alt="">
+                    </div>
+                    <div align="center" class="couleur">
+                    {% trans from 'aboutstc' %} careers.equiproduittech {% endtrans %}
+                    </div>
+                    <div class="col s12 m6 l5">
+                          <ul>
+                              <li>
+                                  {% trans from 'aboutstc' %} careers.equiproduittech1 {% endtrans %}
+                              </li>
+                              <li>
+                                  {% trans from 'aboutstc' %} careers.equiproduittech2 {% endtrans %}
+                              </li>
+                              <li>
+                                  {% trans from 'aboutstc' %} careers.equiproduittech3 {% endtrans %}
+                              </li>
+                              <li>
+                                  {% trans from 'aboutstc' %} careers.equiproduittech4 {% endtrans %}
+                              </li>
+                              <li>
+                                  {% trans from 'aboutstc' %} careers.equiproduittech5 {% endtrans %}
+                              </li>
+                          </ul>
+                    </div>
+                    <div class="col s12 m6 l3">
+                        <ul>
+                            <li>
+                                {% trans from 'aboutstc' %} careers.equiproduittech6 {% endtrans %}
+                            </li>
+                            <li>
+                                {% trans from 'aboutstc' %} careers.equiproduittech7 {% endtrans %}
+                            </li>
+                            <li>
+                                {% trans from 'aboutstc' %} careers.equiproduittech8 {% endtrans %}
+                            </li>
+                            <li>
+                                {% trans from 'aboutstc' %} careers.equiproduittech9 {% endtrans %}
+                            </li>
+                            <li>
+                                {% trans from 'aboutstc' %} careers.equiproduittech10 {% endtrans %}
+                            </li>
+                        </ul>
+                    </div>
+                    <div>
+                    {% trans from 'aboutstc' %} careers.produitech_content1 {% endtrans %}
+                    </div>
+                    <div class="couleur">
+                        <p>
+                        {% trans from 'aboutstc' %} careers.eventsrencontre {% endtrans %}
+                        </p>
+                    </div>
+                    <div>
+                        <p>
+                            {% trans from 'aboutstc' %} careers.eventsrencontre_content {% endtrans %}
+                        </p>
+                    </div>
+                    <div align="center">
+                        <img  src="{{ asset('data/img/pop.jpg') }}" alt="">
+                    </div>
+                    <div class="couleur">
+                        <p>
+                            {% trans from 'aboutstc' %} careers.produitsolution {% endtrans %}
+                        </p>
+                    </div>
+                    <div>
+                        <p>
+                            {% trans from 'aboutstc' %} careers.produitsolution_content {% endtrans %}
+                        </p>
+                        </br>
+                    </div>
+                    <div align="center">
+                    <h6> {% trans from 'aboutstc' %} careers.title5 {% endtrans %} </h6>
+                    </div>
+
+                    <div class="col s12 m6 l5">
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="position_wrapper">
+            <div class="position_title">
+                <div class="position">Software developer  <br/> Job Category: Software Development</div>
+                <div class="location">Douala - Cameroon</div>
+            </div>
+            <div class="position_details">
+                <strong>Software Developer</strong><br/>
+                Douala - Cameroon <br/> <br/>
+
+                <h5> ABOUT THE POST </h5>
+                <h6><strong>STC Makes Work Life Better™</strong></br></h6>
+                This is our promise. Not only for our customers, but our employees as well.<br/><br/>
+
+                STC is a cloud company powered by people.  Join us as we transform the world of work for millions of employees around
+                the world.  Our products help employees be paid on time, apply for promotions, grow their careers, and support their
+                work/life fit.  Our solutions and our people work together to help organizations control costs, save time, optimize
+                their workforce, minimize risk and grow their businesses.<br/><br/>
+
+                As a software company specializing in human capital management (HCM), Ceridian has not only invested heavily in
+                cloud software development but in its people as well.  We have a variety of career growth (Top Talent, Career
+                Pathing, Tuition Reimbursement, & Job Rotation) and Diversity/Inclusion (YOUnity and Ceridian’s Women Network)
+                programs to support your career journey at Ceridian.</br></br>
+
+                We are looking for fun, intelligent, team oriented people who believe in our values: Customer Focus, Transparency,
+                Diligence, Optimism, and Agility.</br></br>
+
+                Find out why STC employees declare STC a Great Place to Work® in 2016, a Glassdoor Best Places to
+                Work in 2017, and one of Cameroon Top 100 Employers for 2017!</br></br>
+
+
+                <strong>As a Software Developer:</strong>
+                <ul>
+                    <li>You will develop a great product experience, while leveraging the latest technologies</li>
+                    <li>You will help lead a team of developers using your experience with JavaScript frameworks such as Dojo, React, and Angular</li>
+                </ul>
+
+                <strong>Some of the things you will accomplish as a Developer on the Dayforce Team: </strong> <br/><br/>
+                <ul>
+                    <li>Create applications that help our customers engage their employees, before their first day until their last, by developing HCM solutions (such as Recruiting, Onboarding, Performance Development, etc.) that employees enjoy using.</li>
+                    <li>Develop a product that helps our customers build better teams, by gathering information about employees and their colleagues that we can use to learn how effective they will be working together.</li>
+                    <li>Build a high quality product that follows a responsive design and gives our clients the ability to interact with their employees anywhere and on any device.</li>
+                    <li>Leverage our vast amount of employee data, to deliver compelling insights and analytics to our clients.</li>
+                </ul>
+
+                You will join an energetic global team of Product Managers, Business Analysts, Developers, Test Engineers and QA where daily collaboration across these groups, is a key part of our success.<br/><br/>
+
+                <strong> What we are looking for:</strong><br/>
+                <ul>
+                    <li>Hands on experience in applying design patterns, writing unit tests and optimizing performance in application level Type-Script/JavaScript</li>
+                    <li>1-2 years of demonstrated experience with modern JavaScript libraries such as Jquery, React, Angular, Ember, Backbone, etc.</li>
+                    <li>Strong coding skills in a modern object oriented language (e.g., C#, PHP, Java, C++)
+                    <li>Working knowledge of modern web technologies including:  HTML5, CSS3, SVG, WCF, JSON, etc.
+                    <li>1+ years of experience with Symfony framework
+                    <li>1+ years working with MySQL
+                    <li>Disciplined self-starter, capable of working independently or in close collaboration within an agile development team
+                    <li>Excellent communication and collaboration skills
+                    <li>Experience working with SaaS Enterprise Software is a plus
+                    <li>Passion for solving hard problems and knows how to have fun!
+                </ul>
+
+
+                <br/>
+                STC combines the excitement of a startup environment, with the growth opportunities of a large organization.
+                We believe our employees should be happy and healthy, with peace of mind and a sense of fulfillment.
+                We provide our employees with comprehensive benefits for various life circumstances and needs, great opportunities for career development,
+                and a balanced lifestyle to achieve personal and professional success.<br/><br/>
+
+                Connect with us on Twitter @SemanticaCareers or Facebook SemanticaCareers <br/><br/>
+
+                We thank all applicants in advance for their interest in this position, however, only those selected for an interview will be contacted.<br/><br/>
+
+                STC is committed to fair and accessible employment practices.  If selected for an interview,
+                we will be happy to work with you to ensure your interview is accessible and accommodation is provided.<br/><br/>
+
+                <div class="greenButton">Apply for this position</div>
+
+            </div>
+        </div>
+        <div class="position_wrapper">
+            <div class="position_title">
+                <div class="position">Développeur de logiciels  <br/> Catégorie d’emploi: Développement  de logiciels</div>
+                <div class="location">Douala - Cameroun</div>
+            </div>
+            <div class="position_details">
+                <strong>Développeur de logiciels</strong><br/>
+                Douala - Cameroun <br/> <br/>
+
+                <h5> A PROPOS DU POSTE </h5>
+                <h6><strong>STC  Rend  mieux la vie professionnelle™</strong></br></h6>
+                C'est notre promesse. Non seulement pour nos clients, mais aussi pour nos employés.<br/><br/>
+
+                STC est une entreprise informatique développée par des personnes. Nos produits aident les employés à être payés à temps,ils  postulent pour  des promotions, développent leur carrière et soutiennent leur
+                Travail. Nos solutions et nos collaborateurs travaillent ensemble pour aider les entreprises à contrôler les coûts,et  à gagner du temps, à optimiser
+                Leur main-d'œuvre, minimiser les risques et développer leurs compétences.<br/><br/>
+
+
+                Nous recherchons des personnes amusantes, intelligentes et axées sur l'équipe qui croient en nos valeurs: Focus sur le client, Transparence,
+                Diligence, optimisme et agilité.</br></br>
+
+                Découvrez pourquoi les employés de STC déclarent que STC est un excellent lieu de travail® en 2016, un lieu de travail par excellence pour
+                Travaillé en 2017 et l'un des 10 meilleurs employeurs du Cameroun pour 2017!</br></br>
+
+
+                <strong>Ce que l'on attend de vous au quotidien:</strong>
+                <ul>
+                    <li>Appropriation et compréhension de la demande client : cahiers fonctionnels, fiches projets, tickets et backlogs</li>
+                    <li>Participation, rédaction et validation de l’analyse technique</li>
+                    <li>Proposition et valide des solutions techniques</li>
+                    <li>Participation à la résolution des tickets d’assistance et d’anomalies (TMA)</li>
+                    <li>Participation à la réalisation des projets</li>
+                    <li>Ecriture des tests unitaires associés</li>
+                    <li>Modification de la base de données</li>
+                    <li>Optimisation et factorisation du code existant</li>
+                    <li>Rédaction de la documentation technico-fonctionnelle de vos projets</li>
+                    <li>Réalisation des tests unitaires pour vérifier chaque fonctionnalité</li>
+                    <li>Réalisation des tests d'intégration pour valider ses modifications dans le système (non régression)</li>
+                    <li>Rédaction de la documentation pour l’installation, le déploiement et l’utilisation des applications</li>
+                    <li>Réalisation d'une recette fonctionnelle</li>
+                </ul>
+
+                <strong>Et aussi: </strong> <br/><br/>
+                <ul>
+                    <li>Contribution au déploiement des nouvelles applications</li>
+                    <li>Réalisation des formations techniques / technico-fonctionnelles (internes ou pour des utilisateurs)</li>
+                    <li>Encadrement technique des développeurs en fonction de votre niveau de compétences</li>
+                    <li>Validation des modifications de base de données</li>
+                    <li>Prend des initiatives dans une démarche d’amélioration continue</li>
+                    <li>Animation des réunions</li>
+                    <li>Faire des revues de code et proposer des évaluations</li>
+                    <li>Faire de la veille technologique</li>
+                    <li>Peut réaliser des entrevues techniques de candidats</li>
+                </ul>
+                <strong> Vos compétences:</strong><br/>
+                <ul>
+                    <li>Connaissance de PHP version 5 minimum</li>
+                    <li>Connaissance de MVC / POO</li>
+                    <li>Connaissance de SGBD-R et en particulier MySQL et Postgré</li>
+                    <li>Connaissance de Framework PHP Symfony est un plus</li>
+                    <li>HTML</li>
+                    <li>Javascript</li>
+                    <li>JQuery</li>
+                    <li>CSS</li>
+                </ul>
+                <p>
+                    <strong>Minimum 2 ans d’expérience en php</strong>
+                    </br>
+                    <strong>Type d'emploi : CDD</strong>
+                </p>
+                <br/><br/>
+
+                <div class="greenButton">Postuler pour ce poste</div>
+
+            </div>
+        </div>
+        <div class="position_wrapper">
+            <div class="position_title">
+                <div class="position">Software developer  <br/> Job Category: Software Development</div>
+                <div class="location">Yaounde - Cameroon</div>
+            </div>
+            <div class="position_details">
+                <strong>Software Developer</strong><br/>
+                Yaoude- Cameroon <br/> <br/>
+
+                <h5> ABOUT THE POST </h5>
+                <h6><strong>STC. Makes Work Life Better™</strong></br></h6>
+                This is our promise. Not only for our customers, but our employees as well.<br/><br/>
+
+                STC is a cloud company powered by people.  Join us as we transform the world of work for millions of employees around
+                the world.  Our products help employees be paid on time, apply for promotions, grow their careers, and support their
+                work/life fit.  Our solutions and our people work together to help organizations control costs, save time, optimize
+                their workforce, minimize risk and grow their businesses.<br/><br/>
+
+                As a software company specializing in human capital management (HCM), Ceridian has not only invested heavily in
+                cloud software development but in its people as well.  We have a variety of career growth (Top Talent, Career
+                Pathing, Tuition Reimbursement, & Job Rotation) and Diversity/Inclusion (YOUnity and Ceridian’s Women Network)
+                programs to support your career journey at Ceridian.</br></br>
+
+                We are looking for fun, intelligent, team oriented people who believe in our values: Customer Focus, Transparency,
+                Diligence, Optimism, and Agility.</br></br>
+
+                Find out why STC employees declare STC a Great Place to Work® in 2016, a Glassdoor Best Places to
+                Work in 2017, and one of Cameroon Top 100 Employers for 2017!</br></br>
+
+
+                <strong>As a Software Developer:</strong>
+                <ul>
+                    <li>You will develop a great product experience, while leveraging the latest technologies</li>
+                    <li>You will help lead a team of developers using your experience with JavaScript frameworks such as Dojo, React, and Angular</li>
+                </ul>
+
+                <strong>Some of the things you will accomplish as a Developer on the Dayforce Team: </strong> <br/><br/>
+                <ul>
+                    <li>Create applications that help our customers engage their employees, before their first day until their last, by developing HCM solutions (such as Recruiting, Onboarding, Performance Development, etc.) that employees enjoy using.</li>
+                    <li>Develop a product that helps our customers build better teams, by gathering information about employees and their colleagues that we can use to learn how effective they will be working together.</li>
+                    <li>Build a high quality product that follows a responsive design and gives our clients the ability to interact with their employees anywhere and on any device.</li>
+                    <li>Leverage our vast amount of employee data, to deliver compelling insights and analytics to our clients.</li>
+                </ul>
+
+                You will join an energetic global team of Product Managers, Business Analysts, Developers, Test Engineers and QA where daily collaboration across these groups, is a key part of our success.<br/><br/>
+
+                <strong> What we are looking for:</strong><br/>
+                <ul>
+                    <li>Hands on experience in applying design patterns, writing unit tests and optimizing performance in application level Type-Script/JavaScript</li>
+                    <li>1-2 years of demonstrated experience with modern JavaScript libraries such as Jquery, React, Angular, Ember, Backbone, etc.</li>
+                    <li>Strong coding skills in a modern object oriented language (e.g., C#, PHP, Java, C++)
+                    <li>Working knowledge of modern web technologies including:  HTML5, CSS3, SVG, WCF, JSON, etc.
+                    <li>1+ years of experience with Symfony framework
+                    <li>1+ years working with MySQL
+                    <li>Disciplined self-starter, capable of working independently or in close collaboration within an agile development team
+                    <li>Excellent communication and collaboration skills
+                    <li>Experience working with SaaS Enterprise Software is a plus
+                    <li>Passion for solving hard problems and knows how to have fun!
+                </ul>
+
+
+                <br/>
+                STC combines the excitement of a startup environment, with the growth opportunities of a large organization.
+                We believe our employees should be happy and healthy, with peace of mind and a sense of fulfillment.
+                We provide our employees with comprehensive benefits for various life circumstances and needs, great opportunities for career development,
+                and a balanced lifestyle to achieve personal and professional success.<br/><br/>
+
+                Connect with us on Twitter @SemanticaCareers or Facebook SemanticaCareers <br/><br/>
+
+                We thank all applicants in advance for their interest in this position, however, only those selected for an interview will be contacted.<br/><br/>
+
+                STC is committed to fair and accessible employment practices.  If selected for an interview,
+                we will be happy to work with you to ensure your interview is accessible and accommodation is provided.<br/><br/>
+
+                <div class="greenButton">Apply for this position</div>
+
+            </div>
+        </div>
+        <div class="position_wrapper">
+            <div class="position_title">
+                <div class="position">Développeur de logiciels  <br/> Catégorie d’emploi: Développement  de logiciels</div>
+                <div class="location">Yaoundé - Cameroun</div>
+            </div>
+            <div class="position_details">
+                <strong>Développeur de logiciels</strong><br/>
+                Yaoundé - Cameroun <br/> <br/>
+
+                <h5> A PROPOS DU POSTE </h5>
+                <h6><strong>STC  Rend  mieux la vie professionnelle™</strong></br></h6>
+                C'est notre promesse. Non seulement pour nos clients, mais aussi pour nos employés.<br/><br/>
+
+                STC est une entreprise informatique développée par des personnes. Nos produits aident les employés à être payés à temps,ils  postulent pour  des promotions, développent leur carrière et soutiennent leur
+                Travail. Nos solutions et nos collaborateurs travaillent ensemble pour aider les entreprises à contrôler les coûts,et  à gagner du temps, à optimiser
+                Leur main-d'œuvre, minimiser les risques et développer leurs compétences.<br/><br/>
+
+
+                Nous recherchons des personnes amusantes, intelligentes et axées sur l'équipe qui croient en nos valeurs: Focus sur le client, Transparence,
+                Diligence, optimisme et agilité.</br></br>
+
+                Découvrez pourquoi les employés de STC déclarent que STC est un excellent lieu de travail® en 2016, un lieu de travail par excellence pour
+                Travaillé en 2017 et l'un des 10 meilleurs employeurs du Cameroun pour 2017!</br></br>
+
+
+                <strong>Ce que l'on attend de vous au quotidien:</strong>
+                <ul>
+                    <li>Appropriation et compréhension de la demande client : cahiers fonctionnels, fiches projets, tickets et backlogs</li>
+                    <li>Participation, rédaction et validation de l’analyse technique</li>
+                    <li>Proposition et valide des solutions techniques</li>
+                    <li>Participation à la résolution des tickets d’assistance et d’anomalies (TMA)</li>
+                    <li>Participation à la réalisation des projets</li>
+                    <li>Ecriture des tests unitaires associés</li>
+                    <li>Modification de la base de données</li>
+                    <li>Optimisation et factorisation du code existant</li>
+                    <li>Rédaction de la documentation technico-fonctionnelle de vos projets</li>
+                    <li>Réalisation des tests unitaires pour vérifier chaque fonctionnalité</li>
+                    <li>Réalisation des tests d'intégration pour valider ses modifications dans le système (non régression)</li>
+                    <li>Rédaction de la documentation pour l’installation, le déploiement et l’utilisation des applications</li>
+                    <li>Réalisation d'une recette fonctionnelle</li>
+                </ul>
+
+                <strong>Et aussi: </strong> <br/><br/>
+                <ul>
+                    <li>Contribution au déploiement des nouvelles applications</li>
+                    <li>Réalisation des formations techniques / technico-fonctionnelles (internes ou pour des utilisateurs)</li>
+                    <li>Encadrement technique des développeurs en fonction de votre niveau de compétences</li>
+                    <li>Validation des modifications de base de données</li>
+                    <li>Prend des initiatives dans une démarche d’amélioration continue</li>
+                    <li>Animation des réunions</li>
+                    <li>Faire des revues de code et proposer des évaluations</li>
+                    <li>Faire de la veille technologique</li>
+                    <li>Peut réaliser des entrevues techniques de candidats</li>
+                </ul>
+                <strong> Vos compétences:</strong><br/>
+                <ul>
+                    <li>Connaissance de PHP version 5 minimum</li>
+                    <li>Connaissance de MVC / POO</li>
+                    <li>Connaissance de SGBD-R et en particulier MySQL et Postgré</li>
+                    <li>Connaissance de Framework PHP Symfony est un plus</li>
+                    <li>HTML</li>
+                    <li>Javascript</li>
+                    <li>JQuery</li>
+                    <li>CSS</li>
+                </ul>
+                <p>
+                    <strong>Minimum 2 ans d’expérience en php</strong>
+                    </br>
+                    <strong>Type d'emploi : CDD</strong>
+                </p>
+                <br/><br/>
+
+                <div class="greenButton">Postuler pour ce poste</div>
+
+            </div>
+        </div>
+
+
+        <div class="position_wrapper">
+            <div class="position_title">
+                <div class="position">  <br/> Job Category: Software Development(Senior) </div>
+                <div class="location">Yaounde - Cameroon</div>
+            </div>
+            <div class="position_details">
+                <strong>Software Developer</strong><br/>
+                Yaoude- Cameroon <br/> <br/>
+
+                <h5> ABOUT THE POST </h5>
+                <h6><strong>About Dayforce</strong></br></h6>
+
+                Dayforce, the innovator in STCWorkforce Management, enables organizations to integrate corporate performance
+                objectives into the planning, scheduling, and management of their workforce for optimal performance and
+                profitability. Dayforce’s enterprise solutions are delivered on-demand and with latest generation technologies
+                resulting in faster deployments, lower costs, a superior user experience, and a return on investment that is
+                delivered more quickly and more sustainably.<br/><br/>
+
+                <h6><strong>JOB SUMMARY</strong></br></h6>
+                The Software Developer Sr. is responsible for designing and implementing new development projects as well as
+                completing and augmenting the current solutions and services. This role collaborates with Technical Product
+                Managers, Developers, Technical Writing and Quality Assurance throughout the development process to ensure the
+                product is functionally complete and well-engineered.</br></br>
+
+
+
+                <strong> ESSENTIAL FUNCTIONS:</strong><br/>
+                <ul>
+                    <li>Analyze, design, prototype, develop , test and support – complete software</li>
+                    <li>lifecycle in your hands</li>
+                </ul>
+
+                <strong>Work with clients, prospects, implementation partners, and Dayforce personnel
+                    to envision and deliver the required functionality: </strong> <br/><br/>
+                <ul>
+                    <li>Create and enhance a scalable enterprise application;</li>
+                    <li>Assess risks and impacts on the existing system as new functions are added;</li>
+                    <li>Ability to do effective code reviews of peer work;</li>
+                    <li>Mentor other developers and share knowledge.</li>
+                </ul>
+
+                <strong> EDUCATIONAL/SKILL/EXPERIENCE REQUIREMENTS:</strong><br/>
+                <ul>
+                    <li>Hands on experience in applying design patterns, writing unit tests and optimizing performance in application level
+                        Type-Script/JavaScript;</li>
+                    <li>1-2 years of demonstrated experience with modern JavaScript libraries such as Dojo, React, Angular, Ember, Backbone, etc...</li>
+                    <li>Strong coding skills in a modern object oriented language (e.g., C#, Java, C++)
+                    <li>Working knowledge of modern web technologies including:  HTML5, CSS3, SVG, WCF, JSON, etc;
+                    <li>1+ years working with MySQL;
+                    <li>3+ years of experience with .NET framework;
+                    <li>2+ years working with ASP.NET MVC;
+                    <li>Disciplined self-starter, capable of working independently or in close collaboration within an agile development team;
+                    <li>Excellent communication and collaboration skills;
+                    <li>Experience working with SaaS Enterprise Software is a plus;
+                    <li>Passion for solving hard problems and knows how to have fun!
+                </ul>
+
+                <strong>WORKING ENVIRONMENT & PHYSICAL DEMANDS</strong><br/>
+                General office environment <br/><br/>
+                <div class="greenButton">Apply for this position</div>
+
+            </div>
+        </div>
+
+        <div class="position_wrapper">
+            <div class="position_title">
+                <div class="position"> Développeur de logiciels (Senior) <br/>Catégorie d'emploi: développement de logiciels (senior)  </div>
+                <div class="location">Yaoundé - Cameroun</div>
+            </div>
+            <div class="position_details">
+                <strong>Développeur de logiciels (Senior)</strong><br/>
+                Yaoundé- Cameroun <br/> <br/>
+
+                <h5>À PROPOS DU POSTE  </h5>
+
+                Société de Développement en Ingénierie Informatique, STC  accompagne ses clients depuis plus de 2 ans dans les
+                métiers des études et développements informatiques.</br></br>
+
+                Nos collaborateurs, répartis dans  le monde, interviennent sur des projets sur-mesure et structurants.
+                STC, c’est aussi une structure souple, réactive et à l’écoute, reconnue pour la qualité de ses
+                recrutements et de ses prestations.</br></br>
+
+
+                Nous recherchons  1 Analyste Programmeur s"nior C#/ASP.Net expérimenté (H/F) pour une équipe projet chez un de nos
+                clients dans la ville de Yaoundé.</br></br>
+
+                Sous la responsabilité du Chef de projet, vous participez à l’analyse des besoins en donnant votre avis
+                sur les spécifications fonctionnelles et rédigez des spécifications techniques.</br></br>
+
+                Vous effectuez ensuite les développements, et assurez les phases de tests unitaires et de tests d’intégration
+                le tout dans le respect des normes pré-établies en terme de qualité et de sécurité. A l’issue de ces réalisations,
+                vous réalisez la documentation utilisateur.</br></br>
+                De formation supérieure en informatique, vous bénéficiez d’au moins 4 ans d’expérience en développement C#,
+                ASP.Net, Javascript et êtes à l’aise avec les bases de données, notamment SQL Server. Vous avez à cœur les
+                problématiques d’optimisation de code, et possédez idéalement quelques connaissances en Multithreading.</br></br>
+
+                Vous savez travailler en mode projet et êtes à l’aise sur la maintenance corrective et  évolutive également.</br>
+                Votre bon relationnel vous aidera à intégrer une équipe déjà en place, et vous serez apprécié pour vos aptitudes
+                d’organisation, de rigueur et de concentration.</br></br>
+                Vous aimez relever de nouveaux challenges, on vous reconnaît pour votre curiosité et votre autonomie, alors rejoignez
+                une équipe dynamique en postulant via le bouton ci-dessous.</br></br>
+                <div class="greenButton">Postulez pour ce poste</div>
+
+            </div>
+        </div>
+
+        <div class="position_wrapper">
+            <div class="position_title">
+                <div class="position">  <br/> Job Category: Software Development(Senior) </div>
+                <div class="location">Douala - Cameroon</div>
+            </div>
+            <div class="position_details">
+                <strong>Software Developer</strong><br/>
+                Douala- Cameroon <br/> <br/>
+
+                <h5> ABOUT THE POST </h5>
+                <h6><strong>About Dayforce</strong></br></h6>
+
+                Dayforce, the innovator in STCWorkforce Management, enables organizations to integrate corporate performance
+                objectives into the planning, scheduling, and management of their workforce for optimal performance and
+                profitability. Dayforce’s enterprise solutions are delivered on-demand and with latest generation technologies
+                resulting in faster deployments, lower costs, a superior user experience, and a return on investment that is
+                delivered more quickly and more sustainably.<br/><br/>
+
+                <h6><strong>JOB SUMMARY</strong></br></h6>
+                The Software Developer Sr. is responsible for designing and implementing new development projects as well as
+                completing and augmenting the current solutions and services. This role collaborates with Technical Product
+                Managers, Developers, Technical Writing and Quality Assurance throughout the development process to ensure the
+                product is functionally complete and well-engineered.</br></br>
+
+
+
+                <strong> ESSENTIAL FUNCTIONS:</strong><br/>
+                <ul>
+                    <li>Analyze, design, prototype, develop , test and support – complete software</li>
+                    <li>lifecycle in your hands</li>
+                </ul>
+
+                <strong>Work with clients, prospects, implementation partners, and Dayforce personnel
+                    to envision and deliver the required functionality: </strong> <br/><br/>
+                <ul>
+                    <li>Create and enhance a scalable enterprise application;</li>
+                    <li>Assess risks and impacts on the existing system as new functions are added;</li>
+                    <li>Ability to do effective code reviews of peer work;</li>
+                    <li>Mentor other developers and share knowledge.</li>
+                </ul>
+
+                <strong> EDUCATIONAL/SKILL/EXPERIENCE REQUIREMENTS:</strong><br/>
+                <ul>
+                    <li>Hands on experience in applying design patterns, writing unit tests and optimizing performance in application level
+                        Type-Script/JavaScript;</li>
+                    <li>1-2 years of demonstrated experience with modern JavaScript libraries such as Dojo, React, Angular, Ember, Backbone, etc...</li>
+                    <li>Strong coding skills in a modern object oriented language (e.g., C#, Java, C++)
+                    <li>Working knowledge of modern web technologies including:  HTML5, CSS3, SVG, WCF, JSON, etc;
+                    <li>1+ years working with MySQL;
+                    <li>3+ years of experience with .NET framework;
+                    <li>2+ years working with ASP.NET MVC;
+                    <li>Disciplined self-starter, capable of working independently or in close collaboration within an agile development team;
+                    <li>Excellent communication and collaboration skills;
+                    <li>Experience working with SaaS Enterprise Software is a plus;
+                    <li>Passion for solving hard problems and knows how to have fun!
+                </ul>
+
+                <strong>WORKING ENVIRONMENT & PHYSICAL DEMANDS</strong><br/>
+                General office environment <br/><br/>
+                <div class="greenButton">Apply for this position</div>
+
+            </div>
+        </div>
+
+        <div class="position_wrapper">
+            <div class="position_title">
+                <div class="position"> Développeur de logiciels (Senior) <br/>Catégorie d'emploi: développement de logiciels (senior)  </div>
+                <div class="location">Yaoundé - Cameroun</div>
+            </div>
+            <div class="position_details">
+                <strong>Développeur de logiciels (Senior)</strong><br/>
+                Yaoundé- Cameroun <br/> <br/>
+
+                <h5>À PROPOS DU POSTE  </h5>
+
+                Société de Développement en Ingénierie Informatique, STC  accompagne ses clients depuis plus de 2 ans dans les
+                métiers des études et développements informatiques.</br></br>
+
+                Nos collaborateurs, répartis dans  le monde, interviennent sur des projets sur-mesure et structurants.
+                STC, c’est aussi une structure souple, réactive et à l’écoute, reconnue pour la qualité de ses
+                recrutements et de ses prestations.</br></br>
+
+
+                Nous recherchons  1 Analyste Programmeur s"nior C#/ASP.Net expérimenté (H/F) pour une équipe projet chez un de nos
+                clients dans la ville de Yaoundé.</br></br>
+
+                Sous la responsabilité du Chef de projet, vous participez à l’analyse des besoins en donnant votre avis
+                sur les spécifications fonctionnelles et rédigez des spécifications techniques.</br></br>
+
+                Vous effectuez ensuite les développements, et assurez les phases de tests unitaires et de tests d’intégration
+                le tout dans le respect des normes pré-établies en terme de qualité et de sécurité. A l’issue de ces réalisations,
+                vous réalisez la documentation utilisateur.</br></br>
+                De formation supérieure en informatique, vous bénéficiez d’au moins 4 ans d’expérience en développement C#,
+                ASP.Net, Javascript et êtes à l’aise avec les bases de données, notamment SQL Server. Vous avez à cœur les
+                problématiques d’optimisation de code, et possédez idéalement quelques connaissances en Multithreading.</br></br>
+
+                Vous savez travailler en mode projet et êtes à l’aise sur la maintenance corrective et  évolutive également.</br>
+                Votre bon relationnel vous aidera à intégrer une équipe déjà en place, et vous serez apprécié pour vos aptitudes
+                d’organisation, de rigueur et de concentration.</br></br>
+                Vous aimez relever de nouveaux challenges, on vous reconnaît pour votre curiosité et votre autonomie, alors rejoignez
+                une équipe dynamique en postulant via le bouton ci-dessous.</br></br>
+                <div class="greenButton">Postulez pour ce poste</div>
+
+            </div>
+        </div>
+
+
+        <div class="position_wrapper">
+            <div class="position_title">
+                <div class="position">Client Relationship Manager <br/> Job Category: Relationship Manager</div>
+                <div class="location">Yaounde and Douala - Cameroon</div>
+            </div>
+
+            <div class="position_details">
+                <strong>Customer Relationship</strong><br/>
+                Douala and yaounde- Cameroon <br/> <br/>
+                <h5>Job Descriptions</h5>
+                The client relationship manager works closely with the sales team to manage relationships with clients.</br></br>
+                Bac + 5 or equivalent, you have professional experience Of at least 2 years in a similar
+                position, on the following technologies: PHP5 / MYSQL, POO, WEBSERVICES, XSL, Knowledge in
+                MySQL. - Autonomous, organized and rigorous, you are force of proposal and like working as a
+                team, - Ability to skill quickly on the functional,Good analytical and team spirit, - Ability
+                to supervise beginners and juniors, - Your passion for IT and your sense of service are as Of
+                assets that will enable you to carry out your missions and to evolve in our company.</br></br>
+                <h6>Duties of the Client Relationship Manager</h6>
+
+                <ul>
+                    <li>Building and maintaining relationships with clients and key personnel within customer companies.</li>
+                    <li>Conducting business reviews to ensure clients are satisfied with their products and services etc</li>
+                    <li>Alerting the sales team to opportunities for further sales within key clients);
+                    <li>Letting customers know about other products the company offers;
+                    <li>Attending meetings with clients to build relationships with existing accounts;
+                    <li>Achieving client relationship targets and KPI’s as set by the Head of Sales;
+                    <li>Working closely with Account Managers and Sales Consultants;
+                    <li>Escalating and resolving areas of concern as raised by clients;
+                    <li>Carrying out client satisfaction surveys and reviews;
+                    <li>Monitoring company performance against service level agreements and flagging potential issues;
+                    <li>Updating the CRM and ensuring account managers are aware of changes within clients;
+                    <li>Passing leads to the sales team and following up on progress;
+                    <li>Liaising with internal departments to ensure client needs are fulfilled effectively.
+                </ul>
+                <h6>Background of the Client Relationship Manager</h6>
+                <ul>
+                    <li>Strong interpersonal skills and an ability to build rapport with customers;</li>
+                    <li>Previous sales experience and an organised approach to work;</li>
+                    <li>Hardworking with a strong work ethic;</li>
+                    <li>Previous experience working as a client relationship manager or a track record of
+                        managing client relationships.</li>
+                </ul>
+
+                <div class="greenButton">Apply for this position</div>
+            </div>
+        </div>
+
+        <div class="position_wrapper">
+            <div class="position_title">
+                <div class="position">Responsable de la Relation Client <br/> Catégorie d'emploi:Responsable de la Relation Client</div>
+                <div class="location">Yaoundé et Douala - Cameroun</div>
+            </div>
+
+            <div class="position_details">
+                <strong>Responsable de la Relation Client</strong><br/>
+                Douala et yaoundé- Cameroun <br/> <br/>
+                <h5>Votre mission chez STC :</h5>
+                Vous souhaitez vous investir dans une entreprise solide, innovante et ambitieuse ? Vous aspirez à donner du sens à
+                votre carrière dans un secteur en fort développement en participant à la protection des individus et des biens ?
+                Securitas est fait pour vous !</br></br>
+                Rattaché(e) au Directeur de l' agence de STC, vous êtes l'interlocuteur privilégié de vos clients et êtes responsable de l'ensemble de la prestation dans un souci constant de qualité et de rentabilité.
+                Voici les principales missions qui vous seront confiées :</br>
+
+                <ul>
+                    <li>Encadrer votre équipe, l'animer et la monter en compétences : intégration , entretien professionnel...</li>
+                    <li>Mettre en place et suivre les prestations conformément aux pratiques du groupe et aux missions des sites, dans le respect de la législation en
+                        matière de planning et d’hygiène-santé-sécurité,</li>
+                </ul>
+                <h6>En tant qu'interlocuteur direct de vos clients:</h6>
+                <ul>
+                    <li>Vous êtes force de proposition dans le développement de l'amélioration des services Securitas</li>
+                    <li>Vous informez vos clients des événements survenus sur vos sites et proposez des mesures correctives,
+                        suivez leurs réalisations</li>
+                    <li>Vous établissez régulièrement des bilans d'activité pour vos clients et votre Manager</li>
+                    <li>Vous pouvez être amené(e) à assurer des astreintes</li>
+                    <li></li>
+                </ul>
+                <p><strong>Votre Profil :</strong></p>
+                <ul>
+                    <li>Titulaire d'un diplôme d'études supérieures, vous possédez une expérience professionnelle réussie dans la relation clientèle et le management d’une équipe. Doté(e) d'un excellent relationnel, vous possédez de réelles qualités
+                        commerciales et un grand sens du service client.</li>
+                    <li>Manager dynamique et rigoureux, vous gérez parfaitement vos priorités et savez animer et motiver vos équipes avec aisance. </li>
+                    <li>Votre maîtrise du Pack Office vous permettra d'être rapidement opérationnel(le) dans votre poste.</li>
+                    <li>Le secteur de la sécurité privée vous attire et vous souhaitez vous investir durablement dans
+                        un poste dynamique, responsabilisant et engageant.</li>
+                </ul>
+                <p>Rejoignez-nous !</p>
+
+                <div class="greenButton">Postulez pour ce poste</div>
+            </div>
+        </div>
+
+
+
+    </div>
+{% endblock %}
+
+{% block myjs %}
+    <script>
+        $( document ).ready(function() {
+
+            $(".position_details").slideUp();
+
+            $(".position_title").click(function(){
+                $(this).siblings(".position_details").slideToggle(1500);
+            });
+        });
+    </script>
+{% endblock %}

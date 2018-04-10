@@ -1,0 +1,419 @@
+{% extends 'MainBundle::layout.html.twig' %}
+{% block meta %}
+    <meta name = "{% trans from 'refer' %} home.title {% endtrans %}" >
+    <meta name = "keywords" content = "{% trans from 'refer' %} home.description {% endtrans %}" >
+    <meta charset="UTF-8" />
+{% endblock %}
+{% block title %}
+    Semantica Technologies Corporation - STC / Formation
+{% endblock %}
+
+{% block mycss %}
+    <style>
+
+
+        .img_wrap {
+            position: relative;
+            border: 2px solid green;
+            width: 100%;
+            height: 400px;
+
+        }
+        .img_text {
+            position: absolute;
+            font-size: 40px;
+            font-weight: bold;
+            color:#5cb811;
+            /*top: 790px;
+            margin-top: 760px;*/
+            margin-top: 55%;
+            margin-left: 10%;
+            z-index: 10;
+            display: inline-block;
+        }
+
+        .img_f {
+
+            /* margin-top: 10px !important;*/
+            position: absolute;
+            top:3px;
+
+        }
+        .img_div {
+            padding: 1px;
+            position: relative;
+            top: 20px;
+            display: flex;
+            height: 50%;
+
+        }
+
+
+
+
+        .position_title:hover {
+            display:block;
+            /*background-color: #9acd32;*/
+            background-color: rgba(120, 191, 123, 0.5);
+            cursor: pointer;
+            /*opacity: 0.4;*/
+        }
+        .position_title {
+            display:block;
+            border-left: 5px solid yellowgreen;
+            background-color: lightgray;
+            width: 100%;
+            float: right;
+        }
+
+        .position_details {
+
+            /*margin-top: 10px;*/
+            width: 100%;
+            float: right;
+            overflow: hidden;
+            border-left: 1px solid yellowgreen;
+            border-right: 1px solid yellowgreen;
+            border-bottom: 1px solid yellowgreen;
+            padding: 10px;
+        }
+        .position_wrapper {
+            float: right;
+            width: 100%;
+            clear: both;
+            margin-top: 10px;
+        }
+
+        .collapse_position {
+            height: 0;
+        }
+
+        .location{
+            border-left: 1px solid gray;
+            width: 35%;
+            float: right;
+            padding-left: 50px;
+            margin: 15px 1px 5px 1px;
+            padding: 10px 1px 10px 15px;
+
+        }
+
+        .position {
+            width: 63%;
+            float: left;
+            margin: 5px 1px 5px 1px;
+            padding: 10px 1px 10px 15px;
+        }
+
+        ul {
+            list-style-type: disc;
+            list-style-position: inside;
+        }
+        ol {
+            list-style-type: decimal;
+            list-style-position: inside;
+        }
+        ul ul, ol ul {
+            list-style-type: circle;
+            list-style-position: inside;
+            margin-left: 15px;
+        }
+        ol ol, ul ol {
+            list-style-type: lower-latin;
+            list-style-position: inside;
+            margin-left: 15px;
+        }
+
+        ul:not(.browser-default) li {
+            list-style-type: square;
+        }
+
+        .blueButton {
+            -moz-box-shadow: 0px 1px 0px 0px #f0f7fa;
+            -webkit-box-shadow: 0px 1px 0px 0px #f0f7fa;
+            box-shadow: 0px 1px 0px 0px #f0f7fa;
+            background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #33bdef), color-stop(1, #019ad2));
+            background:-moz-linear-gradient(top, #33bdef 5%, #019ad2 100%);
+            background:-webkit-linear-gradient(top, #33bdef 5%, #019ad2 100%);
+            background:-o-linear-gradient(top, #33bdef 5%, #019ad2 100%);
+            background:-ms-linear-gradient(top, #33bdef 5%, #019ad2 100%);
+            background:linear-gradient(to bottom, #33bdef 5%, #019ad2 100%);
+            filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#33bdef', endColorstr='#019ad2',GradientType=0);
+            background-color:#33bdef;
+            -moz-border-radius:6px;
+            -webkit-border-radius:6px;
+            border-radius:6px;
+            border:1px solid #057fd0;
+            display:inline-block;
+            cursor:pointer;
+            color:#ffffff;
+            font-family:Arial;
+            font-size:15px;
+            font-weight:bold;
+            padding:6px 24px;
+            text-decoration:none;
+            text-shadow:0px -1px 0px #5b6178;
+        }
+        .blueButton:hover {
+            background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #019ad2), color-stop(1, #33bdef));
+            background:-moz-linear-gradient(top, #019ad2 5%, #33bdef 100%);
+            background:-webkit-linear-gradient(top, #019ad2 5%, #33bdef 100%);
+            background:-o-linear-gradient(top, #019ad2 5%, #33bdef 100%);
+            background:-ms-linear-gradient(top, #019ad2 5%, #33bdef 100%);
+            background:linear-gradient(to bottom, #019ad2 5%, #33bdef 100%);
+            filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#019ad2', endColorstr='#33bdef',GradientType=0);
+            background-color:#019ad2;
+        }
+        .blueButton:active {
+            position:relative;
+            top:1px;
+        }
+
+        .greenButton {
+            float: right;
+        }
+
+        .greenButton {
+            -moz-box-shadow:inset 0px 1px 0px 0px #caefab;
+            -webkit-box-shadow:inset 0px 1px 0px 0px #caefab;
+            box-shadow:inset 0px 1px 0px 0px #caefab;
+            background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #77d42a), color-stop(1, #5cb811));
+            background:-moz-linear-gradient(top, #77d42a 5%, #5cb811 100%);
+            background:-webkit-linear-gradient(top, #77d42a 5%, #5cb811 100%);
+            background:-o-linear-gradient(top, #77d42a 5%, #5cb811 100%);
+            background:-ms-linear-gradient(top, #77d42a 5%, #5cb811 100%);
+            background:linear-gradient(to bottom, #77d42a 5%, #5cb811 100%);
+            filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#77d42a', endColorstr='#5cb811',GradientType=0);
+            background-color:#77d42a;
+            -moz-border-radius:6px;
+            -webkit-border-radius:6px;
+            border-radius:6px;
+            border:1px solid #268a16;
+            display:inline-block;
+            cursor:pointer;
+            /*color:#306108;*/
+            color:#ffffff;
+            font-family:Arial;
+            font-size:15px;
+            font-weight:bold;
+            padding:6px 24px;
+            text-decoration:none;
+            text-shadow:0px 1px 0px #aade7c;
+        }
+        .greenButton:hover {
+            background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #5cb811), color-stop(1, #77d42a));
+            background:-moz-linear-gradient(top, #5cb811 5%, #77d42a 100%);
+            background:-webkit-linear-gradient(top, #5cb811 5%, #77d42a 100%);
+            background:-o-linear-gradient(top, #5cb811 5%, #77d42a 100%);
+            background:-ms-linear-gradient(top, #5cb811 5%, #77d42a 100%);
+            background:linear-gradient(to bottom, #5cb811 5%, #77d42a 100%);
+            filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#5cb811', endColorstr='#77d42a',GradientType=0);
+            background-color:#5cb811;
+        }
+        .greenButton:active {
+            position:relative;
+            top:1px;
+        }
+        /*Media query for iPhone 5, 6, 6+ portrait*/
+        @media only screen
+        and (min-device-width : 320px) /* or 213.4375em or 3in or 9cm */
+        and (max-device-width : 736px) /* or 41.6875em*/
+        and (orientation : portrait)
+        {
+            .position_wrapper {
+                width: 100%;
+                margin-top: 2px;
+            }
+            .location{
+                display:none;
+                border-left: 1px solid gray;
+
+            }
+            .position {
+                width: 98%;
+                margin: 2px 1px 2px 1px;
+                padding: 5px 2px 5px 5px;
+            }
+
+            .banner_img {
+                display:none;
+            }
+
+            .img_text {
+                font-size: 20px;
+                color:#5cb811;
+                margin-top:46%;
+                color:orange;
+
+            }
+
+            .img_div {
+                top: 5px;
+
+            }
+
+
+        }
+
+        /*Media query for iPhone 5, 6, 6+ landscape*/
+        @media only screen
+        and (min-device-width : 320px)
+        and (max-device-width : 736px)
+        and (orientation : landscape)
+        {
+            .position_wrapper {
+                width: 100%;
+                margin-top: 2px;
+            }
+
+            .location{
+                border-left: 1px solid gray;
+                width: 34%;
+                float: right;
+                padding-left: 10px;
+                margin: 10px 1px 3px 1px;
+                padding: 10px 5px 5px 15px;
+
+            }
+
+            .position {
+                width: 65%;
+                margin: 2px 1px 2px 1px;
+                padding: 5px 2px 5px 5px;
+            }
+
+            .banner_img {
+                display:none;
+            }
+
+            .img_text {
+                font-size: 30px;
+                font-weight: bold;
+                color: #5cb811;
+                color: orange;
+                top: 40%;
+            }
+
+
+            .img_div {
+                top: 1px;
+
+            }
+        }
+        .banner_img{
+            width: 100%;
+        }
+        .forme{
+            text-align: center;
+            color: yellowgreen;
+        }
+
+
+
+    </style>
+{% endblock %}
+{% block header %}
+    {{ parent() }}
+
+    <img class="banner_img" src="{{ asset('data/img/forma.jpg') }}" alt="">
+{% endblock %}
+
+{% block  main %}
+    </br></br></br>
+    <div class="forme">
+    <p>
+    <h4>{%  trans from 'formation' %} formation.image{% endtrans %}</h4>
+   </p>
+    </div>
+    <div class="row" id="main_formation">
+        <div class="position_wrapper">
+            <div class="position_title">
+                <div class="position">{%  trans from 'formation' %} formation.ccna {% endtrans %}</div>
+                <div class="location">{%  trans from 'formation' %} formation.cameroun_ville {% endtrans %}</div>
+            </div>
+            <div class="position_details">
+                <strong>{%  trans from 'formation' %} formation.ccna{% endtrans %}</strong><br/>
+                <img width="10%" height="10%"   src="{{ asset('data/img/cisco-ccna.jpg') }}" alt="">
+                <br>
+                <p>{%  trans from 'formation' %} formation.ccna_content{% endtrans %}</p>
+
+                <div class="waves-effect waves-light btn-large">{%  trans from 'formation' %} formation.souscrire{% endtrans %}</div>
+
+            </div>
+        </div>
+        <div class="position_wrapper">
+            <div class="position_title">
+                <div class="position">{%  trans from 'formation' %} formation.ccnp {% endtrans %}</div>
+                <div class="location">{%  trans from 'formation' %} formation.cameroun_ville {% endtrans %}</div>
+            </div>
+            <div class="position_details">
+                <strong>{%  trans from 'formation' %} formation.ccnp {% endtrans %}</strong><br/>
+                <img width="10%" height="10%"   src="{{ asset('data/img/cisco-ccnp.jpg') }}" alt="">
+                <br>
+                <p>{%  trans from 'formation' %} formation.ccnp_content{% endtrans %}</p>
+                <div class="waves-effect waves-light btn-large">{%  trans from 'formation' %} formation.souscrire{% endtrans %}</div>
+
+            </div>
+        </div>
+        <div class="position_wrapper">
+            <div class="position_title">
+                <div class="position">{%  trans from 'formation' %} formation.java{% endtrans %}</div>
+                <div class="location">{%  trans from 'formation' %} formation.cameroun_ville {% endtrans %}</div>
+            </div>
+            <div class="position_details">
+                <strong>{%  trans from 'formation' %} formation.java{% endtrans %}</strong> <br/>
+                <img width="10%" height="10%"   src="{{ asset('data/img/java.jpg') }}" alt="">
+                <br>
+                <p>{%  trans from 'formation' %} formation.java_content{% endtrans %}</p>
+                <div class="waves-effect waves-light btn-large">{%  trans from 'formation' %} formation.souscrire{% endtrans %}</div>
+
+            </div>
+        </div>
+        <div class="position_wrapper">
+            <div class="position_title">
+                <div class="position">{%  trans from 'formation' %} formation.ibm {% endtrans %}</div>
+                <div class="location">{%  trans from 'formation' %} formation.etranger_ville {% endtrans %}</div>
+            </div>
+            <div class="position_details">
+                <strong>{%  trans from 'formation' %} formation.ibm {% endtrans %}</strong><br/>
+                <img width="10%" height="10%"   src="{{ asset('data/img/ibm.jpg') }}" alt="">
+                <br>
+                <p>{%  trans from 'formation' %} formation.ibm_content{% endtrans %}</p>
+                <div class="waves-effect waves-light btn-large">{%  trans from 'formation' %} formation.souscrire{% endtrans %}</div>
+
+            </div>
+        </div>
+        <div class="position_wrapper">
+            <div class="position_title">
+                <div class="position">{% trans from 'formation' %} formation.csd {% endtrans %}</div>
+                <div class="location">{% trans from 'formation' %} formation.etranger_ville {% endtrans %}</div>
+            </div>
+            <div class="position_details">
+                <strong>{% trans from 'formation' %} formation.csd {% endtrans %}</strong><br/>
+                <img width="10%" height="10%"   src="{{ asset('data/img/scrum.jpg') }}" alt="">
+                <br>
+                <p>{%  trans from 'formation' %} formation.scrum_content{% endtrans %}</p>
+
+                <div class="waves-effect waves-light btn-large">{%  trans from 'formation' %} formation.souscrire{% endtrans %}</div>
+
+
+            </div>
+
+        </div>
+    </div>
+    </br>
+    </br>
+{% endblock %}
+
+{% block myjs %}
+    <script>
+        $( document ).ready(function() {
+
+            $(".position_details").slideUp();
+
+            $(".position_title").click(function(){
+                $(this).siblings(".position_details").slideToggle(1500);
+            });
+        });
+    </script>
+{% endblock %}

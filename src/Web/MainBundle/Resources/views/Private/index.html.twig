@@ -13,183 +13,197 @@
     <link rel="stylesheet" href="{{ asset('components/cssbase/datatablehelp2.css') }}">
     <style>
 
-        strong{
-            font-weight: bold;
-        }
-        footer{
-            bottom: 0;
-            width: 100% !important;
-        }
-        .mega-menu{
-            z-index: 9999999999999999999999999999 !important;
-        }
     </style>
 {% endblock %}
 {% block header %}
     {{ parent() }}
-    <div class="row" id="main_account">
-        <div class="row">
-           <div class="col s12">
-               <div class="col s5 m3">
-                   <div class="" id="vertical_nav">
-                       <ul>
-                           <li><a class=" {% if index is defined and index==1 %}active {% endif %}" href="{{ path('main_private') }}">{% trans from 'private' %} private.project  {% endtrans %}</a></li>
-                           <li><a class=" {% if index is defined and index==2 %}active {% endif %}" href="{{ path('main_private_profile') }}" >{% trans from 'private' %} private.profile  {% endtrans %}</a></li>
-                           <li><a class=" {% if index is defined and index==3 %}active {% endif %}" href="{{ path('main_private_commit') }}">{% trans from 'private' %} private.commit  {% endtrans %}</a></li>
-                           <li><a class=" {% if index is defined and index==4 %}active {% endif %}" href="{{ path('main_private_comment') }}">{% trans from 'private' %} private.comment  {% endtrans %}</a></li>
-                       </ul>
+    <div class="row " id="main_account">
 
-                   </div>
-               </div>
-               <div class="col s7 m9">
-                   <br><br>
-                   <div class="row" id="search">
-                       <form action="" method="post" id="form">
-                           <div class="col s12">
-                               <div class="input-field col s12 offset-m9 m3">
-                                   <select id="code" name="code">
-                                       <option value="" {% if code is defined and code=="" %} selected {% endif %} >{% trans from 'private' %} project.choose {% endtrans %}</option>
-                                       <option value="0" {% if code is defined and code=="0" %} selected {% endif %}> {% trans from 'private' %} project.notvalid  {% endtrans %}</option>
-                                       <option value="1" {% if code is defined and code=="1" %} selected {% endif %}> {% trans from 'private' %} project.valid  {% endtrans %}</option>
-                                       <option value="2" {% if code is defined and code=="2" %} selected {% endif %}> {% trans from 'private' %} project.progress  {% endtrans %}</option>
-                                       <option value="3" {% if code is defined and code=="3" %} selected {% endif %}> {% trans from 'private' %} project.break  {% endtrans %}</option>
-                                       <option value="4" {% if code is defined and code=="4" %} selected {% endif %}> {% trans from 'private' %} project.rejects  {% endtrans %}</option>
-                                       <option value="5" {% if code is defined and code=="5" %} selected {% endif %}> {% trans from 'private' %} project.ready  {% endtrans %}</option>
-                                       <option value="6" {% if code is defined and code=="6" %} selected {% endif %}> {% trans from 'private' %} project.delivered  {% endtrans %}</option>
-                                       <option value="7" {% if code is defined and code=="7" %} selected {% endif %}> {% trans from 'private' %} project.close  {% endtrans %}</option>
-                                   </select>
-                                   <label>{% trans from 'private' %} project.status {% endtrans %}</label>
-                               </div>
-                           </div>
+        <div class="row" id="page_mobile">
+            <div class="col s12">
+                <div class="row">
+                    <div class="col s12">
+                        {% include 'MainBundle:Inc:horizontal-nav.hml.twig' %}
+                        {% if list!=null %}
+                        {% else %}
+                            <h4> {% trans from 'private' %} project.empty  {% endtrans %} </h4>
+                        {% endif %}
+                    </div>
+                </div>
+                <div class="col s12">
+                    <div class="row" id="search">
+                        <form action="" method="post" id="form">
+                            <div class="col s12">
+                                <div class="input-field col s12 ">
+                                    <label for="code">{% trans from 'private' %} project.choose_title {% endtrans %}</label>
+                                    <br><br>
+                                    <select id="code" name="code">
+                                        <option value="" {% if code is defined and code=="" %} selected {% endif %} >{% trans from 'private' %} project.choose {% endtrans %}</option>
+                                        <option value="0" {% if code is defined and code=="0" %} selected {% endif %}> {% trans from 'private' %} project.notvalid  {% endtrans %}</option>
+                                        <option value="1" {% if code is defined and code=="1" %} selected {% endif %}> {% trans from 'private' %} project.accepted  {% endtrans %}</option>
+                                        <option value="2" {% if code is defined and code=="2" %} selected {% endif %}> {% trans from 'private' %} project.progress  {% endtrans %}</option>
+                                        <option value="3" {% if code is defined and code=="3" %} selected {% endif %}> {% trans from 'private' %} project.finish  {% endtrans %}</option>
+                                        <option value="4" {% if code is defined and code=="4" %} selected {% endif %}> {% trans from 'private' %} project.break  {% endtrans %}</option>
+                                        <option value="5" {% if code is defined and code=="5" %} selected {% endif %}> {% trans from 'private' %} project.run  {% endtrans %}</option>
+                                    </select>
+                                </div>
+                            </div>
 
-                       </form>
-                   </div>
-                   <table class="bordered responsive-table ">
-                       <thead>
-                       <tr>
-                           <th>{% trans from 'private' %} project.code  {% endtrans %}</th>
-                           <th>{% trans from 'private' %} project.title  {% endtrans %}</th>
-                           <th>{% trans from 'private' %} project.date  {% endtrans %}</th>
-                           <th>#</th>
-                           <th>#</th>
-                       </tr>
-                       </thead>
+                        </form>
+                    </div>
+                    <div class="row">
+                        <div class="col s12">
+                            <ul class="collapsible" data-collapsible="accordion">
 
-                       <tbody>
-                       {% if list==null %}
-                           <tr>
-                               <td colspan="5" class="center center-align">
-                                   <h4> {% trans from 'private' %} project.empty  {% endtrans %} </h4>
-                               </td>
-                           </tr>
-                       {% else %}
-                           {% for item in list %}
-                               {% set href= "#project"~item.id %}
-                               {% set idhref = "project"~item.id %}
-                               {% set href2= "#project2"~item.id %}
-                               {% set idhref2 = "project2"~item.id %}
-                               <tr>
-                                   <td><a href="">{{ item.code }}</a> </td>
-                                   <td>{{ item.title }} </td>
-                                   <td>{{ item.date|date('d-m-Y h:i:s') }} </td>
+                                {% for item in list %}
+                                    <li  class="">
+                                        <div class="collapsible-header grey lighten-3" ><i class="material-icons">book</i>{{ item.truncate(item.title,30) }}</div>
+                                        <div class="collapsible-body">
+                                            <div class="row">
+                                                <div class="col s12">
+                                                    <div class="card">
+                                                        <section>
+                                                            <strong>{% trans from 'forms' %} form.user.firstname {% endtrans %}</strong>
+                                                            <br>
+                                                            {% if item.user!=null %}
+                                                                {{ item.user.firstname }}
+                                                            {% else %}
+                                                                {{ item.visitor.firstname }}
+                                                            {% endif %}
+                                                        </section>
+                                                        <div class="divider"></div>
 
-                                   <td>
-                                       {% if item.hashfiles!=null  %}
-                                           {% if item.hashfiles!=null and  item.extfiles=="gif" or item.extfiles=="png" or item.extfiles=="jpg" or item.extfiles=="jpeg"  or item.extfiles=="PDF" or item.extfiles=="pdf" %}
-                                               <a href="{{ href }}"><i class="material-icons">attach_file</i></a>
-                                           {% else %}
-                                               <a href="{{app.request.getSchemeAndHttpHost()~'/'~item.path()}}"><i class="material-icons">attach_file</i></a>
-                                           {% endif %}
-                                       {% endif %}
-                                   </td>
-                                   <td>
-                                       <a href="{{ href2 }}"><i class="material-icons">view_headline</i></a>
-                                   </td>
-                               </tr>
-                               <div id="{{ idhref2 }}" class="modal modal-fixed-footer">
-                                   <div class="modal-content">
-                                       <center>
-                                           <h4> {% trans from 'home' %} main.detail {% endtrans %}</h4>
-                                       </center>
-                                       <p>
-                                           <strong>
-                                               {% trans from 'private' %} project.title {% endtrans %}
-                                           </strong>
-                                           <br>
-                                        <span>
-                                            {{ item.title }}
-                                        </span>
-                                       </p>
-                                       <p>
-                                           <strong>
-                                               {% trans from 'private' %} project.code {% endtrans %}
-                                           </strong>
-                                           <br>
-                                        <span>
-                                            {{ item.code }}
-                                        </span>
-                                       </p>
-                                       <p>
-                                           <strong>
-                                               {% trans from 'private' %} project.date {% endtrans %}
-                                           </strong>
-                                           <br>
-                                        <span>
-                                            {{ item.date|date('d-m-Y h:i:s') }}
-                                        </span>
-                                       </p>
-                                       <p>
-                                           <strong>
-                                               {% trans from 'private' %} project.status {% endtrans %}
-                                           </strong>
-                                           <br>
-                                        <span>
-                                            {{ item.status }}
-                                        </span>
-                                       </p>
-                                       <p>
-                                           <strong>
-                                               {% trans from 'private' %} project.description {% endtrans %}
-                                           </strong>
-                                           <br>
-                                        <span>
-                                            {{ item.description }}
-                                        </span>
-                                       </p>
+                                                        <section>
+                                                            <strong>{% trans from 'forms' %} form.project.title {% endtrans %}</strong>
+                                                            <br>
+                                                            {{ item.title }}
+                                                        </section>
+                                                        <div class="divider"></div>
 
-                                   </div>
-                                   <div class="modal-footer">
-                                       <button    class=" modal-action modal-close waves-effect waves-green btn-flat blue white-text">{% trans from 'forms' %} form.project.close {% endtrans %}</button>
-                                   </div>
-                               </div>
-                               {% if item.hashfiles!=null and  item.extfiles=="pdf" or item.extfiles=="PDF"  %}
-                                   <div id="{{ idhref }}" class="modal  modal-fixed-footer">
-                                       <div class="modal-content">
-                                           {# {{ path('admin_download',{id:projet.id}) }} #}
-                                           <iframe src="{{app.request.getSchemeAndHttpHost()~'/'~item.path()}}" class="col s12"  width="100%" height="500" align="middle"></iframe>
-                                       </div>
-                                       <div class="modal-footer">
-                                           <button  id="close" class="modal-action modal-close waves-effect waves-green btn-flat blue white-text">{% trans from 'forms' %} form.project.close {% endtrans %}</button>
-                                       </div>
-                                   </div>
-                               {% endif %}
+                                                        <section>
+                                                            <strong>{% trans from 'forms' %} form.project.status {% endtrans %}</strong>
+                                                            <br>
+                                                            {{ item.CurrentStatus(item.status,app.request.locale) }}
+                                                        </section>
+                                                        <div class="divider"></div>
 
-                               {% if item.hashfiles!=null and  item.extfiles=="gif" or item.extfiles=="png" or item.extfiles=="jpg" or item.extfiles=="jpeg"  %}
-                                   <div id="{{ idhref }}" class="modal  modal-fixed-footer">
-                                       <div class="modal-content">
-                                           <img src="{{ asset(item.path()) }}" alt="" class="responsive-image materialboxed" style="max-width: 100%; max-height: inherit;">
-                                       </div>
-                                       <div class="modal-footer">
-                                           <button  id="close" class="modal-action modal-close waves-effect waves-green btn-flat blue white-text">{% trans from 'forms' %} form.project.close {% endtrans %}</button>
-                                       </div>
-                                   </div>
-                               {% endif %}
-                           {% endfor %}
-                       {% endif %}
-                       </tbody>
-                   </table>
-               </div>
-           </div>
+                                                        <section>
+                                                            <strong>{% trans from 'forms' %} form.project.date {% endtrans %}</strong>
+                                                            <br>
+                                                            {{ item.date|date('d-m-Y h:i:s') }}
+                                                        </section>
+                                                        <div class="divider"></div>
+
+                                                        <section>
+                                                            <strong>{% trans from 'forms' %} form.project.description {% endtrans %}</strong>
+                                                            <br>
+                                                            <div class="row">
+                                                                <div class="col s12">
+                                                                    <div class="card">
+                                                                        {{ item.description }}
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </section>
+                                                        <br>
+                                                        <a class="detail_projets" href="{{ path('main_projet_detail',{id:item.id}) }}"><i class="material-icons">view_headline</i></a>
+                                                        {% if item.status=="0" or item.status=="En cours"  %}
+                                                            {% set key = 'data'~loop.index %}
+                                                            <span id="{{ key }}" style="display: none;">
+                                                                {% trans from 'admin' %} project.delete {% endtrans %} '{{ item.title }}'
+                                                            </span>
+                                                            <a  data-id="{{ key }}" href="{{ path('main_projet_delete',{id:item.id}) }}" class="delete_projet"><i class="material-icons" >delete</i></a>
+                                                        {% else %}
+                                                            <i class="material-icons green-text" >check_circle</i>
+                                                        {% endif %}
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row  "  id="page_desktop">
+            <div class="col s12">
+                <div class="col s5 m3">
+                    {% include 'MainBundle:Inc:vertical-nav.html.twig' %}
+                </div>
+                <div class="col s7 m9">
+                    <br><br>
+                    <div class="row" id="search">
+                        <form action="" method="post" id="form">
+                            <div class="col s12">
+                                <div class="input-field col s12 offset-m9 m3">
+                                    <select id="code" name="code">
+                                        <option value="" {% if code is defined and code=="" %} selected {% endif %} >{% trans from 'private' %} project.choose {% endtrans %}</option>
+                                        <option value="0" {% if code is defined and code=="0" %} selected {% endif %}> {% trans from 'private' %} project.notvalid  {% endtrans %}</option>
+                                        <option value="1" {% if code is defined and code=="1" %} selected {% endif %}> {% trans from 'private' %} project.accepted  {% endtrans %}</option>
+                                        <option value="2" {% if code is defined and code=="2" %} selected {% endif %}> {% trans from 'private' %} project.progress  {% endtrans %}</option>
+                                        <option value="3" {% if code is defined and code=="3" %} selected {% endif %}> {% trans from 'private' %} project.finish  {% endtrans %}</option>
+                                        <option value="4" {% if code is defined and code=="4" %} selected {% endif %}> {% trans from 'private' %} project.break  {% endtrans %}</option>
+                                        <option value="5" {% if code is defined and code=="5" %} selected {% endif %}> {% trans from 'private' %} project.run  {% endtrans %}</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                        </form>
+                    </div>
+                    <div id="zone_table">
+                        <table class="bordered responsive-table ">
+                            <thead>
+                            <tr>
+                                <th>N°</th>
+                                <th>{% trans from 'private' %} project.title  {% endtrans %}</th>
+                                <th>{% trans from 'private' %} project.status  {% endtrans %}</th>
+                                <th>{% trans from 'private' %} project.date  {% endtrans %}</th>
+                                <th>#</th>
+                                <th>#</th>
+                            </tr>
+                            </thead>
+
+                            <tbody>
+                            {% if list==null %}
+                                <tr>
+                                    <td colspan="6" class="center center-align">
+                                        <h4> {% trans from 'private' %} project.empty  {% endtrans %} </h4>
+                                    </td>
+                                </tr>
+                            {% else %}
+                                {% for item in list %}
+
+                                    <tr>
+                                        <td>{{ loop.index }}</td>
+                                        <td>{{ item.title }} </td>
+                                        <td>{{ item.CurrentStatus(item.status,app.request.locale) }} </td>
+                                        <td>{{ item.date|date('d-m-Y h:i:s') }} </td>
+                                        <td>
+                                            <a href="{{ path('main_projet_detail',{id:item.id}) }}"><i class="material-icons">view_headline</i></a>
+                                        </td>
+
+                                        <td>
+                                            {% if item.status=="0" or item.status=="En cours"  %}
+                                                {% set key = 'data'~loop.index %}
+                                                <span id="{{ key }}" style="display: none;">
+                                                    {% trans from 'admin' %} project.delete {% endtrans %} '{{ item.title }}'
+                                              </span>
+                                                <a data-id="{{ key }}" href="{{ path('main_projet_delete',{id:item.id}) }}" class="delete_projet"><i class="material-icons" >delete</i></a>
+                                            {% else %}
+                                                <i class="material-icons green-text" >check_circle</i>
+                                            {% endif %}
+                                        </td>
+                                    </tr>
+                                {% endfor %}
+                            {% endif %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 
@@ -205,12 +219,34 @@
                 code: $('#code'),
                 select: $('select'),
                 form : $('#form'),
-                modal:$('.modal')
+                modal:$('.modal'),
+                delete: $('.delete_projet'),
+                tab: $('ul.tabs'),
+                dismissable : $('.dismissable'),
+                detail_projet: $('.detail_projets')
             }
+
+
+
             elt.modal.modal();
-           elt.select.material_select();
+           //elt.select.material_select();
             elt.code.change(function(){
                 elt.form.submit();
+            });
+
+            elt.dismissable.click(function(){
+                window.location.href = $(this).data('href');
+            });
+
+            elt.detail_projet.click(function(){
+                window.location.href = $(this).attr('href');
+            });
+
+            elt.delete.click(function(e){
+                if(!confirm($('#'+$(this).data('id')).text().trim()))
+                {
+                    e.preventDefault();
+                }
             });
         } );
     </script>

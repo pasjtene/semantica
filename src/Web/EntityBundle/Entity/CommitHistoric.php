@@ -25,21 +25,15 @@ class CommitHistoric
     /**
      * @Assert\Valid()
      * @ORM\ManyToOne(targetEntity="Web\EntityBundle\Entity\Commit",cascade={"persist"})
-     * @ORM\JoinColumn(nullable=false)
+     * @ORM\JoinColumn(nullable=false, onDelete="CASCADE")
      */
     private $commit;
 
-    /**
-     * @Assert\Valid()
-     * @ORM\ManyToOne(targetEntity="Web\EntityBundle\Entity\Projet",cascade={"persist"})
-     * @ORM\JoinColumn(nullable=false)
-     */
-    private $project;
 
     /**
      * @Assert\Valid()
      * @ORM\ManyToOne(targetEntity="Web\EntityBundle\Entity\Task",cascade={"persist"})
-     * @ORM\JoinColumn(nullable=false)
+     * @ORM\JoinColumn(nullable=false, onDelete="CASCADE")
      */
     private $task;
 
@@ -78,29 +72,6 @@ class CommitHistoric
         return $this->commit;
     }
 
-    /**
-     * Set project
-     *
-     * @param \Web\EntityBundle\Entity\Projet $project
-     *
-     * @return CommitHistoric
-     */
-    public function setProject(\Web\EntityBundle\Entity\Projet $project)
-    {
-        $this->project = $project;
-
-        return $this;
-    }
-
-    /**
-     * Get project
-     *
-     * @return \Web\EntityBundle\Entity\Projet
-     */
-    public function getProject()
-    {
-        return $this->project;
-    }
 
     /**
      * Set task

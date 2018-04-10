@@ -1,0 +1,157 @@
+$color_footer: #808080;
+$color_hover_footer: #EEA01C;
+$color2_footer: #797979;
+#main_careers{
+
+    color: $color2_footer;
+    margin-top: 4% !important;
+
+    text-align: justify !important;
+
+    h5{
+        text-align: justify !important;
+    }
+    img{
+        min-width: 300px !important;
+        max-width: 90% !important;
+        height: 150px;
+    }
+
+    #bloc1{
+        background-color: $auther;
+        height: 100%;
+        min-height:660px;
+
+        p{
+           margin-left: 34% !important;
+        }
+        h5{
+            margin-left: 26% !important;
+        }
+
+        @media screen and (max-width: 736px){
+            min-height: 100%;
+            p{
+                margin-left: 6% !important;
+            }
+            h5{
+                margin-left: 2% !important;
+            }
+        }
+        a{
+            color: $color_footer !important;
+        }
+        a:hover{
+            color: $color_hover_footer !important;
+        }
+    }
+    #bloc2{
+
+        .element{
+            width: 255px !important;
+            min-height: 150px;
+        }
+        .hover_img{
+            text-align: left;
+            position: relative;
+            left: 98px;
+            top: 46px;
+            z-index: 9;
+            background-color: $auther;
+            width: 62%;
+            padding: 4%;
+            opacity: 0.8;
+        }
+        a{
+            color: $color_footer !important;
+
+        }
+        a:hover{
+            .hover_img{
+                background-color: $color_hover_footer !important;
+                color: white !important;
+            }
+        }
+
+        @media screen and (max-width: 660px) {
+            padding-left: 13%;
+            padding-bottom: 4%;
+            .s12{
+                margin-top: 2%;
+            }
+        }
+
+        @media screen and (min-width: 661px ) and (max-width: 1024px) {
+           .content_body{
+               padding: 2% 0% 2% 4%;
+               img, .element{
+                   min-width: 100px !important;
+                   max-width: 188px !important;
+               }
+               .ko{
+                  margin-left: 48%;
+               }
+               .hover_img{
+                   left: 71px;
+               }
+           }
+        }
+    }
+
+    .meet-our-people-shadow {
+        float: left;
+        width: 100%;
+        height: 30px;
+        background-repeat: no-repeat;
+        background-position: top center;
+        position: relative;
+        top: -30px;
+    }
+
+    #member{
+        h5{
+            font-size: 2.5em;
+            text-decoration: underline;
+            font-weight: bold;
+            text-align: center !important;
+        }
+        .carousel
+        {
+            a{
+                color: $default !important;
+                z-index: 9999999999999;
+                font-weight: bold;
+                text-shadow: 6px 6px 6px black;
+            }
+            .element{
+                display: none;
+                font-size: 1.5em;
+                font-weight: bold;
+                position: relative;
+                top: 80px;
+                left: 1px;
+                z-index: 9;
+                background-color: rgba(0,0,0,0.1) !important;
+                text-align: center;
+                padding-bottom: 6px;
+                padding-top: 6px;
+            }
+            img{
+               // height: 200px !important;
+            }
+            a:hover{
+                .element{
+                    display: block;
+                }
+            }
+        }
+
+    }
+
+}
+
+@media screen and (max-width: 767px) {
+    .fixNavigation{
+        border-bottom: none !important;
+    }
+}

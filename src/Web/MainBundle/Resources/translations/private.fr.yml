@@ -3,18 +3,31 @@ private:
   profile: Mon profil
   project: Mon projet
   comment: Commentaire
+  users: Utilisateurs
   commit: Commit
   find: Trouver le commit
   choose_project: Choisir un projet
-project:
+  participant: Liste des participants
+commit:
   auther: Auteur
   commit: Commit
   message: Message
   date: Date
+  empty: Aucun commit n'est enrgistré ou aucun commit ne correspont a votre recherche
+  comment: Commenter
+  project: Description du  projet
+  notification: Commentaire envoyé avec succès
+  send: Envoyer
+  do_comment: FAIRE UNE SUGGESTION
+  task: Tâche
+  add: Ajouter un commit
+  choice_task: Choisir une tâche
 project:
   title: Titre
   description: Description
   date: Date
+  back: Retour
+  file_list: Liste des fichiers
   code: Code
   file: Télécharger le fichier
   progress: En cours
@@ -24,7 +37,33 @@ project:
   rejects: Rejetté
   ready: Prêt
   delivered: Livré
+  accepted: Accepted
+  finish: Terminé
+  run: Budget épuisé
   close: Fermé
   choose: Choisir l'état
   status: Statut
+  delete: Supprimer
   empty: Aucun projet n'est enrgistré ou aucun projet ne correspont a votre recherche
+  comment: Commentire du  statut
+  company: Entreprise
+  base_information: Informations de base
+  client_information: Informations du client
+  tab1: Informations
+  tab2: Participateur
+  tab3: Commit
+  tab4: Planning
+  tab5: Comment
+  choose_title: Rechercher suivant  un statut
+comment:
+  project: Projet
+  reply: Réponse
+  auther: Auteur
+  task: Tâche
+  date: Date
+  description: Description
+  empty: Aucun commentaire n'est enrgistré
+  empty_project: Aucun Projet n'est enrgistré
+  new: Nouveau commentaire
+  by: Par
+  add: Ajouter un commentaire

@@ -1,0 +1,8 @@
+project:
+  file: Selectionez les fichiers (Taille max  5Mo.  Fichier accordé word , pdf ou  image (jpg, png, gif, jpeg, bnp))
+  file_select: fichier(s) selectionné(s)
+  file_count: Taille des fichiers
+  error1: Le type de fichier
+  error2:  n'a pas été géré vous devez choisir les fichiers word , pdf ou  image (jpg, png, gif, jpeg, bnp)
+  error3: les fichiers téléchargés sont  trop grands (
+  error4: Mo).  la taille des fichiers accordée est  5Mo

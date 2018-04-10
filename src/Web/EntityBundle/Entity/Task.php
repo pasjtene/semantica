@@ -24,8 +24,8 @@ class Task extends BaseInterface
 
     /**
      * @Assert\Valid()
-     * @ORM\ManyToOne(targetEntity="Web\EntityBundle\Entity\Planning",cascade={"persist"})
-     * @ORM\JoinColumn(nullable=false)
+     * @ORM\ManyToOne(targetEntity="Web\EntityBundle\Entity\Planning", inversedBy="tasks",  cascade={"persist"})
+     * @ORM\JoinColumn(nullable=false, onDelete="CASCADE")
      */
     private $planning;
 
@@ -43,6 +43,19 @@ class Task extends BaseInterface
      */
     private $libelle;
 
+    /**
+     * @var string
+     * @Assert\NotBlank(message="task.status.NotBlank")
+     * @ORM\Column(name="status", type="string", length=255)
+     */
+    private $status;
+
+    /**
+     * @var string
+     * @Assert\NotBlank(message="task.rate.NotBlank")
+     * @ORM\Column(name="rate", type="string", length=255)
+     */
+    private $rate;
 
 
     /**
@@ -149,5 +162,55 @@ class Task extends BaseInterface
     public function getPlanning()
     {
         return $this->planning;
+    }
+
+
+    /**
+     * Set rate
+     *
+     * @param string $rate
+     *
+     * @return Task
+     */
+    public function setRate($rate)
+    {
+        $this->rate = $rate;
+
+        return $this;
+    }
+
+    /**
+     * Get rate
+     *
+     * @return string
+     */
+    public function getRate()
+    {
+        return $this->rate;
+    }
+
+
+    /**
+     * Set status
+     *
+     * @param string $status
+     *
+     * @return Task
+     */
+    public function setStatus($status)
+    {
+        $this->status = $status;
+
+        return $this;
+    }
+
+    /**
+     * Get status
+     *
+     * @return string
+     */
+    public function getStatus()
+    {
+        return $this->status;
     }
 }

@@ -1,1 +1,8 @@
-projet:
+project:
+  file: Select  files (max size  5Mo and require word , pdf document or image (jpg, png, gif, jpeg, bnp) )
+  file_select: file(s) selected
+  file_count: file(s) size
+  error1: The file type
+  error2:  Has not been managed. you must choose the word , pdf or image (jpg, png, gif, jpeg, bnp) files
+  error3: Downloaded files are too large (
+  error4: Mo).  The files  size  granted is 5Mo

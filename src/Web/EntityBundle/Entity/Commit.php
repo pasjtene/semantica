@@ -28,9 +28,10 @@ class Commit extends BaseInterface
     /**
      * @Assert\Valid()
      * @ORM\ManyToOne(targetEntity="Web\EntityBundle\Entity\Participator",cascade={"persist"})
-     * @ORM\JoinColumn(nullable=false)
+     * @ORM\JoinColumn(nullable=false, onDelete="CASCADE")
      */
     private $participator;
+
 
     /**
      * @var string
@@ -97,4 +98,5 @@ class Commit extends BaseInterface
     {
         return $this->participator;
     }
+
 }

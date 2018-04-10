@@ -24,8 +24,8 @@ class Planning
 
     /**
      * @Assert\Valid()
-     * @ORM\ManyToOne(targetEntity="Web\EntityBundle\Entity\Projet",cascade={"persist"})
-     * @ORM\JoinColumn(nullable=false)
+     * @ORM\ManyToOne(targetEntity="Web\EntityBundle\Entity\Projet", cascade={"persist"})
+     * @ORM\JoinColumn(nullable=false, onDelete="CASCADE")
      */
     private $project;
 
@@ -39,9 +39,16 @@ class Planning
     /**
      * @var string
      * @Assert\NotBlank(message="historic.endate.NotBlank")
-     * @ORM\Column(name="enddate", type="string", length=255)
+     * @ORM\Column(name="enddate", type="datetime")
      */
     private $enddate;
+
+    /**
+     * @Assert\Valid()
+     * @ORM\OneToMany(targetEntity="Web\EntityBundle\Entity\Task", mappedBy="planning", cascade={"persist"})
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $tasks;
 
 
     /**
@@ -124,5 +131,46 @@ class Planning
     public function getProject()
     {
         return $this->project;
+    }
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->tasks = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Add task
+     *
+     * @param \Web\EntityBundle\Entity\Task $task
+     *
+     * @return Planning
+     */
+    public function addTask(\Web\EntityBundle\Entity\Task $task)
+    {
+        $this->tasks[] = $task;
+
+        return $this;
+    }
+
+    /**
+     * Remove task
+     *
+     * @param \Web\EntityBundle\Entity\Task $task
+     */
+    public function removeTask(\Web\EntityBundle\Entity\Task $task)
+    {
+        $this->tasks->removeElement($task);
+    }
+
+    /**
+     * Get tasks
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getTasks()
+    {
+        return $this->tasks;
     }
 }

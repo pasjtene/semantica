@@ -3,7 +3,8 @@
 namespace Web\EntityBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-use FOS\UserBundle\Entity\User as BaseUser;
+//use FOS\UserBundle\Entity\User as BaseUser;
+use FOS\UserBundle\Model\User as BaseUser;
 use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
@@ -19,6 +20,7 @@ use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
     const ROLE_SUPER_ADMIN = 'ROLE_SUPER_ADMIN';
     const ROLE_ADMIN = 'ROLE_ADMIN';
+    const ROLE_STAFF = 'ROLE_STAFF';
     const ROLE_USER = 'ROLE_USER';
 
     /**
@@ -29,13 +31,6 @@ use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
      * @ORM\GeneratedValue(strategy="AUTO")
      */
     protected $id;
-
-
-      /**
-       * @var string
-       * @ORM\Column(name="status", type="string", length=255)
-       */
-      protected $status;
 
 
       /**
@@ -51,6 +46,11 @@ use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
      */
     protected $lastname;
 
+      /**
+       * @var boolean
+       * @ORM\Column(name="active", type="boolean", nullable=true)
+       */
+      protected $active;
 
     /**
      * @var string
@@ -90,172 +90,125 @@ use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
         return $this->id;
     }
 
-      /**
-       * Set firstname
-       *
-       * @param string $firstname
-       *
-       * @return Personne
-       */
-      public function setFirstname($firstname)
-      {
-          $this->firstname = $firstname;
-
-          return $this;
-      }
-
-      /**
-       * Get firstname
-       *
-       * @return string
-       */
-      public function getFirstname()
-      {
-          return $this->firstname;
-      }
-
-      /**
-       * Set lastname
-       *
-       * @param string $lastname
-       *
-       * @return Personne
-       */
-      public function setLastname($lastname)
-      {
-          $this->lastname = $lastname;
-
-          return $this;
-      }
-
-      /**
-       * Get lastname
-       *
-       * @return string
-       */
-      public function getLastname()
-      {
-          return $this->lastname;
-      }
-
-      /**
-       * Set phone
-       *
-       * @param string $phone
-       *
-       * @return Personne
-       */
-      public function setPhone($phone)
-      {
-          $this->phone = $phone;
-
-          return $this;
-      }
-
-      /**
-       * Get phone
-       *
-       * @return string
-       */
-      public function getPhone()
-      {
-          return $this->phone;
-      }
-
-      /**
-       * Set pleasantries
-       *
-       * @param string $pleasantries
-       *
-       * @return Personne
-       */
-      public function setPleasantries($pleasantries)
-      {
-          $this->pleasantries = $pleasantries;
-
-          return $this;
-      }
-
-      /**
-       * Get pleasantries
-       *
-       * @return string
-       */
-      public function getPleasantries()
-      {
-          return $this->pleasantries;
-      }
-
-      /**
-       * Set city
-       *
-       * @param string $city
-       *
-       * @return Personne
-       */
-      public function setCity($city)
-      {
-          $this->city = $city;
-
-          return $this;
-      }
-
-      /**
-       * Get city
-       *
-       * @return string
-       */
-      public function getCity()
-      {
-          return $this->city;
-      }
-
-      /**
-       * Set country
-       *
-       * @param string $country
-       *
-       * @return Personne
-       */
-      public function setCountry($country)
-      {
-          $this->country = $country;
-
-          return $this;
-      }
-
-      /**
-       * Get country
-       *
-       * @return string
-       */
-      public function getCountry()
-      {
-          return $this->country;
-      }
 
     /**
-     * Set status
+     * Set firstname
      *
-     * @param string $status
+     * @param string $firstname
      *
      * @return User
      */
-    public function setStatus($status)
+    public function setFirstname($firstname)
     {
-        $this->status = $status;
+        $this->firstname = $firstname;
 
         return $this;
     }
 
     /**
-     * Get status
+     * Get firstname
      *
      * @return string
      */
-    public function getStatus()
+    public function getFirstname()
     {
-        return $this->status;
+        return $this->firstname;
+    }
+
+    /**
+     * Set lastname
+     *
+     * @param string $lastname
+     *
+     * @return User
+     */
+    public function setLastname($lastname)
+    {
+        $this->lastname = $lastname;
+
+        return $this;
+    }
+
+    /**
+     * Get lastname
+     *
+     * @return string
+     */
+    public function getLastname()
+    {
+        return $this->lastname;
+    }
+
+    /**
+     * Set pleasantries
+     *
+     * @param string $pleasantries
+     *
+     * @return User
+     */
+    public function setPleasantries($pleasantries)
+    {
+        $this->pleasantries = $pleasantries;
+
+        return $this;
+    }
+
+    /**
+     * Get pleasantries
+     *
+     * @return string
+     */
+    public function getPleasantries()
+    {
+        return $this->pleasantries;
+    }
+
+    /**
+     * Set city
+     *
+     * @param string $city
+     *
+     * @return User
+     */
+    public function setCity($city)
+    {
+        $this->city = $city;
+
+        return $this;
+    }
+
+    /**
+     * Get city
+     *
+     * @return string
+     */
+    public function getCity()
+    {
+        return $this->city;
+    }
+
+    /**
+     * Set country
+     *
+     * @param string $country
+     *
+     * @return User
+     */
+    public function setCountry($country)
+    {
+        $this->country = $country;
+
+        return $this;
+    }
+
+    /**
+     * Get country
+     *
+     * @return string
+     */
+    public function getCountry()
+    {
+        return $this->country;
     }
 
     /**
@@ -280,5 +233,78 @@ use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
     public function getPicture()
     {
         return $this->picture;
+    }
+
+      /**
+       * Get all roles of application
+       *
+       * @return array
+       */
+      public static function getAppRole()
+      {
+          $array = [self::ROLE_USER, self::ROLE_STAFF, self::ROLE_ADMIN, self::ROLE_SUPER_ADMIN];
+
+          return $array;
+      }
+
+      /**
+       * Get user's role as string
+       *
+       * @return string
+       */
+      public function getRoleString()
+      {
+          return implode(", ", $this->roles);
+      }
+
+      public function hisParticipant($list, $projet_id){
+          $confirm = 0;
+          /** @var Historic $historic */
+          foreach($list as $historic)
+          {
+              if($historic->getParticipator()->getUser()->getId()==$this->getId() and $projet_id==$historic->getProject()->getId())
+              {
+                  $confirm=1;
+              }
+          }
+          return $confirm;
+      }
+
+      public function isCurrentParticipant($list, $projet_id){
+          $confirm = 0;
+          /** @var Historic $historic */
+          foreach($list as $historic)
+          {
+              if($historic->getParticipator()->getUser()->getId()==$this->getId() and $projet_id==$historic->getProject()->getId() and ($historic->getEnddate()==null or $historic->getEnddate()>=(new \DateTime())))
+              {
+                  $confirm=1;
+              }
+          }
+          return $confirm;
+      }
+
+  
+    /**
+     * Set active
+     *
+     * @param boolean $active
+     *
+     * @return User
+     */
+    public function setActive($active)
+    {
+        $this->active = $active;
+
+        return $this;
+    }
+
+    /**
+     * Get active
+     *
+     * @return boolean
+     */
+    public function getActive()
+    {
+        return $this->active;
     }
 }

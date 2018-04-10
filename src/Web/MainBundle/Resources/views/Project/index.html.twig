@@ -15,9 +15,48 @@
         .error{
             color:red;
         }
+        #main_project .btn.delete {
+            background-color: red !important;
+        }
+        #main_project .btn.ajout {
+            background-color: #0083c0 !important;
+        }
         .card{
             padding: 2%;
         }
+
+        input[type='file']{
+            background-color: #eeeeee !important;
+            width: 100% !important;
+        }
+        #zone_file{
+            max-height: 400px !important;
+            overflow-y: auto;
+        }
+        #zone_file label{
+            display: none;
+        }
+
+        #btn-file-project{
+            padding: 5%;
+            background-color: #0083c0 !important;
+            font-size: 19px;
+            font-family: 'Arial';
+            border-radius: 10px;
+            border: solid 1px #0083c0;
+            box-shadow: 0 0 0 2px #0083c0;
+            text-shadow: 1px  0 0 white;
+            min-width: 152px ;
+            color: white;
+        }
+
+        .newerror{
+            background-color: red;
+            padding: 4%;
+            text-align: center;
+            color: white;
+        }
+
     </style>
 {% endblock %}
 {% block header %}
@@ -26,6 +65,16 @@
 {% endblock %}
 {% block  main %}
     <div class="row" id="main_project">
+        {% if error1 is defined %}
+          <div class="col s12 newerror">
+              {% trans from 'project' %} project.error3  {% endtrans %} {{ error1 }}  {% trans from 'project' %} project.error4  {% endtrans %}
+          </div>
+        {% endif %}
+        {% if error2 is defined %}
+            <div class="col s12 newerror">
+                {% trans from 'project' %} project.error1  {% endtrans %} {{ error2 }}  {% trans from 'project' %} project.error2  {% endtrans %}
+            </div>
+        {% endif %}
         {% if message is defined %}
             <div id="notification" class="green white-text" style=" position: absolute; top: 10%; left: 45%; z-index: 99999999999;  padding: 2%; font-weight: bold;">
                 {% trans from 'forms' %} form.project.save  {% endtrans %}
@@ -77,18 +126,46 @@
                             </div>
                         </div>
                         <div class="row">
-                            <div class="col s12">
-                                <div class="file-field input-field col s12 ">
-                                    <div class="btn">
-                                        <span>{% trans from 'forms' %} form.project.file {% endtrans %}</span>
-                                        {{ form_widget(form.file,{'attr':{'class':''}}) }}
+                            <div class="col s12" id="zone_file">
+                                {#<fieldset >
+                                    <legende></legende>
+                                    <div class=" s12 ">
+                                        {{ form_widget(form.files,{'attr':{'class':''}}) }}
+                                        <div class="error"  >{{ form_errors(form.files) }}</div>
                                     </div>
-                                    <div class="file-path-wrapper">
-                                        {# accept=".xlsx,.xls,image/*,.doc,.docx,.ppt,.pptx,.txt,.pdf,.zip,.7z,.rar" #}
-                                        <input class="file-path validate" type="text"  placeholder="{% trans from 'forms' %} form.project.placeholder_file {% endtrans %}">
+                                </fieldset>#}
+                                <fieldset>
+                                    <legend>Documents du projet</legend>
+                                   {#
+                                     <input type="file" multiple="multiple" name="file[]" id="file-project" accept="application/pdf" class="hide"/>
+                                    <div class="col row">
+                                        <div class="col s10">
+                                            <div class="input-field">
+                                                <input type="text" id="input-file-project" name="input-file-project" readonly="readonly" style="width:100%"/>
+                                            </div>
+                                        </div>
+                                        <div class="col s2">
+                                            <button class="waves-effect waves-light" id="btn-file-project" type="submit">{% trans from 'project' %} project.file {% endtrans %}</button>
+                                        </div>
                                     </div>
-                                    <div class="error"  >{{ form_errors(form.file) }}</div>
-                                </div>
+                                   #}
+
+                                    <div class="file-field input-field" id="uploadfile">
+                                        <div class="btn">
+                                            <span>File</span>
+                                            <input type="file" multiple name="file[]" id="file-project" accept="application/pdf" >
+                                        </div>
+                                        <div class="file-path-wrapper">
+                                            <input class="file-path validate" type="text" placeholder="{% trans from 'project' %} project.file {% endtrans %}">
+                                        </div>
+                                        <div class="right-align">
+                                            <strong id="codeError1" style="display: none" class="green-text">{% trans from 'project' %} project.file_count {% endtrans %} : <span id="result_count">0 </span>  </strong> &nbsp;&nbsp;&nbsp;&nbsp;
+                                            <span id="codeError2" style="display: none">
+                                                <span id="result_selects">0</span> {% trans from 'project' %} project.file_select {% endtrans %}
+                                            </span>
+                                        </div>
+                                    </div>
+                                </fieldset>
                             </div>
                         </div>
 
@@ -122,11 +199,8 @@
                                             </div>
                                         </div>
                                         <div class="col s12 m6">
-                                            <div class="input-field col s12 ">
-                                                {{ form_widget(form.user.pleasantries,{'attr':{'class':''}}) }}
-                                                {{ form_label(form.user.pleasantries) }}
-                                                <div class="error"  >{{ form_errors(form.user.pleasantries) }}</div>
-                                            </div>
+                                            {{ form_widget(form.user.pleasantries,{'attr':{'class':''}}) }}
+                                            {{ form_label(form.user.pleasantries) }}
                                         </div>
                                     </div>
 
@@ -144,10 +218,30 @@
             </div>
         </div>
     </div>
+    <input type="hidden" id="error1" value="{% trans from 'project' %}project.error1 {% endtrans %}">
+    <input type="hidden" id="error2" value="{% trans from 'project' %}project.error2 {% endtrans %}">
+    <input type="hidden" id="error3" value="{% trans from 'project' %}project.error3 {% endtrans %}">
+    <input type="hidden" id="error4" value="{% trans from 'project' %}project.error4 {% endtrans %}">
 {% endblock %}
 
 {% block myjs %}
+    {#<script src="{{ asset('components/jsbase/Imbrication.js') }}"></script>#}
     <script>
+        var ctrls = {
+            fileProject : $('#file-project'),
+            iptFileProject : $('#input-file-project'),
+            btnProject : $('#btn-file-project'),
+            result_selects:  $('#result_selects'),
+            result_count: $('#result_count'),
+            error1: $('#error1'),
+            error2: $('#error2'),
+            error3: $('#error3'),
+            error4: $('#error4'),
+            codeError1 : $('#codeError1'),
+            codeError2 : $('#codeError2')
+
+        };
+
         $(function(){
             $('select').material_select();
             {% if message is defined  %}
@@ -169,6 +263,64 @@
                     return true;
                 }
             }
+           setInterval(function(){
+               {% if app.request.locale=="fr" %}
+                   $('#ajout_fichier').text('Nouveau fichier');
+                   $('.delete').text('Supprimer');
+               {% else %}
+                   $('#ajout_fichier').text('New File');
+                   $('.delete').text('Delete');
+               {% endif %}
+           },100);
+
+            ctrls.btnProject.click(function(e){
+                ctrls.fileProject.trigger('click');
+
+                e.preventDefault();
+            });
+
+            ctrls.fileProject.change(function(e){
+                var files = e.target.files;
+
+                console.log(files);
+                ctrls.codeError1.hide();
+                ctrls.codeError2.hide();
+                ctrls.result_selects.text(0);
+                ctrls.result_count.text(0 + "Mo");
+
+                var cpt =0;
+                var  test =0;
+                for(var i=0; i<files.length;i++)
+                {
+                    if(files[i].type!="application/pdf" && files[i].type!="application/vnd.openxmlformats-officedocument.wordprocessingml.document" && files[i].type!="image/jpg" && files[i].type!="image/png" && files[i].type!="image/jpeg" && files[i].type!="image/gif" && files[i].type!="image/bnp")
+                    {
+                        test=-1;
+                        alert(ctrls.error1.val()+ files[i].type+ +"  "+ctrls.error2.val());
+                        ctrls.fileProject.val(null);
+                        break;
+                    }
+                    cpt+=files[i].size;
+                }
+               // console.log(cpt/781);
+                var taille  =(cpt/(1024*781));
+                if(taille>5)
+                {
+                    alert(ctrls.error3.val()+taille.toFixed(2)+ ctrls.error4.val());
+                    ctrls.fileProject.val(null);
+                }
+                else{
+                    if(test==0)
+                    {
+                        ctrls.codeError1.slideDown();
+                        ctrls.codeError2.slideDown();
+                        ctrls.result_selects.text(files.length);
+                        ctrls.result_count.text( (cpt/781).toFixed(2) +'Ko => ('+ (cpt/(1024*781)).toFixed(2) + 'Mo)');
+                    }
+                }
+
+            });
+
+
         });
     </script>
 

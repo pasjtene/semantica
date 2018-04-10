@@ -1,7 +1,7 @@
 {% extends '::base.html.twig' %}
 
 {% block header %}
-    {% include 'AdminBundle:Inc:nav-mobile.html.twig' %}
+    {% include 'AdminBundle:Inc:nav.html.twig' %}
 {% endblock %}
 {% block stylesheets %}
     {{ parent() }}
@@ -25,4 +25,9 @@
 
 {% block myjs %}
 
+    <script>
+        $(function(){
+            $(".button-collapse").sideNav();
+        })
+    </script>
 {% endblock %}
