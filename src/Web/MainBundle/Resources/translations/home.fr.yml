@@ -25,12 +25,12 @@ main:
   send: ENVOYER
   better: Mieux encore, nous voir en personne!
   better_content: Nous aimons nos clients, alors n'hésitez pas à visiter pendant les heures normales d'ouverture.
-  block1: Semantica Technologies Corporation - STC
+  block1: Semantica Technologies & Consulting - STC
   block1_content:  |
-   1, kingsgate, 21-23 Kingsway, GU216JE, Woking, Surrey, UK <br/><br/> 01483 764182
+   Situé à Bonamoussadi à l'Entrée du Centre des Impôts de Douala 5ème
   block2: Hours
   block2_content:  |
-   Du lundi au vendredi: de 9h à 17h <br/><br/> Samedi: sur rendez-vous  Dimanche: fermé
+   Du lundi au vendredi: de 8h à 17h <br/><br/> Samedi: sur rendez-vous  Dimanche: fermé
 sendmail:
   content: Cliquer sur  ce lien pour continuer votre enregistrement
   message:  Nous avons envoyé un mail a l'adresse :
